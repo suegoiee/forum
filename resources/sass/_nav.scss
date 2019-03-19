@@ -19,3 +19,23 @@
 .dropdown-icon {
     margin-right: 5px;
 }
+
+.dropdownlist {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-content {
+    left: 158px;
+    top: 0px;
+}
+
+.dropdownlist:hover .dropdown-content {
+    display: block;
+}
+.fas {
+    position: relative;
+    margin-top: 3px;
+    float: right;
+}

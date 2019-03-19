@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Tools;
 
 use App\Http\Controllers\Controller;
 
-class Tools extends Controller
+class ToolsController extends Controller
 {
-    public function stocksummary()
+    public function bargain()
     {
-        return view('freebie.stocksummary');
+        return view('tools.bargain');
     }
 }
 ?>

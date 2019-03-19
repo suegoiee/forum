@@ -35,30 +35,7 @@
                         <li><a href="https://laravel-news.com">Laravel News</a></li>
                         <li><a href="http://www.laravelpodcast.com">Podcast</a></li>
                     </ul>
-                </li-->
-                
-                <style>
-                    .dropdownlist {
-                        position: relative;
-                        display: inline-block;
-                        width: 100%;
-                    }
-
-                    .dropdown-content {
-                        left: 158px;
-                        top: 0px;
-                    }
-                    
-                    .dropdownlist:hover .dropdown-content {
-                        display: block;
-                    }
-                    .fas {
-                        position: relative;
-                        margin-top: 3px;
-                        float: right;
-                    }
-                </style>
-                
+                </li-->                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -110,6 +87,30 @@
                             </ul>
                         </li>
                         <!--li role="separator" class="divider"></li-->
+                    </ul>
+                </li>
+
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小工具<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('tools.bargain') }}">買賣股票損益</a></li>
+                        <li><a href="">巴菲特預估股價</a></li>
+                        <li><a href="">股票買進檢查表</a></li>
+                        <li><a href="">年複合成長率</a></li>
+                        <li><a href="">定存股價值試算表</a></li>
+                        <li><a href="">市占率預估</a></li>
+                        <li><a href="">高登模型</a></li>
+                        <li><a href="">複利計算</a></li>
+                        <li><a href="">最低退休金</a></li>
+                        <li><a href="">除權息參考價</a></li>
+                        <li><a href="">NPV計算機</a></li>
+                        <li><a href="">本益成長比</a></li>
+                        <li><a href="">退休規劃</a></li>
+                        <li><a href="">貸款試算</a></li>
+                        <li><a href="">兩階段 現金流折現模型 DCF</a></li>
+                        <li><a href="">存股性向測驗</a></li>
+                        <li><a href="">揪團買股</a></li>
                     </ul>
                 </li>
             </ul>

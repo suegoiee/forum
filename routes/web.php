@@ -105,5 +105,9 @@ Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function 
     Route::get('/StatementOfFinancialPosition', 'FreebieController@StatementOfFinancialPosition')->name('.StatementOfFinancialPosition');
     Route::get('/IncomeStatement', 'FreebieController@IncomeStatement')->name('.IncomeStatement');
     Route::get('/CashFlows', 'FreebieController@CashFlows')->name('.CashFlows');
-    
+});
+
+// tools
+Route::prefix('tools')->name('tools')->namespace('tools')->group(function () {
+    Route::get('/bargain', 'ToolsController@bargain')->name('.bargain');
 });
