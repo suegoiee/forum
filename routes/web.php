@@ -81,3 +81,29 @@ Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
     Route::put('users/{username}/unban', 'UsersController@unban')->name('.users.unban');
     Route::delete('users/{username}', 'UsersController@delete')->name('.users.delete');
 });
+
+// freebie
+Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function () {
+    Route::get('/stocksummary', 'FreebieController@stocksummary')->name('.stockbasicinfo.stocksummary');
+    Route::get('/InstitutionalInvestorsNet', 'FreebieController@InstitutionalInvestorsNet')->name('.InstitutionalInvestorsNet');
+    Route::get('/HistoricalDividendRecord', 'FreebieController@HistoricalDividendRecord')->name('.HistoricalDividendRecord');
+    Route::get('/MonthlyRevenue', 'FreebieController@MonthlyRevenue')->name('.MonthlyRevenue');
+    Route::get('/MonthlyRevenueGrowthRate', 'FreebieController@MonthlyRevenueGrowthRate')->name('.MonthlyRevenueGrowthRate');
+    Route::get('/ShortTermRevenueVSLongTermRevenue', 'FreebieController@ShortTermRevenueVSLongTermRevenue')->name('.ShortTermRevenueVSLongTermRevenue');
+    Route::get('/BoardHoldingsVSStockPrice', 'FreebieController@BoardHoldingsVSStockPrice')->name('.BoardHoldingsVSStockPrice');
+    Route::get('/QFIIHoldingsVSStockPrice', 'FreebieController@QFIIHoldingsVSStockPrice')->name('.QFIIHoldingsVSStockPrice');
+    Route::get('/ShortInterestAsOfMarginPurchase', 'FreebieController@ShortInterestAsOfMarginPurchase')->name('.ShortInterestAsOfMarginPurchase');
+    Route::get('/MarginBalanceVSMarginUtilization', 'FreebieController@MarginBalanceVSMarginUtilization')->name('.MarginBalanceVSMarginUtilization');
+    Route::get('/MarginPurchaseIncrease', 'FreebieController@MarginPurchaseIncrease')->name('.MarginPurchaseIncrease');
+    Route::get('/MonthlyRevenueVSStockPrice', 'FreebieController@MonthlyRevenueVSStockPrice')->name('.MonthlyRevenueVSStockPrice');
+    Route::get('/CashDividendPayoutRatio', 'FreebieController@CashDividendPayoutRatio')->name('.CashDividendPayoutRatio');
+    Route::get('/StockPriceVSYield', 'FreebieController@StockPriceVSYield')->name('.StockPriceVSYield');
+    Route::get('/HistoricalPer', 'FreebieController@HistoricalPer')->name('.HistoricalPer');
+    Route::get('/HistoricalPbr', 'FreebieController@HistoricalPbr')->name('.HistoricalPbr');
+    Route::get('/ShortInterestIncrease', 'FreebieController@ShortInterestIncrease')->name('.ShortInterestIncrease');
+    Route::get('/ShortInterestVSShortSellUtilization', 'FreebieController@ShortInterestVSShortSellUtilization')->name('.ShortInterestVSShortSellUtilization');
+    Route::get('/StatementOfFinancialPosition', 'FreebieController@StatementOfFinancialPosition')->name('.StatementOfFinancialPosition');
+    Route::get('/IncomeStatement', 'FreebieController@IncomeStatement')->name('.IncomeStatement');
+    Route::get('/CashFlows', 'FreebieController@CashFlows')->name('.CashFlows');
+    
+});
