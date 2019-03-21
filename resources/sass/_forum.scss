@@ -1,4 +1,72 @@
+h1{
+    color: #545454;
+}
 .forum {
+    div{
+        div{
+            .form-control{
+                border: 1px solid rgba(255, 165, 0, .5);
+                border-radius: 15px;
+                color: #393939;
+            }
+        }
+        .btn{
+            background-color: #ffa500;
+            border: 1px solid #ffa500;
+            color: #fff;
+        }
+        .btn:hover{
+            background: #ffc04d;
+        }
+        .list-group-item{
+            background-color: rgba(255, 255, 255, .925);   
+            border: 1px solid rgba(255, 165, 0, .5);
+            color: #393939;
+        }
+        .list-group-item:hover{
+            color: #ffc04d;
+            background-color: rgba(255, 255, 255, .925);
+            border: 1px solid rgba(255, 165, 0, .5); 
+        }
+        .active{
+            color: #ffa500;
+            border: 1px solid rgba(255, 165, 0, .5);
+        }
+    }
+
+    .panel{   
+        .thread-info{
+            background-color: #b5b5b5;
+            color: #545454;
+        }
+        .thread-info-link{
+            color: #fff;
+        }
+        .panel-body{
+            a{
+                .media-heading{
+                    color: #ffa500;
+                }
+                p{
+                    color: #393939;
+                }
+            }
+            a:hover{
+                text-decoration: none;
+                .media-heading{
+                    color: #ffc04d;
+                    text-decoration: underline;
+                    text-decoration-color: #ffc04d;
+                }
+                p{
+                    color: #545454;
+                    text-decoration: underline;
+                    text-decoration-color: #545454;
+                } 
+            }
+        }
+    }
+
     .header-divider {
         margin: 10.5px 0 21px 0;
     }
