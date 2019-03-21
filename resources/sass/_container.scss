@@ -159,7 +159,7 @@ body {
                 border: 1px solid #ffa500;
                 color: #ffa500;
                 outline: none;
-                font-size: 13px;
+                font-size: 14px;
               }
               button:hover {
                 color: #ffc04d;
@@ -170,13 +170,13 @@ body {
                 border: none !important;
                 background-color: #393939;
                 color: #ffa500;
-                font-size: 13px;
+                font-size: 14px;
                 text-align: left;
                 word-break: break-all;
                 outline: none;
               }
               .ChartActive {
-                font-size: 14px;
+                font-size: 15px;
               }
               .form-control {
                 border: 1px solid rgba(255, 165, 0, 0.5);
@@ -203,6 +203,7 @@ body {
               border: 1px solid #545454 !important;
               padding: 5px 8px;
               margin-top: 15px;
+              margin-bottom: 10px;
             }
             .btn:hover {
               background-color: #545454;
