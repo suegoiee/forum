@@ -177,14 +177,13 @@ function drawTable(data, IdForCanvas) {
     $("#" + IdForCanvas).append('<table id="example" class="table table-striped"></table>');
     var TableData = [];
     var TableTitle = [];
-    var tmp = [];
     for (var i in data['data']) {
+        var tmp = [];
         $.each(data['data'][i], function (key, val) {
             tmp.push(val);
-        })
+        });
         TableData.push(tmp);
     }
-    var tmp = [];
     for (var i in data['column_title']) {
         $.each(data['column_title'][i], function (key, val) {
             TableTitle.push({ title: val });
@@ -325,7 +324,7 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
         });
         seriestData.push({
             type: data[i]['Style'],
-            name: data[i]['UnitRef'],
+            name: data[i]['ChineseAccount'],
             data: tmpData,
             yAxis: yAxisLocate[i],
             label: { enabled: false }
