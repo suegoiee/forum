@@ -674,3 +674,53 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
         });
     }
 }
+
+Highcharts.setOptions({
+    colors: [
+        '#ffa500',//1. orange
+        '#4abf70',//2. green
+        '#ef3474',//3. magenta
+        '#73a2ff',//4. blue
+        '#b5b5b5',//5. gray
+        '#ded780',//6. lime
+        '#a2cec1',//7. green
+        '#e48274',//8. pink
+        '#7e79bb',//9. purple
+        '#e9e9e9',//10. light-gray
+        '#e17441',//11. orange
+        '#468086',//12. teal
+        '#ef5350',//13. red
+        '#1455c2',//14. blue
+    ],
+    chart: {
+        style: {
+            fontFamily: 'Microsoft JhengHei'
+        }
+    },
+    lang: {
+        rangeSelectorZoom: ''
+    },
+    global: {
+        useUTC: false//use local timezone instead
+    },
+    tooltip: {
+        borderColor: '#545454'
+    },
+    exporting: {
+        chartOptions: {
+            chart: {
+                style: {
+                    fontFamily: 'Arial'
+                }
+            }
+        }
+    },
+    credits: {
+        text: '資料來源: UAnalyze',
+        href: 'https://www.uanalyze.com.tw',
+        style: {
+            'fontSize': '11px',
+            'color': '#393939'
+        }
+    }
+});

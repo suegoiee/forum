@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-default navbar-static-top">
+<nav class="navbar navber-bd navbar-default navbar-static-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
@@ -7,12 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}">寶寶愛分析但是寶寶不說</a>
+            <a class="navbar-brand" href="{{ route('home') }}">U分析</a>
         </div>
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a href="{{ route('forum') }}">論壇</a></li>
+                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li>
                 <!--li><a href="https://paste.laravel.io">Pastebin</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
@@ -36,54 +36,55 @@
                         <li><a href="http://www.laravelpodcast.com">Podcast</a></li>
                     </ul>
                 </li-->                
+                
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
+                        <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
                         <li class="dropdownlist">
-                            <a>月營收<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">月營收<i class='fas fa-angle-right'></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a href="{{ route('freebie.MonthlyRevenue') }}">每月營收變化表</a></li>
-                                <li><a href="{{ route('freebie.MonthlyRevenueVSStockPrice') }}">月營收與股價對照表</a></li>
-                                <li><a href="{{ route('freebie.MonthlyRevenueGrowthRate') }}">月營收成長率</a></li>
-                                <li><a href="{{ route('freebie.ShortTermRevenueVSLongTermRevenue') }}">長短期營收趨勢圖</a></li>
+                                <li><a class="menu" href="{{ route('freebie.MonthlyRevenue') }}">每月營收變化表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.MonthlyRevenueVSStockPrice') }}">月營收與股價對照表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.MonthlyRevenueGrowthRate') }}">月營收成長率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.ShortTermRevenueVSLongTermRevenue') }}">長短期營收趨勢圖</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a>財務報表<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">財務報表<i class='fas fa-angle-right'></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a href="{{ route('freebie.IncomeStatement') }}">損益表</a></li>
-                                <li><a href="{{ route('freebie.StatementOfFinancialPosition') }}">資產負債表</a></li>
-                                <li><a href="{{ route('freebie.CashFlows') }}">現金流量表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.IncomeStatement') }}">損益表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.StatementOfFinancialPosition') }}">資產負債表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.CashFlows') }}">現金流量表</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a>股息政策<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">股息政策<i class='fas fa-angle-right'></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a href="{{ route('freebie.HistoricalDividendRecord') }}">歷年股息表</a></li>
-                                <li><a href="{{ route('freebie.CashDividendPayoutRatio') }}">股息配發率</a></li>
-                                <li><a href="{{ route('freebie.StockPriceVSYield') }}">股價 vs 殖利率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.HistoricalDividendRecord') }}">歷年股息表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.CashDividendPayoutRatio') }}">股息配發率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.StockPriceVSYield') }}">股價 vs 殖利率</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a>籌碼資訊<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">籌碼資訊<i class='fas fa-angle-right'></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a href="{{ route('freebie.InstitutionalInvestorsNet') }}">三大法人買賣超日報表</a></li>
-                                <li><a href="{{ route('freebie.QFIIHoldingsVSStockPrice') }}">外資持股比率</a></li>
-                                <li><a href="{{ route('freebie.BoardHoldingsVSStockPrice') }}">董監持股比率</a></li>
-                                <li><a href="{{ route('freebie.ShortInterestAsOfMarginPurchase') }}">券資比</a></li>
-                                <li><a href="{{ route('freebie.MarginPurchaseIncrease') }}">融資增減變化</a></li>
-                                <li><a href="{{ route('freebie.MarginBalanceVSMarginUtilization') }}">融資餘額與融資使用率</a></li>
-                                <li><a href="{{ route('freebie.ShortInterestIncrease') }}">融券增減變化</a></li>
-                                <li><a href="{{ route('freebie.ShortInterestVSShortSellUtilization') }}">融券餘額與融券使用率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.InstitutionalInvestorsNet') }}">三大法人買賣超日報表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.QFIIHoldingsVSStockPrice') }}">外資持股比率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.BoardHoldingsVSStockPrice') }}">董監持股比率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.ShortInterestAsOfMarginPurchase') }}">券資比</a></li>
+                                <li><a class="menu" href="{{ route('freebie.MarginPurchaseIncrease') }}">融資增減變化</a></li>
+                                <li><a class="menu" href="{{ route('freebie.MarginBalanceVSMarginUtilization') }}">融資餘額與融資使用率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.ShortInterestIncrease') }}">融券增減變化</a></li>
+                                <li><a class="menu" href="{{ route('freebie.ShortInterestVSShortSellUtilization') }}">融券餘額與融券使用率</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a>股票評價<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">股票評價<i class='fas fa-angle-right'></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a href="{{ route('freebie.HistoricalPer') }}">本益比評價</a></li>
-                                <li><a href="{{ route('freebie.HistoricalPbr') }}">股價淨值比評價</a></li>
-                                <li><a href="">股息殖利率評價</a></li>
+                                <li><a class="menu" href="{{ route('freebie.HistoricalPer') }}">本益比評價</a></li>
+                                <li><a class="menu" href="{{ route('freebie.HistoricalPbr') }}">股價淨值比評價</a></li>
+                                <li><a class="menu" href="">股息殖利率評價</a></li>
                             </ul>
                         </li>
                         <!--li role="separator" class="divider"></li-->
@@ -116,8 +117,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li class="{{ active('login') }}"><a href="{{ route('login') }}">Login</a></li>
-                    <li class="{{ active('register') }}"><a href="{{ route('register') }}">Register</a></li>
+                    <li class="{{ active('login') }}"><a class="login" href="{{ route('login') }}">登入</a></li>
+                    <li class="{{ active('register') }}"><a class="login" href="{{ route('register') }}">註冊</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
