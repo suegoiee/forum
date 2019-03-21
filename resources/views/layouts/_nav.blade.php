@@ -35,29 +35,7 @@
                         <li><a href="https://laravel-news.com">Laravel News</a></li>
                         <li><a href="http://www.laravelpodcast.com">Podcast</a></li>
                     </ul>
-                </li-->
-                
-                <style>
-                    .dropdownlist {
-                        position: relative;
-                        display: inline-block;
-                        width: 100%;
-                    }
-
-                    .dropdown-content {
-                        left: 158px;
-                        top: 0px;
-                    }
-                    
-                    .dropdownlist:hover .dropdown-content {
-                        display: block;
-                    }
-                    .fas {
-                        position: relative;
-                        margin-top: 3px;
-                        float: right;
-                    }
-                </style>
+                </li-->                
                 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<span class="caret"></span></a>
@@ -110,6 +88,30 @@
                             </ul>
                         </li>
                         <!--li role="separator" class="divider"></li-->
+                    </ul>
+                </li>
+
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小工具<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('tools.bargain') }}">買賣股票損益</a></li>
+                        <li><a href="{{ route('tools.buffett') }}">巴菲特預估股價</a></li>
+                        <li><a href="{{ route('tools.buyCheckForm') }}">股票買進檢查表</a></li>
+                        <li><a href="{{ route('tools.Compound') }}">年複合成長率</a></li>
+                        <li><a href="{{ route('tools.deposit') }}">定存股價值試算表</a></li>
+                        <li><a href="{{ route('tools.estimate') }}">市占率預估</a></li>
+                        <li><a href="{{ route('tools.gordon') }}">高登模型</a></li>
+                        <li><a href="{{ route('tools.interest') }}">複利計算</a></li>
+                        <li><a href="{{ route('tools.lowestRetire') }}">最低退休金</a></li>
+                        <li><a href="{{ route('tools.money') }}">除權息參考價</a></li>
+                        <li><a href="{{ route('tools.npv') }}">NPV計算機</a></li>
+                        <li><a href="{{ route('tools.proportion') }}">本益成長比</a></li>
+                        <li><a href="{{ route('tools.retire') }}">退休規劃</a></li>
+                        <li><a href="{{ route('tools.PayBack') }}">貸款試算</a></li>
+                        <li><a href="{{ route('tools.secondDCF') }}">兩階段 現金流折現模型 DCF</a></li>
+                        <li><a href="{{ route('tools.DepositTest') }}">存股性向測驗</a></li>
+                        <li><a href="{{ route('tools.DepositInGroup') }}">揪團買股</a></li>
                     </ul>
                 </li>
             </ul>

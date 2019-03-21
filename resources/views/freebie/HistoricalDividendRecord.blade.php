@@ -9,7 +9,7 @@
             <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar">
         </div>
         <h2 style="text-align:center;"><b id="stockTitle"></b></h2>
-        <h4 style="text-align:center;">現金流量表</h4>
+        <h4 style="text-align:center;">歷年股息表</h4>
     </div>
     <div class="container" id="CanvasBaseMap"></div>
     <script>

@@ -1,0 +1,208 @@
+form {
+  border-radius: 10px;
+  border: 2px #595959 solid;
+  text-align: left;
+  color: #595959;
+  background-color: #F9F9F9;
+  font-family: Microsoft JhengHei;
+  line-height: 0;
+  width: 28%;
+  margin: auto; }
+  form fieldset {
+    border-style: none; }
+    form fieldset h3 {
+      text-align: center;
+      color: black;
+      background-color: #F9F9F9;
+      font-family: Microsoft JhengHei;
+      line-height: 0;
+      text-shadow: 1px 1px 1px gray; }
+    form fieldset h5 {
+      text-align: center;
+      color: #595959;
+      background-color: #F9F9F9;
+      font-family: Microsoft JhengHei;
+      line-height: 0; }
+    form fieldset #nnnn {
+      text-align: left;
+      color: #595959;
+      background-color: #F9F9F9;
+      font-family: Microsoft JhengHei;
+      line-height: 16px; }
+    form fieldset #che {
+      text-align: center;
+      color: green;
+      background-color: #fff;
+      font-family: Microsoft JhengHei;
+      line-height: 20px;
+      font-size: 20px; }
+    form fieldset #non {
+      text-align: center;
+      color: red;
+      background-color: #fff;
+      font-family: Microsoft JhengHei;
+      line-height: 20px;
+      font-size: 20px; }
+    form fieldset p label {
+      display: inline-block;
+      vertical-align: middle;
+      width: 45%;
+      text-align: center;
+      color: #595959;
+      background-color: #F9F9F9;
+      font-family: Microsoft JhengHei;
+      line-height: 16px;
+      padding-left: auto;
+      padding-right: auto;
+      margin-left: 6%; }
+      form fieldset p label .small {
+        font-size: 12px; }
+      form fieldset p label .red {
+        color: red; }
+    form fieldset p #toge {
+      margin-left: 0;
+      width: 38%; }
+    form fieldset p .too {
+      margin-left: 12%; }
+    form fieldset p input {
+      text-align: right;
+      color: #fff;
+      background-color: black;
+      font-family: Microsoft JhengHei;
+      line-height: 16px;
+      padding-right: 5px; }
+    form fieldset p input:-webkit-autofill,
+    form fieldset p textarea:-webkit-autofill,
+    form fieldset p select:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px black inset; }
+    form fieldset p input:focus {
+      border-radius: 0;
+      border: 2px red solid; }
+    form fieldset h4,
+    form fieldset #msgA {
+      text-align: right;
+      color: red;
+      background-color: #F9F9F9;
+      font-family: Microsoft JhengHei;
+      line-height: 0;
+      padding-left: auto;
+      padding-right: 15%;
+      margin-left: auto;
+      font-weight: bold; }
+    form fieldset #bigW {
+      text-align: right;
+      color: red;
+      background-color: #F9F9F9;
+      font-family: Microsoft JhengHei;
+      line-height: 0;
+      padding-left: auto;
+      padding-right: 19%;
+      margin-left: auto;
+      font-weight: bold; }
+    form fieldset p button {
+      border-radius: 10px;
+      border: 2px #595959 solid;
+      text-align: center;
+      color: #fff;
+      background-color: black;
+      font-family: Microsoft JhengHei;
+      line-height: 16px; }
+    form fieldset p .cal,
+    form fieldset p #add,
+    form fieldset p #doc {
+      padding-left: auto;
+      padding-right: auto;
+      margin-left: 40%;
+      border-radius: 10px;
+      border: 2px #595959 solid; }
+    form fieldset .resultAll {
+      text-align: left;
+      color: black;
+      background-color: none;
+      font-family: Microsoft JhengHei;
+      line-height: 16px;
+      font-weight: bold;
+      margin-left: 10%; }
+    form fieldset .rate {
+      border-radius: 10px;
+      border: 2px gray solid;
+      text-align: right;
+      color: #fff;
+      background-color: black;
+      font-family: Microsoft JhengHei;
+      line-height: 16px;
+      font-size: 18px;
+      width: 200px;
+      height: 21px;
+      display: inline-block;
+      padding-left: auto;
+      padding-right: auto;
+      margin-left: 27%; }
+    form fieldset .word {
+      text-align: left;
+      color: black;
+      background-color: #F9F9F9;
+      font-family: Microsoft JhengHei;
+      line-height: 0;
+      font-weight: bold; }
+    form fieldset table {
+      text-align: center;
+      color: black;
+      background-color: #fff;
+      font-family: Microsoft JhengHei;
+      line-height: 20px;
+      border-radius: 0;
+      border: 2px black solid;
+      width: 80%;
+      margin: auto;
+      border-collapse: collapse; }
+      form fieldset table tr,
+      form fieldset table th {
+        border-radius: 0;
+        border: 2px black solid;
+        line-height: 25px; }
+        form fieldset table tr td,
+        form fieldset table th td {
+          border-radius: 0;
+          border: 2px black solid; }
+      form fieldset table tr .inpor {
+        border-radius: 0;
+        border: 2px #fff solid;
+        text-align: center;
+        color: #fff;
+        background-color: black;
+        font-family: Microsoft JhengHei;
+        line-height: 16px; }
+      form fieldset table td {
+        border-radius: 0;
+        border: 2px black solid; }
+    form fieldset #question {
+      line-height: 25px; }
+    form fieldset #valFF {
+      border-radius: 0;
+      border: 2px #fff solid;
+      text-align: center;
+      color: #fff;
+      background-color: black;
+      font-family: Microsoft JhengHei;
+      line-height: 16px; }
+    form fieldset #npvv #rec {
+      width: 88%;
+      border-radius: 0;
+      border: 2px black solid;
+      text-align: center;
+      color: green;
+      background-color: white;
+      font-family: Microsoft JhengHei;
+      line-height: 25px; }
+    form fieldset #npvv #recc {
+      width: 88%;
+      border-radius: 0;
+      border: 2px black solid;
+      text-align: center;
+      color: red;
+      background-color: white;
+      font-family: Microsoft JhengHei;
+      line-height: 25px; }
+
+/*# sourceMappingURL=styleAll.css.map */

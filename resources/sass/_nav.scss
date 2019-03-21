@@ -43,27 +43,27 @@
 }
 
 .navbar-nav > li > a.profile-image {
-  padding-top: 15px;
-  padding-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .dropdown-menu li span {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  white-space: nowrap;
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    white-space: nowrap;
 }
 
 @media (max-width: 767px) {
   .navbar-brand {
     padding-left: 6%;
-  }
+    }
   .nav-font,
   .login {
     padding-left: 10% !important;
     font-size: 14.5px !important;
     line-height: normal !important;
-  }
+}
   .dropdown-menu {
     padding: 0 !important;
     border: none !important;
@@ -89,5 +89,5 @@
 }
 
 .dropdown-icon {
-  margin-right: 5px;
+    margin-right: 5px;
 }

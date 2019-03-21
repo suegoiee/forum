@@ -15,6 +15,7 @@
     <script>
         window.onload=function () {
             dataFactory('https://cronjob.uanalyze.com.tw/fetch/MonthlyRevenueVSStockPrice/2204', false);
+            //.env
         };
     </script>
 @endsection
