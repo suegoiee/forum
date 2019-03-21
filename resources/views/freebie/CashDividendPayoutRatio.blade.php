@@ -10,7 +10,7 @@
         <h2 style="text-align:center;"><b id="stockTitle"></b></h2>
         <h4 style="text-align:center;">股息配發率</h4>
     </div>
-    <div class="container" id="CashDividendPayoutRatioBaseMap"></div>
+    <div class="container" id="CanvasBaseMap"></div>
     
     <script>
         window.onload=function () {

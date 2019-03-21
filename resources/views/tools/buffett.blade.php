@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+@title('巴菲特預估股價' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-<head>
-    <meta charset="UTF-8">
-    <title>巴菲特預估股價</title>
-    <link rel="stylesheet" type="text/css" href="css/styleAll.css">
-    <script src="js/errorode.js"></script>
-    <script src="js/cal.js"></script>
-</head>
+@extends('layouts.default')
 
-<body>
+@section('content')
+<div class="container">
     <form style="width: 29%;">
         <fieldset>
             <h3>巴菲特預估股價</h3>
@@ -69,16 +63,19 @@
             </p>
         </fieldset>
     </form>
+</div>
+
     <script type="text/javascript">
-    let numberAll = document.getElementsByName('value');
-    let msgAll = document.getElementsByTagName('h4');
-    let resAll = document.getElementById('tableResA');
-    let ress = document.getElementById('tableResB');
+        let numberAll = document.getElementsByName('value');
+        let msgAll = document.getElementsByTagName('h4');
+        let resAll = document.getElementById('tableResA');
+        let ress = document.getElementById('tableResB');
 
-    let valueAll = new calBuffett(numberAll, msgAll, resAll, ress);
-    valueAll.bufCal();
-    valueAll.clearEle();
+        window.onload=function () {
+            let valueAll = new calBuffett(numberAll, msgAll, resAll, ress);
+            valueAll.bufCal();
+            valueAll.clearEle();
+        }
     </script>
-</body>
 
-</html>
+@endsection

@@ -1,8 +1,9 @@
-@title('Stocksummary' . (isset($subTitle) ? ' > ' . $subTitle : ''))
+@title('買賣股票損益計算機' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
 @extends('layouts.default')
 
 @section('content')
+<div class="container">
 	<form>
 		<fieldset>
 			<h3>買賣股票損益計算機</h3>
@@ -71,14 +72,16 @@
 				
 		</fieldset>
 	</form>
-
-	<script type="text/javascript">
+</div>
+	<script>
 		let numberAll = document.getElementsByTagName('input');
 		let msgAll = document.getElementsByTagName('h4');
 		let moneyAll = document.getElementsByClassName('feeAll');
-		let valueAll = new calFee(numberAll,msgAll,moneyAll);
-		valueAll.feeCal();
-		valueAll.clearAll();
+        window.onload=function () {
+			let valueAll = new calFee(numberAll,msgAll,moneyAll);
+			valueAll.feeCal();
+			valueAll.clearAll();
+	  	};
 	</script>
 
 @endsection

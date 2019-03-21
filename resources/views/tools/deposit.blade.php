@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+@title('定期股價值計算' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-<head>
-    <meta charset="UTF-8">
-    <title>定存股價值試算表</title>
-    <link rel="stylesheet" type="text/css" href="css/styleAll.css">
-    <script src="js/errorode.js"></script>
-    <script src="js/npv.js"></script>
-</head>
+@extends('layouts.default')
 
-<body>
+@section('content')
+<div class="container">
     <form style="width: 30%;">
         <fieldset>
             <h3>定期股價值計算</h3>
@@ -65,6 +59,7 @@
         </fieldset>
 
     </form>
+</div>
     <script type="text/javascript">
     let questionAll = document.getElementById("question");
     let moneyAll = document.getElementsByName('mom');
@@ -72,11 +67,11 @@
     let msgAll = document.getElementsByTagName('h4');
     let inputTd = document.getElementById("calMon");
 
+    window.onload=function () {
     let valueAll = new npvCal(numberAll, msgAll, questionAll, moneyAll, inputTd);
     valueAll.addInput();
     valueAll.calDoposit();
     valueAll.clearEve();
+    }
     </script>
-</body>
-
-</html>
+@endsection

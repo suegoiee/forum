@@ -110,4 +110,20 @@ Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function 
 // tools
 Route::prefix('tools')->name('tools')->namespace('tools')->group(function () {
     Route::get('/bargain', 'ToolsController@bargain')->name('.bargain');
+    Route::get('/buffett', 'ToolsController@buffett')->name('.buffett');
+    Route::get('/buyCheckForm', 'ToolsController@buyCheckForm')->name('.buyCheckForm');
+    Route::get('/Compound', 'ToolsController@Compound')->name('.Compound');
+    Route::get('/deposit', 'ToolsController@deposit')->name('.deposit');
+    Route::get('/estimate', 'ToolsController@estimate')->name('.estimate');
+    Route::get('/gordon', 'ToolsController@gordon')->name('.gordon');
+    Route::get('/interest', 'ToolsController@interest')->name('.interest');
+    Route::get('/lowestRetire', 'ToolsController@lowestRetire')->name('.lowestRetire');
+    Route::get('/money', 'ToolsController@money')->name('.money');
+    Route::get('/npv', 'ToolsController@npv')->name('.npv');
+    Route::get('/proportion', 'ToolsController@proportion')->name('.proportion');
+    Route::get('/retire', 'ToolsController@retire')->name('.retire');
+    Route::get('/PayBack', 'ToolsController@PayBack')->name('.PayBack');
+    Route::get('/secondDCF', 'ToolsController@secondDCF')->name('.secondDCF');
+    Route::get('/DepositTest', 'ToolsController@DepositTest')->name('.DepositTest');
+    Route::get('/DepositInGroup', 'ToolsController@DepositInGroup')->name('.DepositInGroup');
 });

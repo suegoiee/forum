@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+@title('本息平均攤還(每月定額攤還)' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-<head>
-    <meta charset="UTF-8">
-    <title>貸款試算</title>
-    <link rel="stylesheet" type="text/css" href="css/styleAll.css">
-    <script src="js/errorode.js"></script>
-    <script src="js/cal.js"></script>
-</head>
+@extends('layouts.default')
 
-<body>
+@section('content')
+<div class="container">
     <form style="width: 30%; display: block;  float: left; margin-left: 22%;">
         <fieldset>
             <h3>本息平均攤還(每月定額攤還)</h3>
@@ -56,16 +50,17 @@
             </table>
         </fieldset>
     </form>
+</div>
     <script type="text/javascript">
-    let numberAll = document.getElementsByName('per');
-    let msgAll = document.getElementsByTagName('h4');
-    let inputTdA = document.getElementById("calMonA");
-    let inputTdB = document.getElementById("calMonB");
+        let numberAll = document.getElementsByName('per');
+        let msgAll = document.getElementsByTagName('h4');
+        let inputTdA = document.getElementById("calMonA");
+        let inputTdB = document.getElementById("calMonB");
 
-    let valueAll = new reCal(numberAll, msgAll, inputTdA, inputTdB);
-    valueAll.calReturn();
-    valueAll.clearEvery();
+        window.onload=function () {
+            let valueAll = new reCal(numberAll, msgAll, inputTdA, inputTdB);
+            valueAll.calReturn();
+            valueAll.clearEvery();
+        }
     </script>
-</body>
-
-</html>
+@endsection

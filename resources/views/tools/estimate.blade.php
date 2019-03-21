@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<head>
-	<meta charset="UTF-8">
-	<title>市占率預估</title>
-	<link rel="stylesheet" type="text/css" href="css/styleAll.css">
-	<script src="js/errorode.js"></script>
-	<script src="js/cal.js"></script>
-	
-</head>
-<body>
+@title('市占率預估' . (isset($subTitle) ? ' > ' . $subTitle : ''))
+
+@extends('layouts.default')
+
+@section('content')
+<div class="container">
 	<form>
 		<fieldset>
 			<h3>市占率預估</h3>
@@ -86,16 +81,17 @@
 				
 		</fieldset>
 	</form>
+</div>
 
 	<script type="text/javascript">
 		let numberAll = document.getElementsByTagName('input');
 		let msgAll = document.getElementsByTagName('h4');
 		let moneyAll = document.getElementsByClassName('getAll');
 		
-		let valueAll = new calFee(numberAll,msgAll,moneyAll);
-		valueAll.EstCal();
-		valueAll.clearAll();
+		window.onload=function () {
+			let valueAll = new calFee(numberAll,msgAll,moneyAll);
+			valueAll.EstCal();
+			valueAll.clearAll();
+    	}
 	</script>
-
-</body>
-</html>
+@endsection

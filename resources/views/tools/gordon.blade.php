@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+@title('高登模型' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-<head>
-    <meta charset="UTF-8">
-    <title>高登模型</title>
-    <link rel="stylesheet" type="text/css" href="css/styleAll.css">
-    <script src="js/errorode.js"></script>
-    <script src="js/cal.js"></script>
-</head>
+@extends('layouts.default')
 
-<body>
+@section('content')
+<div class="container">
     <form style="width: 29%;">
         <fieldset>
             <h3>高登模型</h3>
@@ -67,6 +61,7 @@
             </p>
         </fieldset>
     </form>
+</div>
     <script type="text/javascript">
     let numberAll = document.getElementsByName('value');
     let msgAll = document.getElementsByTagName('h4');
@@ -74,10 +69,10 @@
     let resB = document.getElementById('resultB');
     let resC = document.getElementById('tableRes');
 
-    let valueAll = new calGordon(numberAll, msgAll, resA, resB, resC);
-    valueAll.gorCal();
-    valueAll.clearEle();
+    window.onload=function () {
+        let valueAll = new calGordon(numberAll, msgAll, resA, resB, resC);
+        valueAll.gorCal();
+        valueAll.clearEle();
+    }
     </script>
-</body>
-
-</html>
+@endsection

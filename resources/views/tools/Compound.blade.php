@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<head>
-	<meta charset="UTF-8">
-	<title>年複合成長率</title>
-	<link rel="stylesheet" type="text/css" href="css/styleAll.css">
-	<script src="js/errorode.js"></script>
-	<script src="js/cal.js"></script>
-	
-</head>
-<body>
+@title('年複合成長率計算機' . (isset($subTitle) ? ' > ' . $subTitle : ''))
+
+@extends('layouts.default')
+
+@section('content')
+<div class="container">
 	<form>
 		<fieldset>
 			<h3>年複合成長率計算機</h3>
@@ -46,17 +41,17 @@
 			</p>
 		</fieldset>
 	</form>
+</div>
 
 	<script type="text/javascript">
 		let numberAll = document.getElementsByName('number');
 		let msgAll = document.getElementsByTagName('h4');
 		let resAll = document.getElementById('result');
 		
+        window.onload=function () {
 		let valueAll = new calReRate(numberAll,msgAll,resAll);
 		valueAll.rateCal();
 		valueAll.clearAll();
+		}
 	</script>
-	
-
-</body>
-</html>
+@endsection

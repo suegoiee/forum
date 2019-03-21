@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+@title('股票買進檢查表' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-<head>
-    <meta charset="UTF-8">
-    <title>股票買進檢查表</title>
-    <link rel="stylesheet" type="text/css" href="css/styleAll.css">
-    <script src="js/formCheck.js"></script>
-</head>
+@extends('layouts.default')
 
-<body>
+@section('content')
+<div class="container">
     <form style="width: 35%;">
         <fieldset>
             <h3>股票買進檢查表</h3>
@@ -86,15 +81,16 @@
             </table>
         </fieldset>
     </form>
+</div>
     <script type="text/javascript">
-    let radAll = document.querySelectorAll('.radioAll');
-    let res = document.querySelector('.resultAll');
-    let resAll = document.getElementById('result');
+        let radAll = document.querySelectorAll('.radioAll');
+        let res = document.querySelector('.resultAll');
+        let resAll = document.getElementById('result');
 
-    let valueAll = new checkRad(radAll, res, resAll);
-    valueAll.cheChecked();
-    valueAll.clearAll();
+        window.onload=function () {
+        let valueAll = new checkRad(radAll, res, resAll);
+        valueAll.cheChecked();
+        valueAll.clearAll();
+        }
     </script>
-</body>
-
-</html>
+@endsection

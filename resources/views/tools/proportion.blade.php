@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+@title('本益成長比計算機' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-<head>
-    <meta charset="UTF-8">
-    <title>本益成長比</title>
-    <link rel="stylesheet" type="text/css" href="css/styleAll.css">
-    <script src="js/errorode.js"></script>
-    <script src="js/cal.js"></script>
-</head>
+@extends('layouts.default')
 
-<body>
+@section('content')
+<div class="container">
     <form>
         <fieldset>
             <h3>本益成長比計算機</h3>
@@ -66,17 +60,18 @@
             </p>
         </fieldset>
     </form>
+</div>
     <script type="text/javascript">
-    let numberAll = document.getElementsByName('number');
-    let msgAll = document.getElementsByTagName('h4');
-    let judgeAll = document.getElementsByClassName('inpor');
-    let pro = document.getElementById('proportion');
-    let growPro = document.getElementById('growproportion');
+        let numberAll = document.getElementsByName('number');
+        let msgAll = document.getElementsByTagName('h4');
+        let judgeAll = document.getElementsByClassName('inpor');
+        let pro = document.getElementById('proportion');
+        let growPro = document.getElementById('growproportion');
 
-    let valueAll = new calProportion(numberAll, msgAll, judgeAll, pro, growPro);
-    valueAll.proporCal();
-    valueAll.clearAll();
+        window.onload=function () {
+            let valueAll = new calProportion(numberAll, msgAll, judgeAll, pro, growPro);
+            valueAll.proporCal();
+            valueAll.clearAll();
+        }
     </script>
-</body>
-
-</html>
+@endsection

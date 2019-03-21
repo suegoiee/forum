@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
-<head>
-	<meta charset="UTF-8">
-	<title>揪團買股</title>
-	<link rel="stylesheet" type="text/css" href="css/styleAll.css">
-	<script src="js/errorode.js"></script>
-	<script src="js/addToge.js"></script>	
-</head>
-<body>
+@title('揪團買股' . (isset($subTitle) ? ' > ' . $subTitle : ''))
+
+@extends('layouts.default')
+
+@section('content')
+<div class="container">
 	<form style="width: 33%;">
 		<fieldset>
 			<h3>揪團買股</h3>
@@ -67,7 +63,7 @@
 			<p id="print"></p>
 		</fieldset>
 	</form>
-
+</div>
 	<script type="text/javascript">
 		let questionAll = document.getElementById("question");
 		let nameAll = document.getElementsByName("name");
@@ -79,11 +75,11 @@
 		let inputTdC = document.getElementById("getMoney");
 		let printAll = document.getElementById('print');	
 
-		let valueAll = new togeStock(numberAll,msgAll,questionAll,nameAll,moneyAll,inputTdA,inputTdB,inputTdC,printAll);
-		valueAll.addInput();
-		valueAll.calStock();
-		valueAll.clearEvery();
+        window.onload=function () {
+			let valueAll = new togeStock(numberAll,msgAll,questionAll,nameAll,moneyAll,inputTdA,inputTdB,inputTdC,printAll);
+			valueAll.addInput();
+			valueAll.calStock();
+			valueAll.clearEvery();
+		}
 	</script>
-
-</body>
-</html>
+@endsection

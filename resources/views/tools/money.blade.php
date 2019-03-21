@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+@title('除權息參考價計算機' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-<head>
-    <meta charset="UTF-8">
-    <title>除權息參考價</title>
-    <link rel="stylesheet" type="text/css" href="css/styleAll.css">
-    <script src="js/errorode.js"></script>
-    <script src="js/cal.js"></script>
-</head>
+@extends('layouts.default')
 
-<body>
+@section('content')
+<div class="container">
     <form>
         <fieldset>
             <h3>除權息參考價計算機</h3>
@@ -49,15 +43,16 @@
             </p>
         </fieldset>
     </form>
+</div>
     <script type="text/javascript">
     let numberAll = document.getElementsByName('number');
     let msgAll = document.getElementsByTagName('h4');
     let resAll = document.getElementById('result');
 
-    let valueAll = new calReRate(numberAll, msgAll, resAll);
-    valueAll.priceCal();
-    valueAll.clearAll();
+    window.onload=function () {
+        let valueAll = new calReRate(numberAll, msgAll, resAll);
+        valueAll.priceCal();
+        valueAll.clearAll();
+    }
     </script>
-</body>
-
-</html>
+@endsection

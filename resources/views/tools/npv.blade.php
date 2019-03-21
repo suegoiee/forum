@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-Hant-TW">
+@title('資本預算之NPV(淨現值)' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-<head>
-    <meta charset="UTF-8">
-    <title>NPV計算機</title>
-    <link rel="stylesheet" type="text/css" href="css/styleAll.css">
-    <script src="js/errorode.js"></script>
-    <script src="js/npv.js"></script>
-</head>
+@extends('layouts.default')
 
-<body>
+@section('content')
+<div class="container">
     <form style="width: 30%;">
         <fieldset>
             <h3>資本預算之NPV(淨現值)</h3>
@@ -44,20 +38,21 @@
         </fieldset>
 
     </form>
+</div>
     <script type="text/javascript">
-    let questionAll = document.getElementById("question");
-    let moneyAll = document.getElementsByName('mom');
-    let numberAll = document.getElementsByName('per');
-    let msgAll = document.getElementsByTagName('h4');
-    let inputTd = document.getElementById("calMon");
-    let npv = document.getElementById('npv');
-    let npvv = document.getElementById('npvv');
+        let questionAll = document.getElementById("question");
+        let moneyAll = document.getElementsByName('mom');
+        let numberAll = document.getElementsByName('per');
+        let msgAll = document.getElementsByTagName('h4');
+        let inputTd = document.getElementById("calMon");
+        let npv = document.getElementById('npv');
+        let npvv = document.getElementById('npvv');
 
-    let valueAll = new npvCal(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, npvv);
-    valueAll.addInput();
-    valueAll.calStock();
-    valueAll.clearEvery();
+        window.onload=function () {
+            let valueAll = new npvCal(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, npvv);
+            valueAll.addInput();
+            valueAll.calStock();
+            valueAll.clearEvery();
+        }
     </script>
-</body>
-
-</html>
+@endsection
