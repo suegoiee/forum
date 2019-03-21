@@ -93,7 +93,7 @@
 
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小工具<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小工具<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('tools.bargain') }}">買賣股票損益</a></li>
                         <li><a href="{{ route('tools.buffett') }}">巴菲特預估股價</a></li>
