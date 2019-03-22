@@ -149,7 +149,7 @@ function dataFactory(stock_url, ClearCanvas) {
 
 /**股票搜尋器 */
 function stockPool(stock_url) {
-    $.getJSON('http://cronjob.uanalyze.com.tw/fetch/StockPool', function (data) {
+    $.getJSON('https://cronjob.uanalyze.com.tw/fetch/StockPool', function (data) {
         var availableTags = [];
         for (var i = 0; i < data['data'].length; i++) {
             availableTags.push({
@@ -484,7 +484,7 @@ function drawChart(canvas, title, yLabel, series) {
             borderWidth: 0,
             formatter: function () {
                 return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
-                    this.y + this.series.yAxis.axisTitle.textStr;
+                    this.y;// + this.series.yAxis.axisTitle.textStr;
             }
         }
     });
@@ -552,6 +552,7 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         var rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         var rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var range = rangeEnd - rangeStart;
+        //console.log(rangeStart, rangeEnd, range);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -569,6 +570,7 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         var rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         var rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var range = rangeEnd - rangeStart;
+        //console.log(rangeStart, rangeEnd, range);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -622,12 +624,14 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
 function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
     var count = 0;
     if ($(".ChartActive").val()) {
+        //console.log('chart table');
         var key1 = $(".ChartActive").val();
         var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
         $.each(chart_data[IdForCanvas][key2][key1], function (key, val) {
             $.each(val[dataType], function (key2, val2) {
                 if (!refreshEnd) {
                     if (count == 0) {
+                        //console.log('chart table empty', count);
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
@@ -650,13 +654,17 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                 }
                 count++
             });
+            return false;
         });
+        //console.log('chart table end', count);
     }
     else {
+        //console.log('chart');
         $.each(chart_data[IdForCanvas], function (key, val) {
             $.each(val[dataType], function (key2, val2) {
                 if (!refreshEnd) {
                     if (count == 0) {
+                        //console.log('chart empty', count);
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
@@ -680,6 +688,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
             });
             return false;
         });
+        //console.log('chart end', count);
     }
 }
 

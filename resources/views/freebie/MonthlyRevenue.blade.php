@@ -14,10 +14,10 @@
     <div class="container" id="CanvasBaseMap"></div>
     <script>
         window.onload=function () {
-            dataFactory('http://cronjob.uanalyze.com.tw/fetch/MonthlyRevenue_sorting_table/2204', false);
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/MonthlyRevenue_sorting_table/2204', false);
         }
         /*jQuery(function ($) {
-            dataFactory('http://cronjob.uanalyze.com.tw/fetch/MonthlyRevenue_sorting_table/2204', false);
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/MonthlyRevenue_sorting_table/2204', false);
         });*/
     </script>
 @endsection

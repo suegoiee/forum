@@ -14,7 +14,7 @@
     
     <script>
         window.onload=function () {
-            dataFactory('http://cronjob.uanalyze.com.tw/fetch/BoardHoldingsVSStockPrice/2204', false);
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/BoardHoldingsVSStockPrice/2204', false);
         };
     </script>
 

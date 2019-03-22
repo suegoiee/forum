@@ -14,7 +14,7 @@
     <div class="container" id="CanvasBaseMap"></div>
     <script>
         window.onload=function () {
-            dataFactory('http://cronjob.uanalyze.com.tw/fetch/ShortTermRevenueVSLongTermRevenue/2204', false);
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/ShortTermRevenueVSLongTermRevenue/2204', false);
         };
     </script>
 @endsection
