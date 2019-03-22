@@ -89,10 +89,10 @@ class npvCal extends judgeValue {
                 };
                 npv.value = valC.toFixed(0);
                 if (valC > 0) {
-                    npv.style.color = "rgb(181,230,29)";
+                    npv.style.color = "#4abf70";
                     this.addTd("p", "rec", "rec", "該專案值得投資", npvv);
                 } else {
-                    npv.style.color = "rgb(249,60,64)";
+                    npv.style.color = "#ef5350";
                     this.addTd("p", "recc", "recc", "該專案不值得投資，應該將這筆資金投入在其他地方。", npvv);
                 }
             }

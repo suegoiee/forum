@@ -39,34 +39,8 @@
 				<button type="button" id="clear">清除</button>
 			</p>
 			<p>
-				<div class="resultAll">買進：</div>
-				<table>					 
-					<tr>
-						<th>買進時，券商手續費</th>
-						<td class="feeAll inpor"></td>
-					</tr>
-					<tr>
-						<th>買進這檔股票，您需要準備</th>
-						<td class="feeAll inpor"></td>
-					</tr>
-				</table>
-
-			</p>
-			<p>
-				<div class="resultAll">賣出：</div>
-				<table>
-					<tr>
-						<th>賣出時，需要券商手續費</th>
-						<td class="feeAll inpor"></td>
-					</tr>
-					<tr>
-						<th>賣出時，需要證交稅</th>
-						<td class="feeAll inpor"></td>
-					</tr>
-					<tr>
-						<th>賣出這檔股票，您共可拿回</th>
-						<td class="feeAll inpor"></td>
-					</tr>
+				<div class="resultAll">買進與賣出：</div>
+				<table id="tableRes">
 				</table>
 			</p>
 				
@@ -76,7 +50,7 @@
 	<script>
 		let numberAll = document.getElementsByTagName('input');
 		let msgAll = document.getElementsByTagName('h4');
-		let moneyAll = document.getElementsByClassName('feeAll');
+		let moneyAll = document.getElementById('tableRes');
         window.onload=function () {
 			let valueAll = new calFee(numberAll,msgAll,moneyAll);
 			valueAll.feeCal();

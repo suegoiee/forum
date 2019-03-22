@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="display: block;  float: left;">
+    <form style="display: block;" id="form">
         <fieldset>
             <h3>本息平均攤還(每月定額攤還)</h3>
             <h5>(請填入貸款金額、貸款年數、年利率)</h5>
@@ -33,7 +33,7 @@
                 <h4 id="msgA"></h4>
             </p>
             <p>
-                <input type="button" class="cal" id="calAll" value="計算" />
+                <button type="button" class="cal" id="calAll">計算</button>
                 <button type="button" id="clear">清除</button>
             </p>
             <p>
@@ -44,7 +44,7 @@
             </p>
         </fieldset>
     </form>
-    <form style="display: block; float: left;">
+    <form id="formStyle" style="display:none; float:left;">
         <fieldset>
             <table id="calMonB">
             </table>
@@ -56,9 +56,10 @@
         let msgAll = document.getElementsByTagName('h4');
         let inputTdA = document.getElementById("calMonA");
         let inputTdB = document.getElementById("calMonB");
+        let form = document.getElementById("formStyle");
 
         window.onload=function () {
-            let valueAll = new reCal(numberAll, msgAll, inputTdA, inputTdB);
+            let valueAll = new reCal(numberAll, msgAll, inputTdA, inputTdB, form);
             valueAll.calReturn();
             valueAll.clearEvery();
         }

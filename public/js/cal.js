@@ -2,7 +2,9 @@
 class calFee extends judgeValue {
     constructor(numberAll, msgAll, moneyAll) {
         super(numberAll, msgAll);
-        this.moneyAll = Array();
+        this.moneyAll = moneyAll;
+        this.addTd = this.addTd.bind(this);
+        this.del = this.del.bind(this);
         this.clearValue = this.clearValue.bind(this);
         this.clearHTMLAll = this.clearHTMLAll.bind(this);
     }
@@ -10,6 +12,10 @@ class calFee extends judgeValue {
     feeCal() {
         document.getElementById('calMoney').onclick = () => {
             if (super.valueCheck() == true) {
+
+                if (moneyAll.length != 0) {
+                    this.del(moneyAll, 0);
+                }
                 let reg = /(?=(\B\d{3})+$)/g;
 
                 let feeA = parseFloat(numberAll[0].value) * parseFloat(numberAll[1].value) * 0.001425 * (parseFloat(numberAll[2].value) / 10);
@@ -17,11 +23,21 @@ class calFee extends judgeValue {
                 let feeC = parseFloat(numberAll[0].value) * parseFloat(numberAll[1].value) * 0.003;
                 let feeD = parseFloat(numberAll[0].value) * parseFloat(numberAll[1].value) - feeA - feeC;
 
-                moneyAll[0].innerHTML = feeA.toFixed(0) + "元";
-                moneyAll[1].innerHTML = feeB.toFixed(0).replace(reg, ",") + "元";
-                moneyAll[2].innerHTML = feeA.toFixed(0) + "元";
-                moneyAll[3].innerHTML = feeC.toFixed(0) + "元";
-                moneyAll[4].innerHTML = feeD.toFixed(0).replace(reg, ",") + "元";
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '買進時，券商手續費', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeA.toFixed(0) + "元", moneyAll);
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '買進這檔股票，您需要準備', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeB.toFixed(0).replace(reg, ",") + "元", moneyAll);
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '賣出時，需要券商手續費', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeA.toFixed(0) + "元", moneyAll);
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '賣出時，需要證交稅', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeC.toFixed(0) + "元", moneyAll);
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '賣出這檔股票，您共可拿回', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeD.toFixed(0).replace(reg, ",") + "元", moneyAll);
             }
         }
     }
@@ -29,6 +45,9 @@ class calFee extends judgeValue {
     EstCal() {
         document.getElementById('calEst').onclick = () => {
             if (super.valueCheck() == true) {
+                if (moneyAll.length != 0) {
+                    this.del(moneyAll, 0);
+                }
                 let reg = /(?=(\B\d{3})+$)/g;
 
                 let feeA = parseFloat(numberAll[1].value) * Math.pow((1 + parseFloat(numberAll[2].value) / 100), 5) * (parseFloat(numberAll[3].value) / 100);
@@ -36,12 +55,25 @@ class calFee extends judgeValue {
                 let feeC = parseFloat(numberAll[1].value) * Math.pow((1 + parseFloat(numberAll[2].value) / 100), 10) * (parseFloat(numberAll[4].value) / 100);
                 let feeD = Math.pow(feeC / feeA, 1 / 5) - 1;
                 let feeE = Math.pow(feeC / parseFloat(numberAll[0].value), 1 / 10) - 1;
+                let feeBB = feeB * 100;
+                let feeDD = feeD * 100;
+                let feeEE = feeE * 100;
 
-                moneyAll[0].innerHTML = feeA.toFixed(0).replace(reg, ",") + "億元";
-                moneyAll[1].innerHTML = (feeB * 100).toFixed(2) + "％";
-                moneyAll[2].innerHTML = feeC.toFixed(0).replace(reg, ",") + "億元";
-                moneyAll[3].innerHTML = (feeD * 100).toFixed(2) + "％";
-                moneyAll[4].innerHTML = (feeE * 100).toFixed(2) + "％";
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '公司5年後營收＝', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeA.toFixed(0).replace(reg, ",") + "億元", moneyAll);
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '第一階段成長率：\ 未來5年營收年複合成長率＝', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeBB.toFixed(2) + "％", moneyAll);
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '公司10年後營收＝', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeC.toFixed(0).replace(reg, ",") + "億元", moneyAll);
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '第二階段成長率：\ 第6~10年的年複合成長率＝', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeDD.toFixed(2) + "％", moneyAll);
+                this.addTd('tr', 'trr', 'trr', '', moneyAll);
+                this.addTd('th', 'thh', 'thh', '整體評估:未來10年的年複合成長率＝', moneyAll);
+                this.addTd('td', 'tdd', 'tdd', feeEE.toFixed(2) + "％", moneyAll);
             }
         }
     }
@@ -51,6 +83,8 @@ class calFee extends judgeValue {
             this.clearValue(numberAll);
             this.clearHTMLAll(msgAll);
             this.clearHTMLAll(moneyAll);
+
+            this.del(moneyAll, 0);
         }
     }
 }
@@ -353,9 +387,11 @@ class calGordon extends judgeValue {
 class calProportion extends judgeValue {
     constructor(numberAll, msgAll, judgeAll, pro, growPro) {
         super(numberAll, msgAll);
-        this.judgeAll = Array();
+        this.judgeAll = judgeAll;
         this.pro = pro;
         this.growPro = growPro;
+        this.addTd = this.addTd.bind(this);
+        this.del = this.del.bind(this);
         this.clearValue = this.clearValue.bind(this);
         this.clearHTMLAll = this.clearHTMLAll.bind(this);
         this.clearVal = this.clearVal.bind(this);
@@ -363,29 +399,48 @@ class calProportion extends judgeValue {
     proporCal() {
         document.getElementById('calPropor').onclick = () => {
             if (super.valueCheck() == true) {
+
+                if (judgeAll.length != 0) {
+                    this.del(judgeAll, 0);
+                }
                 let propor = parseFloat(numberAll[0].value) / parseFloat(numberAll[1].value);
                 pro.value = propor.toFixed(2);
                 let growpropor = parseFloat(propor) / parseFloat(numberAll[2].value);
                 growPro.value = growpropor.toFixed(2);
 
                 // 判斷
+
                 if (growpropor < 0.75) {
-                    judgeAll[0].innerHTML = "低於0.75倍(0.66倍更佳)";
-                    judgeAll[1].innerHTML = "股價被低估";
-                    judgeAll[2].innerHTML = "買進";
+                    this.addTd("th", "valEE", "valEE", "本益成長比", judgeAll);
+                    this.addTd("td", "valE", "valE", "低於0.75倍(0.66倍更佳)", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
+                    this.addTd("th", "valEE", "valEE", "股價合理程度", judgeAll);
+                    this.addTd("td", "valE", "valE", "股價被低估", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
+                    this.addTd("th", "valEE", "valEE", "採取動作", judgeAll);
+                    this.addTd("td", "valE", "valE", "買進", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
                 } else if (growpropor > 1.2) {
-                    judgeAll[0].innerHTML = "高於1.2倍";
-                    judgeAll[1].innerHTML = "股價被高估";
-                    judgeAll[2].innerHTML = "賣出";
+                    this.addTd("th", "valEE", "valEE", "本益成長比", judgeAll);
+                    this.addTd("td", "valE", "valE", "高於1.2倍", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
+                    this.addTd("th", "valEE", "valEE", "股價合理程度", judgeAll);
+                    this.addTd("td", "valE", "valE", "股價被高估", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
+                    this.addTd("th", "valEE", "valEE", "採取動作", judgeAll);
+                    this.addTd("td", "valE", "valE", "賣出", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
                 } else {
-                    judgeAll[0].innerHTML = "等於1倍";
-                    judgeAll[1].innerHTML = "股價合理";
-                    judgeAll[2].innerHTML = "空手者不買，持有者不賣";
+                    this.addTd("th", "valEE", "valEE", "本益成長比", judgeAll);
+                    this.addTd("td", "valE", "valE", "等於1倍", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
+                    this.addTd("th", "valEE", "valEE", "股價合理程度", judgeAll);
+                    this.addTd("td", "valE", "valE", "股價合理", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
+                    this.addTd("th", "valEE", "valEE", "採取動作", judgeAll);
+                    this.addTd("td", "valE", "valE", "空手者不買，持有者不賣", judgeAll);
+                    this.addTd("tr", "resB", "resB", "", judgeAll);
                 }
-            } else {
-                judgeAll[0].innerHTML = "";
-                judgeAll[1].innerHTML = "";
-                judgeAll[2].innerHTML = "";
             }
         }
     }
@@ -394,9 +449,9 @@ class calProportion extends judgeValue {
         document.getElementById('clear').onclick = () => {
             this.clearValue(numberAll);
             this.clearHTMLAll(msgAll);
-            this.clearHTMLAll(judgeAll);
             this.clearVal(pro);
             this.clearVal(growPro);
+            this.del(judgeAll, 0);
         }
     }
 
@@ -404,12 +459,13 @@ class calProportion extends judgeValue {
 
 // return 貸款試算：本息平均攤還(每月定額攤還) 
 class reCal extends judgeValue {
-    constructor(numberAll, msgAll, inputTdA, inputTdB) {
+    constructor(numberAll, msgAll, inputTdA, inputTdB, form) {
         super(numberAll, msgAll);
         this.inputTdA = inputTdA;
         this.inputTdB = inputTdB;
         this.addTd = this.addTd.bind(this);
         this.del = this.del.bind(this);
+        this.form = form;
     }
 
     calReturn() {
@@ -433,16 +489,18 @@ class reCal extends judgeValue {
                 let resAA = resA * 100;
                 let resCC = resC * 100;
 
-                this.addTd("td", "MM", "MM", "月利率", inputTdA);
+                document.getElementById('form').style.cssFloat = "left";
+                form.style.display = "block";
+                this.addTd("th", "MM", "MM", "月利率", inputTdA);
                 this.addTd("td", "MV", "MV", resAA.toFixed(1) + "％", inputTdA);
                 this.addTd("tr", "ee", "ee", "", inputTdA);
-                this.addTd("td", "dd", "dd", "貸款期數", inputTdA);
+                this.addTd("th", "dd", "dd", "貸款期數", inputTdA);
                 this.addTd("td", "dA", "dA", resB + "月", inputTdA);
                 this.addTd("tr", "ee", "ee", "", inputTdA);
-                this.addTd("td", "aa", "aa", "平均攤還率", inputTdA);
+                this.addTd("th", "aa", "aa", "平均攤還率", inputTdA);
                 this.addTd("td", "aA", "aA", resCC.toFixed(2) + "％", inputTdA);
                 this.addTd("tr", "ee", "ee", "", inputTdA);
-                this.addTd("td", "MA", "MA", "平均每月應還本息金額", inputTdA);
+                this.addTd("th", "MA", "MA", "平均每月應還本息金額", inputTdA);
                 this.addTd("td", "Vm", "Vm", resD.toFixed(0).replace(reg, ",") + "元", inputTdA);
 
                 this.addTd("th", "mom", "mom", "第n期", inputTdB);

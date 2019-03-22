@@ -45,17 +45,7 @@
                 <input type="text" min="0" class="rate" id="growproportion"></input>
             </p>
             <p>
-                <table>
-                    <tr>
-                        <th>本益成長比</th>
-                        <th>股價合理程度</th>
-                        <th>採取動作</th>
-                    </tr>
-                    <tr>
-                        <td class="inpor"></td>
-                        <td class="inpor"></td>
-                        <td class="inpor"></td>
-                    </tr>
+                <table id="tableRes">
                 </table>
             </p>
         </fieldset>
@@ -64,7 +54,7 @@
     <script type="text/javascript">
         let numberAll = document.getElementsByName('number');
         let msgAll = document.getElementsByTagName('h4');
-        let judgeAll = document.getElementsByClassName('inpor');
+        let judgeAll = document.getElementById('tableRes');
         let pro = document.getElementById('proportion');
         let growPro = document.getElementById('growproportion');
 
