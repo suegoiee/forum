@@ -11,6 +11,11 @@
       }
       .navbar-collapse {
         .navbar-nav {
+          .open {
+            a {
+              background-color: #545454;
+            }
+          }
           li {
             .nav-font {
               color: #fff;
@@ -29,9 +34,11 @@
               color: #ffa500;
             }
             .dropdown-menu {
-              background-color: rgba(255, 255, 255, 0.925);
               border: 1px solid rgba(255, 165, 0, 0.5);
-              color: #393939;
+              a {
+                background-color: #fff !important;
+                color: #393939;
+              }
               a:hover {
                 background-color: #ffa500 !important;
                 color: #fff !important;

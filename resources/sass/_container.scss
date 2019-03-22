@@ -1,5 +1,5 @@
 body {
-  font-family: "Source Han Sans TC", "source-han-sans-tc", "Noto Sans TC", "Open Sans", sans-serif;
+  font-family: "Source Han Sans TC", "source-han-sans-tc", "Noto Sans TC", "Open Sans", sans-serif !important;
   font-size: 14.5px;
   font-weight: 300;
   color: #545454;
@@ -20,11 +20,13 @@ body {
         font-size: 32px;
         padding-left: 15px;
         color: #393939;
+        font-family: "Source Han Sans TC", "source-han-sans-tc", "Noto Sans TC", "Open Sans", sans-serif !important;
       }
       h4 {
         text-align: left !important;
         font-size: 18px;
         padding-left: 15px;
+        font-family: "Source Han Sans TC", "source-han-sans-tc", "Noto Sans TC", "Open Sans", sans-serif !important;
       }
     }
     #CanvasBaseMap {
@@ -36,6 +38,7 @@ body {
             h3 {
               font-size: 18px;
               color: #393939;
+              font-family: "Source Han Sans TC", "source-han-sans-tc", "Noto Sans TC", "Open Sans", sans-serif !important;
             }
             .table-bordered {
               tbody {
@@ -163,6 +166,7 @@ body {
                 outline: none;
                 font-size: 14px;
                 border-radius: 0 !important;
+                margin-bottom: 10px;
               }
               button:hover {
                 color: #ffc04d;
