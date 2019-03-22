@@ -163,13 +163,15 @@ function stockPool(stock_url) {
                 response(results.slice(0, 3));
                 if(results.slice(0, 1)[0]){
                     var stockCode = results.slice(0, 1)[0];
+                    console.log(results, stockCode);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
-                $("#searchBar").val(stockCode);
                 dataFactory(stock_url.slice(0, -4) + stockCode, true);
+                $("#searchBar").val('');
+                return false;
             }
         });
         $('#searchBar').off('keydown').on('keydown', function (e) {
@@ -187,18 +189,27 @@ function drawTable(data, IdForCanvas) {
     $("#" + IdForCanvas).append('<table id="example" class="table table-striped"></table>');
     var TableData = [];
     var TableTitle = [];
-    for (var i in data['data']) {
-        var tmp = [];
-        $.each(data['data'][i], function (key, val) {
-            tmp.push(val);
-        });
-        TableData.push(tmp);
-    }
+    var compare = [];
     for (var i in data['column_title']) {
         $.each(data['column_title'][i], function (key, val) {
+            console.log(key, val);
+            compare.push(key);
             TableTitle.push({ title: val });
         })
     }
+    for (var i in data['data']) {
+        var tmp = [];
+        for(var j in compare){
+            if(data['data'][i][compare[j]]){
+                tmp.push(data['data'][i][compare[j]]);
+            }
+            else{
+                tmp.push(null);
+            }
+        }
+        TableData.push(tmp);
+    }
+    console.log(TableData, TableTitle);
     $('#example').DataTable({
         data: TableData,
         columns: TableTitle
