@@ -73,8 +73,8 @@
                 <br />
             </ol>
             <p style="margin-left: 40%;">
-                <input type="button" id="checkAll" value="檢查">
-                <input type="button" id="clear" value="重新填選">
+                <button type="button" id="checkAll">檢查</button>
+                <button type="button" id="clear">重新填選</button>
             </p>
             <table id="result">
                 <label class="resultAll"></label>

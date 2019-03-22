@@ -55,27 +55,7 @@
 			</p>
 			
 			<p>
-				<table>
-					<tr>
-						<th>公司5年後營收＝</th>
-						<td class="getAll inpor"></td>
-					</tr>
-					<tr>
-						<th>第一階段成長率：<br/>未來5年營收年複合成長率＝</th>
-						<td class="getAll inpor"></td>
-					</tr>
-					<tr>
-						<th>公司10年後營收＝</th>
-						<td class="getAll inpor"></td>
-					</tr>
-					<tr>
-						<th>第二階段成長率：<br/>第6~10年的年複合成長率＝</th>
-						<td class="getAll inpor"></td>
-					</tr>
-					<tr>
-						<th>整體評估:未來10年的年複合成長率=</th>
-						<td class="getAll inpor"></td>
-					</tr>
+				<table id="tableRes">
 				</table>
 			</p>
 				
@@ -86,7 +66,7 @@
 	<script type="text/javascript">
 		let numberAll = document.getElementsByTagName('input');
 		let msgAll = document.getElementsByTagName('h4');
-		let moneyAll = document.getElementsByClassName('getAll');
+		let moneyAll = document.getElementById('tableRes');
 		
 		window.onload=function () {
 			let valueAll = new calFee(numberAll,msgAll,moneyAll);

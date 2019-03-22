@@ -19,11 +19,11 @@
             <p id="question">
             </p>  	
             <p>
-                <input type="button" id="add" value="新增一年的現金流狀況" />
+                <button type="button" id="add">新增一年的現金流狀況</button>
                 <input type="hidden" id="countA" name="countA" value="1">
             </p>
             <p>
-                <input type="button" class="cal" id="calAll" value="計算" />
+                <button type="button" class="cal" id="calAll" >計算</button>
                 <button type="button" id="clear">清除</button>
             </p>
             <table>

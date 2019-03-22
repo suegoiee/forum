@@ -35,6 +35,7 @@ body {
           div {
             h3 {
               font-size: 18px;
+              color: #393939;
             }
             .table-bordered {
               tbody {
@@ -46,7 +47,8 @@ body {
               }
             }
             .list-group {
-              .list-group-item {
+              .list-group-item,
+              .list-group-item:hover {
                 border: none;
                 .news-title {
                   color: #393939;
@@ -155,28 +157,32 @@ body {
               .btn-primary {
                 width: 100%;
                 text-align: left;
-                background-color: #393939;
+                background-color: #fff;
                 border: 1px solid #ffa500;
                 color: #ffa500;
                 outline: none;
                 font-size: 14px;
+                border-radius: 0 !important;
               }
               button:hover {
                 color: #ffc04d;
-                background: #545454;
+                background-color: #fff;
+                border-radius: 0 !important;
               }
               .OuterChartActive {
                 background: #ffa500;
                 color: #fff;
+                border-radius: 0 !important;
               }
               .drawTableChart {
                 width: 100%;
+                background: #fff;
                 border: none !important;
-                background-color: #393939;
                 color: #ffa500;
                 font-size: 14px;
                 text-align: left;
                 outline: none;
+                border-radius: 0 !important;
               }
               .ChartActive {
                 font-size: 15px;
@@ -215,20 +221,24 @@ body {
               margin-top: 15px;
               margin-bottom: 10px;
               outline: none;
+              border-radius: 0 !important;
             }
             .btn:hover {
               background-color: #545454;
               color: #fff;
+              border-radius: 0 !important;
             }
             .btn:active {
               background-color: #fff;
               color: #393939;
               box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) inset;
+              border-radius: 0 !important;
             }
             .ActiveChartControlButton {
               background-color: #fff;
               color: #393939;
               box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) inset;
+              border-radius: 0 !important;
             }
           }
         }
@@ -241,10 +251,11 @@ body {
             box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
             td {
               text-align: left !important;
-              color: #545454;
+              color: #393939;
               font-size: 15px;
               padding-left: 15px;
               b {
+                color: #545454;
                 h4 {
                   color: #ffa500;
                   font-size: 20px;
