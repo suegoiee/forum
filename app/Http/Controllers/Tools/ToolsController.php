@@ -8,71 +8,71 @@ class ToolsController extends Controller
 {
     public function bargain()
     {
-        return view('tools.bargain');
+        return view('Tools.bargain');
     }
     public function buffett()
     {
-        return view('tools.buffett');
+        return view('Tools.buffett');
     }
     public function buyCheckForm()
     {
-        return view('tools.buyCheckForm');
+        return view('Tools.buyCheckForm');
     }
     public function Compound()
     {
-        return view('tools.Compound');
+        return view('Tools.Compound');
     }
     public function deposit()
     {
-        return view('tools.deposit');
+        return view('Tools.deposit');
     }
     public function estimate()
     {
-        return view('tools.estimate');
+        return view('Tools.estimate');
     }
     public function gordon()
     {
-        return view('tools.gordon');
+        return view('Tools.gordon');
     }
     public function interest()
     {
-        return view('tools.interest');
+        return view('Tools.interest');
     }
     public function lowestRetire()
     {
-        return view('tools.lowestRetire');
+        return view('Tools.lowestRetire');
     }
     public function money()
     {
-        return view('tools.money');
+        return view('Tools.money');
     }
     public function npv()
     {
-        return view('tools.npv');
+        return view('Tools.npv');
     }
     public function proportion()
     {
-        return view('tools.proportion');
+        return view('Tools.proportion');
     }
     public function retire()
     {
-        return view('tools.retire');
+        return view('Tools.retire');
     }
     public function PayBack()
     {
-        return view('tools.PayBack');
+        return view('Tools.PayBack');
     }
     public function secondDCF()
     {
-        return view('tools.secondDCF');
+        return view('Tools.secondDCF');
     }
     public function DepositTest()
     {
-        return view('tools.DepositTest');
+        return view('Tools.DepositTest');
     }
     public function DepositInGroup()
     {
-        return view('tools.DepositInGroup');
+        return view('Tools.DepositInGroup');
     }
 }
 ?>
