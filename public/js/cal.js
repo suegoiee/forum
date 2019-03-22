@@ -174,27 +174,27 @@ class calBuffett extends judgeValue {
                 let calH = (calG - valG) / valF;
 
                 this.addTd("th", "valAA", "valAA", "第十年的自由現金流", ress);
-                this.addTd("th", "valA", "valA", calE.toFixed(0) + "元", ress);
+                this.addTd("td", "valA", "valA", calE.toFixed(0) + "元", ress);
                 this.addTd("tr", "resB", "resB", "", ress);
 
                 this.addTd("th", "valBB", "valBB", "未來10年的自由現金流累計現值", ress);
-                this.addTd("th", "valB", "valB", cal.toFixed(0) + "元", ress);
+                this.addTd("td", "valB", "valB", cal.toFixed(0) + "元", ress);
                 this.addTd("tr", "resB", "resB", "", ress);
 
                 this.addTd("th", "valCC", "valCC", "終值", ress);
-                this.addTd("th", "valC", "valC", calF.toFixed(0) + "元", ress);
+                this.addTd("td", "valC", "valC", calF.toFixed(0) + "元", ress);
                 this.addTd("tr", "resB", "resB", "", ress);
 
                 this.addTd("th", "valDD", "valDD", "股票價值", ress);
-                this.addTd("th", "valD", "valD", calG.toFixed(0) + "元", ress);
+                this.addTd("td", "valD", "valD", calG.toFixed(0) + "元", ress);
                 this.addTd("tr", "resB", "resB", "", ress);
 
                 this.addTd("th", "valEE", "valEE", "在外流通股數", ress);
-                this.addTd("th", "valE", "valE", valF.toFixed(0) + "股", ress);
+                this.addTd("td", "valE", "valE", valF.toFixed(0) + "股", ress);
                 this.addTd("tr", "resB", "resB", "", ress);
 
                 this.addTd("th", "valFF", "valFF", "每股價值", ress);
-                this.addTd("th", "valFF", "valFF", calH.toFixed(2) + "元", ress);
+                this.addTd("td", "valFF", "valFF", calH.toFixed(0) + "元", ress);
             }
         }
     }
@@ -469,12 +469,12 @@ class reCal extends judgeValue {
         }
     }
 
-    clearEvery(){
-         document.getElementById('clear').onclick = () => {
+    clearEvery() {
+        document.getElementById('clear').onclick = () => {
             this.clearValue(numberAll);
             this.clearHTMLAll(msgAll);
-            this.del(inputTdA,0);
-            this.del(inputTdB,0);
+            this.del(inputTdA, 0);
+            this.del(inputTdB, 0);
         }
     }
 }

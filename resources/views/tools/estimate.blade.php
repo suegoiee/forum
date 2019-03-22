@@ -14,7 +14,7 @@
 				</label>
 				<input type="text" min="1" maxlength="10" /> 
 				<span>億元</span>
-				<h4></h4> 
+				<h4 id="msgA"></h4> 
 			</p>
 			<p>	
 				<label>
@@ -22,7 +22,7 @@
 				</label>
 				<input type="text" min="0" maxlength="10"/>
 				<span>億元</span>
-				<h4></h4>  
+				<h4 id="msgA"></h4>  
 			</p>
 			<p>
 				<label>
@@ -30,7 +30,7 @@
 				</label>
 				<input type="text" min="0" maxlength="10"/> 
 				<span>％</span>
-				<h4></h4>   
+				<h4 id="msgA"></h4>   
 			</p>
 			<p>
 				<label>
@@ -38,7 +38,7 @@
 				</label>
 				<input type="text" min="0" maxlength="10"/> 
 				<span>％</span>
-				<h4></h4>   
+				<h4 id="msgA"></h4>   
 			</p>
 			<p>
 				<label>
@@ -57,23 +57,23 @@
 			<p>
 				<table>
 					<tr>
-						<td>公司5年後營收＝</td>
+						<th>公司5年後營收＝</th>
 						<td class="getAll inpor"></td>
 					</tr>
 					<tr>
-						<td>第一階段成長率：<br/>未來5年營收年複合成長率＝</td>
+						<th>第一階段成長率：<br/>未來5年營收年複合成長率＝</th>
 						<td class="getAll inpor"></td>
 					</tr>
 					<tr>
-						<td>公司10年後營收＝</td>
+						<th>公司10年後營收＝</th>
 						<td class="getAll inpor"></td>
 					</tr>
 					<tr>
-						<td>第二階段成長率：<br/>第6~10年的年複合成長率＝</td>
+						<th>第二階段成長率：<br/>第6~10年的年複合成長率＝</th>
 						<td class="getAll inpor"></td>
 					</tr>
 					<tr>
-						<td>整體評估:未來10年的年複合成長率=</td>
+						<th>整體評估:未來10年的年複合成長率=</th>
 						<td class="getAll inpor"></td>
 					</tr>
 				</table>

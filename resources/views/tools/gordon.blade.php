@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width: 29%;">
+    <form>
         <fieldset>
             <h3>高登模型</h3>
             <h5 style="line-height: 20px;">

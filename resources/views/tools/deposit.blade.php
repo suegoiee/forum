@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width: 30%;">
+    <form>
         <fieldset>
             <h3>定期股價值計算</h3>
             <p>
@@ -29,7 +29,7 @@
                 </label>
                 <input type="text" name="per" min="0" maxlength="10" />
                 <span>%</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <label class="too">
@@ -37,7 +37,7 @@
                 </label>
                 <input type="text" name="per" min="0" maxlength="10" />
                 <span>%</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <label class="too">
@@ -45,7 +45,7 @@
                 </label>
                 <input type="text" name="per" min="0" maxlength="10" />
                 <span>%</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <input type="button" class="cal" id="calAll" value="計算" />

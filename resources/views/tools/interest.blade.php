@@ -14,7 +14,7 @@
                 </label>
                 <input type="text" min="1" name="number" maxlength="10" />
                 <span>元</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <label>
@@ -22,7 +22,7 @@
                 </label>
                 <input type="text" min="0" name="number" maxlength="10" />
                 <span>%</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <label>
@@ -30,7 +30,7 @@
                 </label>
                 <input type="text" min="0" name="number" maxlength="10" />
                 <span>年</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <button type="button" class="cal" id="calInst">計算</button>

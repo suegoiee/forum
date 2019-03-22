@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width: 29%;">
+    <form>
         <fieldset>
             <h3>巴菲特預估股價</h3>
             <h5>(請填入目前股價、最新每股淨值、ROE、股息配發率、股價淨值比)</h5>

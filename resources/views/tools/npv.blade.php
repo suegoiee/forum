@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width: 30%;">
+    <form>
         <fieldset>
             <h3>資本預算之NPV(淨現值)</h3>
             <h5>(請填入年利率、各年現金流狀況)</h5>
@@ -14,7 +14,7 @@
                 </label>
                 <input type="text" name="per" min="0" maxlength="10" />
                 <span>%</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p id="question">
             </p>  	

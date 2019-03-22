@@ -14,7 +14,7 @@
 				</label>
 				<input type="text" name="number" min="1" maxlength="10"/> 
 				<span>年</span> 
-				<h4></h4>
+				<h4 id="msgA"></h4>
 			</p>
 			<p>	
 				<label>
@@ -22,7 +22,7 @@
 				</label>
 				<input type="text" name="number" min="0" maxlength="10"/>
 				<span>元</span> 
-				<h4></h4> 
+				<h4 id="msgA"></h4> 
 			</p>
 			<p>
 				<label>
@@ -30,7 +30,7 @@
 				</label>
 				<input type="text" name="number" min="0" maxlength="10" /> 
 				<span>元</span>  
-				<h4></h4>
+				<h4 id="msgA"></h4>
 			</p>
 			
 			<p>

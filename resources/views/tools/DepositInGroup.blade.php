@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-	<form style="width: 33%;">
+	<form>
 		<fieldset>
 			<h3>揪團買股</h3>
 			<h5>(請填入姓名、金額、股票代號、買進和賣出金額)</h5>
@@ -18,23 +18,23 @@
 					揪團買進哪一支股票
 				</label>
 				<input type="text" name="price" min="0" maxlength="10"/>
-				<h4></h4>  
+				<h4 id="msgA"></h4>  
 			</p>
 			<p>
 				<label class="too">
-					請輸入：買進成本價(扣除所有費用後)
+					請輸入：買進成本價<br/>(扣除所有費用後)
 				</label>
 				<input type="text" name="price" min="0" maxlength="10"/> 
 				<span>元</span>
-				<h4></h4>   
+				<h4 id="msgA"></h4>   
 			</p>
 			<p>
 				<label class="too">
-					請輸入：賣出總金額(扣除所有費用後)
+					請輸入：賣出總金額<br/>(扣除所有費用後)
 				</label>
 				<input type="text" name="price" min="0" maxlength="10"/> 
 				<span>元</span>
-				<h4></h4>   
+				<h4 id="msgA"></h4>   
 			</p>
 			
 			<p>

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width: 30%; display: block;  float: left; margin-left: 22%;">
+    <form style="display: block;  float: left;">
         <fieldset>
             <h3>本息平均攤還(每月定額攤還)</h3>
             <h5>(請填入貸款金額、貸款年數、年利率)</h5>
@@ -14,7 +14,7 @@
                 </label>
                 <input type="text" name="per" min="0" maxlength="10" />
                 <span>元</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <label class="too">
@@ -22,7 +22,7 @@
                 </label>
                 <input type="text" name="per" min="0" maxlength="10" />
                 <span>年</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <label class="too">
@@ -30,7 +30,7 @@
                 </label>
                 <input type="text" name="per" min="0" maxlength="10" />
                 <span>%</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <input type="button" class="cal" id="calAll" value="計算" />

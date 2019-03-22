@@ -33,7 +33,7 @@ class togeStock extends judgeValue {
                 } else if (isNaN(moneyAll[i].value)) {
                     moneyAll[i].value = "請輸入純數字";
                     moneyAll[i].focus();
-                } 
+                }
             }
         }
     }
@@ -42,6 +42,13 @@ class togeStock extends judgeValue {
         document.getElementById('calAll').onclick = () => {
 
             if (super.valueCheck() == true) {
+
+                if (inputTdA.length != 0) {
+                    this.del(inputTdA, 1);
+                    this.del(inputTdB, 1);
+                    this.del(inputTdC, 1);
+                    this.del(printAll, 0);
+                }
 
                 let sumAll = 0;
                 for (var i = 0; i < moneyAll.length; i++) {
@@ -78,10 +85,11 @@ class togeStock extends judgeValue {
             }
 
             // 刪除新增的子節點
-            this.del(question,1);
-            this.del(inputTdA,1);
-            this.del(inputTdB,1);
-            this.del(inputTdC,1);
+            this.del(question, 1);
+            this.del(inputTdA, 1);
+            this.del(inputTdB, 1);
+            this.del(inputTdC, 1);
+            this.del(printAll, 0);
         }
     }
 }

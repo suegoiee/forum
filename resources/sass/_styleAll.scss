@@ -1,208 +1,242 @@
-form {
-  border-radius: 10px;
-  border: 2px #595959 solid;
-  text-align: left;
-  color: #595959;
-  background-color: #F9F9F9;
+// border style
+@mixin borderAll($border: 10px, $color: rgba(255, 255, 255, 0.1)) {
+  border-radius: $border;
+  border: 1px $color solid;
+}
+
+// text style
+@mixin fontAll($align: left, $color: #fff, $back: #393939, $height: 1) {
+  text-align: $align;
+  color: $color;
+  background-color: $back;
   font-family: Microsoft JhengHei;
-  line-height: 0;
-  width: 28%;
-  margin: auto; }
-  form fieldset {
-    border-style: none; }
-    form fieldset h3 {
-      text-align: center;
-      color: black;
-      background-color: #F9F9F9;
-      font-family: Microsoft JhengHei;
-      line-height: 0;
-      text-shadow: 1px 1px 1px gray; }
-    form fieldset h5 {
-      text-align: center;
-      color: #595959;
-      background-color: #F9F9F9;
-      font-family: Microsoft JhengHei;
-      line-height: 0; }
-    form fieldset #nnnn {
-      text-align: left;
-      color: #595959;
-      background-color: #F9F9F9;
-      font-family: Microsoft JhengHei;
-      line-height: 16px; }
-    form fieldset #che {
-      text-align: center;
-      color: green;
-      background-color: #fff;
-      font-family: Microsoft JhengHei;
-      line-height: 20px;
-      font-size: 20px; }
-    form fieldset #non {
-      text-align: center;
-      color: red;
-      background-color: #fff;
-      font-family: Microsoft JhengHei;
-      line-height: 20px;
-      font-size: 20px; }
-    form fieldset p label {
-      display: inline-block;
-      vertical-align: middle;
-      width: 45%;
-      text-align: center;
-      color: #595959;
-      background-color: #F9F9F9;
-      font-family: Microsoft JhengHei;
-      line-height: 16px;
-      padding-left: auto;
-      padding-right: auto;
-      margin-left: 6%; }
-      form fieldset p label .small {
-        font-size: 12px; }
-      form fieldset p label .red {
-        color: red; }
-    form fieldset p #toge {
-      margin-left: 0;
-      width: 38%; }
-    form fieldset p .too {
-      margin-left: 12%; }
-    form fieldset p input {
-      text-align: right;
-      color: #fff;
-      background-color: black;
-      font-family: Microsoft JhengHei;
-      line-height: 16px;
-      padding-right: 5px; }
-    form fieldset p input:-webkit-autofill,
-    form fieldset p textarea:-webkit-autofill,
-    form fieldset p select:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px black inset; }
-    form fieldset p input:focus {
-      border-radius: 0;
-      border: 2px red solid; }
-    form fieldset h4,
-    form fieldset #msgA {
-      text-align: right;
-      color: red;
-      background-color: #F9F9F9;
-      font-family: Microsoft JhengHei;
-      line-height: 0;
-      padding-left: auto;
-      padding-right: 15%;
-      margin-left: auto;
-      font-weight: bold; }
-    form fieldset #bigW {
-      text-align: right;
-      color: red;
-      background-color: #F9F9F9;
-      font-family: Microsoft JhengHei;
-      line-height: 0;
-      padding-left: auto;
-      padding-right: 19%;
-      margin-left: auto;
-      font-weight: bold; }
-    form fieldset p button {
-      border-radius: 10px;
-      border: 2px #595959 solid;
-      text-align: center;
-      color: #fff;
-      background-color: black;
-      font-family: Microsoft JhengHei;
-      line-height: 16px; }
-    form fieldset p .cal,
-    form fieldset p #add,
-    form fieldset p #doc {
-      padding-left: auto;
-      padding-right: auto;
-      margin-left: 40%;
-      border-radius: 10px;
-      border: 2px #595959 solid; }
-    form fieldset .resultAll {
-      text-align: left;
-      color: black;
-      background-color: none;
-      font-family: Microsoft JhengHei;
-      line-height: 16px;
+  line-height: $height;
+}
+
+// padding-x  margin-left
+@mixin dist($padl: auto, $padr: auto, $marg: auto) {
+  padding-left: $padl;
+  padding-right: $padr;
+  margin-left: $marg;
+}
+
+form {
+  @include borderAll();
+  @include fontAll();
+  width: 50%;
+  margin: auto;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+
+  fieldset {
+    border-style: none;
+
+    h3 {
+      @include fontAll(center, #fff, none, 1);
+      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
+    }
+
+    h5 {
+      @include fontAll(center, #fff, none, 1);
+      background-color: none !important;
+      padding-bottom: 15px;
+    }
+
+    // fromcheck
+    #nnnn {
+      @include fontAll(left, #fff, #545454, 16px);
+      padding: 5px;
+    }
+
+    #che {
+      @include fontAll(center, green, #fff, 20px);
+      font-size: 20px;
+    }
+
+    #non {
+      @include fontAll(center, #ef5350, #545454, 20px);
+      font-size: 18px;
+    }
+
+    p {
+      label {
+        display: inline-block;
+        vertical-align: middle;
+        width: 45%;
+        font-weight: normal;
+        @include fontAll(center, #fff, none);
+        @include dist(auto, auto, 6%);
+
+        // hint
+        .small {
+          font-size: 12px;
+        }
+
+        // important
+        .red {
+          color: #ef5350;
+        }
+      }
+
+      //together
+      #toge {
+        margin-left: 0;
+        width: 38%;
+      }
+
+      input {
+        @include fontAll(right, #fff, black, 16px);
+        padding-right: 5px;
+      }
+
+      input:-webkit-autofill,
+      textarea:-webkit-autofill,
+      select:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px black inset;
+      }
+
+      input:focus {
+        outline: none;
+        @include borderAll(0, #ef5350);
+      }
+    }
+
+    // Input wrong
+    #msgA,
+    #bigW {
+      @include fontAll(right !important, #ef5350, #f9f9f9, 0);
+      @include dist(auto, 20%, auto);
       font-weight: bold;
-      margin-left: 10%; }
-    form fieldset .rate {
-      border-radius: 10px;
-      border: 2px gray solid;
-      text-align: right;
-      color: #fff;
-      background-color: black;
-      font-family: Microsoft JhengHei;
-      line-height: 16px;
+      font-size: 1.5rem;
+    }
+
+    // button
+    p {
+      button,
+      #checkAll,
+      #clear {
+        padding: 3px 6px;
+        @include borderAll(8px, #ffa500);
+        @include fontAll(center, #ffa500, #545454, 16px);
+        outline: none;
+      }
+      button:hover,
+      #checkAll:hover,
+      #clear:hover {
+        @include fontAll(center, #fff, #ffc04d, 16px);
+        @include borderAll(5px, #ffc04d);
+      }
+
+      .cal,
+      #add,
+      #doc {
+        @include dist(auto, auto, 40%);
+        @include borderAll(8px, #ffa500);
+        @include fontAll(center, #ffa500, #545454, 16px);
+        outline: none;
+      }
+      .cal:hover,
+      #add:hover,
+      #doc:hover {
+        @include fontAll(center, #fff, #ffc04d, 16px);
+        @include borderAll(5px, #ffc04d);
+      }
+    }
+
+    // result name
+    .resultAll {
+      @include fontAll(left, #fff, none, 16px);
+      font-weight: bold;
+      margin-left: 20%;
+    }
+
+    // result
+    .rate {
+      @include borderAll(10px, gray);
+      @include fontAll(right, #fff, black, 16px);
       font-size: 18px;
       width: 200px;
       height: 21px;
       display: inline-block;
-      padding-left: auto;
-      padding-right: auto;
-      margin-left: 27%; }
-    form fieldset .word {
-      text-align: left;
-      color: black;
-      background-color: #F9F9F9;
-      font-family: Microsoft JhengHei;
-      line-height: 0;
-      font-weight: bold; }
-    form fieldset table {
-      text-align: center;
-      color: black;
-      background-color: #fff;
-      font-family: Microsoft JhengHei;
-      line-height: 20px;
-      border-radius: 0;
-      border: 2px black solid;
-      width: 80%;
-      margin: auto;
-      border-collapse: collapse; }
-      form fieldset table tr,
-      form fieldset table th {
-        border-radius: 0;
-        border: 2px black solid;
-        line-height: 25px; }
-        form fieldset table tr td,
-        form fieldset table th td {
-          border-radius: 0;
-          border: 2px black solid; }
-      form fieldset table tr .inpor {
-        border-radius: 0;
-        border: 2px #fff solid;
-        text-align: center;
-        color: #fff;
-        background-color: black;
-        font-family: Microsoft JhengHei;
-        line-height: 16px; }
-      form fieldset table td {
-        border-radius: 0;
-        border: 2px black solid; }
-    form fieldset #question {
-      line-height: 25px; }
-    form fieldset #valFF {
-      border-radius: 0;
-      border: 2px #fff solid;
-      text-align: center;
-      color: #fff;
-      background-color: black;
-      font-family: Microsoft JhengHei;
-      line-height: 16px; }
-    form fieldset #npvv #rec {
-      width: 88%;
-      border-radius: 0;
-      border: 2px black solid;
-      text-align: center;
-      color: green;
-      background-color: white;
-      font-family: Microsoft JhengHei;
-      line-height: 25px; }
-    form fieldset #npvv #recc {
-      width: 88%;
-      border-radius: 0;
-      border: 2px black solid;
-      text-align: center;
-      color: red;
-      background-color: white;
-      font-family: Microsoft JhengHei;
-      line-height: 25px; }
+      @include dist(auto, auto, 25%);
+    }
 
-/*# sourceMappingURL=styleAll.css.map */
+    // for table
+    table {
+      @include fontAll(right, #ffa500, #545454, 20px);
+      @include borderAll(0, #fff);
+      width: 80%;
+      margin: auto auto 15px auto;
+      border-collapse: collapse;
+
+      tr,
+      th {
+        @include fontAll(center, #ffa500, #545454, 16px);
+        @include borderAll(0, #fff);
+        line-height: 25px;
+
+        td {
+          @include borderAll(0, #fff);
+          @include fontAll(right, #fff, #545454, 16px);
+          padding: 3px 5px 3px 0 !important;
+        }
+      }
+
+      td {
+        @include borderAll(0, #fff);
+        @include fontAll(right, #fff, #545454, 16px);
+        padding: 3px 5px 3px 0 !important;
+      }
+    }
+
+    // for together
+    #question {
+      line-height: 25px;
+    }
+    // secondDCF
+    #valFF {
+      @include borderAll(0, #fff);
+      @include fontAll(center, #fff, black, 16px);
+    }
+    // for npv
+    #npvv {
+      #rec {
+        width: 88%;
+        @include borderAll(0, black);
+        @include fontAll(center, green, white, 25px);
+      }
+
+      #recc {
+        width: 88%;
+        @include borderAll(0, black);
+        @include fontAll(center, red, white, 25px);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  form {
+    width: 100%;
+    font-size: 1.2rem;
+    h3 {
+      font-size: 2rem;
+    }
+    h5 {
+      font-size: 0.8rem;
+    }
+    p {
+      label {
+        margin-left: 0 !important;
+      }
+      #money {
+        margin-left: 38%;
+      }
+    }
+    ol {
+      padding-left: 5% !important;
+    }
+    .resultAll {
+      margin-left: 8% !important;
+    }
+  }
+}

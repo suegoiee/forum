@@ -14,7 +14,7 @@
 				</label>
 				<input type="text" min="1" maxlength="10" /> 
 				<span>元</span>
-				<h4></h4> 
+				<h4 id="msgA"></h4> 
 			</p>
 			<p>	
 				<label>
@@ -23,7 +23,7 @@
 				</label>
 				<input type="text" min="0" maxlength="10"/>
 				<span>%</span>
-				<h4></h4>  
+				<h4 id="msgA"></h4>  
 			</p>
 			<p>
 				<label>
@@ -31,7 +31,7 @@
 				</label>
 				<input type="text" min="0" maxlength="10"/> 
 				<span>折</span>
-				<h4></h4>   
+				<h4 id="msgA"></h4>   
 			</p>
 			
 			<p>
@@ -42,11 +42,11 @@
 				<div class="resultAll">買進：</div>
 				<table>					 
 					<tr>
-						<td>買進時，券商手續費</td>
+						<th>買進時，券商手續費</th>
 						<td class="feeAll inpor"></td>
 					</tr>
 					<tr>
-						<td>買進這檔股票，您需要準備</td>
+						<th>買進這檔股票，您需要準備</th>
 						<td class="feeAll inpor"></td>
 					</tr>
 				</table>
@@ -56,15 +56,15 @@
 				<div class="resultAll">賣出：</div>
 				<table>
 					<tr>
-						<td>賣出時，需要券商手續費</td>
+						<th>賣出時，需要券商手續費</th>
 						<td class="feeAll inpor"></td>
 					</tr>
 					<tr>
-						<td>賣出時，需要證交稅</td>
+						<th>賣出時，需要證交稅</th>
 						<td class="feeAll inpor"></td>
 					</tr>
 					<tr>
-						<td>賣出這檔股票，您共可拿回</td>
+						<th>賣出這檔股票，您共可拿回</th>
 						<td class="feeAll inpor"></td>
 					</tr>
 				</table>

@@ -14,7 +14,7 @@
                 </label>
                 <input type="text" name="number" min="1" maxlength="10" />
                 <span>元</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <label>
@@ -22,7 +22,7 @@
                 </label>
                 <input type="text" name="number" min="0" maxlength="10" />
                 <span>元/股</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <label>
@@ -30,7 +30,7 @@
                 </label>
                 <input type="text" name="number" min="0" maxlength="10" />
                 <span>%</span>
-                <h4></h4>
+                <h4 id="msgA"></h4>
             </p>
             <p>
                 <button type="button" class="cal" id="calPropor">計算</button>
@@ -47,9 +47,9 @@
             <p>
                 <table>
                     <tr>
-                        <td>本益成長比</td>
-                        <td>股價合理程度</td>
-                        <td>採取動作</td>
+                        <th>本益成長比</th>
+                        <th>股價合理程度</th>
+                        <th>採取動作</th>
                     </tr>
                     <tr>
                         <td class="inpor"></td>

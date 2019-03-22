@@ -14,21 +14,21 @@
 				</label>
 				<input type="text" name="number" min="1" maxlength="10" /> 
 				<span>年</span> 
-				<h4></h4>
+				<h4 id="msgA"></h4>
 			</p>
 			<p>	
 				<label>
 					期初數值
 				</label>
 				<input type="text" name="number" min="0" maxlength="10" />
-				<h4></h4>  
+				<h4 id="msgA"></h4>  
 			</p>
 			<p>
 				<label>
 					期未數值
 				</label>
 				<input type="text" name="number" min="0" maxlength="10" />
-				<h4></h4> 
+				<h4 id="msgA"></h4> 
 			</p>
 			
 			<p>
@@ -37,7 +37,7 @@
 			</p>
 			<p class="resultAll">	
 				年複合成長率
-				<input type="text" class="rate" id="result"></input>
+				<input type="text" class="rate" id="result" disabled></input>
 			</p>
 		</fieldset>
 	</form>
