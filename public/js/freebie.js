@@ -161,7 +161,7 @@ function stockPool(stock_url) {
             source: function (request, response) {
                 var results = $.ui.autocomplete.filter(availableTags, request.term);
                 response(results.slice(0, 3));
-                if(results.slice(0, 1)[0]){
+                if (results.slice(0, 1)[0]) {
                     var stockCode = results.slice(0, 1)[0];
                     //console.log(results, stockCode);
                     $("#searchBar").attr('name', stockCode['id']);
@@ -177,7 +177,7 @@ function stockPool(stock_url) {
         $('#searchBar').off('keydown').on('keydown', function (e) {
             if (e.which == 13) {
                 var stockCode = $("#searchBar").attr('name');
-                var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/")+1);
+                var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
                 dataFactory(tmp_url + stockCode, true);
             }
         });
@@ -308,7 +308,7 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
     var SideTableContainer = '<div id="' + IdForCanvas + 'table"></div>';
 
     /**總成 */
-    var container = display_table + '<div class="container"><div class="container"><div class="btn-group LeftButtonGroup" role="group" aria-label="..." style="position:relative; float:left;">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="..." style="position:relative; float:right;">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div></div><div class="container"><div id="customizeRange' + IdForCanvas + '" class="collapse" style="width:100%; position:relative; float:right;"><div style="position:relative; width:30%; float: left; margin-left:10%"> ' + CostumizeDateStart + '</div><div style="position:relative; width:30%; float: left; margin-left:20%">' + CostumizeDateEnd + '</div></div></div><div id="' + IdForCanvas + 'container" style="position:relative; float:top;">' + SideTableContainer + ChartContainer + '</div></div>';
+    var container = display_table + '<div class="container"><div class="container"><div class="btn-group LeftButtonGroup" role="group" aria-label="..." style="position:relative; float:left;">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="..." style="position:relative; float:right;">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div></div><div class="container"><div id="customizeRange' + IdForCanvas + '" class="collapse" style="width:100%; position:relative; float:right;"><div style="position:relative; width:30%; float: left; margin-left:20%"> ' + CostumizeDateStart + '</div><div style="position:relative; width:30%; float: left; margin-left:20%">' + CostumizeDateEnd + '</div></div></div><div id="' + IdForCanvas + 'container" style="position:relative; float:top;">' + SideTableContainer + ChartContainer + '</div></div>';
 
     if (ClearCanvas) {
         $("#CanvasBaseMap").empty();
