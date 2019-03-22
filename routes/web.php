@@ -1,7 +1,10 @@
 <?php
 
 // Home
-Route::get('/', 'HomeController@show')->name('home');
+//Route::get('/', 'HomeController@show')->name('home');
+Route::get('/', function () {
+    return redirect('freebie\stocksummary');
+})->name('home');
 Route::get('rules', 'HomeController@rules')->name('rules');
 Route::get('terms', 'HomeController@terms')->name('terms');
 Route::get('privacy', 'HomeController@privacy')->name('privacy');
