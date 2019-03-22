@@ -11,7 +11,6 @@ var yaxis = [];
 var dataType = [];
 function dataFactory(stock_url, ClearCanvas) {
     stockPool(stock_url);
-    //var datatype_button_group = '';
     var IdForCanvas = stock_url.substring(stock_url.lastIndexOf("/", stock_url.lastIndexOf("/") - 1) + 1, stock_url.lastIndexOf("/"));
     chart_data[IdForCanvas] = [];
     dataType = 'Data';
@@ -169,6 +168,7 @@ function stockPool(stock_url) {
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
+                SetCookie("stockCode", stockCode);
                 dataFactory(stock_url.slice(0, -4) + stockCode, true);
                 $("#searchBar").val('');
                 return false;
@@ -178,6 +178,7 @@ function stockPool(stock_url) {
             if (e.which == 13) {
                 var stockCode = $("#searchBar").attr('name');
                 var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
+                SetCookie("stockCode", stockCode);
                 dataFactory(tmp_url + stockCode, true);
             }
         });
@@ -702,6 +703,25 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
         });
         ////console.log('chart end', count);
     }
+}
+
+function SetCookie(name,value){
+    var Days = 2;
+    var exp  = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+
+function getCookie(name){
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     if(arr != null) return unescape(arr[2]); return null;
+}
+
+function delCookie(name){
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
 
 Highcharts.setOptions({
