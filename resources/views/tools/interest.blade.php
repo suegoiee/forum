@@ -38,9 +38,7 @@
             </p>
             <p class="resultAll">
                 每年複利之後本金將變成＝
-            </p>
-            <p>
-                <input type="text" min="0" class="rate" id="result"></input>
+                <input type="text" min="0" class="rate" id="result" />
             </p>
         </fieldset>
     </form>

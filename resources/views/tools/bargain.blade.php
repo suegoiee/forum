@@ -39,7 +39,6 @@
 				<button type="button" id="clear">清除</button>
 			</p>
 			<p>
-				<div class="resultAll">買進與賣出：</div>
 				<table id="tableRes">
 				</table>
 			</p>
