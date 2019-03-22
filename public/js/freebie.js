@@ -163,7 +163,7 @@ function stockPool(stock_url) {
                 response(results.slice(0, 3));
                 if(results.slice(0, 1)[0]){
                     var stockCode = results.slice(0, 1)[0];
-                    console.log(results, stockCode);
+                    //console.log(results, stockCode);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
             },
@@ -192,7 +192,7 @@ function drawTable(data, IdForCanvas) {
     var compare = [];
     for (var i in data['column_title']) {
         $.each(data['column_title'][i], function (key, val) {
-            console.log(key, val);
+            //console.log(key, val);
             compare.push(key);
             TableTitle.push({ title: val });
         })
@@ -209,7 +209,7 @@ function drawTable(data, IdForCanvas) {
         }
         TableData.push(tmp);
     }
-    console.log(TableData, TableTitle);
+    //console.log(TableData, TableTitle);
     $('#example').DataTable({
         data: TableData,
         columns: TableTitle
@@ -563,7 +563,7 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         var rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         var rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var range = rangeEnd - rangeStart;
-        //console.log(rangeStart, rangeEnd, range);
+        ////console.log(rangeStart, rangeEnd, range);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -581,7 +581,7 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         var rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         var rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var range = rangeEnd - rangeStart;
-        //console.log(rangeStart, rangeEnd, range);
+        ////console.log(rangeStart, rangeEnd, range);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -635,14 +635,14 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
 function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
     var count = 0;
     if ($(".ChartActive").val()) {
-        //console.log('chart table');
+        ////console.log('chart table');
         var key1 = $(".ChartActive").val();
         var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
         $.each(chart_data[IdForCanvas][key2][key1], function (key, val) {
             $.each(val[dataType], function (key2, val2) {
                 if (!refreshEnd) {
                     if (count == 0) {
-                        //console.log('chart table empty', count);
+                        ////console.log('chart table empty', count);
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
@@ -667,15 +667,15 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
             });
             return false;
         });
-        //console.log('chart table end', count);
+        ////console.log('chart table end', count);
     }
     else {
-        //console.log('chart');
+        ////console.log('chart');
         $.each(chart_data[IdForCanvas], function (key, val) {
             $.each(val[dataType], function (key2, val2) {
                 if (!refreshEnd) {
                     if (count == 0) {
-                        //console.log('chart empty', count);
+                        ////console.log('chart empty', count);
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
@@ -699,7 +699,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
             });
             return false;
         });
-        //console.log('chart end', count);
+        ////console.log('chart end', count);
     }
 }
 
