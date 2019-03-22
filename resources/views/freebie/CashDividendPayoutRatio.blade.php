@@ -20,7 +20,7 @@
             else{
                 var stockCode = getCookie("stockCode");
             }
-            dataFactory('https://cronjob.uanalyze.com.tw/fetch/CashDividendPayoutRatio/'+stockCode', false);
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/CashDividendPayoutRatio/'+stockCode, false);
         };
     </script>
 @endsection

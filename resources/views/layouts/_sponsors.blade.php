@@ -1,5 +1,5 @@
-<!--div id="sponsors" class="container">
-    <hr>
+<div id="sponsors" class="container">
+    <!--hr>
     <h2>We'd like to thank these <strong>amazing companies</strong> for supporting us</h2>
     <div class="sponsors-list">
         <div>
@@ -22,5 +22,5 @@
                 <img src="{{ asset('images/blackfire-io.png') }}">
             </a>
         </div>
-    </div>
-</div-->
+    </div-->
+</div>
