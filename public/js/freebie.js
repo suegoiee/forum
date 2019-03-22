@@ -42,7 +42,6 @@ function dataFactory(stock_url, ClearCanvas) {
                 PYButton = true;
             }
             chart_data[IdForCanvas] = DataStandardization(chart_data[IdForCanvas]);
-            console.log(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas);
             ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas);
             seriesGenerator(chart_data[IdForCanvas], dataType, refLine, outer_ch, display, IdForCanvas);
         }
@@ -474,7 +473,7 @@ function drawChart(canvas, title, yLabel, series) {
             borderWidth: 0,
             formatter: function () {
                 return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
-                    this.y + '(元)';
+                    this.y + this.series.yAxis.axisTitle.textStr;
             }
         }
     });
@@ -585,7 +584,6 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
             seriesGenerator(chart_data[tmp_canvas][key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, 'all');
         }
         else {
-            console.log('IdForCanvas', tmp_canvas);
             seriesGenerator(chart_data[tmp_canvas], dataType, refLine, outer_ch, display, tmp_canvas, 'all');
         }
     });
@@ -654,7 +652,6 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                         $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>---請選擇日期---</option>');
                     }
                     else {
-                        //var tmp_value = parseInt(startFrom) + parseInt(i) + parseInt(1);
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
                         $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="' + count + '">' + val2[0] + '</option>');
                     }
@@ -670,6 +667,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                 }
                 count++
             });
+            return false;
         });
     }
 }
