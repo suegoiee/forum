@@ -161,11 +161,22 @@ function stockPool(stock_url) {
             source: function (request, response) {
                 var results = $.ui.autocomplete.filter(availableTags, request.term);
                 response(results.slice(0, 3));
+                if(results.slice(0, 1)[0]){
+                    var stockCode = results.slice(0, 1)[0];
+                    $("#searchBar").attr('name', stockCode['id']);
+                }
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
                 $("#searchBar").val(stockCode);
                 dataFactory(stock_url.slice(0, -4) + stockCode, true);
+            }
+        });
+        $('#searchBar').off('keydown').on('keydown', function (e) {
+            if (e.which == 13) {
+                var stockCode = $("#searchBar").attr('name');
+                var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/")+1);
+                dataFactory(tmp_url + stockCode, true);
             }
         });
     });
