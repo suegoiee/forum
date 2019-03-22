@@ -41,6 +41,9 @@
                     <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
+                        <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
+                        <li><a class="menu" href="{{ route('freebie.DailyStockPriceAreaChartWithDisplay') }}">股價走勢</a></li>
+                        <li><a class="menu" href="{{ route('freebie.StockPriceVSEPS') }}">每股盈餘VS股價</a></li>
                         <li class="dropdownlist">
                             <a class="menu">月營收<i class='fas fa-angle-right'></i></a>
                             <ul class="dropdown-content dropdown-menu">

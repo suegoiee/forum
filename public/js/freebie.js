@@ -340,9 +340,9 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
         else if (sliceEnd) {
             tmpData = data[i][dataType].slice(sliceHead, sliceEnd);
         }
-        $.each(tmpData, function (key2, val2) {
+        /*$.each(tmpData, function (key2, val2) {
             val2[1] = parseInt(val2[1]);
-        });
+        });*/
         seriestData.push({
             type: data[i]['Style'],
             name: data[i]['ChineseAccount'],
@@ -482,6 +482,7 @@ function drawDisplay(canvas, display) {
 
 /**畫圖表 */
 function drawChart(canvas, title, yLabel, series) {
+    console.log(series);
     Highcharts.chart(canvas, {
         title: {
             text: title

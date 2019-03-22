@@ -9,12 +9,12 @@
             <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar">
         </div>
         <h2 style="text-align:center;"><b id="stockTitle"></b></h2>
-        <h4 style="text-align:center;">個股資料</h4>
+        <h4 style="text-align:center;">每股盈餘VS股價</h4>
     </div>
     <div class="container" id="CanvasBaseMap"></div>
     <script>
         window.onload=function () {
-            dataFactory('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/2204', false);
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/StockPriceVSEPS/1599', false);
         }
     </script>
 @endsection
