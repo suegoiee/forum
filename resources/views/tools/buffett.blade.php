@@ -54,7 +54,6 @@
             </p>
             <p>
                 <table id="tableResA">
-                    <label class="resultAll">巴菲特的工作底稿</label>
                     <p></p>
                 </table>
             </p>
