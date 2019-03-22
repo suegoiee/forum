@@ -42,7 +42,6 @@ function dataFactory(stock_url, ClearCanvas) {
                 PYButton = true;
             }
             chart_data[IdForCanvas] = DataStandardization(chart_data[IdForCanvas]);
-            console.log(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas);
             ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas);
             seriesGenerator(chart_data[IdForCanvas], dataType, refLine, outer_ch, display, IdForCanvas);
         }
@@ -162,11 +161,22 @@ function stockPool(stock_url) {
             source: function (request, response) {
                 var results = $.ui.autocomplete.filter(availableTags, request.term);
                 response(results.slice(0, 3));
+                if(results.slice(0, 1)[0]){
+                    var stockCode = results.slice(0, 1)[0];
+                    $("#searchBar").attr('name', stockCode['id']);
+                }
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
                 $("#searchBar").val(stockCode);
                 dataFactory(stock_url.slice(0, -4) + stockCode, true);
+            }
+        });
+        $('#searchBar').off('keydown').on('keydown', function (e) {
+            if (e.which == 13) {
+                var stockCode = $("#searchBar").attr('name');
+                var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/")+1);
+                dataFactory(tmp_url + stockCode, true);
             }
         });
     });
@@ -177,14 +187,13 @@ function drawTable(data, IdForCanvas) {
     $("#" + IdForCanvas).append('<table id="example" class="table table-striped"></table>');
     var TableData = [];
     var TableTitle = [];
-    var tmp = [];
     for (var i in data['data']) {
+        var tmp = [];
         $.each(data['data'][i], function (key, val) {
             tmp.push(val);
-        })
+        });
         TableData.push(tmp);
     }
-    var tmp = [];
     for (var i in data['column_title']) {
         $.each(data['column_title'][i], function (key, val) {
             TableTitle.push({ title: val });
@@ -325,7 +334,7 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
         });
         seriestData.push({
             type: data[i]['Style'],
-            name: data[i]['UnitRef'],
+            name: data[i]['ChineseAccount'],
             data: tmpData,
             yAxis: yAxisLocate[i],
             label: { enabled: false }
@@ -475,7 +484,7 @@ function drawChart(canvas, title, yLabel, series) {
             borderWidth: 0,
             formatter: function () {
                 return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
-                    this.y + '(元)';
+                    this.y + this.series.yAxis.axisTitle.textStr;
             }
         }
     });
@@ -586,7 +595,6 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
             seriesGenerator(chart_data[tmp_canvas][key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, 'all');
         }
         else {
-            console.log('IdForCanvas', tmp_canvas);
             seriesGenerator(chart_data[tmp_canvas], dataType, refLine, outer_ch, display, tmp_canvas, 'all');
         }
     });
@@ -655,7 +663,6 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                         $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>---請選擇日期---</option>');
                     }
                     else {
-                        //var tmp_value = parseInt(startFrom) + parseInt(i) + parseInt(1);
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
                         $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="' + count + '">' + val2[0] + '</option>');
                     }
@@ -671,6 +678,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                 }
                 count++
             });
+            return false;
         });
     }
 }
