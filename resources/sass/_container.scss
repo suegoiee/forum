@@ -8,11 +8,11 @@ body {
     div {
       .input-group {
         .form-control {
-          border: 1px solid rgba(255, 165, 0, 0.5);
+          border: 1px solid #e9e9e9;
           border-radius: 15px;
           margin-left: 15px;
           width: 210px;
-          height: 40px;
+          height: 35px;
         }
       }
       h2 {
@@ -182,11 +182,18 @@ body {
                 font-size: 15px;
               }
               .form-control {
-                border: 1px solid rgba(255, 165, 0, 0.5);
+                border: 1px solid #e9e9e9;
                 border-radius: 15px;
                 width: 210px;
                 line-height: 1;
                 color: #545454;
+                height: 35px !important;
+                padding: 5px 8px !important;
+                margin: 0 0 10px;
+                .rangeStartOption {
+                  border: 1px solid #e9e9e9;
+                  color: #545454;
+                }
               }
             }
           }
@@ -207,12 +214,18 @@ body {
               padding: 5px 8px;
               margin-top: 15px;
               margin-bottom: 10px;
+              outline: none;
             }
             .btn:hover {
               background-color: #545454;
               color: #fff;
             }
             .btn:active {
+              background-color: #fff;
+              color: #393939;
+              box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) inset;
+            }
+            .ActiveChartControlButton {
               background-color: #fff;
               color: #393939;
               box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3) inset;
