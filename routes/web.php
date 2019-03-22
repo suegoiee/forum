@@ -110,8 +110,8 @@ Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function 
     Route::get('/StockPriceVSEPS', 'FreebieController@StockPriceVSEPS')->name('.StockPriceVSEPS');
 });
 
-// tools
-Route::prefix('tools')->name('tools')->namespace('tools')->group(function () {
+// Tools
+Route::prefix('Tools')->name('Tools')->namespace('Tools')->group(function () {
     Route::get('/bargain', 'ToolsController@bargain')->name('.bargain');
     Route::get('/buffett', 'ToolsController@buffett')->name('.buffett');
     Route::get('/buyCheckForm', 'ToolsController@buyCheckForm')->name('.buyCheckForm');
