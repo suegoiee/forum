@@ -14,11 +14,13 @@
     <div class="container" id="CanvasBaseMap"></div>
     <script>
         window.onload=function () {
-            dataFactory('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/2204', false);
-            dataFactory('https://cronjob.uanalyze.com.tw/fetch/News/2204', false);
+            if(!getCookie("stockCode")){
+                var stockCode = '1101';
+            }
+            else{
+                var stockCode = getCookie("stockCode");
+            }
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/'+stockCode, false);
         }
-        /*jQuery(function ($) {
-            dataFactory('http://cronjob.uanalyze.com.tw/fetch/MonthlyRevenue_sorting_table/2204', false);
-        });*/
     </script>
 @endsection

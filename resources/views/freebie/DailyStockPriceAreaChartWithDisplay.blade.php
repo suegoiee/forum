@@ -9,7 +9,7 @@
             <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar">
         </div>
         <h2 style="text-align:center;"><b id="stockTitle"></b></h2>
-        <h4 style="text-align:center;">月營收成長率</h4>
+        <h4 style="text-align:center;">股價走勢</h4>
     </div>
     <div class="container" id="CanvasBaseMap"></div>
     <script>
@@ -20,7 +20,7 @@
             else{
                 var stockCode = getCookie("stockCode");
             }
-            dataFactory('https://cronjob.uanalyze.com.tw/fetch/MonthlyRevenueGrowthRate/'+stockCode, false);
-        };
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/DailyStockPriceAreaChartWithDisplay/'+stockCode, false);
+        }
     </script>
 @endsection

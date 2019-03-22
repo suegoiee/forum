@@ -105,6 +105,9 @@ Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function 
     Route::get('/StatementOfFinancialPosition', 'FreebieController@StatementOfFinancialPosition')->name('.StatementOfFinancialPosition');
     Route::get('/IncomeStatement', 'FreebieController@IncomeStatement')->name('.IncomeStatement');
     Route::get('/CashFlows', 'FreebieController@CashFlows')->name('.CashFlows');
+    Route::get('/StockNews', 'FreebieController@StockNews')->name('.StockNews');
+    Route::get('/DailyStockPriceAreaChartWithDisplay', 'FreebieController@DailyStockPriceAreaChartWithDisplay')->name('.DailyStockPriceAreaChartWithDisplay');
+    Route::get('/StockPriceVSEPS', 'FreebieController@StockPriceVSEPS')->name('.StockPriceVSEPS');
 });
 
 // tools

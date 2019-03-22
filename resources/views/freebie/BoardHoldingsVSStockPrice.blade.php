@@ -14,7 +14,13 @@
     
     <script>
         window.onload=function () {
-            dataFactory('http://cronjob.uanalyze.com.tw/fetch/BoardHoldingsVSStockPrice/2204', false);
+            if(!getCookie("stockCode")){
+                var stockCode = '1101';
+            }
+            else{
+                var stockCode = getCookie("stockCode");
+            }
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/BoardHoldingsVSStockPrice/'+stockCode, false);
         };
     </script>
 

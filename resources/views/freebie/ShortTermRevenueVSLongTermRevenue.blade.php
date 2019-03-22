@@ -14,7 +14,13 @@
     <div class="container" id="CanvasBaseMap"></div>
     <script>
         window.onload=function () {
-            dataFactory('http://cronjob.uanalyze.com.tw/fetch/ShortTermRevenueVSLongTermRevenue/2204', false);
+            if(!getCookie("stockCode")){
+                var stockCode = '1101';
+            }
+            else{
+                var stockCode = getCookie("stockCode");
+            }
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/ShortTermRevenueVSLongTermRevenue/'+stockCode, false);
         };
     </script>
 @endsection

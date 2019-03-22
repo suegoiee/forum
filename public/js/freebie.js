@@ -11,7 +11,6 @@ var yaxis = [];
 var dataType = [];
 function dataFactory(stock_url, ClearCanvas) {
     stockPool(stock_url);
-    //var datatype_button_group = '';
     var IdForCanvas = stock_url.substring(stock_url.lastIndexOf("/", stock_url.lastIndexOf("/") - 1) + 1, stock_url.lastIndexOf("/"));
     chart_data[IdForCanvas] = [];
     dataType = 'Data';
@@ -149,7 +148,7 @@ function dataFactory(stock_url, ClearCanvas) {
 
 /**股票搜尋器 */
 function stockPool(stock_url) {
-    $.getJSON('http://cronjob.uanalyze.com.tw/fetch/StockPool', function (data) {
+    $.getJSON('https://cronjob.uanalyze.com.tw/fetch/StockPool', function (data) {
         var availableTags = [];
         for (var i = 0; i < data['data'].length; i++) {
             availableTags.push({
@@ -163,19 +162,23 @@ function stockPool(stock_url) {
                 response(results.slice(0, 3));
                 if (results.slice(0, 1)[0]) {
                     var stockCode = results.slice(0, 1)[0];
+                    //console.log(results, stockCode);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
-                $("#searchBar").val(stockCode);
+                SetCookie("stockCode", stockCode);
                 dataFactory(stock_url.slice(0, -4) + stockCode, true);
+                $("#searchBar").val('');
+                return false;
             }
         });
         $('#searchBar').off('keydown').on('keydown', function (e) {
             if (e.which == 13) {
                 var stockCode = $("#searchBar").attr('name');
                 var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
+                SetCookie("stockCode", stockCode);
                 dataFactory(tmp_url + stockCode, true);
             }
         });
@@ -187,18 +190,27 @@ function drawTable(data, IdForCanvas) {
     $("#" + IdForCanvas).append('<table id="example" class="table table-striped"></table>');
     var TableData = [];
     var TableTitle = [];
-    for (var i in data['data']) {
-        var tmp = [];
-        $.each(data['data'][i], function (key, val) {
-            tmp.push(val);
-        });
-        TableData.push(tmp);
-    }
+    var compare = [];
     for (var i in data['column_title']) {
         $.each(data['column_title'][i], function (key, val) {
+            //console.log(key, val);
+            compare.push(key);
             TableTitle.push({ title: val });
         })
     }
+    for (var i in data['data']) {
+        var tmp = [];
+        for(var j in compare){
+            if(data['data'][i][compare[j]]){
+                tmp.push(data['data'][i][compare[j]]);
+            }
+            else{
+                tmp.push(null);
+            }
+        }
+        TableData.push(tmp);
+    }
+    //console.log(TableData, TableTitle);
     $('#example').DataTable({
         data: TableData,
         columns: TableTitle
@@ -329,9 +341,9 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
         else if (sliceEnd) {
             tmpData = data[i][dataType].slice(sliceHead, sliceEnd);
         }
-        $.each(tmpData, function (key2, val2) {
+        /*$.each(tmpData, function (key2, val2) {
             val2[1] = parseInt(val2[1]);
-        });
+        });*/
         seriestData.push({
             type: data[i]['Style'],
             name: data[i]['ChineseAccount'],
@@ -471,6 +483,7 @@ function drawDisplay(canvas, display) {
 
 /**畫圖表 */
 function drawChart(canvas, title, yLabel, series) {
+    console.log(series);
     Highcharts.chart(canvas, {
         title: {
             text: title
@@ -484,7 +497,7 @@ function drawChart(canvas, title, yLabel, series) {
             borderWidth: 0,
             formatter: function () {
                 return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
-                    this.y + this.series.yAxis.axisTitle.textStr;
+                    this.y;// + this.series.yAxis.axisTitle.textStr;
             }
         }
     });
@@ -552,6 +565,7 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         var rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         var rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var range = rangeEnd - rangeStart;
+        ////console.log(rangeStart, rangeEnd, range);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -569,6 +583,7 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         var rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         var rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var range = rangeEnd - rangeStart;
+        ////console.log(rangeStart, rangeEnd, range);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -622,12 +637,14 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
 function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
     var count = 0;
     if ($(".ChartActive").val()) {
+        ////console.log('chart table');
         var key1 = $(".ChartActive").val();
         var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
         $.each(chart_data[IdForCanvas][key2][key1], function (key, val) {
             $.each(val[dataType], function (key2, val2) {
                 if (!refreshEnd) {
                     if (count == 0) {
+                        ////console.log('chart table empty', count);
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
@@ -650,13 +667,17 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                 }
                 count++
             });
+            return false;
         });
+        ////console.log('chart table end', count);
     }
     else {
+        ////console.log('chart');
         $.each(chart_data[IdForCanvas], function (key, val) {
             $.each(val[dataType], function (key2, val2) {
                 if (!refreshEnd) {
                     if (count == 0) {
+                        ////console.log('chart empty', count);
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
@@ -680,7 +701,27 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
             });
             return false;
         });
+        ////console.log('chart end', count);
     }
+}
+
+function SetCookie(name,value){
+    var Days = 2;
+    var exp  = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+}
+
+function getCookie(name){
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     if(arr != null) return unescape(arr[2]); return null;
+}
+
+function delCookie(name){
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval=getCookie(name);
+    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
 
 Highcharts.setOptions({

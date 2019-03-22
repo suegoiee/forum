@@ -90,5 +90,17 @@ class FreebieController extends Controller
     {
         return view('freebie.CashFlows');
     }
+    public function StockNews()
+    {
+        return view('freebie.StockNews');
+    }
+    public function DailyStockPriceAreaChartWithDisplay()
+    {
+        return view('freebie.DailyStockPriceAreaChartWithDisplay');
+    }
+    public function StockPriceVSEPS()
+    {
+        return view('freebie.StockPriceVSEPS');
+    }
 }
 ?>

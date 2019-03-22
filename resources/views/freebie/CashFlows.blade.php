@@ -13,7 +13,13 @@
     <div class="container" id="CanvasBaseMap"></div>
     <script>
         window.onload=function () {
-            dataFactory('https://cronjob.uanalyze.com.tw/fetch/CashFlows/2204', false);
+            if(!getCookie("stockCode")){
+                var stockCode = '1101';
+            }
+            else{
+                var stockCode = getCookie("stockCode");
+            }
+            dataFactory('https://cronjob.uanalyze.com.tw/fetch/CashFlows/'+stockCode, false);
         };
     </script>
 @endsection

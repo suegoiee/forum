@@ -12,7 +12,7 @@
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li>
+                <!--li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li-->
                 <!--li><a href="https://paste.laravel.io">Pastebin</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
@@ -41,6 +41,9 @@
                     <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
+                        <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
+                        <li><a class="menu" href="{{ route('freebie.DailyStockPriceAreaChartWithDisplay') }}">股價走勢</a></li>
+                        <li><a class="menu" href="{{ route('freebie.StockPriceVSEPS') }}">每股盈餘VS股價</a></li>
                         <li class="dropdownlist">
                             <a class="menu">月營收<i class='fas fa-angle-right'></i></a>
                             <ul class="dropdown-content dropdown-menu">
@@ -115,7 +118,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right">
+            <!--ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li class="{{ active('login') }}"><a class="login" href="{{ route('login') }}">登入</a></li>
                     <li class="{{ active('register') }}"><a class="login" href="{{ route('register') }}">註冊</a></li>
@@ -146,7 +149,7 @@
                         </ul>
                     </li>
                 @endif
-            </ul>
+            </ul-->
         </div>
     </div>
 </nav>
