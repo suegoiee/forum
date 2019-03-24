@@ -1,7 +1,10 @@
 <?php
 
 // Home
-Route::get('/', 'HomeController@show')->name('home');
+//Route::get('/', 'HomeController@show')->name('home');
+Route::get('/', function () {
+    return redirect('freebie\stocksummary');
+})->name('home');
 Route::get('rules', 'HomeController@rules')->name('rules');
 Route::get('terms', 'HomeController@terms')->name('terms');
 Route::get('privacy', 'HomeController@privacy')->name('privacy');
@@ -80,4 +83,53 @@ Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
     Route::put('users/{username}/ban', 'UsersController@ban')->name('.users.ban');
     Route::put('users/{username}/unban', 'UsersController@unban')->name('.users.unban');
     Route::delete('users/{username}', 'UsersController@delete')->name('.users.delete');
+});
+
+// freebie
+Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function () {
+    Route::get('/stocksummary', 'FreebieController@stocksummary')->name('.stockbasicinfo.stocksummary');
+    Route::get('/InstitutionalInvestorsNet', 'FreebieController@InstitutionalInvestorsNet')->name('.InstitutionalInvestorsNet');
+    Route::get('/HistoricalDividendRecord', 'FreebieController@HistoricalDividendRecord')->name('.HistoricalDividendRecord');
+    Route::get('/MonthlyRevenue', 'FreebieController@MonthlyRevenue')->name('.MonthlyRevenue');
+    Route::get('/MonthlyRevenueGrowthRate', 'FreebieController@MonthlyRevenueGrowthRate')->name('.MonthlyRevenueGrowthRate');
+    Route::get('/ShortTermRevenueVSLongTermRevenue', 'FreebieController@ShortTermRevenueVSLongTermRevenue')->name('.ShortTermRevenueVSLongTermRevenue');
+    Route::get('/BoardHoldingsVSStockPrice', 'FreebieController@BoardHoldingsVSStockPrice')->name('.BoardHoldingsVSStockPrice');
+    Route::get('/QFIIHoldingsVSStockPrice', 'FreebieController@QFIIHoldingsVSStockPrice')->name('.QFIIHoldingsVSStockPrice');
+    Route::get('/ShortInterestAsOfMarginPurchase', 'FreebieController@ShortInterestAsOfMarginPurchase')->name('.ShortInterestAsOfMarginPurchase');
+    Route::get('/MarginBalanceVSMarginUtilization', 'FreebieController@MarginBalanceVSMarginUtilization')->name('.MarginBalanceVSMarginUtilization');
+    Route::get('/MarginPurchaseIncrease', 'FreebieController@MarginPurchaseIncrease')->name('.MarginPurchaseIncrease');
+    Route::get('/MonthlyRevenueVSStockPrice', 'FreebieController@MonthlyRevenueVSStockPrice')->name('.MonthlyRevenueVSStockPrice');
+    Route::get('/CashDividendPayoutRatio', 'FreebieController@CashDividendPayoutRatio')->name('.CashDividendPayoutRatio');
+    Route::get('/StockPriceVSYield', 'FreebieController@StockPriceVSYield')->name('.StockPriceVSYield');
+    Route::get('/HistoricalPer', 'FreebieController@HistoricalPer')->name('.HistoricalPer');
+    Route::get('/HistoricalPbr', 'FreebieController@HistoricalPbr')->name('.HistoricalPbr');
+    Route::get('/ShortInterestIncrease', 'FreebieController@ShortInterestIncrease')->name('.ShortInterestIncrease');
+    Route::get('/ShortInterestVSShortSellUtilization', 'FreebieController@ShortInterestVSShortSellUtilization')->name('.ShortInterestVSShortSellUtilization');
+    Route::get('/StatementOfFinancialPosition', 'FreebieController@StatementOfFinancialPosition')->name('.StatementOfFinancialPosition');
+    Route::get('/IncomeStatement', 'FreebieController@IncomeStatement')->name('.IncomeStatement');
+    Route::get('/CashFlows', 'FreebieController@CashFlows')->name('.CashFlows');
+    Route::get('/StockNews', 'FreebieController@StockNews')->name('.StockNews');
+    Route::get('/DailyStockPriceAreaChartWithDisplay', 'FreebieController@DailyStockPriceAreaChartWithDisplay')->name('.DailyStockPriceAreaChartWithDisplay');
+    Route::get('/StockPriceVSEPS', 'FreebieController@StockPriceVSEPS')->name('.StockPriceVSEPS');
+});
+
+// Tools
+Route::prefix('Tools')->name('Tools')->namespace('Tools')->group(function () {
+    Route::get('/bargain', 'ToolsController@bargain')->name('.bargain');
+    Route::get('/buffett', 'ToolsController@buffett')->name('.buffett');
+    Route::get('/buyCheckForm', 'ToolsController@buyCheckForm')->name('.buyCheckForm');
+    Route::get('/Compound', 'ToolsController@Compound')->name('.Compound');
+    Route::get('/deposit', 'ToolsController@deposit')->name('.deposit');
+    Route::get('/estimate', 'ToolsController@estimate')->name('.estimate');
+    Route::get('/gordon', 'ToolsController@gordon')->name('.gordon');
+    Route::get('/interest', 'ToolsController@interest')->name('.interest');
+    Route::get('/lowestRetire', 'ToolsController@lowestRetire')->name('.lowestRetire');
+    Route::get('/money', 'ToolsController@money')->name('.money');
+    Route::get('/npv', 'ToolsController@npv')->name('.npv');
+    Route::get('/proportion', 'ToolsController@proportion')->name('.proportion');
+    Route::get('/retire', 'ToolsController@retire')->name('.retire');
+    Route::get('/PayBack', 'ToolsController@PayBack')->name('.PayBack');
+    Route::get('/secondDCF', 'ToolsController@secondDCF')->name('.secondDCF');
+    Route::get('/DepositTest', 'ToolsController@DepositTest')->name('.DepositTest');
+    Route::get('/DepositInGroup', 'ToolsController@DepositInGroup')->name('.DepositInGroup');
 });

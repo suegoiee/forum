@@ -1,0 +1,237 @@
+// border style
+@mixin borderAll($border: 10px, $color: rgba(255, 255, 255, 0.1)) {
+  border-radius: $border;
+  border: 1px $color solid;
+}
+
+// text style
+@mixin fontAll($align: left, $color: #545454, $back: #fff, $height: 1) {
+  text-align: $align;
+  color: $color;
+  background-color: $back;
+  font-family: Microsoft JhengHei;
+  line-height: $height;
+}
+
+// padding-x  margin-left
+@mixin dist($padl: auto, $padr: auto, $marg: auto) {
+  padding-left: $padl;
+  padding-right: $padr;
+  margin-left: $marg;
+}
+
+form {
+  @include borderAll();
+  @include fontAll();
+  width: 50%;
+  margin: auto;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+
+  fieldset {
+    border-style: none;
+
+    h3 {
+      @include fontAll(center, #393939, none, 1);
+      text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    h5 {
+      @include fontAll(center, #545454, none, 1);
+      background-color: none !important;
+      padding-bottom: 15px;
+    }
+
+    // fromcheck
+    #nnnn {
+      @include fontAll(left, #545454, #fff, 16px);
+      @include borderAll(0, #545454);
+      padding: 5px;
+    }
+
+    #che {
+      @include fontAll(center, green, #fff, 20px);
+      font-size: 20px;
+    }
+
+    #non {
+      @include fontAll(center, #ef5350, #545454, 20px);
+      font-size: 18px;
+    }
+
+    p {
+      label {
+        display: inline-block;
+        vertical-align: middle;
+        width: 45%;
+        font-weight: normal;
+        @include fontAll(center, #545454, none);
+        @include dist(auto, auto, 6%);
+
+        // hint
+        .small {
+          font-size: 12px;
+        }
+
+        // important
+        .red {
+          color: #ef5350;
+        }
+      }
+
+      //together
+      #toge {
+        margin-left: 0;
+        width: 38%;
+      }
+
+      input {
+        @include fontAll(right, #000000, rgb(232, 240, 254) !important, 16px);
+        @include borderAll(0, #e9e9e9);
+        -webkit-appearance: none;
+        padding-right: 5px;
+      }
+
+      input:focus {
+        outline: none;
+        @include borderAll(0, #ffc04d);
+      }
+    }
+
+    // Input wrong
+    #msgA,
+    #bigW {
+      @include fontAll(right !important, #ef5350, #f9f9f9, 0);
+      @include dist(auto, 20%, auto);
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    // button
+    p {
+      button,
+      #checkAll,
+      #clear {
+        padding: 10px;
+        @include borderAll(8px, #ffa500);
+        @include fontAll(center, #fff, #ffa500, 16px);
+        outline: none;
+      }
+      button:hover,
+      #checkAll:hover,
+      #clear:hover {
+        @include fontAll(center, #fff, #ffc04d, 16px);
+        @include borderAll(5px, #ffc04d);
+        border-style: none;
+      }
+
+      .cal,
+      #add,
+      #doc {
+        margin-left: 40%;
+        padding: 10px;
+        @include borderAll(8px, #ffa500);
+        @include fontAll(center, #fff, #ffa500, 16px);
+        outline: none;
+      }
+    }
+
+    // result name
+    .resultAll {
+      @include fontAll(left, #545454, none, 16px);
+      font-weight: bold;
+      margin-left: 20%;
+    }
+
+    // result
+    .rate {
+      @include borderAll(10px, gray);
+      @include fontAll(right, #545454, none, 16px);
+      font-size: 18px;
+      width: 200px;
+      height: 21px;
+      display: inline-block;
+      @include dist(auto, auto, 25%);
+    }
+
+    // for table
+    table {
+      @include borderAll(0, #fff);
+      width: 80%;
+      margin: auto auto 15px auto;
+      border-collapse: collapse;
+
+      tr,
+      th {
+        @include fontAll(center, #545454, #fff, 16px);
+        @include borderAll(0, #545454);
+        line-height: 25px;
+
+        td {
+          @include borderAll(0, #545454);
+          @include fontAll(right, #393939, #fff, 16px);
+          padding: 3px 5px 3px 0 !important;
+        }
+      }
+
+      td {
+        @include borderAll(0, #545454);
+        @include fontAll(right, #393939, #fff, 16px);
+        padding: 3px 5px 3px 0 !important;
+      }
+    }
+
+    // for together
+    #question {
+      line-height: 25px;
+    }
+    // secondDCF
+    #valFF {
+      @include borderAll(0, #fff);
+      @include fontAll(center, #fff, black, 16px);
+    }
+    // for npv
+    #npvv {
+      #rec {
+        margin-top: 5px;
+        width: 88%;
+        @include borderAll(0, black);
+        @include fontAll(center, green, white, 25px);
+      }
+
+      #recc {
+        width: 88%;
+        @include borderAll(0, black);
+        @include fontAll(center, red, white, 25px);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  form {
+    width: 100%;
+    font-size: 1.2rem;
+    h3 {
+      font-size: 2rem;
+    }
+    h5 {
+      font-size: 0.8rem;
+    }
+    p {
+      label {
+        margin-left: 0 !important;
+      }
+      #money {
+        margin-left: 38%;
+      }
+    }
+    ol {
+      padding-left: 5% !important;
+    }
+    .resultAll {
+      margin-left: 8% !important;
+    }
+  }
+}
