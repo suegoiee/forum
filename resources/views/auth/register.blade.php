@@ -3,7 +3,7 @@
 @extends('layouts.small')
 
 @section('small-content')
-    @if (! session()->has('githubData'))
+    @if (! session()->has('githubData') && false)
         <p>To register, we require you to login with your Github account. After login you can choose your password in the settings screen.</p>
 
         <a href="{{ route('login.github') }}" class="btn btn-default btn-block">
@@ -11,16 +11,31 @@
         </a>
     @else
         {!! Form::open(['route' => 'register.post']) !!}
-            @formGroup('name')
-                {!! Form::label('name') !!}
-                {!! Form::text('name', session('githubData.name'), ['class' => 'form-control', 'required', 'placeholder' => 'John Doe']) !!}
-                @error('name')
-            @endFormGroup
-
+            @php 
+                /*
+                @formGroup('name')
+                    {!! Form::label('name') !!}
+                    {!! Form::text('name', session('githubData.name'), ['class' => 'form-control', 'required', 'placeholder' => 'John Doe']) !!}
+                    @error('name')
+                @endFormGroup
+                */
+            @endphp
             @formGroup('email')
                 {!! Form::label('email') !!}
                 {!! Form::email('email', session('githubData.email'), ['class' => 'form-control', 'required', 'placeholder' => 'john@example.com']) !!}
                 @error('email')
+            @endFormGroup
+
+            @formGroup('password')
+                {!! Form::label('password') !!}
+                {!! Form::password('password', ['class' => 'form-control', 'required', 'placeholder' => 'password']) !!}
+                @error('password')
+            @endFormGroup
+
+             @formGroup('password')
+                {!! Form::label('password_confirmation') !!}
+                {!! Form::password('password_confirmation', ['class' => 'form-control', 'required', 'placeholder' => 'password confirmation']) !!}
+                @error('password_confirmation')
             @endFormGroup
 
             @formGroup('username')
@@ -28,7 +43,7 @@
                 {!! Form::text('username', session('githubData.username'), ['class' => 'form-control', 'required', 'placeholder' => 'johndoe']) !!}
                 @error('username')
             @endFormGroup
-
+            
             @formGroup('rules')
                 <label>
                     {!! Form::checkbox('rules') !!}
@@ -43,8 +58,8 @@
                 @error('rules')
             @endFormGroup
 
-            {!! Form::hidden('github_id', session('githubData.id')) !!}
-            {!! Form::hidden('github_username', session('githubData.username')) !!}
+            {!! Form::hidden('github_id', '0') !!}
+            {!! Form::hidden('github_username', '') !!}
             {!! Form::submit('Register', ['class' => 'btn btn-primary btn-block']) !!}
         {!! Form::close() !!}
     @endif
