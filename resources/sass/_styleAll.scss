@@ -29,7 +29,7 @@ form {
 
   fieldset {
     border-style: none;
-
+    margin-top: 10px;
     h3 {
       @include fontAll(center, #393939, none, 1);
       text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
@@ -40,7 +40,7 @@ form {
     h5 {
       @include fontAll(center, #545454, none, 1);
       background-color: none !important;
-      padding-bottom: 15px;
+      padding-bottom: 10px;
     }
 
     // fromcheck
@@ -60,14 +60,21 @@ form {
       font-size: 18px;
     }
 
+    ol {
+      li {
+        .radioAll {
+          margin-right: 3px;
+        }
+      }
+    }
     p {
       label {
         display: inline-block;
         vertical-align: middle;
-        width: 45%;
+        width: 40%;
         font-weight: normal;
-        @include fontAll(center, #545454, none);
-        @include dist(auto, auto, 6%);
+        @include fontAll(left, #545454, none, 1.2);
+        @include dist(auto, auto, 15%);
 
         // hint
         .small {
@@ -82,8 +89,8 @@ form {
 
       //together
       #toge {
-        margin-left: 0;
-        width: 38%;
+        margin-left: 6%;
+        width: 30%;
       }
 
       input {
@@ -113,7 +120,7 @@ form {
       button,
       #checkAll,
       #clear {
-        padding: 10px;
+        padding: 8px 10px;
         @include borderAll(8px, #ffa500);
         @include fontAll(center, #fff, #ffa500, 16px);
         outline: none;
@@ -126,11 +133,25 @@ form {
         border-style: none;
       }
 
-      .cal,
-      #add,
+      .cal {
+        margin-left: 42%;
+        padding: 8px 10px;
+        @include borderAll(8px, #ffa500);
+        @include fontAll(center, #fff, #ffa500, 16px);
+        outline: none;
+      }
+
+      #add {
+        margin-left: 42%;
+        padding: 8px 10px;
+        @include borderAll(8px, #ffa500);
+        @include fontAll(center, #fff, #ffa500, 16px);
+        outline: none;
+      }
+
       #doc {
-        margin-left: 40%;
-        padding: 10px;
+        margin-left: 80%;
+        padding: 8px 10px;
         @include borderAll(8px, #ffa500);
         @include fontAll(center, #fff, #ffa500, 16px);
         outline: none;
@@ -141,7 +162,7 @@ form {
     .resultAll {
       @include fontAll(left, #545454, none, 16px);
       font-weight: bold;
-      margin-left: 20%;
+      margin-left: 15%;
     }
 
     // result
@@ -152,13 +173,14 @@ form {
       width: 200px;
       height: 21px;
       display: inline-block;
-      @include dist(auto, auto, 25%);
+      margin-top: 5px;
+      @include dist(auto, auto, 20%);
     }
 
     // for table
     table {
       @include borderAll(0, #fff);
-      width: 80%;
+      width: 75%;
       margin: auto auto 15px auto;
       border-collapse: collapse;
 
@@ -189,13 +211,13 @@ form {
     // secondDCF
     #valFF {
       @include borderAll(0, #fff);
-      @include fontAll(center, #fff, black, 16px);
+      @include fontAll(right, #fff, black, 16px);
     }
     // for npv
     #npvv {
       #rec {
         margin-top: 5px;
-        width: 88%;
+        width: 80%;
         @include borderAll(0, black);
         @include fontAll(center, green, white, 25px);
       }
@@ -221,7 +243,7 @@ form {
     }
     p {
       label {
-        margin-left: 0 !important;
+        margin-left: 5% !important;
       }
       #money {
         margin-left: 38%;
@@ -232,6 +254,9 @@ form {
     }
     .resultAll {
       margin-left: 8% !important;
+    }
+    .rate {
+      font-size: 15px;
     }
   }
 }

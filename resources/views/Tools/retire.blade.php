@@ -39,8 +39,6 @@
 			</p>
 			<p class="resultAll">
 				你的投資工具必須每年能帶來
-			</p>
-			<p>
 				<input type="text" min="0" class="rate" id="result"></input>
 				<span class="word">報酬率</span>
 			</p>

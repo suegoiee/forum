@@ -14,9 +14,10 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
+            //'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'username' => 'required|max:40|unique:users',
+            'username' => 'required|max:40',//|unique:users',
+            'password' => 'required|min:6|max:255|confirmed',
             'rules' => 'accepted',
             'terms' => 'accepted',
             'github_id' => 'required',
@@ -25,7 +26,7 @@ class RegisterRequest extends FormRequest
 
     public function name(): string
     {
-        return $this->get('name');
+        return $this->get('username');
     }
 
     public function emailAddress(): string
@@ -45,6 +46,10 @@ class RegisterRequest extends FormRequest
 
     public function githubUsername(): string
     {
-        return $this->get('github_username', '');
+        return '';//$this->get('github_username', '');
+    }
+    public function password(): string
+    {
+        return $this->get('password');
     }
 }

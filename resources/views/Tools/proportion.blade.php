@@ -38,11 +38,11 @@
             </p>
             <p class="resultAll">
                 本益比 <br />
-                <input type="text" min="0" class="rate" id="proportion"></input>
+                <input type="text" min="0" class="rate" id="proportion" disabled></input>
             </p>
             <p class="resultAll">
                 本益成長比 <br />
-                <input type="text" min="0" class="rate" id="growproportion"></input>
+                <input type="text" min="0" class="rate" id="growproportion" disabled></input>
             </p>
             <p>
                 <table id="tableRes">
