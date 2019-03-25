@@ -6,6 +6,7 @@
  */
 
 require('./bootstrap');
+require('./datatable');
 /*require('./errorode');
 require('./addToge');
 require('./cal');
