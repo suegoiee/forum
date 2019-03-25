@@ -39,11 +39,14 @@ div {
       color: #545454;
     }
     .thread-info {
-      background-color: #b5b5b5;
-      color: #545454;
-    }
-    .thread-info-link {
-      color: #fff;
+      background-color: #fff !important;
+      color: #545454 !important;
+      .thread-info-author {
+        text-align: left;
+        .thread-info-link {
+          color: #393939;
+        }
+      }
     }
     .panel-body {
       a {
@@ -126,4 +129,8 @@ div {
       color: #fff;
     }
   }
+}
+.chat_bg {
+  background: #fff;
+  border: 1px solid #e9e9e9;
 }

@@ -44,9 +44,8 @@
 
             @include('layouts._ads._forum_sidebar')
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-9  chat_bg">
             <h1>{{ $title }}</h1>
-            <hr>
 
             <div class="panel panel-default">
                 <div class="panel-heading thread-info">
