@@ -12,7 +12,7 @@
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <!--li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li-->
+                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li>
                 <!--li><a href="https://paste.laravel.io">Pastebin</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
@@ -118,7 +118,7 @@
                     </ul>
                 </li>
             </ul>
-            <!--ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li class="{{ active('login') }}"><a class="login" href="{{ route('login') }}">登入</a></li>
                     <li class="{{ active('register') }}"><a class="login" href="{{ route('register') }}">註冊</a></li>
@@ -149,7 +149,7 @@
                         </ul>
                     </li>
                 @endif
-            </ul-->
+            </ul>
         </div>
     </div>
 </nav>

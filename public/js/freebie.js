@@ -178,6 +178,7 @@ function stockPool(stock_url) {
             if (e.which == 13) {
                 var stockCode = $("#searchBar").attr('name');
                 var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
+                $("#searchBar").val('');
                 SetCookie("stockCode", stockCode);
                 dataFactory(tmp_url + stockCode, true);
             }
@@ -213,7 +214,30 @@ function drawTable(data, IdForCanvas) {
     //console.log(TableData, TableTitle);
     $('#example').DataTable({
         data: TableData,
-        columns: TableTitle
+        columns: TableTitle,
+        "order": [[ 0, "desc" ]],
+        "pagingType": "full_numbers",
+        "oLanguage": {
+            "sLengthMenu": 
+                '顯示 '+
+                '<select class="form-control input-sm">'+
+                '<option value="10">10</option>'+
+                '<option value="20">20</option>'+
+                '<option value="30">30</option>'+
+                '<option value="40">40</option>'+
+                '<option value="50">50</option>'+
+                '<option value="-1">All</option>'+
+                '</select>'+
+                ' 筆',
+            "sSearch":
+                '搜尋'
+        },
+        "language": {
+            "paginate": {
+                "first": "First page",
+                "previous": "Previousss page"
+            }
+        }
     });
 }
 
