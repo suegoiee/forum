@@ -11,6 +11,7 @@ div {
       background: none !important;
       color: #393939 !important;
       border: none;
+      padding: 0;
     }
     .panel-body {
       font-size: 1.2em;
@@ -23,16 +24,18 @@ div {
         box-shadow: none;
         border: none;
         .form-group {
+          margin-bottom: 0 !important;
           input {
             background: rgb(232, 240, 254);
             border: 1px rgba(158, 158, 158, 0.8) solid !important;
             border-radius: 0;
+            margin: 10px 0 10px;
           }
           .form-control {
             height: 40px !important;
           }
           label {
-            width: 55%;
+            width: 100%;
             font-size: 1.5rem;
             input {
               width: 100% !important;
@@ -42,25 +45,37 @@ div {
               width: 15% !important;
             }
           }
+          .loginMg {
+            margin: 2% 0 10%;
+          }
           a {
             font-size: 1.5rem;
             color: #ffa500;
+            padding: 5px;
           }
           a:hover {
             color: #ffc04d;
+            background: none;
+            text-decoration: none;
+            padding: 5px;
           }
         }
         .btn {
           padding: 5px 15px;
+          border: none;
+          background: #ffa500;
         }
         .btn:focus {
           background: #ffc04d;
           border: none;
           outline: none;
+          padding: 5px 15px;
         }
         .btn-primary:hover,
         a:hover {
           border: none !important;
+          padding: 5px 15px;
+          background: #ffc04d;
         }
       }
     }

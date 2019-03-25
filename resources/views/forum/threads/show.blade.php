@@ -44,7 +44,7 @@
 
             @include('layouts._ads._forum_sidebar')
         </div>
-        <div class="col-lg-9  chat_bg">
+        <div class="col-lg-9">
             <h1>{{ $title }}</h1>
 
             <div class="panel panel-default">

@@ -1,4 +1,4 @@
-@title('Register')
+@title('註冊')
 
 @extends('layouts.small')
 
@@ -14,46 +14,42 @@
             @php 
                 /*
                 @formGroup('name')
-                    {!! Form::label('name') !!}
                     {!! Form::text('name', session('githubData.name'), ['class' => 'form-control', 'required', 'placeholder' => 'John Doe']) !!}
                     @error('name')
                 @endFormGroup
                 */
             @endphp
+
+            @formGroup('username')
+                {!! Form::text('username', session('githubData.username'), ['class' => 'form-control', 'required', 'placeholder' => '請輸入暱稱']) !!}
+                @error('username')
+            @endFormGroup
+
             @formGroup('email')
-                {!! Form::label('email') !!}
-                {!! Form::email('email', session('githubData.email'), ['class' => 'form-control', 'required', 'placeholder' => 'john@example.com']) !!}
+                {!! Form::email('email', session('githubData.email'), ['class' => 'form-control', 'required', 'placeholder' => '請輸入E-mail']) !!}
                 @error('email')
             @endFormGroup
 
             @formGroup('password')
-                {!! Form::label('password') !!}
-                {!! Form::password('password', ['class' => 'form-control', 'required', 'placeholder' => 'password']) !!}
+                {!! Form::password('password', ['class' => 'form-control', 'required', 'placeholder' => '請輸入密碼']) !!}
                 @error('password')
             @endFormGroup
 
              @formGroup('password')
-                {!! Form::label('password_confirmation') !!}
-                {!! Form::password('password_confirmation', ['class' => 'form-control', 'required', 'placeholder' => 'password confirmation']) !!}
+                {!! Form::password('password_confirmation', ['class' => 'form-control', 'required', 'placeholder' => '請再輸入一次密碼']) !!}
                 @error('password_confirmation')
-            @endFormGroup
-
-            @formGroup('username')
-                {!! Form::label('username') !!}
-                {!! Form::text('username', session('githubData.username'), ['class' => 'form-control', 'required', 'placeholder' => 'johndoe']) !!}
-                @error('username')
             @endFormGroup
             
             @formGroup('rules')
                 <label>
                     {!! Form::checkbox('rules') !!}
-                    &nbsp; I agree to <a href="{{ route('rules') }}" target="_blank">the rules of the portal</a>
+                    &nbsp; 已閱讀並同意 <a href="{{ route('rules') }}" target="_blank">網站規則</a>
                 </label>
                 @error('rules')
 
                 <label>
                     {!! Form::checkbox('terms') !!}
-                    &nbsp; I agree to <a href="{{ route('terms') }}" target="_blank">Terms & Conditions</a> and <a href="{{ route('privacy') }}" target="_blank">Privacy Policy</a>.
+                    &nbsp; 已閱讀並同意 <a href="{{ route('terms') }}" target="_blank">服務條款</a> 及 <a href="{{ route('privacy') }}" target="_blank">隱私權保護政策</a>.
                 </label>
                 @error('rules')
             @endFormGroup
