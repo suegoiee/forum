@@ -39,7 +39,7 @@
             </p>
             <p class="resultAll">
                 參考價試算結果
-                <input type="text" style="margin-left: 12%;" min="0" class="rate" id="result"></input>
+                <input type="text" style="margin-left: 12%;" min="0" class="rate" id="result" disabled></input>
             </p>
         </fieldset>
     </form>
