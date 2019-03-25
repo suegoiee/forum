@@ -1,11 +1,68 @@
-.panel-counter {
+div {
+  .panel {
+    background: #e9e9e9;
+    margin: 10px auto !important;
+    border: none;
     text-align: center;
-
+    -webkit-box-shadow: none;
+    box-shadow: none;
     .panel-heading {
-        font-size: 1.2em;
+      font-size: 1.2em;
+      background: none !important;
+      color: #393939 !important;
+      border: none;
     }
     .panel-body {
-        font-size: 3em;
-        font-weight: bold;
+      font-size: 1.2em;
+      font-weight: bold;
+      padding-bottom: 15px;
+      form {
+        background: #e9e9e9;
+        width: 70% !important;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border: none;
+        .form-group {
+          input {
+            background: rgb(232, 240, 254);
+            border: 1px rgba(158, 158, 158, 0.8) solid !important;
+            border-radius: 0;
+          }
+          .form-control {
+            height: 40px !important;
+          }
+          label {
+            width: 55%;
+            font-size: 1.5rem;
+            input {
+              width: 100% !important;
+              margin: 0 !important;
+            }
+            input[type="checkbox"] {
+              width: 15% !important;
+            }
+          }
+          a {
+            font-size: 1.5rem;
+            color: #ffa500;
+          }
+          a:hover {
+            color: #ffc04d;
+          }
+        }
+        .btn {
+          padding: 5px 15px;
+        }
+        .btn:focus {
+          background: #ffc04d;
+          border: none;
+          outline: none;
+        }
+        .btn-primary:hover,
+        a:hover {
+          border: none !important;
+        }
+      }
     }
+  }
 }
