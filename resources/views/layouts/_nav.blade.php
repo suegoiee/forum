@@ -39,14 +39,14 @@
                 </li-->                
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<i class="fas fa-sort-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
                         <li><a class="menu" href="{{ route('freebie.DailyStockPriceAreaChartWithDisplay') }}">股價走勢</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockPriceVSEPS') }}">每股盈餘VS股價</a></li>
                         <li class="dropdownlist">
-                            <a class="menu">月營收<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">月營收<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.MonthlyRevenue') }}">每月營收變化表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.MonthlyRevenueVSStockPrice') }}">月營收與股價對照表</a></li>
@@ -55,7 +55,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">財務報表<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">財務報表<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.IncomeStatement') }}">損益表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.StatementOfFinancialPosition') }}">資產負債表</a></li>
@@ -63,7 +63,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">股息政策<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">股息政策<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.HistoricalDividendRecord') }}">歷年股息表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.CashDividendPayoutRatio') }}">股息配發率</a></li>
@@ -71,7 +71,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">籌碼資訊<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">籌碼資訊<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.InstitutionalInvestorsNet') }}">三大法人買賣超日報表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.QFIIHoldingsVSStockPrice') }}">外資持股比率</a></li>
@@ -84,7 +84,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">股票評價<i class='fas fa-angle-right'></i></a>
+                            <a class="menu">股票評價<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.HistoricalPer') }}">本益比評價</a></li>
                                 <li><a class="menu" href="{{ route('freebie.HistoricalPbr') }}">股價淨值比評價</a></li>
@@ -97,7 +97,7 @@
 
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小工具<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小工具<i class="fas fa-sort-down"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('Tools.bargain') }}">買賣股票損益</a></li>
                         <li><a href="{{ route('Tools.buffett') }}">巴菲特預估股價</a></li>
