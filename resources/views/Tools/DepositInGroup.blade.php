@@ -44,19 +44,16 @@
 
 			<p>
 				<table id="stockAll">
-					<label class="resultAll">每個人的股份：</label> 
 				</table>
 			</p>
 			
 			<p>
-				<table id="getAll">	
-					<label class="resultAll">每個人的獲利：</label> 		
+				<table id="getAll">			
 				</table>
 			</p>
 			
 			<p>
-				<table id="getMoney">	
-					<label class="resultAll">每個人可得到：</label> 	
+				<table id="getMoney">		
 				</table>
 			</p>
 

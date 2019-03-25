@@ -8,7 +8,7 @@ use App\Http\Requests\RegisterRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Contracts\Hashing\Hasher;
 
-final class RegisterUser
+final class RegisterUAUser
 {
     /**
      * @var string
@@ -62,46 +62,23 @@ final class RegisterUser
         );
     }
 
-    public function handle(Hasher $hasher): User
+    public function handle(Hasher $hasher)
     {
-        $this->assertEmailAddressIsUnique($this->email);
-        $this->assertUsernameIsUnique($this->username);
+        //$this->assertEmailAddressIsUnique($this->email);
+        //$this->assertUsernameIsUnique($this->username);
 
-        $user = new User([
-            'name' => $this->name,
+        $data = [
             'email' => $this->email,
-            'username' => strtolower($this->username),
-            'github_id' => $this->githubId,
-            'github_username' => $this->githubUsername,
-            'confirmation_code' => str_random(60),
+            'nickname' => strtolower($this->username),
             'password'=>$hasher->make($this->password),
-            'type' => User::DEFAULT,
-            'remember_token' => '',
-        ]);
-        $user->save();
-
-        return $user;
-    }
-
-    private function assertEmailAddressIsUnique(string $emailAddress)
-    {
-        try {
-            User::findByEmailAddress($emailAddress);
-        } catch (ModelNotFoundException $exception) {
-            return true;
-        }
-
-        throw CannotCreateUser::duplicateEmailAddress($emailAddress);
-    }
-
-    private function assertUsernameIsUnique(string $username)
-    {
-        try {
-            User::findByUsername($username);
-        } catch (ModelNotFoundException $exception) {
-            return true;
-        }
-
-        throw CannotCreateUser::duplicateUsername($username);
+        ];
+        $http = new \GuzzleHttp\Client;
+        $response = $http->request('post',env("UA_REGISTER_API_URL"),[
+                'headers'=>[
+                    'Accept' => 'application/json',
+                    'Authorization' => 'Bearer ',
+                ],
+                'form_params' => $data,
+            ]);
     }
 }
