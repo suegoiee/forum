@@ -6,6 +6,7 @@ use Horizon;
 use App\Models\Thread;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
         $this->bootEloquentMorphs();
         $this->bootMacros();
         $this->bootHorizon();
+        Schema::defaultStringLength(191);
     }
 
     private function bootEloquentMorphs()

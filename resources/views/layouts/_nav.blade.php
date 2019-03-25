@@ -118,7 +118,7 @@
                     </ul>
                 </li>
             </ul>
-            <!--ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
                     <li class="{{ active('login') }}"><a class="login" href="{{ route('login') }}">登入</a></li>
                     <li class="{{ active('register') }}"><a class="login" href="{{ route('register') }}">註冊</a></li>
@@ -149,7 +149,7 @@
                         </ul>
                     </li>
                 @endif
-            </ul-->
+            </ul>
         </div>
     </div>
 </nav>
