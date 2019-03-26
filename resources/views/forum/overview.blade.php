@@ -14,7 +14,7 @@
                 </div>
             {{ Form::close() }}
 
-            <a class="btn btn-block" href="{{ route('threads.create') }}">提問</a>
+            <a class="btn btn-block" href="{{ route('threads.create') }}">搜尋</a>
 
             @include('layouts._ads._forum_sidebar')
 

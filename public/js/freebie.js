@@ -201,11 +201,11 @@ function drawTable(data, IdForCanvas) {
     }
     for (var i in data['data']) {
         var tmp = [];
-        for(var j in compare){
-            if(data['data'][i][compare[j]]){
+        for (var j in compare) {
+            if (data['data'][i][compare[j]]) {
                 tmp.push(data['data'][i][compare[j]]);
             }
-            else{
+            else {
                 tmp.push(null);
             }
         }
@@ -215,28 +215,28 @@ function drawTable(data, IdForCanvas) {
     $('#example').DataTable({
         data: TableData,
         columns: TableTitle,
-        "order": [[ 0, "desc" ]],
+        "order": [[0, "desc"]],
         "pagingType": "full_numbers",
         "oLanguage": {
             "sInfoThousands": ",",
-            "sLengthMenu": 
-                '顯示 '+
-                '<select class="form-control input-sm">'+
-                '<option value="10">10</option>'+
-                '<option value="20">20</option>'+
-                '<option value="30">30</option>'+
-                '<option value="40">40</option>'+
-                '<option value="50">50</option>'+
-                '<option value="-1">All</option>'+
-                '</select>'+
+            "sLengthMenu":
+                '顯示 ' +
+                '<select class="form-control input-sm">' +
+                '<option value="10">10</option>' +
+                '<option value="20">20</option>' +
+                '<option value="30">30</option>' +
+                '<option value="40">40</option>' +
+                '<option value="50">50</option>' +
+                '<option value="-1">All</option>' +
+                '</select>' +
                 ' 筆',
             "sSearch":
                 '搜尋',
             "oPaginate": {
-                "sPrevious": "上一頁",
-                "sFirst": "第一頁",
-                "sNext": "下一頁",
-                "sLast": "最末頁"
+                "sPrevious": "<",
+                "sFirst": "|<",
+                "sNext": ">",
+                "sLast": ">|"
             },
             "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
         }
@@ -255,8 +255,10 @@ function drawNews(data, IdForCanvas) {
     $('#pagination-demo').twbsPagination({
         totalPages: Math.ceil(i / 10),
         visiblePages: 4,
-        next: '>>',
-        prev: '<<',
+        first: '|<',
+        next: '>',
+        prev: '<',
+        last: '>|',
         onPageClick: function (event, page) {
             //fetch content and render here
             $('#lists').empty();
@@ -732,23 +734,23 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
     }
 }
 
-function SetCookie(name,value){
+function SetCookie(name, value) {
     var Days = 2;
-    var exp  = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    var exp = new Date();
+    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 }
 
-function getCookie(name){
-    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
-     if(arr != null) return unescape(arr[2]); return null;
+function getCookie(name) {
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    if (arr != null) return unescape(arr[2]); return null;
 }
 
-function delCookie(name){
+function delCookie(name) {
     var exp = new Date();
     exp.setTime(exp.getTime() - 1);
-    var cval=getCookie(name);
-    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    var cval = getCookie(name);
+    if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 }
 
 Highcharts.setOptions({

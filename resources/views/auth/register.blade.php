@@ -14,36 +14,36 @@
             @php 
                 /*
                 @formGroup('name')
-                    {!! Form::text('name', session('githubData.name'), ['class' => 'form-control', 'required', 'placeholder' => 'John Doe']) !!}
+                    {!! Form::text('name', session('githubData.name'), ['class' => 'form-control regMg', 'required', 'placeholder' => 'John Doe']) !!}
                     @error('name')
                 @endFormGroup
                 */
             @endphp
 
             @formGroup('username')
-                {!! Form::text('username', session('githubData.username'), ['class' => 'form-control', 'required', 'placeholder' => '請輸入暱稱']) !!}
+                {!! Form::text('username', session('githubData.username'), ['class' => 'form-control regMg', 'required', 'placeholder' => '請輸入暱稱']) !!}
                 @error('username')
             @endFormGroup
 
             @formGroup('email')
-                {!! Form::email('email', session('githubData.email'), ['class' => 'form-control', 'required', 'placeholder' => '請輸入E-mail']) !!}
+                {!! Form::email('email', session('githubData.email'), ['class' => 'form-control regMg', 'required', 'placeholder' => '請輸入Email']) !!}
                 @error('email')
             @endFormGroup
 
             @formGroup('password')
-                {!! Form::password('password', ['class' => 'form-control', 'required', 'placeholder' => '請輸入密碼']) !!}
+                {!! Form::password('password', ['class' => 'form-control regMg', 'required', 'placeholder' => '請輸入密碼']) !!}
                 @error('password')
             @endFormGroup
 
              @formGroup('password')
-                {!! Form::password('password_confirmation', ['class' => 'form-control', 'required', 'placeholder' => '請再輸入一次密碼']) !!}
+                {!! Form::password('password_confirmation', ['class' => 'form-control regMg', 'required', 'placeholder' => '請再輸入一次密碼']) !!}
                 @error('password_confirmation')
             @endFormGroup
             
             @formGroup('rules')
                 <label>
                     {!! Form::checkbox('rules') !!}
-                    &nbsp; 已閱讀並同意 <a href="{{ route('rules') }}" target="_blank">網站規則</a>
+                    &nbsp; 已閱讀並同意 <a href="{{ route('rules') }}" target="_blank">網站規則</a>.
                 </label>
                 @error('rules')
 
@@ -56,7 +56,7 @@
 
             {!! Form::hidden('github_id', '0') !!}
             {!! Form::hidden('github_username', '') !!}
-            {!! Form::submit('Register', ['class' => 'btn btn-primary btn-block']) !!}
+            {!! Form::submit('註冊', ['class' => 'btn btn-primary btn-block']) !!}
         {!! Form::close() !!}
     @endif
 @endsection
