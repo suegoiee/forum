@@ -17,6 +17,22 @@
             }
           }
           li {
+            .logo {
+              background-image: url(logo_light.svg);
+              width: 90px;
+              background-position: 0% 52%;
+              background-size: 25%;
+              padding-left: 25%;
+              background-repeat: no-repeat;
+            }
+            .logo:hover {
+              background-image: url(logo_hover.svg);
+              width: 90px;
+              background-position: 0% 52%;
+              background-size: 25%;
+              padding-left: 25%;
+              background-repeat: no-repeat;
+            }
             .nav-font {
               color: #fff;
               font-size: 17px;
