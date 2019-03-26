@@ -214,19 +214,24 @@ function drawTable(data, IdForCanvas) {
     $('#example').DataTable({
         data: TableData,
         columns: TableTitle,
-        "order": [[ 0, "desc" ]],
+        "order": [[0, "desc"]],
         "pagingType": "full_numbers",
         "oLanguage": {
-            "sLengthMenu": 
-                "顯示 _MENU_ 筆",
+            "sInfoThousands": ",",
+            "sLengthMenu":
+                '顯示 _MENU_ 筆',
             "sSearch":
                 '搜尋',
             "oPaginate": {
-                "sLast": "最末頁"
+                "sPrevious": "<",
+                "sFirst": "|<",
+                "sNext": ">",
+                "sLast": ">|"
             },
-            "sInfo": "共 _TOTAL_  筆資料 (_START_ 至 _END_)"
+            "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
         }
     });
+
 }
 
 function dataFormat ( toFormat ) {
@@ -247,10 +252,10 @@ function drawNews(data, IdForCanvas) {
     $('#pagination-demo').twbsPagination({
         totalPages: Math.ceil(i / 10),
         visiblePages: 4,
-        next: '下一頁',
-        prev: '上一頁',
-        first: '第一頁',
-        last: '最末頁',
+        first: '|<',
+        next: '>',
+        prev: '<',
+        last: '>|',
         onPageClick: function (event, page) {
             //fetch content and render here
             $('#lists').empty();
