@@ -120,12 +120,6 @@ function dataFactory(stock_url, ClearCanvas) {
             ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas, true);
 
             /**edit it with css */
-            /*$("#" + IdForCanvas + "table").width("20%");
-            $("#" + IdForCanvas + "table").css('float', 'left');
-            $("#" + IdForCanvas).width("80%");
-            $("#" + IdForCanvas).css('float', 'right');
-            $("#" + IdForCanvas + 'bottomtable').width("80%");
-            $("#" + IdForCanvas + 'bottomtable').css('float', 'right');*/
             $("#" + IdForCanvas + "table").append(sideTable);
 
 
@@ -227,11 +221,7 @@ function drawTable(data, IdForCanvas) {
                 "顯示 _MENU_ 筆",
             "sSearch":
                 '搜尋',
-            "sInfoThousand":",",
             "oPaginate": {
-                "sPrevious": "上一頁",
-                "sFirst": "第一頁",
-                "sNext": "下一頁",
                 "sLast": "最末頁"
             },
             "sInfo": "共 _TOTAL_  筆資料 (_START_ 至 _END_)"
