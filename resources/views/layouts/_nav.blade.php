@@ -12,6 +12,7 @@
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
+<<<<<<< HEAD
                 <li><a href="https://pro.uanalyze.com.tw" class="nav-font logo" target="_blank">優分析</a></li>
                 <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li>
                 <!--li><a href="https://paste.laravel.io">Pastebin</a></li>
@@ -37,6 +38,10 @@
                         <li><a href="http://www.laravelpodcast.com">Podcast</a></li>
                     </ul>
                 </li-->                
+=======
+                <li><a href="https://pro.uanalyze.com.tw" class="nav-font" target="_blank"><img src="/images/logo_light.svg" width="30px">優分析</a></li>
+                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li>               
+>>>>>>> 0304a23a273599a35ad0e73416a1f6ec96c5c1fd
                 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<i class="fas fa-sort-down"></i></a>

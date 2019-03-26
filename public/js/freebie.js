@@ -41,7 +41,7 @@ function dataFactory(stock_url, ClearCanvas) {
                 PYButton = true;
             }
             chart_data[IdForCanvas] = DataStandardization(chart_data[IdForCanvas]);
-            ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas);
+            ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas, false);
             seriesGenerator(chart_data[IdForCanvas], dataType, refLine, outer_ch, display, IdForCanvas);
         }
 
@@ -51,21 +51,21 @@ function dataFactory(stock_url, ClearCanvas) {
             $.each(tmp, function (key1, val1) {
                 chart_data[IdForCanvas].push(val1);
             });
-            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas);
+            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas, false);
             drawNews(chart_data[IdForCanvas], IdForCanvas);
         }
 
         /**表格 */
         if (data.data.type == 'sorting_table') {
             var tmp0 = data.data;
-            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas);
+            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas, false);
             drawTable(tmp0, IdForCanvas);
         }
 
         /**公司基本資料 */
         if (data.data.type == 'table') {
             var tmp0 = data.data;
-            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas);
+            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas, false);
             infoTable(tmp0, IdForCanvas);
         }
 
@@ -83,7 +83,7 @@ function dataFactory(stock_url, ClearCanvas) {
                 sideTable = sideTable + '<div id="' + key1 + '" class="collapse">';
                 for (var i = 0; i < childLayers; i++) {
                     val1 = val1.Child;
-                    sideTable += '<div class="btn-group-vertical ChartTableButtonParent" style="width:100%" value="' + key1 + '">';
+                    sideTable += '<div class="btn-group-vertical ChartTableButtonParent" value="' + key1 + '">';
                     $.each(val1, function (key2, val2) {
                         chart_data[IdForCanvas][key1][key2] = [];
                         if (val2.Combo) {
@@ -117,13 +117,9 @@ function dataFactory(stock_url, ClearCanvas) {
             if (dataType != 'Data') {
                 var PYButton = true;
             }
-            ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas);
+            ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas, true);
 
             /**edit it with css */
-            $("#" + IdForCanvas + "table").width("20%");
-            $("#" + IdForCanvas + "table").css('float', 'left');
-            $("#" + IdForCanvas).width("80%");
-            $("#" + IdForCanvas).css('float', 'left');
             $("#" + IdForCanvas + "table").append(sideTable);
 
 
@@ -194,24 +190,27 @@ function drawTable(data, IdForCanvas) {
     var compare = [];
     for (var i in data['column_title']) {
         $.each(data['column_title'][i], function (key, val) {
-            //console.log(key, val);
             compare.push(key);
             TableTitle.push({ title: val });
         })
     }
     for (var i in data['data']) {
         var tmp = [];
-        for (var j in compare) {
-            if (data['data'][i][compare[j]]) {
-                tmp.push(data['data'][i][compare[j]]);
+        for(var j in compare){
+            if(data['data'][i][compare[j]]){
+                if(compare[j] != 'row_title_center'){
+                    tmp.push(dataFormat(data['data'][i][compare[j]]));
+                }
+                else{
+                    tmp.push(data['data'][i][compare[j]]);
+                }
             }
-            else {
+            else{
                 tmp.push(null);
             }
         }
         TableData.push(tmp);
     }
-    console.log(TableData, TableTitle);
     $('#example').DataTable({
         data: TableData,
         columns: TableTitle,
@@ -220,16 +219,7 @@ function drawTable(data, IdForCanvas) {
         "oLanguage": {
             "sInfoThousands": ",",
             "sLengthMenu":
-                '顯示 ' +
-                '<select class="form-control input-sm">' +
-                '<option value="10">10</option>' +
-                '<option value="20">20</option>' +
-                '<option value="30">30</option>' +
-                '<option value="40">40</option>' +
-                '<option value="50">50</option>' +
-                '<option value="-1">All</option>' +
-                '</select>' +
-                ' 筆',
+                '顯示 _MENU_ 筆',
             "sSearch":
                 '搜尋',
             "oPaginate": {
@@ -241,6 +231,13 @@ function drawTable(data, IdForCanvas) {
             "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
         }
     });
+
+}
+
+function dataFormat ( toFormat ) {
+    return toFormat.toString().replace(
+      /\B(?=(\d{3})+(?!\d))/g, ","
+    );
 }
 
 /**新聞列表 */
@@ -267,6 +264,32 @@ function drawNews(data, IdForCanvas) {
             }
         }
     });
+}
+
+/**報表底部表格 */
+function drawTableChartBottomTable(IdForCanvas, title, yLabel, seriestData){
+    var bottomtable = '<table class="table table-bordered" style="width:100%;"><tbody id="infoTable" style="font-size:13px">';
+    for(var i in seriestData){
+        bottomtable += '<tr>';
+        if(i == 0){
+            for(var j in seriestData[i]['data']){
+                    bottomtable += '<td>'+seriestData[i]['data'][j][0]+'</td>';
+            }
+            bottomtable += '</tr><tr>';
+            for(var j in seriestData[i]['data']){
+                bottomtable += '<td>'+seriestData[i]['data'][j][1]+'</td>';
+            }
+        }
+        else{
+            for(var j in seriestData[i]['data']){
+                bottomtable += '<td>'+dataFormat(seriestData[i]['data'][j][1])+'</td>';
+            }
+        }
+        bottomtable += '</tr>';
+    }
+    bottomtable += '</tbody></table>';
+    $("#"+IdForCanvas+"bottomtable").empty();
+    $("#"+IdForCanvas+"bottomtable").append(bottomtable);
 }
 
 /**公司基本資料 */
@@ -305,7 +328,7 @@ function findchild(data) {
 }
 
 /**框架產生器 */
-function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, ClearCanvas) {
+function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, ClearCanvas, BottomTable) {
     var display_table = '';
     var RecentTenButton = '';
     var WholeDateButton = '';
@@ -314,9 +337,10 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
     var CostumizeDateEnd = '';
     var PeriodButton = '';
     var YearButton = '';
+    var BottomTableCanvas = '';
     /**上方 */
     if (DisPlayLabel) {
-        display_table = '<table class="table" style="width:100%; text-align:center;"><tr id="' + IdForCanvas + 'Label"></tr></table>';
+        display_table = '<div class="container"><table class="table" style="text-align:center;"><tr id="' + IdForCanvas + 'Label"></tr></table></div>';
     }
 
     /**上排資料數量按鈕 */
@@ -333,12 +357,20 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
         PeriodButton = '<button type="button" class="btn btn-default buttonQuater" value="' + IdForCanvas + '">季度</button>';
         YearButton = '<button type="button" class="btn btn-default buttonYear" value="' + IdForCanvas + '">年度</button>';
     }
+
+    /** */
+    if(BottomTable) {
+        BottomTableCanvas = '<div id="' + IdForCanvas + 'bottomtable" style="overflow-x:auto;"></div>'
+    }
+
     /**框架 */
     var ChartContainer = '<div id="' + IdForCanvas + '"></div>';
-    var SideTableContainer = '<div id="' + IdForCanvas + 'table"></div>';
+    var SideTableContainer = '<div class="container" id="' + IdForCanvas + 'table"></div>';
 
     /**總成 */
-    var container = display_table + '<div class="container"><div class="container"><div class="btn-group LeftButtonGroup" role="group" aria-label="..." style="position:relative; float:left;">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="..." style="position:relative; float:right;">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div></div><div class="container"><div id="customizeRange' + IdForCanvas + '" class="collapse" style="width:100%; position:relative; float:right;"><div style="position:relative; width:30%; float: left; margin-left:20%"> ' + CostumizeDateStart + '</div><div style="position:relative; width:30%; float: left; margin-left:20%">' + CostumizeDateEnd + '</div></div></div><div id="' + IdForCanvas + 'container" style="position:relative; float:top;">' + SideTableContainer + ChartContainer + '</div></div>';
+    //var container = display_table + '<div class="container"><div class="container"><div class="btn-group LeftButtonGroup" role="group" aria-label="..." style="position:relative; float:left;">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="..." style="position:relative; float:right;">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div></div><div class="container"><div id="customizeRange' + IdForCanvas + '" class="collapse" style="width:100%; position:relative; float:right;"><div style="position:relative; width:30%; float: left; margin-left:20%"> ' + CostumizeDateStart + '</div><div style="position:relative; width:30%; float: left; margin-left:20%">' + CostumizeDateEnd + '</div></div></div><div id="' + IdForCanvas + 'container" style="position:relative; float:top;">' + SideTableContainer + ChartContainer + '</div></div>'+BottomTableCanvas;
+
+    var container = '<div class="container">' + display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" role="group" aria-label="...">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div> ' + CostumizeDateStart + '</div><div>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas +'</div></div>';
 
     if (ClearCanvas) {
         $("#CanvasBaseMap").empty();
@@ -383,6 +415,7 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
     }
     var yLabel = yLabelGenerator(unit, refLine);
     drawChart(IdForCanvas, title, yLabel, seriestData);
+    drawTableChartBottomTable(IdForCanvas, title, yLabel, seriestData);
     drawDisplay(IdForCanvas, display);
 }
 
@@ -464,7 +497,10 @@ function yLabelGenerator(formats, refline) {
     for (var i in formats) {
         yLabel.push({
             labels: {
-                format: '{value}' + formats[i]
+                //format: '{value}' + formats[i]
+                formatter: function () {
+                    return dataFormat(this.value) + formats[i];
+                }
             },
             title: {
                 text: formats[i]
@@ -512,7 +548,6 @@ function drawDisplay(canvas, display) {
 
 /**畫圖表 */
 function drawChart(canvas, title, yLabel, series) {
-    console.log(series);
     Highcharts.chart(canvas, {
         title: {
             text: title
@@ -525,8 +560,12 @@ function drawChart(canvas, title, yLabel, series) {
         tooltip: {
             borderWidth: 0,
             formatter: function () {
+                var tmp_unit = '';
+                if(this.series.yAxis.axisTitle){
+                    tmp_unit = this.series.yAxis.axisTitle.textStr;
+                }
                 return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
-                    this.y;// + this.series.yAxis.axisTitle.textStr;
+                dataFormat(this.y) + tmp_unit;
             }
         }
     });
@@ -734,23 +773,23 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
     }
 }
 
-function SetCookie(name, value) {
+function SetCookie(name,value){
     var Days = 2;
-    var exp = new Date();
-    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    var exp  = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
 }
 
-function getCookie(name) {
-    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-    if (arr != null) return unescape(arr[2]); return null;
+function getCookie(name){
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+     if(arr != null) return unescape(arr[2]); return null;
 }
 
-function delCookie(name) {
+function delCookie(name){
     var exp = new Date();
     exp.setTime(exp.getTime() - 1);
-    var cval = getCookie(name);
-    if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    var cval=getCookie(name);
+    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
 }
 
 Highcharts.setOptions({
