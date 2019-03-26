@@ -196,16 +196,16 @@ function drawTable(data, IdForCanvas) {
     }
     for (var i in data['data']) {
         var tmp = [];
-        for(var j in compare){
-            if(data['data'][i][compare[j]]){
-                if(compare[j] != 'row_title_center'){
+        for (var j in compare) {
+            if (data['data'][i][compare[j]]) {
+                if (compare[j] != 'row_title_center') {
                     tmp.push(dataFormat(data['data'][i][compare[j]]));
                 }
-                else{
+                else {
                     tmp.push(data['data'][i][compare[j]]);
                 }
             }
-            else{
+            else {
                 tmp.push(null);
             }
         }
@@ -234,9 +234,9 @@ function drawTable(data, IdForCanvas) {
 
 }
 
-function dataFormat ( toFormat ) {
+function dataFormat(toFormat) {
     return toFormat.toString().replace(
-      /\B(?=(\d{3})+(?!\d))/g, ","
+        /\B(?=(\d{3})+(?!\d))/g, ","
     );
 }
 
@@ -267,29 +267,29 @@ function drawNews(data, IdForCanvas) {
 }
 
 /**報表底部表格 */
-function drawTableChartBottomTable(IdForCanvas, title, yLabel, seriestData){
+function drawTableChartBottomTable(IdForCanvas, title, yLabel, seriestData) {
     var bottomtable = '<table class="table table-bordered" style="width:100%;"><tbody id="infoTable" style="font-size:13px">';
-    for(var i in seriestData){
+    for (var i in seriestData) {
         bottomtable += '<tr>';
-        if(i == 0){
-            for(var j in seriestData[i]['data']){
-                    bottomtable += '<td>'+seriestData[i]['data'][j][0]+'</td>';
+        if (i == 0) {
+            for (var j in seriestData[i]['data']) {
+                bottomtable += '<td>' + seriestData[i]['data'][j][0] + '</td>';
             }
             bottomtable += '</tr><tr>';
-            for(var j in seriestData[i]['data']){
-                bottomtable += '<td>'+seriestData[i]['data'][j][1]+'</td>';
+            for (var j in seriestData[i]['data']) {
+                bottomtable += '<td>' + seriestData[i]['data'][j][1] + '</td>';
             }
         }
-        else{
-            for(var j in seriestData[i]['data']){
-                bottomtable += '<td>'+dataFormat(seriestData[i]['data'][j][1])+'</td>';
+        else {
+            for (var j in seriestData[i]['data']) {
+                bottomtable += '<td>' + dataFormat(seriestData[i]['data'][j][1]) + '</td>';
             }
         }
         bottomtable += '</tr>';
     }
     bottomtable += '</tbody></table>';
-    $("#"+IdForCanvas+"bottomtable").empty();
-    $("#"+IdForCanvas+"bottomtable").append(bottomtable);
+    $("#" + IdForCanvas + "bottomtable").empty();
+    $("#" + IdForCanvas + "bottomtable").append(bottomtable);
 }
 
 /**公司基本資料 */
@@ -359,18 +359,18 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
     }
 
     /** */
-    if(BottomTable) {
+    if (BottomTable) {
         BottomTableCanvas = '<div id="' + IdForCanvas + 'bottomtable" style="overflow-x:auto;"></div>'
     }
 
     /**框架 */
     var ChartContainer = '<div id="' + IdForCanvas + '"></div>';
-    var SideTableContainer = '<div class="container" id="' + IdForCanvas + 'table"></div>';
+    var SideTableContainer = '<div class="sidebar" id="' + IdForCanvas + 'table"></div>';
 
     /**總成 */
     //var container = display_table + '<div class="container"><div class="container"><div class="btn-group LeftButtonGroup" role="group" aria-label="..." style="position:relative; float:left;">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="..." style="position:relative; float:right;">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div></div><div class="container"><div id="customizeRange' + IdForCanvas + '" class="collapse" style="width:100%; position:relative; float:right;"><div style="position:relative; width:30%; float: left; margin-left:20%"> ' + CostumizeDateStart + '</div><div style="position:relative; width:30%; float: left; margin-left:20%">' + CostumizeDateEnd + '</div></div></div><div id="' + IdForCanvas + 'container" style="position:relative; float:top;">' + SideTableContainer + ChartContainer + '</div></div>'+BottomTableCanvas;
 
-    var container = '<div class="container">' + display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" role="group" aria-label="...">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div> ' + CostumizeDateStart + '</div><div>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas +'</div></div>';
+    var container = '<div class="container">' + display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div> ' + CostumizeDateStart + '</div><div>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div></div>';
 
     if (ClearCanvas) {
         $("#CanvasBaseMap").empty();
@@ -561,11 +561,11 @@ function drawChart(canvas, title, yLabel, series) {
             borderWidth: 0,
             formatter: function () {
                 var tmp_unit = '';
-                if(this.series.yAxis.axisTitle){
+                if (this.series.yAxis.axisTitle) {
                     tmp_unit = this.series.yAxis.axisTitle.textStr;
                 }
                 return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
-                dataFormat(this.y) + tmp_unit;
+                    dataFormat(this.y) + tmp_unit;
             }
         }
     });
@@ -773,23 +773,23 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
     }
 }
 
-function SetCookie(name,value){
+function SetCookie(name, value) {
     var Days = 2;
-    var exp  = new Date();
-    exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    var exp = new Date();
+    exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 }
 
-function getCookie(name){
-    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
-     if(arr != null) return unescape(arr[2]); return null;
+function getCookie(name) {
+    var arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
+    if (arr != null) return unescape(arr[2]); return null;
 }
 
-function delCookie(name){
+function delCookie(name) {
     var exp = new Date();
     exp.setTime(exp.getTime() - 1);
-    var cval=getCookie(name);
-    if(cval!=null) document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    var cval = getCookie(name);
+    if (cval != null) document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
 }
 
 Highcharts.setOptions({

@@ -3,8 +3,9 @@ body {
   font-size: 14.5px;
   font-weight: 300;
   color: #545454;
-  background: #e9e9e9;
+  background-color: #e9e9e9;
   .container {
+    width: 95%;
     div {
       .input-group {
         .form-control {
@@ -31,8 +32,7 @@ body {
     }
     #CanvasBaseMap {
       .container {
-        width: 100% !important;
-        background: #fff;
+        background-color: #fff;
         div {
           div {
             h3 {
@@ -88,6 +88,27 @@ body {
                   color: #545454;
                 }
               }
+            }
+            .btn-primary {
+              text-align: left;
+              background-color: #fff;
+              border: 1px solid #ffa500;
+              color: #ffa500;
+              outline: none;
+              font-size: 14px;
+              border-radius: 0 !important;
+              margin-bottom: 10px;
+            }
+            button:hover {
+              color: #ffc04d;
+              background-color: #fff;
+              border-radius: 0 !important;
+              outline: none;
+            }
+            .OuterChartActive,
+            .OuterChartActive:hover {
+              color: #fff;
+              background-color: #ffa500;
             }
             div {
               .row {
@@ -157,41 +178,6 @@ body {
                   }
                 }
               }
-              .btn-primary {
-                width: 100%;
-                text-align: left;
-                background-color: #fff;
-                border: 1px solid #ffa500;
-                color: #ffa500;
-                outline: none;
-                font-size: 14px;
-                border-radius: 0 !important;
-                margin-bottom: 10px;
-              }
-              button:hover {
-                color: #ffc04d;
-                background-color: #fff;
-                border-radius: 0 !important;
-                outline: none;
-              }
-              .OuterChartActive {
-                background: #ffa500;
-                color: #fff;
-                border-radius: 0 !important;
-              }
-              .drawTableChart {
-                width: 100%;
-                background: #fff;
-                border: none !important;
-                color: #ffa500;
-                font-size: 14px;
-                text-align: left;
-                outline: none;
-                border-radius: 0 !important;
-              }
-              .ChartActive {
-                font-size: 15px;
-              }
               .form-control {
                 appearance: none;
                 -moz-appearance: none;
@@ -212,6 +198,26 @@ body {
               .form-control::-ms-expand {
                 display: none;
               }
+              div {
+                .drawTableChart {
+                  width: 100%;
+                  background: #fff;
+                  border: none !important;
+                  color: #ffa500;
+                  font-size: 14px;
+                  text-align: left;
+                  outline: none;
+                  border-radius: 0 !important;
+                }
+                .drawTableChart:hover {
+                  color: #ffc04d;
+                }
+                .ChartActive,
+                .ChartActive:hover {
+                  color: #545454;
+                  font-size: 15.5px;
+                }
+              }
             }
           }
           #CompanyInfo {
@@ -221,6 +227,8 @@ body {
             width: 100% !important;
             margin-top: 15px;
           }
+        }
+        div {
           .btn-group {
             .btn {
               background-color: #e9e9e9;
@@ -241,11 +249,15 @@ body {
             }
           }
         }
+        .sidebar {
+          width: 20%;
+          float: left;
+        }
       }
       .table {
         tbody {
           tr {
-            background: #fff !important;
+            background-color: #fff !important;
             border: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
             td {

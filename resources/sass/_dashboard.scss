@@ -1,6 +1,6 @@
 div {
   .panel {
-    background: #e9e9e9;
+    background-color: #e9e9e9;
     margin: 10px auto !important;
     border: none;
     text-align: center;
@@ -8,7 +8,7 @@ div {
     box-shadow: none;
     .panel-heading {
       font-size: 1.2em;
-      background: none !important;
+      background-color: none !important;
       color: #393939 !important;
       border: none;
       padding: 0;
@@ -24,7 +24,7 @@ div {
         font-size: 1.2rem;
       }
       form {
-        background: #e9e9e9;
+        background-color: #e9e9e9;
         width: 70% !important;
         -webkit-box-shadow: none;
         box-shadow: none;
@@ -32,7 +32,7 @@ div {
         .form-group {
           margin-bottom: 0 !important;
           input {
-            background: rgb(232, 240, 254);
+            background-color: rgb(232, 240, 254);
             border: 1px rgba(158, 158, 158, 0.8) solid !important;
             border-radius: 0;
           }
@@ -64,7 +64,7 @@ div {
           }
           a:hover {
             color: #ffc04d;
-            background: none;
+            background-color: none;
             text-decoration: none;
             padding: 5px;
           }
@@ -72,10 +72,10 @@ div {
         .btn {
           padding: 5px 15px;
           border: none;
-          background: #ffa500;
+          background-color: #ffa500;
         }
         .btn:focus {
-          background: #ffc04d;
+          background-color: #ffc04d;
           border: none;
           outline: none;
           padding: 5px 15px;
@@ -84,7 +84,7 @@ div {
         a:hover {
           border: none !important;
           padding: 5px 15px;
-          background: #ffc04d;
+          background-color: #ffc04d;
         }
       }
     }
