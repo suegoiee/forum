@@ -268,15 +268,15 @@ function drawNews(data, IdForCanvas) {
 }
 
 /**報表底部表格 */
-function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable){
+function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
     console.log(seriestData);
     var bottomtable = '<div style="width:18%; position:relative; float:left;"><table class="table table-bordered"><tr><td>&nbsp</td></tr>';
-    for(var i in unitForBottomTable){
+    for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
     }
     bottomtable += '</table></div>';
     bottomtable += '<div style="width:82%; position:relative; float:left; overflow-x:auto;"><table class="table table-bordered" style="width:100%;"><tbody id="infoTable" style="font-size:13px">';
-    for(var i in seriestData){
+    for (var i in seriestData) {
         bottomtable += '<tr>';
         if (i == 0) {
             for (var j in seriestData[i]['data']) {
@@ -284,14 +284,14 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
             }
             bottomtable += '</tr><tr>';
         }
-        for(var j in seriestData[i]['data']){
-            if(seriestData[i]['data'][j][1] != null && seriestData[i]['data'][j][1] != undefined){
+        for (var j in seriestData[i]['data']) {
+            if (seriestData[i]['data'][j][1] != null && seriestData[i]['data'][j][1] != undefined) {
                 var param = seriestData[i]['data'][j][1];
                 param = dataFormat(param);
                 console.log(param);
-                bottomtable += '<td>'+param+'</td>';
+                bottomtable += '<td>' + param + '</td>';
             }
-            else{
+            else {
                 bottomtable += '<td></td>';
 
             }
@@ -299,8 +299,8 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
         bottomtable += '</tr>';
     }
     bottomtable += '</tbody></table></div>';
-    $("#"+IdForCanvas+"bottomtable").empty();
-    $("#"+IdForCanvas+"bottomtable").append(bottomtable);
+    $("#" + IdForCanvas + "bottomtable").empty();
+    $("#" + IdForCanvas + "bottomtable").append(bottomtable);
 }
 
 /**公司基本資料 */
@@ -370,7 +370,7 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
     }
 
     /** */
-    if(BottomTable) {
+    if (BottomTable) {
         BottomTableCanvas = '<div id="' + IdForCanvas + 'bottomtable"></div>'
     }
 
@@ -821,6 +821,11 @@ Highcharts.setOptions({
             fontFamily: 'Microsoft JhengHei'
         }
     },
+    plotOptions: {
+        series: {
+            fillOpacity: 0.06
+        }
+    },
     lang: {
         rangeSelectorZoom: ''
     },
@@ -832,12 +837,13 @@ Highcharts.setOptions({
     },
     exporting: {
         chartOptions: {
+            width: 200,
             chart: {
                 style: {
-                    fontFamily: 'Arial'
+                    fontFamily: 'Arial',
                 }
             }
-        }
+        },
     },
     credits: {
         text: '資料來源: UAnalyze',
