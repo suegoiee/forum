@@ -4,9 +4,18 @@
     .container {
       .navbar-header {
         .navbar-brand {
-          color: #ffa500;
-          font-size: 28px;
-          line-height: 18px;
+          background-image: url(images/logo_light_horizontal.svg);
+          background-repeat: no-repeat;
+          background-size: 85%;
+          width: 200px;
+          background-position: 10% 60%;
+        }
+        .navbar-brand:hover {
+          background-image: url(images/logo_light_hor_2.svg);
+          background-repeat: no-repeat;
+          background-size: 85%;
+          width: 200px;
+          background-position: 10% 60%;
         }
       }
       .navbar-collapse {
