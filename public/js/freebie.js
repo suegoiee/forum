@@ -273,7 +273,7 @@ function drawTableChartBottomTable(IdForCanvas, title, yLabel, seriestData) {
         bottomtable += '<tr>';
         if (i == 0) {
             for (var j in seriestData[i]['data']) {
-                bottomtable += '<td>' + seriestData[i]['data'][j][0] + '</td>';
+                bottomtable += '<th>' + seriestData[i]['data'][j][0] + '</th>';
             }
             bottomtable += '</tr><tr>';
             for (var j in seriestData[i]['data']) {
@@ -348,8 +348,8 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
         RecentTenButton = '<button type="button" class="btn btn-default buttonLastTen" value="' + IdForCanvas + '">近十筆</button>';
         WholeDateButton = '<button type="button" class="btn btn-default buttonEntire" value="' + IdForCanvas + '">全部</button>';
         CostumizeDateButton = '<button type="button" class="btn btn-default buttonCustomize" value="' + IdForCanvas + '">自訂</button>';
-        CostumizeDateStart = '從 :<select class="form-control rangeStartSelect rangeStartSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select>';
-        CostumizeDateEnd = '至 :<select class="form-control rangeEndSelect rangeEndSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select>';
+        CostumizeDateStart = '<select class="form-control rangeStartSelect rangeStartSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select>';
+        CostumizeDateEnd = '<select class="form-control rangeEndSelect rangeEndSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select>';
     }
 
     /**季/年按鈕 */
