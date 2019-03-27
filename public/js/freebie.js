@@ -270,7 +270,7 @@ function drawNews(data, IdForCanvas) {
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
     console.log(seriestData);
-    var bottomtable = '<div style="width:18%; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th>&nbsp</th></tr>';
+    var bottomtable = '<div style="width:18%; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
     for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
     }
