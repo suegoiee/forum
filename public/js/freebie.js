@@ -270,12 +270,12 @@ function drawNews(data, IdForCanvas) {
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable){
     console.log(seriestData);
-    var bottomtable = '<div style="width:18%; position:relative; float:left;"><table class="table table-bordered"><tr><td>&nbsp</td></tr>';
+    var bottomtable = '<div style="width:18%; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th>&nbsp</th></tr>';
     for(var i in unitForBottomTable){
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
     }
-    bottomtable += '</table></div>';
-    bottomtable += '<div style="width:82%; position:relative; float:left; overflow-x:auto;"><table class="table table-bordered" style="width:100%;"><tbody id="infoTable" style="font-size:13px">';
+    bottomtable += '</tbody></table></div>';
+    bottomtable += '<div style="width:82%; position:relative; float:left; overflow-x:auto;"><table class="table table-bordered";><tbody>';
     for(var i in seriestData){
         bottomtable += '<tr>';
         if (i == 0) {
