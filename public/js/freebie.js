@@ -278,7 +278,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
             tmpMaxLength = tmp1 + tmp2;
         }
     }
-    var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th>&nbsp</th></tr>';
+    var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
     for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
     }
