@@ -1,6 +1,6 @@
 div {
   .panel {
-    background-color: #e9e9e9;
+    background-color: #e9e9e9 !important;
     margin: 10px auto !important;
     border: none;
     text-align: center;
@@ -88,5 +88,10 @@ div {
         }
       }
     }
+  }
+  .panel-default > .panel-heading {
+    color: #393939 !important;
+    background-color: #e9e9e9 !important;
+    border-color: none !important;
   }
 }
