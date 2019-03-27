@@ -270,12 +270,20 @@ function drawNews(data, IdForCanvas) {
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
     console.log(seriestData);
-    var bottomtable = '<div style="display:table; position:relative;"><div style="width:auto; display:table-cell; white-space: nowrap;"><table class="table table-bordered"><tbody><tr><th>&nbsp</th></tr>';
+    var tmpMaxLength = 0;
+    for (var i in unitForBottomTable) {
+        var tmp1 = seriestData[i]['name'].toString().length;
+        var tmp2 = unitForBottomTable[i].toString().length;
+        if(tmp1 + tmp2 > tmpMaxLength){
+            tmpMaxLength = tmp1 + tmp2;
+        }
+    }
+    var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th>&nbsp</th></tr>';
     for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
     }
     bottomtable += '</tbody></table></div>';
-    bottomtable += '<div style="display:table-cell; overflow-x:auto; max-width:10vw;"><table class="table table-bordered";><tbody>';
+    bottomtable += '<div class="bottomTableContent" style="overflow-x:auto; position:relative; float:left;"><table class="table table-bordered"><tbody>';
     for (var i in seriestData) {
         bottomtable += '<tr>';
         if (i == 0) {
@@ -301,6 +309,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
     bottomtable += '</tbody></table></div></div>';
     $("#" + IdForCanvas + "bottomtable").empty();
     $("#" + IdForCanvas + "bottomtable").append(bottomtable);
+    $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width()-$(".bottomTableHeader").width()+'px');
 }
 
 /**公司基本資料 */
