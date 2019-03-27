@@ -25,9 +25,9 @@
 
         {!! Form::submit('登入', ['class' => 'btn btn-primary btn-block']) !!}
         
-        <a href="{{ route('login.github') }}" class="btn btn-default btn-block">
+        <!--a href="{{ route('login.github') }}" class="btn btn-default btn-block">
             註冊
-        </a>
+        </a-->
     {!! Form::close() !!}
 @endsection
 
