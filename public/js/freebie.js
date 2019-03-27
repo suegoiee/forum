@@ -271,12 +271,12 @@ function drawNews(data, IdForCanvas) {
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
     console.log(seriestData);
     var bottomtable = '<div style="width:18%; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th>&nbsp</th></tr>';
-    for(var i in unitForBottomTable){
+    for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
     }
     bottomtable += '</tbody></table></div>';
     bottomtable += '<div style="width:82%; position:relative; float:left; overflow-x:auto;"><table class="table table-bordered";><tbody>';
-    for(var i in seriestData){
+    for (var i in seriestData) {
         bottomtable += '<tr>';
         if (i == 0) {
             for (var j in seriestData[i]['data']) {
@@ -359,8 +359,8 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
         RecentTenButton = '<button type="button" class="btn btn-default buttonLastTen ActiveChartControlButton" value="' + IdForCanvas + '">近十筆</button>';
         WholeDateButton = '<button type="button" class="btn btn-default buttonEntire" value="' + IdForCanvas + '">全部</button>';
         CostumizeDateButton = '<button type="button" class="btn btn-default buttonCustomize" value="' + IdForCanvas + '">自訂</button>';
-        CostumizeDateStart = '<select class="form-control rangeStartSelect rangeStartSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select>';
-        CostumizeDateEnd = '<select class="form-control rangeEndSelect rangeEndSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select>';
+        CostumizeDateStart = '<div class="select"><select class=" rangeStartSelect rangeStartSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select></div>';
+        CostumizeDateEnd = '<div class="select"><select class=" rangeEndSelect rangeEndSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select></div>';
     }
 
     /**季/年按鈕 */
@@ -381,7 +381,7 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
     /**總成 */
     //var container = display_table + '<div class="container"><div class="container"><div class="btn-group LeftButtonGroup" role="group" aria-label="..." style="position:relative; float:left;">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="..." style="position:relative; float:right;">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div></div><div class="container"><div id="customizeRange' + IdForCanvas + '" class="collapse" style="width:100%; position:relative; float:right;"><div style="position:relative; width:30%; float: left; margin-left:20%"> ' + CostumizeDateStart + '</div><div style="position:relative; width:30%; float: left; margin-left:20%">' + CostumizeDateEnd + '</div></div></div><div id="' + IdForCanvas + 'container" style="position:relative; float:top;">' + SideTableContainer + ChartContainer + '</div></div>'+BottomTableCanvas;
 
-    var container = '<div class="container">' + display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div> ' + CostumizeDateStart + '</div><div>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div></div>';
+    var container = '<div class="container">' + display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div class="timeS"><label>從 ： </label>' + CostumizeDateStart + '</div><div class="timeE"><label>至 ： </label>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div></div>';
 
     if (ClearCanvas) {
         $("#CanvasBaseMap").empty();
@@ -723,7 +723,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
-                        $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>---請選擇日期---</option>');
+                        $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>-</option>');
                     }
                     else {
                         //var tmp_value = parseInt(startFrom) + parseInt(i) + parseInt(1);
@@ -734,7 +734,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                 else {
                     if (count == 0) {
                         $(".rangeEndSelect" + IdForCanvas).empty();
-                        $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>---請選擇日期---</option>');
+                        $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>-</option>');
                     }
                     else if (count > startFrom) {
                         $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="' + count + '">' + val2[0] + '</option>');
@@ -756,7 +756,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
-                        $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>---請選擇日期---</option>');
+                        $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>-</option>');
                     }
                     else {
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
@@ -766,7 +766,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
                 else {
                     if (count == 0) {
                         $(".rangeEndSelect" + IdForCanvas).empty();
-                        $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>---請選擇日期---</option>');
+                        $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>-</option>');
                     }
                     else if (count >= startFrom) {
                         $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="' + count + '">' + val2[0] + '</option>');

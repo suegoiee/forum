@@ -13,9 +13,9 @@
             printChart: "列印圖表", downloadPNG: "下載PNG圖檔", downloadJPEG: "下載JPEG圖檔", downloadPDF: "下載PDF文檔", downloadSVG: "下載SVG圖像",
             contextButtonTitle: "Chart context menu"
         }); p.navigation || (p.navigation = {}); n(!0, p.navigation, { buttonOptions: { theme: {}, symbolSize: 14, symbolX: 12.5, symbolY: 10.5, align: "right", buttonSpacing: 3, height: 22, verticalAlign: "top", width: 24 } }); n(!0, p.navigation, {
-            menuStyle: { border: "1px solid #999999", background: "#ffffff", padding: "5px 0" }, menuItemStyle: { padding: "0.5em 1em", color: "#333333", background: "none", fontSize: K ? "14px" : "11px", transition: "background 250ms, color 250ms" }, menuItemHoverStyle: {
-                background: "#335cad",
-                color: "#ffffff"
+            menuStyle: { border: "1px solid #545454", background: "#ffffff", padding: "5px 0" }, menuItemStyle: { padding: "0.3em 1em", color: "#393939", background: "none", fontSize: K ? "14.5px" : "12px", transition: "background 250ms, color 250ms" }, menuItemHoverStyle: {
+                background: "#ffffff",
+                color: "#ffa500"
             }, buttonOptions: { symbolFill: "#545454", symbolStroke: "#545454", symbolStrokeWidth: 3, theme: { padding: 5 } }
         }); p.exporting = {
             type: "image/png", url: "https://export.highcharts.com/", printMaxWidth: 780, scale: 2, buttons: { contextButton: { className: "highcharts-contextbutton", menuClassName: "highcharts-contextmenu", symbol: "menu", titleKey: "contextButtonTitle", menuItems: "printChart separator downloadPNG downloadJPEG downloadPDF downloadSVG".split(" ") } }, menuItemDefinitions: {
@@ -51,7 +51,7 @@
                 }
             }, contextMenu: function (b, a, d, c, v, m, k) {
                 var e = this, x = e.options.navigation, l = e.chartWidth, t = e.chartHeight, h = "cache-" + b, g = e[h], C = Math.max(v, m), n; g || (e.exportContextMenu =
-                    e[h] = g = w("div", { className: b }, { width: '20%', position: "absolute", zIndex: 1E3, padding: C + "px", pointerEvents: "auto" }, e.fixedDiv || e.container), n = w("div", { className: "highcharts-menu" }, null, g), e.styledMode || y(n, z({ MozBoxShadow: "3px 3px 10px #888", WebkitBoxShadow: "3px 3px 10px #888", boxShadow: "3px 3px 10px #888" }, x.menuStyle)), g.hideMenu = function () { y(g, { display: "none" }); k && k.setState(0); e.openMenu = !1; f.clearTimeout(g.hideTimer) }, e.exportEvents.push(r(g, "mouseleave", function () { g.hideTimer = setTimeout(g.hideMenu, 500) }), r(g,
+                    e[h] = g = w("div", { className: b }, { width: '25%', position: "absolute", zIndex: 1E3, padding: C + "px", pointerEvents: "auto" }, e.fixedDiv || e.container), n = w("div", { className: "highcharts-menu" }, null, g), e.styledMode || y(n, z({ MozBoxShadow: "3px 3px 10px #888", WebkitBoxShadow: "3px 3px 10px #888", boxShadow: "3px 3px 10px #888" }, x.menuStyle)), g.hideMenu = function () { y(g, { display: "none" }); k && k.setState(0); e.openMenu = !1; f.clearTimeout(g.hideTimer) }, e.exportEvents.push(r(g, "mouseleave", function () { g.hideTimer = setTimeout(g.hideMenu, 500) }), r(g,
                         "mouseenter", function () { f.clearTimeout(g.hideTimer) }), r(q, "mouseup", function (a) { e.pointer.inClass(a.target, b) || g.hideMenu() }), r(g, "click", function () { e.openMenu && g.hideMenu() })), a.forEach(function (a) {
                             "string" === typeof a && (a = e.options.exporting.menuItemDefinitions[a]); if (f.isObject(a, !0)) {
                                 var b; a.separator ? b = w("hr", null, null, n) : (b = w("div", { className: "highcharts-menu-item", onclick: function (b) { b && b.stopPropagation(); g.hideMenu(); a.onclick && a.onclick.apply(e, arguments) }, innerHTML: a.text || e.options.lang[a.textKey] },
