@@ -292,7 +292,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
                 bottomtable += '<td>' + param + '</td>';
             }
             else {
-                bottomtable += '<td></td>';
+                bottomtable += '<td>&nbsp</td>';
 
             }
         }
