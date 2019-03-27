@@ -534,6 +534,8 @@ class reCal extends judgeValue {
             this.clearHTMLAll(msgAll);
             this.del(inputTdA, 0);
             this.del(inputTdB, 0);
+            document.getElementById('form').style.cssFloat = "none";
+            form.style.display = "none";
         }
     }
 }

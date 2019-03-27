@@ -44,9 +44,9 @@ class togeStock extends judgeValue {
             if (super.valueCheck() == true) {
 
                 if (inputTdA.length != 0) {
-                    this.del(inputTdA, 1);
-                    this.del(inputTdB, 1);
-                    this.del(inputTdC, 1);
+                    this.del(inputTdA, 0);
+                    this.del(inputTdB, 0);
+                    this.del(inputTdC, 0);
                     this.del(printAll, 0);
                 }
 
@@ -56,6 +56,10 @@ class togeStock extends judgeValue {
                     sumAll += valueAll;
                 }
 
+                this.addTd("label", "labell", "labell", "每個人的股份：", inputTdA);
+                this.addTd("label", "labell", "labell", "每個人的獲利：", inputTdB);
+                this.addTd("label", "labell", "labell", "每個人可得到：", inputTdC);
+
                 moneyAll.forEach((item, i) => {
 
                     let reg = /(?=(\B\d{3})+$)/g;
@@ -64,9 +68,12 @@ class togeStock extends judgeValue {
                     let averGet = (parseFloat(numberAll[2].value) - parseFloat(numberAll[1].value)) * (averAll / 100);
                     let moneyGet = (averAll / 100) * parseFloat(numberAll[2].value);
 
-                    this.addTd("tr", "aver", "aver", nameAll[i].value + "  :  " + averAll.toFixed(2) + "%", inputTdA);
-                    this.addTd("tr", "get", "get", nameAll[i].value + "  :  " + "$" + averGet.toFixed(0).replace(reg, ",") + "元", inputTdB);
-                    this.addTd("tr", "Mon", "Mon", nameAll[i].value + "  :  " + "$" + moneyGet.toFixed(0).replace(reg, ",") + "元", inputTdC);
+                    this.addTd("tr", "trr", "trr", "", inputTdA);
+                    this.addTd("td", "aver", "aver", nameAll[i].value + "  :  " + averAll.toFixed(2) + "%", inputTdA);
+                    this.addTd("tr", "trr", "trr", "", inputTdB);
+                    this.addTd("td", "get", "get", nameAll[i].value + "  :  " + "$" + averGet.toFixed(0).replace(reg, ",") + "元", inputTdB);
+                    this.addTd("tr", "trr", "trr", "", inputTdC);
+                    this.addTd("td", "Mon", "Mon", nameAll[i].value + "  :  " + "$" + moneyGet.toFixed(0).replace(reg, ",") + "元", inputTdC);
 
                 });
 
@@ -86,9 +93,9 @@ class togeStock extends judgeValue {
 
             // 刪除新增的子節點
             this.del(question, 1);
-            this.del(inputTdA, 1);
-            this.del(inputTdB, 1);
-            this.del(inputTdC, 1);
+            this.del(inputTdA, 0);
+            this.del(inputTdB, 0);
+            this.del(inputTdC, 0);
             this.del(printAll, 0);
         }
     }

@@ -178,6 +178,7 @@ function stockPool(stock_url) {
             if (e.which == 13) {
                 var stockCode = $("#searchBar").attr('name');
                 var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
+                $("#searchBar").val('');
                 SetCookie("stockCode", stockCode);
                 dataFactory(tmp_url + stockCode, true);
             }
@@ -210,10 +211,35 @@ function drawTable(data, IdForCanvas) {
         }
         TableData.push(tmp);
     }
-    //console.log(TableData, TableTitle);
+    console.log(TableData, TableTitle);
     $('#example').DataTable({
         data: TableData,
-        columns: TableTitle
+        columns: TableTitle,
+        "order": [[ 0, "desc" ]],
+        "pagingType": "full_numbers",
+        "oLanguage": {
+            "sInfoThousands": ",",
+            "sLengthMenu": 
+                '顯示 '+
+                '<select class="form-control input-sm">'+
+                '<option value="10">10</option>'+
+                '<option value="20">20</option>'+
+                '<option value="30">30</option>'+
+                '<option value="40">40</option>'+
+                '<option value="50">50</option>'+
+                '<option value="-1">All</option>'+
+                '</select>'+
+                ' 筆',
+            "sSearch":
+                '搜尋',
+            "oPaginate": {
+                "sPrevious": "上一頁",
+                "sFirst": "第一頁",
+                "sNext": "下一頁",
+                "sLast": "最末頁"
+            },
+            "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
+        }
     });
 }
 
@@ -223,7 +249,8 @@ function drawNews(data, IdForCanvas) {
     $("#" + IdForCanvas).append('<h3>個股新聞</h3><ul id="lists" class="list-group"></ul><ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>');
     var news = [];
     for (var i in data) {
-        news.push('<li class="list-group-item"><a class="news-title" href="' + data[i]['link'] + '" data-category="' + data[i]['category'] + '">' + data[i]['title'] + '</a>&nbsp&nbsp&nbsp<small class="margin-left-10 text-colour-white">' + data[i]['date'] + '</small></li>');
+        data[i]['date'] = data[i]['date'].substring(0, data[i]['date'].lastIndexOf(" "));
+        news.push('<li class="list-group-item"><small class="margin-left-10 text-colour-white">' + data[i]['date'] + '</small>&nbsp&nbsp&nbsp<a class="news-title" href="' + data[i]['link'] + '" data-category="' + data[i]['category'] + '" target="_blank">' + data[i]['title'] + '</a></li>');
     }
     $('#pagination-demo').twbsPagination({
         totalPages: Math.ceil(i / 10),
