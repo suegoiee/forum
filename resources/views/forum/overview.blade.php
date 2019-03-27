@@ -1,5 +1,5 @@
 @php($subTitle = isset($activeTag) ? $activeTag->name() : null)
-@title('Forum' . (isset($subTitle) ? ' > ' . $subTitle : ''))
+@title('討論區' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
 @extends('layouts.default')
 
@@ -14,7 +14,7 @@
                 </div>
             {{ Form::close() }}
 
-            <a class="btn btn-block" href="{{ route('threads.create') }}">搜尋</a>
+            <a class="btn btn-block" href="{{ route('threads.create') }}">建立</a>
 
             @include('layouts._ads._forum_sidebar')
 

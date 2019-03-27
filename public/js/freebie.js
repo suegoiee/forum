@@ -270,12 +270,12 @@ function drawNews(data, IdForCanvas) {
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
     console.log(seriestData);
-    var bottomtable = '<div style="width:18%; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
+    var bottomtable = '<div style="display:table; position:relative;"><div style="width:auto; display:table-cell; white-space: nowrap;"><table class="table table-bordered"><tbody><tr><th>&nbsp</th></tr>';
     for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
     }
     bottomtable += '</tbody></table></div>';
-    bottomtable += '<div style="width:82%; position:relative; float:left; overflow-x:auto;"><table class="table table-bordered";><tbody>';
+    bottomtable += '<div style="display:table-cell; overflow-x:auto; max-width:10vw;"><table class="table table-bordered";><tbody>';
     for (var i in seriestData) {
         bottomtable += '<tr>';
         if (i == 0) {
@@ -292,13 +292,13 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
                 bottomtable += '<td>' + param + '</td>';
             }
             else {
-                bottomtable += '<td></td>';
+                bottomtable += '<td>&nbsp</td>';
 
             }
         }
         bottomtable += '</tr>';
     }
-    bottomtable += '</tbody></table></div>';
+    bottomtable += '</tbody></table></div></div>';
     $("#" + IdForCanvas + "bottomtable").empty();
     $("#" + IdForCanvas + "bottomtable").append(bottomtable);
 }
