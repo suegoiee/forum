@@ -24,7 +24,7 @@
                     </div>
                 </div>
 
-                <p style="text-align:center"><a href="{{ route('admin') }}"><i class="fa fa-arrow-left"></i> Back</a></p>
+                <p style="text-align:center"><a href="{{ route('admin') }}"><i class="fas fa-long-arrow-alt-left"></i></a></p>
             </div>
             <div class="col-lg-9">
                 @include('layouts._alerts')

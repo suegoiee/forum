@@ -89,6 +89,7 @@ h1 {
             color: #fff;
           }
           .media-heading {
+            text-align: left;
             color: #393939;
             font-size: 20px;
           }
@@ -96,6 +97,8 @@ h1 {
             color: #545454;
             font-size: 14.5px;
             font-weight: 300;
+            text-align: left;
+            padding-left: 15px;
           }
         }
         a:hover {
@@ -103,10 +106,12 @@ h1 {
           .media-heading:hover {
             color: #393939;
             font-size: 20px;
+            text-align: left;
           }
           .media-heading:hover,
           p:hover {
             text-decoration: none;
+            text-align: left;
           }
           p:hover {
             color: #545454;

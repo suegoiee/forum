@@ -4,7 +4,6 @@
 
 @section('content')
     <h1>{{ $title }}</h1>
-    <hr>
 
     <div class="alert alert-info">
         <p>
