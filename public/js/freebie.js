@@ -174,7 +174,6 @@ function stockPool(stock_url) {
             if (e.which == 13) {
                 var stockCode = $("#searchBar").attr('name');
                 var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
-                $("#searchBar").val('');
                 if(stockCode != $(this).val()){
                     SetCookie("stockCode", $(this).val());
                     dataFactory(tmp_url + $(this).val(), true);
