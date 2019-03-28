@@ -15,7 +15,7 @@
             {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
             @error('password')<a style="display: inline-block;" href="{{ route('password.forgot') }}">忘記密碼?</a>
         @endFormGroup
-            
+
 
         <div class="form-group">
             <label class="loginMg">
@@ -23,8 +23,10 @@
             </label>
         </div>
 
-        {!! Form::submit('登入', ['class' => 'btn btn-primary btn-block']) !!}
-        
+        {!! Form::submit('Login', ['class' => 'btn btn-primary btn-block']) !!}
+        <!--a href="{{ route('login.github') }}" class="btn btn-default btn-block">
+            <i class="fa fa-github"></i> Github
+        </a-->
     {!! Form::close() !!}
 @endsection
 
