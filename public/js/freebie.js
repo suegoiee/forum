@@ -268,14 +268,6 @@ function drawNews(data, IdForCanvas) {
 
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
-    var tmpMaxLength = 0;
-    for (var i in unitForBottomTable) {
-        var tmp1 = seriestData[i]['name'].toString().length;
-        var tmp2 = unitForBottomTable[i].toString().length;
-        if(tmp1 + tmp2 > tmpMaxLength){
-            tmpMaxLength = tmp1 + tmp2;
-        }
-    }
     var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
     for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
