@@ -12,10 +12,6 @@
         }
         .navbar-brand:hover {
           background-image: url(images/logo_light_hor_2.svg);
-          background-repeat: no-repeat;
-          background-size: 85%;
-          width: 200px;
-          background-position: 10% 60%;
         }
       }
       .navbar-collapse {
@@ -126,7 +122,8 @@
       border: none !important;
     }
     .navbar-brand {
-      padding-left: 6%;
+      background-size: 75%;
+      margin-left: 5%;
     }
   }
   .nav-font,
@@ -164,6 +161,20 @@
                     }
                   }
                 }
+              }
+              .down,
+              .down:hover {
+                background-size: 3% !important;
+                background-position: 95% 52% !important;
+                margin-left: 0 !important;
+              }
+              .logo {
+                margin-left: 10%;
+                width: 100px;
+              }
+              .logo:hover {
+                margin-left: 10%;
+                width: 100px;
               }
             }
           }

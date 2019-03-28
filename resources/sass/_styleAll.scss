@@ -246,7 +246,7 @@ form {
         margin-left: 5% !important;
       }
       #money {
-        margin-left: 38%;
+        margin-left: 35%;
       }
     }
     ol {
@@ -257,6 +257,12 @@ form {
     }
     .rate {
       font-size: 15px;
+    }
+    p {
+      .cal,
+      #add {
+        margin-left: 35% !important;
+      }
     }
   }
 }
