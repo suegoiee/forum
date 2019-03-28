@@ -13,7 +13,7 @@
         @formGroup('password')
             {!! Form::label('') !!}
             {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
-            @error('password')<a href="{{ route('password.forgot') }}">忘記密碼?</a>
+            @error('password')<a style="display: inline-block;" href="{{ route('password.forgot') }}">忘記密碼?</a>
         @endFormGroup
             
 
