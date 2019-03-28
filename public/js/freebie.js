@@ -159,7 +159,6 @@ function stockPool(stock_url) {
                 response(results.slice(0, 3));
                 if (results.slice(0, 1)[0]) {
                     var stockCode = results.slice(0, 1)[0];
-                    //console.log(results, stockCode);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
             },
@@ -269,13 +268,20 @@ function drawNews(data, IdForCanvas) {
 
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
-    console.log(seriestData);
-    var bottomtable = '<div style="display:table; position:relative;"><div style="width:auto; display:table-cell; white-space: nowrap;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
+    var tmpMaxLength = 0;
+    for (var i in unitForBottomTable) {
+        var tmp1 = seriestData[i]['name'].toString().length;
+        var tmp2 = unitForBottomTable[i].toString().length;
+        if(tmp1 + tmp2 > tmpMaxLength){
+            tmpMaxLength = tmp1 + tmp2;
+        }
+    }
+    var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
     for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
     }
     bottomtable += '</tbody></table></div>';
-    bottomtable += '<div style="display:table-cell; overflow-x:auto; max-width:10vw;"><table class="table table-bordered";><tbody>';
+    bottomtable += '<div class="bottomTableContent" style="overflow-x:auto; position:relative; float:left;"><table class="table table-bordered"><tbody>';
     for (var i in seriestData) {
         bottomtable += '<tr>';
         if (i == 0) {
@@ -288,7 +294,6 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
             if (seriestData[i]['data'][j][1] != null && seriestData[i]['data'][j][1] != undefined) {
                 var param = seriestData[i]['data'][j][1];
                 param = dataFormat(param);
-                console.log(param);
                 bottomtable += '<td>' + param + '</td>';
             }
             else {
@@ -301,6 +306,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
     bottomtable += '</tbody></table></div></div>';
     $("#" + IdForCanvas + "bottomtable").empty();
     $("#" + IdForCanvas + "bottomtable").append(bottomtable);
+    $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width()-$(".bottomTableHeader").width()+'px');
 }
 
 /**公司基本資料 */
@@ -712,21 +718,18 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
 function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
     var count = 0;
     if ($(".ChartActive").val()) {
-        ////console.log('chart table');
         var key1 = $(".ChartActive").val();
         var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
         $.each(chart_data[IdForCanvas][key2][key1], function (key, val) {
             $.each(val[dataType], function (key2, val2) {
                 if (!refreshEnd) {
                     if (count == 0) {
-                        ////console.log('chart table empty', count);
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
                         $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="-1" selected="selected" disabled>-</option>');
                     }
                     else {
-                        //var tmp_value = parseInt(startFrom) + parseInt(i) + parseInt(1);
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
                         $(".rangeEndSelect" + IdForCanvas).append('<option class="rangeEndOption" value="' + count + '">' + val2[0] + '</option>');
                     }
@@ -744,15 +747,12 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
             });
             return false;
         });
-        ////console.log('chart table end', count);
     }
     else {
-        ////console.log('chart');
         $.each(chart_data[IdForCanvas], function (key, val) {
             $.each(val[dataType], function (key2, val2) {
                 if (!refreshEnd) {
                     if (count == 0) {
-                        ////console.log('chart empty', count);
                         $(".rangeStartSelect" + IdForCanvas).empty();
                         $(".rangeEndSelect" + IdForCanvas).empty();
                         $(".rangeStartSelect" + IdForCanvas).append('<option class="rangeStartOption" value="' + count + '">' + val2[0] + '</option>');
@@ -776,7 +776,6 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
             });
             return false;
         });
-        ////console.log('chart end', count);
     }
 }
 
