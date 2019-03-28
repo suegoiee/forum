@@ -7,39 +7,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}">U分析</a>
+            <a class="navbar-brand" href="{{ route('home') }}"></a>
         </div>
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="https://pro.uanalyze.com.tw" class="nav-font" target="_blank"><img src="/images/uanalyzeLogo.jpg" width="25px">優分析</a></li>
-                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li>
-                <!--li><a href="https://paste.laravel.io">Pastebin</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chat <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://discord.gg/KxwQuKb">Discord</a></li>
-                        <li><a href="https://larachat.co/">Larachat</a></li>
-                        <li><a href="https://webchat.freenode.net/?nick=laravelnewbie&channels=%23laravel&prompt=1">IRC</a></li>
-                    </ul>
-                </li>
-                <li><a href="https://laravelevents.com">Events</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Community <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="https://github.com/laravelio"><i class="fa fa-github"></i> Github</a></li>
-                        <li><a href="https://twitter.com/laravelio"><i class="fa fa-twitter"></i> Twitter</a></li>
-                        <li><a href="https://medium.com/laravelio"><i class="fa fa-medium"></i> Medium</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="https://laravel.com">Laravel</a></li>
-                        <li><a href="https://laracasts.com">Laracasts</a></li>
-                        <li><a href="https://laravel-news.com">Laravel News</a></li>
-                        <li><a href="http://www.laravelpodcast.com">Podcast</a></li>
-                    </ul>
-                </li-->                
+                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="nav-font " href="{{ route('forum') }}">討論區</a></li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊<i class="fas fa-sort-down"></i></a>
+                    <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div style="display:inline-block; padding-right:5px;">股票資訊</div><span id="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
@@ -97,7 +73,7 @@
 
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小工具<i class="fas fa-sort-down"></i></a>
+                    <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div style="display:inline-block; padding-right:5px;">小工具</div><span id="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('Tools.bargain') }}">買賣股票損益</a></li>
                         <li><a href="{{ route('Tools.buffett') }}">巴菲特預估股價</a></li>
@@ -118,6 +94,7 @@
                         <li><a href="{{ route('Tools.DepositInGroup') }}">揪團買股</a></li>
                     </ul>
                 </li>
+                <li><a href="https://pro.uanalyze.com.tw" class="nav-font" target="_blank">優分析Pro</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
@@ -154,3 +131,5 @@
         </div>
     </div>
 </nav>
+
+

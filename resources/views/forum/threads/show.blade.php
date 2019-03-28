@@ -46,7 +46,6 @@
         </div>
         <div class="col-lg-9">
             <h1>{{ $title }}</h1>
-            <hr>
 
             <div class="panel panel-default">
                 <div class="panel-heading thread-info">

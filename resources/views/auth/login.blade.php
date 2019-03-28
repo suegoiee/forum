@@ -13,15 +13,14 @@
         @formGroup('password')
             {!! Form::label('') !!}
             {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
-            @error('password')
+            @error('password')<a style="display: inline-block;" href="{{ route('password.forgot') }}">忘記密碼?</a>
         @endFormGroup
 
+
         <div class="form-group">
-            <label>
+            <label class="loginMg">
                 {!! Form::checkbox('remember') !!} 保持登入
             </label>
-            <br/>
-            <a href="{{ route('password.forgot') }}">忘記密碼?</a>
         </div>
 
         {!! Form::submit('Login', ['class' => 'btn btn-primary btn-block']) !!}
