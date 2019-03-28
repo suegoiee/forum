@@ -174,9 +174,16 @@ function stockPool(stock_url) {
             if (e.which == 13) {
                 var stockCode = $("#searchBar").attr('name');
                 var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
+                console.log($(this).val());
+                if(stockCode != $(this).val()){
+                    SetCookie("stockCode", $(this).val());
+                    dataFactory(tmp_url + $(this).val(), true);
+                }
+                else{
+                    SetCookie("stockCode", stockCode);
+                    dataFactory(tmp_url + stockCode, true);
+                }
                 $("#searchBar").val('');
-                SetCookie("stockCode", stockCode);
-                dataFactory(tmp_url + stockCode, true);
             }
         });
     });
@@ -268,37 +275,61 @@ function drawNews(data, IdForCanvas) {
 
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
-    var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
-    for (var i in unitForBottomTable) {
-        bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
-    }
-    bottomtable += '</tbody></table></div>';
-    bottomtable += '<div class="bottomTableContent" style="overflow-x:auto; position:relative; float:left;"><table class="table table-bordered"><tbody>';
-    for (var i in seriestData) {
-        bottomtable += '<tr>';
-        if (i == 0) {
+    var screenWidth = $(window).width();
+    if(screenWidth <= 480){
+        var bottomtable = '';
+        for (var i in seriestData) {
+            bottomtable += '<div><a data-toggle="collapse" data-target="#bottom'+i+'">'+ seriestData[i]['name'] + unitForBottomTable[i] +'</a>';
+            bottomtable += '<div id="bottom'+i+'" class="collapse"><table class="table table-bordered"><tbody>';
             for (var j in seriestData[i]['data']) {
-                bottomtable += '<th>' + seriestData[i]['data'][j][0] + '</th>';
+                if (seriestData[i]['data'][j][1] != null && seriestData[i]['data'][j][1] != undefined) {
+                    var param = seriestData[i]['data'][j][1];
+                    param = dataFormat(param);
+                    bottomtable += '<tr><td>' + seriestData[i]['data'][j][0] + '</td><td>' + param + '</td></tr>';
+                }
+                else {
+                    bottomtable += '<tr><td>' + seriestData[i]['data'][j][0] + '</td><td>&nbsp</td></tr>';
+                }
             }
-            bottomtable += '</tr><tr>';
+            bottomtable += '</tbody></table></div>';
+            bottomtable += '</div>';
         }
-        for (var j in seriestData[i]['data']) {
-            if (seriestData[i]['data'][j][1] != null && seriestData[i]['data'][j][1] != undefined) {
-                var param = seriestData[i]['data'][j][1];
-                param = dataFormat(param);
-                bottomtable += '<td>' + param + '</td>';
-            }
-            else {
-                bottomtable += '<td>&nbsp</td>';
-
-            }
-        }
-        bottomtable += '</tr>';
+        $("#" + IdForCanvas + "bottomtable").empty();
+        $("#" + IdForCanvas + "bottomtable").append(bottomtable);
     }
-    bottomtable += '</tbody></table></div></div>';
-    $("#" + IdForCanvas + "bottomtable").empty();
-    $("#" + IdForCanvas + "bottomtable").append(bottomtable);
-    $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width()-$(".bottomTableHeader").width()+'px');
+    else{
+        var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
+        for (var i in unitForBottomTable) {
+            bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
+        }
+        bottomtable += '</tbody></table></div>';
+        bottomtable += '<div class="bottomTableContent" style="overflow-x:auto; position:relative; float:left;"><table class="table table-bordered"><tbody>';
+        for (var i in seriestData) {
+            bottomtable += '<tr>';
+            if (i == 0) {
+                for (var j in seriestData[i]['data']) {
+                    bottomtable += '<th>' + seriestData[i]['data'][j][0] + '</th>';
+                }
+                bottomtable += '</tr><tr>';
+            }
+            for (var j in seriestData[i]['data']) {
+                if (seriestData[i]['data'][j][1] != null && seriestData[i]['data'][j][1] != undefined) {
+                    var param = seriestData[i]['data'][j][1];
+                    param = dataFormat(param);
+                    bottomtable += '<td>' + param + '</td>';
+                }
+                else {
+                    bottomtable += '<td>&nbsp</td>';
+
+                }
+            }
+            bottomtable += '</tr>';
+        }
+        bottomtable += '</tbody></table></div></div>';
+        $("#" + IdForCanvas + "bottomtable").empty();
+        $("#" + IdForCanvas + "bottomtable").append(bottomtable);
+        $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width()-$(".bottomTableHeader").width()+'px');
+    }
 }
 
 /**公司基本資料 */
@@ -377,8 +408,6 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
     var SideTableContainer = '<div class="sidebar" id="' + IdForCanvas + 'table"></div>';
 
     /**總成 */
-    //var container = display_table + '<div class="container"><div class="container"><div class="btn-group LeftButtonGroup" role="group" aria-label="..." style="position:relative; float:left;">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" role="group" aria-label="..." style="position:relative; float:right;">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div></div><div class="container"><div id="customizeRange' + IdForCanvas + '" class="collapse" style="width:100%; position:relative; float:right;"><div style="position:relative; width:30%; float: left; margin-left:20%"> ' + CostumizeDateStart + '</div><div style="position:relative; width:30%; float: left; margin-left:20%">' + CostumizeDateEnd + '</div></div></div><div id="' + IdForCanvas + 'container" style="position:relative; float:top;">' + SideTableContainer + ChartContainer + '</div></div>'+BottomTableCanvas;
-
     var container = '<div class="container">' + display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + PeriodButton + YearButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div class="timeS"><label>從 ： </label>' + CostumizeDateStart + '</div><div class="timeE"><label>至 ： </label>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div></div>';
 
     if (ClearCanvas) {
