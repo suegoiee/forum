@@ -13,7 +13,7 @@
     <div class="container" id="CanvasBaseMap"></div>
     <script>
         window.onload=function () {
-            if(!getCookie("stockCode")){
+            if(!getCookie("stockCode") || getCookie("stockCode") == 'undefined'){
                 var stockCode = '1101';
             }
             else{
