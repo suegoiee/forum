@@ -2,13 +2,14 @@
   .navber-bd {
     background-color: #545454;
     .container {
+      width: 82%;
       .navbar-header {
         .navbar-brand {
           background-image: url(images/logo_light_horizontal.svg);
           background-repeat: no-repeat;
-          background-size: 85%;
-          width: 200px;
-          background-position: 10% 60%;
+          background-size: 80%;
+          width: 162px;
+          background-position: 40% 60%;
         }
         .navbar-brand:hover {
           background-image: url(images/logo_light_hor_2.svg);
@@ -22,49 +23,25 @@
             }
           }
           li {
-            .logo {
-              background-image: url(images/logo_light.svg);
-              width: 90px;
-              background-position: 0% 52%;
-              background-size: 25%;
-              padding-left: 25%;
-              background-repeat: no-repeat;
-              margin-left: 15%;
-            }
-            .logo:hover {
-              background-image: url(images/logo_hover.svg);
-              width: 90px;
-              background-position: 0% 52%;
-              background-size: 25%;
-              padding-left: 25%;
-              background-repeat: no-repeat;
-            }
             .nav-font {
               color: #fff;
-              font-size: 17px;
+              font-size: 15px;
               line-height: 30px;
             }
             .nav-font:hover {
               color: #ffa500;
             }
-            .down {
-              background-image: url(images/caret-down-solid.svg);
-              background-repeat: no-repeat;
-              background-size: 15%;
-              width: 100%;
-              background-position: 100% 52%;
-              margin-left: -10%;
-            }
-            .down:hover {
-              background-image: url(images/caret-down-hover.svg);
-              background-repeat: no-repeat;
-              background-size: 15%;
-              width: 100%;
-              background-position: 100% 52%;
+            #triangle-down {
+              width: 10px;
+              height: 0;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-top: 10px solid currentColor;
+              display: inline-block;
             }
             .login {
               color: #fff;
-              font-size: 16px;
+              font-size: 15px;
               line-height: 30px;
               background-color: #545454 !important;
             }

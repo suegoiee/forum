@@ -12,10 +12,10 @@
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="chat nav-font" href="{{ route('forum') }}">討論區</a></li>
+                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="nav-font " href="{{ route('forum') }}">討論區</a></li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">股票資訊</a>
+                    <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div style="display:inline-block; padding-right:5px;">股票資訊</div><span id="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
@@ -73,7 +73,7 @@
 
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">小工具</a>
+                    <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div style="display:inline-block; padding-right:5px;">小工具</div><span id="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('Tools.bargain') }}">買賣股票損益</a></li>
                         <li><a href="{{ route('Tools.buffett') }}">巴菲特預估股價</a></li>
@@ -94,7 +94,7 @@
                         <li><a href="{{ route('Tools.DepositInGroup') }}">揪團買股</a></li>
                     </ul>
                 </li>
-                <li><a href="https://pro.uanalyze.com.tw" class="nav-font logo" target="_blank">優分析</a></li>
+                <li><a href="https://pro.uanalyze.com.tw" class="nav-font" target="_blank">優分析Pro</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
