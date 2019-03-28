@@ -1,11 +1,10 @@
 @php($subTitle = isset($activeTag) ? $activeTag->name() : null)
-@title('Forum' . (isset($subTitle) ? ' > ' . $subTitle : ''))
+@title('討論區' . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
 @extends('layouts.default')
 
 @section('content')
     <h1>{{ $title }}</h1>
-    <hr>
 
     <div class="row forum">
         <div class="col-lg-3">
@@ -15,7 +14,7 @@
                 </div>
             {{ Form::close() }}
 
-            <a class="btn btn-success btn-block" href="{{ route('threads.create') }}">Create Thread</a>
+            <a class="btn btn-block" href="{{ route('threads.create') }}">建立</a>
 
             @include('layouts._ads._forum_sidebar')
 
@@ -31,12 +30,12 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-lg-9">
+        <div class="col-lg-9 chat-bg">
             @include('layouts._ads._bsa-cpc')
 
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    <div class="panel panel-default">
+                    <div class="panel panel-default chat-bd">
                         <div class="panel-heading thread-info">
                             @if (count($thread->replies()))
                                 @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
@@ -58,7 +57,7 @@
                             @include('forum.threads.info.tags')
                         </div>
 
-                        <div class="panel-body">
+                        <div class="panel-body chat-bg">
                             <a href="{{ route('thread', $thread->slug()) }}">
                                 <span class="badge pull-right">{{ count($thread->replies()) }}</span>
                                 <h4 class="media-heading">{{ $thread->subject() }}</h4>

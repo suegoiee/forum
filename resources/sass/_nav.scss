@@ -2,11 +2,17 @@
   .navber-bd {
     background-color: #545454;
     .container {
+      width: 82%;
       .navbar-header {
         .navbar-brand {
-          color: #ffa500;
-          font-size: 28px;
-          line-height: 18px;
+          background-image: url(images/logo_light_horizontal.svg);
+          background-repeat: no-repeat;
+          background-size: 80%;
+          width: 162px;
+          background-position: 40% 60%;
+        }
+        .navbar-brand:hover {
+          background-image: url(images/logo_light_hor_2.svg);
         }
       }
       .navbar-collapse {
@@ -19,20 +25,31 @@
           li {
             .nav-font {
               color: #fff;
-              font-size: 17px;
+              font-size: 15px;
               line-height: 30px;
             }
             .nav-font:hover {
               color: #ffa500;
             }
+            #triangle-down {
+              width: 10px;
+              height: 0;
+              border-left: 5px solid transparent;
+              border-right: 5px solid transparent;
+              border-top: 10px solid currentColor;
+              display: inline-block;
+            }
             .login {
               color: #fff;
-              font-size: 16px;
+              font-size: 15px;
               line-height: 30px;
+              background-color: #545454 !important;
             }
             .login:hover {
               color: #ffa500;
+              background-color: #545454 !important;
             }
+
             .dropdown-menu {
               border: 1px solid rgba(255, 165, 0, 0.5);
               a {
@@ -43,6 +60,19 @@
                 background-color: #ffa500 !important;
                 color: #fff !important;
               }
+              .dropdownlist {
+                a {
+                  i {
+                    float: right;
+                    padding-top: 4px;
+                  }
+                }
+              }
+            }
+          }
+          .active {
+            a {
+              background-color: #545454;
             }
           }
         }
@@ -69,7 +99,8 @@
       border: none !important;
     }
     .navbar-brand {
-      padding-left: 6%;
+      background-size: 75%;
+      margin-left: 5%;
     }
   }
   .nav-font,
@@ -107,6 +138,20 @@
                     }
                   }
                 }
+              }
+              .down,
+              .down:hover {
+                background-size: 3% !important;
+                background-position: 95% 52% !important;
+                margin-left: 0 !important;
+              }
+              .logo {
+                margin-left: 10%;
+                width: 100px;
+              }
+              .logo:hover {
+                margin-left: 10%;
+                width: 100px;
               }
             }
           }
