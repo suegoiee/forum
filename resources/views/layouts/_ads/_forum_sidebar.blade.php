@@ -1,6 +1,5 @@
 @if ($adSenseClient = config('services.google.ad_sense.client'))
     <div style="margin-top:25px">
-        <hr>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="{{ $adSenseClient }}"

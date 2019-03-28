@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
 
-
     <script>
         window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};
     </script>
@@ -44,6 +43,7 @@
     <script src="/js/export-data.js"></script>
     <script src="https://code.highcharts.com/highcharts-more.js"></script>
     <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="/images/iconelegant/styles.css">
     <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <!--link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css"/-->
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">

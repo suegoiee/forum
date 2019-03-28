@@ -7,8 +7,6 @@
         <div class="col-lg-3">
             @include('users._user_info', ['user' => $thread->author(), 'avatarSize' => 100])
 
-            <hr>
-
             @can(App\Policies\ThreadPolicy::UPDATE, $thread)
                 <a class="btn btn-default btn-block" href="{{ route('threads.edit', $thread->slug()) }}">
                     Edit
@@ -38,8 +36,8 @@
                 ])
             @endcan
 
-            <a class="btn btn-link btn-block" href="{{ route('forum') }}">
-                <i class="fa fa-arrow-left"></i> Back
+            <a class="btn btn-link btn-block" id="build" href="{{ route('forum') }}">
+            <i class="fas fa-long-arrow-alt-left"></i>
             </a>
 
             @include('layouts._ads._forum_sidebar')
@@ -139,12 +137,12 @@
 
             @can(App\Policies\ReplyPolicy::CREATE, App\Models\Reply::class)
                 @if ($thread->isConversationOld())
-                    <hr>
+                 
                     <p class="text-center">
                         The last reply to this thread was more than six months ago. Please consider <a href="{{ route('threads.create') }}">opening a new thread</a> if you have a similar question.
                     </p>
                 @else
-                    <hr>
+                   
 
                     <div class="alert alert-info">
                         <p>
@@ -166,9 +164,9 @@
             @endcan
 
             @if (Auth::guest())
-                <hr>
+               
                 <p class="text-center">
-                    <a href="{{ route('login') }}">Sign in</a> to participate in this thread!
+                    <a href="{{ route('login') }}">登入</a> 加入討論吧!
                 </p>
             @endif
         </div>

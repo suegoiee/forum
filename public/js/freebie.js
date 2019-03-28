@@ -272,7 +272,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
     for (var i in unitForBottomTable) {
         var tmp1 = seriestData[i]['name'].toString().length;
         var tmp2 = unitForBottomTable[i].toString().length;
-        if(tmp1 + tmp2 > tmpMaxLength){
+        if (tmp1 + tmp2 > tmpMaxLength) {
             tmpMaxLength = tmp1 + tmp2;
         }
     }
@@ -306,7 +306,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
     bottomtable += '</tbody></table></div></div>';
     $("#" + IdForCanvas + "bottomtable").empty();
     $("#" + IdForCanvas + "bottomtable").append(bottomtable);
-    $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width()-$(".bottomTableHeader").width()+'px');
+    $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width() - $(".bottomTableHeader").width() + 'px');
 }
 
 /**公司基本資料 */
