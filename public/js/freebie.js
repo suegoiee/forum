@@ -243,7 +243,7 @@ function dataFormat(toFormat) {
 /**新聞列表 */
 function drawNews(data, IdForCanvas) {
     $("#" + IdForCanvas).width("50%");
-    $("#" + IdForCanvas).append('<h3>個股新聞</h3><ul id="lists" class="list-group"></ul><ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>');
+    $("#" + IdForCanvas).append('<ul id="lists" class="list-group"></ul><ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>');
     var news = [];
     for (var i in data) {
         data[i]['date'] = data[i]['date'].substring(0, data[i]['date'].lastIndexOf(" "));
@@ -326,7 +326,7 @@ function infoTable(data, IdForCanvas) {
     var row13 = '<tr><td><b>英文地址</b></td><td colspan="3">' + data['data']['CompanyAddressEnglish'] + '</td></tr>';
     var row14 = '<tr><td><b>股票過戶機構</b></td><td colspan="3">' + data['data']['TransferAgency'] + '</td></tr>';
     var row15 = '<tr><td><b>過戶機構地址</b></td><td>' + data['data']['TransferAgencyAddress'] + '</td><td><b>過戶機構電話</b></td><td>' + data['data']['TransferAgencyTel'] + '</td></tr>';
-    var BasicInfo = '<h3>公司基本資料</h3><table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word;"><tbody id="infoTable" style="font-size:13px">' + row1 + row2 + row3 + row4 + row5 + row6 + row7 + row8 + row9 + row10 + row11 + row12 + row13 + row14 + row15 + '</tbody></table>';
+    var BasicInfo = '<table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word;"><tbody id="infoTable" style="font-size:13px">' + row1 + row2 + row3 + row4 + row5 + row6 + row7 + row8 + row9 + row10 + row11 + row12 + row13 + row14 + row15 + '</tbody></table>';
     $("#" + IdForCanvas).width("50%");
     $("#" + IdForCanvas).append(BasicInfo);
 }
