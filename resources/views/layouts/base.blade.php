@@ -56,6 +56,7 @@
     <script src="/js/cal.js"></script>
     <script src="/js/formCheck.js"></script>
     <script src="/js/npv.js"></script>
+    <script src="/js/navBar.js"></script>
     <!--end of for development-->
 
 @include('layouts._intercom')

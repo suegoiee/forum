@@ -268,14 +268,6 @@ function drawNews(data, IdForCanvas) {
 
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
-    var tmpMaxLength = 0;
-    for (var i in unitForBottomTable) {
-        var tmp1 = seriestData[i]['name'].toString().length;
-        var tmp2 = unitForBottomTable[i].toString().length;
-        if (tmp1 + tmp2 > tmpMaxLength) {
-            tmpMaxLength = tmp1 + tmp2;
-        }
-    }
     var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
     for (var i in unitForBottomTable) {
         bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
@@ -618,6 +610,8 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
 
     /**數量 按鈕 */
     $(document).on('click', ".buttonLastTen", function () {
+        rangeEnd = '';
+        rangeStart = '-10';
         $(".RightButtonGroup").children(".ActiveChartControlButton").removeClass("ActiveChartControlButton");
         $(this).addClass('ActiveChartControlButton');
         var tmp_canvas = $(this).attr('value');
@@ -631,6 +625,8 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         }
     });
     $(document).on('click', ".buttonEntire", function () {
+        rangeEnd = '';
+        rangeStart = 'all';
         $(".RightButtonGroup").children(".ActiveChartControlButton").removeClass("ActiveChartControlButton");
         $(this).addClass('ActiveChartControlButton');
         if ($(".ChartActive").val()) {
@@ -684,8 +680,6 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         dataType = 'PeriodData';
         var tmp_canvas = $(this).attr('value');
         stockDateRange(tmp_canvas, dataType);
-        rangeEnd = parseInt($(".rangeEndSelect" + tmp_canvas).find(":selected").val()) + 1;
-        rangeStart = parseInt($(".rangeEndSelect" + tmp_canvas).find(":selected").val());
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -701,8 +695,6 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         dataType = 'YearData';
         var tmp_canvas = $(this).attr('value');
         stockDateRange(tmp_canvas, dataType);
-        rangeEnd = parseInt($(".rangeEndSelect" + tmp_canvas).find(":selected").val()) + 1;
-        rangeStart = parseInt($(".rangeEndSelect" + tmp_canvas).find(":selected").val());
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
