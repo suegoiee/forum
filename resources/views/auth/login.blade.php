@@ -19,7 +19,7 @@
 
         <div class="form-group">
             <label class="loginMg">
-                {!! Form::checkbox('remember') !!} 保持登入
+                {!! Form::checkbox('remember') !!}保持登入
             </label>
         </div>
 
