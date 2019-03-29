@@ -37,7 +37,7 @@
             @endcan
 
             <a class="btn btn-link btn-block" id="build" href="{{ route('forum') }}">
-            <i class="fas fa-long-arrow-alt-left"></i>
+            <img src="/images/icon/back.svg">
             </a>
 
             @include('layouts._ads._forum_sidebar')

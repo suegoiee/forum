@@ -1,5 +1,5 @@
 <div class="thread-info-avatar">
     <a href="{{ route('profile', $user->username()) }}">
-        <img class="img-circle" src="{{ $user->gravatarUrl(25) }}">
+    <img src="/images/icon/person.svg" style="width:25px;">
     </a>
 </div>
