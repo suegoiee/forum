@@ -1,7 +1,7 @@
 .col-lg-9 {
   background: #fff;
   h1 {
-    font-size: 25px;
+    font-size: 22px;
     color: #393939;
   }
   .panel {
@@ -28,6 +28,19 @@
         text-align: left;
         font-size: 14.5;
         color: #545454;
+      }
+    }
+  }
+  .remind {
+    p {
+      font-size: 15px;
+      color: #545454;
+      a {
+        color: #ffa500;
+        font-size: 16px;
+      }
+      a:hover {
+        color: #ffc04d;
       }
     }
   }
@@ -71,10 +84,11 @@
     }
   }
   .profile-user-name {
-    font-size: 30px;
+    font-size: 25px;
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: center !important;
+    line-height: 1.5;
   }
 
   .profile-user-bio {
@@ -92,4 +106,77 @@
 #build:hover {
   background: none !important;
   color: #545454 !important;
+}
+
+// setting
+div {
+  .row {
+    div {
+      .panel {
+        .account {
+          background: #fff !important;
+          color: #393939 !important;
+          font-size: 1.7rem;
+          font-weight: 400;
+        }
+        .panel-body {
+          .nav-stacked {
+            .active {
+              a {
+                background-color: #ffa500;
+                color: #fff;
+                font-weight: normal;
+              }
+            }
+            .active:hover {
+              background-color: #ffa500;
+              color: #fff;
+              font-weight: normal;
+            }
+            li {
+              a {
+                font-weight: normal;
+                color: #393939;
+              }
+            }
+            li:hover {
+              a {
+                background: none;
+              }
+            }
+          }
+          .formSet {
+            background-color: #fff;
+            .form-group {
+              .control-label {
+                text-align: left !important;
+                font-size: 1.5rem;
+              }
+              div {
+                span {
+                  color: #545454;
+                  font-size: 1.3rem;
+                  font-weight: 400;
+                }
+                .btn {
+                  color: #fff;
+                  background-color: #ffa500;
+                  border: none !important;
+                  margin-left: 25%;
+                }
+                .btn:hover {
+                  color: #fff;
+                  background-color: #ffc04d;
+                  border: none !important;
+                }
+                .save {
+                  margin-left: 40%;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

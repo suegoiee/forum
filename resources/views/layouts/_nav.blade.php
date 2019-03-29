@@ -142,7 +142,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="/images/icon/person.svg" style="width:25px;"> <span class="caret"></span>
+                        <img src="/images/icon/userLogin.svg" style="width:30px; padding-top:20%;"> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -152,9 +152,7 @@
                                 </span>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li class="{{ active('profile') }}"><a href="{{ route('profile', Auth::user()->username()) }}"><i class="fa fa-user-circle-o dropdown-icon" aria-hidden="true"></i>Profile</a></li>
-                            <li class="{{ active('dashboard') }}"><a href="{{ route('dashboard') }}"><i class="fa fa-home dropdown-icon" aria-hidden="true"></i>Dashboard</a></li>
-                            <li class="{{ active('settings.*') }}"><a href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>Settings</a></li>
+                            <li class="{{ active('settings.*') }}"><a href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>設定</a></li>
 
                             @can(App\Policies\UserPolicy::ADMIN, App\User::class)
                                 <li role="separator" class="divider"></li>
@@ -162,7 +160,7 @@
                             @endcan
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out dropdown-icon" aria-hidden="true"></i>Logout</a></li>
+                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out dropdown-icon" aria-hidden="true"></i>登出</a></li>
                         </ul>
                     </li>
                 @endif

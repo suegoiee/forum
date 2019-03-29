@@ -1,12 +1,60 @@
 .panel-search {
-    .panel-heading {
-        display: flex;
-        align-items: center;
+  .panel-heading {
+    display: flex;
+    align-items: center;
 
-        form {
-            max-width: 340px;
-            margin-left: auto;
-            padding-left: 16px;
-        }
+    form {
+      max-width: 340px;
+      margin-left: auto;
+      padding-left: 16px;
     }
+  }
+}
+// 建立主題
+form {
+  width: 70% !important;
+  padding: 15px;
+  .form-group {
+    label {
+      font-size: 20px;
+      color: #393939;
+    }
+    .md-editor {
+      border: none !important;
+      background-color: #fff !important;
+      .md-header {
+        background-color: #fff !important;
+      }
+      textarea {
+        background-color: #fff;
+        color: #545454;
+        font-size: 15px;
+      }
+    }
+    .active {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+    .form-control {
+      border: 1px rgba(158, 158, 158, 0.8) solid !important;
+      outline: none;
+      .selectize-input {
+        border: none !important;
+      }
+    }
+    span {
+      color: #545454;
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+  }
+  .btnBuild {
+    background-color: #ffa500;
+    width: 20% !important;
+    margin-left: 40% !important;
+    border: none !important;
+  }
+  .btnBuild:hover {
+    background-color: #ffc04d;
+  }
 }

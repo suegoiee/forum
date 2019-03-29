@@ -2,8 +2,8 @@
 
 return [
 
-    'threads.created' => 'Thread successfully created!',
-    'threads.updated' => 'Thread successfully updated!',
-    'threads.deleted' => 'Thread successfully deleted!',
+    'threads.created' => '討論主題建立成功!',
+    'threads.updated' => '討論主題下載成功!',
+    'threads.deleted' => '討論主題刪除成功!',
 
 ];
