@@ -164,8 +164,10 @@ function stockPool(stock_url) {
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
+                var tmp_stock_url = stock_url.slice(0, -4);
                 SetCookie("stockCode", stockCode);
-                dataFactory(stock_url.slice(0, -4) + stockCode, true);
+                console.log(stock_url, tmp_stock_url, stockCode);
+                dataFactory(tmp_stock_url + stockCode, true);
                 $("#searchBar").val('');
                 return false;
             }
