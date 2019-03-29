@@ -161,11 +161,23 @@ function stockPool(stock_url) {
                     var stockCode = results.slice(0, 1)[0];
                     $("#searchBar").attr('name', stockCode['id']);
                 }
+                $('#searchBar').off('keydown').on('keydown', function (e) {
+                    if (e.which == 13) {
+                        $("#searchBar").autocomplete( "close" );
+                        var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
+                        if(results.slice(0, 1)[0]){
+                            var stockCode = results.slice(0, 1)[0];
+                            dataFactory(tmp_url + stockCode['id'], true);
+                        }
+                        $("#searchBar").val('');
+                    }
+                });
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
+                var tmp_stock_url = stock_url.slice(0, -4);
                 SetCookie("stockCode", stockCode);
-                dataFactory(stock_url.slice(0, -4) + stockCode, true);
+                dataFactory(tmp_stock_url + stockCode, true);
                 $("#searchBar").val('');
                 return false;
             }
@@ -174,14 +186,15 @@ function stockPool(stock_url) {
             if (e.which == 13) {
                 var stockCode = $("#searchBar").attr('name');
                 var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
-                if(stockCode != $(this).val()){
+                if (stockCode != $(this).val()) {
                     SetCookie("stockCode", $(this).val());
                     dataFactory(tmp_url + $(this).val(), true);
                 }
-                else{
+                else {
                     SetCookie("stockCode", stockCode);
                     dataFactory(tmp_url + stockCode, true);
                 }
+                $("#searchBar").autocomplete( "close" );
                 $("#searchBar").val('');
             }
         });
@@ -275,19 +288,19 @@ function drawNews(data, IdForCanvas) {
 /**報表底部表格 */
 function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable) {
     var screenWidth = $(window).width();
-    if(screenWidth <= 480){
+    if (screenWidth <= 480) {
         var bottomtable = '';
         for (var i in seriestData) {
-            bottomtable += '<div><a data-toggle="collapse" data-target="#bottom'+i+'">'+ seriestData[i]['name'] + unitForBottomTable[i] +'</a>';
-            bottomtable += '<div id="bottom'+i+'" class="collapse"><table class="table table-bordered"><tbody>';
+            bottomtable += '<div><a style="cursor:pointer;" data-toggle="collapse" data-target="#bottom' + i + '">' + seriestData[i]['name'] + unitForBottomTable[i] + '<span id="triangle-down"></span>' + '</a>';
+            bottomtable += '<div id="bottom' + i + '" class="collapse bottomName"><table class="table table-bordered"><tbody>';
             for (var j in seriestData[i]['data']) {
                 if (seriestData[i]['data'][j][1] != null && seriestData[i]['data'][j][1] != undefined) {
                     var param = seriestData[i]['data'][j][1];
                     param = dataFormat(param);
-                    bottomtable += '<tr><td>' + seriestData[i]['data'][j][0] + '</td><td>' + param + '</td></tr>';
+                    bottomtable += '<tr><th>' + seriestData[i]['data'][j][0] + '</th><td>' + param + '</td></tr>';
                 }
                 else {
-                    bottomtable += '<tr><td>' + seriestData[i]['data'][j][0] + '</td><td>&nbsp</td></tr>';
+                    bottomtable += '<tr><th>' + seriestData[i]['data'][j][0] + '</th><td>&nbsp</td></tr>';
                 }
             }
             bottomtable += '</tbody></table></div>';
@@ -296,7 +309,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
         $("#" + IdForCanvas + "bottomtable").empty();
         $("#" + IdForCanvas + "bottomtable").append(bottomtable);
     }
-    else{
+    else {
         var bottomtable = '<div><div class="bottomTableHeader" style="width:auto; white-space: nowrap; position:relative; float:left;"><table class="table table-bordered"><tbody><tr><th><i class="fas fa-calendar-week"></i></th></tr>';
         for (var i in unitForBottomTable) {
             bottomtable += '<tr><td>' + seriestData[i]['name'] + unitForBottomTable[i] + '</td></tr>';
@@ -327,7 +340,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
         bottomtable += '</tbody></table></div></div>';
         $("#" + IdForCanvas + "bottomtable").empty();
         $("#" + IdForCanvas + "bottomtable").append(bottomtable);
-        $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width()-$(".bottomTableHeader").width()+'px');
+        $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width() - $(".bottomTableHeader").width() + 'px');
     }
 }
 

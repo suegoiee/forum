@@ -9,23 +9,23 @@
 
             @can(App\Policies\ThreadPolicy::UPDATE, $thread)
                 <a class="btn btn-default btn-block" href="{{ route('threads.edit', $thread->slug()) }}">
-                    Edit
+                    編輯
                 </a>
             @endcan
 
             @can(App\Policies\ThreadPolicy::UNSUBSCRIBE, $thread)
                 <a class="btn btn-primary btn-block" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
-                    Unsubscribe
+                    取消訂閱
                 </a>
             @elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
                 <a class="btn btn-primary btn-block" href="{{ route('threads.subscribe', $thread->slug()) }}">
-                    Subscribe
+                    訂閱
                 </a>
             @endcan
 
             @can(App\Policies\ThreadPolicy::DELETE, $thread)
                 <a class="btn btn-danger btn-block" href="#" data-toggle="modal" data-target="#deleteThread">
-                    Delete
+                    刪除
                 </a>
 
                 @include('_partials._delete_modal', [
@@ -37,7 +37,7 @@
             @endcan
 
             <a class="btn btn-link btn-block" id="build" href="{{ route('forum') }}">
-            <i class="fas fa-long-arrow-alt-left"></i>
+            <img src="/images/icon/back.svg">
             </a>
 
             @include('layouts._ads._forum_sidebar')
@@ -144,12 +144,13 @@
                 @else
                    
 
-                    <div class="alert alert-info">
+                    <div class="remind">
                         <p>
-                            Please make sure you've read our <a href="{{ route('rules') }}" class="alert-link">Forum Rules</a> before replying to this thread.
+                            請在回應前確認已閱讀 <a href="{{ route('rules') }}">論壇規則</a>.
                         </p>
                     </div>
 
+                    
                     {!! Form::open(['route' => 'replies.store']) !!}
                         @formGroup('body')
                             {!! Form::textarea('body', null, ['class' => 'form-control wysiwyg', 'required']) !!}

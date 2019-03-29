@@ -74,7 +74,7 @@ class ForumTest extends BrowserKitTestCase
             ->seePageIs('/forum/how-to-work-with-eloquent')
             ->see('How to work with Eloquent?')
             ->see('Test Tag')
-            ->see('Thread successfully created!');
+            ->see('討論主題建立成功!');
     }
 
     /** @test */

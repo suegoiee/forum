@@ -1,11 +1,11 @@
 <div class="profile-user-info">
     @can(App\Policies\UserPolicy::ADMIN, App\User::class)
         <a href="{{ route('admin.users.show', $user->username()) }}">
-            <img class="img-circle" src="{{ $user->gravatarUrl($avatarSize ?? 150) }}">
+        <img src="/images/icon/person.svg" style="width:25px;">
         </a>
     @else
         <a href="{{ route('profile', $user->username()) }}">
-        <div className= "elegant elegant-eleganticons-181 "></div>
+        <img src="/images/icon/user.svg">
         </a>
     @endcan
 

@@ -12,10 +12,14 @@
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ active(['forum', 'threads*', 'thread']) }}"><a class="nav-font " href="{{ route('forum') }}">討論區</a></li>
+                <li class="{{ active(['forum', 'threads*', 'thread']) }}">
+                    <a class="nav-font chatt" href="{{ route('forum') }}">
+                        <div class="chatWord">討論區</div>
+                    </a>
+                </li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div style="display:inline-block; padding-right:5px;">股票資訊</div><span id="triangle-down"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font stock down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="stockWord" style="display:inline-block; padding-right:5px;">股票資訊</div><span id="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
@@ -73,7 +77,7 @@
 
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div style="display:inline-block; padding-right:5px;">小工具</div><span id="triangle-down"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font down tool" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="toolWord" style="display:inline-block; padding-right:5px;">小工具</div><span id="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdownlist">
                             <a class="menu">計算股票價值<i class="fas fa-caret-right"></i></a>
@@ -129,16 +133,16 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="https://pro.uanalyze.com.tw" class="nav-font" target="_blank">優分析Pro</a></li>
+                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank"><div class="proWord">優分析Pro</div></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li class="{{ active('login') }}"><a class="login" href="{{ route('login') }}">登入</a></li>
-                    <li class="{{ active('register') }}"><a class="login" href="{{ route('register') }}">註冊</a></li>
+                    <li class="{{ active('login') }}"><a class="login log" href="{{ route('login') }}"><div class="logWord">登入</div></a></li>
+                    <li class="{{ active('register') }}"><a class="login reg" href="{{ route('register') }}"><div class="regWord">註冊</div></a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <img class="img-circle" src="{{ Auth::user()->gravatarUrl(60) }}" width="30"> <span class="caret"></span>
+                        <img src="/images/icon/userLogin.svg" style="width:30px; padding-top:20%;"> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -148,9 +152,7 @@
                                 </span>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li class="{{ active('profile') }}"><a href="{{ route('profile', Auth::user()->username()) }}"><i class="fa fa-user-circle-o dropdown-icon" aria-hidden="true"></i>Profile</a></li>
-                            <li class="{{ active('dashboard') }}"><a href="{{ route('dashboard') }}"><i class="fa fa-home dropdown-icon" aria-hidden="true"></i>Dashboard</a></li>
-                            <li class="{{ active('settings.*') }}"><a href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>Settings</a></li>
+                            <li class="{{ active('settings.*') }}"><a href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>設定</a></li>
 
                             @can(App\Policies\UserPolicy::ADMIN, App\User::class)
                                 <li role="separator" class="divider"></li>
@@ -158,7 +160,7 @@
                             @endcan
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out dropdown-icon" aria-hidden="true"></i>Logout</a></li>
+                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out dropdown-icon" aria-hidden="true"></i>登出</a></li>
                         </ul>
                     </li>
                 @endif
