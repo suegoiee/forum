@@ -43,6 +43,24 @@
     }
   }
 }
+.profile-latest-items {
+  div {
+    h3 {
+      color: #393939;
+      font-size: 20px;
+    }
+    .list-group {
+      .list-group-item {
+        p {
+          padding-left: 15px;
+        }
+      }
+      .list-group-item:hover {
+        background: #fff;
+      }
+    }
+  }
+}
 .profile-user-info {
   padding-top: 25px;
   text-align: center;

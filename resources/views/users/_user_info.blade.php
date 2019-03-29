@@ -5,7 +5,6 @@
         </a>
     @else
         <a href="{{ route('profile', $user->username()) }}">
-        <div className= "elegant elegant-eleganticons-181 "></div>
         </a>
     @endcan
 
