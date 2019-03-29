@@ -20,7 +20,7 @@
             else{
                 var stockCode = getCookie("stockCode");
             }
-            dataFactory('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/'+stockCode, false);
+            dataFactory("{{$stockUrl}}"+stockCode, false);
         }
     </script>
 @endsection

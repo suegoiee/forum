@@ -8,7 +8,7 @@ class FreebieController extends Controller
 {
     public function stocksummary()
     {
-        return view('freebie.stocksummary')->with('PageSubtitle', '個股摘要');
+        return view('freebie.stocksummary', ['PageSubtitle'=>'個股摘要', 'stockUrl' => env('StockSummary')]);
     }
     public function InstitutionalInvestorsNet()
     {
