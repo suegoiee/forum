@@ -166,7 +166,6 @@ function stockPool(stock_url) {
                 var stockCode = ui['item']['id'];
                 var tmp_stock_url = stock_url.slice(0, -4);
                 SetCookie("stockCode", stockCode);
-                console.log(stock_url, tmp_stock_url, stockCode);
                 dataFactory(tmp_stock_url + stockCode, true);
                 $("#searchBar").val('');
                 return false;
