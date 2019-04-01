@@ -14,11 +14,9 @@
                 </div>
             {{ Form::close() }}
 
-            <a class="btn btn-block" href="{{ route('threads.create') }}">建立新的主題</a>
-
             @include('layouts._ads._forum_sidebar')
 
-            <h3>Tags</h3>
+            <h3>分類</h3>
             <div class="list-group">
                 <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">All</a>
 
@@ -31,18 +29,28 @@
             </div>
         </div>
         <div class="col-lg-9 chat-bg">
+            <a class="btn btn-block" href="{{ route('threads.create') }}">建立</a>
             @include('layouts._ads._bsa-cpc')
 
             @if (count($threads))
                 @foreach ($threads as $thread)
                     <div class="panel panel-default chat-bd">
                         <div class="panel-heading thread-info">
+                            <h4 class="media-heading">{{ $thread->subject() }}</h4>
+                            @include('forum.threads.info.tags')
+                        </div>
+
+                        <div class="panel-body chat-bg">
+                            <a href="{{ route('thread', $thread->slug()) }}">
+                                <span class="badge pull-right">{{ count($thread->replies()) }}</span>
+                                <p>{{ $thread->excerpt() }}</p>
+                            </a>
+                        </div>
                             @if (count($thread->replies()))
                                 @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
                             @else
                                 @include('forum.threads.info.avatar', ['user' => $thread->author()])
                             @endif
-
                             <div class="thread-info-author">
                                 @if (count($thread->replies()))
                                     @php($lastReply = $thread->replies()->last())
@@ -53,17 +61,6 @@
                                     {{ $thread->createdAt()->diffForHumans() }}
                                 @endif
                             </div>
-
-                            @include('forum.threads.info.tags')
-                        </div>
-
-                        <div class="panel-body chat-bg">
-                            <a href="{{ route('thread', $thread->slug()) }}">
-                                <span class="badge pull-right">{{ count($thread->replies()) }}</span>
-                                <h4 class="media-heading">{{ $thread->subject() }}</h4>
-                                <p>{{ $thread->excerpt() }}</p>
-                            </a>
-                        </div>
                     </div>
                 @endforeach
 
