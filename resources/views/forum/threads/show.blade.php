@@ -8,7 +8,7 @@
 
             <h3>分類</h3>
             <div class="list-group">
-                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">All</a>
+                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
 
                 @foreach (App\Models\Tag::orderBy('name')->get() as $tag)
                     <a href="{{ route('forum.tag', $tag->slug()) }}"
@@ -79,6 +79,21 @@
             @foreach ($thread->replies() as $reply)
                 <div class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
                     <div class="panel-heading thread-info">
+
+                    @md($reply->body())
+                        @can(App\Policies\ReplyPolicy::UPDATE, $reply)
+                            <div class="thread-info-tags" style="float:right">
+                                <a class="btn btn-default btn-xs" href="{{ route('replies.edit', $reply->id()) }}">
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#deleteReply{{ $reply->id() }}">
+                                    Delete
+                                </a>
+                            </div>
+                        @endcan
+                    </div>
+
+                    <div class="panel-body forum-content">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
 
                         <div class="thread-info-author">
@@ -93,20 +108,6 @@
                                 </span>
                             @endif
                         </div>
-
-                        @can(App\Policies\ReplyPolicy::UPDATE, $reply)
-                            <div class="thread-info-tags">
-                                <a class="btn btn-default btn-xs" href="{{ route('replies.edit', $reply->id()) }}">
-                                    Edit
-                                </a>
-                                <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#deleteReply{{ $reply->id() }}">
-                                    Delete
-                                </a>
-                            </div>
-                        @endcan
-                    </div>
-
-                    <div class="panel-body forum-content">
                         @can(App\Policies\ThreadPolicy::UPDATE, $thread)
                             <div class="pull-right" style="font-size: 20px">
                                 @if ($thread->isSolutionReply($reply))
@@ -135,7 +136,6 @@
                             </div>
                         @endcan
 
-                        @md($reply->body())
                     </div>
                 </div>
 

@@ -26,7 +26,7 @@
                         <li><a class="menu" href="{{ route('freebie.DailyStockPriceAreaChartWithDisplay') }}">股價走勢</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockPriceVSEPS') }}">每股盈餘VS股價</a></li>
                         <li class="dropdownlist">
-                            <a class="menu">月營收<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">月營收<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.MonthlyRevenue') }}">每月營收變化表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.MonthlyRevenueVSStockPrice') }}">月營收與股價對照表</a></li>
@@ -35,7 +35,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">財務報表<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">財務報表<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.IncomeStatement') }}">損益表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.StatementOfFinancialPosition') }}">資產負債表</a></li>
@@ -43,7 +43,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">股息政策<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">股息政策<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.HistoricalDividendRecord') }}">歷年股息表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.CashDividendPayoutRatio') }}">股息配發率</a></li>
@@ -51,7 +51,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">籌碼資訊<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">籌碼資訊<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.InstitutionalInvestorsNet') }}">三大法人買賣超日報表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.QFIIHoldingsVSStockPrice') }}">外資持股比率</a></li>
@@ -64,7 +64,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">股票評價<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">股票評價<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.HistoricalPer') }}">本益比評價</a></li>
                                 <li><a class="menu" href="{{ route('freebie.HistoricalPbr') }}">股價淨值比評價</a></li>
@@ -80,7 +80,7 @@
                     <a href="#" class="dropdown-toggle nav-font down tool" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="toolWord" style="display:inline-block; padding-right:5px;">小工具</div><span id="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdownlist">
-                            <a class="menu">計算股票價值<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">計算股票價值<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.buffett') }}">巴菲特預估股價</a></li>
                                 <li><a href="{{ route('Tools.deposit') }}">定存股價值試算表</a></li>
@@ -90,7 +90,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">買賣股票試算<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">買賣股票試算<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.money') }}">除權息參考價</a></li>
                                 <li><a href="{{ route('Tools.bargain') }}">損益試算</a></li>
@@ -98,32 +98,32 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">投資檢查表<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">投資檢查表<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.buyCheckForm') }}">股票買進檢查表</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">營收盈餘預估<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">營收盈餘預估<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.Compound') }}">年複合成長率</a></li>
                                 <li><a href="{{ route('Tools.estimate') }}">市占率預估</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">投資屬性測驗<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">投資屬性測驗<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.DepositTest') }}">存股性向測驗</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">資本規劃試算<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">資本規劃試算<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.npv') }}">NPV計算機</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">理財小工具<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">理財小工具<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.interest') }}">複利計算</a></li>
                                 <li><a href="{{ route('Tools.PayBack') }}">貸款試算</a></li>
