@@ -13,9 +13,10 @@
     @endFormGroup
 
     @formGroup('tags')
-        {!! Form::label('標註') !!}
-        {!! Form::select('tags[]', $tags->pluck('name', 'id'), isset($thread) ? $thread->tags()->pluck('id')->toArray() : [], ['class' => 'form-control selectize', 'multiple']) !!}
-        <span class="help-block">可以選擇三個標註.</span>
+        {!! Form::label('分類') !!}
+        {!! Form::select('tags[]', $tags->pluck('name', 'id'), isset($thread) ? $thread->tags()->pluck('id')->toArray() : [], ['class' => 'form-control']) !!}
+        <!--class => 'selectize', 'multiple'-->
+        <span class="help-block">只能選擇一個分類.</span>
         @error('tags')
     @endFormGroup
 
