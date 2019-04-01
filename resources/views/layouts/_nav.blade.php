@@ -161,7 +161,7 @@
                             @endcan
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out dropdown-icon" aria-hidden="true"></i>登出</a></li>
+                            <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>登出</a></li>
                         </ul>
                     </li>
                 @endif

@@ -66,42 +66,42 @@
                 <div class="panel-body forum-content">
                     @md($thread->body())
                 </div>
-                @include('forum.threads.info.avatar', ['user' => $thread->author()])
 
-                <div class="thread-info-author authorName">
-                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a>
-                    posted {{ $thread->createdAt()->diffForHumans() }}
+                <div class="thread-info-author authorName" style="float: right; display: inline-flex;">
+                    @include('forum.threads.info.avatar', ['user' => $thread->author()])
+                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:5px;">{{ $thread->author()->name() }}</a>
+                    在 {{ $thread->createdAt()->diffForHumans() }} 發文
                 </div>
             </div>
 
             @include('layouts._ads._bsa-cpc')
 
-            <div style="border-bottom: 2px solid #e9e9e9;">回應</div>
+            <div style="border-bottom: 2px solid #e9e9e9; padding-top: 3%;">回應</div>
             @foreach ($thread->replies() as $reply)
                 <div style="border:none !important;" class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
-                    <div class="panel-heading thread-info">
+                    <div class="thread-info-author headLabel">
 
                     @md($reply->body())
                         @can(App\Policies\ReplyPolicy::UPDATE, $reply)
                             <div class="thread-info-tags" style="float:right">
                                 <a class="btn btn-default btn-xs" href="{{ route('replies.edit', $reply->id()) }}">
-                                    Edit
+                                    <img src="/images/icon/edit.svg" style="width:16px;">
                                 </a>
                                 <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#deleteReply{{ $reply->id() }}">
-                                    Delete
+                                    <img src="/images/icon/recycling-bin.svg" style="width:16px;">
                                 </a>
                             </div>
                         @endcan
                     </div>
 
-                    <div class="panel-body forum-content">
+                    <div class="forum-content">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
 
-                        <div class="thread-info-author">
-                            <a href="{{ route('profile', $reply->author()->username()) }}" class="thread-info-link">
+                        <div class="thread-info-author authorName" style="border-bottom: 2px dashed #e9e9e9;">
+                            <a href="{{ route('profile', $reply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">
                                 {{ $reply->author()->name() }}
-                            </a> replied
-                            {{ $reply->createdAt()->diffForHumans() }}
+                            </a> 在
+                            {{ $reply->createdAt()->diffForHumans() }} 回應
 
                             @if ($thread->isSolutionReply($reply))
                                 <span class="label label-primary thread-info-badge">
@@ -159,7 +159,7 @@
 
                     <div class="remind">
                         <p>
-                            請在回應前確認已閱讀 <a href="{{ route('rules') }}">論壇規則</a>.
+                            請在回應前確認已了解 <a href="{{ route('rules') }}">論壇規則</a>.
                         </p>
                     </div>
 
@@ -172,7 +172,7 @@
 
                         {!! Form::hidden('replyable_id', $thread->id()) !!}
                         {!! Form::hidden('replyable_type', 'threads') !!}
-                        {!! Form::submit('回應', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%;' ]) !!}
+                        {!! Form::submit('回應', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%; margin-bottom:2%;' ]) !!}
                     {!! Form::close() !!}
                 @endif
             @endcan

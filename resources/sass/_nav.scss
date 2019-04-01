@@ -199,13 +199,21 @@
       .container {
         .navbar-collapse {
           .navbar-nav {
-            margin: 5% !important;
+            margin: 3% 5% !important;
             padding: 0 !important;
             li {
               .dropdown-menu {
                 padding: 0 !important;
                 border: none !important;
                 background-color: #545454;
+                li {
+                  span {
+                    display: none !important;
+                  }
+                }
+                .divider {
+                  display: none;
+                }
                 a {
                   color: #ffa500 !important;
                   padding-left: 12% !important;

@@ -35,7 +35,7 @@
             <p></p>
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    <div class="panel panel-default chat-bd">
+                    <div class="panel panel-default chat-bd" style="height:25%; margin-bottom: 3% !important;">
                         <div class="panel-heading thread-info">
                             <div class="thread-info-author headLabel">
                                 <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
@@ -49,19 +49,20 @@
                                 <p>{{ $thread->excerpt() }}</p>
                             </a>
                         </div>
+                        
+                        <div class="thread-info-author authorName" style="float: right; display: inline-flex; margin-top: 3%;">
                         @if (count($thread->replies()))
                             @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
                         @else
                             @include('forum.threads.info.avatar', ['user' => $thread->author()])
                         @endif
-                        <div class="thread-info-author authorName">
                             @if (count($thread->replies()))
                                 @php($lastReply = $thread->replies()->last())
-                                <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> 在
+                                <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $lastReply->author()->name() }}</a> 在
                                 {{ $lastReply->createdAt()->diffForHumans() }} 回應
                             @else
-                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> 在
-                                {{ $thread->createdAt()->diffForHumans() }} 發表
+                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->name() }}</a> 在
+                                {{ $thread->createdAt()->diffForHumans() }} 發文
                             @endif
                         </div>
                     </div>

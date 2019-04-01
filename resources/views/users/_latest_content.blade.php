@@ -1,6 +1,6 @@
 <div class="row profile-latest-items">
     <div class="col-md-6">
-        <h3>Latest Threads</h3>
+        <h3>最新主題</h3>
 
         @forelse ($user->latestThreads() as $thread)
             <div class="list-group">
@@ -14,7 +14,7 @@
         @endforelse
     </div>
     <div class="col-md-6">
-        <h3>Latest Replies</h3>
+        <h3>最新回覆</h3>
 
         @forelse ($user->latestReplies() as $reply)
             <div class="list-group">

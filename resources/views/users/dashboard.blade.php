@@ -3,26 +3,26 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>Welcome {{ Auth::user()->name() }}!</h1>
+    <h3> {{ Auth::user()->name() }}</h3>
 
 
     <div class="row">
         <div class="col-md-4">
             <div class="panel panel-default panel-counter">
-                <div class="panel-heading">Threads</div>
-                <div class="panel-body">{{ Auth::user()->countThreads() }}</div>
+                <div class="panel-heading" style="color:#545454 !important;">發表主題</div>
+                <div class="panel-body" style="color:#ffa500; font-size:2.2rem; width:100% !important; margin-left: 0;">{{ Auth::user()->countThreads() }}</div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default panel-counter">
-                <div class="panel-heading">Replies</div>
-                <div class="panel-body">{{ Auth::user()->countReplies() }}</div>
+                <div class="panel-heading" style="color:#545454 !important;">回應</div>
+                <div class="panel-body" style="color:#ffa500; font-size:2.2rem; width:100% !important; margin-left: 0;">{{ Auth::user()->countReplies() }}</div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="panel panel-default panel-counter">
-                <div class="panel-heading">Solutions</div>
-                <div class="panel-body">{{ Auth::user()->countSolutions() }}</div>
+                <div class="panel-heading" style="color:#545454 !important;">解決</div>
+                <div class="panel-body" style="color:#ffa500; font-size:2.2rem; width:100% !important; margin-left: 0;">{{ Auth::user()->countSolutions() }}</div>
             </div>
         </div>
     </div>

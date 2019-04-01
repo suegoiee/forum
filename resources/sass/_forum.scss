@@ -89,17 +89,18 @@ h1 {
       .panel-body {
         width: 100% !important;
         margin-left: 0% !important;
+        padding: 15px 0;
         a {
           span {
             background: #ffa500;
             color: #fff;
+            margin-right: 15px;
           }
           p {
             color: #545454;
             font-size: 15px;
             font-weight: 300;
             text-align: left;
-            padding-left: 3%;
           }
         }
         a:hover {
@@ -118,6 +119,11 @@ h1 {
     .headLabel {
       text-align: left;
       padding-top: 1%;
+      p {
+        font-size: 17px;
+        padding: 1% 0;
+        line-height: 1;
+      }
       .thread-info-link {
         color: #393939;
         font-size: 18px;
