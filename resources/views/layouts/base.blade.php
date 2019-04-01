@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
+    <META HTTP-EQUIV="expires" CONTENT="0">
+    <meta name="Description" content="投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

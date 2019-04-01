@@ -291,7 +291,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
     if (screenWidth <= 480) {
         var bottomtable = '';
         for (var i in seriestData) {
-            bottomtable += '<div><a style="cursor:pointer;" data-toggle="collapse" data-target="#bottom' + i + '">' + seriestData[i]['name'] + unitForBottomTable[i] + '<span id="triangle-down"></span>' + '</a>';
+            bottomtable += '<div><a style="cursor:pointer;" data-toggle="collapse" data-target="#bottom' + i + '">' + seriestData[i]['name'] + unitForBottomTable[i] + '<span class="triangle-down"></span>' + '</a>';
             bottomtable += '<div id="bottom' + i + '" class="collapse bottomName"><table class="table table-bordered"><tbody>';
             for (var j in seriestData[i]['data']) {
                 if (seriestData[i]['data'][j][1] != null && seriestData[i]['data'][j][1] != undefined) {
