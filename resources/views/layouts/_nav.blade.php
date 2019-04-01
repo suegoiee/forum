@@ -152,6 +152,7 @@
                                 </span>
                             </li>
                             <li role="separator" class="divider"></li>
+                            <li class="{{ active('settings.*') }}"><a href="{{ route('dashboard') }}"> <i class="fa fa-tag dropdown-icon" aria-hidden="true"></i>我的文章</a></li>
                             <li class="{{ active('settings.*') }}"><a href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>設定</a></li>
 
                             @can(App\Policies\UserPolicy::ADMIN, App\User::class)
