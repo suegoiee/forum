@@ -19,6 +19,6 @@
         @error('tags')
     @endFormGroup
 
-    {!! Form::submit(isset($thread) ? 'Update Thread' : '建立主題', ['class' => 'btn btn-primary btn-block btnBuild']) !!}
-    <a href="{{ isset($thread) ? route('thread', $thread->slug()) : route('forum') }}" class="btn btn-default btn-block btnBuild">取消</a>
+    {!! Form::submit(isset($thread) ? 'Update Thread' : '建立主題', ['class' => 'btn btn-primary btn-block','style' => 'width:30% !important; margin-left:35%;' ]) !!}
+    <a href="{{ isset($thread) ? route('thread', $thread->slug()) : route('forum') }}" class="btn btn-primary btn-block" style = "width:30% !important; margin-left:35%;">取消</a>
 {!! Form::close() !!}

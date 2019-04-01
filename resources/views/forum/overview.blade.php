@@ -10,7 +10,7 @@
         <div class="col-lg-3">
             {{ Form::open(['route' => 'forum', 'method' => 'GET']) }}
                 <div class="form-group">
-                    {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => 'Search for threads...']) }}
+                    {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => '搜尋主題','style' => 'width:100%;' ]) }}
                 </div>
             {{ Form::close() }}
 
@@ -72,8 +72,8 @@
                 </div>
             @else
                 <div class="alert alert-info text-center">
-                    No threads were found!
-                    <a href="{{ route('threads.create') }}" class="alert-link">Create a new one.</a>
+                    沒有找到相關主題!
+                    <a href="{{ route('threads.create') }}" class="alert-link">建立新的主題</a>
                 </div>
             @endif
         </div>
