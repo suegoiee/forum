@@ -29,14 +29,15 @@
             </div>
         </div>
         <div class="col-lg-9 chat-bg">
-            <a class="btn btn-block" href="{{ route('threads.create') }}">建立</a>
+            <a class="btn btn-block" href="{{ route('threads.create') }}">發文</a>
             @include('layouts._ads._bsa-cpc')
 
+            <p></p>
             @if (count($threads))
                 @foreach ($threads as $thread)
                     <div class="panel panel-default chat-bd">
                         <div class="panel-heading thread-info">
-                            <h4 class="media-heading">{{ $thread->subject() }}</h4>
+                            <h4 style="padding-top:2%;" class="media-heading">{{ $thread->subject() }}</h4>
                             @include('forum.threads.info.tags')
                         </div>
 
@@ -54,11 +55,11 @@
                             <div class="thread-info-author">
                                 @if (count($thread->replies()))
                                     @php($lastReply = $thread->replies()->last())
-                                    <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> replied
-                                    {{ $lastReply->createdAt()->diffForHumans() }}
+                                    <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a>在
+                                    {{ $lastReply->createdAt()->diffForHumans() }} 回覆
                                 @else
-                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> posted
-                                    {{ $thread->createdAt()->diffForHumans() }}
+                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> 在
+                                    {{ $thread->createdAt()->diffForHumans() }} 發文
                                 @endif
                             </div>
                     </div>

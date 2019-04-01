@@ -15,7 +15,7 @@
     @formGroup('tags')
         {!! Form::label('標註') !!}
         {!! Form::select('tags[]', $tags->pluck('name', 'id'), isset($thread) ? $thread->tags()->pluck('id')->toArray() : [], ['class' => 'form-control selectize', 'multiple']) !!}
-        <span class="help-block">可以選擇三個標註.</span>
+        <span class="help-block">只能選擇一個標註.</span>
         @error('tags')
     @endFormGroup
 
