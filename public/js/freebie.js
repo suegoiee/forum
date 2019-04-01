@@ -341,6 +341,7 @@ function drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable)
         $("#" + IdForCanvas + "bottomtable").empty();
         $("#" + IdForCanvas + "bottomtable").append(bottomtable);
         $(".bottomTableContent").css('max-width', $("#" + IdForCanvas + "bottomtable").width() - $(".bottomTableHeader").width() + 'px');
+        $(".bottomTableContent").scrollLeft(9999);
     }
 }
 

@@ -36,7 +36,9 @@
                 @foreach ($threads as $thread)
                     <div class="panel panel-default chat-bd">
                         <div class="panel-heading thread-info">
-                            <h4 class="media-heading">{{ $thread->subject() }}</h4>
+                            <div class="thread-info-author">
+                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
+                            </div>
                             @include('forum.threads.info.tags')
                         </div>
 
@@ -46,21 +48,21 @@
                                 <p>{{ $thread->excerpt() }}</p>
                             </a>
                         </div>
+                        @if (count($thread->replies()))
+                            @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
+                        @else
+                            @include('forum.threads.info.avatar', ['user' => $thread->author()])
+                        @endif
+                        <div class="thread-info-author">
                             @if (count($thread->replies()))
-                                @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
+                                @php($lastReply = $thread->replies()->last())
+                                <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> replied
+                                {{ $lastReply->createdAt()->diffForHumans() }}
                             @else
-                                @include('forum.threads.info.avatar', ['user' => $thread->author()])
+                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> posted
+                                {{ $thread->createdAt()->diffForHumans() }}
                             @endif
-                            <div class="thread-info-author">
-                                @if (count($thread->replies()))
-                                    @php($lastReply = $thread->replies()->last())
-                                    <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> replied
-                                    {{ $lastReply->createdAt()->diffForHumans() }}
-                                @else
-                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> posted
-                                    {{ $thread->createdAt()->diffForHumans() }}
-                                @endif
-                            </div>
+                        </div>
                     </div>
                 @endforeach
 
