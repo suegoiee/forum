@@ -153,13 +153,13 @@
                     
                     {!! Form::open(['route' => 'replies.store']) !!}
                         @formGroup('body')
-                            {!! Form::textarea('body', null, ['class' => 'form-control wysiwyg', 'required']) !!}
+                            {!! Form::textarea('body', null, ['class' => 'form-control wysiwyg', 'required', 'style' => 'height:100% !important; border-top: 1px dashed #e9e9e9 !important;border:none ; border-radius: 0;']) !!}
                             @error('body')
                         @endFormGroup
 
                         {!! Form::hidden('replyable_id', $thread->id()) !!}
                         {!! Form::hidden('replyable_type', 'threads') !!}
-                        {!! Form::submit('Reply', ['class' => 'btn btn-primary btn-block']) !!}
+                        {!! Form::submit('回覆', ['class' => 'btn btn-primary btn-block','style' => 'width:30% !important; margin-left:35%; margin-top:5%;' ]) !!}
                     {!! Form::close() !!}
                 @endif
             @endcan
