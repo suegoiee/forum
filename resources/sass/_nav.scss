@@ -2,7 +2,7 @@
   .navber-bd {
     background-color: #545454;
     .container {
-      width: 82%;
+      width: auto;
       .navbar-header {
         .navbar-brand {
           background-image: url(images/logo_light_horizontal.svg);
@@ -146,6 +146,11 @@
                 }
               }
             }
+            a {
+              .caret {
+                color: #fff !important;
+              }
+            }
           }
           .active {
             a {
@@ -174,13 +179,13 @@
   .navbar-header {
     .navbar-toggle {
       border: none !important;
+      background: none !important;
     }
     .navbar-toggle:hover {
       background: none !important;
     }
     .navbar-brand {
       background-size: 75%;
-      margin-left: 5%;
     }
   }
   .nav-font,
@@ -194,6 +199,8 @@
       .container {
         .navbar-collapse {
           .navbar-nav {
+            margin: 5% !important;
+            padding: 0 !important;
             li {
               .dropdown-menu {
                 padding: 0 !important;

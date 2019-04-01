@@ -14,7 +14,7 @@
                 </div>
             {{ Form::close() }}
 
-            <a class="btn btn-block" href="{{ route('threads.create') }}">建立</a>
+            <a class="btn btn-block" href="{{ route('threads.create') }}">建立新的主題</a>
 
             @include('layouts._ads._forum_sidebar')
 

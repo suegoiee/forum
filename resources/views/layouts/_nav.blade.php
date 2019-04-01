@@ -142,7 +142,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="/images/icon/userLogin.svg" style="width:30px; padding-top:20%;"> <span class="caret"></span>
+                        <img src="/images/icon/userLogin.svg" style="width:30px;"> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
