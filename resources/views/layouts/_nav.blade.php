@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}"></a>
+            <a class="navbar-brand" href="{{ route('home') }}" aria-label="home page"></a>
         </div>
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
@@ -19,7 +19,7 @@
                 </li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font stock down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="stockWord" style="display:inline-block; padding-right:5px;">股票資訊</div><span id="triangle-down"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font stock down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="stockWord" style="display:inline-block; padding-right:5px;">股票資訊</div><span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
@@ -77,7 +77,7 @@
 
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font down tool" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="toolWord" style="display:inline-block; padding-right:5px;">小工具</div><span id="triangle-down"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font down tool" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="toolWord" style="display:inline-block; padding-right:5px;">小工具</div><span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdownlist">
                             <a class="menu" href="#">計算股票價值<i class="fas fa-caret-right"></i></a>
@@ -133,7 +133,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank"><div class="proWord">優分析Pro</div></a></li>
+                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer"><div class="proWord">優分析Pro</div></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
@@ -141,8 +141,8 @@
                     <li class="{{ active('register') }}"><a class="login reg" href="{{ route('register') }}"><div class="regWord">註冊</div></a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="/images/icon/userLogin.svg" style="width:30px;"> <span class="caret"></span>
+                        <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-label="會員清單">
+                        <img src="/images/icon/userLogin.svg" style="width:30px; padding-top:20%;" alt="missing user photo"> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>

@@ -6,7 +6,7 @@
 
     <div class="container">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar">
+            <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar" aria-label="search">
         </div>
         <h2 style="text-align:center;"><b id="stockTitle"></b></h2>
         <h4 style="text-align:center;">{{$PageSubtitle}}</h4>
