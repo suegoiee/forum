@@ -25,51 +25,52 @@
             @include('layouts._ads._forum_sidebar')
         </div>
         <div class="col-lg-9">
-            <h1>{{ $title }}
 
-@can(App\Policies\ThreadPolicy::UPDATE, $thread)
-    <a class="btn btn-default btn-block" href="{{ route('threads.edit', $thread->slug()) }}">
-        編輯
-    </a>
-@endcan
+            @can(App\Policies\ThreadPolicy::UPDATE, $thread)
+                <a class="btn btn-default btn-block" href="{{ route('threads.edit', $thread->slug()) }}">
+                    編輯
+                </a>
+            @endcan
 
-@can(App\Policies\ThreadPolicy::UNSUBSCRIBE, $thread)
-    <a class="btn btn-primary btn-block" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
-        取消追蹤
-    </a>
-@elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
-    <a class="btn btn-primary btn-block" href="{{ route('threads.subscribe', $thread->slug()) }}">
-        追蹤
-    </a>
-@endcan
+            @can(App\Policies\ThreadPolicy::UNSUBSCRIBE, $thread)
+                <a class="btn btn-primary btn-block" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
+                    取消追蹤
+                </a>
+            @elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
+                <a class="btn btn-primary btn-block" href="{{ route('threads.subscribe', $thread->slug()) }}">
+                    追蹤
+                </a>
+            @endcan
 
-@can(App\Policies\ThreadPolicy::DELETE, $thread)
-    <a class="btn btn-danger btn-block" href="#" data-toggle="modal" data-target="#deleteThread">
-        刪除
-    </a>
+            @can(App\Policies\ThreadPolicy::DELETE, $thread)
+                <a class="btn btn-danger btn-block" href="#" data-toggle="modal" data-target="#deleteThread">
+                    刪除
+                </a>
 
-    @include('_partials._delete_modal', [
-        'id' => 'deleteThread',
-        'route' => ['threads.delete', $thread->slug()],
-        'title' => 'Delete Thread',
-        'body' => '<p>Are you sure you want to delete this thread and its replies? This cannot be undone.</p>',
-    ])
-@endcan
-</h1>
+                @include('_partials._delete_modal', [
+                    'id' => 'deleteThread',
+                    'route' => ['threads.delete', $thread->slug()],
+                    'title' => 'Delete Thread',
+                    'body' => '<p>Are you sure you want to delete this thread and its replies? This cannot be undone.</p>',
+                ])
+            @endcan
+
             <div class="panel panel-default">
                 <div class="panel-heading thread-info">
-                    @include('forum.threads.info.avatar', ['user' => $thread->author()])
-
                     <div class="thread-info-author">
-                        <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a>
-                        posted {{ $thread->createdAt()->diffForHumans() }}
+                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
                     </div>
-
                     @include('forum.threads.info.tags')
                 </div>
 
                 <div class="panel-body forum-content">
                     @md($thread->body())
+                </div>
+                @include('forum.threads.info.avatar', ['user' => $thread->author()])
+
+                <div class="thread-info-author">
+                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a>
+                    posted {{ $thread->createdAt()->diffForHumans() }}
                 </div>
             </div>
 
