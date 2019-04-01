@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="col-lg-9 chat-bg">
-            <a class="btn btn-block" href="{{ route('threads.create') }}">發文</a>
+            <a class="btn btn-block" href="{{ route('threads.create') }}">發表文章</a>
             @include('layouts._ads._bsa-cpc')
 
             <p></p>

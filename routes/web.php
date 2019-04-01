@@ -3,7 +3,7 @@
 // Home
 //Route::get('/', 'HomeController@show')->name('home');
 Route::get('/', function () {
-    return redirect('freebie\stocksummary');
+    return redirect('forum');
 })->name('home');
 Route::get('rules', 'HomeController@rules')->name('rules');
 Route::get('terms', 'HomeController@terms')->name('terms');

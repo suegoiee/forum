@@ -35,11 +35,11 @@
 
 @can(App\Policies\ThreadPolicy::UNSUBSCRIBE, $thread)
     <a class="btn btn-primary btn-block" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
-        取消訂閱
+        取消追蹤
     </a>
 @elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
     <a class="btn btn-primary btn-block" href="{{ route('threads.subscribe', $thread->slug()) }}">
-        訂閱
+        追蹤
     </a>
 @endcan
 
