@@ -18,7 +18,7 @@
 
             <h3>分類</h3>
             <div class="list-group">
-                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">All</a>
+                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
 
                 @foreach (App\Models\Tag::orderBy('name')->get() as $tag)
                     <a href="{{ route('forum.tag', $tag->slug()) }}"
