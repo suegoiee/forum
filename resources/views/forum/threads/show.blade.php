@@ -25,7 +25,7 @@
             @include('layouts._ads._forum_sidebar')
         </div>
         <div class="col-lg-9">
-            <h1>{{ $title }}</h1>
+            <h1>{{ $title }}
 
 @can(App\Policies\ThreadPolicy::UPDATE, $thread)
     <a class="btn btn-default btn-block" href="{{ route('threads.edit', $thread->slug()) }}">
@@ -55,7 +55,7 @@
         'body' => '<p>Are you sure you want to delete this thread and its replies? This cannot be undone.</p>',
     ])
 @endcan
-
+</h1>
             <div class="panel panel-default">
                 <div class="panel-heading thread-info">
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
@@ -142,7 +142,7 @@
                     'id' => "deleteReply{$reply->id()}",
                     'route' => ['replies.delete', $reply->id()],
                     'title' => 'Delete Reply',
-                    'body' => '<p>Are you sure you want to delete this reply? This cannot be undone.</p>',
+                    'body' => '<p>確定要刪除回應？還沒回覆完成.</p>',
                 ])
             @endforeach
 
@@ -170,7 +170,7 @@
 
                         {!! Form::hidden('replyable_id', $thread->id()) !!}
                         {!! Form::hidden('replyable_type', 'threads') !!}
-                        {!! Form::submit('回覆', ['class' => 'btn btn-primary btn-block','style' => 'width:30% !important; margin-left:35%; margin-top:5%;' ]) !!}
+                        {!! Form::submit('回覆', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%;' ]) !!}
                     {!! Form::close() !!}
                 @endif
             @endcan

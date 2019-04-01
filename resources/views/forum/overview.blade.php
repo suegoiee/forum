@@ -69,9 +69,9 @@
                     {!! $threads->render() !!}
                 </div>
             @else
-                <div class="alert alert-info text-center">
+                <div class="alert text-center" style="color: #545454;">
                     沒有找到相關主題!
-                    <a href="{{ route('threads.create') }}" class="alert-link">建立新的主題</a>
+                    <a href="{{ route('threads.create') }}" style="color: #545454;" class="alert-link">建立新的主題</a>
                 </div>
             @endif
         </div>

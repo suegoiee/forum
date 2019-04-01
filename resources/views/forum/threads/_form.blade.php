@@ -20,6 +20,6 @@
         @error('tags')
     @endFormGroup
 
-    {!! Form::submit(isset($thread) ? 'Update Thread' : '建立主題', ['class' => 'btn btn-primary btn-block','style' => 'width:30% !important; margin-left:35%;' ]) !!}
-    <a href="{{ isset($thread) ? route('thread', $thread->slug()) : route('forum') }}" class="btn btn-primary btn-block" style = "width:30% !important; margin-left:35%;">取消</a>
+    {!! Form::submit(isset($thread) ? 'Update Thread' : '建立主題', ['class' => 'btn btn-primary btn-block','style' => 'width: auto !important; display:inline-block;' ]) !!}
+    <a href="{{ isset($thread) ? route('thread', $thread->slug()) : route('forum') }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block; float:right; margin-top:none;">取消</a>
 {!! Form::close() !!}
