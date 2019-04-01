@@ -63,6 +63,7 @@ h1 {
 
     .panel {
       background: none !important;
+      padding-left: 3%;
       .panel-heading {
         -webkit-padding-start: 0 !important;
         padding-inline-start: 0 !important;
@@ -95,10 +96,10 @@ h1 {
           }
           p {
             color: #545454;
-            font-size: 14.5px;
+            font-size: 15px;
             font-weight: 300;
             text-align: left;
-            padding-left: 15px;
+            padding-left: 3%;
           }
         }
         a:hover {
@@ -106,22 +107,33 @@ h1 {
           p:hover {
             text-decoration: none;
             text-align: left;
-          }
-          p:hover {
             color: #545454;
-            font-size: 14.5px;
+            font-size: 15px;
             font-weight: 300;
           }
         }
       }
     }
 
-    .thread-info-author {
-      font-size: 14.5px;
+    .headLabel {
       text-align: left;
+      padding-top: 1%;
       .thread-info-link {
         color: #393939;
         font-size: 18px;
+        font-weight: bolder;
+      }
+      .thread-info-link:hover {
+        text-decoration: none;
+      }
+    }
+
+    .authorName {
+      text-align: left;
+      font-size: 13px;
+      .thread-info-link {
+        color: #393939;
+        font-size: 15px;
         font-weight: bolder;
       }
       .thread-info-link:hover {

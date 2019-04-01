@@ -27,7 +27,7 @@
         <div class="col-lg-9">
 
             @can(App\Policies\ThreadPolicy::UPDATE, $thread)
-                <a class="btn btn-default btn-block" href="{{ route('threads.edit', $thread->slug()) }}">
+                <a class="btn btn-default btn-block" style="margin-top: 5px;" href="{{ route('threads.edit', $thread->slug()) }}">
                     編輯
                 </a>
             @endcan
@@ -54,11 +54,11 @@
                     'body' => '<p>Are you sure you want to delete this thread and its replies? This cannot be undone.</p>',
                 ])
             @endcan
-
-            <div class="panel panel-default">
-                <div class="panel-heading thread-info">
-                    <div class="thread-info-author">
-                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
+            <p style="display:inline-block;"></p>
+            <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;">
+                <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
+                    <div class="thread-info-author headLabel">
+                        <a style="font-size: 22px;" href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
                     </div>
                     @include('forum.threads.info.tags')
                 </div>
@@ -68,7 +68,7 @@
                 </div>
                 @include('forum.threads.info.avatar', ['user' => $thread->author()])
 
-                <div class="thread-info-author">
+                <div class="thread-info-author authorName">
                     <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a>
                     posted {{ $thread->createdAt()->diffForHumans() }}
                 </div>
@@ -76,8 +76,9 @@
 
             @include('layouts._ads._bsa-cpc')
 
+            <div style="border-bottom: 2px solid #e9e9e9;">回應</div>
             @foreach ($thread->replies() as $reply)
-                <div class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
+                <div style="border:none !important;" class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
                     <div class="panel-heading thread-info">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
 
@@ -143,7 +144,7 @@
                     'id' => "deleteReply{$reply->id()}",
                     'route' => ['replies.delete', $reply->id()],
                     'title' => 'Delete Reply',
-                    'body' => '<p>確定要刪除回應？還沒回覆完成.</p>',
+                    'body' => '<p>確定要刪除回應？還沒回應完成.</p>',
                 ])
             @endforeach
 
@@ -171,7 +172,7 @@
 
                         {!! Form::hidden('replyable_id', $thread->id()) !!}
                         {!! Form::hidden('replyable_type', 'threads') !!}
-                        {!! Form::submit('回覆', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%;' ]) !!}
+                        {!! Form::submit('回應', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%;' ]) !!}
                     {!! Form::close() !!}
                 @endif
             @endcan
