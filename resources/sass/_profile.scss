@@ -189,7 +189,13 @@ div {
   }
 }
 @media (max-width: 767px) {
-  .col-lg-9 {
+  .accountA {
+    margin: 0;
+    .panel {
+      overflow: hidden;
+    }
+  }
+  .accountB {
     padding: 0 !important;
     .panel {
       .panel-body {
@@ -197,7 +203,8 @@ div {
           .form-group {
             div {
               .btn {
-                margin-left: 6% !important;
+                float: right;
+                width: 100%;
               }
             }
           }

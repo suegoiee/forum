@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading account">帳號設定</div>
         <div class="panel-body">
             {!! Form::open(['route' => 'settings.profile.update', 'method' => 'PUT', 'class' => 'form-horizontal formSet']) !!}
                 <div class="form-group">

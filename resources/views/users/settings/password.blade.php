@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="panel panel-default">
-        <div class="panel-heading account">密碼更改</div>
         <div class="panel-body">
             {{ Form::open(['route' => 'settings.password.update', 'method' => 'PUT', 'class' => 'form-horizontal formSet']) }}
                 @if (Auth::user()->hasPassword())
@@ -36,7 +35,7 @@
                 @endFormGroup
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6">
+                    <div class="col-md-offset-3 col-md-6" style="padding-top:2%;">
                         {!! Form::submit('儲存', ['class' => 'btn btn-primary save']) !!}
                     </div>
                 </div>
