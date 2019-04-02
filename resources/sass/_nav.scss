@@ -134,6 +134,9 @@
               }
             }
             a {
+              img {
+                padding-top: 20%;
+              }
               .caret {
                 color: #fff !important;
               }
@@ -189,6 +192,11 @@
             margin: 3% 5% !important;
             padding: 0 !important;
             li {
+              a {
+                img {
+                  padding-top: 0 !important;
+                }
+              }
               .dropdown-menu {
                 padding: 0 !important;
                 border: none !important;

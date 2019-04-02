@@ -142,7 +142,7 @@
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-label="會員清單">
-                        <img src="/images/icon/userLogin.svg" style="width:30px; padding-top:20%;" alt="missing user photo"> <span class="caret"></span>
+                        <img src="/images/icon/userLogin.svg" style="width:30px;" alt="missing user photo"> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>

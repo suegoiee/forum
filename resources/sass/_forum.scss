@@ -246,4 +246,25 @@ h1 {
   h1 {
     padding-left: 5%;
   }
+  .forum {
+    div {
+      .panel {
+        width: 100%;
+        .panel-body {
+          a {
+            p {
+              font-size: 13px;
+              overflow-y: inherit;
+            }
+          }
+          a:hover {
+            p:hover {
+              font-size: 13px;
+              overflow-y: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
 }
