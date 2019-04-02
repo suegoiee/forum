@@ -49,7 +49,7 @@
 
                 <label>
                     {!! Form::checkbox('terms') !!}
-                    &nbsp; 已閱讀並同意 <a href="{{ route('terms') }}" target="_blank">服務條款</a> 及 <a href="{{ route('privacy') }}" target="_blank">隱私權保護政策</a>.
+                    &nbsp; 已閱讀並同意 <a href="{{ route('terms') }}" target="_blank">免責聲明</a> 及 <a href="{{ route('privacy') }}" target="_blank">隱私權政策</a>.
                 </label>
                 @error('rules')
             @endFormGroup

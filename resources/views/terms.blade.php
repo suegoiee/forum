@@ -3,88 +3,34 @@
 @extends('layouts.default')
 
 @section('content')
+    <div style="color: #393939; font-size: 1.8rem; text-align: center; padding-bottom: 2%; padding-top: 1%;">免責聲明</div>
+    <div class="low">
 
-    <h1>Terms and Conditions</h1>
+        <p>本聲明 係由「商拓財經有限公司」（以下簡稱本公司）所擬訂，據以營運 優分析 網站及社群交友服務（ 其範圍包括但不限於「免責聲明」、「隱私權條款」）的基本約款，規範 優分析 與用戶的關係。</p>
+        
+        <p>優分析 UAnalyze 必須特別聲明：投資必有風險，投資人必須謹慎、理性地判讀各種市場資訊並為個人投資決策及其後果負起盈虧責任。</p>    
 
-    <p><strong>Last updated: May 22, 2018</strong></p>
+        <p>優分析 UAnalyze 各項服務係依據公開資訊觀測站、台灣證券交易所與櫃檯買賣中心之資料直接呈現，或綜整；圖表化；工具化等方式呈現，已力求正確與即時。但不保證本網站的效能、速度與安全性，以及資訊內容完整、正確與可靠性等。其可能發生錯誤、遺漏、瑕疵、中斷與延遲等狀況，一切資料仍以公開資訊觀測站、台灣證券交易所與櫃檯買賣中心的資訊為準。如發生相關狀況，本公司不負擔相關之損害賠償及法律責任。</p> 
 
-    <p>These Terms and Conditions ("Terms", "Terms and Conditions") govern your relationship with https://laravel.io website (the "Service") operated by Laravel.io ("us", "we", or "our").</p>
+        <p>本網站所提供之各項資訊服務，包括其他使用者張貼的文章、評論及意見等，皆不具立即性、統一適用性，不應視為任何程度的投資建議，亦不代表本公司立場。相關資訊的真實性、完整性、可信度有賴使用者自行審度，投資人務必多方蒐集資訊參考佐證，自行分析且獨立思考判斷，萬不可直接依賴本網站服務進行投資決策，相關風險應自行承擔。若因此發生直接或衍生之損失，本公司恕不負擔任何損害賠償及法律責任。</p> 
 
-    <p>Please read these Terms and Conditions carefully before using the Service.</p>
+        <p>此外，本公司之關係企業、相關管理人員及董事、以及所屬員工或代理人在法律容許的限度內，不向您承擔以下原因所引發之任何損害：</p> 
 
-    <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.</p>
+        <p>本網站服務之可能錯誤、延遲、遺漏、瑕疵、中斷或停止傳輸；</p> 
 
-    <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.</p>
+        <p>第三方駭客攻擊或藉由本網站服務傳輸惡意軟體、病毒、木馬或類似性質之程式；</p> 
 
+        <p>本網站受託廣告刊登行為，或使用者對廣告商或贊助人所發生的任何交易或行為；</p> 
 
-    <h2>Content</h2>
+        <p>本網站對提供服務之範圍與內容，以及相關免責聲明、服務條款、隱私權條款等規範所進行的任何異動之行為（ 例如：一部分或全部性的變更、修改、暫時停止服務、永久停止服務等異動行為）。</p> 
 
-    <p>Our Service allows you to post, link, store, share and otherwise make available certain information, text, graphics, videos, or other material ("Content"). You are responsible for the Content that you post to the Service, including its legality, reliability, and appropriateness.</p>
+        <p>本網站使用者違反中華民國法律及本網站各項服務條款、承諾、義務與注意事項之行為。</p> 
 
-    <p>By posting Content to the Service, you grant us the right and license to use, modify, publicly perform, publicly display, reproduce, and distribute such Content on and through the Service. You retain any and all of your rights to any Content you submit, post or display on or through the Service and you are responsible for protecting those rights. You agree that this license includes the right for us to make your Content available to other users of the Service, who may also use your Content subject to these Terms.</p>
-
-    <p>You represent and warrant that: (i) the Content is yours (you own it) or you have the right to use it and grant us the rights and license as provided in these Terms, and (ii) the posting of your Content on or through the Service does not violate the privacy rights, publicity rights, copyrights, contract rights or any other rights of any person.</p>
-
-
-    <h2>Accounts</h2>
-
-    <p>When you create an account with us, you must provide us information that is accurate, complete, and current at all times. Failure to do so constitutes a breach of the Terms, which may result in immediate termination of your account on our Service.</p>
-
-    <p>You are responsible for safeguarding the password that you use to access the Service and for any activities or actions under your password, whether your password is with our Service or a third-party service.</p>
-
-    <p>You agree not to disclose your password to any third party. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</p>
-
-    <p>You may not use as a username the name of another person or entity or that is not lawfully available for use, a name or trade mark that is subject to any rights of another person or entity other than you without appropriate authorization, or a name that is otherwise offensive, vulgar or obscene.</p>
-
-
-    <h2>Intellectual Property</h2>
-
-    <p>The Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Laravel.io and its licensors. The Service is protected by copyright, trademark, and other laws of both the Belgium and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Laravel.io.</p>
-
-
-    <h2>Links To Other Web Sites</h2>
-
-    <p>Our Service may contain links to third-party web sites or services that are not owned or controlled by Laravel.io.</p>
-
-    <p>Laravel.io has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Laravel.io shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.</p>
-
-    <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.</p>
-
-
-    <h2>Termination</h2>
-
-    <p>We may terminate or suspend your account immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms.</p>
-
-    <p>Upon termination, your right to use the Service will immediately cease. If you wish to terminate your account, you may simply discontinue using the Service.</p>
-
-
-    <h2>Limitation Of Liability</h2>
-
-    <p>In no event shall Laravel.io, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.</p>
-
-
-    <h2>Disclaimer</h2>
-
-    <p>Your use of the Service is at your sole risk. The Service is provided on an "AS IS" and "AS AVAILABLE" basis. The Service is provided without warranties of any kind, whether express or implied, including, but not limited to, implied warranties of merchantability, fitness for a particular purpose, non-infringement or course of performance.</p>
-
-    <p>Laravel.io its subsidiaries, affiliates, and its licensors do not warrant that a) the Service will function uninterrupted, secure or available at any particular time or location; b) any errors or defects will be corrected; c) the Service is free of viruses or other harmful components; or d) the results of using the Service will meet your requirements.</p>
-
-
-    <h2>Governing Law</h2>
-
-    <p>These Terms shall be governed and construed in accordance with the laws of Belgium, without regard to its conflict of law provisions.</p>
-
-    <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have between us regarding the Service.</p>
-
-
-    <h2>Changes</h2>
-
-    <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 15 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
-
-    <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
-
-
-    <h2>Contact Us</h2>
-
-    <p>If you have any questions about these Terms, please contact us.</p>
+        <p>會員如對於 優分析 之以上規則有任何疑問，敬請以
+            <a href="https://www.facebook.com/UAnalyze"><i class="fab fa-facebook-square"></i></a> 或
+            <a href="mailto:service@uanalyze.com.tw"><i class="fas fa-envelope-square"></i></a> 或
+            <a href="tel:+886-2-2747-3447"><i class="fas fa-phone-square"></i></a>
+            向 優分析 反映，我們將盡速與您聯絡，謝謝。
+        </p>
+    </div>
 @endsection

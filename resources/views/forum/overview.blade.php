@@ -1,5 +1,5 @@
 @php($subTitle = isset($activeTag) ? $activeTag->name() : null)
-@title('討論區' . (isset($subTitle) ? ' > ' . $subTitle : ''))
+@title('討論區' . (isset($subTitle) ? ' ▸ ' . $subTitle : ''))
 
 @extends('layouts.default')
 
@@ -16,7 +16,7 @@
 
             @include('layouts._ads._forum_sidebar')
 
-            <h3>分類</h3>
+            <h3 style="padding-left:4%;">分類</h3>
             <div class="list-group">
                 <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
 
@@ -35,7 +35,7 @@
             <p></p>
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important;">
+                    <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
                         <div class="panel-heading thread-info">
                             <div class="thread-info-author headLabel">
                                 <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>

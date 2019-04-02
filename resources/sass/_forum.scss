@@ -7,7 +7,8 @@ h1 {
 .forum {
   div {
     p {
-      height: 6%;
+      height: 2%;
+      display: inline-block;
     }
     .btn {
       background-color: #fff;
@@ -90,6 +91,13 @@ h1 {
         width: 100% !important;
         margin-left: 0% !important;
         padding: 15px 0;
+        h3 {
+          font-size: 18px;
+        }
+        p {
+          font-size: 15px !important;
+          font-weight: 100;
+        }
         a {
           span {
             background: #ffa500;
@@ -119,6 +127,9 @@ h1 {
     .headLabel {
       text-align: left;
       padding-top: 1%;
+      .formTitle {
+        font-size: 22px !important;
+      }
       p {
         font-size: 17px;
         padding: 1% 0;
@@ -250,7 +261,20 @@ h1 {
     div {
       .panel {
         width: 100%;
+        .panel-heading {
+          .headLabel {
+            .formTitle {
+              font-size: 17px;
+            }
+          }
+        }
         .panel-body {
+          h3 {
+            font-size: 15px;
+          }
+          p {
+            font-size: 13px;
+          }
           a {
             p {
               font-size: 13px;

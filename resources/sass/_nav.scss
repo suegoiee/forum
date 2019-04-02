@@ -151,6 +151,25 @@
       }
     }
   }
+  .low {
+    background-color: #fff;
+    line-height: 1.5;
+    padding: 15px;
+    width: 55% !important;
+    text-align: justify;
+    margin: auto;
+    p {
+      color: #545454;
+      font-size: 13px;
+      strong {
+        font-size: 14.5px;
+      }
+      a {
+        color: #393939;
+        font-size: 18px;
+      }
+    }
+  }
 }
 
 .navbar-nav > li > a.profile-image {
@@ -166,27 +185,21 @@
 }
 
 @media (max-width: 767px) {
-  .navbar-header {
-    .navbar-toggle {
-      border: none !important;
-      background: none !important;
-    }
-    .navbar-toggle:hover {
-      background: none !important;
-    }
-    .navbar-brand {
-      background-size: 75%;
-    }
-  }
-  .nav-font,
-  .login {
-    padding-left: 10% !important;
-    font-size: 14.5px !important;
-    line-height: normal !important;
-  }
   #app {
     .navber-bd {
       .container {
+        .navbar-header {
+          .navbar-toggle {
+            border: none !important;
+            background: none !important;
+          }
+          .navbar-toggle:hover {
+            background: none !important;
+          }
+          .navbar-brand {
+            background-size: 75%;
+          }
+        }
         .navbar-collapse {
           .navbar-nav {
             margin: 3% 5% !important;
@@ -271,7 +284,7 @@
               .reg,
               .reg:hover {
                 .regWord {
-                  padding-left: 0% !important;
+                  padding-left: 15% !important;
                 }
               }
               .logo {
@@ -282,10 +295,21 @@
                 margin-left: 10%;
                 width: 100px;
               }
+              .nav-font {
+                padding-left: 10% !important;
+                font-size: 14.5px !important;
+                line-height: normal !important;
+              }
+              .logg {
+                padding-left: 0;
+              }
             }
           }
         }
       }
+    }
+    .low {
+      width: auto !important;
     }
   }
 }

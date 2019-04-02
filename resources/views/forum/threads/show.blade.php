@@ -58,7 +58,7 @@
             <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
                     <div class="thread-info-author headLabel">
-                        <a style="font-size: 22px;" href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
+                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link formTitle">{{ $thread->subject() }}</a>
                     </div>
                     @include('forum.threads.info.tags')
                 </div>

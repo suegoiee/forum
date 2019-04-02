@@ -137,7 +137,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li class="{{ active('login') }}"><a class="login" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> 登入</a></li>
+                    <li class="{{ active('login') }}"><a style="display:-webkit-box;" class="login logg" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i><div style="padding-left:4%;">登入</div></a></li>
                     <li class="{{ active('register') }}"><a class="login reg" href="{{ route('register') }}"><div class="regWord">註冊</div></a></li>
                 @else
                     <li class="dropdown">

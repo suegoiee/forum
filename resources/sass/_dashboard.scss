@@ -3,7 +3,6 @@ div {
     background-color: #e9e9e9 !important;
     margin: 10px auto !important;
     border: none;
-    text-align: center;
     -webkit-box-shadow: none;
     box-shadow: none;
     .panel-heading {
@@ -94,5 +93,52 @@ div {
     color: #393939 !important;
     background-color: #e9e9e9 !important;
     border-color: none !important;
+  }
+}
+.col-md-offset-4 {
+  .panel {
+    text-align: center;
+    .panel-body {
+      .rule {
+        width: 150% !important;
+        margin-left: -25% !important;
+        text-align: justify;
+        background-color: #fff;
+        line-height: 1.5;
+        padding: 15px;
+        p {
+          color: #545454;
+          font-weight: 100;
+          font-size: 13px;
+          strong {
+            font-size: 14.5px;
+          }
+          a {
+            color: #393939;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .col-md-offset-4 {
+    .panel {
+      .panel-body {
+        .rule {
+          width: 85% !important;
+          margin-left: 5% !important;
+        }
+      }
+    }
+  }
+  div {
+    .panel {
+      text-align: center;
+      .panel-body {
+        padding: 5px !important;
+      }
+    }
   }
 }

@@ -5,6 +5,6 @@
 @section('body')
     <div class="jumbotron text-center">
         <h1>{{ $title }}</h1>
-        <p>The page you requested cannot be found.</p>
+        <p>所尋求的頁面並未找到</p>
     </div>
 @endsection
