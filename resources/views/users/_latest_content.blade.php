@@ -10,7 +10,7 @@
                 </a>
             </div>
         @empty
-            <p class="text-center">{{ $user->name() }} has not posted any threads yet.</p>
+            <p style="color:#545454;" class="text-center">{{ $user->name() }} 還沒發過文喔~</p>
         @endforelse
     </div>
     <div class="col-md-6">
@@ -24,7 +24,7 @@
                 </a>
             </div>
         @empty
-            <p class="text-center">{{ $user->name() }} has not posted any replies yet.</p>
+            <p style="color:#545454;" class="text-center">{{ $user->name() }} 還沒回應過喔~</p>
         @endforelse
     </div>
 </div>

@@ -137,7 +137,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li class="{{ active('login') }}"><a class="login log" href="{{ route('login') }}"><div class="logWord">登入</div></a></li>
+                    <li class="{{ active('login') }}"><a class="login" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> 登入</a></li>
                     <li class="{{ active('register') }}"><a class="login reg" href="{{ route('register') }}"><div class="regWord">註冊</div></a></li>
                 @else
                     <li class="dropdown">
@@ -161,7 +161,7 @@
                             @endcan
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt" aria-hidden="true"></i>登出</a></li>
+                            <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> 登出</a></li>
                         </ul>
                     </li>
                 @endif

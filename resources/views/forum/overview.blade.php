@@ -35,7 +35,7 @@
             <p></p>
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    <div class="panel panel-default chat-bd" style="height:25%; margin-bottom: 3% !important;">
+                    <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important;">
                         <div class="panel-heading thread-info">
                             <div class="thread-info-author headLabel">
                                 <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
@@ -50,7 +50,7 @@
                             </a>
                         </div>
                         
-                        <div class="thread-info-author authorName" style="float: right; display: inline-flex; margin-top: 3%;">
+                        <div class="thread-info-author authorName" style="text-align: right; display: block;">
                         @if (count($thread->replies()))
                             @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
                         @else
