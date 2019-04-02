@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form>
+    <form style="width:50%;">
         <fieldset>
             <h3>股票買進檢查表</h3>
             <h5>(請勾選每一個題目)</h5>
