@@ -1,10 +1,10 @@
 <div class="row profile-latest-items">
     <div class="col-md-6">
-        <h3>最新主題</h3>
+        <h3>最近發文</h3>
 
         @forelse ($user->latestThreads() as $thread)
             <div class="list-group">
-                <a href="{{ route('thread', $thread->slug()) }}" class="list-group-item">
+                <a href="{{ route('thread', $thread->slug()) }}" class="list-group-item" style="border: 2px solid #e9e9e9 !important;">
                     <h4 class="list-group-item-heading">{{ $thread->subject() }}</h4>
                     <p class="list-group-item-text">{{ $thread->excerpt() }}</p>
                 </a>
@@ -14,11 +14,11 @@
         @endforelse
     </div>
     <div class="col-md-6">
-        <h3>最新回覆</h3>
+        <h3>最近回覆</h3>
 
         @forelse ($user->latestReplies() as $reply)
             <div class="list-group">
-                <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="list-group-item">
+                <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="list-group-item" style="border: 2px solid #e9e9e9 !important;">
                     <h4 class="list-group-item-heading">{{ $reply->replyAble()->subject() }}</h4>
                     <p class="list-group-item-text">{{ $reply->excerpt() }}</p>
                 </a>

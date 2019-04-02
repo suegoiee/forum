@@ -111,6 +111,19 @@
                 padding-left: 10%;
               }
             }
+            .log {
+              background-image: url(images/login_1.svg);
+              background-size: 20%;
+              background-position: 0 50%;
+              background-repeat: no-repeat;
+              width: 70px;
+              .logWord {
+                padding-left: 10%;
+              }
+            }
+            .log:hover {
+              background-image: url(images/login_2.svg);
+            }
             .reg:hover {
               background-image: url(images/reg_2.svg);
             }
@@ -299,9 +312,6 @@
                 padding-left: 10% !important;
                 font-size: 14.5px !important;
                 line-height: normal !important;
-              }
-              .logg {
-                padding-left: 0;
               }
             }
           }
