@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form>
+    <form style="width:50%;">
         <fieldset>
             <h3>資本預算之NPV(淨現值)</h3>
             <h5>(請填入年利率、各年現金流狀況)</h5>

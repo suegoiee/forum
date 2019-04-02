@@ -3,7 +3,7 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container">
+<div class="container" style="width:50%;">
     <form>
         <fieldset>
             <h3>兩階段 現金流折現模型 DCF</h3>

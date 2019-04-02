@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form>
+    <form style="width:50%;">
         <fieldset>
             <h3>我適合存股嗎～存股性向測驗</h3>
             <h5>(出自:智富Smart)</h5>

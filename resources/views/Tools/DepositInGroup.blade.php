@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-	<form>
+	<form style="width:50%;">
 		<fieldset>
 			<h3>揪團買股</h3>
 			<h5>(請填入姓名、金額、股票代號、買進和賣出金額)</h5>
