@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('home') }}"></a>
+            <a class="navbar-brand" href="{{ route('home') }}" aria-label="home page"></a>
         </div>
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
@@ -19,14 +19,14 @@
                 </li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font stock down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="stockWord" style="display:inline-block; padding-right:5px;">股票資訊</div><span id="triangle-down"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font stock down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="stockWord" style="display:inline-block; padding-right:5px;">股票資訊</div><span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
                         <li><a class="menu" href="{{ route('freebie.DailyStockPriceAreaChartWithDisplay') }}">股價走勢</a></li>
                         <li><a class="menu" href="{{ route('freebie.StockPriceVSEPS') }}">每股盈餘VS股價</a></li>
                         <li class="dropdownlist">
-                            <a class="menu">月營收<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">月營收<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.MonthlyRevenue') }}">每月營收變化表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.MonthlyRevenueVSStockPrice') }}">月營收與股價對照表</a></li>
@@ -35,7 +35,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">財務報表<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">財務報表<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.IncomeStatement') }}">損益表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.StatementOfFinancialPosition') }}">資產負債表</a></li>
@@ -43,7 +43,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">股息政策<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">股息政策<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.HistoricalDividendRecord') }}">歷年股息表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.CashDividendPayoutRatio') }}">股息配發率</a></li>
@@ -51,7 +51,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">籌碼資訊<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">籌碼資訊<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.InstitutionalInvestorsNet') }}">三大法人買賣超日報表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.QFIIHoldingsVSStockPrice') }}">外資持股比率</a></li>
@@ -64,7 +64,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">股票評價<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">股票評價<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a class="menu" href="{{ route('freebie.HistoricalPer') }}">本益比評價</a></li>
                                 <li><a class="menu" href="{{ route('freebie.HistoricalPbr') }}">股價淨值比評價</a></li>
@@ -77,10 +77,10 @@
 
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle nav-font down tool" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="toolWord" style="display:inline-block; padding-right:5px;">小工具</div><span id="triangle-down"></span></a>
+                    <a href="#" class="dropdown-toggle nav-font down tool" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><div class="toolWord" style="display:inline-block; padding-right:5px;">小工具</div><span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdownlist">
-                            <a class="menu">計算股票價值<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">計算股票價值<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.buffett') }}">巴菲特預估股價</a></li>
                                 <li><a href="{{ route('Tools.deposit') }}">定存股價值試算表</a></li>
@@ -90,7 +90,7 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">買賣股票試算<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">買賣股票試算<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.money') }}">除權息參考價</a></li>
                                 <li><a href="{{ route('Tools.bargain') }}">損益試算</a></li>
@@ -98,32 +98,32 @@
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">投資檢查表<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">投資檢查表<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.buyCheckForm') }}">股票買進檢查表</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">營收盈餘預估<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">營收盈餘預估<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.Compound') }}">年複合成長率</a></li>
                                 <li><a href="{{ route('Tools.estimate') }}">市占率預估</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">投資屬性測驗<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">投資屬性測驗<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.DepositTest') }}">存股性向測驗</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">資本規劃試算<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">資本規劃試算<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.npv') }}">NPV計算機</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
-                            <a class="menu">理財小工具<i class="fas fa-caret-right"></i></a>
+                            <a class="menu" href="#">理財小工具<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
                                 <li><a href="{{ route('Tools.interest') }}">複利計算</a></li>
                                 <li><a href="{{ route('Tools.PayBack') }}">貸款試算</a></li>
@@ -133,16 +133,16 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank"><div class="proWord">優分析Pro</div></a></li>
+                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer"><div class="proWord">優分析Pro</div></a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li class="{{ active('login') }}"><a class="login log" href="{{ route('login') }}"><div class="logWord">登入</div></a></li>
+                    <li class="{{ active('login') }}"><a style="display:-webkit-box;" class="login logg" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i><div style="padding-left:4%;">登入</div></a></li>
                     <li class="{{ active('register') }}"><a class="login reg" href="{{ route('register') }}"><div class="regWord">註冊</div></a></li>
                 @else
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        <img src="/images/icon/userLogin.svg" style="width:30px; padding-top:20%;"> <span class="caret"></span>
+                        <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-label="會員清單">
+                        <img src="/images/icon/userLogin.svg" style="width:30px;" alt="missing user photo"> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -152,6 +152,7 @@
                                 </span>
                             </li>
                             <li role="separator" class="divider"></li>
+                            <li class="{{ active('settings.*') }}"><a href="{{ route('dashboard') }}"> <i class="fa fa-tag dropdown-icon" aria-hidden="true"></i>我的文章</a></li>
                             <li class="{{ active('settings.*') }}"><a href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>設定</a></li>
 
                             @can(App\Policies\UserPolicy::ADMIN, App\User::class)
@@ -160,7 +161,7 @@
                             @endcan
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out dropdown-icon" aria-hidden="true"></i>登出</a></li>
+                            <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> 登出</a></li>
                         </ul>
                     </li>
                 @endif

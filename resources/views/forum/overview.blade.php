@@ -1,5 +1,5 @@
 @php($subTitle = isset($activeTag) ? $activeTag->name() : null)
-@title('討論區' . (isset($subTitle) ? ' > ' . $subTitle : ''))
+@title('討論區' . (isset($subTitle) ? ' ▸ ' . $subTitle : ''))
 
 @extends('layouts.default')
 
@@ -10,17 +10,15 @@
         <div class="col-lg-3">
             {{ Form::open(['route' => 'forum', 'method' => 'GET']) }}
                 <div class="form-group">
-                    {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => 'Search for threads...']) }}
+                    {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => '搜尋主題','style' => 'width:100%;' ]) }}
                 </div>
             {{ Form::close() }}
 
-            <a class="btn btn-block" href="{{ route('threads.create') }}">建立</a>
-
             @include('layouts._ads._forum_sidebar')
 
-            <h3>Tags</h3>
+            <h3 style="padding-left:4%;">分類</h3>
             <div class="list-group">
-                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">All</a>
+                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
 
                 @foreach (App\Models\Tag::orderBy('name')->get() as $tag)
                     <a href="{{ route('forum.tag', $tag->slug()) }}"
@@ -31,38 +29,41 @@
             </div>
         </div>
         <div class="col-lg-9 chat-bg">
+            <a class="btn btn-block" href="{{ route('threads.create') }}">發表文章</a>
             @include('layouts._ads._bsa-cpc')
 
+            <p></p>
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    <div class="panel panel-default chat-bd">
+                    <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
                         <div class="panel-heading thread-info">
-                            @if (count($thread->replies()))
-                                @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
-                            @else
-                                @include('forum.threads.info.avatar', ['user' => $thread->author()])
-                            @endif
-
-                            <div class="thread-info-author">
-                                @if (count($thread->replies()))
-                                    @php($lastReply = $thread->replies()->last())
-                                    <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link">{{ $lastReply->author()->name() }}</a> replied
-                                    {{ $lastReply->createdAt()->diffForHumans() }}
-                                @else
-                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link">{{ $thread->author()->name() }}</a> posted
-                                    {{ $thread->createdAt()->diffForHumans() }}
-                                @endif
+                            <div class="thread-info-author headLabel">
+                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
                             </div>
-
                             @include('forum.threads.info.tags')
                         </div>
 
                         <div class="panel-body chat-bg">
                             <a href="{{ route('thread', $thread->slug()) }}">
                                 <span class="badge pull-right">{{ count($thread->replies()) }}</span>
-                                <h4 class="media-heading">{{ $thread->subject() }}</h4>
                                 <p>{{ $thread->excerpt() }}</p>
                             </a>
+                        </div>
+                        
+                        <div class="thread-info-author authorName" style="text-align: right; display: block;">
+                        @if (count($thread->replies()))
+                            @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
+                        @else
+                            @include('forum.threads.info.avatar', ['user' => $thread->author()])
+                        @endif
+                            @if (count($thread->replies()))
+                                @php($lastReply = $thread->replies()->last())
+                                <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $lastReply->author()->name() }}</a> 在
+                                {{ $lastReply->createdAt()->diffForHumans() }} 回應
+                            @else
+                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->name() }}</a> 在
+                                {{ $thread->createdAt()->diffForHumans() }} 發文
+                            @endif
                         </div>
                     </div>
                 @endforeach
@@ -71,9 +72,9 @@
                     {!! $threads->render() !!}
                 </div>
             @else
-                <div class="alert alert-info text-center">
-                    No threads were found!
-                    <a href="{{ route('threads.create') }}" class="alert-link">Create a new one.</a>
+                <div class="alert text-center" style="color: #545454;">
+                    沒有找到相關主題!
+                    <a href="{{ route('threads.create') }}" style="color: #545454;" class="alert-link">建立新的主題</a>
                 </div>
             @endif
         </div>

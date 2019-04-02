@@ -13,12 +13,13 @@
     @endFormGroup
 
     @formGroup('tags')
-        {!! Form::label('標註') !!}
-        {!! Form::select('tags[]', $tags->pluck('name', 'id'), isset($thread) ? $thread->tags()->pluck('id')->toArray() : [], ['class' => 'form-control selectize', 'multiple']) !!}
-        <span class="help-block">可以選擇三個標註.</span>
+        {!! Form::label('分類') !!}
+        {!! Form::select('tags[]', $tags->pluck('name', 'id'), isset($thread) ? $thread->tags()->pluck('id')->toArray() : [], ['class' => 'form-control']) !!}
+        <!--class => 'selectize', 'multiple'-->
+        <span class="help-block">只能選擇一個分類.</span>
         @error('tags')
     @endFormGroup
 
-    {!! Form::submit(isset($thread) ? 'Update Thread' : '建立主題', ['class' => 'btn btn-primary btn-block btnBuild']) !!}
-    <a href="{{ isset($thread) ? route('thread', $thread->slug()) : route('forum') }}" class="btn btn-default btn-block btnBuild">取消</a>
+    {!! Form::submit(isset($thread) ? 'Update Thread' : '建立主題', ['class' => 'btn btn-primary btn-block','style' => 'width: auto !important; display:inline-block;' ]) !!}
+    <a href="{{ isset($thread) ? route('thread', $thread->slug()) : route('forum') }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block; float:right; margin-top:none;">取消</a>
 {!! Form::close() !!}

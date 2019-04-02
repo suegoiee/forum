@@ -2,7 +2,7 @@
   .navber-bd {
     background-color: #545454;
     .container {
-      width: 82%;
+      width: auto;
       .navbar-header {
         .navbar-brand {
           background-image: url(images/logo_light_horizontal.svg);
@@ -83,7 +83,7 @@
             .tool:hover {
               background-image: url(images/tool_2.svg);
             }
-            #triangle-down {
+            .triangle-down {
               width: 10px;
               height: 0;
               border-left: 5px solid transparent;
@@ -100,19 +100,6 @@
             .login:hover {
               color: #ffa500;
               background-color: #545454 !important;
-            }
-            .log {
-              background-image: url(images/login_1.svg);
-              background-size: 16%;
-              background-position: 0 50%;
-              background-repeat: no-repeat;
-              width: 80px;
-              .logWord {
-                padding-left: 7%;
-              }
-            }
-            .log:hover {
-              background-image: url(images/login_2.svg);
             }
             .reg {
               background-image: url(images/reg_1.svg);
@@ -146,6 +133,14 @@
                 }
               }
             }
+            a {
+              img {
+                padding-top: 20%;
+              }
+              .caret {
+                color: #fff !important;
+              }
+            }
           }
           .active {
             a {
@@ -153,6 +148,25 @@
             }
           }
         }
+      }
+    }
+  }
+  .low {
+    background-color: #fff;
+    line-height: 1.5;
+    padding: 15px;
+    width: 55% !important;
+    text-align: justify;
+    margin: auto;
+    p {
+      color: #545454;
+      font-size: 13px;
+      strong {
+        font-size: 14.5px;
+      }
+      a {
+        color: #393939;
+        font-size: 18px;
       }
     }
   }
@@ -171,34 +185,43 @@
 }
 
 @media (max-width: 767px) {
-  .navbar-header {
-    .navbar-toggle {
-      border: none !important;
-    }
-    .navbar-toggle:hover {
-      background: none !important;
-    }
-    .navbar-brand {
-      background-size: 75%;
-      margin-left: 5%;
-    }
-  }
-  .nav-font,
-  .login {
-    padding-left: 10% !important;
-    font-size: 14.5px !important;
-    line-height: normal !important;
-  }
   #app {
     .navber-bd {
       .container {
+        .navbar-header {
+          .navbar-toggle {
+            border: none !important;
+            background: none !important;
+          }
+          .navbar-toggle:hover {
+            background: none !important;
+          }
+          .navbar-brand {
+            background-size: 75%;
+          }
+        }
         .navbar-collapse {
           .navbar-nav {
+            margin: 3% 5% !important;
+            padding: 0 !important;
             li {
+              a {
+                img {
+                  padding-top: 0 !important;
+                }
+              }
               .dropdown-menu {
                 padding: 0 !important;
                 border: none !important;
                 background-color: #545454;
+                li {
+                  span {
+                    display: none !important;
+                  }
+                }
+                .divider {
+                  display: none;
+                }
                 a {
                   color: #ffa500 !important;
                   padding-left: 12% !important;
@@ -258,16 +281,10 @@
                   padding-left: 0% !important;
                 }
               }
-              .log,
-              .log:hover {
-                .logWord {
-                  padding-left: 0% !important;
-                }
-              }
               .reg,
               .reg:hover {
                 .regWord {
-                  padding-left: 0% !important;
+                  padding-left: 15% !important;
                 }
               }
               .logo {
@@ -278,10 +295,21 @@
                 margin-left: 10%;
                 width: 100px;
               }
+              .nav-font {
+                padding-left: 10% !important;
+                font-size: 14.5px !important;
+                line-height: normal !important;
+              }
+              .logg {
+                padding-left: 0;
+              }
             }
           }
         }
       }
+    }
+    .low {
+      width: auto !important;
     }
   }
 }

@@ -12,6 +12,6 @@
         @endFormGroup
 
         {!! Form::submit('Update', ['class' => 'btn btn-primary btn-block']) !!}
-        <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="btn btn-default btn-block">Cancel</a>
+        <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="btn btn-default btn-block">取消</a>
     {!! Form::close() !!}
 @endsection

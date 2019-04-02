@@ -1,6 +1,6 @@
 <div class="row profile-latest-items">
     <div class="col-md-6">
-        <h3>Latest Threads</h3>
+        <h3>最新主題</h3>
 
         @forelse ($user->latestThreads() as $thread)
             <div class="list-group">
@@ -10,11 +10,11 @@
                 </a>
             </div>
         @empty
-            <p class="text-center">{{ $user->name() }} has not posted any threads yet.</p>
+            <p style="color:#545454;" class="text-center">{{ $user->name() }} 還沒發過文喔~</p>
         @endforelse
     </div>
     <div class="col-md-6">
-        <h3>Latest Replies</h3>
+        <h3>最新回覆</h3>
 
         @forelse ($user->latestReplies() as $reply)
             <div class="list-group">
@@ -24,7 +24,7 @@
                 </a>
             </div>
         @empty
-            <p class="text-center">{{ $user->name() }} has not posted any replies yet.</p>
+            <p style="color:#545454;" class="text-center">{{ $user->name() }} 還沒回應過喔~</p>
         @endforelse
     </div>
 </div>

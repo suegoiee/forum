@@ -7,8 +7,8 @@
 
     <div class="alert alert-info">
         <p>
-            Please make sure you've read our
-            <a href="{{ route('rules') }}" class="alert-link">Forum Rules</a> before updating this thread.
+            在更新主題前麻煩先了解
+            <a href="{{ route('rules') }}" class="alert-link">論壇規則</a> 
         </p>
     </div>
 
