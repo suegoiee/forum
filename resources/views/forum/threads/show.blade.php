@@ -11,7 +11,7 @@
                 <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
 
                 @foreach (App\Models\Tag::orderBy('name')->get() as $tag)
-                    @if ($tag->name() != $thread->tags()[0]["name"])
+                    @if ($tag->id() != $thread->tags()[0]["id"])
                         <a href="{{ route('forum.tag', $tag->slug()) }}" class="list-group-item">
                             {{ $tag->name() }}
                         </a>
