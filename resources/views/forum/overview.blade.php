@@ -10,7 +10,7 @@
         <div class="col-lg-3">
             {{ Form::open(['route' => 'forum', 'method' => 'GET']) }}
                 <div class="form-group">
-                    {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => '搜尋主題','style' => 'width:100%;' ]) }}
+                    {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => '搜尋文章','style' => 'width:100%;' ]) }}
                 </div>
             {{ Form::close() }}
 
@@ -73,8 +73,8 @@
                 </div>
             @else
                 <div class="alert text-center" style="color: #545454;">
-                    沒有找到相關主題!
-                    <a href="{{ route('threads.create') }}" style="color: #545454;" class="alert-link">建立新的主題</a>
+                    沒有找到相關文章!
+                    <a href="{{ route('threads.create') }}" style="color: #545454;" class="alert-link">發表新的文章</a>
                 </div>
             @endif
         </div>

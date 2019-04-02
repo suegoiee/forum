@@ -77,7 +77,7 @@ class togeStock extends judgeValue {
 
                 });
 
-                this.addTd("button", "doc", "doc", "列印", printAll);
+                // this.addTd("button", "doc", "doc", "列印", printAll);
             }
         }
     }

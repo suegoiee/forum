@@ -188,3 +188,21 @@ div {
     }
   }
 }
+@media (max-width: 767px) {
+  .col-lg-9 {
+    padding: 0 !important;
+    .panel {
+      .panel-body {
+        .formSet {
+          .form-group {
+            div {
+              .btn {
+                margin-left: 6% !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

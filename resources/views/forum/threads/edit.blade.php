@@ -7,7 +7,7 @@
 
     <div class="alert alert-info">
         <p>
-            在更新主題前麻煩先了解
+            在更新文章前麻煩先了解
             <a href="{{ route('rules') }}" class="alert-link">論壇規則</a> 
         </p>
     </div>
