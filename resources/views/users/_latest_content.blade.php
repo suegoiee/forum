@@ -1,4 +1,4 @@
-<div class="row profile-latest-items">
+<div class="row profile-latest-items" style="background-color:#fff; padding: 10px 15px; margin-top: 2%;">
     <div class="col-md-6">
         <h3>最近發文</h3>
 
