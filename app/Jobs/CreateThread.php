@@ -53,7 +53,7 @@ final class CreateThread
         $thread = new Thread([
             'subject' => $this->subject,
             'body' => $this->body,
-            'slug' => $this->subject,
+            'slug' => urlencode($this->subject),
         ]);
         $thread->authoredBy($this->author);
         $thread->syncTags($this->tags);

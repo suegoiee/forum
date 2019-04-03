@@ -147,8 +147,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <span>
-                                    <strong>{{ Auth::user()->name() }}</strong><br>
-                                    {{ '@'.Auth::user()->username() }}
+                                    <strong>{{ Auth::user()->name() }}</strong>
                                 </span>
                             </li>
                             <li role="separator" class="divider"></li>
