@@ -1,4 +1,4 @@
-@title('Page not found')
+@title('沒有找到此頁面')
 
 @extends('layouts.base', ['disableAds' => true])
 
