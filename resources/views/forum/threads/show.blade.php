@@ -61,8 +61,8 @@
                 @include('_partials._delete_modal', [
                     'id' => 'deleteThread',
                     'route' => ['threads.delete', $thread->slug()],
-                    'title' => 'Delete Thread',
-                    'body' => '<p>Are you sure you want to delete this thread and its replies? This cannot be undone.</p>',
+                    'title' => '刪除文章',
+                    'body' => '<p>確定要刪除文章及留言嗎?</p>',
                 ])
             @endcan
             <p style="display:inline-block;"></p>

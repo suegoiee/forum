@@ -11,7 +11,7 @@
         <h2 style="text-align:center;"><b id="stockTitle"></b></h2>
         <h4 style="text-align:center;">{{$PageSubtitle}}</h4>
     </div>
-    <div class="container" id="CanvasBaseMap"></div>
+    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0;"></div>
     <script>
         window.onload=function () {
             if(!getCookie("stockCode") || getCookie("stockCode") == 'undefined'){
