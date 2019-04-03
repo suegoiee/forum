@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use App\User;
 use App\Jobs\ConfirmUser;
+use App\Jobs\ConfirmUAUser;
 use App\Jobs\SendEmailConfirmation;
 use App\Http\Controllers\Controller;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -33,7 +34,7 @@ class EmailConfirmationController extends Controller
     {
         if ($user->matchesConfirmationCode($code)) {
             $this->dispatchNow(new ConfirmUser($user));
-
+            $this->dispatchNow(new ConfirmUAUser($user));
             $this->success('auth.confirmation.success');
         } else {
             $this->error('auth.confirmation.no_match');

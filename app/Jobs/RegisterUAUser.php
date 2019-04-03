@@ -64,9 +64,6 @@ final class RegisterUAUser
 
     public function handle(Hasher $hasher)
     {
-        //$this->assertEmailAddressIsUnique($this->email);
-        //$this->assertUsernameIsUnique($this->username);
-
         $data = [
             'email' => $this->email,
             'nickname' => strtolower($this->username),
