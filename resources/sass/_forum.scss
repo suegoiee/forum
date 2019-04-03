@@ -99,10 +99,15 @@ h1 {
           font-weight: 100;
         }
         a {
-          span {
+          .badge {
+            margin-right: 15px;
             background: #ffa500;
             color: #fff;
-            margin-right: 15px;
+            min-width: 23px;
+            min-height: 22px;
+            padding: 4px 0 0 0 !important;
+            border-radius: 999em;
+            font-size: 12px;
           }
           p {
             color: #545454;
