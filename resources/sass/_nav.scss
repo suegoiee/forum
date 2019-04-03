@@ -2,14 +2,13 @@
   .navber-bd {
     background-color: #545454;
     .container {
-      width: auto;
       .navbar-header {
         .navbar-brand {
           background-image: url(images/logo_light_horizontal.svg);
           background-repeat: no-repeat;
           background-size: 65%;
-          width: 225px;
-          background-position: 40% 60%;
+          width: 200px;
+          background-position: 25% 60%;
         }
         .navbar-brand:hover {
           background-image: url(images/logo_light_hor_2.svg);
@@ -103,10 +102,10 @@
             }
             .reg {
               background-image: url(images/reg_1.svg);
-              background-size: 19%;
+              background-size: 35%;
               background-position: 0 50%;
               background-repeat: no-repeat;
-              width: 100px;
+              width: 50px;
               .regWord {
                 padding-left: 10%;
               }
@@ -184,7 +183,14 @@
     }
   }
 }
-
+.nav {
+  li {
+    a {
+      padding-left: 15px !important;
+      padding-right: 0 !important;
+    }
+  }
+}
 .navbar-nav > li > a.profile-image {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -297,6 +303,7 @@
               .reg,
               .reg:hover {
                 .regWord {
+                  width: 52px !important;
                   padding-left: 15% !important;
                 }
               }
