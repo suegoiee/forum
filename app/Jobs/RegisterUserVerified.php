@@ -43,7 +43,7 @@ final class RegisterUserVerified
         throw CannotCreateUser::duplicateEmailAddress($emailAddress);
     }
 
-    private function assertUsernameIsUnique(string $username)
+    /*private function assertUsernameIsUnique(string $username)
     {
         try {
             User::findByUsername($username);
@@ -52,5 +52,5 @@ final class RegisterUserVerified
         }
 
         throw CannotCreateUser::duplicateUsername($username);
-    }
+    }*/
 }

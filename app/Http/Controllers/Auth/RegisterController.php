@@ -33,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/forum';
 
     /**
      * Create a new controller instance.
@@ -62,7 +62,7 @@ class RegisterController extends Controller
         $user = $this->dispatchNow(RegisterUser::fromRequest(app(RegisterRequest::class)));
         $this->dispatchNow(RegisterUAUser::fromRequest($registerRequest));
         $this->dispatch(new SendEmailConfirmation($user));
-
+        $this->success('auth.confirmation.sent', '您的信箱');
         return $user;
     }
 }

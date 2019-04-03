@@ -2,7 +2,7 @@
 
 return [
 
-    'updated' => 'Settings successfully saved!',
-    'password.updated' => 'Password successfully changed!',
+    'updated' => '設定儲存成功!',
+    'password.updated' => '密碼改變成功!',
 
 ];

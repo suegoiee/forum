@@ -16,7 +16,7 @@
 
             @include('layouts._ads._forum_sidebar')
 
-            <h3 style="padding-left:4%;">分類</h3>
+            <h3>分類</h3>
             <div class="list-group">
                 <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
 
@@ -59,7 +59,7 @@
                             @if (count($thread->replies()))
                                 @php($lastReply = $thread->replies()->last())
                                 <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $lastReply->author()->name() }}</a> 在
-                                {{ $lastReply->createdAt()->diffForHumans() }} 回應
+                                {{ $lastReply->createdAt()->diffForHumans() }} 留言
                             @else
                                 <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->name() }}</a> 在
                                 {{ $thread->createdAt()->diffForHumans() }} 發文

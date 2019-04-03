@@ -15,6 +15,6 @@ final class PasscheckRule implements Rule
 
     public function message(): string
     {
-        return 'Your current password is incorrect.';
+        return '原密碼輸入錯誤';
     }
 }

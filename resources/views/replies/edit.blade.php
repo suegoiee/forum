@@ -1,4 +1,4 @@
-@title('Edit your reply')
+@title('編輯留言')
 
 @extends('layouts.default')
 
@@ -11,7 +11,7 @@
             @error('body')
         @endFormGroup
 
-        {!! Form::submit('Update', ['class' => 'btn btn-primary btn-block']) !!}
-        <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="btn btn-default btn-block">取消</a>
+        {!! Form::submit('編輯', ['class' => 'btn btn-primary btn-block','style' => 'width: auto !important; display:inline-block;' ]) !!}
+        <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block; float:right; margin-top:0;">取消</a>
     {!! Form::close() !!}
 @endsection

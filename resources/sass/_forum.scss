@@ -2,7 +2,6 @@ h1 {
   color: #545454;
   font-size: 30px;
   font-weight: bolder;
-  padding-left: 1%;
 }
 .forum {
   div {
@@ -99,10 +98,15 @@ h1 {
           font-weight: 100;
         }
         a {
-          span {
+          .badge {
+            margin-right: 15px;
             background: #ffa500;
             color: #fff;
-            margin-right: 15px;
+            min-width: 23px;
+            min-height: 22px;
+            padding: 4px 0 0 0 !important;
+            border-radius: 999em;
+            font-size: 12px;
           }
           p {
             color: #545454;
@@ -254,17 +258,24 @@ h1 {
 }
 
 @media (max-width: 767px) {
+  .btn {
+    padding: 5px 10px !important;
+    font-size: 14px !important;
+  }
   h1 {
     padding-left: 5%;
   }
   .forum {
     div {
+      .chat-bd {
+        text-align: left !important;
+      }
       .panel {
         width: 100%;
         .panel-heading {
           .headLabel {
             .formTitle {
-              font-size: 17px;
+              font-size: 17px !important;
             }
           }
         }
@@ -274,17 +285,21 @@ h1 {
           }
           p {
             font-size: 13px;
+            text-align: left !important;
           }
           a {
-            p {
-              font-size: 13px;
-              overflow-y: inherit;
+            p,
+            p:hover {
+              font-size: 13px !important;
+              overflow-y: visible;
+              height: auto !important;
             }
           }
           a:hover {
-            p:hover {
-              font-size: 13px;
-              overflow-y: inherit;
+            p {
+              font-size: 13px !important;
+              overflow-y: visible;
+              height: auto !important;
             }
           }
         }
