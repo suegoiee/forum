@@ -39,6 +39,6 @@ class EmailConfirmationController extends Controller
             $this->error('auth.confirmation.no_match');
         }
 
-        return Auth::check() ? redirect()->route('dashboard') : redirect()->home();
+        return Auth::check() ? redirect()->route('forum') : redirect()->home();
     }
 }
