@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <div class="container">
+    <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar" aria-label="search">
         </div>
