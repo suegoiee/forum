@@ -6,13 +6,13 @@
     {!! Form::open(['route' => 'login.post']) !!}
         @formGroup('username')
             {!! Form::label('') !!}
-            {!! Form::text('username', null, ['class' => 'form-control', 'required']) !!}
+            {!! Form::text('username', null, ['class' => 'form-control', 'required', ' placeholder' => '信箱地址']) !!}
             @error('username')
         @endFormGroup
 
         @formGroup('password')
             {!! Form::label('') !!}
-            {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
+            {!! Form::password('password', ['class' => 'form-control', 'required',' placeholder' => '密碼']) !!}
             @error('password')<a style="display: inline-block;" href="{{ route('password.forgot') }}">忘記密碼?</a>
         @endFormGroup
 

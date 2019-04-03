@@ -2,8 +2,8 @@
 
 return [
 
-    'users.banned' => ':0 was banned!',
-    'users.unbanned' => ':0 was unbanned!',
-    'users.deleted' => ':0 was deleted and all of their content was removed!',
+    'users.banned' => ':0 已被封鎖!',
+    'users.unbanned' => ':0 解除封鎖!',
+    'users.deleted' => ':0 已刪除，其相關內容均移除!',
 
 ];

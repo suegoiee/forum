@@ -2,10 +2,10 @@
 
 return [
 
-    'banned' => 'This account is banned.',
-    'fields' => 'Something went wrong. Please review the fields below.',
-    'unconfirmed' => '<a href="'.route('email.send_confirmation').'" class="alert-link">Please confirm your email address first.</a>',
-    'github_invalid_state' => 'The request timed out. Please try again.',
-    'github_account_too_young' => 'Your Github account needs to be older than 2 weeks in order to register.',
+    'banned' => '此帳戶已被禁用!',
+    'fields' => '發生錯誤，請確認下面欄位!',
+    'unconfirmed' => '<a href="'.route('email.send_confirmation').'" class="alert-link">請先確認您的郵件地址!</a>',
+    'github_invalid_state' => '執行超過時間，請再嘗試一次!',
+    'github_account_too_young' => '您的帳戶需在兩周後才能再次註冊!',
 
 ];

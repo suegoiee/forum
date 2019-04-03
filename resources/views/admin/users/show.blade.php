@@ -8,18 +8,18 @@
             <div class="col-lg-3">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <a class="btn btn-default btn-block" href="{{ route('profile', $user->username()) }}">View Profile</a>
+                        <a class="btn btn-default btn-block" href="{{ route('profile', $user->username()) }}">查看資料</a>
 
                         @can(App\Policies\UserPolicy::BAN, $user)
                             @if ($user->isBanned())
-                                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#unbanUser">Unban User</button>
+                                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#unbanUser">解除封鎖用戶</button>
                             @else
-                                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#banUser">Ban User</button>
+                                <button type="button" class="btn btn-warning btn-block" data-toggle="modal" data-target="#banUser">封鎖用戶</button>
                             @endif
                         @endcan
 
                         @can(App\Policies\UserPolicy::DELETE, $user)
-                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteUser">Delete User</button>
+                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#deleteUser">刪除用戶</button>
                         @endcan
                     </div>
                 </div>
@@ -44,15 +44,15 @@
             @include('_partials._update_modal', [
                 'id' => 'unbanUser',
                 'route' => ['admin.users.unban', $user->username()],
-                'title' => "Unban {$user->name()}",
-                'body' => '<p>Banning this user will prevent them from logging in, posting threads and replying to threads.</p>',
+                'title' => "解除封鎖用戶 {$user->name()}",
+                'body' => '<p>封鎖此用戶將禁止他們登錄，發表文章和回覆文章。</p>',
             ])
         @else
             @include('_partials._update_modal', [
                 'id' => 'banUser',
                 'route' => ['admin.users.ban', $user->username()],
-                'title' => "Ban {$user->name()}",
-                'body' => '<p>Unbanning this user will allow them to login again and post content.</p>',
+                'title' => "封鎖用戶 {$user->name()}",
+                'body' => '<p>取消對此用戶的封鎖將允許他們再次登錄並發表文章</p>',
             ])
         @endif
     @endcan
@@ -62,7 +62,7 @@
             'id' => 'deleteUser',
             'route' => ['admin.users.delete', $user->username()],
             'title' => "Delete {$user->name()}",
-            'body' => '<p>Deleting this user will remove their account and any related content like threads & replies. This cannot be undone.</p>',
+            'body' => '<p>刪除此用戶將刪除其帳戶和任何相關內容，如主題和回复。不能撤消!</p>',
         ])
     @endcan
 @endsection
