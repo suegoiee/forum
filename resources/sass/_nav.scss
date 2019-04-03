@@ -105,7 +105,7 @@
               background-size: 35%;
               background-position: 0 50%;
               background-repeat: no-repeat;
-              width: 50px;
+              width: 65px;
               .regWord {
                 padding-left: 10%;
               }
@@ -187,7 +187,6 @@
   li {
     a {
       padding-left: 15px !important;
-      padding-right: 0 !important;
     }
   }
 }
@@ -201,6 +200,10 @@
   padding: 3px 20px;
   clear: both;
   white-space: nowrap;
+}
+
+.navbar-right {
+  margin-right: -30px !important;
 }
 
 @media (max-width: 767px) {
@@ -303,7 +306,7 @@
               .reg,
               .reg:hover {
                 .regWord {
-                  width: 52px !important;
+                  width: 70px !important;
                   padding-left: 15% !important;
                 }
               }
