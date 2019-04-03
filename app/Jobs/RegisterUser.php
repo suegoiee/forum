@@ -65,7 +65,7 @@ final class RegisterUser
     public function handle(Hasher $hasher): User
     {
         $this->assertEmailAddressIsUnique($this->email);
-        $this->assertUsernameIsUnique($this->username);
+        //$this->assertUsernameIsUnique($this->username);
 
         $user = new User([
             'name' => $this->name,
@@ -94,7 +94,7 @@ final class RegisterUser
         throw CannotCreateUser::duplicateEmailAddress($emailAddress);
     }
 
-    private function assertUsernameIsUnique(string $username)
+    /*private function assertUsernameIsUnique(string $username)
     {
         try {
             User::findByUsername($username);
@@ -103,5 +103,5 @@ final class RegisterUser
         }
 
         throw CannotCreateUser::duplicateUsername($username);
-    }
+    }*/
 }

@@ -11,8 +11,8 @@ final class CannotCreateUser extends Exception
         return new static("The email address [$emailAddress] already exists.");
     }
 
-    public static function duplicateUsername(string $username): self
+    /*public static function duplicateUsername(string $username): self
     {
         return new static("The username [$username] already exists.");
-    }
+    }*/
 }
