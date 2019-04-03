@@ -24,7 +24,7 @@ final class RegisterUserVerified
     public function handle(Hasher $hasher): User
     {
         $this->assertEmailAddressIsUnique($this->register['email']);
-        $this->assertUsernameIsUnique($this->register['username']);
+        //$this->assertUsernameIsUnique($this->register['username']);
         $this->register['password'] = $hasher->make($this->register['password']);
         $user = new User($this->register);
         $user->save();

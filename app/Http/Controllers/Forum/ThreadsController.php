@@ -109,7 +109,7 @@ class ThreadsController extends Controller
 
         $this->dispatchNow(new SubscribeToSubscriptionAble($request->user(), $thread));
 
-        $this->success("You're now subscribed to this thread.");
+        $this->success("開始追蹤此文章");
 
         return redirect()->route('thread', $thread->slug());
     }
@@ -120,7 +120,7 @@ class ThreadsController extends Controller
 
         $this->dispatchNow(new UnsubscribeFromSubscriptionAble($request->user(), $thread));
 
-        $this->success("You're now unsubscribed from this thread.");
+        $this->success("已取消追蹤此文章");
 
         return redirect()->route('thread', $thread->slug());
     }
