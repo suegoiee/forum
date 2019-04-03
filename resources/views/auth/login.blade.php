@@ -17,11 +17,11 @@
         @endFormGroup
 
 
-        <div class="form-group">
+        <!--div class="form-group">
             <label class="loginMg">
                 {!! Form::checkbox('remember') !!}保持登入
             </label>
-        </div>
+        </div-->
 
         {!! Form::submit('Login', ['class' => 'btn btn-primary btn-block']) !!}
         <!--a href="{{ route('login.github') }}" class="btn btn-default btn-block">
