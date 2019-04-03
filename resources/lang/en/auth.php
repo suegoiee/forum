@@ -13,14 +13,14 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => '登入失敗!',
+    'throttle' => '登錄太多次，請在 :seconds 秒後再次嘗試!',
 
     'confirmation' => [
-        'sent' => 'Email confirmation sent to :0',
-        'already_confirmed' => 'Your email address is already confirmed.',
-        'success' => 'Your email address was successfully confirmed.',
-        'no_match' => 'We could not confirm your email address. The given email address and code did not match.',
+        'sent' => '確認信已寄到 :0 !',
+        'already_confirmed' => '您的信箱地址已驗證!',
+        'success' => '您的郵件地址已成功驗證!',
+        'no_match' => '我們無法確認您的郵件地址，您提供的郵件地址不符合!',
     ],
 
 ];
