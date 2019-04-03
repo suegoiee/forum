@@ -74,7 +74,8 @@ final class RegisterUser
             'github_id' => $this->githubId,
             'github_username' => $this->githubUsername,
             'confirmation_code' => str_random(60),
-            'password'=>$hasher->make($this->password),
+            //'password'=>$hasher->make($this->password),
+            'password'=>bcrypt($this->password),
             'type' => User::DEFAULT,
             'remember_token' => '',
         ]);
