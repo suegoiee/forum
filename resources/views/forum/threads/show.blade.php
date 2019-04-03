@@ -87,7 +87,7 @@
 
             @include('layouts._ads._bsa-cpc')
 
-            <div style="border-bottom: 2px solid #e9e9e9; padding-top: 3%;">回應</div>
+            <div style="border-bottom: 2px solid #e9e9e9; padding-top: 3%;">留言</div>
             @foreach ($thread->replies() as $reply)
                 <div style="border:none !important;" class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
                     <div class="thread-info-author headLabel">
@@ -112,11 +112,11 @@
                             <a href="{{ route('profile', $reply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">
                                 {{ $reply->author()->name() }}
                             </a> 在
-                            {{ $reply->createdAt()->diffForHumans() }} 回應
+                            {{ $reply->createdAt()->diffForHumans() }} 留言
 
                             @if ($thread->isSolutionReply($reply))
                                 <span class="label label-primary thread-info-badge">
-                                    Solution
+                                    解決
                                 </span>
                             @endif
                         </div>
@@ -154,8 +154,8 @@
                 @include('_partials._delete_modal', [
                     'id' => "deleteReply{$reply->id()}",
                     'route' => ['replies.delete', $reply->id()],
-                    'title' => 'Delete Reply',
-                    'body' => '<p>確定要刪除回應？還沒回應完成.</p>',
+                    'title' => '刪除留言',
+                    'body' => '<p>確定要刪除留言？</p>',
                 ])
             @endforeach
 
@@ -163,14 +163,14 @@
                 @if ($thread->isConversationOld())
                  
                     <p class="text-center">
-                        The last reply to this thread was more than six months ago. Please consider <a href="{{ route('threads.create') }}">opening a new thread</a> if you have a similar question.
+                        最後的留言已經超過6個月! 如果有相同問題， 請在 <a href="{{ route('threads.create') }}">新增文章</a> 
                     </p>
                 @else
                    
 
                     <div class="remind">
                         <p>
-                            請在回應前確認已了解 <a href="{{ route('rules') }}">論壇規則</a>.
+                            請在留言前確認已了解 <a href="{{ route('rules') }}">論壇規則</a>.
                         </p>
                     </div>
 
@@ -183,7 +183,7 @@
 
                         {!! Form::hidden('replyable_id', $thread->id()) !!}
                         {!! Form::hidden('replyable_type', 'threads') !!}
-                        {!! Form::submit('回應', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%; margin-bottom:2%;' ]) !!}
+                        {!! Form::submit('留言', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%; margin-bottom:2%;' ]) !!}
                     {!! Form::close() !!}
                 @endif
             @endcan

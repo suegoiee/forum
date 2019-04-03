@@ -24,7 +24,7 @@
                 </a>
             </div>
         @empty
-            <p style="color:#545454;" class="text-center">{{ $user->name() }} 還沒回應過喔~</p>
+            <p style="color:#545454;" class="text-center">{{ $user->name() }} 還沒留言過喔~</p>
         @endforelse
     </div>
 </div>

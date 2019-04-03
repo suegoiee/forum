@@ -16,6 +16,6 @@ final class HttpImageRule implements Rule
 
     public function message(): string
     {
-        return 'The :attribute field contains at least one image with an HTTP link.';
+        return 'The :attribute 至少包含為一個有連結的圖檔!';
     }
 }

@@ -2,7 +2,6 @@ h1 {
   color: #545454;
   font-size: 30px;
   font-weight: bolder;
-  padding-left: 1%;
 }
 .forum {
   div {
@@ -259,6 +258,10 @@ h1 {
 }
 
 @media (max-width: 767px) {
+  .btn {
+    padding: 5px 10px !important;
+    font-size: 14px !important;
+  }
   h1 {
     padding-left: 5%;
   }
@@ -272,7 +275,7 @@ h1 {
         .panel-heading {
           .headLabel {
             .formTitle {
-              font-size: 17px;
+              font-size: 17px !important;
             }
           }
         }
@@ -282,18 +285,20 @@ h1 {
           }
           p {
             font-size: 13px;
+            text-align: left !important;
           }
           a {
-            p {
+            p,
+            p:hover {
               font-size: 13px !important;
-              overflow-y: auto;
+              overflow-y: visible;
               height: auto !important;
             }
           }
           a:hover {
-            p:hover {
+            p {
               font-size: 13px !important;
-              overflow-y: inherit;
+              overflow-y: visible;
               height: auto !important;
             }
           }
