@@ -1,4 +1,4 @@
-@title('Profile')
+@title('帳號設定')
 
 @extends('layouts.settings')
 

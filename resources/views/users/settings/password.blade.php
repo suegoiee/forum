@@ -1,4 +1,4 @@
-@title('Password')
+@title('密碼更改')
 
 @extends('layouts.settings')
 

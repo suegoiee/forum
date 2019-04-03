@@ -18,6 +18,6 @@ final class DoesNotContainUrlRule implements Rule
 
     public function message(): string
     {
-        return 'The :attribute field cannot contain an url.';
+        return '此 :attribute 不能包含連結!';
     }
 }
