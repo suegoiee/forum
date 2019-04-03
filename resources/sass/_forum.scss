@@ -264,6 +264,9 @@ h1 {
   }
   .forum {
     div {
+      .chat-bd {
+        text-align: left !important;
+      }
       .panel {
         width: 100%;
         .panel-heading {
@@ -282,14 +285,16 @@ h1 {
           }
           a {
             p {
-              font-size: 13px;
-              overflow-y: inherit;
+              font-size: 13px !important;
+              overflow-y: auto;
+              height: auto !important;
             }
           }
           a:hover {
             p:hover {
-              font-size: 13px;
+              font-size: 13px !important;
               overflow-y: inherit;
+              height: auto !important;
             }
           }
         }
