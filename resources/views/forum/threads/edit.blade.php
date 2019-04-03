@@ -1,4 +1,4 @@
-@title('Edit your thread')
+@title('編輯文章')
 
 @extends('layouts.default')
 
