@@ -1,9 +1,9 @@
-@title('Dashboard')
+@title('我的文章')
 
 @extends('layouts.default')
 
 @section('content')
-    <h3> {{ Auth::user()->name() }}</h3>
+    <h3>{{ Auth::user()->name() }}</h3>
 
 <div style="background-color:#fff; padding: 10px 15px; margin-top: 2%;">
     <div class="row" style="border-bottom: 2px dashed #e9e9e9;">
