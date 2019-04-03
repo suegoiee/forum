@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="display: block; width:50%; id="form">
+    <form style="display: block; width:50%;" id="form">
         <fieldset>
             <h3>本息平均攤還(每月定額攤還)</h3>
             <h5>(請填入貸款金額、貸款年數、年利率)</h5>
@@ -44,7 +44,7 @@
             </p>
         </fieldset>
     </form>
-    <form id="formStyle" style="display:none; float:left;">
+    <form id="formStyle" style="display:none; float:left; width: 50%;">
         <fieldset>
             <table id="calMonB">
             </table>
