@@ -16,7 +16,7 @@
 
             @include('layouts._ads._forum_sidebar')
 
-            <h3 style="padding-left:4%;">分類</h3>
+            <h3>分類</h3>
             <div class="list-group">
                 <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
 
