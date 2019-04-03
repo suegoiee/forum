@@ -4,10 +4,10 @@
 
 @section('small-content')
     {!! Form::open(['route' => 'login.post']) !!}
-        @formGroup('username')
+        @formGroup('email')
             {!! Form::label('') !!}
-            {!! Form::text('username', null, ['class' => 'form-control', 'required', ' placeholder' => '信箱地址']) !!}
-            @error('username')
+            {!! Form::text('email', null, ['class' => 'form-control', 'required', ' placeholder' => '信箱地址']) !!}
+            @error('email')
         @endFormGroup
 
         @formGroup('password')
