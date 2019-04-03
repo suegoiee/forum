@@ -21,5 +21,5 @@
     @endFormGroup
 
     {!! Form::submit(isset($thread) ? 'Update Thread' : '發文', ['class' => 'btn btn-primary','style' => 'width: auto !important; display:inline-block;' ]) !!}
-    <a href="{{ isset($thread) ? route('thread', $thread->slug()) : route('forum') }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block; float:right; margin-top:none;">取消</a>
+    <a href="{{ isset($thread) ? route('thread', $thread->slug()) : route('forum') }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block; float:right; margin-top:0;">取消</a>
 {!! Form::close() !!}

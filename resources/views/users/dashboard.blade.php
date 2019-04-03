@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-6">
             <div class="panel panel-default panel-counter" style="text-align:center; background-color:#fff !important;">
-                <div class="panel-heading" style="color:#545454 !important; background-color:#fff !important;">回應數</div>
+                <div class="panel-heading" style="color:#545454 !important; background-color:#fff !important;">留言數</div>
                 <div class="panel-body" style="color:#ffa500; font-size:2.2rem; width:100% !important; margin-left: 0;">{{ Auth::user()->countReplies() }}</div>
             </div>
         </div>

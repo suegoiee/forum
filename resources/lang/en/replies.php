@@ -2,8 +2,8 @@
 
 return [
 
-    'created' => '回應成功!',
-    'updated' => '正在回應!',
-    'deleted' => '刪除回應!',
+    'created' => '留言成功!',
+    'updated' => '正在留言!',
+    'deleted' => '刪除留言!',
 
 ];
