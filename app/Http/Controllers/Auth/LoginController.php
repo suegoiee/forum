@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use Hash;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
