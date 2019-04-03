@@ -2,7 +2,7 @@
     @formGroup('subject')
         {!! Form::label('標題') !!}
         {!! Form::text('subject', isset($thread) ? $thread->subject() : null, ['class' => 'form-control', 'required', 'maxlength' => '60']) !!}
-        <span class="help-block">字數不可超過60字.</span>
+        <span class="help-block">字數不可超過60字!</span>
         @error('subject')
     @endFormGroup
 
@@ -16,7 +16,7 @@
         {!! Form::label('分類') !!}
         {!! Form::select('tags[]', $tags->pluck('name', 'id'), isset($thread) ? $thread->tags()->pluck('id')->toArray() : [], ['class' => 'form-control']) !!}
         <!--class => 'selectize', 'multiple'-->
-        <span class="help-block">只能選擇一個分類.</span>
+        <span class="help-block">只能選擇一個分類!</span>
         @error('tags')
     @endFormGroup
 

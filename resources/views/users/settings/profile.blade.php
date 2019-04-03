@@ -40,11 +40,11 @@
                 @endFormGroup
 
                 @formGroup('bio')
-                    {!! Form::label('自我簡介', null, ['class' => 'col-md-3 control-label']) !!}
+                    {!! Form::label('自我介紹', null, ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
                         {!! Form::textarea('bio', Auth::user()->bio(), ['class' => 'form-control', 'rows' => 3, 'maxlength' => 160, 'style' => 'height:auto !important;']) !!}
-                        <span class="help-block">簡介字數少於160字.</span>
+                        <span class="help-block">簡介字數少於160字!</span>
                         @error('bio')
                     </div>
                 @endFormGroup
