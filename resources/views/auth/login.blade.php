@@ -17,16 +17,17 @@
         @endFormGroup
 
 
-        <div class="form-group">
+        <!--div class="form-group">
             <label class="loginMg">
                 {!! Form::checkbox('remember') !!}保持登入
             </label>
-        </div>
+        </div-->
 
-        {!! Form::submit('Login', ['class' => 'btn btn-primary btn-block']) !!}
+        {!! Form::submit('登入', ['class' => 'btn btn-primary btn-block']) !!}
         <!--a href="{{ route('login.github') }}" class="btn btn-default btn-block">
             <i class="fa fa-github"></i> Github
         </a-->
     {!! Form::close() !!}
+    <button class="btn btn-primary btn-block"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" style="width:25px"> Login With Google </button>
 @endsection
 

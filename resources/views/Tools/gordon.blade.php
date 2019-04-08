@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width:50%;">
+    <form class="col-sm-12">
         <fieldset>
             <h3>高登模型</h3>
             <h5 style="line-height: 20px;">
@@ -49,7 +49,7 @@
                 <button type="button" id="clear">清除</button>
             </p>
             <p class="resultAll">
-                最近一期股息：<br/>
+                最近一期股息：
                 <input type="text" id="resultA" class="rate" name="resultA" disabled>
             </p>
             <p class="resultAll">

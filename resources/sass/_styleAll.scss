@@ -73,7 +73,7 @@ form {
         width: 40%;
         font-weight: normal;
         @include fontAll(left, #545454, none, 1.2);
-        @include dist(auto, auto, 15%);
+        @include dist(auto, auto, 20%);
 
         // hint
         .small {
@@ -88,8 +88,8 @@ form {
 
       //together
       #toge {
-        margin-left: 6%;
-        width: 30%;
+        margin-left: 20%;
+        width: 40%;
       }
 
       input {
@@ -132,8 +132,11 @@ form {
         border-style: none;
       }
 
+      #checkAll {
+        @include dist(auto, auto, 45%);
+      }
       .cal {
-        margin-left: 42%;
+        margin-left: 45%;
         padding: 8px 10px;
         @include borderAll(8px, #ffa500);
         @include fontAll(center, #fff, #ffa500, 16px);
@@ -141,7 +144,7 @@ form {
       }
 
       #add {
-        margin-left: 42%;
+        margin-left: 45%;
         padding: 8px 10px;
         @include borderAll(8px, #ffa500);
         @include fontAll(center, #fff, #ffa500, 16px);
@@ -159,9 +162,9 @@ form {
 
     // result name
     .resultAll {
-      @include fontAll(left, #545454, none, 16px);
+      @include fontAll(center, #545454, none, 16px);
       font-weight: bold;
-      margin-left: 15%;
+      width: auto;
     }
 
     // result
@@ -173,7 +176,7 @@ form {
       height: 21px;
       display: inline-block;
       margin-top: 5px;
-      @include dist(auto, auto, 20%);
+      @include dist(auto, auto, auto);
     }
 
     // for table
@@ -234,33 +237,36 @@ form {
   form {
     width: 100%;
     font-size: 1.2rem;
-    h3 {
-      font-size: 2rem;
-    }
-    h5 {
-      font-size: 0.8rem;
-    }
-    p {
-      label {
-        margin-left: 5% !important;
+    fieldset {
+      h3 {
+        font-size: 2rem;
       }
-      #money {
-        margin-left: 35%;
+      h5 {
+        font-size: 0.8rem;
       }
-    }
-    ol {
-      padding-left: 5% !important;
-    }
-    .resultAll {
-      margin-left: 8% !important;
-    }
-    .rate {
-      font-size: 15px;
-    }
-    p {
-      .cal,
-      #add {
-        margin-left: 35% !important;
+      p {
+        label {
+          margin-left: 5% !important;
+        }
+        #money {
+          margin-left: 45%;
+        }
+        #toge {
+          width: 40% !important;
+        }
+      }
+      ol {
+        padding-left: 5% !important;
+      }
+      .rate {
+        font-size: 15px;
+      }
+      p {
+        #checkAll,
+        .cal,
+        #add {
+          margin-left: 35% !important;
+        }
       }
     }
   }
