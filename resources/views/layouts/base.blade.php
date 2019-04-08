@@ -53,6 +53,7 @@
     <!--script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
     <script src="/js/freebie.js"></script>
     <script src="/js/errorode.js"></script>
     <script src="/js/addToge.js"></script>
@@ -60,6 +61,7 @@
     <script src="/js/formCheck.js"></script>
     <script src="/js/npv.js"></script>
     <script src="/js/navBar.js"></script>
+    <script>CKEDITOR.replace( 'my-editor' );</script>
     <!--end of for development-->
 
 

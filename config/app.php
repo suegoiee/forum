@@ -160,6 +160,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Markdown\MarkdownServiceProvider::class,
+        Unisharp\Ckeditor\ServiceProvider::class,
 
     ],
 
