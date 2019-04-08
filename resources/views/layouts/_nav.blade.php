@@ -1,5 +1,5 @@
 <nav class="navbar navber-bd navbar-default navbar-static-top">
-    <div class="container">
+    <div class="container" style="padding-left: 0px; padding-right: 0px;">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>

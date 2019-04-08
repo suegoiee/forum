@@ -44,7 +44,7 @@
             </p>
         </fieldset>
     </form>
-    <form id="formStyle" style="display:none; float:left; width: 100%; margin: 1%;">
+    <form id="formStyle" style="display:none; float:left; width: 100%; margin-top: 1%; margin-bottom: 1%;">
         <fieldset>
             <table id="calMonB">
             </table>
