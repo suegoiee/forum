@@ -189,6 +189,9 @@ div {
   }
 }
 @media (max-width: 767px) {
+  .col-lg-9 {
+    padding-bottom: 10%;
+  }
   .accountA {
     margin: 0;
     .panel {

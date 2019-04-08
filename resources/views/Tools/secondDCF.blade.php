@@ -3,8 +3,8 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container" style="width:50%;">
-    <form>
+<div class="container">
+    <form class="col-sm-12">
         <fieldset>
             <h3>兩階段 現金流折現模型 DCF</h3>
             <h5>(企業價值=股東能從企業拿回多少現金流量的現值總和)</h5>
