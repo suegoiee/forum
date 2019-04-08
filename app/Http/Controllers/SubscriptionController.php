@@ -13,7 +13,7 @@ class SubscriptionController extends Controller
 
         $this->dispatch(new UnsubscribeFromSubscriptionAble($subscription->user(), $thread));
 
-        $this->success("You're now unsubscribed from this thread.");
+        $this->success("已取消追蹤此文章");
 
         return redirect()->route('thread', $thread->slug());
     }
