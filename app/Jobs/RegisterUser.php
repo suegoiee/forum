@@ -94,15 +94,4 @@ final class RegisterUser
 
         throw CannotCreateUser::duplicateEmailAddress($emailAddress);
     }
-
-    /*private function assertUsernameIsUnique(string $username)
-    {
-        try {
-            User::findByUsername($username);
-        } catch (ModelNotFoundException $exception) {
-            return true;
-        }
-
-        throw CannotCreateUser::duplicateUsername($username);
-    }*/
 }
