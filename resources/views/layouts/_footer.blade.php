@@ -1,7 +1,7 @@
 @include('layouts._ads._footer')
 @include('layouts._sponsors')
 
-<div id="footer" class="container text-center" style="margin-top: 3%; width: 100%; border-top: 1px solid #545454; padding-top: 10px; color:#545454;">
+<div id="footer" class="container text-center" style="font-size: 12.5px;height: 40px; width: 100%; border-top: 1px solid #545454; padding-top: 10px; color:#545454;">
     <div>
         <a class="footerWord" href="{{ route('rules') }}">網站規則</a>
         <span style="margin-left: 5px; margin-right:5px;">｜</span>
