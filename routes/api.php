@@ -20,4 +20,7 @@
 Route::namespace('API')->group(function () {
     Route::post('register', 'Auth\RegisterController@register')->name('api.register.post');
     Route::get('register', 'Auth\RegisterController@register')->name('api.register.get');
+
+    Route::get('user/verified', 'Auth\VerifiedUserController@verified')->name('api.verified.post');
+    Route::post('user/verified', 'Auth\VerifiedUserController@verified')->name('api.verified.post');
 });
