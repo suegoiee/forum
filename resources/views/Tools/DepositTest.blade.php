@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width:50%;">
+    <form class="col-sm-12">
         <fieldset>
             <h3>我適合存股嗎～存股性向測驗</h3>
             <h5>(出自:智富Smart)</h5>
@@ -72,7 +72,7 @@
                 </li>
                 <br />
             </ol>
-            <p style="margin-left: 40%;">
+            <p>
                 <button type="button" id="checkAll">檢查</button>
                 <button type="button" id="clear">重新填選</button>
             </p>

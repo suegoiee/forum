@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width:50%;">
+    <form class="col-sm-12">
         <fieldset>
             <h3>除權息參考價計算機</h3>
             <h5>(請填入除權除息前股價、現金股利、股票股利)</h5>
@@ -39,7 +39,7 @@
             </p>
             <p class="resultAll">
                 參考價試算結果
-                <input type="text" style="margin-left: 12%;" min="0" class="rate" id="result" disabled></input>
+                <input type="text" min="0" class="rate" id="result" disabled></input>
             </p>
         </fieldset>
     </form>
