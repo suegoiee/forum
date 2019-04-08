@@ -177,7 +177,7 @@
                     
                     {!! Form::open(['route' => 'replies.store']) !!}
                         @formGroup('body')
-                            {!! Form::textarea('body', null, ['class' => 'form-control wysiwyg', 'required', 'style' => 'height:100% !important;margin-bottom: 0 !important; border-top: 1px dashed #e9e9e9 !important;border:none ; border-radius: 0;']) !!}
+                            {!! Form::textarea('body', null, ['class' => 'form-control', 'required', 'name' => 'my-editor', 'style' => 'height:100% !important;margin-bottom: 0 !important; border-top: 1px dashed #e9e9e9 !important;border:none ; border-radius: 0;']) !!}
                             @error('body')
                         @endFormGroup
 

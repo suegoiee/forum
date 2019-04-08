@@ -53,6 +53,9 @@ return [
             'unit_footer' => env('GOOGLE_AD_SENSE_UNIT_FOOTER'),
             'unit_forum_sidebar' => env('GOOGLE_AD_SENSE_UNIT_FORUM_SIDEBAR'),
         ],
+        'client_id' => env('GOOGLE_CLIENT_ID'),         // Your Google Client ID
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'), // Your Google Client Secret
+        'redirect' => env('GOOGLE_URL'),
     ],
 
     'bsa' => [
