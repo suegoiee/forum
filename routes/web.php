@@ -29,7 +29,7 @@ Route::namespace('Auth')->group(function () {
 
     // Email address confirmation
     Route::get('email-confirmation', 'EmailConfirmationController@send')->name('email.send_confirmation');
-    Route::get('email-confirmation/{email_address}/{code}', 'EmailConfirmationController@confirm')
+    Route::get('email/confirmation', 'EmailConfirmationController@confirm')
         ->name('email.confirm');
 
     // Social authentication

@@ -25,6 +25,7 @@ final class ConfirmUAUser
         $data = [
             'email' => $this->user->email
         ];
+        if(env("UA_CONFIRM_USER_API_URL")!=''){
         $http = new \GuzzleHttp\Client;
         $response = $http->request('post',env("UA_CONFIRM_USER_API_URL"),[
                 'headers'=>[
@@ -33,5 +34,6 @@ final class ConfirmUAUser
                 ],
                 'form_params' => $data,
             ]);
+        }
     }
 }
