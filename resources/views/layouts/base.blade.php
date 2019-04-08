@@ -61,7 +61,11 @@
     <script src="/js/formCheck.js"></script>
     <script src="/js/npv.js"></script>
     <script src="/js/navBar.js"></script>
-    <script>CKEDITOR.replace( 'my-editor' );</script>
+    <script>
+			$(document).ready(function() {
+				CKEDITOR.replaceClass = 'ckeditor';
+            });
+    </script>
     <!--end of for development-->
 
 

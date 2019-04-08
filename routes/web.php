@@ -35,6 +35,10 @@ Route::namespace('Auth')->group(function () {
     // Social authentication
     Route::get('login/github', 'GithubController@redirectToProvider')->name('login.github');
     Route::get('auth/github', 'GithubController@handleProviderCallback');
+
+    //Google Login
+    Route::get('/google/auth', 'SocialiteController@redirectToProvider');
+    Route::get('/google/auth/callback', 'SocialiteController@handleProviderCallback');
 });
 
 // Users
