@@ -67,7 +67,7 @@ final class RegisterUAUser
         $data = [
             'email' => $this->email,
             'nickname' => strtolower($this->username),
-            'password'=>$hasher->make($this->password),
+            'password'=>$this->password,
         ];
         $http = new \GuzzleHttp\Client;
         $response = $http->request('post',env("UA_REGISTER_API_URL"),[
