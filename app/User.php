@@ -9,6 +9,7 @@ use App\Helpers\HasTimestamps;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\ResetPassword as ResetPasswordNotification;
 
 final class User extends Authenticatable
 {
@@ -237,5 +238,10 @@ final class User extends Authenticatable
         $this->deleteReplies();
 
         parent::delete();
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 }
