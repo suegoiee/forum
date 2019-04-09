@@ -63,7 +63,7 @@ class SocialiteController extends Controller
     private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
     {
         //(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
-        new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1);
+        $this->dispatchNow($user = new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
     }
