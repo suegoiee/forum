@@ -41,7 +41,7 @@ class SocialiteController extends Controller
         try {
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
-            $this->error($socialiteUser->getEmail());
+            $this->error($socialiteUser['id']);
             return redirect()->route('forum');
             //return $this->userNotFound($socialiteUser->getEmail());
             //return redirect()->route('register.post')->withInput(['email' => $socialiteUser->getEmail()]);
