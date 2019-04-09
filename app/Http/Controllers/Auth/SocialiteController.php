@@ -9,12 +9,14 @@ use App\Social\GithubUser;
 use App\Jobs\UpdateProfile;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Laravel\Socialite\Two\InvalidStateException;
 use Laravel\Socialite\Two\User as SocialiteUser;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SocialiteController extends Controller
 {
+    use RegistersUsers;
     /**
      * Redirect the user to the GitHub authentication page.
      */
