@@ -61,12 +61,6 @@ class SocialiteController extends Controller
 
     private function userNotFound(GithubUser $user): RedirectResponse
     {
-        if ($user->isTooYoung()) {
-            $this->error('errors.github_account_too_young');
-
-            return redirect()->home();
-        }
-
         return $this->redirectUserToRegistrationPage($user);
     }
 
