@@ -64,7 +64,7 @@ class SocialiteController extends Controller
     {
         //(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
         $this->error($socialiteUser->getEmail());
-        $user = new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId());
+        $user = new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1);
         return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
     }
