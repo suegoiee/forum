@@ -17,6 +17,10 @@ Route::namespace('Auth')->group(function () {
     Route::post('login', 'LoginController@login')->name('login.post');
     Route::get('logout', 'LoginController@logout')->name('logout');
 
+
+    Route::post('facebook/login', 'FacebookController@login')->name('facebook.login.post');
+    Route::post('google/login', 'GoogleController@login')->name('google.login.post');
+
     // Registration
     Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
     Route::post('register', 'RegisterController@register')->name('register.post');
