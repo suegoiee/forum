@@ -13,7 +13,7 @@ use Laravel\Socialite\Two\InvalidStateException;
 use Laravel\Socialite\Two\User as SocialiteUser;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class GithubController extends Controller
+class SocialiteController extends Controller
 {
     /**
      * Redirect the user to the GitHub authentication page.
