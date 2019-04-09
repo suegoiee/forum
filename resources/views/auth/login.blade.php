@@ -3,6 +3,7 @@
 @extends('layouts.small')
 
 @section('small-content')
+<button class="btn btn-block google" onclick="javascript:location.href='http://dev-www.uanalyze.com.tw/google/auth'"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" class="googleImg"></button>
     {!! Form::open(['route' => 'login.post']) !!}
         @formGroup('email')
             {!! Form::label('') !!}
@@ -28,5 +29,4 @@
             <i class="fa fa-github"></i> Github
         </a-->
     {!! Form::close() !!}
-    <button class="btn btn-primary btn-block"  onclick="javascript:location.href='http://dev-www.uanalyze.com.tw/google/auth'"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" style="width:25px"> Login With Google </button>
 @endsection
