@@ -25,7 +25,7 @@ final class RegisterUserVerified
     {
         $this->assertEmailAddressIsUnique($this->register['email']);
         //$this->assertUsernameIsUnique($this->register['username']);
-        $this->register['password'] = $hasher->make($this->register['password']);
+        $this->register['password'] = bcrypt($this->register['password']);
         $user = new User($this->register);
         $user->save();
 
@@ -43,7 +43,7 @@ final class RegisterUserVerified
         throw CannotCreateUser::duplicateEmailAddress($emailAddress);
     }
 
-    /*private function assertUsernameIsUnique(string $username)
+    private function assertUsernameIsUnique(string $username)
     {
         try {
             User::findByUsername($username);
@@ -52,5 +52,5 @@ final class RegisterUserVerified
         }
 
         throw CannotCreateUser::duplicateUsername($username);
-    }*/
+    }
 }
