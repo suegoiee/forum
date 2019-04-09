@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="panel-body forum-content">
-                    @md($thread->body())
+                    {!! $thread->body() !!}
                 </div>
 
                 <div class="thread-info-author authorName" style="float: right; display: inline-flex;">
