@@ -52,7 +52,7 @@ final class RegisterGoogleUser
         $this->username = $username;
         $this->githubId = $githubId;
         $this->githubUsername = $githubUsername;
-        $this->password = $id;
+        $this->password = $password;
         $this->is_socialite = $is_socialite;
         $this->confirmed = $confirmed;
     }
