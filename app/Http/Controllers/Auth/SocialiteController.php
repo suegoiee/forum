@@ -13,12 +13,10 @@ use Laravel\Socialite\Two\InvalidStateException;
 use Laravel\Socialite\Two\User as SocialiteUser;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class SocialiteController extends Controller
+class GithubController extends Controller
 {
     /**
-     * Redirect the user to the Google authentication page.
-     *
-     * @return 301 
+     * Redirect the user to the GitHub authentication page.
      */
     public function redirectToProvider()
     {
@@ -27,23 +25,19 @@ class SocialiteController extends Controller
 
     /**
      * Obtain the user information from GitHub.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function handleProviderCallback()
     {
-        /*$user = Socialite::driver('google')->user();
-        dd($user);
-        $user = $this->dispatchNow(RegisterGoogleUser::fromRequest(app(RegisterRequest::class)));*/
         try {
             $socialiteUser = $this->getSocialiteUser();
         } catch (InvalidStateException $exception) {
             $this->error('errors.github_invalid_state');
+
             return redirect()->route('login');
         }
 
         try {
-            $user = User::findByEmailAddress($socialiteUser->emailAddress());
+            $user = User::findByGithubId($socialiteUser->getId());
         } catch (ModelNotFoundException $exception) {
             return $this->userNotFound(new GithubUser($socialiteUser->getRaw()));
         }
