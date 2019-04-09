@@ -69,7 +69,7 @@
     <!--end of for development-->
 
 
-@include('layouts._intercom')
-
+    @include('layouts._intercom')
+    @yield('js_tail')
 </body>
 </html>
