@@ -32,7 +32,6 @@ class SocialiteController extends Controller
             $socialiteUser = $this->getSocialiteUser();
         } catch (InvalidStateException $exception) {
             $this->error('errors.github_invalid_state');
-
             return redirect()->route('login');
         }
 
@@ -52,11 +51,8 @@ class SocialiteController extends Controller
 
     private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
     {
-        $this->dispatchNow(new UpdateProfile($user, ['github_username' => $socialiteUser->getNickname()]));
-
         Auth::login($user);
-
-        return redirect()->route('dashboard');
+        return redirect()->route('forum');
     }
 
     private function userNotFound(GithubUser $user): RedirectResponse
@@ -66,8 +62,10 @@ class SocialiteController extends Controller
 
     private function redirectUserToRegistrationPage(GithubUser $user): RedirectResponse
     {
-        session(['githubData' => $user->toArray()]);
-
-        return redirect()->route('register');
+        /*session(['githubData' => $user->toArray()]);
+        return redirect()->route('register.post', []);*/
+        $registerRequest = app(RegisterRequest::class);
+        $user = $this->dispatchNow(RegisterUser::fromRequest(app(RegisterRequest::class)));
+        return $user;
     }
 }
