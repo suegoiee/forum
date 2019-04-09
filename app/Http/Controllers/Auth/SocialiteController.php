@@ -42,7 +42,7 @@ class SocialiteController extends Controller
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
             //return $this->userNotFound($socialiteUser);
-            return redirect()->route('register.post')->withInput('email', $socialiteUser->getEmail());
+            return redirect()->route('register.post')->withInput(['email' => $socialiteUser->getEmail()]);
         }
 
         return $this->userFound($user, $socialiteUser);
