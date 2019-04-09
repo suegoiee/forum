@@ -26,7 +26,7 @@ class SocialiteController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->user();
-        $user = $this->dispatchNow(RegisterGoogleUser::fromRequest(app(RegisterRequest::class)));
+        //$user = $this->dispatchNow(RegisterGoogleUser::fromRequest(app(RegisterRequest::class)));
         dd($user);
     }
 }
