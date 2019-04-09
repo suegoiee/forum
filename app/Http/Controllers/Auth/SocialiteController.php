@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\User;
-use App\Jobs\RegisterUser;
-use App\Jobs\RegisterUAUser;
-use App\Jobs\RegisterGoogleUser;
-use App\Jobs\SendEmailConfirmation;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterRequest;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Http\Middleware\RedirectIfAuthenticated;
-use Illuminate\Contracts\Validation\Validator as ValidatorContract;
 use Socialite;
+use App\Social\GithubUser;
+use App\Jobs\UpdateProfile;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use Laravel\Socialite\Two\InvalidStateException;
+use Laravel\Socialite\Two\User as SocialiteUser;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SocialiteController extends Controller
 {
