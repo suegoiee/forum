@@ -40,7 +40,7 @@ class SocialiteController extends Controller
         try {
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
-            return $this->userNotFound($socialiteUser);
+            return $this->userNotFound($socialiteUser->getEmail());
         }
 
         return $this->userFound($user, $socialiteUser);
