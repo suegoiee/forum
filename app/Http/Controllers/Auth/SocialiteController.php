@@ -57,7 +57,7 @@ class SocialiteController extends Controller
         return redirect()->route('forum');
     }
 
-    private function userNotFound(GithubUser $user): RedirectResponse
+    private function userNotFound($user): RedirectResponse
     {
         return $this->redirectUserToRegistrationPage($user);
     }
