@@ -4,14 +4,11 @@
     .container {
       .navbar-header {
         .navbar-brand {
-          background-image: url(images/logo_light_horizontal.svg);
+          background-image: url(images/logo_brand.svg);
           background-repeat: no-repeat;
-          background-size: 65%;
-          width: 200px;
+          background-size: 70%;
+          width: 180px;
           background-position: 25% 60%;
-        }
-        .navbar-brand:hover {
-          background-image: url(images/logo_light_hor_2.svg);
         }
       }
       .navbar-collapse {
@@ -25,62 +22,17 @@
             .nav-font {
               color: #fff;
               font-size: 15px;
-              line-height: 30px;
+              line-height: 2;
             }
             .nav-font:hover {
               color: #ffa500;
             }
-            .chatt {
-              background-image: url(images/chat_1.svg);
-              width: 80px;
-              background-size: 22%;
-              background-position: 0 50%;
-              background-repeat: no-repeat;
-              .chatWord {
-                padding-left: 10%;
-              }
-            }
-            .chatt:hover {
-              background-image: url(images/chat_2.svg);
-            }
             .pro {
-              background-image: url(images/pro_1.svg);
-              width: 110px;
-              background-size: 18%;
-              background-position: 0 50%;
+              background-image: url(images/logo_pro.svg);
+              width: 90px;
               background-repeat: no-repeat;
-              .proWord {
-                padding-left: 10%;
-              }
-            }
-            .pro:hover {
-              background-image: url(images/pro_2.svg);
-            }
-            .stock {
-              background-image: url(images/stock_1.svg);
-              background-size: 16%;
-              background-position: 0 50%;
-              background-repeat: no-repeat;
-              width: 115px;
-              .stockWord {
-                padding-left: 10%;
-              }
-            }
-            .stock:hover {
-              background-image: url(images/stock_2.svg);
-            }
-            .tool {
-              background-image: url(images/tool_1.svg);
-              background-size: 16%;
-              background-position: 0 50%;
-              background-repeat: no-repeat;
-              width: 100px;
-              .toolWord {
-                padding-left: 10%;
-              }
-            }
-            .tool:hover {
-              background-image: url(images/tool_2.svg);
+              margin-top: 30%;
+              margin-left: 15%;
             }
             .triangle-down {
               width: 10px;
@@ -99,32 +51,6 @@
             .login:hover {
               color: #ffa500;
               background-color: #545454 !important;
-            }
-            .reg {
-              background-image: url(images/reg_1.svg);
-              background-size: 35%;
-              background-position: 0 50%;
-              background-repeat: no-repeat;
-              width: 65px;
-              .regWord {
-                padding-left: 10%;
-              }
-            }
-            .log {
-              background-image: url(images/login_1.svg);
-              background-size: 20%;
-              background-position: 0 50%;
-              background-repeat: no-repeat;
-              width: 70px;
-              .logWord {
-                padding-left: 10%;
-              }
-            }
-            .log:hover {
-              background-image: url(images/login_2.svg);
-            }
-            .reg:hover {
-              background-image: url(images/reg_2.svg);
             }
             .dropdown-menu {
               border: 1px solid rgba(255, 165, 0, 0.5);
@@ -205,7 +131,6 @@
 .navbar-right {
   margin-right: -30px !important;
 }
-
 @media (max-width: 767px) {
   #app {
     .navber-bd {
@@ -220,6 +145,7 @@
           }
           .navbar-brand {
             background-size: 75%;
+            margin-left: 3%;
           }
         }
         .navbar-collapse {
@@ -270,46 +196,6 @@
                 background-position: 95% 52% !important;
                 margin-left: 0 !important;
               }
-              .chatt,
-              .chatt:hover {
-                width: 100px !important;
-                .chatWord {
-                  padding-left: 5% !important;
-                }
-              }
-              .stock,
-              .stock:hover {
-                background-size: 8% !important;
-                background-position: 0 50% !important;
-                width: auto !important;
-                .stockWord {
-                  padding-left: 0% !important;
-                }
-              }
-              .tool,
-              .tool:hover {
-                background-size: 7% !important;
-                background-position: 0 50% !important;
-                width: auto !important;
-                .toolWord {
-                  padding-left: 0% !important;
-                }
-              }
-              .pro,
-              .pro:hover {
-                background-size: 20%;
-                width: 115px !important;
-                .proWord {
-                  padding-left: 0% !important;
-                }
-              }
-              .reg,
-              .reg:hover {
-                .regWord {
-                  width: 70px !important;
-                  padding-left: 15% !important;
-                }
-              }
               .logo {
                 margin-left: 10%;
                 width: 100px;
@@ -319,9 +205,16 @@
                 width: 100px;
               }
               .nav-font {
-                padding-left: 10% !important;
                 font-size: 14.5px !important;
                 line-height: normal !important;
+              }
+              .pro,
+              .pro:hover {
+                margin-top: 10px;
+                margin-left: 15px;
+              }
+              .login {
+                line-height: 1;
               }
             }
           }

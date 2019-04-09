@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form style="width:50%;">
+    <form class="col-sm-12">
         <fieldset>
             <h3>資本預算之NPV(淨現值)</h3>
             <h5>(請填入年利率、各年現金流狀況)</h5>
@@ -31,7 +31,7 @@
                 </tbody>
             </table>
             <p class="resultAll" id="npvv">
-                淨現值(npv):<br/>
+                淨現值(npv):
                 <input type="text" id="npv" class="rate" name="npv" disabled>
             </p>
             

@@ -7,6 +7,7 @@ class npvCal extends judgeValue {
         this.nameAll = Array();
         this.inputTd = inputTd;
         this.npv = npv;
+        this.yearNPV = 1;
         this.npvv = npvv;
         this.addTd = this.addTd.bind(this);
         this.del = this.del.bind(this);
@@ -18,10 +19,10 @@ class npvCal extends judgeValue {
     addInput() {
         document.getElementById('add').onclick = () => {
 
-            this.addTd("label", "nvpC", "nvpC", "第" + document.getElementById("countA").value + "年", questionAll);
+            this.addTd("label", "nvpC", "nvpC", "第" + this.yearNPV + "年", questionAll);
             this.addTd("input", "mom", "mom", "", questionAll);
             this.addTd("span", "dol", "dol", "元", questionAll);
-            document.getElementById("countA").value++;
+            this.yearNPV++;
 
             for (var i = 0; i < moneyAll.length; i++) {
                 if (moneyAll[i].value == "") {
@@ -110,7 +111,7 @@ class npvCal extends judgeValue {
             this.del(inputTd, 1);
             this.del(npvv, 4);
 
-            document.getElementById("countA").value = 1;
+            this.yearNPV = 1;
         }
     }
 
@@ -153,7 +154,7 @@ class npvCal extends judgeValue {
             this.del(questionAll, 1);
             this.del(inputTd, 1);
 
-            document.getElementById("countA").value = 1;
+            this.yearNPV = 1;
         }
     }
 }

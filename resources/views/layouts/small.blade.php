@@ -1,7 +1,7 @@
 @extends('layouts.base', ['disableAds' => $disableAds ?? true])
 
 @section('body')
-    <div class="container">
+    <div class="container" style="min-height: calc(100vh - 150px);">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 @include('layouts._alerts')

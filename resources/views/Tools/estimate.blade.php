@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-	<form style="width:50%;">
+	<form class="col-sm-12">
 		<fieldset>
 			<h3>市占率預估</h3>
 			<h5>(請填入年營收、產值、年成長率、5年和10年預估值)</h5>
