@@ -37,7 +37,7 @@ class SocialiteController extends Controller
         }
 
         try {
-            $user = User::findByGithubId($socialiteUser->getId());
+            $user = User::findByEmailAddress($socialiteUser->emailAddress());
         } catch (ModelNotFoundException $exception) {
             return $this->userNotFound(new GithubUser($socialiteUser->getRaw()));
         }
