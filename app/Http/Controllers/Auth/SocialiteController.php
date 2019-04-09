@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Auth;
-use App\User as SocialiteUser;
+use App\User;
 use Socialite;
 use App\Social\GithubUser;
 use App\Jobs\UpdateProfile;
@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Laravel\Socialite\Two\InvalidStateException;
-use Laravel\Socialite\Two\User;
+use Laravel\Socialite\Two\User as SocialiteUser;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SocialiteController extends Controller
@@ -64,7 +64,7 @@ class SocialiteController extends Controller
     {
         //(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
         $this->error($socialiteUser->getEmail());
-        $user = new RegisterGoogleUser($socialiteUser->name(), $socialiteUser->emailAddress(), $socialiteUser->name(), '', '', $socialiteUser->id());
+        $user = new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId());
         return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
     }
