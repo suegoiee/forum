@@ -269,6 +269,10 @@ h1 {
 }
 
 @media (max-width: 767px) {
+  .row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
   .alert {
     padding: 10px 0 10px 5px !important;
     font-size: 13px;

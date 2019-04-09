@@ -8,7 +8,7 @@
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <img src="images/logo_verticle_colour.svg" style="width: 80%; margin: auto auto 8%;">
+                        <img src="images/logo_verticle_colour.svg" style="width: 80%; margin: 5% auto 8%;">
                         <br/>
                         {{ $title }}
                     </div>

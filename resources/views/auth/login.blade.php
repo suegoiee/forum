@@ -3,7 +3,11 @@
 @extends('layouts.small')
 
 @section('small-content')
-<button class="btn btn-block google" onclick="javascript:location.href='http://dev-www.uanalyze.com.tw/google/auth'"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" class="googleImg"></button>
+<div style="width:auto;">        
+    <div class="btn btn-block facebook" id="facebook_login_btn"><img class="facebookImg" src="https://pro.uanalyze.com.tw/assets/img/Facebook/f-Logo_Assets/F_Logo_Online_09_2018/Color/SVG/flogo_RGB_HEX-1024.svg"></div>
+    ‧
+    <div class="btn btn-block google" onclick="javascript:location.href='http://dev-www.uanalyze.com.tw/google/auth'"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" class="googleImg"></div>
+</div>
     {!! Form::open(['route' => 'login.post']) !!}
         @formGroup('email')
             {!! Form::label('') !!}
@@ -28,8 +32,7 @@
         <!--a href="{{ route('login.github') }}" class="btn btn-default btn-block">
             <i class="fa fa-github"></i> Github
         </a-->
-        <button class="btn btn-primary btn-block" id="facebook_login_btn"><img src="https://pro.uanalyze.com.tw/assets/img/Facebook/f-Logo_Assets/F_Logo_Online_09_2018/Color/SVG/flogo_RGB_HEX-1024.svg" style="width:25px">  Login With Facebook </button>
-        <button class="btn btn-primary btn-block"  onclick="javascript:location.href='http://dev-www.uanalyze.com.tw/google/auth'"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" style="width:25px"> Login With Google </button>
+
     {!! Form::close() !!}
     {!! Form::open(['route' => 'facebook.login.post','id'=>'facebook_form']) !!}
         @csrf
