@@ -52,4 +52,8 @@ class RegisterRequest extends FormRequest
     {
         return $this->get('password');
     }
+    public function id(): string
+    {
+        return $this->get('id');
+    }
 }
