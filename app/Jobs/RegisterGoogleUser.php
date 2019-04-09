@@ -38,12 +38,12 @@ final class RegisterGoogleUser
     /**
      * @var int
      */
-    private $is_socialite = 1;
+    private $is_socialite;
 
     /**
      * @var int
      */
-    private $confirmed = 1;
+    private $confirmed;
 
     public function __construct(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password, int $is_socialite, int $confirmed)
     {
