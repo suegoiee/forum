@@ -57,13 +57,12 @@ class SocialiteController extends Controller
     private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
     {
         Auth::login($user);
-        $this->error($socialiteUser->getEmail());
         return redirect()->route('forum');
     }
 
     private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
     {
-        $this->error($socialiteUser);
+        $this->error($socialiteUser->getEmail());
         return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
     }
