@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use App\Jobs\RegisterGoogleUser;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use Socialite;
 
 class SocialiteController extends Controller
@@ -25,7 +26,7 @@ class SocialiteController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('google')->user();
-        $user = $this->dispatchNow(RegisterGoogleUser::fromRequest(app(RegisterRequest::class)));
         dd($user);
+        $user = $this->dispatchNow(RegisterGoogleUser::fromRequest(app(RegisterRequest::class)));
     }
 }
