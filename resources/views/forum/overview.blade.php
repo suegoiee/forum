@@ -7,7 +7,7 @@
     <h1>{{ $title }}</h1>
 
     <div class="row forum">
-        <div class="col-lg-3">
+        <div class="col-md-3">
             {{ Form::open(['route' => 'forum', 'method' => 'GET']) }}
                 <div class="form-group">
                     {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => '搜尋文章','style' => 'width:100%;' ]) }}
@@ -28,7 +28,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-lg-9 chat-bg">
+        <div class="col-md-9 chat-bg">
             <a class="btn btn-block" href="{{ route('threads.create') }}">發表文章</a>
             @include('layouts._ads._bsa-cpc')
 

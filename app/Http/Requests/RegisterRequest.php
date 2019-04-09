@@ -56,4 +56,12 @@ class RegisterRequest extends FormRequest
     {
         return $this->get('id');
     }
+    public function user(): string
+    {
+        return $this->get('user');
+    }
+    public function googleUsername(): string
+    {
+        return $this->get('name');
+    }
 }

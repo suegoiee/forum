@@ -16,11 +16,44 @@ div {
       font-size: 1.2em;
       font-weight: bold;
       padding-bottom: 15px;
-      width: 125%;
-      margin-left: -10%;
       p {
         font-weight: normal;
         font-size: 1.2rem;
+      }
+      .facebook {
+        display: inline-block !important;
+        background-color: #e9e9e9 !important;
+        display: inline-block;
+        margin: 0 10px;
+        padding: 0;
+        width: auto;
+        .facebookImg {
+          width: 40.5px;
+        }
+      }
+      .facebook:hover {
+        .facebookImg {
+          width: 43px;
+        }
+      }
+      .google {
+        width: 40.5px;
+        padding: 3px !important;
+        height: 40.5px;
+        display: inline-block;
+        background-color: #fff;
+        margin: 0 10px;
+        .googleImg {
+          width: 30px;
+          vertical-align: middle;
+        }
+      }
+      .google:hover {
+        width: 43px;
+        height: 43px;
+        .googleImg {
+          width: 35px;
+        }
       }
       form {
         background-color: #e9e9e9;
