@@ -22,5 +22,7 @@ return [
         'success' => '您的郵件地址已成功驗證!',
         'no_match' => '我們無法確認您的郵件地址，您提供的郵件地址不符合!',
     ],
-
+    'facebook' => [
+        'email_exists'=>'Facebook登入失敗'
+    ]
 ];

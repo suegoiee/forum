@@ -8,6 +8,7 @@ use App\Jobs\ConfirmUser;
 use App\Jobs\ConfirmUAUser;
 use App\Jobs\SendEmailConfirmation;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request; 
 use Illuminate\Auth\Middleware\Authenticate;
 
 class EmailConfirmationController extends Controller
@@ -30,8 +31,13 @@ class EmailConfirmationController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function confirm(User $user, string $code)
+    public function confirm(Request $request)
     {
+        $user = User::where('email',$request->input('email'))->first();
+        if(!$user){
+            $this->error('auth.confirmation.not_exist');
+        }
+        $code = $request->input('code');
         if ($user->matchesConfirmationCode($code)) {
             $this->dispatchNow(new ConfirmUser($user));
             $this->dispatchNow(new ConfirmUAUser($user));
