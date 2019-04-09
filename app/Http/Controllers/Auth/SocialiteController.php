@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 use App\Jobs\RegisterGoogleUser;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
 use Socialite;
 
 class SocialiteController extends Controller
