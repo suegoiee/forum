@@ -7,6 +7,7 @@ use App\User;
 use Socialite;
 use App\Social\GithubUser;
 use App\Jobs\UpdateProfile;
+use App\Jobs\RegisterGoogleUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -41,7 +42,7 @@ class SocialiteController extends Controller
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
             //return $this->userNotFound($socialiteUser);
-            $this->error($this->getSocialiteUser());
+            $this->error(new RegisterUser);
             return redirect()->route('login');
         }
 
