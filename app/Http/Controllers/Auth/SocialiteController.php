@@ -40,7 +40,7 @@ class SocialiteController extends Controller
         try {
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
-            return $this->userNotFound($socialiteUser->getEmail());
+            return $this->userNotFound($socialiteUser);
         }
 
         return $this->userFound($user, $socialiteUser);
@@ -57,9 +57,9 @@ class SocialiteController extends Controller
         return redirect()->route('forum');
     }
 
-    private function userNotFound($user): RedirectResponse
+    private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
     {
-        return $this->redirectUserToRegistrationPage($user);
+        return $this->redirectUserToRegistrationPage($socialiteUser);
     }
 
     private function redirectUserToRegistrationPage(array $data): User
