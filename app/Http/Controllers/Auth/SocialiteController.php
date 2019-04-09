@@ -60,7 +60,7 @@ class SocialiteController extends Controller
         return $this->redirectUserToRegistrationPage($user);
     }
 
-    private function redirectUserToRegistrationPage(GithubUser $user): RedirectResponse
+    private function redirectUserToRegistrationPage(array $data): User
     {
         /*session(['githubData' => $user->toArray()]);
         return redirect()->route('register.post', []);*/
