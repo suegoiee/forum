@@ -7,12 +7,12 @@ use App\User;
 use Socialite;
 use App\Social\GithubUser;
 use App\Jobs\UpdateProfile;
-use App\Jobs\RegisterGoogleUser as SocialiteUser;
+use App\Jobs\RegisterGoogleUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Laravel\Socialite\Two\InvalidStateException;
-//use Laravel\Socialite\Two\User;
+use Laravel\Socialite\Two\User as SocialiteUser;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SocialiteController extends Controller
@@ -41,7 +41,7 @@ class SocialiteController extends Controller
         try {
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
-            return $this->userNotFound(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
+            return $this->userNotFound($socialiteUser);
             //return $this->userNotFound($socialiteUser->getEmail());
             //return redirect()->route('register.post')->withInput(['email' => $socialiteUser->getEmail()]);
         }
@@ -57,6 +57,7 @@ class SocialiteController extends Controller
     private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
     {
         Auth::login($user);
+        $this->error($socialiteUser->getEmail());
         return redirect()->route('forum');
     }
 
