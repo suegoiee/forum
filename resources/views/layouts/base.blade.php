@@ -63,7 +63,13 @@
     <script src="/js/navBar.js"></script>
     <script>
 			$(document).ready(function() {
-				CKEDITOR.replaceClass = 'ckeditor';
+                CKEDITOR.config.language='zh';
+                CKEDITOR. config.extraPlugins = 'youtube';
+                //CKEDITOR.replaceClass('ckeditor');
+                /*CKEDITOR.replace( 'body', {
+                    language: 'zh',
+                    uiColor: '#9AB8F3'
+                } );*/
             });
     </script>
     <!--end of for development-->
