@@ -46,7 +46,7 @@
                         <div class="panel-body chat-bg">
                             <a href="{{ route('thread', $thread->slug()) }}">
                                 <span class="badge pull-right">{{ count($thread->replies()) }}</span>
-                                <p>{{ $thread->excerpt() }}</p>
+                                <p>{!! strip_tags($thread->body) !!}</p>
                             </a>
                         </div>
                         

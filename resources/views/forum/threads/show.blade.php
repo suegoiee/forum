@@ -75,7 +75,7 @@
                 </div>
 
                 <div class="panel-body forum-content">
-                    @md($thread->body())
+                    {!! $thread->body() !!}
                 </div>
 
                 <div class="thread-info-author authorName" style="float: right; display: inline-flex;">
@@ -92,7 +92,7 @@
                 <div style="border:none !important;" class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
                     <div class="thread-info-author headLabel">
 
-                    @md($reply->body())
+                    {!! $reply->body !!}
                         @can(App\Policies\ReplyPolicy::UPDATE, $reply)
                             <div class="thread-info-tags" style="float:right">
                                 <a class="btn btn-default btn-xs" href="{{ route('replies.edit', $reply->id()) }}">
@@ -177,7 +177,7 @@
                     
                     {!! Form::open(['route' => 'replies.store']) !!}
                         @formGroup('body')
-                            {!! Form::textarea('body', null, ['class' => 'form-control', 'required', 'name' => 'my-editor', 'style' => 'height:100% !important;margin-bottom: 0 !important; border-top: 1px dashed #e9e9e9 !important;border:none ; border-radius: 0;']) !!}
+                            {!! Form::textarea('body', null, ['class' => 'form-control ckeditor', 'required', 'style' => 'height:100% !important;margin-bottom: 0 !important; border-top: 1px dashed #e9e9e9 !important;border:none ; border-radius: 0;']) !!}
                             @error('body')
                         @endFormGroup
 

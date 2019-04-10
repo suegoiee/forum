@@ -38,21 +38,21 @@ final class RegisterGoogleUser
     /**
      * @var int
      */
-    private $is_socialite = 1;
+    private $is_socialite;
 
     /**
      * @var int
      */
-    private $confirmed = 1;
+    private $confirmed;
 
-    public function __construct(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
+    public function __construct(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password, int $is_socialite, int $confirmed)
     {
         $this->name = $username;
         $this->email = $email;
         $this->username = $username;
         $this->githubId = $githubId;
         $this->githubUsername = $githubUsername;
-        $this->password = $id;
+        $this->password = $password;
         $this->is_socialite = $is_socialite;
         $this->confirmed = $confirmed;
     }
@@ -62,7 +62,7 @@ final class RegisterGoogleUser
         return new static(
             $request->name(),
             $request->emailAddress(),
-            $request->username(),
+            $request->googleUsername(),
             $request->githubId(),
             $request->githubUsername(),
             $request->id()
@@ -84,7 +84,7 @@ final class RegisterGoogleUser
             'confirmed' => $this->confirmed,
             'is_socialite' => $this->is_socialite,
             //'password'=>$hasher->make($this->password),
-            'password'=>bcrypt($this->id),
+            'password'=>bcrypt($this->password),
             'type' => User::DEFAULT,
             'remember_token' => '',
         ]);

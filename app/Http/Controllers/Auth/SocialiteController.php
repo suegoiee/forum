@@ -1,17 +1,25 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+
+use Auth;
+use App\User;
+use Socialite;
+use App\Social\GithubUser;
+use App\Jobs\UpdateProfile;
 use App\Jobs\RegisterGoogleUser;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterRequest;
-use Socialite;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Laravel\Socialite\Two\InvalidStateException;
+use Laravel\Socialite\Two\User as SocialiteUser;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SocialiteController extends Controller
 {
+    use RegistersUsers;
     /**
-     * Redirect the user to the Google authentication page.
-     *
-     * @return 301 
+     * Redirect the user to the GitHub authentication page.
      */
     public function redirectToProvider()
     {
@@ -20,13 +28,55 @@ class SocialiteController extends Controller
 
     /**
      * Obtain the user information from GitHub.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('google')->user();
-        dd($user);
-        $user = $this->dispatchNow(RegisterGoogleUser::fromRequest(app(RegisterRequest::class)));
+        try {
+            $socialiteUser = $this->getSocialiteUser();
+        } catch (InvalidStateException $exception) {
+            $this->error('errors.github_invalid_state');
+            return redirect()->route('login');
+        }
+
+        try {
+            $user = User::findByEmailAddress($socialiteUser->getEmail());
+        } catch (ModelNotFoundException $exception) {
+            return $this->userNotFound($socialiteUser);
+            //return $this->userNotFound($socialiteUser->getEmail());
+            //return redirect()->route('register.post')->withInput(['email' => $socialiteUser->getEmail()]);
+        }
+
+        return $this->userFound($user, $socialiteUser);
+    }
+
+    private function getSocialiteUser(): SocialiteUser
+    {
+        return Socialite::driver('google')->user();
+    }
+
+    private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
+    {
+        Auth::login($user);
+        return redirect()->route('forum');
+    }
+
+    private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
+    {
+        //(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
+        $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
+        $user = User::findByEmailAddress($socialiteUser->getEmail());
+        Auth::login($user);
+        $this->success('歡迎來到優分析');
+        return redirect()->route('forum');
+        //return $this->redirectUserToRegistrationPage($socialiteUser);
+    }
+
+    private function redirectUserToRegistrationPage(array $data): User
+    {
+        /*session(['githubData' => $user->toArray()]);
+        return redirect()->route('register.post', []);*/
+        $registerRequest = app(RegisterRequest::class);
+        $user = $this->dispatchNow(RegisterUser::fromRequest(app(RegisterRequest::class)));
+        return $user;
     }
 }
