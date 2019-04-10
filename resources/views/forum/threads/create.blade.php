@@ -9,7 +9,7 @@
         <p> 
             <i class="fas fa-info-circle" style="color: #0084ff;padding-right: 1%;"></i>
             請先嘗試使用
-            <a href="{{ route('forum') }}" style="color:#ffa500; font-weight:bolder;">搜索框</a> 查詢您的問題及確保在發表文章前閱讀
+            <a href="{{ route('forum') }}" style="color:#ffa500; font-weight:bolder;">搜索框</a> 查詢您的問題並確認在發表文章前已瞭解
             <a href="{{ route('rules') }}" style="color:#ffa500; font-weight:bolder;">論壇規則</a>。
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true" style="color: #0084ff;">&times;</button>
         </p>

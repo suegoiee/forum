@@ -70,6 +70,11 @@ div {
           .regMg {
             margin: 5% 0;
           }
+          div {
+            textarea {
+              border: 2px solid #e9e9e9;
+            }
+          }
           .form-control {
             height: 40px !important;
           }

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="row forum">
-        <div class="col-lg-3">
+        <div class="col-md-3">
 
             <h3>分類</h3>
             <div class="list-group">
@@ -35,7 +35,7 @@
 
             @include('layouts._ads._forum_sidebar')
         </div>
-        <div class="col-lg-9">
+        <div class="col-md-9">
 
             @can(App\Policies\ThreadPolicy::UPDATE, $thread)
                 <a class="btn btn-default btn-block" style="margin-top: 5px;" href="{{ route('threads.edit', $thread->slug()) }}">
@@ -94,6 +94,8 @@
 
                     {!! $reply->body !!}
                         @can(App\Policies\ReplyPolicy::UPDATE, $reply)
+                        @endcan
+                    </div>
                             <div class="thread-info-tags" style="float:right">
                                 <a class="btn btn-default btn-xs" href="{{ route('replies.edit', $reply->id()) }}">
                                     <img src="/images/icon/edit.svg" style="width:16px;">
@@ -102,8 +104,6 @@
                                     <img src="/images/icon/recycling-bin.svg" style="width:16px;">
                                 </a>
                             </div>
-                        @endcan
-                    </div>
 
                     <div class="forum-content">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
