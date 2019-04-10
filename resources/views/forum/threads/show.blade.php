@@ -94,7 +94,6 @@
 
                     {!! $reply->body !!}
                         
-                        
                     </div>
                     @can(App\Policies\ReplyPolicy::UPDATE, $reply)
                             <div class="thread-info-tags" style="float:right">
@@ -106,6 +105,7 @@
                                 </a>
                             </div>
                     @endcan
+
                     <div class="forum-content">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
 
