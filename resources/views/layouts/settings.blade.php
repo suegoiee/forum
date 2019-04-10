@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-9 accountB" style="margin-top: 2%;">
+            <div class="col-lg-9 accountB">
                 @include('layouts._alerts')
 
                 @yield('content')

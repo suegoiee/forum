@@ -44,7 +44,7 @@ form {
 
     // fromcheck
     #nnnn {
-      @include fontAll(left, #545454, #fff, 16px);
+      @include fontAll(center, #545454, #fff, 16px);
       @include borderAll(0, #545454);
       padding: 5px;
     }
@@ -109,9 +109,9 @@ form {
     #msgA,
     #bigW {
       @include fontAll(right !important, #ef5350, #f9f9f9, 0);
-      @include dist(auto, 20%, auto);
-      font-weight: bold;
-      font-size: 1.5rem;
+      @include dist(auto, 25%, auto);
+      font-weight: 300;
+      font-size: 1.3rem;
     }
 
     // button
@@ -213,12 +213,12 @@ form {
     // secondDCF
     #valFF {
       @include borderAll(0, #fff);
-      @include fontAll(right, #fff, black, 16px);
+      @include fontAll(center, #fff, black, 16px);
     }
     // for npv
     #npvv {
       #rec {
-        margin-top: 5px;
+        margin: 15px auto;
         width: 80%;
         @include borderAll(0, black);
         @include fontAll(center, green, white, 25px);
