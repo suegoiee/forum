@@ -22,7 +22,8 @@
         "roave/security-advisories": "dev-master",
         "spatie/laravel-backup": "^5.10",
         "spatie/laravel-robots-middleware": "^1.0",
-        "unisharp/laravel-ckeditor": "^4.7"
+        "unisharp/laravel-ckeditor": "^4.7",
+        "unisharp/laravel-filemanager": "~1.8"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.2",
