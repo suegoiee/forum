@@ -93,9 +93,10 @@
                     <div class="thread-info-author headLabel">
 
                     {!! $reply->body !!}
-                        @can(App\Policies\ReplyPolicy::UPDATE, $reply)
-                        @endcan
+                        
+                        
                     </div>
+                    @can(App\Policies\ReplyPolicy::UPDATE, $reply)
                             <div class="thread-info-tags" style="float:right">
                                 <a class="btn btn-default btn-xs" href="{{ route('replies.edit', $reply->id()) }}">
                                     <img src="/images/icon/edit.svg" style="width:16px;">
@@ -104,7 +105,7 @@
                                     <img src="/images/icon/recycling-bin.svg" style="width:16px;">
                                 </a>
                             </div>
-
+                    @endcan
                     <div class="forum-content">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
 
