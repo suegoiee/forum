@@ -4,7 +4,7 @@
     .container {
       .navbar-header {
         .navbar-brand {
-          background-image: url(images/logo_brand.svg);
+          background-image: url(images/logo_colour_horizontal.svg);
           background-repeat: no-repeat;
           background-size: 80%;
           width: 180px;
@@ -26,13 +26,6 @@
             }
             .nav-font:hover {
               color: #ffa500;
-            }
-            .pro {
-              background-image: url(images/logo_pro.svg);
-              width: 90px;
-              background-repeat: no-repeat;
-              margin-top: 30%;
-              margin-left: 15%;
             }
             .triangle-down {
               width: 10px;
@@ -72,9 +65,6 @@
               }
             }
             a {
-              img {
-                padding-top: 20%;
-              }
               .caret {
                 color: #fff !important;
               }

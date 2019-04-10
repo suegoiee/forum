@@ -133,7 +133,11 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer"></a></li>
+                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer">
+                        <img src="images/logo_colour_white.svg" style="width:30px;">
+                        <div style="display: inline-block;">優分析pro</div>
+                    </a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
