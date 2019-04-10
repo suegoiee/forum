@@ -3,6 +3,10 @@ h1 {
   font-size: 30px;
   font-weight: bolder;
 }
+.alert {
+  margin-bottom: 15px !important;
+  margin-top: 1%;
+}
 .forum {
   margin-bottom: 5%;
   div {
@@ -84,6 +88,17 @@ h1 {
           a:hover {
             text-decoration: none;
             color: #545454;
+          }
+        }
+      }
+      .forum-content {
+        table {
+          tbody {
+            tr {
+              td {
+                border: 1px solid #545454;
+              }
+            }
           }
         }
       }
@@ -274,7 +289,6 @@ h1 {
     margin-right: 0px !important;
   }
   .alert {
-    padding: 10px 0 10px 5px !important;
     font-size: 13px;
   }
   .btn {

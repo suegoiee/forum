@@ -183,6 +183,15 @@ div {
     }
   }
 }
+.accountA,
+.accountB {
+  .panel {
+    .panel-body {
+      padding: 0 !important;
+    }
+  }
+}
+
 @media (max-width: 767px) {
   .col-md-9 {
     padding-bottom: 10%;
