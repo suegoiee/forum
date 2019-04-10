@@ -1,5 +1,6 @@
 .col-md-9 {
   background: #fff;
+  width: 74%;
   h1 {
     font-size: 22px;
     color: #393939;
@@ -195,6 +196,7 @@ div {
 @media (max-width: 767px) {
   .col-md-9 {
     padding-bottom: 10%;
+    width: 100%;
   }
   .accountA {
     margin: 0;
