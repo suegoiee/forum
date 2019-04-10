@@ -284,6 +284,9 @@ h1 {
 }
 
 @media (max-width: 767px) {
+  h1 {
+    padding-left: 15px;
+  }
   .row {
     margin-left: 0px !important;
     margin-right: 0px !important;
