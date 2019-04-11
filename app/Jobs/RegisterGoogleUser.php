@@ -89,7 +89,7 @@ final class RegisterGoogleUser
             'type' => User::DEFAULT,
             'remember_token' => '',
         ]);
-        registered($user);
+        return $this->dispatchNow(new RegisterUAUserConfirmed($user));
         $user->save();
 
         return $user;
@@ -104,10 +104,5 @@ final class RegisterGoogleUser
         }
 
         throw CannotCreateUser::duplicateEmailAddress($emailAddress);
-    }
-
-    protected function registered($user)
-    {
-        return $this->dispatchNow(new RegisterUAUserConfirmed($user));
     }
 }
