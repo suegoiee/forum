@@ -67,7 +67,7 @@ class SocialiteController extends Controller
         $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
         Auth::login($user);
-        $result = $this->create($request->all());
+        $result = $this->create($user->all());
         $this->registered($result);
         dd($result);
         $this->success('歡迎來到優分析');
