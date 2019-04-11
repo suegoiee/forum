@@ -65,8 +65,7 @@ class SocialiteController extends Controller
     {
         $result = $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
-        $show = $this->registered($result);
-        dd($show);
+        $this->registered($user);
         //Auth::login($user);
         $this->success('歡迎來到優分析');
         //return redirect()->route('forum');
@@ -74,17 +73,5 @@ class SocialiteController extends Controller
     protected function registered($user)
     {
         return $this->dispatchNow(new RegisterUAUserConfirmed($user));
-    }
-    
-    protected function create(SocialiteUser $socialiteUser)
-    {
-        return User::create([
-            'email' => $socialiteUser->getEmail(),
-            'password' => bcrypt($socialiteUser->getId()),
-            'name'=> $socialiteUser->getName(),
-            'username'=> $socialiteUser->getEmail(),
-            'is_socialite' => 1,
-            'confirmed'=>1,
-        ]);
     }
 }
