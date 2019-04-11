@@ -97,6 +97,8 @@ Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
     Route::delete('users/{username}', 'UsersController@delete')->name('.users.delete');
 });
 
+Route::post('ckeditor/images','CkeditorImageController@store')->name('ckeditor.image.store');
+
 // freebie
 Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function () {
     Route::get('/stocksummary', 'FreebieController@stocksummary')->name('.stockbasicinfo.stocksummary');
