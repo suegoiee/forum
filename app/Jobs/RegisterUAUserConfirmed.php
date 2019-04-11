@@ -32,6 +32,5 @@ final class RegisterUAUserConfirmed
                 ],
                 'form_params' => $data,
             ]);
-            dd($response);
     }
 }
