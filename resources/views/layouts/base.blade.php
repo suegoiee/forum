@@ -78,6 +78,7 @@
             CKEDITOR.config.filebrowserImageUploadUrl= '{{url("ckeditor/images")}}',
             CKEDITOR.config.removeButtons='About',
             CKEDITOR.config.extraPlugins = 'youtube';
+            CKEDITOR.config.youtube_responsive = true;
         });
     </script>
     <!--end of for development-->
