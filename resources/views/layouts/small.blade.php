@@ -6,8 +6,8 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <img src="images/logo_colour.svg" style="width: 80%; margin: 5% auto 8%;">
-                        <br/>
+                        <!-- <img src="images/logo_colour.svg" style="width: 80%; margin: 5% auto 8%;">
+                        <br/> -->
                         {{ $title }}
                     </div>
                     @include('layouts._alerts')

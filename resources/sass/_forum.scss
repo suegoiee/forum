@@ -11,8 +11,7 @@ h1 {
   margin-bottom: 5%;
   div {
     p {
-      height: 2%;
-      display: inline-block;
+      height: 3%;
     }
     .btn {
       background-color: #fff;
@@ -129,6 +128,10 @@ h1 {
             font-size: 15px;
             font-weight: 300;
             text-align: left;
+            height: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         }
         a:hover {
