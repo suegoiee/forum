@@ -75,8 +75,8 @@ class SocialiteController extends Controller
             'is_socialite' => 1,
             'confirmed'=>1,
         ];
-        $result = $this->registered($UAForm);
-        dd($result);
+        //$result = $this->registered($UAForm);
+        dd($user);
         $this->success('歡迎來到優分析');
         //return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
