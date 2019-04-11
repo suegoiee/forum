@@ -67,16 +67,16 @@ class SocialiteController extends Controller
         $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
         Auth::login($user);
-        $UAForm = [
+        $UAForm = User::create([
             'email' => $socialiteUser->getEmail(),
             'password' => bcrypt($socialiteUser->getId()),
             'name'=> $socialiteUser->getName(),
             'username'=> $socialiteUser->getEmail(),
             'is_socialite' => 1,
             'confirmed'=>1,
-        ];
-        $result = $this->registered($UAForm);
-        dd($result);
+        ]);
+        //$result = $this->registered($UAForm);
+        dd($UAForm);
         $this->success('歡迎來到優分析');
         //return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
