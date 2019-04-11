@@ -54,6 +54,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+    <script src="/js/ckfinder/ckfinder.js"></script>
     <script src="/js/freebie.js"></script>
     <script src="/js/errorode.js"></script>
     <script src="/js/addToge.js"></script>
@@ -62,15 +63,22 @@
     <script src="/js/npv.js"></script>
     <script src="/js/navBar.js"></script>
     <script>
-			$(document).ready(function() {
-                CKEDITOR.config.language='zh';
-                CKEDITOR. config.extraPlugins = 'youtube';
-                //CKEDITOR.replaceClass('ckeditor');
-                /*CKEDITOR.replace( 'body', {
-                    language: 'zh',
-                    uiColor: '#9AB8F3'
-                } );*/
-            });
+        $(document).ready(function() {
+            /*CKEDITOR.config.extraPlugins = 'youtube';
+            CKEDITOR.config.language='zh';
+            CKEDITOR.config.extraPlugins = 'uploadimage';
+            CKEDITOR.config.uploadUrl = '{{url("ckeditor/images")}}';
+            CKEDITOR.config.filebrowserImageUploadUrl= '{{url("ckeditor/images")}}';
+            CKEDITOR.config.removeButtons='About';*/
+            CKEDITOR.replace('body', {});
+            CKEDITOR.config.language='zh';
+            CKEDITOR.config.height=400;
+            CKEDITOR.config.extraPlugins = 'uploadimage';
+            CKEDITOR.config.uploadUrl = '{{url("ckeditor/images")}}',
+            CKEDITOR.config.filebrowserImageUploadUrl= '{{url("ckeditor/images")}}',
+            CKEDITOR.config.removeButtons='About',
+            CKEDITOR.config.extraPlugins = 'youtube';
+        });
     </script>
     <!--end of for development-->
 
