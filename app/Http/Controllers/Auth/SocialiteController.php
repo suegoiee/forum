@@ -68,7 +68,7 @@ class SocialiteController extends Controller
         $user = User::findByEmailAddress($socialiteUser->getEmail());
         Auth::login($user);
         $result = $this->registered($user);
-        dd($result);
+        dd($user);
         $this->success('歡迎來到優分析');
         //return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
