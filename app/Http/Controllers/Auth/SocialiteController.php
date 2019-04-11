@@ -63,39 +63,10 @@ class SocialiteController extends Controller
 
     private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
     {
-        //(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
         $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
-        //Auth::login($user);
-        $UAForm = [
-            'email' => $socialiteUser->getEmail(),
-            'password' => bcrypt($socialiteUser->getId()),
-            'name'=> $socialiteUser->getName(),
-            'username'=> $socialiteUser->getEmail(),
-            'is_socialite' => 1,
-            'confirmed'=>1,
-        ];
-        //$result = $this->registered($UAForm);
-        dd($user);
+        Auth::login($user);
         $this->success('歡迎來到優分析');
-        //return redirect()->route('forum');
-        //return $this->redirectUserToRegistrationPage($socialiteUser);
-    }
-
-    protected function registered($user)
-    {
-        return $this->dispatchNow(new RegisterUAUserConfirmed($user));
-    }
-
-    protected function create(array $data)
-    {
-        return User::create([
-            'email' => $data['attributes']['email'],
-            'password' => bcrypt($data['attributes']['password']),
-            'name'=> $data['attributes']['username'],
-            'username'=> $data['attributes']['email'],
-            'is_socialite' => 1,
-            'confirmed'=>1,
-        ]);
+        return redirect()->route('forum');
     }
 }
