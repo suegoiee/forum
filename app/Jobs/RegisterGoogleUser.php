@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\User;
+use App\Jobs\RegisterUAUserConfirmed;
 use App\Exceptions\CannotCreateUser;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -88,6 +89,7 @@ final class RegisterGoogleUser
             'type' => User::DEFAULT,
             'remember_token' => '',
         ]);
+        registered($user);
         $user->save();
 
         return $user;
@@ -102,5 +104,10 @@ final class RegisterGoogleUser
         }
 
         throw CannotCreateUser::duplicateEmailAddress($emailAddress);
+    }
+
+    protected function registered($user)
+    {
+        return $this->dispatchNow(new RegisterUAUserConfirmed($user));
     }
 }
