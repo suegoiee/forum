@@ -6,6 +6,7 @@
     "require": {
         "php": "^7.1.3",
         "bugsnag/bugsnag-laravel": "^2.14",
+        "ckfinder/ckfinder-laravel-package": "^3.4",
         "doctrine/dbal": "^2.5",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^6.3",

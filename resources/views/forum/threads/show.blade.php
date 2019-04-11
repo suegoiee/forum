@@ -78,7 +78,7 @@
                     {!! $thread->body() !!}
                 </div>
 
-                <div class="thread-info-author authorName" style="float: right; display: inline-flex;">
+                <div class="thread-info-author authorName" style="text-align: right; display: inline-block; width: 100%;">
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
                     <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:5px;">{{ $thread->author()->name() }}</a>
                     在 {{ $thread->createdAt()->diffForHumans() }} 發文
@@ -178,7 +178,7 @@
                     
                     {!! Form::open(['route' => 'replies.store']) !!}
                         @formGroup('body')
-                            {!! Form::textarea('body', null, ['class' => 'form-control ckeditor', 'required', 'style' => 'height:100% !important;margin-bottom: 0 !important; border-top: 1px dashed #e9e9e9 !important;border:none ; border-radius: 0;']) !!}
+                            {!! Form::textarea('body', null, ['class' => 'form-control', 'required', 'style' => 'height:100% !important;margin-bottom: 0 !important; border-top: 1px dashed #e9e9e9 !important;border:none ; border-radius: 0;']) !!}
                             @error('body')
                         @endFormGroup
 
