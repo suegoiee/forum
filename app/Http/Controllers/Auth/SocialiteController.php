@@ -65,7 +65,7 @@ class SocialiteController extends Controller
     {
         $result = $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
-        registered($result);
+        $this->registered($result);
         //Auth::login($user);
         $this->success('歡迎來到優分析');
         return redirect()->route('forum');
