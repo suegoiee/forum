@@ -67,21 +67,19 @@ class SocialiteController extends Controller
         $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
         Auth::login($user);
-        $result = $this->create($user->all());
-        $this->registered($result);
+        $result = [
+            'email' => $socialiteUser->getEmail(),
+            'password' => bcrypt($socialiteUser->getId()),
+            'name'=> $socialiteUser->getName(),
+            'username'=> $socialiteUser->getEmail(),
+            'is_socialite' => 1,
+            'confirmed'=>1,
+        ];
+        //$this->registered($result);
         dd($result);
         $this->success('歡迎來到優分析');
         //return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
-    }
-
-    private function redirectUserToRegistrationPage(array $data): User
-    {
-        /*session(['githubData' => $user->toArray()]);
-        return redirect()->route('register.post', []);*/
-        $registerRequest = app(RegisterRequest::class);
-        $user = $this->dispatchNow(RegisterUser::fromRequest(app(RegisterRequest::class)));
-        return $user;
     }
 
     protected function registered($user)
