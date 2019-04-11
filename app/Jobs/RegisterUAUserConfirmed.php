@@ -24,7 +24,6 @@ final class RegisterUAUserConfirmed
             'is_socialite'=>$this->user->is_socialite,
             'mail_verified_at'=>$this->user->confirmed ? date('Y-m-d H:i:s') : NULL
         ];
-        dd($data);
         $http = new \GuzzleHttp\Client;
         $response = $http->request('post',env("UA_REGISTER_API_URL"),[
                 'headers'=>[
@@ -33,5 +32,6 @@ final class RegisterUAUserConfirmed
                 ],
                 'form_params' => $data,
             ]);
+            dd($response);
     }
 }
