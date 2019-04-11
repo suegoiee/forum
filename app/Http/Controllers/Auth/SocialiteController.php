@@ -76,7 +76,7 @@ class SocialiteController extends Controller
         return $this->dispatchNow(new RegisterUAUserConfirmed($user));
     }
     
-    protected function create(array $socialiteUser)
+    protected function create(SocialiteUser $socialiteUser)
     {
         return User::create([
             'email' => $socialiteUser->getEmail(),
