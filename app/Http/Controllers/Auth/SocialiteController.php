@@ -64,10 +64,11 @@ class SocialiteController extends Controller
     private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
     {
         //(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
-        $result = $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
+        $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
         Auth::login($user);
-        $this->registered($user);
+        $result = $this->create($request->all());
+        $this->registered($result);
         dd($result);
         $this->success('歡迎來到優分析');
         //return redirect()->route('forum');
@@ -86,5 +87,17 @@ class SocialiteController extends Controller
     protected function registered($user)
     {
         return $this->dispatchNow(new RegisterUAUserConfirmed($user));
+    }
+
+    protected function create(array $data)
+    {
+        return User::create([
+            'email' => $data['attributes']['email'],
+            'password' => bcrypt($data['attributes']['password']),
+            'name'=> $data['attributes']['username'],
+            'username'=> $data['attributes']['email'],
+            'is_socialite' => 1,
+            'confirmed'=>1,
+        ]);
     }
 }
