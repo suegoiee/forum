@@ -65,8 +65,8 @@ class SocialiteController extends Controller
     {
         //(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
         $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
-        $user = User::findByEmailAddress($socialiteUser->getEmail());
-        Auth::login($user);
+        //$user = User::findByEmailAddress($socialiteUser->getEmail());
+        //Auth::login($user);
         $UAForm = User::create([
             'email' => $socialiteUser->getEmail(),
             'password' => bcrypt($socialiteUser->getId()),
