@@ -43,10 +43,6 @@ Route::namespace('Auth')->group(function () {
     //Google Login
     Route::get('/google/auth', 'SocialiteController@redirectToProvider');
     Route::get('/google/auth/callback', 'SocialiteController@handleProviderCallback');
-
-    //Google Login
-    Route::get('/facebook/auth', 'SocialiteController@redirectToProvider');
-    Route::get('/facebook/auth/callback', 'SocialiteController@handleProviderCallback');
 });
 
 // Users
@@ -96,6 +92,8 @@ Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
     Route::put('users/{username}/unban', 'UsersController@unban')->name('.users.unban');
     Route::delete('users/{username}', 'UsersController@delete')->name('.users.delete');
 });
+
+Route::post('ckeditor/images','CkeditorImageController@store')->name('ckeditor.image.store');
 
 // freebie
 Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function () {
