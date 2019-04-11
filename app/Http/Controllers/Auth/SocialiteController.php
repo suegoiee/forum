@@ -8,6 +8,7 @@ use Socialite;
 use App\Social\GithubUser;
 use App\Jobs\UpdateProfile;
 use App\Jobs\RegisterGoogleUser;
+use App\Jobs\RegisterUAUserConfirmed;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -66,8 +67,10 @@ class SocialiteController extends Controller
         $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
         Auth::login($user);
+        $result = $this->registered($user);
+        dd($result);
         $this->success('歡迎來到優分析');
-        return redirect()->route('forum');
+        //return redirect()->route('forum');
         //return $this->redirectUserToRegistrationPage($socialiteUser);
     }
 
@@ -78,5 +81,10 @@ class SocialiteController extends Controller
         $registerRequest = app(RegisterRequest::class);
         $user = $this->dispatchNow(RegisterUser::fromRequest(app(RegisterRequest::class)));
         return $user;
+    }
+
+    protected function registered($user)
+    {
+        return $this->dispatchNow(new RegisterUAUserConfirmed($user));
     }
 }

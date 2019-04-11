@@ -43,10 +43,6 @@ Route::namespace('Auth')->group(function () {
     //Google Login
     Route::get('/google/auth', 'SocialiteController@redirectToProvider');
     Route::get('/google/auth/callback', 'SocialiteController@handleProviderCallback');
-
-    //Google Login
-    Route::get('/facebook/auth', 'SocialiteController@redirectToProvider');
-    Route::get('/facebook/auth/callback', 'SocialiteController@handleProviderCallback');
 });
 
 // Users
