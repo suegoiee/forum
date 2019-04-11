@@ -6,7 +6,7 @@
             <div class="list-group">
                 <a href="{{ route('thread', $thread->slug()) }}" class="list-group-item" style="border: 2px solid #e9e9e9 !important;">
                     <h4 class="list-group-item-heading">{{ $thread->subject() }}</h4>
-                    <p class="list-group-item-text">{{ $thread->excerpt() }}</p>
+                    <p class="list-group-item-text">{!! str_limit(strip_tags($thread->body), 150) !!}</p>
                 </a>
             </div>
         @empty
@@ -20,7 +20,8 @@
             <div class="list-group">
                 <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="list-group-item" style="border: 2px solid #e9e9e9 !important;">
                     <h4 class="list-group-item-heading">{{ $reply->replyAble()->subject() }}</h4>
-                    <p class="list-group-item-text">{{ $reply->excerpt() }}</p>
+                    <p class="list-group-item-text">{!! str_limit(strip_tags($reply->body), 100) !!}</p>
+                    
                 </a>
             </div>
         @empty

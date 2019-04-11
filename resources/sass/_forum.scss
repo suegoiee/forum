@@ -11,8 +11,7 @@ h1 {
   margin-bottom: 5%;
   div {
     p {
-      height: 2%;
-      display: inline-block;
+      height: 3%;
     }
     .btn {
       background-color: #fff;
@@ -129,6 +128,10 @@ h1 {
             font-size: 15px;
             font-weight: 300;
             text-align: left;
+            height: auto;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         }
         a:hover {
@@ -140,6 +143,9 @@ h1 {
             font-size: 15px;
             font-weight: 300;
           }
+        }
+        a:focus {
+          text-decoration: none;
         }
       }
     }
@@ -161,6 +167,9 @@ h1 {
         font-weight: bolder;
       }
       .thread-info-link:hover {
+        text-decoration: none;
+      }
+      .thread-info-link:focus {
         text-decoration: none;
       }
     }
