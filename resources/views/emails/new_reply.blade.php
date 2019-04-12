@@ -3,7 +3,7 @@
 **{{ $reply->author()->name() }}** 在這篇文章底下留言.
 
 @component('mail::panel')
-{{ $reply->excerpt(200) }}
+{!! str_limit(strip_tags($reply->body), 100) !!}
 @endcomponent
 
 @component('mail::button', ['url' => route('thread', $reply->replyAble()->slug())])
