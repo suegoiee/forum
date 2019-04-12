@@ -30,8 +30,6 @@ class ThreadsController extends Controller
     public function overview()
     {
         $search = request('search');
-        //echo("<script>console.log('123".$search."');</script>");
-        echo("<script>console.log('123".$search."');</script>");
         $threads = $search ? SearchThreads::get($search) : Thread::feedPaginated();
 
         return view('forum.overview', compact('threads', 'search'));
