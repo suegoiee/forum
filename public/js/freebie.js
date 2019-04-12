@@ -216,7 +216,7 @@ function drawTable(data, IdForCanvas) {
     for (var i in data['data']) {
         var tmp = [];
         for (var j in compare) {
-            if (data['data'][i][compare[j]] != null) {
+            if (data['data'][i][compare[j]] != null || data['data'][i][compare[j]] != 'undefined') {
                 if (compare[j] != 'row_title_center') {
                     tmp.push(dataFormat(data['data'][i][compare[j]]));
                 }
