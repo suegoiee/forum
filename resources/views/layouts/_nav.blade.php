@@ -134,7 +134,7 @@
                     </ul>
                 </li>
                 <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer">
-                        <img src="/images/logo_colour_white.svg" style="width:25px;">
+                        <img src="{{env('APP_URL')}}/images/logo_colour_white.svg" style="width:25px;">
                         <div style="display: inline-block;">優分析pro</div>
                     </a>
                 </li>
