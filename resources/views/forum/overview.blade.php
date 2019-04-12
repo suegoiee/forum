@@ -58,8 +58,8 @@
                         @endif
                             @if (count($thread->replies()))
                                 @php($lastReply = $thread->replies()->last())
-                                <a href="{{ route('profile', $lastReply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $lastReply->author()->name() }}</a> 在
-                                {{ $lastReply->createdAt()->diffForHumans() }} 留言
+                                 最後更新於
+                                {{ $lastReply->createdAt()->diffForHumans() }}
                             @else
                                 <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->name() }}</a> 在
                                 {{ $thread->createdAt()->diffForHumans() }} 發文
