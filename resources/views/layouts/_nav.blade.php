@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav">
                 <li class="{{ active(['forum', 'threads*', 'thread']) }}">
                     <a class="nav-font" href="{{ route('forum') }}">
-                    <i class="far fa-comment-alt"></i>  討論區
+                    <i class="far fa-comment-alt"></i>  討論區 
                     </a>
                 </li>
                 
@@ -134,7 +134,7 @@
                     </ul>
                 </li>
                 <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer">
-                        <img src="../images/logo_colour_white.svg" style="width:25px;">
+                        <img src="/images/logo_colour_white.svg" style="width:25px;">
                         <div style="display: inline-block;">優分析pro</div>
                     </a>
                 </li>

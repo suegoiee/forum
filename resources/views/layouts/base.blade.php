@@ -40,7 +40,7 @@
 </div>
 
 <script src="{{ mix('js/app.js') }}"></script>
-    <!--for development-->
+<!--for development-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="/js/exporting.js"></script>
@@ -63,25 +63,20 @@
     <script src="/js/navBar.js"></script>
     <script>
         $(document).ready(function() {
-            /*CKEDITOR.config.extraPlugins = 'youtube';
-            CKEDITOR.config.language='zh';
-            CKEDITOR.config.extraPlugins = 'uploadimage';
-            CKEDITOR.config.uploadUrl = '{{url("ckeditor/images")}}';
-            CKEDITOR.config.filebrowserImageUploadUrl= '{{url("ckeditor/images")}}';
-            CKEDITOR.config.removeButtons='About';*/
-            CKEDITOR.replace('body', {});
-            CKEDITOR.config.language='zh';
-            CKEDITOR.config.height=400;
-            CKEDITOR.config.extraPlugins = 'uploadimage';
-            CKEDITOR.config.uploadUrl = '{{url("ckeditor/images")}}',
-            CKEDITOR.config.filebrowserImageUploadUrl= '{{url("ckeditor/images")}}',
-            CKEDITOR.config.removeButtons='About',
-            CKEDITOR.config.extraPlugins = 'youtube,justify';
-            //CKEDITOR.config.extraPlugins = 'justify';
-            CKEDITOR.config.youtube_responsive = true;
+            if($("textarea[name='body']").length){
+                CKEDITOR.replace('body', {});
+                CKEDITOR.config.language='zh';
+                CKEDITOR.config.height=400;
+                CKEDITOR.config.extraPlugins = 'uploadimage';
+                CKEDITOR.config.uploadUrl = '{{url("ckeditor/images")}}',
+                CKEDITOR.config.filebrowserImageUploadUrl= '{{url("ckeditor/images")}}',
+                CKEDITOR.config.removeButtons='About',
+                CKEDITOR.config.extraPlugins = 'youtube,justify';
+                CKEDITOR.config.youtube_responsive = true;
+            }
         });
     </script>
-    <!--end of for development-->
+<!--end of for development-->
 
 
     @include('layouts._intercom')
