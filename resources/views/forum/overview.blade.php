@@ -28,8 +28,8 @@
                 @endforeach
             </div>
         </div>
+        <a class="btn btn-block" href="{{ route('threads.create') }}">發表文章</a>
         <div class="col-md-9 chat-bg">
-            <a class="btn btn-block" href="{{ route('threads.create') }}">發表文章</a>
             @include('layouts._ads._bsa-cpc')
 
             <p style="display: inline-block;"></p>

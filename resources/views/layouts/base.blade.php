@@ -71,7 +71,7 @@
                 CKEDITOR.config.uploadUrl = '{{url("ckeditor/images")}}',
                 CKEDITOR.config.filebrowserImageUploadUrl= '{{url("ckeditor/images")}}',
                 CKEDITOR.config.removeButtons='About',
-                CKEDITOR.config.extraPlugins = 'youtube,justify';
+                CKEDITOR.config.extraPlugins = 'youtube,justify,colorbutton';
                 CKEDITOR.config.youtube_responsive = true;
             }
         });
