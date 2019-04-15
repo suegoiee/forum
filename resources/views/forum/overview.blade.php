@@ -28,11 +28,12 @@
                 @endforeach
             </div>
         </div>
-        <a class="btn btn-block" href="{{ route('threads.create') }}">發表文章</a>
+        <div style="text-align:right;">
+            <a class="btn_Build" href="{{ route('threads.create') }}">發表文章</a>
+        </div>
         <div class="col-md-9 chat-bg">
             @include('layouts._ads._bsa-cpc')
 
-            <p style="display: inline-block;"></p>
             @if (count($threads))
                 @foreach ($threads as $thread)
                     <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
