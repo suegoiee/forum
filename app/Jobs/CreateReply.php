@@ -49,14 +49,14 @@ final class CreateReply
 
         event(new ReplyWasCreated($reply));
 
-        if ($this->replyAble instanceof SubscriptionAble && ! $this->replyAble->hasSubscriber($this->author)) {
+        /*if ($this->replyAble instanceof SubscriptionAble && ! $this->replyAble->hasSubscriber($this->author)) {
             $subscription = new Subscription();
             $subscription->uuid = Uuid::uuid4()->toString();
             $subscription->userRelation()->associate($this->author);
             $subscription->subscriptionAbleRelation()->associate($this->replyAble);
 
             $this->replyAble->subscriptionsRelation()->save($subscription);
-        }
+        }*/
 
         return $reply;
     }
