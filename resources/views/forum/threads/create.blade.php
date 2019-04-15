@@ -1,4 +1,4 @@
-@title('Create your thread')
+@title('發表文章')
 
 @extends('layouts.default')
 
