@@ -35,26 +35,25 @@
 
             @include('layouts._ads._forum_sidebar')
         </div>
-        <div class="col-md-9">
-
+        <div style="text-align:right;">
             @can(App\Policies\ThreadPolicy::UPDATE, $thread)
-                <a class="btn btn-default btn-block" style="margin-top: 5px;" href="{{ route('threads.edit', $thread->slug()) }}">
+                <a class="btn_Build" style="margin-top: 2%;" href="{{ route('threads.edit', $thread->slug()) }}">
                     編輯
                 </a>
             @endcan
 
             @can(App\Policies\ThreadPolicy::UNSUBSCRIBE, $thread)
-                <a class="btn btn-primary btn-block" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
+                <a class="btn_Build" style="margin-top: 2%;" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
                     取消追蹤
                 </a>
             @elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
-                <a class="btn btn-primary btn-block" href="{{ route('threads.subscribe', $thread->slug()) }}">
+                <a class="btn_Build" style="margin-top: 2%;" href="{{ route('threads.subscribe', $thread->slug()) }}">
                     追蹤
                 </a>
             @endcan
 
             @can(App\Policies\ThreadPolicy::DELETE, $thread)
-                <a class="btn btn-danger btn-block" href="#" data-toggle="modal" data-target="#deleteThread">
+                <a class=" btn_Build" style="margin-top: 2%;" href="#" data-toggle="modal" data-target="#deleteThread">
                     刪除
                 </a>
 
@@ -65,8 +64,10 @@
                     'body' => '<p>確定要刪除文章及留言嗎?</p>',
                 ])
             @endcan
-            <p style="display:inline-block;"></p>
-            <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;">
+        </div>    
+        <div class="col-md-9">
+
+            <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;margin-top: 0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
                     <div class="thread-info-author headLabel">
                         <h3>{{ $thread->subject() }}</h3>
@@ -89,7 +90,12 @@
 
             <div style="border-bottom: 2px solid #e9e9e9; padding-top: 3%;">留言</div>
             @foreach ($thread->replies() as $reply)
-                <div style="border:none !important;" class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
+                <div style="padding-top: 2%; border-top:none !important;border-left:none !important;border-right:none !important;border-bottom:2px dashed #e9e9e9 !important;" class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
+                    <div class="thread-info-author authorName">
+                            <a href="{{ route('profile', $reply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">
+                                <i class="far fa-comment-dots"></i> {{ $reply->author()->name() }}
+                            </a> 
+                    </div>    
                     <div class="thread-info-author headLabel">
 
                     {!! $reply->body !!}
@@ -97,10 +103,10 @@
                     </div>
                     @can(App\Policies\ReplyPolicy::UPDATE, $reply)
                             <div class="thread-info-tags" style="float:right">
-                                <a class="btn btn-default btn-xs" href="{{ route('replies.edit', $reply->id()) }}">
+                                <a class="btn-xs" style="line-height: 0.5;" href="{{ route('replies.edit', $reply->id()) }}">
                                     <img src="/images/icon/edit.svg" style="width:16px;">
                                 </a>
-                                <a class="btn btn-danger btn-xs" href="#" data-toggle="modal" data-target="#deleteReply{{ $reply->id() }}">
+                                <a class="btn-xs" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#deleteReply{{ $reply->id() }}">
                                     <img src="/images/icon/recycling-bin.svg" style="width:16px;">
                                 </a>
                             </div>
@@ -109,11 +115,9 @@
                     <div class="forum-content">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
 
-                        <div class="thread-info-author authorName" style="border-bottom: 2px dashed #e9e9e9;">
-                            <a href="{{ route('profile', $reply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">
-                                {{ $reply->author()->name() }}
-                            </a> 在
-                            {{ $reply->createdAt()->diffForHumans() }} 留言
+                        <div class="timeReply">
+                            
+                            在{{ $reply->createdAt()->diffForHumans() }} 留言
 
                             @if ($thread->isSolutionReply($reply))
                                 <span class="label label-primary thread-info-badge">
