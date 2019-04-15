@@ -7,6 +7,7 @@ use App\Models\Thread;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
         $this->bootEloquentMorphs();
         $this->bootMacros();
         $this->bootHorizon();
+        Carbon::setLocale('zh_TW');
         Schema::defaultStringLength(191);
     }
 
