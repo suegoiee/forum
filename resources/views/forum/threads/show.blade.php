@@ -117,7 +117,7 @@
 
                         <div class="timeReply">
                             
-                            {{ $reply->createdAt()->diffForHumans() }} 留言
+                            在{{ $reply->createdAt()->diffForHumans() }} 留言
 
                             @if ($thread->isSolutionReply($reply))
                                 <span class="label label-primary thread-info-badge">
