@@ -52,9 +52,7 @@ final class NewReplyNotification extends Notification implements ShouldQueue
         ->line($this->reply->author()->name().'在這篇文章底下留言.')
         ->line(str_limit(strip_tags($this->reply->body), 100))
         ->action('前往文章', route('thread', $this->reply->replyAble()->slug()))
-        ->line('您會收到此信係因您有追蹤此篇文章，如要取消請')
-        ->action('取消追蹤', route('thread', $this->reply->replyAble()->slug()))
-        ->line('此文章');
+        ->line('您會收到此信係因您有追蹤此篇文章，如要取消請'."<a href=".route('thread', $this->reply->replyAble()->slug()).">取消追蹤</a>".'此文章');
     }
 
     public function toArray(User $user)
