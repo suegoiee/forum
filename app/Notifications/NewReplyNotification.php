@@ -51,9 +51,9 @@ final class NewReplyNotification extends Notification implements ShouldQueue
         ->from(env('APP_EMAIL','no-reply@localhost'),env('APP_SYSTEM_NAME','Service'))
         ->line('**{{ $reply->author()->name() }}** 在這篇文章底下留言.')
         ->line('{!! str_limit(strip_tags($reply->body), 100) !!}')
-        ->action('前往文章', route('thread', $reply->replyAble()->slug()))
+        ->action('前往文章', route('thread', $this->reply->replyAble()->slug()))
         ->line('您會收到此信係因您有追蹤此篇文章，如要取消請')
-        ->action('取消追蹤', route('thread', $reply->replyAble()->slug()))
+        ->action('取消追蹤', route('thread', $this->reply->replyAble()->slug()))
         ->line('此文章');
     }
 
