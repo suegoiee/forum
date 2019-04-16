@@ -9,6 +9,7 @@ use App\Models\Subscription;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 
 final class NewReplyNotification extends Notification implements ShouldQueue
 {
@@ -35,6 +36,12 @@ final class NewReplyNotification extends Notification implements ShouldQueue
         return ['mail'];
     }
 
+    /**
+     * Build the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
     public function toMail(User $user)
     {
         /*return (new NewReplyEmail($this->reply, $this->subscription))
