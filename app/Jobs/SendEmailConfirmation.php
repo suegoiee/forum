@@ -41,7 +41,7 @@ class SendEmailConfirmation extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function handle($notifiable)
     {
         return (new MailMessage)
             ->subject('請認證您的優分析論壇帳號')
