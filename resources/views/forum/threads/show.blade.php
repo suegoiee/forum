@@ -65,7 +65,7 @@
                 ])
             @endcan
         </div>    
-        <div class="col-md-9">
+        <div class="col-md-9" style="margin-top: 5%;">
 
             <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;margin-top: 0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
@@ -81,7 +81,7 @@
 
                 <div class="thread-info-author authorName" style="text-align: right; display: inline-block; width: 100%;">
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
-                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:5px;">{{ $thread->author()->name() }}</a>
+                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:5px;">{{ $thread->author()->username() }}</a>
                     在 {{ $thread->createdAt()->diffForHumans() }} 發文
                 </div>
             </div>
@@ -93,7 +93,7 @@
                 <div style="padding-top: 2%; border-top:none !important;border-left:none !important;border-right:none !important;border-bottom:2px dashed #e9e9e9 !important;" class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
                     <div class="thread-info-author authorName">
                             <a href="{{ route('profile', $reply->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">
-                                <i class="far fa-comment-dots"></i> {{ $reply->author()->name() }}
+                                <i class="far fa-comment-dots"></i> {{ $reply->author()->username() }}
                             </a> 
                     </div>    
                     <div class="thread-info-author headLabel">
