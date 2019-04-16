@@ -11,7 +11,7 @@
             @error('body')
         @endFormGroup
 
-        {!! Form::submit('編輯', ['class' => 'btn btn-primary btn-block','style' => 'width: auto !important; display:inline-block;' ]) !!}
-        <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block; float:right; margin-top:0;">取消</a>
+        {!! Form::submit('確定', ['class' => 'btn btn-primary btn-block','style' => 'width: auto !important; display:inline-block; float:right;' ]) !!}
+        <a href="{{ route_to_reply_able($reply->replyAble()) }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block; margin-top:0;">取消</a>
     {!! Form::close() !!}
 @endsection
