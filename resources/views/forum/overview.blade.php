@@ -57,7 +57,7 @@
                         @else
                             @include('forum.threads.info.avatar', ['user' => $thread->author()])
                         @endif                           
-                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->name() }}<span style="font-size:12px;font-weight: 100;">(對外公開)</span></a> 在
+                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}<span style="font-size:12px;font-weight: 100;">(對外公開)</span></a> 在
                                 {{ $thread->createdAt()->diffForHumans() }} 發文
                         </div>
                     </div>
