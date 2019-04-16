@@ -20,12 +20,14 @@ h1 {
       border-radius: 0;
       margin-bottom: 1%;
       margin-right: 1%;
+      font-weight: 500;
     }
     .btn_Build:hover,
     .btn_Build:focus {
       background-color: #ffc04d;
       border: none;
       text-decoration: none;
+      font-weight: 500;
     }
   }
   div {
@@ -72,16 +74,19 @@ h1 {
       background-color: rgba(255, 255, 255, 0.925);
       border: 1px solid rgba(255, 165, 0, 0.5);
       color: #393939;
+      font-weight: 400;
     }
     .list-group-item:hover {
       color: #ffc04d;
       background-color: #fff;
       outline: none;
+      font-weight: 400;
       border: 1px solid rgba(255, 165, 0, 0.5);
     }
     .list-group-item.active {
       background: #ffa500;
       color: #fff;
+      font-weight: 400;
     }
 
     .panel {
