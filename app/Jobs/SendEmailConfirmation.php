@@ -6,9 +6,10 @@ use App\User;
 use App\Mail\EmailConfirmationEmail;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
-final class SendEmailConfirmation
+final class SendEmailConfirmation extends Notification
 {
     use SerializesModels;
 
