@@ -65,7 +65,7 @@
                 ])
             @endcan
         </div>    
-        <div class="col-md-9">
+        <div class="col-md-9" style="margin-top: 5%;">
 
             <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;margin-top: 0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
