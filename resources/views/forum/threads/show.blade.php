@@ -7,26 +7,19 @@
         <div class="col-md-3">
 
             <h3>分類</h3>
-            <div class="list-group">
-                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
-
+            <div class="dropdown formDrop">
+                <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false">
+                    所有主題
+                </a>
+                <div class="dropdown-menu forumTitle" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}" >全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
-                    @if(count($thread->tags()) == 0)
-                        <a href="{{ route('forum.tag', $tag->slug()) }}" class="list-group-item">
+                    <a href="{{ route('forum.tag', $tag->slug()) }}"
+                        class="dropdown-item {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }}" >
                             {{ $tag->name() }}
-                        </a>
-                    @else
-                        @if($thread->tags()[0]["id"] != $tag->id())
-                            <a href="{{ route('forum.tag', $tag->slug()) }}" class="list-group-item">
-                                {{ $tag->name() }}
-                            </a>
-                        @else
-                            <a href="{{ route('forum.tag', $tag->slug()) }}" class="list-group-item active">
-                                {{ $tag->name() }}
-                            </a>
-                        @endif
-                    @endif
+                    </a>
                 @endforeach
+                </div>
             </div>
 
             <!--a class="btn btn-link btn-block" id="build" href="{{ route('forum') }}">
