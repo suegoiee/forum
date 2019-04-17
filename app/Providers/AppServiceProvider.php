@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Horizon;
 use App\Models\Thread;
+use App\Models\Archive;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Schema;
@@ -24,6 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Relation::morphMap([
             Thread::TABLE => Thread::class,
+            Archive::TABLE => Archive::class
         ]);
     }
 
