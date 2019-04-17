@@ -17,14 +17,14 @@
             @include('layouts._ads._forum_sidebar')
 
             <div class="dropdown formDrop">
-                <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="dropdownTitle OuterSideTable" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有主題
                 </a>
-                <div class="dropdown-menu forumTitle" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
+                <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
+                    <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                     <a href="{{ route('forum.tag', $tag->slug()) }}"
-                        class="dropdown-item {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }}">
+                        class="dropdownItem {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }} ">
                             {{ $tag->name() }}
                     </a>
                 @endforeach

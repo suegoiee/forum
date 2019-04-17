@@ -7,15 +7,15 @@
         <div class="col-md-3">
 
             <h3>分類</h3>
-            <div class="dropdown formDrop">
-                <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"aria-expanded="false">
+            <div class="dropdown formDrop"  style="margin-top: 6%;">
+                <a class="dropdownTitle OuterSideTable" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有主題
                 </a>
-                <div class="dropdown-menu forumTitle" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}" >全部<a>
+                <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
+                    <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                     <a href="{{ route('forum.tag', $tag->slug()) }}"
-                        class="dropdown-item {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }}" >
+                        class="dropdownItem {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }} ">
                             {{ $tag->name() }}
                     </a>
                 @endforeach
@@ -58,7 +58,7 @@
                 ])
             @endcan
         </div>    
-        <div class="col-md-9" style="margin-top: 5%;">
+        <div class="col-md-9">
 
             <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;margin-top: 0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
