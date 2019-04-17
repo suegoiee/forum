@@ -6,27 +6,20 @@
     <div class="row forum">
         <div class="col-md-3">
 
-            <h3>分類</h3>
-            <div class="list-group">
-                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
-
+            <h3>@include('forum.threads.info.tags')</h3>
+            <div class="dropdown formDrop"  style="margin-top: 6%;">
+                <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
+                    所有主題
+                </a>
+                <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
+                    <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
-                    @if(count($thread->tags()) == 0)
-                        <a href="{{ route('forum.tag', $tag->slug()) }}" class="list-group-item">
+                    <a href="{{ route('forum.tag', $tag->slug()) }}"
+                        class="dropdownItem {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }} ">
                             {{ $tag->name() }}
-                        </a>
-                    @else
-                        @if($thread->tags()[0]["id"] != $tag->id())
-                            <a href="{{ route('forum.tag', $tag->slug()) }}" class="list-group-item">
-                                {{ $tag->name() }}
-                            </a>
-                        @else
-                            <a href="{{ route('forum.tag', $tag->slug()) }}" class="list-group-item active">
-                                {{ $tag->name() }}
-                            </a>
-                        @endif
-                    @endif
+                    </a>
                 @endforeach
+                </div>
             </div>
 
             <!--a class="btn btn-link btn-block" id="build" href="{{ route('forum') }}">
@@ -65,7 +58,7 @@
                 ])
             @endcan
         </div>    
-        <div class="col-md-9" style="margin-top: 5%;">
+        <div class="col-md-9">
 
             <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;margin-top: 0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
