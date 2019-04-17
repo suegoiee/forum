@@ -17,7 +17,7 @@
             @include('layouts._ads._forum_sidebar')
 
             <div class="dropdown formDrop">
-                <a class="dropdownTitle OuterSideTable" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
+                <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有主題
                 </a>
                 <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">

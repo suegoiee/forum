@@ -6,9 +6,9 @@
     <div class="row forum">
         <div class="col-md-3">
 
-            <h3>分類</h3>
+            <h3>@include('forum.threads.info.tags')</h3>
             <div class="dropdown formDrop"  style="margin-top: 6%;">
-                <a class="dropdownTitle OuterSideTable" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
+                <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有主題
                 </a>
                 <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
