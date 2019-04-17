@@ -6,9 +6,11 @@
 @section('content')
 
     <div class="row blog">
-        <div style="text-align:right;" class="buildText">
-            <a class="btnBuild" href="{{ route('archives.create') }}">撰寫專欄</a>
-        </div>
+        @can(App\Policies\ArchivePolicy::CREATE, $thread)
+            <div style="text-align:right;" class="buildText">
+                <a class="btnBuild" href="{{ route('archives.create') }}">撰寫專欄</a>
+            </div>
+        @endcan
         <div class="col-md-3 blogTitle">
             {{ Form::open(['route' => 'blogs', 'method' => 'GET']) }}
                 <div class="form-group">
