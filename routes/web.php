@@ -143,3 +143,17 @@ Route::prefix('Tools')->name('Tools')->namespace('Tools')->group(function () {
     Route::get('/DepositTest', 'ToolsController@DepositTest')->name('.DepositTest');
     Route::get('/DepositInGroup', 'ToolsController@DepositInGroup')->name('.DepositInGroup');
 });
+
+// blog
+Route::prefix('blogs')->namespace('Blogs')->group(function () {
+    Route::get('/', 'ArchivesController@overview')->name('blogs');
+    Route::get('create-archive', 'ArchivesController@create')->name('archives.create');
+    Route::post('create-archive', 'ArchivesController@store')->name('archives.store');
+
+    Route::get('{thread}', 'ArchivesController@show')->name('archives');
+    Route::get('{thread}/edit', 'ArchivesController@edit')->name('archives.edit');
+    Route::put('{thread}', 'ArchivesController@update')->name('archives.update');
+    Route::delete('{thread}', 'ArchivesController@delete')->name('archives.delete');
+
+    Route::get('tags/{tag}', 'TagsController@show')->name('blogs.tag');
+});
