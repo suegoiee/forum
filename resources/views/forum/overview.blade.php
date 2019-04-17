@@ -31,7 +31,7 @@
                 </div>
             </div>
         </div>
-        <div style="text-align:right;">
+        <div style="text-align:right;margin-top: 1%;">
             <a class="btn_Build" href="{{ route('threads.create') }}">發表文章</a>
         </div>
         <div class="col-md-9 chat-bg">
