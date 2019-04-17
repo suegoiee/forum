@@ -23,12 +23,12 @@ class ArchivesController extends Controller
         $this->middleware([Authenticate::class, RedirectIfUnconfirmed::class], ['except' => ['overview', 'show']]);
     }
 
-    public function overview()
+    public function overview(Request $request)
     {
         $search = request('search');
         $archives = $search ? SearchArchives::get($search) : Archive::feedPaginated();
         $count = $search ? SearchArchives::count($search) : Archive::count();
-
+        $user = $request->user();
         return view('blogs.overview', compact('archives', 'search', 'count'));
     }
 

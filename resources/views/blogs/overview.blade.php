@@ -6,7 +6,7 @@
 @section('content')
 
     <div class="row blog">
-        @can(App\Policies\ArchivePolicy::CREATE)
+        @can(App\Policies\ArchivePolicy::CREATE, App\Models\Archive::class)
             <div style="text-align:right;" class="buildText">
                 <a class="btnBuild" href="{{ route('archives.create') }}">撰寫專欄</a>
             </div>
@@ -70,7 +70,7 @@
             @else
                 <div class="alert text-center" style="color: #545454;">
                     沒有找到相關文章!
-                    @can(App\Policies\ArchivePolicy::CREATE)
+                    @can(App\Policies\ArchivePolicy::CREATE, App\Models\Archive::class)
                         <a href="{{ route('archives.create') }}" style="color: #545454;" class="alert-link">發表新的文章</a>
                     @endcan
                 </div>
