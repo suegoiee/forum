@@ -27,20 +27,20 @@
 
         <div class="col-md-9 blogContent" style="margin-top: 5%;">
 
-            @can(App\Policies\ThreadPolicy::UPDATE, $thread)
-                <a class="btn btn-default btn-block" style="margin-top: 5px;" href="{{ route('archives.edit', $thread->slug()) }}">
+            @can(App\Policies\ArchivePolicy::UPDATE, $archive)
+                <a class="btn btn-default btn-block" style="margin-top: 5px;" href="{{ route('archives.edit', $archive->slug()) }}">
                     編輯
                 </a>
             @endcan
 
-            @can(App\Policies\ThreadPolicy::DELETE, $thread)
-                <a class="btn btn-danger btn-block" href="#" data-toggle="modal" data-target="#deleteThread">
+            @can(App\Policies\ArchivePolicy::DELETE, $archive)
+                <a class="btn btn-danger btn-block" href="#" data-toggle="modal" data-target="#deleteArchive">
                     刪除
                 </a>
 
                 @include('_partials._delete_modal', [
-                    'id' => 'deleteThread',
-                    'route' => ['archives.delete', $thread->slug()],
+                    'id' => 'deleteArchive',
+                    'route' => ['archives.delete', $archive->slug()],
                     'title' => '刪除文章',
                     'body' => '<p>確定要刪除文章嗎?</p>',
                 ])
@@ -49,17 +49,17 @@
             <div class="panel panel-default" style="border:none !important; margin: 3% 5% 3% !important;">
                 <div class="panel-heading thread-info">
                     <div class="thread-info-author headLabel">
-                        <a href="{{ route('blogs', $thread->slug()) }}" class="thread-info-link formTitle">{{ $thread->subject() }}</a>
+                        <a href="{{ route('blogs', $archive->slug()) }}" class="thread-info-link formTitle">{{ $archive->subject() }}</a>
                     </div>
                     @include('blogs.archives.info.tags')
                 </div>
 
                 <div class="thread-info-author" style="display: inline-block; width: 100%;">
-                    {{ $thread->createdAt()->diffForHumans() }} 
+                    {{ $archive->createdAt()->diffForHumans() }} 
                 </div>
 
                 <div class="panel-body forum-content">
-                    {!! $thread->body() !!}
+                    {!! $archive->body() !!}
                 </div>
             </div>
 

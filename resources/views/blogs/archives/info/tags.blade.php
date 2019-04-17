@@ -1,6 +1,6 @@
-@if (count($thread->tags()))
+@if (count($archive->tags()))
     <div class="thread-info-tags">
-        @foreach ($thread->tags() as $tag)
+        @foreach ($archive->tags() as $tag)
             <a href="{{ route('blogs.tag', $tag->slug()) }}">
                 <span class="label label-default">{{ $tag->name() }}</span>
             </a>

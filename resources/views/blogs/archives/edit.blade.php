@@ -15,7 +15,7 @@
     </div>
 
     @include('blogs.archives._blogs', [
-        'route' => ['archives.update', $thread->slug()],
+        'route' => ['archives.update', $archive->slug()],
         'method' => 'PUT',
     ])
 @endsection

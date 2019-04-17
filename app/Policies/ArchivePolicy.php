@@ -14,9 +14,9 @@ class ArchivePolicy
     const SUBSCRIBE = 'subscribe';
     const UNSUBSCRIBE = 'unsubscribe';
 
-    public function create(User $user, Archive $archive): bool
+    public function create(User $user): bool
     {
-        return ($archive->isAuthoredBy($user) && $user->isModerator()) || $user->isAdmin();
+        return $user->isModerator() || $user->isAdmin();
     }
 
     public function update(User $user, Archive $archive): bool

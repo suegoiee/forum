@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Blogs;
 
 use App\Models\Tag;
 use App\Models\Reply;
-use App\Models\Thread;
-use App\Jobs\CreateThread;
-use App\Jobs\DeleteThread;
-use App\Jobs\UpdateThread;
-use App\Policies\ThreadPolicy;
-use App\Queries\SearchThreads;
+use App\Models\Archive;
+use App\Jobs\CreateArchive;
+use App\Jobs\DeleteArchive;
+use App\Jobs\UpdateArchive;
+use App\Policies\ArchivePolicy;
+use App\Queries\SearchArchives;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ThreadRequest;
+use App\Http\Requests\ArchiveRequest;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Http\Middleware\RedirectIfUnconfirmed;
 
@@ -26,14 +26,15 @@ class ArchivesController extends Controller
     public function overview()
     {
         $search = request('search');
-        $threads = $search ? SearchThreads::get($search) : Thread::feedPaginated();
+        $archives = $search ? SearchArchives::get($search) : Archive::feedPaginated();
+        $count = $search ? SearchArchives::count($search) : Archive::count();
 
-        return view('blogs.overview', compact('threads', 'search'));
+        return view('blogs.overview', compact('archives', 'search', 'count'));
     }
 
-    public function show(Thread $thread)
+    public function show(Archive $archive)
     {
-        return view('blogs.archives.show', compact('thread'));
+        return view('blogs.archives.show', compact('archive'));
     }
 
     public function create()
@@ -41,7 +42,7 @@ class ArchivesController extends Controller
         return view('blogs.archives.create', ['tags' => Tag::all()]);
     }
 
-    public function store(ThreadRequest $request)
+    public function store(ArchiveRequest $request)
     {
         $thread = $this->dispatchNow(CreateThread::fromRequest($request));
 
@@ -50,29 +51,29 @@ class ArchivesController extends Controller
         return redirect()->route('archives', $thread->slug());
     }
 
-    public function edit(Thread $thread)
+    public function edit(Archive $archive)
     {
-        $this->authorize(ThreadPolicy::UPDATE, $thread);
+        $this->authorize(ArchivePolicy::UPDATE, $archive);
 
-        return view('blogs.archives.edit', ['thread' => $thread, 'tags' => Tag::all()]);
+        return view('blogs.archives.edit', ['archive' => $archive, 'tags' => Tag::all()]);
     }
 
-    public function update(ThreadRequest $request, Thread $thread)
+    public function update(ArchiveRequest $request, Archive $archive)
     {
-        $this->authorize(ThreadPolicy::UPDATE, $thread);
+        $this->authorize(ArchivePolicy::UPDATE, $archive);
 
-        $thread = $this->dispatchNow(UpdateThread::fromRequest($thread, $request));
+        $archive = $this->dispatchNow(UpdateThread::fromRequest($archive, $request));
 
         $this->success('blogs.archives.updated');
 
-        return redirect()->route('archives', $thread->slug());
+        return redirect()->route('archives', $archive->slug());
     }
 
-    public function delete(Thread $thread)
+    public function delete(Archive $archive)
     {
-        $this->authorize(ThreadPolicy::DELETE, $thread);
+        $this->authorize(ThreadPolicy::DELETE, $archive);
 
-        $this->dispatchNow(new DeleteThread($thread));
+        $this->dispatchNow(new DeleteThread($archive));
 
         $this->success('blogs.archives.deleted');
 

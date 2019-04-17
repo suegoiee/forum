@@ -15,7 +15,7 @@ class UserPolicy
      */
     public function admin(User $user): bool
     {
-        return $user->isAdmin() || $user->isModerator();
+        return $user->isAdmin();
     }
 
     /**
