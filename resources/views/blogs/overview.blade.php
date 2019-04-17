@@ -21,14 +21,18 @@
             <div class="dropdown">
                 <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     優分析專欄
-                    <span style="color:#545454">{{ $count }}</span>
+                    <span style="color:#545454">( {{ $count }} )</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('blogs') }}" >全部<a>
+                    <a class="dropdown-item" href="{{ route('blogs') }}" >
+                        全部
+                        <span>( {{ $count }} )</span>
+                    <a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                         <a href="{{ route('blogs.tag', $tag->slug()) }}"
                         class="dropdown-item {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }}">
-                            {{ $tag->name() }}
+                            {{ $tag->name() }} 
+                            <span>( {{ count($tag->$archives) }} )</span>
                         </a>
                 @endforeach
                 </div>
@@ -48,8 +52,13 @@
                         <div class="thread-info-author" style="display: block;">
                                 {{ $archive->createdAt() }} 
                         </div>
+
                         <div class="panel-body chat-bg">
                             {!! str_limit(strip_tags($archive->body), 100) !!}
+                        </div>
+
+                        <div class="thread-info-author authorName" style="text-align: right; display: block;">                      
+                            <div class="thread-info-link" style="padding-right:3px;">{{ $archive->author()->username() }}</div> 
                         </div>
                     </div>
                     <hr style="border-color: #e9e9e9;">
