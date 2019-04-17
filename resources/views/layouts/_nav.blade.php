@@ -12,13 +12,13 @@
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ active(['forum', 'threads*', 'thread']) }}">
+                <li class="{{ active(['forum*', 'threads*', 'thread','forum.tag']) }}">
                     <a class="nav-font" href="{{ route('forum') }}">
                     <i class="far fa-comment-alt"></i>  討論區 
                     </a>
                 </li>
                 
-                <li class="dropdown">
+                <li class="dropdown {{ active('freebie*') }}">
                     <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-chart-bar"></i>  股票資訊  <span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
@@ -76,7 +76,7 @@
                 </li>
 
                 
-                <li class="dropdown">
+                <li class="dropdown {{ active('Tools*') }}">
                     <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-calculator"></i>  小工具  <span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
                         <li class="dropdownlist">
@@ -160,12 +160,12 @@
                                 </span>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li class="{{ active('settings.*') }}"><a href="{{ route('dashboard') }}"> <i class="fas fa-user dropdown-icon" aria-hidden="true"></i>個人頁面</a></li>
-                            <li class="{{ active('settings.*') }}"><a href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>設定</a></li>
+                            <li class="{{ active('dashboard') }}"><a class="user" href="{{ route('dashboard') }}"> <i class="fas fa-user dropdown-icon" aria-hidden="true"></i>個人頁面</a></li>
+                            <li class="{{ active('settings.*') }}"><a class="user" href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>設定</a></li>
 
                             @can(App\Policies\UserPolicy::ADMIN, App\User::class)
                                 <li role="separator" class="divider"></li>
-                                <li class="{{ active('admin*') }}"><a href="{{ route('admin') }}"><i class="fa fa-shield dropdown-icon" aria-hidden="true"></i>Admin</a></li>
+                                <li class="{{ active('admin*') }}"><a class="user" href="{{ route('admin') }}"><i class="fa fa-shield dropdown-icon" aria-hidden="true"></i>Admin</a></li>
                             @endcan
 
                             <li role="separator" class="divider"></li>

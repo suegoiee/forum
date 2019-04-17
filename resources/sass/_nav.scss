@@ -24,7 +24,8 @@
               font-size: 15px;
               line-height: 2;
             }
-            .nav-font:hover {
+            .nav-font:hover,
+            .nav-font:focus {
               color: #ffa500;
             }
             .triangle-down {
@@ -51,7 +52,8 @@
                 background-color: #fff !important;
                 color: #393939;
               }
-              a:hover {
+              a:hover,
+              a:focus {
                 background-color: #ffa500 !important;
                 color: #fff !important;
               }
@@ -68,6 +70,13 @@
               .caret {
                 color: #fff !important;
               }
+            }
+          }
+          li.active {
+            .nav-font,
+            .login,
+            .user {
+              color: #ffa500;
             }
           }
           .active {
@@ -105,10 +114,6 @@
       padding-left: 15px !important;
     }
   }
-}
-.navbar-nav > li > a.profile-image {
-  padding-top: 15px;
-  padding-bottom: 15px;
 }
 
 .dropdown-menu li span {

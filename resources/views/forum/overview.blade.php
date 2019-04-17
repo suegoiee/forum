@@ -16,23 +16,27 @@
 
             @include('layouts._ads._forum_sidebar')
 
-            <h3>分類</h3>
-            <div class="list-group">
-                <a href="{{ route('forum') }}" class="list-group-item {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}">所有分類</a>
-
+            <div class="dropdown formDrop">
+                <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
+                    所有主題
+                </a>
+                <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
+                    <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                     <a href="{{ route('forum.tag', $tag->slug()) }}"
-                       class="list-group-item{{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }}">
-                        {{ $tag->name() }}
+                        class="dropdownItem {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }} ">
+                            {{ $tag->name() }}
                     </a>
                 @endforeach
+                </div>
             </div>
         </div>
-        <a class="btn btn-block" href="{{ route('threads.create') }}">發表文章</a>
+        <div style="text-align:right;margin-top: 1%;">
+            <a class="btn_Build" href="{{ route('threads.create') }}">發表文章</a>
+        </div>
         <div class="col-md-9 chat-bg">
             @include('layouts._ads._bsa-cpc')
 
-            <p style="display: inline-block;"></p>
             @if (count($threads))
                 @foreach ($threads as $thread)
                     <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
@@ -55,15 +59,9 @@
                             @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
                         @else
                             @include('forum.threads.info.avatar', ['user' => $thread->author()])
-                        @endif
-                            @if (count($thread->replies()))
-                                @php($lastReply = $thread->replies()->last())
-                                 最後更新於
-                                {{ $lastReply->createdAt()->diffForHumans() }}
-                            @else
-                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->name() }}</a> 在
+                        @endif                           
+                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}<span style="font-size:12px;font-weight: 100;">(對外公開)</span></a> 在
                                 {{ $thread->createdAt()->diffForHumans() }} 發文
-                            @endif
                         </div>
                     </div>
                 @endforeach
