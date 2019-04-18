@@ -8,7 +8,7 @@
 
     <div class="row forum">
         <div class="col-md-3">
-            {{ Form::open(['route' => 'forum', 'method' => 'GET']) }}
+            {{ Form::open(['route' => 'forum', 'method' => 'GET', 'class' => 'search-article']) }}
                 <div class="form-group">
                     {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => '搜尋文章','style' => 'width:100%;' ]) }}
                 </div>
