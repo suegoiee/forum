@@ -40,15 +40,15 @@
             @if (count($threads))
                 @foreach ($threads as $thread)
                     <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
-                        <div class="panel-heading thread-info">
+                        <div class="panel-heading thread-info thread-entrance">
                             <div class="thread-info-author headLabel">
-                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
+                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
                             </div>
                             @include('forum.threads.info.tags')
                         </div>
 
-                        <div class="panel-body chat-bg">
-                            <a href="{{ route('thread', $thread->slug()) }}" class="thread-entrance">
+                        <div class="panel-body chat-bg" class="thread-entrance">
+                            <a href="{{ route('thread', $thread->slug()) }}">
                                 <span class="badge pull-right">{{ count($thread->replies()) }}</span>
                                 <p>{!! str_limit(strip_tags($thread->body), 100) !!}</p>
                             </a>
