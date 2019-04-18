@@ -7,6 +7,9 @@ h1 {
   margin-bottom: 15px !important;
   margin-top: 1%;
 }
+.far {
+  line-height: 1.42857143 !important;
+}
 .forum {
   margin-bottom: 5%;
   div {
@@ -85,19 +88,40 @@ h1 {
     }
     .formDrop {
       width: 100%;
+      [aria-expanded="false"] {
+        .fa-plus-square {
+          display: inline-block;
+          float: right;
+        }
+      }
+      [aria-expanded="false"] {
+        .fa-minus-square {
+          display: none;
+        }
+      }
+      [aria-expanded="true"] {
+        .fa-plus-square {
+          display: none;
+        }
+      }
+      [aria-expanded="true"] {
+        .fa-minus-square {
+          display: inline-block;
+          float: right;
+        }
+      }
       .dropdownTitle {
         font-size: 1.7rem;
-        color: #ffa500;
+        color: #fff;
         font-weight: 400;
-        background-color: #fff;
-        border: 1px solid #ffa500;
+        background-color: #ffa500;
         width: 100%;
         display: inline-block;
         padding: 8px 10px;
       }
       .dropdownTitle:hover,
       .dropdownTitle:focus {
-        color: #ffc04d;
+        background-color: #ffc04d;
         text-decoration: none;
       }
       .forumTitle {
@@ -351,6 +375,7 @@ h1 {
     div {
       .formDrop {
         text-align: center;
+        margin-bottom: 2%;
         .forumTitle {
           width: 100%;
           position: relative;

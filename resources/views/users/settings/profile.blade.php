@@ -31,7 +31,7 @@
                 @endFormGroup
 
                 @formGroup('username')
-                    {!! Form::label('暱稱', null, ['class' => 'col-md-3 control-label']) !!}
+                    {!! Form::label('暱稱 (對外公開)', null, ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
                         {!! Form::text('username', Auth::user()->username(), ['class' => 'form-control', 'required']) !!}

@@ -8,9 +8,9 @@
 
     <div class="row forum">
         <div class="col-md-3">
-            {{ Form::open(['route' => 'forum', 'method' => 'GET']) }}
+            {{ Form::open(['route' => 'forum', 'method' => 'GET', 'class' => 'search-article']) }}
                 <div class="form-group">
-                    {{ Form::text('search', $search ?? null, ['class' => 'form-control', 'placeholder' => '搜尋文章','style' => 'width:100%;' ]) }}
+                    {{ Form::text('search', $search ?? null, ['class' => 'form-control search-article', 'placeholder' => '搜尋文章','style' => 'width:100%;' ]) }}
                 </div>
             {{ Form::close() }}
 
@@ -18,7 +18,7 @@
 
             <div class="dropdown formDrop">
                 <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
-                    所有主題
+                    所有分類 <i class="far fa-plus-square"></i><i class="far fa-minus-square"></i>
                 </a>
                 <div class="dropdownMenu forumTitle" aria-expanded="false" id="titleTable">
                     <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
@@ -42,7 +42,7 @@
                     <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
                         <div class="panel-heading thread-info">
                             <div class="thread-info-author headLabel">
-                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
+                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
                             </div>
                             @include('forum.threads.info.tags')
                         </div>
@@ -50,7 +50,7 @@
                         <div class="panel-body chat-bg">
                             <a href="{{ route('thread', $thread->slug()) }}">
                                 <span class="badge pull-right">{{ count($thread->replies()) }}</span>
-                                <p>{!! str_limit(strip_tags($thread->body), 100) !!}</p>
+                                <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
                             </a>
                         </div>
                         
@@ -60,7 +60,7 @@
                         @else
                             @include('forum.threads.info.avatar', ['user' => $thread->author()])
                         @endif                           
-                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}<span style="font-size:12px;font-weight: 100;">(對外公開)</span></a> 在
+                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
                                 {{ $thread->createdAt()->diffForHumans() }} 發文
                         </div>
                     </div>

@@ -9,9 +9,9 @@
             <h3>@include('forum.threads.info.tags')</h3>
             <div class="dropdown formDrop"  style="margin-top: 6%;">
                 <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
-                    所有主題
+                    所有分類 <i class="far fa-plus-square"></i><i class="far fa-minus-square"></i>
                 </a>
-                <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
+                <div class="dropdownMenu forumTitle" id="titleTable">
                     <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                     @if(count($thread->tags()) == 0)
@@ -85,7 +85,7 @@
 
                 <div class="thread-info-author authorName" style="text-align: right; display: inline-block; width: 100%;">
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
-                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="display: inline-block; padding-right:5px;">{{ $thread->author()->username() }}<span style="font-size:12px;font-weight: 100;">(對外公開)</span></a>
+                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="display: inline-block; padding-right:5px;">{{ $thread->author()->username() }}</a>
                     在 {{ $thread->createdAt()->diffForHumans() }} 發文
                 </div>
             </div>
@@ -97,7 +97,7 @@
                 <div style="padding-top: 2%; border-top:none !important;border-left:none !important;border-right:none !important;border-bottom:2px dashed #e9e9e9 !important;" class="panel {{ $thread->isSolutionReply($reply) ? 'panel-success' : 'panel-default' }}">
                     <div class="thread-info-author authorName">
                             <a href="{{ route('profile', $reply->author()->username()) }}" class="thread-info-link" style="padding-right:3px; display: inline-block;">
-                                <i class="far fa-comment-dots"></i> {{ $reply->author()->username() }}<span style="font-size:12px;font-weight: 100;">(對外公開)</span>
+                                <i class="far fa-comment-dots"></i> {{ $reply->author()->username() }}
                             </a> 
                     </div>    
                     <div class="thread-info-author headLabel">
