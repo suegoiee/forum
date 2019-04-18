@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Reply;
 use App\Models\Thread;
+use App\Models\Archive;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
 use Illuminate\Notifications\Notifiable;
@@ -244,5 +245,35 @@ final class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPasswordNotification($token));
+    }
+
+    /**
+     * @return \App\Models\Thread[]
+     */
+    public function archives()
+    {
+        return $this->threadsRelation;
+    }
+
+    /**
+     * @return \App\Models\Thread[]
+     */
+    public function latestArchives(int $amount = 3)
+    {
+        return $this->archivesRelation()->latest()->limit($amount)->get();
+    }
+
+    public function deleteArchives()
+    {
+        // We need to explicitly iterate over the threads and delete them
+        // separately because all related models need to be deleted.
+        foreach ($this->archives() as $archive) {
+            $archive->delete();
+        }
+    }
+
+    public function archivesRelation(): HasMany
+    {
+        return $this->hasMany(Archive::class, 'author_id');
     }
 }
