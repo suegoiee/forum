@@ -9,7 +9,7 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-138435332-1');
+    gtag('config', "{{env('GOOGLE_ANALYTIC_ID')}}");
     </script>
 
     <!-- Google Tag Manager -->
@@ -59,19 +59,6 @@
         window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};
     </script>
 
-    
-    <script>
-        function toggle() {
-            let target = document.getElementById("titleTable");
-                if(target.style.display == 'block'){
-                    target.style.display = 'none';
-                }
-                else {
-                    target.style.display = 'block';
-                }
-        }
-    </script>
-
     @include('layouts._favicons')
     @include('layouts._cookie_consent')
     @include('layouts._google_analytics')
@@ -117,6 +104,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/formCheck.js"></script>
 <script src="/js/npv.js"></script>
 <script src="/js/navBar.js"></script>
+<script src="/js/dropdownTitle.js"></script>
 <script>
     $(document).ready(function() {
         if($("textarea[name='body']").length){

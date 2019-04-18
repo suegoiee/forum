@@ -8,7 +8,7 @@
 
             <h3>@include('forum.threads.info.tags')</h3>
             <div class="dropdown formDrop"  style="margin-top: 6%;">
-                <a class="dropdownTitle" onClick="toggle()" role="button">
+                <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有主題
                 </a>
                 <div class="dropdownMenu forumTitle" id="titleTable">
