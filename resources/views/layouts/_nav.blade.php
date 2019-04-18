@@ -138,11 +138,11 @@
                         <div style="display: inline-block;">優分析pro</div>
                     </a>
                 </li>
-                <!--li>
+                <li>
                     <a class="nav-font" href="{{ route('blogs') }}">
                         <i class="fab fa-blogger-b"></i> 優分析專欄 
                     </a>
-                </li-->
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
