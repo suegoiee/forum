@@ -21,18 +21,15 @@
             <div class="dropdown">
                 <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     優分析專欄
-                    <span style="color:#545454">( {{ $count }} )</span>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('blogs') }}" >
                         全部
-                        <span>( {{ $count }} )</span>
                     <a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                         <a href="{{ route('blogs.tag', $tag->slug()) }}"
                         class="dropdown-item {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }}">
                             {{ $tag->name() }} 
-                            <span>( {{ count($tag->$archives) }} )</span>
                         </a>
                 @endforeach
                 </div>
@@ -44,10 +41,10 @@
                 @foreach ($archives as $archive)
                     <div class="panel panel-default chat-bd" style="height:auto; margin: 3% 5% 3% !important; border:none !important;">
                         <div class="panel-heading thread-info">
+                                @include('blogs.archives.info.tags')
                             <div class="thread-info-author headLabel">
                                 <a href="{{ route('archives', $archive->slug()) }}" class="thread-info-link">{{ $archive->subject() }}</a>
                             </div>
-                            @include('blogs.archives.info.tags')
                         </div>
                         <div class="thread-info-author" style="display: block;">
                                 {{ $archive->createdAt() }} 
@@ -56,12 +53,11 @@
                         <div class="panel-body chat-bg">
                             {!! str_limit(strip_tags($archive->body), 100) !!}
                         </div>
-
+                    </div>
                         <div class="thread-info-author authorName" style="text-align: right; display: block;">                      
                             <div class="thread-info-link" style="padding-right:3px;">{{ $archive->author()->username() }}</div> 
                         </div>
-                    </div>
-                    <hr style="border-color: #e9e9e9;">
+                    <hr style="border-color: #e9e9e9; margin-top: 0;">
                 @endforeach
 
                 <div class="text-center">
@@ -69,10 +65,7 @@
                 </div>
             @else
                 <div class="alert text-center" style="color: #545454;">
-                    沒有找到相關文章!
-                    @can(App\Policies\ArchivePolicy::CREATE, App\Models\Archive::class)
-                        <a href="{{ route('archives.create') }}" style="color: #545454;" class="alert-link">發表新的文章</a>
-                    @endcan
+                    沒有找到相關專欄!
                 </div>
             @endif
         </div>
