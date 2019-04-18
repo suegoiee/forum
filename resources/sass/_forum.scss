@@ -7,6 +7,9 @@ h1 {
   margin-bottom: 15px !important;
   margin-top: 1%;
 }
+.far {
+  line-height: 1.42857143 !important;
+}
 .forum {
   margin-bottom: 5%;
   div {
@@ -85,6 +88,28 @@ h1 {
     }
     .formDrop {
       width: 100%;
+      [aria-expanded="false"] {
+        .fa-plus-square {
+          display: inline-block;
+          float: right;
+        }
+      }
+      [aria-expanded="false"] {
+        .fa-minus-square {
+          display: none;
+        }
+      }
+      [aria-expanded="true"] {
+        .fa-plus-square {
+          display: none;
+        }
+      }
+      [aria-expanded="true"] {
+        .fa-minus-square {
+          display: inline-block;
+          float: right;
+        }
+      }
       .dropdownTitle {
         font-size: 1.7rem;
         color: #fff;
