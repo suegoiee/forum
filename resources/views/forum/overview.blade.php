@@ -17,10 +17,10 @@
             @include('layouts._ads._forum_sidebar')
 
             <div class="dropdown formDrop">
-                <a class="dropdownTitle" onClick="toggle()" role="button">
+                <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有主題
                 </a>
-                <div class="dropdownMenu forumTitle" id="titleTable">
+                <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
                     <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                     <a href="{{ route('forum.tag', $tag->slug()) }}"
@@ -40,17 +40,17 @@
             @if (count($threads))
                 @foreach ($threads as $thread)
                     <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
-                        <div class="panel-heading thread-info thread-entrance">
+                        <div class="panel-heading thread-info">
                             <div class="thread-info-author headLabel">
-                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
+                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
                             </div>
                             @include('forum.threads.info.tags')
                         </div>
 
-                        <div class="panel-body chat-bg" class="thread-entrance">
+                        <div class="panel-body chat-bg">
                             <a href="{{ route('thread', $thread->slug()) }}">
                                 <span class="badge pull-right">{{ count($thread->replies()) }}</span>
-                                <p>{!! str_limit(strip_tags($thread->body), 100) !!}</p>
+                                <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
                             </a>
                         </div>
                         
