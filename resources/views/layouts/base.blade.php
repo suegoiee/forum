@@ -76,6 +76,18 @@
         window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};
     </script>
 
+    
+    <script>
+        function toggle() {
+            let target = document.getElementById("titleTable");
+                if(target.style.display == 'block'){
+                    target.style.display = 'none';
+                }
+                else {
+                    target.style.display = 'block';
+                }
+        }
+    </script>
 
     @include('layouts._favicons')
     @include('layouts._cookie_consent')
@@ -103,6 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     @include('layouts._footer')
 </div>
+
 
 <script src="{{ mix('js/app.js') }}"></script>
 <!--for development-->
@@ -141,6 +154,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
     });
 </script>
+
 <!--end of for development-->
 
 
