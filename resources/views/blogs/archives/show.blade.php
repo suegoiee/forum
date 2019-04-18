@@ -28,22 +28,22 @@
 
         <div class="col-md-3 blogTitle" style="margin-top: 1%;">
         
-            <div class="dropdown">
-                <a class="dropdown-toggle" style="margin-top: 5%;" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    優分析專欄
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('blogs') }}" >
-                        全部
-                    <a>
+                <div class="dropdown">
+                    <a class="dropdown-toggle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
+                        優分析專欄 <i class="far fa-plus-square"></i><i class="far fa-minus-square"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-expanded="false"id="titleTable">
+                        <a class="dropdown-item" href="{{ route('blogs') }}" >
+                            全部
+                        <a>
                     @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                             <a href="{{ route('blogs.tag', $tag->slug()) }}"
                             class="dropdown-item {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }}">
-                                {{ $tag->name() }}
+                                {{ $tag->name() }} 
                             </a>
                     @endforeach
+                    </div>
                 </div>
-            </div>
         </div>
         <div class="col-md-9 blogContent" style="margin-top: 1%;">
             <div class="panel panel-default" style="border:none !important; margin: 3% 5% 3% !important;">
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="thread-info-author" style="display: inline-block; width: 100%;">
-                    {{ $archive->createdAt()->diffForHumans() }} 
+                    {{ $archive->createdAt() }} 
                 </div>
 
                 <div class="panel-body forum-content">
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="thread-info-author authorName" style="text-align: right; display: block;">                      
-                    <div class="thread-info-link" style="padding-right:3px;">{{ $archive->author()->username() }}</div> 
+                    <div class="thread-info-link" style="padding-right:3px; font-size: 18px; color: #393939;">{{ $archive->author()->username() }}</div> 
                 </div>
             </div>
 

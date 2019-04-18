@@ -73,15 +73,39 @@
         }
         .dropdown{
             text-align: center;
+            [aria-expanded="false"] {
+                .fa-plus-square {
+                  display: inline-block;
+                }
+              }
+              [aria-expanded="false"] {
+                .fa-minus-square {
+                  display: none;
+                }
+              }
+              [aria-expanded="true"] {
+                .fa-plus-square {
+                  display: none;
+                }
+              }
+              [aria-expanded="true"] {
+                span{
+                    color: #ffa500;
+                }
+                .fa-minus-square {
+                  display: inline-block;
+                  color: #ffa500;
+                }
+              }
             .dropdown-toggle{
-                color: #ffa500;
+                color: #393939;
                 font-size: 2rem;
                 text-decoration:none;
                 font-weight:400;
             }
             .dropdown-toggle:hover,
             .dropdown-toggle:focus{
-                color: #393939;
+                color: #ffa500;
                 text-decoration:none;
                 font-weight:400;
             }

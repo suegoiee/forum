@@ -19,10 +19,10 @@
             {{ Form::close() }}
 
             <div class="dropdown">
-                <a class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    優分析專欄
+                <a class="dropdown-toggle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
+                    <span>優分析專欄<span> <i class="far fa-plus-square"></i><i class="far fa-minus-square"></i>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <div class="dropdown-menu" aria-expanded="false"id="titleTable">
                     <a class="dropdown-item" href="{{ route('blogs') }}" >
                         全部
                     <a>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                         <div class="thread-info-author authorName" style="text-align: right; display: block;">                      
-                            <div class="thread-info-link" style="padding-right:3px;">{{ $archive->author()->username() }}</div> 
+                            <div class="thread-info-link" style="padding-right:3px; font-size: 18px; color: #393939;">{{ $archive->author()->username() }}</div> 
                         </div>
                     <hr style="border-color: #e9e9e9; margin-top: 0;">
                 @endforeach
