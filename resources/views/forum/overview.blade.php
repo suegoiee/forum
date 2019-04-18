@@ -42,13 +42,13 @@
                     <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
                         <div class="panel-heading thread-info">
                             <div class="thread-info-author headLabel">
-                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link">{{ $thread->subject() }}</a>
+                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
                             </div>
                             @include('forum.threads.info.tags')
                         </div>
 
                         <div class="panel-body chat-bg">
-                            <a href="{{ route('thread', $thread->slug()) }}">
+                            <a href="{{ route('thread', $thread->slug()) }}" class="thread-entrance">
                                 <span class="badge pull-right">{{ count($thread->replies()) }}</span>
                                 <p>{!! str_limit(strip_tags($thread->body), 100) !!}</p>
                             </a>
@@ -60,7 +60,7 @@
                         @else
                             @include('forum.threads.info.avatar', ['user' => $thread->author()])
                         @endif                           
-                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}<span style="font-size:12px;font-weight: 100;">(對外公開)</span></a> 在
+                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
                                 {{ $thread->createdAt()->diffForHumans() }} 發文
                         </div>
                     </div>
