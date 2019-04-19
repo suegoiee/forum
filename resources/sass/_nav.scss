@@ -131,6 +131,9 @@
     width: 100%;
     .container {
       div {
+        .navbar-brand{
+          width: 150px !important;
+        }
         .navbar-right {
           margin-right: 0 !important;
         }
@@ -138,7 +141,7 @@
       .nav{
         li{
           a{
-            padding: 20px 5px;
+            padding: 20px 0px;
           }
         }
       }
