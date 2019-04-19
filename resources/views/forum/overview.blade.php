@@ -22,12 +22,11 @@
                 </a>
                 <div class="dropdownMenu forumTitle" aria-expanded="false" id="titleTable">
                     <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
-                @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
-                    <a href="{{ route('forum.tag', $tag->slug()) }}"
-                        class="dropdownItem {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }} ">
-                            {{ $tag->name() }}
-                    </a>
-                @endforeach
+                    @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
+                        <a href="{{ route('forum.tag', $tag->slug()) }}" class="dropdownItem {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }} ">
+                                {{ $tag->name() }}
+                        </a>
+                    @endforeach
                 </div>
             </div>
         </div>
