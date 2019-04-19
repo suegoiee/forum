@@ -93,6 +93,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/Highcharts-7.1.1/code/modules/series-label.js"></script>
 <script src="/js/Highcharts-7.1.1/code/modules/exporting.js"></script>
 <script src="/js/Highcharts-7.1.1/code/modules/export-data.js"></script>
+<script src="/js/dropdownTitle.js"></script>
 <script src="/js/ckfinder/ckfinder.js"></script>
 <script src="/js/errorode.js"></script>
 <script src="/js/addToge.js"></script>
@@ -100,7 +101,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/formCheck.js"></script>
 <script src="/js/npv.js"></script>
 <script src="/js/navBar.js"></script>
-<script src="/js/dropdownTitle.js"></script>
 <script src="/js/freebie.js"></script>
 <script>
     $(document).ready(function() {
