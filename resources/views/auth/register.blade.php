@@ -43,13 +43,17 @@
             @formGroup('rules')
                 <label>
                     {!! Form::checkbox('rules') !!}
-                    &nbsp; 已閱讀並同意 <a href="{{ route('rules') }}" target="_blank">網站規則</a>.
+                    &nbsp; 已閱讀並同意 
+                    <a style="cursor: pointer;" data-toggle="modal" data-target="#rule">網站規則</a>.
                 </label>
                 @error('rules')
 
                 <label>
                     {!! Form::checkbox('terms') !!}
-                    &nbsp; 已閱讀並同意 <a href="{{ route('terms') }}" target="_blank">免責聲明</a> 及 <a href="{{ route('privacy') }}" target="_blank">隱私權政策</a>.
+                    &nbsp; 已閱讀並同意 
+                    <a style="cursor: pointer;" data-toggle="modal" data-target="#term">免責聲明</a> 
+                    及 
+                    <a style="cursor: pointer;" data-toggle="modal" data-target="#privacy">隱私權政策</a>.
                 </label>
                 @error('rules')
             @endFormGroup

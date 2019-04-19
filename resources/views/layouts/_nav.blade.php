@@ -133,14 +133,14 @@
                         </li>
                     </ul>
                 </li>
-                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer">
-                        <img src="{{env('APP_URL')}}/images/logo_colour_white.svg" style="width:25px;">
-                        <div style="display: inline-block;">優分析pro</div>
-                    </a>
-                </li>
                 <li>
                     <a class="nav-font" href="{{ route('blogs') }}">
                         <i class="fab fa-blogger-b"></i> 優分析專欄 
+                    </a>
+                </li>
+                <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer">
+                        <img src="{{env('APP_URL')}}/images/logo_colour_white.svg" style="width:25px;">
+                        <div style="display: inline-block;">優分析pro</div>
                     </a>
                 </li>
             </ul>

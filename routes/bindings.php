@@ -18,6 +18,9 @@ Route::bind('tag', function (string $slug) {
 Route::bind('thread', function (string $slug) {
     return App\Models\Thread::findBySlug($slug);
 });
+Route::bind('archive', function (string $slug) {
+    return App\Models\Archive::findBySlug($slug);
+});
 Route::bind('username', function (string $username) {
     return App\User::findByUsername($username);
 });

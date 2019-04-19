@@ -11,7 +11,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    {{ Form::submit($submit ?? $title, ['class' => 'btn btn-warning']) }}
+                    {{ Form::submit($submit ?? $title, ['class' => 'btn']) }}
                 </div>
             {{ Form::close() }}
         </div>

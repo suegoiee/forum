@@ -5,9 +5,6 @@
 Route::get('/', function () {
     return redirect('forum');
 })->name('home');
-Route::get('rules', 'HomeController@rules')->name('rules');
-Route::get('terms', 'HomeController@terms')->name('terms');
-Route::get('privacy', 'HomeController@privacy')->name('privacy');
 Route::get('bin/{paste?}', 'HomeController@pastebin');
 
 // Authentication
