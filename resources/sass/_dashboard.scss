@@ -79,16 +79,16 @@ div {
             height: 40px !important;
           }
           label {
-            width: 115%;
+            width: 105%;
             font-size: 1.5rem;
             line-height: 1.5;
-            max-width: 115%;
+            max-width: 105%;
             input {
               width: 100% !important;
               margin: 0 !important;
             }
             input[type="checkbox"] {
-              width: 15% !important;
+              width: 5% !important;
             }
           }
           .loginMg {
@@ -133,7 +133,11 @@ div {
     border-color: none !important;
   }
 }
-
+.col-md-offset-4{
+  .panel{
+    text-align: center;
+  }
+}
 @media (max-width: 767px) {
   div {
     .panel {

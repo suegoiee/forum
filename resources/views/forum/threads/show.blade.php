@@ -178,9 +178,11 @@
                    
 
                     <div class="remind">
-                        <p>
-                            請在留言前確認已了解 <a href="{{ route('rules') }}">論壇規則</a>.
-                        </p>
+                            請在留言前確認已了解 
+                            <a style="color:#ffa500; font-weight:bolder; cursor: pointer;" data-toggle="modal" data-target="#rule">論壇規則</a>。
+                                @include('_partials._rule_modal', [
+                                    'id' => 'rule',
+                                ])
                     </div>
 
                     
