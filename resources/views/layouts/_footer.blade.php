@@ -3,11 +3,20 @@
 
 <div id="footer" class="container text-center" style="font-size: 12.5px;height: 40px; width: 100%; border-top: 1px solid #545454; padding-top: 10px; color:#545454;">
     <div>
-        <a class="footerWord" href="{{ route('rules') }}">網站規則</a>
+        <a class="footerWord" style="cursor: pointer;" data-toggle="modal" data-target="#rule">網站規則</a>
+            @include('_partials._rule_modal', [
+                'id' => 'rule',
+            ])
         <span style="margin-left: 5px; margin-right:5px;">｜</span>
-        <a class="footerWord" href="{{ route('terms') }}">免責聲明</a>
+        <a class="footerWord" style="cursor: pointer;" data-toggle="modal" data-target="#term">免責聲明</a>
+            @include('_partials._term_modal', [
+                'id' => 'term',
+            ])
         <span style="margin-left: 5px; margin-right:5px;">｜</span>
-        <a class="footerWord" href="{{ route('privacy') }}">隱私權政策</a>
+        <a class="footerWord" style="cursor: pointer;" data-toggle="modal" data-target="#privacy">隱私權政策</a>
+            @include('_partials._privacy_modal', [
+                'id' => 'privacy',
+            ])
         <span style="margin-left: 5px; margin-right:5px;">｜</span>
         <a class="footerWord" href="https://www.facebook.com/UAnalyze"><i class="fab fa-facebook-f"></i>
         <span style="margin-left: 5px; margin-right:5px;">｜</span>

@@ -133,46 +133,8 @@ div {
     border-color: none !important;
   }
 }
-.col-md-offset-4 {
-  .panel {
-    text-align: center;
-    .panel-body {
-      .rule {
-        width: 150% !important;
-        margin-left: -25% !important;
-        text-align: justify;
-        background-color: #fff;
-        line-height: 1.5;
-        padding: 15px;
-        p {
-          color: #545454;
-          font-weight: 100;
-          font-size: 13px;
-          strong {
-            font-size: 14.5px;
-          }
-          a {
-            color: #393939;
-            font-size: 18px;
-          }
-        }
-      }
-    }
-  }
-}
+
 @media (max-width: 767px) {
-  .col-md-offset-4 {
-    .panel {
-      .panel-body {
-        width: 100% !important;
-        margin-left: 0%;
-        .rule {
-          width: auto !important;
-          margin-left: 0% !important;
-        }
-      }
-    }
-  }
   div {
     .panel {
       .panel-body {
