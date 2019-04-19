@@ -21,5 +21,5 @@
     @endFormGroup
 
     {!! Form::submit(isset($archive) ? '確定' : '發文', ['class' => 'btn btn-primary','style' => 'width: auto !important;float:right; display:inline-block;' ]) !!}
-    <a href="{{ isset($archive) ? route('archive', $archive->slug()) : route('forum') }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block;  margin-top:0;">取消</a>
+    <a href="{{ isset($archive) ? route('archives', $archive->slug()) : route('blogs') }}" class="btn btn-primary btn-block" style = "width: auto !important; display:inline-block;  margin-top:0;">取消</a>
 {!! Form::close() !!}

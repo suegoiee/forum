@@ -84,20 +84,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="{{ mix('js/app.js') }}"></script>
 <!--for development-->
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script src="https://code.highcharts.com/modules/series-label.js"></script>
-<script src="/js/exporting.js"></script>
-<script src="/js/export-data.js"></script>
-<script src="https://code.highcharts.com/highcharts-more.js"></script>
 <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-<!--link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.css"/-->
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
-<!--script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.4.2/jquery.twbsPagination.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
+<script src="/js/Highcharts-7.1.1/code/highcharts.js"></script>
+<script src="/js/Highcharts-7.1.1/code/highcharts-more.js"></script>
+<script src="/js/Highcharts-7.1.1/code/modules/series-label.js"></script>
+<script src="/js/Highcharts-7.1.1/code/modules/exporting.js"></script>
+<script src="/js/Highcharts-7.1.1/code/modules/export-data.js"></script>
 <script src="/js/ckfinder/ckfinder.js"></script>
-<script src="/js/freebie.js"></script>
 <script src="/js/errorode.js"></script>
 <script src="/js/addToge.js"></script>
 <script src="/js/cal.js"></script>
@@ -105,6 +101,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/npv.js"></script>
 <script src="/js/navBar.js"></script>
 <script src="/js/dropdownTitle.js"></script>
+<script src="/js/freebie.js"></script>
 <script>
     $(document).ready(function() {
         if($("textarea[name='body']").length){

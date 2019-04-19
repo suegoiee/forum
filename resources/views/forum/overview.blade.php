@@ -20,7 +20,7 @@
                 <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有分類 <i class="far fa-plus-square"></i><i class="far fa-minus-square"></i>
                 </a>
-                <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
+                <div class="dropdownMenu forumTitle" aria-expanded="false" id="titleTable">
                     <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                     <a href="{{ route('forum.tag', $tag->slug()) }}"
