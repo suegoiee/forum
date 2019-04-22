@@ -84,9 +84,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="{{ mix('js/app.js') }}"></script>
 <!--for development-->
-<link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'-->
+<!--link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css"-->
+<!--script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/js/Highcharts-7.1.1/code/highcharts.js"></script>
 <script src="/js/Highcharts-7.1.1/code/highcharts-more.js"></script>

@@ -164,17 +164,6 @@ function stockPool(stock_url) {
                     console.log(results.slice(0, 1)[0]);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
-                $('#searchBar').off('keydown').on('keydown', function (e) {
-                    if (e.which == 13) {
-                        $("#searchBar").autocomplete("close");
-                        var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
-                        if (results.slice(0, 1)[0]) {
-                            var stockCode = results.slice(0, 1)[0];
-                            dataFactory(tmp_url + stockCode['id'], true);
-                        }
-                        $("#searchBar").val('');
-                    }
-                });
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];

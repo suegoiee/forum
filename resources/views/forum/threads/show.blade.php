@@ -7,11 +7,11 @@
         <div class="col-md-3">
 
             <h3>@include('forum.threads.info.tags')</h3>
-            <div class="dropdown formDrop"  style="margin-top: 6%;">
+            <div class="formDrop"  style="margin-top: 6%;">
                 <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有分類 <i class="far fa-plus-square"></i><i class="far fa-minus-square"></i>
                 </a>
-                <div class="dropdownMenu forumTitle" id="titleTable">
+                <div class="dropdownMenu forumTitle collapse" id="titleTable">
                     <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
                 @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
                     @if(count($thread->tags()) == 0)
