@@ -18,11 +18,11 @@
                 'id' => 'privacy',
             ])
         <span style="margin-left: 5px; margin-right:5px;">｜</span>
-        <a class="footerWord" href="https://www.facebook.com/UAnalyze"><i class="fab fa-facebook-f"></i>
+        <a class="footerWord" href="https://www.facebook.com/UAnalyze" aria-label="uanalyze facebook"><i class="fab fa-facebook-f"></i>
         <span style="margin-left: 5px; margin-right:5px;">｜</span>
-        <a class="footerWord" href="mailto:service@uanalyze.com.tw"><i class="far fa-envelope"></i></a> 
+        <a class="footerWord" href="mailto:service@uanalyze.com.tw" aria-label="uanalyze email"><i class="far fa-envelope"></i></a> 
         <span style="margin-left: 5px; margin-right:5px;">｜</span>
-        <a class="footerWord" href="tel:+886-2-2747-3447"><i class="fas fa-phone"></i></a>
+        <a class="footerWord" href="tel:+886-2-2747-3447" aria-label="uanalyze telephone"><i class="fas fa-phone"></i></a>
     </div>
     <div>
         優分析 UAnalyze 商拓財經有限公司 © 2018
