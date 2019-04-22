@@ -133,7 +133,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class=" {{ active('blogs') }}">
                     <a class="nav-font" href="{{ route('blogs') }}">
                         <i class="fab fa-blogger-b"></i> 優分析專欄 
                     </a>
