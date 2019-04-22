@@ -18,7 +18,7 @@
                 </div>
             {{ Form::close() }}
 
-            <div class="dropdown">
+            <!--div class="dropdown">
                 <a class="dropdown-toggle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     <span>優分析專欄<span> <i class="far fa-plus-square"></i><i class="far fa-minus-square"></i>
                 </a>
@@ -33,7 +33,7 @@
                         </a>
                 @endforeach
                 </div>
-            </div>
+            </div-->
         </div>
         <div class="col-md-9 blogContent">
 

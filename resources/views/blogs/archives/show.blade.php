@@ -26,7 +26,7 @@
                 @endcan
             </div>
 
-        <div class="col-md-3 blogTitle" style="margin-top: 1%;">
+        <!--div class="col-md-3 blogTitle" style="margin-top: 1%;">
         
                 <div class="dropdown">
                     <a class="dropdown-toggle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
@@ -44,7 +44,7 @@
                     @endforeach
                     </div>
                 </div>
-        </div>
+        </div-->
         <div class="col-md-9 blogContent" style="margin-top: 1%;">
             <div class="panel panel-default" style="border:none !important; margin: 3% 5% 3% !important;">
                 <div class="panel-heading thread-info">
