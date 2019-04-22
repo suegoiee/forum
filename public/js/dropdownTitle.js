@@ -3,6 +3,5 @@ if (screenWidth > 480) {
     $(".dropdownTitle").trigger('click');
 }
 else{
-    $(".dropdownTitle").trigger('click');
-    $(".dropdownTitle").trigger('click');
+    //$(".dropdownTitle").hide();
 }

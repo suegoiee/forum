@@ -60,6 +60,10 @@ require('prismjs/components/prism-less');
 require('prismjs/components/prism-sass');
 require('prismjs/components/prism-php');
 require('twbs-pagination/jquery.twbsPagination.min.js');
+import $ from 'jquery';
+window.$ = window.jQuery = $;
+import 'jquery-ui/ui/widgets/autocomplete.js';
+
 /*require('highcharts/highcharts');
 require('highcharts/highcharts-more');
 require('highcharts/modules/series-label');*/
