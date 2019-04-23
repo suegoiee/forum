@@ -66,6 +66,7 @@
     @unless ($disableAds ?? false)
         @include('layouts._ads._ad_sense')
     @endunless
+
 </head>
 <body class="{{ $bodyClass ?? '' }}">
 <!-- Google Tag Manager (noscript) -->
@@ -117,6 +118,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
     });
 </script>
+
 
 <!--end of for development-->
 

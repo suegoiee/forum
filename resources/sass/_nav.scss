@@ -2,7 +2,7 @@
   .navber-bd {
     background-color: #545454;
     .container {
-      // logo
+      // logo style
       .navbar-header {
         .navbar-brand {
           background-image: url(images/logo_colour_horizontal.svg);
@@ -14,11 +14,13 @@
       }
       .navbar-collapse {
         .navbar-nav {
+          // small screen login background
           .open {
             a {
               background-color: #545454;
             }
           }
+          // title & login style
           li {
             .nav-font {
               color: #fff;
@@ -72,6 +74,29 @@
                 color: #fff !important;
               }
             }
+            .user {
+              .dropdown-icon {
+                margin-right: 5px;
+              }
+            }
+            .dropdown-menu {
+              li {
+                span {
+                  display: block;
+                  padding: 3px 23px;
+                  clear: both;
+                  white-space: nowrap;
+                }
+              }
+              .dropdownlist {
+                position: relative;
+                .dropdown-content {
+                  top: 0;
+                  left: 100%;
+                  margin-top: -1px;
+                }
+              }
+            }
           }
           li.active {
             .nav-font,
@@ -89,43 +114,6 @@
       }
     }
   }
-  .low {
-    background-color: #fff;
-    line-height: 1.5;
-    padding: 15px;
-    width: 55% !important;
-    text-align: justify;
-    margin: auto;
-    p {
-      color: #545454;
-      font-size: 13px;
-      strong {
-        font-size: 14.5px;
-      }
-      a {
-        color: #393939;
-        font-size: 18px;
-      }
-    }
-  }
-}
-.nav {
-  li {
-    a {
-      padding-left: 15px !important;
-    }
-  }
-}
-
-.dropdown-menu li span {
-  display: block;
-  padding: 3px 20px;
-  clear: both;
-  white-space: nowrap;
-}
-
-.navbar-right {
-  margin-right: -30px !important;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   nav {
@@ -133,11 +121,21 @@
     .widthNav {
       width: 100%;
       div {
-        .navbar-brand{
+        .navbar-brand {
           width: 150px !important;
         }
         .navbar-right {
           margin-right: 0 !important;
+          .dropdown {
+            ul {
+              li {
+                a {
+                  padding-bottom: 5px;
+                  padding-top: 5px;
+                }
+              }
+            }
+          }
         }
         .navbar-brand {
           width: 168px !important;
@@ -152,9 +150,9 @@
           }
         }
       }
-      .nav{
-        li{
-          a{
+      .nav {
+        li {
+          a {
             padding: 20px 0px;
           }
         }
@@ -255,17 +253,4 @@
       width: auto !important;
     }
   }
-}
-
-.dropdown-icon {
-  margin-right: 5px;
-}
-
-.dropdownlist {
-  position: relative;
-}
-.dropdownlist .dropdown-content {
-  top: 0;
-  left: 100%;
-  margin-top: -1px;
 }
