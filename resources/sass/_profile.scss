@@ -1,72 +1,6 @@
-.col-md-9 {
-  background: #fff;
-  width: 74%;
-  h1 {
-    font-size: 22px;
-    color: #393939;
-    margin-bottom: 2%;
-  }
-  .panel {
-    border: 2px solid #e9e9e9 !important;
-    .panel-heading {
-      padding-inline-start: 5px;
-      color: #545454;
-      background: none !important;
-      .thread-info-avatar {
-        a {
-          color: #393939;
-        }
-        a:hover {
-          text-decoration: none;
-          color: #545454;
-        }
-      }
-    }
-    .panel-body {
-      width: 100% !important;
-      background-color: #fff;
-      margin-left: 0% !important;
-      p {
-        text-align: left;
-        font-size: 14.5;
-        color: #545454;
-      }
-    }
-  }
-  .remind {
-    p {
-      padding-top: 3%;
-      margin-bottom: 0;
-      font-size: 13px;
-      color: #545454;
-      a {
-        color: #ffa500;
-        font-size: 14px;
-      }
-      a:hover {
-        color: #ffc04d;
-        font-size: 14px;
-      }
-    }
-  }
-  p {
-    a {
-      font-size: 15px;
-      color: #ffa500;
-    }
-    a:hover {
-      color: #ffc04d;
-      text-decoration: none;
-      font-size: 15px;
-    }
-  }
-}
+// profile -dashboard
 .profile-latest-items {
   div {
-    h3 {
-      color: #393939;
-      font-size: 18px;
-    }
     .list-group {
       .list-group-item:hover {
         background: #fff;
@@ -74,51 +8,22 @@
     }
   }
 }
-.profile-user-info {
-  padding-top: 25px;
-  text-align: center;
-  a {
-    img {
-      width: auto;
-    }
-  }
-  .profile-user-name {
-    font-size: 25px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    text-align: center !important;
-    line-height: 1.5;
-  }
-
-  .profile-user-bio {
-    margin: 5px auto;
-    max-width: 300px;
-  }
-}
-#build {
-  background: none !important;
-  color: #393939 !important;
-  i {
-    font-size: 35px;
-  }
-}
-#build:hover {
-  background: none !important;
-  color: #545454 !important;
-}
 
 // setting
 div {
   .row {
+    .accountA,
+    .accountB {
+      .panel {
+        .panel-body {
+          padding: 0 !important;
+        }
+      }
+    }
     div {
       .panel {
-        .account {
-          background: #fff !important;
-          color: #393939 !important;
-          font-size: 1.7rem;
-          font-weight: 400;
-        }
         .panel-body {
+          // left part
           .nav-stacked {
             .active {
               a {
@@ -148,6 +53,7 @@ div {
               }
             }
           }
+          // right part
           .formSet {
             background-color: #fff;
             .form-group {
@@ -172,6 +78,7 @@ div {
                   background-color: #ffc04d;
                   border: none !important;
                 }
+                // change password
                 .save {
                   margin-left: 40%;
                 }
@@ -180,14 +87,6 @@ div {
           }
         }
       }
-    }
-  }
-}
-.accountA,
-.accountB {
-  .panel {
-    .panel-body {
-      padding: 0 !important;
     }
   }
 }
@@ -225,5 +124,28 @@ div {
         }
       }
     }
+  }
+}
+
+// 管理員介面
+.profile-user-info {
+  padding-top: 25px;
+  text-align: center;
+  a {
+    img {
+      width: auto;
+    }
+  }
+  .profile-user-name {
+    font-size: 25px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center !important;
+    line-height: 1.5;
+  }
+
+  .profile-user-bio {
+    margin: 5px auto;
+    max-width: 300px;
   }
 }

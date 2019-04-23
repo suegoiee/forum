@@ -1,6 +1,6 @@
 <div class="row profile-latest-items" style="background-color:#fff; padding: 10px 15px; margin-top: 2%;">
     <div class="col-md-6">
-        <h3>最近發文</h3>
+        <h3 style="color: #393939; font-size: 18px;">最近發文</h3>
 
         @forelse ($user->latestThreads() as $thread)
             <div class="list-group">
