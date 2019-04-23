@@ -17,7 +17,7 @@ function dataFactory(stock_url, ClearCanvas) {
     chart_data[IdForCanvas] = [];
     dataType = 'Data';
     $.getJSON(stock_url, function (data) {
-        var title = data.data.stock_name;
+        var title = data.data.stock_code + ' - ' + data.data.stock_name;
         var refLine = [];
         var DisPlayLabel = false;
         var PYButton = false;
@@ -154,24 +154,16 @@ function stockPool(stock_url) {
             });
         }
         $("#searchBar").autocomplete({
+            autoFocus: true,
+            delay: 0,
             source: function (request, response) {
                 var results = $.ui.autocomplete.filter(availableTags, request.term);
                 response(results.slice(0, 3));
                 if (results.slice(0, 1)[0]) {
                     var stockCode = results.slice(0, 1)[0];
+                    console.log(results.slice(0, 1)[0]);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
-                $('#searchBar').off('keydown').on('keydown', function (e) {
-                    if (e.which == 13) {
-                        $("#searchBar").autocomplete("close");
-                        var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
-                        if (results.slice(0, 1)[0]) {
-                            var stockCode = results.slice(0, 1)[0];
-                            dataFactory(tmp_url + stockCode['id'], true);
-                        }
-                        $("#searchBar").val('');
-                    }
-                });
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
@@ -180,22 +172,6 @@ function stockPool(stock_url) {
                 dataFactory(tmp_stock_url + stockCode, true);
                 $("#searchBar").val('');
                 return false;
-            }
-        });
-        $('#searchBar').off('keydown').on('keydown', function (e) {
-            if (e.which == 13) {
-                var stockCode = $("#searchBar").attr('name');
-                var tmp_url = stock_url.substring(0, stock_url.lastIndexOf("/") + 1);
-                if (stockCode != $(this).val()) {
-                    SetCookie("stockCode", $(this).val());
-                    dataFactory(tmp_url + $(this).val(), true);
-                }
-                else {
-                    SetCookie("stockCode", stockCode);
-                    dataFactory(tmp_url + stockCode, true);
-                }
-                $("#searchBar").autocomplete("close");
-                $("#searchBar").val('');
             }
         });
     });

@@ -23,11 +23,11 @@ class ArchivesController extends Controller
         $this->middleware([Authenticate::class, RedirectIfUnconfirmed::class], ['except' => ['overview', 'show']]);
     }
 
-    public function overview(Request $request)
+    public function overview(Request $request,Archive $archive)
     {
         $search = request('search');
         $archives = $search ? SearchArchives::get($search) : Archive::feedPaginated();
-        $count = $search ? SearchArchives::count($search) : Archive::count();
+        // $count = $search ? SearchArchives::count($search) : Archive::count();
         $user = $request->user();
         return view('blogs.overview', compact('archives', 'search', 'count'));
     }
@@ -44,11 +44,11 @@ class ArchivesController extends Controller
 
     public function store(ArchiveRequest $request)
     {
-        $thread = $this->dispatchNow(CreateThread::fromRequest($request));
+        $archive = $this->dispatchNow(CreateArchive::fromRequest($request));
 
-        $this->success('blogs.archives.created');
+        $this->success('專欄撰寫成功');
 
-        return redirect()->route('archives', $thread->slug());
+        return redirect()->route('archives', $archive->slug());
     }
 
     public function edit(Archive $archive)
@@ -62,20 +62,20 @@ class ArchivesController extends Controller
     {
         $this->authorize(ArchivePolicy::UPDATE, $archive);
 
-        $archive = $this->dispatchNow(UpdateThread::fromRequest($archive, $request));
+        $archive = $this->dispatchNow(UpdateArchive::fromRequest($archive, $request));
 
-        $this->success('blogs.archives.updated');
+        $this->success('專欄更新成功');
 
         return redirect()->route('archives', $archive->slug());
     }
 
     public function delete(Archive $archive)
     {
-        $this->authorize(ThreadPolicy::DELETE, $archive);
+        $this->authorize(ArchivePolicy::DELETE, $archive);
 
-        $this->dispatchNow(new DeleteThread($archive));
+        $this->dispatchNow(new DeleteArchive($archive));
 
-        $this->success('blogs.archives.deleted');
+        $this->success('專欄刪除成功');
 
         return redirect()->route('blogs');
     }

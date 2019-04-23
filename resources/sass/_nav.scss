@@ -133,6 +133,9 @@
     .widthNav {
       width: 100%;
       div {
+        .navbar-brand{
+          width: 150px !important;
+        }
         .navbar-right {
           margin-right: 0 !important;
         }
@@ -146,6 +149,13 @@
               padding-left: 5px !important;
               padding-right: 5px !important;
             }
+          }
+        }
+      }
+      .nav{
+        li{
+          a{
+            padding: 20px 0px;
           }
         }
       }
