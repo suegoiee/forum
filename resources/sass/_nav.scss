@@ -2,6 +2,7 @@
   .navber-bd {
     background-color: #545454;
     .container {
+      // logo
       .navbar-header {
         .navbar-brand {
           background-image: url(images/logo_colour_horizontal.svg);
@@ -129,10 +130,23 @@
 @media (min-width: 768px) and (max-width: 1025px) {
   nav {
     width: 100%;
-    .container {
+    .widthNav {
+      width: 100%;
       div {
         .navbar-right {
           margin-right: 0 !important;
+        }
+        .navbar-brand {
+          width: 168px !important;
+          margin-left: 3% !important;
+        }
+        .nav {
+          li {
+            a {
+              padding-left: 5px !important;
+              padding-right: 5px !important;
+            }
+          }
         }
       }
     }
