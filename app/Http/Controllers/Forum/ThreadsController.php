@@ -37,7 +37,10 @@ class ThreadsController extends Controller
 
     public function show(Thread $thread)
     {
-        return view('forum.threads.show', compact('thread'));
+        $author = $thread->author()->username();
+        $title = $thread->subject();
+        $description = $thread->body() ;
+        return view('forum.threads.show', compact('thread','description','title','author'));
     }
 
     public function create()
