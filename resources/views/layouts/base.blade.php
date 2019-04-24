@@ -178,14 +178,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }(document, 'script', 'facebook-jssdk'));
 
     
-    axios.get('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101')
+    /*axios.get('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101')
         .then(function (response) {
             console.log(response);
-            /* 成功拿到資料，然後... */
         })
         .catch(function (error) {
-            /* 失敗，發生錯誤，然後...*/
-        });
+        });*/
 </script>
 
 <!--end of for development-->
