@@ -345,6 +345,10 @@ h1 {
       padding-inline-start: 5px;
       color: #545454;
       background: none !important;
+      .showTag {
+        text-align: left;
+        position: absolute;
+      }
     }
     // show: thread content include h3 p table
     .forum-content {

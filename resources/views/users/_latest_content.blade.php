@@ -14,7 +14,7 @@
         @endforelse
     </div>
     <div class="col-md-6">
-        <h3>最近回覆</h3>
+        <h3 style="color: #393939; font-size: 18px;">最近回覆</h3>
 
         @forelse ($user->latestReplies() as $reply)
             <div class="list-group">
