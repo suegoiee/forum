@@ -33,7 +33,7 @@
     <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
     <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
     <META HTTP-EQUIV="expires" CONTENT="0">
-    <meta name="Description" content="{{ isset($description) ? $description:'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
+    <meta name="Description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
     @if (isset($author)) 
         <meta name="author" content="{{$author}}">
     @endif
@@ -43,13 +43,13 @@
     <!-- google -->
     <meta itemprop="name" content="優分析">
     <meta itemprop="image" content="https://forum.uanalyze.com.tw/images/logo_colour.svg">
-    <meta itemprop="description" content="{{ isset($description) ? $description:'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
+    <meta itemprop="description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
     <!-- facebook -->
     <meta property="og:title" content="優分析 - {{ isset($title) ? $title : '' }}" >
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://forum.uanalyze.com.tw/forum">
     <meta property="og:image" content="https://forum.uanalyze.com.tw/images/logo_colour.svg">
-    <meta property="og:description" content="{{ isset($description) ? $description:'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}" >
+    <meta property="og:description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}" >
     <!-- twitter -->
     <meta name="twitter:card" content="https://forum.uanalyze.com.tw/images/logo_colour.svg"> 
     <meta name="twitter:title" content="優分析 - {{ isset($title) ? $title : '' }}"> 

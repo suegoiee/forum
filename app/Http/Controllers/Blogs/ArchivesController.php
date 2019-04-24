@@ -37,7 +37,7 @@ class ArchivesController extends Controller
         $author = $archive->author()->username();
         $title = $archive->subject();
         $description = $archive->body() ;
-        return view('blogs.archives.show', compact('archive'));
+        return view('blogs.archives.show', compact('archive','title','description','author'));
     }
 
     public function create()
