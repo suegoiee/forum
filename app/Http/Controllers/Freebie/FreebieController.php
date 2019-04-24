@@ -8,7 +8,8 @@ class FreebieController extends Controller
 {
     public function stocksummary()
     {
-        return view('freebie.stocksummary')->with('PageSubtitle', '個股摘要');
+        $data = file_get_contents('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101');
+        return view('freebie.stocksummary', compact('data'))->with('PageSubtitle', '個股摘要');
     }
     public function InstitutionalInvestorsNet()
     {
