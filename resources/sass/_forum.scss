@@ -319,6 +319,7 @@ h1 {
       overflow-wrap: break-word;
       img {
         max-width: 100%;
+        height: auto !important;
       }
       p {
         font-size: 17px;
@@ -344,6 +345,10 @@ h1 {
       padding-inline-start: 5px;
       color: #545454;
       background: none !important;
+      .showTag {
+        text-align: left;
+        position: absolute;
+      }
     }
     // show: thread content include h3 p table
     .forum-content {
@@ -389,6 +394,10 @@ h1 {
         font-size: 17px;
         padding: 1% 3%;
         line-height: 1;
+        img {
+          max-width: 100%;
+          height: auto;
+        }
       }
     }
     // show: replied part time
