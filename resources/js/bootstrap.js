@@ -60,6 +60,7 @@ require('prismjs/components/prism-less');
 require('prismjs/components/prism-sass');
 require('prismjs/components/prism-php');
 require('twbs-pagination/jquery.twbsPagination.min.js');
+require('axios/dist/axios.min');
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 import 'jquery-ui/ui/widgets/autocomplete.js';
