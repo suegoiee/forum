@@ -78,11 +78,10 @@
                     <div class="showTag">
                         @include('forum.threads.info.tags')
                     </div>
-                    <div class="fb-share-button" data-href=""  style="position: absolute; margin-left: 90%; margin-top: 4%;" data-layout="button" data-size="small">
-                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
-                            分享
-                        </a>
+                    <div style="position: absolute; margin-left: 90%; margin-top: 4%;">
+                        <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                     </div>
+                    
                 </div>
 
                 <div class="panel-body forum-content">
@@ -91,10 +90,8 @@
 
                 <div class="thread-info-author authorName" style="text-align: right; display: inline-block; width: 100%;">
 
-                <div class="fb-share-button" data-href=""  style="float: left;" data-layout="button" data-size="small">
-                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
-                        分享
-                    </a>
+                <div style="float: left;">
+                    <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                 </div>
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
                     <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="display: inline-block; padding-right:5px;">{{ $thread->author()->username() }}</a>
