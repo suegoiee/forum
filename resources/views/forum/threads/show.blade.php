@@ -70,13 +70,19 @@
             @endcan
         </div>    
         <div class="col-md-9">
-
             <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;margin-top: 0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
                     <div class="thread-info-author headLabel">
                         <h3>{{ $thread->subject() }}</h3>
                     </div>
-                    @include('forum.threads.info.tags')
+                    <div class="showTag">
+                        @include('forum.threads.info.tags')
+                    </div>
+                    <div class="fb-share-button" data-href=""  style="position: absolute; margin-left: 90%; margin-top: 4%;" data-layout="button" data-size="small">
+                        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                            分享
+                        </a>
+                    </div>
                 </div>
 
                 <div class="panel-body forum-content">
@@ -84,6 +90,12 @@
                 </div>
 
                 <div class="thread-info-author authorName" style="text-align: right; display: inline-block; width: 100%;">
+
+                <div class="fb-share-button" data-href=""  style="float: left;" data-layout="button" data-size="small">
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">
+                        分享
+                    </a>
+                </div>
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
                     <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="display: inline-block; padding-right:5px;">{{ $thread->author()->username() }}</a>
                     在 {{ $thread->createdAt()->diffForHumans() }} 發文

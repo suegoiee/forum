@@ -135,7 +135,7 @@
                 </li>
                 <li class=" {{ active('blogs') }}">
                     <a class="nav-font" href="{{ route('blogs') }}">
-                        <i class="fab fa-blogger-b"></i> 優分析專欄 
+                        <i class="fas fa-pencil-alt"></i> 優分析專欄 
                     </a>
                 </li>
                 <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer">
