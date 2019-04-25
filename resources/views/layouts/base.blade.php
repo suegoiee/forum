@@ -47,7 +47,7 @@
     <!-- facebook -->
     <meta property="og:title" content="優分析 - {{ isset($title) ? $title : '' }}" >
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://forum.uanalyze.com.tw/forum">
+    <meta property="og:url" content="{{ route('thread', $thread->slug()) }}">
     <meta property="og:image" content="https://forum.uanalyze.com.tw/images/logo_colour.svg">
     <meta property="og:description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}" >
     <!-- twitter -->
