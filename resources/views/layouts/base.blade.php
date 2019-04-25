@@ -42,24 +42,24 @@
     <link rel="publisher" href="https://forum.uanalyze.com.tw/forum">
     <!-- google -->
     <meta itemprop="name" content="優分析">
-    <meta itemprop="image:width" content="1200">
-    <meta itemprop="image:height" content="630">
+    <meta itemprop="image:width" content="600">
+    <meta itemprop="image:height" content="314">
     <meta itemprop="image" content="https://forum.uanalyze.com.tw/images/logo_colour.svg">
     <meta itemprop="description" content="{{ isset($description) ? strip_tags($description) : '投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
     <!-- facebook -->
     <meta property="og:title" content="優分析 - {{ isset($title) ? $title : '' }}" >
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ isset($thread) ? route('thread', $thread->slug()) : ''  }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']  }}">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="314">
     <meta property="og:image" content="https://forum.uanalyze.com.tw/images/logo_colour.svg">
     <meta property="og:description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}" >
     <!-- twitter -->
     <meta name="twitter:card" content="https://forum.uanalyze.com.tw/images/logo_colour.svg"> 
     <meta name="twitter:title" content="優分析 - {{ isset($title) ? $title : '' }}"> 
     <meta name="twitter:description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}"> 
-    <meta name="twitter:image:width" content="1200">
-    <meta name="twitter:image:height" content="630">
+    <meta name="twitter:image:width" content="600">
+    <meta name="twitter:image:height" content="314">
     <meta name="twitter:image:src" content="https://forum.uanalyze.com.tw/images/logo_colour.svg">
     <!-- end meta -->
 
