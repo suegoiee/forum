@@ -44,7 +44,7 @@
     <meta itemprop="name" content="優分析">
     <meta itemprop="image:width" content="600">
     <meta itemprop="image:height" content="314">
-    <meta itemprop="image" content="https://s4.aconvert.com/convert/p3r68-cdx67/cbly5-n2oa0.png">
+    <meta itemprop="image" content="{{env('APP_URL')}}/images/logo.png">
     <meta itemprop="description" content="{{ isset($description) ? strip_tags($description) : '投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
     <!-- facebook -->
     <meta property="og:title" content="優分析 - {{ isset($title) ? $title : '' }}" >
@@ -52,14 +52,14 @@
     <meta property="og:url" content="{{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="314">
-    <meta property="og:image" content="https://s4.aconvert.com/convert/p3r68-cdx67/cbly5-n2oa0.png">
+    <meta property="og:image" content="{{env('APP_URL')}}/images/logo.png">
     <meta property="og:description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}" >
     <!-- twitter -->
     <meta name="twitter:title" content="優分析 - {{ isset($title) ? $title : '' }}"> 
     <meta name="twitter:description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}"> 
     <meta name="twitter:image:width" content="600">
     <meta name="twitter:image:height" content="314">
-    <meta name="twitter:image:src" content="https://s4.aconvert.com/convert/p3r68-cdx67/cbly5-n2oa0.png">
+    <meta name="twitter:image:src" content="{{env('APP_URL')}}/images/logo.png">
     <!-- end meta -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
