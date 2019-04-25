@@ -78,7 +78,7 @@
                     <div class="showTag">
                         @include('forum.threads.info.tags')
                     </div>
-                    <div style="position: absolute; margin-left: 90%; margin-top: 4%;" class="fb-share-button" >
+                    <div style="position: absolute; display: contents;" class="fb-share-button" >
                         <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                     </div>
                     
