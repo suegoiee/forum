@@ -211,7 +211,7 @@
             @if (Auth::guest())
                
                 <p class="text-center">
-                    <a href="{{ route('login') }}">登入</a> 加入討論吧!
+                    <a style="color: #ffa500;" href="{{ route('login') }}">登入</a> 加入討論吧!
                 </p>
             @endif
         </div>
