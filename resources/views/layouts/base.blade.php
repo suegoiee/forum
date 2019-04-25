@@ -47,7 +47,7 @@
     <!-- facebook -->
     <meta property="og:title" content="優分析 - {{ isset($title) ? $title : '' }}" >
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ isset($thread) ? route('thread', $thread->slug()) : route('archives', $archive->slug()) }}">
+    <meta property="og:url" content="">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image" content="https://forum.uanalyze.com.tw/images/logo_colour.svg">
