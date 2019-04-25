@@ -211,6 +211,11 @@
         .thread-info-author {
           flex: 1 1 auto;
           line-height: 1.6;
+          text-overflow: ellipsis;
+          width: 100%;
+          white-space: nowrap;
+          overflow-x: hidden;
+          overflow-y: hidden;
         }
       }
       // thread title
@@ -427,7 +432,11 @@
     }
   }
 }
-
+@media (min-width: 975px) {
+  .col-md-9 {
+    width: 74% !important;
+  }
+}
 @media (min-width: 768px) and (max-width: 1025px) {
   .chat-bg {
     padding-bottom: 2%;
@@ -490,6 +499,12 @@
               overflow-y: visible;
               height: auto !important;
             }
+          }
+        }
+        .authorName {
+          font-size: 12px;
+          .thread-info-link {
+            font-size: 15px;
           }
         }
       }

@@ -29,15 +29,18 @@
     <!-- meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <META HTTP-EQUIV="pragma" CONTENT="no-cache"> 
     <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
     <META HTTP-EQUIV="expires" CONTENT="0">
-    <meta name="Description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     @if (isset($author)) 
         <meta name="author" content="{{$author}}">
     @endif
+    <meta name="copyright" content="優分析 UAnalyze 商拓財經有限公司">
+    <meta name="url" content="https://forum.uanalyze.com.tw/forum">
+    <meta name="Description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
     <!-- google plus -->
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
     <link rel="author" href="https://forum.uanalyze.com.tw/forum/">
     <link rel="publisher" href="https://forum.uanalyze.com.tw/forum">
     <!-- google -->
@@ -51,15 +54,15 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="{{ 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'] }}">
     <meta property="og:image:width" content="600">
-    <meta property="og:image:height" content="314">
+    <meta property="og:image:height" content="315">
     <meta property="og:image" content="">
     <meta property="og:description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}" >
     <!-- twitter -->
     <meta name="twitter:title" content="優分析 - {{ isset($title) ? $title : '' }}"> 
     <meta name="twitter:description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}"> 
     <meta name="twitter:image:width" content="600">
-    <meta name="twitter:image:height" content="314">
-    <meta name="twitter:image:src" content="">
+    <meta name="twitter:image:height" content="315">
+    <meta name="twitter:image:src" content="{{env('APP_URL')}}/images/logo_colour.png">
     <!-- end meta -->
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
