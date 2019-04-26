@@ -6,11 +6,10 @@
 
     <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar" aria-label="search">
+            <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar">
         </div>
         <h2 style="text-align:center;"><b id="stockTitle"></b></h2>
         <h4 style="text-align:center;">{{$PageSubtitle}}</h4>
-        <!--p>{{$data['data']['stock_name']}}</p-->
     </div>
     <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0;"></div>
     <script>
@@ -22,6 +21,6 @@
                 var stockCode = getCookie("stockCode");
             }
             dataFactory('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/'+stockCode, false);
-        }
+        };
     </script>
 @endsection
