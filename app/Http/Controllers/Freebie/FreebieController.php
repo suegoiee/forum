@@ -8,9 +8,7 @@ class FreebieController extends Controller
 {
     public function stocksummary()
     {
-        $data = file_get_contents('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101');
-        $data = json_decode($data, true);
-        return view('freebie.stocksummary', compact('data'))->with('PageSubtitle', '個股摘要');
+        return view('freebie.stocksummary')->with('PageSubtitle', '個股摘要');
     }
     public function InstitutionalInvestorsNet()
     {
