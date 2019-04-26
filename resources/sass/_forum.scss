@@ -9,12 +9,6 @@
     border: 2px solid #e9e9e9;
   }
 }
-// overview title
-h1 {
-  color: #545454;
-  font-size: 30px;
-  font-weight: bolder;
-}
 // alert (error success warning)
 .alert {
   margin-bottom: 15px !important;
@@ -217,6 +211,11 @@ h1 {
         .thread-info-author {
           flex: 1 1 auto;
           line-height: 1.6;
+          text-overflow: ellipsis;
+          width: 100%;
+          white-space: nowrap;
+          overflow-x: hidden;
+          overflow-y: hidden;
         }
       }
       // thread title
@@ -333,11 +332,6 @@ h1 {
 .col-md-9 {
   background: #fff;
   width: 74%;
-  h1 {
-    font-size: 22px;
-    color: #393939;
-    margin-bottom: 2%;
-  }
   .panel {
     border: 2px solid #e9e9e9 !important;
     // show: thread title
@@ -438,7 +432,11 @@ h1 {
     }
   }
 }
-
+@media (min-width: 975px) {
+  .col-md-9 {
+    width: 74% !important;
+  }
+}
 @media (min-width: 768px) and (max-width: 1025px) {
   .chat-bg {
     padding-bottom: 2%;
@@ -501,6 +499,12 @@ h1 {
               overflow-y: visible;
               height: auto !important;
             }
+          }
+        }
+        .authorName {
+          font-size: 12px;
+          .thread-info-link {
+            font-size: 15px;
           }
         }
       }

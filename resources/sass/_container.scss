@@ -52,12 +52,10 @@ body {
       // title
       h2 {
         text-align: left !important;
-        font-size: 32px;
         color: #393939;
       }
       h4 {
         text-align: left !important;
-        font-size: 18px;
       }
     }
     #CanvasBaseMap {
@@ -172,6 +170,7 @@ body {
                 padding-left: 15%;
               }
               .row {
+                margin-left: 0 !important;
                 div {
                   // how many data show:label
                   #example_length,
@@ -182,6 +181,7 @@ body {
                   }
                   // report table
                   #example {
+                    width: 100% !important;
                     background: #fff;
                     box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
                     border-top: 1px solid #545454 !important;
@@ -407,7 +407,20 @@ body {
   }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+  #example_wrapper {
+    .row {
+      margin-left: 0px;
+      .col-sm-12 {
+        #example {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 770px) {
   .list-group-item,
   .list-group-item:hover {
     padding: 5px !important;
@@ -423,6 +436,28 @@ body {
   .input-group {
     .form-control {
       margin-left: 0 !important;
+    }
+  }
+  // table label
+  .table {
+    width: 100%;
+    margin: auto;
+    tbody {
+      // 損益表 table
+      #IncomeStatementLabel {
+        td {
+          padding-left: 0 !important;
+          width: 100% !important;
+        }
+      }
+    }
+  }
+  #example_wrapper {
+    .row {
+      .col-sm-12 {
+        overflow-x: scroll;
+        padding-left: 0;
+      }
     }
   }
   .container {
@@ -442,7 +477,6 @@ body {
             td {
               font-size: 14px !important;
               width: 100%;
-              padding-left: 120px !important;
               padding-bottom: 0 !important;
               padding-top: 0 !important;
               display: block;
@@ -515,7 +549,6 @@ body {
         }
         div {
           font-size: 13px;
-          overflow-x: scroll;
           .LeftButtonGroup {
             float: left;
           }

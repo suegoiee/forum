@@ -78,8 +78,8 @@
                     <div class="showTag">
                         @include('forum.threads.info.tags')
                     </div>
-                    <div style="position: absolute; margin-left: 90%; margin-top: 4%;">
-                        <a href="javascript:void(0);" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
+                    <div style="position: absolute; display: contents;" class="fb-share-button" >
+                        <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                     </div>
                     
                 </div>
@@ -90,8 +90,8 @@
 
                 <div class="thread-info-author authorName" style="text-align: right; display: inline-block; width: 100%;">
 
-                <div style="float: left;">
-                    <a href="javascript:void(0);" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
+                <div style="float: left;" class="fb-share-button" >
+                    <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                 </div>
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
                     <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="display: inline-block; padding-right:5px;">{{ $thread->author()->username() }}</a>
@@ -211,7 +211,7 @@
             @if (Auth::guest())
                
                 <p class="text-center">
-                    <a href="{{ route('login') }}">登入</a> 加入討論吧!
+                    <a style="color: #ffa500;" href="{{ route('login') }}">登入</a> 加入討論吧!
                 </p>
             @endif
         </div>

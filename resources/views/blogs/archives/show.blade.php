@@ -52,13 +52,12 @@
                     <div class="thread-info-author headLabel">
                         <a href="{{ route('blogs', $archive->slug()) }}" class="thread-info-link formTitle">{{ $archive->subject() }}</a>
                     </div>
-                    <div style="position: absolute; margin-left: 15%; margin-top: -5px;">
-                        <a href="javascript:void(0);" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
+                    <div style="float:right;">
+                        <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                     </div>
-                </div>
-
-                <div class="thread-info-author" style="display: inline-block; width: 100%;">
-                    {{ $archive->createdAt() }} 
+                    <div class="thread-info-author" style="display: inline-block; ">
+                        {{ $archive->createdAt() }} 
+                    </div>
                 </div>
 
                 <div class="panel-body forum-content">
@@ -66,7 +65,7 @@
                 </div>
 
                 <div style="float: left;">
-                    <a href="#javascript:void(0);" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
+                    <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                 </div>
                 
                 <div class="thread-info-author authorName" style="text-align: right; display: block;">                      
