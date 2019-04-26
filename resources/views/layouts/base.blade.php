@@ -41,8 +41,8 @@
     <meta name="Description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
     <!-- google plus -->
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
-    <link rel="author" href="https://forum.uanalyze.com.tw/forum/">
-    <link rel="publisher" href="https://forum.uanalyze.com.tw/forum">
+    <link rel="author" href="{{ isset($thread) ? route('profile', $thread->author()->username()) : '' }}">
+    <link rel="publisher" href="{{ isset($thread) ? route('profile', $thread->author()->username()) : '' }}">
     <!-- google -->
     <meta itemprop="name" content="優分析">
     <meta itemprop="image:width" content="600">
