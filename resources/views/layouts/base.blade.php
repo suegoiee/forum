@@ -107,8 +107,8 @@
     <title> {{ config('app.name') }} - {{ isset($title) ? $title.'  ' : '' }}</title>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <script>
         window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};
