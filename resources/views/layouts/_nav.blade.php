@@ -17,21 +17,30 @@
                     <i class="far fa-comment-alt"></i>  討論區 
                     </a>
                 </li>
-                
+                @if(isset($_COOKIE['stockCode']))
+                    @php
+                        $StockCode = $_COOKIE['stockCode'];
+                    @endphp
+                @else
+                    @php
+                        $StockCode = '1101';
+                        $_COOKIE['stockCode'] = 1101;
+                    @endphp
+                @endif
                 <li class="dropdown {{ active('freebie*') }}">
                     <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-chart-bar"></i>  股票資訊  <span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary') }}">個股摘要</a></li>
-                        <li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
+                        <li><a class="menu" href="{{ route('freebie.stockbasicinfo.stocksummary', $StockCode) }}">個股摘要</a></li>
+                        <!--li><a class="menu" href="{{ route('freebie.StockNews') }}">個股新聞</a></li>
                         <li><a class="menu" href="{{ route('freebie.DailyStockPriceAreaChartWithDisplay') }}">股價走勢</a></li>
-                        <li><a class="menu" href="{{ route('freebie.StockPriceVSEPS') }}">每股盈餘VS股價</a></li>
+                        <li><a class="menu" href="{{ route('freebie.StockPriceVSEPS') }}">每股盈餘VS股價</a></li-->
                         <li class="dropdownlist">
                             <a class="menu" href="#">月營收<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a class="menu" href="{{ route('freebie.MonthlyRevenue') }}">每月營收變化表</a></li>
-                                <li><a class="menu" href="{{ route('freebie.MonthlyRevenueVSStockPrice') }}">月營收與股價對照表</a></li>
-                                <li><a class="menu" href="{{ route('freebie.MonthlyRevenueGrowthRate') }}">月營收成長率</a></li>
-                                <li><a class="menu" href="{{ route('freebie.ShortTermRevenueVSLongTermRevenue') }}">長短期營收趨勢圖</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Table', ['InfoType' => 'MonthlyRevenue_sorting_table', 'StockCode' => $StockCode]) }}">每月營收變化表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'MonthlyRevenueVSStockPrice', 'StockCode' => $StockCode]) }}">月營收與股價對照表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'MonthlyRevenueGrowthRate', 'StockCode' => $StockCode]) }}">月營收成長率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'ShortTermRevenueVSLongTermRevenue', 'StockCode' => $StockCode]) }}">長短期營收趨勢圖</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
@@ -45,30 +54,30 @@
                         <li class="dropdownlist">
                             <a class="menu" href="#">股息政策<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a class="menu" href="{{ route('freebie.HistoricalDividendRecord') }}">歷年股息表</a></li>
-                                <li><a class="menu" href="{{ route('freebie.CashDividendPayoutRatio') }}">股息配發率</a></li>
-                                <li><a class="menu" href="{{ route('freebie.StockPriceVSYield') }}">股價 vs 殖利率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Table', ['InfoType' => 'HistoricalDividendRecord', 'StockCode' => $StockCode]) }}">歷年股息表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'CashDividendPayoutRatio', 'StockCode' => $StockCode]) }}">股息配發率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'StockPriceVSYield', 'StockCode' => $StockCode]) }}">股價 vs 殖利率</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
                             <a class="menu" href="#">籌碼資訊<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a class="menu" href="{{ route('freebie.InstitutionalInvestorsNet') }}">三大法人買賣超日報表</a></li>
-                                <li><a class="menu" href="{{ route('freebie.QFIIHoldingsVSStockPrice') }}">外資持股比率</a></li>
-                                <li><a class="menu" href="{{ route('freebie.BoardHoldingsVSStockPrice') }}">董監持股比率</a></li>
-                                <li><a class="menu" href="{{ route('freebie.ShortInterestAsOfMarginPurchase') }}">券資比</a></li>
-                                <li><a class="menu" href="{{ route('freebie.MarginPurchaseIncrease') }}">融資增減變化</a></li>
-                                <li><a class="menu" href="{{ route('freebie.MarginBalanceVSMarginUtilization') }}">融資餘額與融資使用率</a></li>
-                                <li><a class="menu" href="{{ route('freebie.ShortInterestIncrease') }}">融券增減變化</a></li>
-                                <li><a class="menu" href="{{ route('freebie.ShortInterestVSShortSellUtilization') }}">融券餘額與融券使用率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Table', ['InfoType' => 'InstitutionalInvestorsNet', 'StockCode' => $StockCode]) }}">三大法人買賣超日報表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'QFIIHoldingsVSStockPrice', 'StockCode' => $StockCode]) }}">外資持股比率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'BoardHoldingsVSStockPrice', 'StockCode' => $StockCode]) }}">董監持股比率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'ShortInterestAsOfMarginPurchase', 'StockCode' => $StockCode]) }}">券資比</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'MarginPurchaseIncrease', 'StockCode' => $StockCode]) }}">融資增減變化</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'MarginBalanceVSMarginUtilization', 'StockCode' => $StockCode]) }}">融資餘額與融資使用率</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'ShortInterestIncrease', 'StockCode' => $StockCode]) }}">融券增減變化</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'ShortInterestVSShortSellUtilization', 'StockCode' => $StockCode]) }}">融券餘額與融券使用率</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
                             <a class="menu" href="#">股票評價<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a class="menu" href="{{ route('freebie.HistoricalPer') }}">本益比評價</a></li>
-                                <li><a class="menu" href="{{ route('freebie.HistoricalPbr') }}">股價淨值比評價</a></li>
-                                <li><a class="menu" href="">股息殖利率評價</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'HistoricalPer', 'StockCode' => $StockCode]) }}">本益比評價</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'HistoricalPbr', 'StockCode' => $StockCode]) }}">股價淨值比評價</a></li>
+                                <!--li><a class="menu" href="">股息殖利率評價</a></li-->
                             </ul>
                         </li>
                         <!--li role="separator" class="divider"></li-->

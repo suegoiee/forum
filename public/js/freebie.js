@@ -11,6 +11,58 @@ var yaxis = [];
 var dataType = [];
 var rangeStart = -10;
 var rangeEnd = '';
+
+/**表格列表 */
+function drawTableB(TableData, TableTitle) {
+    console.log(TableTitle, TableData);
+    $('#example').DataTable({
+        data: TableData,
+        columns: TableTitle,
+        "order": [[0, "desc"]],
+        "pagingType": "full_numbers",
+        "oLanguage": {
+            "sInfoThousands": ",",
+            "sLengthMenu":
+                '顯示 _MENU_ 筆',
+            "sSearch":
+                '搜尋',
+            "oPaginate": {
+                "sPrevious": "<",
+                "sFirst": "|<",
+                "sNext": ">",
+                "sLast": ">|"
+            },
+            "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
+        }
+    });
+}
+
+/**畫圖表 */
+function drawChartB(title, yLabel, series) {
+    console.log(yLabel, series);
+    Highcharts.chart("canvas", {
+        title: {
+            text: title
+        }, yAxis: yLabel,
+        xAxis: {
+            type: 'category',
+            uniqueNames: true
+        },
+        series: series,
+        tooltip: {
+            borderWidth: 0,
+            formatter: function () {
+                var tmp_unit = '';
+                if (this.series.yAxis.axisTitle) {
+                    tmp_unit = this.series.yAxis.axisTitle.textStr;
+                }
+                return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
+                    dataFormat(this.y) + tmp_unit;
+            }
+        }
+    });
+}
+
 function dataFactory(stock_url, ClearCanvas) {
     stockPool(stock_url);
     var IdForCanvas = stock_url.substring(stock_url.lastIndexOf("/", stock_url.lastIndexOf("/") - 1) + 1, stock_url.lastIndexOf("/"));
@@ -236,9 +288,9 @@ function dataFormat(toFormat) {
 }
 
 /**新聞列表 */
-function drawNews(data, IdForCanvas) {
-    $("#" + IdForCanvas).width("50%");
-    $("#" + IdForCanvas).append('<ul id="lists" class="list-group"></ul><ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>');
+function drawNews(data) {
+    //$("#" + IdForCanvas).width("50%");
+    //$("#" + IdForCanvas).append('<ul id="lists" class="list-group"></ul><ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>');
     var news = [];
     for (var i in data) {
         data[i]['date'] = data[i]['date'].substring(0, data[i]['date'].lastIndexOf(" "));
@@ -855,7 +907,7 @@ Highcharts.setOptions({
         },
     },
     credits: {
-        text: '資料來源: UAnalyze',
+        text: '資料來源: 優分析',
         href: 'https://www.uanalyze.com.tw',
         style: {
             'fontSize': '11px',
