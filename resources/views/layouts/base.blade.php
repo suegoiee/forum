@@ -129,7 +129,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div id="app">
+<div id="app" style="height: 100%;">
     @include('layouts._nav')
 
     @yield('body')
