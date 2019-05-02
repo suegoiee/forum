@@ -94,7 +94,9 @@ Route::post('ckeditor/images','CkeditorImageController@store')->name('ckeditor.i
 
 // freebie
 Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function () {
-    Route::get('/stocksummary', 'FreebieController@stocksummary')->name('.stockbasicinfo.stocksummary');
+    Route::get('/stocksummary/{StockCode}', 'FreebieController@stocksummary')->name('.stockbasicinfo.stocksummary');
+    Route::get('{InfoType}/Chart/{StockCode}', 'FreebieController@Chart')->name('.Chart');
+    Route::get('{InfoType}/Table/{StockCode}', 'FreebieController@Table')->name('.Table');
     Route::get('/InstitutionalInvestorsNet', 'FreebieController@InstitutionalInvestorsNet')->name('.InstitutionalInvestorsNet');
     Route::get('/HistoricalDividendRecord', 'FreebieController@HistoricalDividendRecord')->name('.HistoricalDividendRecord');
     Route::get('/MonthlyRevenue', 'FreebieController@MonthlyRevenue')->name('.MonthlyRevenue');
