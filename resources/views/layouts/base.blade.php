@@ -193,6 +193,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         });*/
 </script>
 
+    <script type="text/javascript" src="/js/html2canvas.js"></script>
+    <script type="text/javascript">
+      //开始转换
+      function convert() {
+        html2canvas(document.querySelector("#CanvasBaseMap"),{
+            canvas: document.querySelector("#myCanvas")
+            }).then(canvas => {
+        });
+      }
+    </script>
+
 <!--end of for development-->
 
 

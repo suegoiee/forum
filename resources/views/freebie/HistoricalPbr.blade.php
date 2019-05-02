@@ -7,6 +7,7 @@
     <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar">
+            <button onclick='picture()'>列印</button>
         </div>
         <h2 style="text-align:center;"><b id="stockTitle"></b></h2>
         <h4 style="text-align:center; font-family: 'Noto Sans TC', 'Open Sans', sans-serif !important">{{$PageSubtitle}}</h4>

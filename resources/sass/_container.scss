@@ -58,6 +58,14 @@ body {
       .container {
         padding-bottom: 1%;
         background-color: #fff;
+        #CompanyInfocontainer {
+          float: left;
+          width: 50%;
+        }
+        #Newscontainer {
+          float: right;
+          width: 50%;
+        }
         div {
           width: 100%;
           div {
@@ -407,9 +415,6 @@ body {
   .forumPadding {
     padding-top: 15% !important;
   }
-  #CanvasBaseMap {
-    height: 650px !important;
-  }
   #example_wrapper {
     .row {
       margin-left: 0px;
@@ -423,11 +428,6 @@ body {
 }
 
 @media (max-width: 767px) {
-  #CanvasBaseMap {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 400px;
-  }
   .list-group-item,
   .list-group-item:hover {
     padding: 5px !important;
