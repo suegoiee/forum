@@ -420,7 +420,11 @@
   }
 }
 
-@media (max-width: 1025px) {
+@media (max-width: 1024px) {
+  .col-md-9 {
+    overflow: hidden;
+    height: auto !important;
+  }
   .forum {
     div {
       .formDrop {
@@ -429,8 +433,6 @@
         .forumTitle {
           width: 100%;
           position: relative;
-          overflow-y: scroll;
-          height: 100%;
         }
       }
     }

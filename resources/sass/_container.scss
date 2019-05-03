@@ -6,6 +6,7 @@ body,
 h1,
 h2,
 h3,
+h4,
 .h1,
 .h2,
 .h3,
@@ -35,8 +36,39 @@ body {
   background-color: #e9e9e9;
   overflow: hidden;
   .container {
+    .sideBtn {
+      z-index: 601;
+      position: fixed;
+      right: 1%;
+      bottom: 40%;
+      color: #fff;
+      border: 1px solid #ffa500;
+      background-color: #ffa500;
+      border-radius: 20px;
+      padding: 5px 10px;
+    }
+    #sideBtn {
+      .rightbtn {
+        z-index: 601;
+        position: fixed;
+        right: 4%;
+        background-color: #fff;
+        color: #ffa500;
+        font-size: 16px;
+        width: 134px;
+        padding: 5px;
+        border: none;
+      }
+      .rightbtn:hover,
+      .rightbtn:focus {
+        border: none;
+        color: #ffc04d;
+      }
+    }
     div {
       .input-group {
+        text-align: right;
+        width: 100%;
         // search stock
         .form-control {
           border: 1px solid #e9e9e9;
@@ -44,27 +76,37 @@ body {
           width: 210px;
           height: 35px;
         }
+        // print button
+        .print {
+          color: #fff;
+          font-size: 15px;
+          text-decoration: none;
+          background: #ffa500;
+          padding: 5px 10px;
+          font-weight: bold;
+        }
+        .print:hover,
+        .print:focus {
+          background-color: #ffc04d;
+        }
       }
       // title
       h2 {
-        text-align: left !important;
         color: #393939;
-      }
-      h4 {
-        text-align: left !important;
       }
     }
     #CanvasBaseMap {
       .container {
         padding-bottom: 1%;
         background-color: #fff;
-        #CompanyInfocontainer {
-          float: left;
-          width: 50%;
-        }
-        #Newscontainer {
+        .downloadSummary {
           float: right;
-          width: 50%;
+          color: #fff;
+          background-color: #ffa500;
+          padding: 5px 10px;
+          text-decoration: none;
+          margin-right: 1%;
+          margin-top: 1%;
         }
         div {
           width: 100%;
@@ -410,6 +452,18 @@ body {
     }
   }
 }
+@media (max-width: 1024px) {
+  body {
+    overflow: scroll;
+    #app {
+      #CanvasBaseMap {
+        h1 {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
 
 @media (min-width: 768px) and (max-width: 1024px) {
   .forumPadding {
@@ -593,7 +647,6 @@ body {
                 }
               }
               #example {
-                table-layout: fixed;
                 thead {
                   tr {
                     th {

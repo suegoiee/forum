@@ -1,21 +1,35 @@
 @title($PageSubtitle . (isset($subTitle) ? ' > ' . $subTitle : ''))
 
-@extends('layouts.default')
+@extends('layouts.base')
 
-@section('content')
-
+@section('body')
+<div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 5%; width:100%;">
+    <a class="sideBtn" data-toggle="collapse" href="#sideBtn" role="button" aria-expanded="false" aria-controls="sideBtn"><i class="fas fa-bars"></i></a>
+        <ul class="collapse" id="sideBtn">
+            <input class="rightbtn" style="bottom: 40%;" type="button" name="Submit" value="公司基本資料"  onclick="javascript:onInfoClick();" />
+            <input class="rightbtn" style="bottom: 36%;" type="button" name="Submit" value="個股新聞"  onclick="javascript:onNewsClick();" />
+            <input class="rightbtn" style="bottom: 32%;" type="button" name="Submit" value="股價走勢"  onclick="javascript:onPriceClick();" />
+            <input class="rightbtn" style="bottom: 28%;" type="button" name="Submit" value="每股盈餘VS股價"  onclick="javascript:onStockClick();" />
+        </ul>
     <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar" aria-label="search">
         </div>
-        <h1 style="text-align:center;">{{$PageSubtitle}}</h1>
-        <h2 style="text-align:center;"><b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b></h2>
+        <h2 style="text-align:center; margin-top: 0; margin-bottom: 1%;">{{$PageSubtitle}}</h2>
     </div>
-    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0;">
-        <div class="container">
-            <div class="container" id="CompanyInfocontainer">
+    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 670px; width:100%; margin-top: 0;">
+        <div class="container" style="background-color: #e9e9e9;">
+            <a  class="downloadSummary" onclick="convertInfo()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                @include('_partials._catchChart_modal', [
+                    'id' => 'catch',
+                ])
+            <div class="container" id="CompanyInfocontainer" style="margin:0 auto 5%;"> 
+                <h1 style="margin-top: 1%; margin-bottom: 0; font-size: 30px;">公司基本資料</h1>
+                <h2 style="margin-top: 5px; margin-bottom: 0; padding-bottom: 5px; font-size: 25px;">
+                    <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
+                </h2>
                 <div id="CompanyInfo">
-                    <table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word;">
+                    <table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word; border-top: 1px solid #545454; border-left: 1px solid #545454;">
                         <tbody id="infoTable" style="font-size:13px">
                             <tr>
                                 <td><b>公司名稱</b></td>
@@ -94,7 +108,15 @@
                     </table>
                 </div>
             </div>
-            <div class="container" id="Newscontainer">
+            <a  class="downloadSummary" onclick="convertNews()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                @include('_partials._catchChart_modal', [
+                    'id' => 'catch',
+                ])
+            <div class="container" id="Newscontainer" style="margin:5% auto;">
+                <h1 style="margin-top: 1%; margin-bottom: 0; font-size: 30px;">個股新聞</h1>
+                <h2 style="margin-top: 0; margin-bottom: 5px; padding-top:10px; padding-bottom: 5px; font-size: 25px;">
+                    <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
+                </h2>
                 <div id="News">
                     <ul id="lists" class="list-group"></ul>
                     <ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>
@@ -105,8 +127,16 @@
             <div>
                 <table class="table" style="text-align:center;"><tr id="canvasLabel"></tr></table>
             </div>
-            <div class="container">
-                <div>
+            <div class="container" style="margin:5% auto; background-color:#e9e9e9;">
+                <a style="margin-top: 3%;" class="downloadSummary" onclick="convertPrice()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                    @include('_partials._catchChart_modal', [
+                        'id' => 'catch',
+                    ])
+                <div style="background-color: #fff;" id="buttonPrice">
+                    <h1 style="padding-top: 1%; margin-bottom: 0; margin-left:15px; font-size: 30px;">股價走勢</h1>
+                    <h2 style="margin-top: 0; margin-bottom: 5px; margin-left:15px; font-size: 25px;">
+                        <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
+                    </h2>
                     <div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">
                         <button type="button" class="btn btn-default buttonLastTen ActiveChartControlButton">近十筆</button>
                         <button type="button" class="btn btn-default buttonEntire">全部</button>
@@ -126,11 +156,19 @@
                             </div>
                         </div>
                     </div>
+                    <div id="DailyStockPriceAreaChartWithDisplay"></div>
                 </div>
             </div>
-            <div id="DailyStockPriceAreaChartWithDisplay"></div>
-            <div class="container">
-                <div>
+            <div class="container" style="margin:10% auto 5%; background-color:#e9e9e9;">
+                <a style="margin-top: 3%;" class="downloadSummary" onclick="convertStock()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                    @include('_partials._catchChart_modal', [
+                        'id' => 'catch',
+                    ])
+                <div style="background-color: #fff;" id="buttonStock">
+                    <h1 style="padding-top: 1%; margin-bottom: 0;margin-left: 15px; font-size: 30px;">每股盈餘VS股價</h1>
+                    <h2 style="margin-top: 0; margin-bottom: 5px;margin-left: 15px; font-size: 25px;">
+                        <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
+                    </h2>
                     <div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">
                         <button type="button" class="btn btn-default buttonLastTen ActiveChartControlButton">近十筆</button>
                         <button type="button" class="btn btn-default buttonEntire">全部</button>
@@ -150,9 +188,9 @@
                             </div>
                         </div>
                     </div>
+                    <div id="StockPriceVSEPS"></div>
                 </div>
             </div>
-            <div id="StockPriceVSEPS"></div>
         </div>
     </div>
     <script>
@@ -168,4 +206,5 @@
             drawDisplay("StockPriceVSEPS", StockPriceVSEPS[2]);
         }
     </script>
+</div>
 @endsection
