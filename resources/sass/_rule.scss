@@ -68,6 +68,9 @@
         .ruleForm {
           .modal-body {
             padding: 0;
+            #myCanvas {
+              width: 100% !important;
+            }
           }
         }
       }

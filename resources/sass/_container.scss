@@ -64,6 +64,18 @@ body {
         border: none;
         color: #ffc04d;
       }
+      .rightbtnA {
+        bottom: 40%;
+      }
+      .rightbtnB {
+        bottom: 37%;
+      }
+      .rightbtnC {
+        bottom: 34%;
+      }
+      .rightbtnD {
+        bottom: 31%;
+      }
     }
     div {
       .input-group {
@@ -113,6 +125,7 @@ body {
           div {
             // table
             .table-bordered {
+              border: 1px solid #545454;
               tbody {
                 tr {
                   th {
@@ -479,9 +492,39 @@ body {
       }
     }
   }
+  body {
+    .container {
+      #sideBtn {
+        .rightbtn {
+          right: 6%;
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 767px) {
+  body {
+    .container {
+      #sideBtn {
+        .rightbtn {
+          right: 11%;
+        }
+        .rightbtnA {
+          bottom: 39%;
+        }
+        .rightbtnB {
+          bottom: 35%;
+        }
+        .rightbtnC {
+          bottom: 31%;
+        }
+        .rightbtnD {
+          bottom: 27%;
+        }
+      }
+    }
+  }
   .list-group-item,
   .list-group-item:hover {
     padding: 5px !important;
@@ -502,6 +545,7 @@ body {
   // table label
   .table {
     width: 100%;
+    border: none !important;
     margin: auto;
     tbody {
       // 損益表 table
@@ -598,16 +642,6 @@ body {
             }
             .btn-group {
               margin-left: 0 !important;
-            }
-          }
-        }
-        .table-bordered {
-          border-bottom: 1px solid #545454;
-          tbody {
-            tr {
-              td {
-                border-bottom: none !important;
-              }
             }
           }
         }

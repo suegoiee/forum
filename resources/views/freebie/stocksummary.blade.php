@@ -6,10 +6,10 @@
 <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 5%; width:100%;">
     <a class="sideBtn" data-toggle="collapse" href="#sideBtn" role="button" aria-expanded="false" aria-controls="sideBtn"><i class="fas fa-bars"></i></a>
         <ul class="collapse" id="sideBtn">
-            <input class="rightbtn" style="bottom: 40%;" type="button" name="Submit" value="公司基本資料"  onclick="javascript:onInfoClick();" />
-            <input class="rightbtn" style="bottom: 36%;" type="button" name="Submit" value="個股新聞"  onclick="javascript:onNewsClick();" />
-            <input class="rightbtn" style="bottom: 32%;" type="button" name="Submit" value="股價走勢"  onclick="javascript:onPriceClick();" />
-            <input class="rightbtn" style="bottom: 28%;" type="button" name="Submit" value="每股盈餘VS股價"  onclick="javascript:onStockClick();" />
+            <input class="rightbtnA rightbtn" type="button" name="Submit" value="公司基本資料"  onclick="javascript:onInfoClick();" />
+            <input class="rightbtnB rightbtn" type="button" name="Submit" value="個股新聞"  onclick="javascript:onNewsClick();" />
+            <input class="rightbtnC rightbtn" type="button" name="Submit" value="股價走勢"  onclick="javascript:onPriceClick();" />
+            <input class="rightbtnD rightbtn" type="button" name="Submit" value="每股盈餘VS股價"  onclick="javascript:onStockClick();" />
         </ul>
     <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
@@ -29,7 +29,7 @@
                     <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
                 </h2>
                 <div id="CompanyInfo">
-                    <table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word; border-top: 1px solid #545454; border-left: 1px solid #545454;">
+                    <table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word;">
                         <tbody id="infoTable" style="font-size:13px">
                             <tr>
                                 <td><b>公司名稱</b></td>
