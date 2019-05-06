@@ -51,7 +51,7 @@ body {
       .rightbtn {
         z-index: 601;
         position: fixed;
-        right: 4%;
+        right: 3%;
         background-color: #fff;
         color: #ffa500;
         font-size: 16px;
@@ -119,6 +119,9 @@ body {
           text-decoration: none;
           margin-right: 1%;
           margin-top: 1%;
+        }
+        .downfree {
+          margin-top: 3%;
         }
         div {
           width: 100%;
@@ -499,6 +502,13 @@ body {
           right: 6%;
         }
       }
+      #CanvasBaseMap {
+        .container {
+          .downfree {
+            margin-top: 4%;
+          }
+        }
+      }
     }
   }
 }
@@ -521,6 +531,13 @@ body {
         }
         .rightbtnD {
           bottom: 27%;
+        }
+      }
+      #CanvasBaseMap {
+        .container {
+          .downfree {
+            margin-top: 8%;
+          }
         }
       }
     }

@@ -128,7 +128,7 @@
                 <table class="table" style="text-align:center;"><tr id="canvasLabel"></tr></table>
             </div>
             <div class="container" style="margin:5% auto; background-color:#e9e9e9;">
-                <a style="margin-top: 3%;" class="downloadSummary" onclick="convertPrice()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                <a class="downloadSummary downfree" onclick="convertPrice()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
@@ -160,7 +160,7 @@
                 </div>
             </div>
             <div class="container" style="margin:10% auto 5%; background-color:#e9e9e9;">
-                <a style="margin-top: 3%;" class="downloadSummary" onclick="convertStock()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                <a class="downloadSummary downfree" onclick="convertStock()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
