@@ -61,7 +61,7 @@ class togeStock extends judgeValue {
                 document.getElementById('form').style.width = "50%";
                 form.style.display = "block";
                 if (moneyAll.length > 10) {
-                    form.style.height = "780px";
+                    form.style.height = "750px";
                     form.style.overflowY = "scroll";
                 }
                 this.addTd("label", "labell", "labell", "每個人的股份：", inputTdA);
