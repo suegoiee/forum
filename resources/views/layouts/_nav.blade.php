@@ -78,6 +78,7 @@
                                 <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'HistoricalPer', 'StockCode' => $StockCode]) }}">本益比評價</a></li>
                                 <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'HistoricalPbr', 'StockCode' => $StockCode]) }}">股價淨值比評價</a></li>
                                 <!--li><a class="menu" href="">股息殖利率評價</a></li-->
+                                <li><a class="menu" href="{{ route('freebie.Report', ['InfoType' => 'IncomeStatement', 'StockCode' => $StockCode]) }}">報表測試</a></li>
                             </ul>
                         </li>
                         <!--li role="separator" class="divider"></li-->

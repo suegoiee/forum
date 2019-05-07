@@ -101,7 +101,10 @@
                 </div>
             </div>
         </div>
-        <div>
+        
+        <div class="container" id="DailyStockPriceAreaChartWithDisplaycontainer" style="padding-left: 0; padding-right: 0;"></div>
+        <div class="container" id="StockPriceVSEPScontainer" style="padding-left: 0; padding-right: 0;"></div>
+        <!--div>
             <div>
                 <table class="table" style="text-align:center;"><tr id="canvasLabel"></tr></table>
             </div>
@@ -153,7 +156,7 @@
                 </div>
             </div>
             <div id="StockPriceVSEPS"></div>
-        </div>
+        </div-->
     </div>
     <script>
         window.onload=function () {
@@ -162,10 +165,13 @@
             drawNews(NewsData);
             var DailyStockPriceAreaChartWithDisplay = @json($DailyStockPriceAreaChartWithDisplay);
             var StockPriceVSEPS = @json($StockPriceVSEPS);
-            drawChart("DailyStockPriceAreaChartWithDisplay", '', DailyStockPriceAreaChartWithDisplay[1], DailyStockPriceAreaChartWithDisplay[0]);
-            drawDisplay("DailyStockPriceAreaChartWithDisplay", DailyStockPriceAreaChartWithDisplay[2]);
-            drawChart("StockPriceVSEPS", '', StockPriceVSEPS[1], StockPriceVSEPS[0]);
-            drawDisplay("StockPriceVSEPS", StockPriceVSEPS[2]);
+            var canvasId = @json($url);
+            var canvasId2 = @json($url2);
+            //console.log(chartData);
+            dataFactoryC(DailyStockPriceAreaChartWithDisplay, canvasId, false);
+            dataFactoryC(StockPriceVSEPS, canvasId2, false);
+            //drawChart("StockPriceVSEPS", '', StockPriceVSEPS[1], StockPriceVSEPS[0]);
+            //drawDisplay("StockPriceVSEPS", StockPriceVSEPS[2]);
         }
     </script>
 @endsection

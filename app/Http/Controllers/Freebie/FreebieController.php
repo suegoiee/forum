@@ -17,10 +17,11 @@ class FreebieController extends Controller
         $CompanyInfo = json_decode($CompanyInfo, true);
         $News = json_decode($News, true);
         $DailyStockPriceAreaChartWithDisplay = json_decode($DailyStockPriceAreaChartWithDisplay, true);
-        $DailyStockPriceAreaChartWithDisplay = $this->seriesGenerator($DailyStockPriceAreaChartWithDisplay, -10);
+        $url = env('CronAPI').'DailyStockPriceAreaChartWithDisplay/'.$stockCode;
+        $url2 = env('CronAPI').'StockPriceVSEPS/'.$stockCode;
+        //$DailyStockPriceAreaChartWithDisplay = $this->seriesGenerator($DailyStockPriceAreaChartWithDisplay, -10);
         $StockPriceVSEPS = json_decode($StockPriceVSEPS, true);
-        $StockPriceVSEPS = $this->seriesGenerator($StockPriceVSEPS, -10);
-        return view('freebie.stocksummary', compact('CompanyInfo', 'News', 'DailyStockPriceAreaChartWithDisplay', 'StockPriceVSEPS'))->with('PageSubtitle', '個股摘要');
+        return view('freebie.stocksummary', compact('CompanyInfo', 'News', 'DailyStockPriceAreaChartWithDisplay', 'StockPriceVSEPS', 'url', 'url2'))->with('PageSubtitle', '個股摘要');
     }
     public function Chart()
     {
@@ -43,6 +44,19 @@ class FreebieController extends Controller
         $stock_code = $data['data']['stock_code'];
         $data = $this->seriesGenerator($data, null);
         return view('freebie.Table', compact('data', 'stock_name', 'stock_code'))->with('PageSubtitle', '表格');
+    }
+    public function Report()
+    {
+        $stockCode = request()->route('StockCode');
+        $InfoType = request()->route('InfoType');
+        $stock_name = '測試';
+        $stock_code = '123';
+        $url = env('CronAPI').$InfoType.'/'.$stockCode;
+        $data = file_get_contents($url);
+        $data = json_decode($data, true);
+        $data = $this->seriesGenerator($data, -10);
+        $sideTable = $data[3];
+        return view('freebie.Report', compact('data', 'stock_name', 'stock_code', 'sideTable', 'sideTable2', 'url'))->with('PageSubtitle', '表格');
     }
     public function InstitutionalInvestorsNet()
     {
@@ -156,6 +170,7 @@ class FreebieController extends Controller
         $result = array();
         $chart_data = array();
         $display = array();
+        $SideTable = array();
         /**純圖表 */
         if ($data['data']['type'] == 'chart') {
             $TmpData = $data['data']['data'];
@@ -174,6 +189,9 @@ class FreebieController extends Controller
         else if ($data['data']['type'] == 'sorting_table') {
             $chart_data = $this->TableData($data['data']);
             return $chart_data;
+        }
+        else if ($data['data']['type'] == 'table_chart') {
+            $SideTable = $data;
         }
         $refLine = $data['data']['refline'] ?? '';
         if ($refLine != '') {
@@ -217,6 +235,7 @@ class FreebieController extends Controller
         array_push($result, $seriestData);
         array_push($result, $yLabel);
         array_push($result, $display);
+        array_push($result, $SideTable);
         return $result;
         /*drawChart(IdForCanvas, title, yLabel, seriestData);
         drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable);
@@ -342,6 +361,41 @@ class FreebieController extends Controller
         }
         $compare = array($TableTitle, $TableData);
         return $compare;
+    }
+
+    function FindChild($data){
+        $tmp = array();
+        if(array_key_exists('Child', $data)){
+            $tmp = $data['Child'];
+            foreach($tmp as $key => $value2){
+                $tmp[$key] = array();
+            }
+            $tmp = $this->FindChild($tmp);
+        }
+        else{
+            foreach($data as $key => $value){
+                array_push();
+                $tmp[$key] = $key;
+            }
+        }
+        return $tmp;
+            /*else{
+                if(array_key_exists('Combo', $value)){
+                    foreach($value2['Combo'] as $key3 => $value3){
+                        //$SideTable[$key][$key2] = $value3;
+                        array_push($SideTable[$key][$key2], $value3);
+                        //$value3 = $this->DataStandardization($value3);
+                        //array_push($SideTable[$key], $value3);
+                    }
+                }
+                else{
+                    $SideTable[$key][$key2] = $value2;
+                }
+            }*/
+    }
+
+    function ReportData($data){
+        return $data;
     }
 }
 ?>
