@@ -17,21 +17,22 @@ class FreebieController extends Controller
         $CompanyInfo = json_decode($CompanyInfo, true);
         $News = json_decode($News, true);
         $DailyStockPriceAreaChartWithDisplay = json_decode($DailyStockPriceAreaChartWithDisplay, true);
-        $DailyStockPriceAreaChartWithDisplay = $this->seriesGenerator($DailyStockPriceAreaChartWithDisplay, -10);
+        $url = env('CronAPI').'DailyStockPriceAreaChartWithDisplay/'.$stockCode;
+        $url2 = env('CronAPI').'StockPriceVSEPS/'.$stockCode;
+        //$DailyStockPriceAreaChartWithDisplay = $this->seriesGenerator($DailyStockPriceAreaChartWithDisplay, -10);
         $StockPriceVSEPS = json_decode($StockPriceVSEPS, true);
-        $StockPriceVSEPS = $this->seriesGenerator($StockPriceVSEPS, -10);
-        return view('freebie.stocksummary', compact('CompanyInfo', 'News', 'DailyStockPriceAreaChartWithDisplay', 'StockPriceVSEPS'))->with('PageSubtitle', '個股摘要');
+        return view('freebie.stocksummary', compact('CompanyInfo', 'News', 'DailyStockPriceAreaChartWithDisplay', 'StockPriceVSEPS', 'url', 'url2'))->with('PageSubtitle', '個股摘要');
     }
     public function Chart()
     {
         $stockCode = request()->route('StockCode');
         $InfoType = request()->route('InfoType');
-        $data = file_get_contents(env('CronAPI').$InfoType.'/'.$stockCode);
+        $url = env('CronAPI').$InfoType.'/'.$stockCode;
+        $data = file_get_contents($url);
         $data = json_decode($data, true);
         $stock_name = $data['data']['stock_name'];
         $stock_code = $data['data']['stock_code'];
-        $data = $this->seriesGenerator($data, -10);
-        return view('freebie.Chart', compact('data', 'stock_name', 'stock_code'))->with('PageSubtitle', '圖表');
+        return view('freebie.Chart', compact('data', 'stock_name', 'stock_code', 'url'))->with('PageSubtitle', '圖表');
     }
     public function Table()
     {
@@ -42,99 +43,18 @@ class FreebieController extends Controller
         $stock_name = $data['data']['stock_name'];
         $stock_code = $data['data']['stock_code'];
         $data = $this->seriesGenerator($data, null);
-        return view('freebie.Table', compact('data', 'stock_name', 'stock_code'))->with('PageSubtitle', '表格');
+        return view('freebie.Table', compact('data', 'stock_name', 'stock_code', 'url'))->with('PageSubtitle', '表格');
     }
-    public function InstitutionalInvestorsNet()
+    public function Report()
     {
-        return view('freebie.InstitutionalInvestorsNet')->with('PageSubtitle', '三大法人買賣超日報表');
-    }
-    public function HistoricalDividendRecord()
-    {
-        return view('freebie.HistoricalDividendRecord')->with('PageSubtitle', '歷年股息表');
-    }
-    public function MonthlyRevenue()
-    {
-        return view('freebie.MonthlyRevenue')->with('PageSubtitle', '月營收變化表');
-    }
-    public function MonthlyRevenueGrowthRate()
-    {
-        return view('freebie.MonthlyRevenueGrowthRate')->with('PageSubtitle', '月營收成長率');
-    }
-    public function ShortTermRevenueVSLongTermRevenue()
-    {
-        return view('freebie.ShortTermRevenueVSLongTermRevenue')->with('PageSubtitle', '長短期營收趨勢圖');
-    }
-    public function BoardHoldingsVSStockPrice()
-    {
-        return view('freebie.BoardHoldingsVSStockPrice')->with('PageSubtitle', '董監持股比率');
-    }
-    public function QFIIHoldingsVSStockPrice()
-    {
-        return view('freebie.QFIIHoldingsVSStockPrice')->with('PageSubtitle', '外資持股比例');
-    }
-    public function ShortInterestAsOfMarginPurchase()
-    {
-        return view('freebie.ShortInterestAsOfMarginPurchase')->with('PageSubtitle', '券資比');
-    }
-    public function MarginBalanceVSMarginUtilization()
-    {
-        return view('freebie.MarginBalanceVSMarginUtilization')->with('PageSubtitle', '融資餘額與融資使用率');
-    }
-    public function MarginPurchaseIncrease()
-    {
-        return view('freebie.MarginPurchaseIncrease')->with('PageSubtitle', '融資增減變化');
-    }
-    public function MonthlyRevenueVSStockPrice()
-    {
-        return view('freebie.MonthlyRevenueVSStockPrice')->with('PageSubtitle', '月營收與股價對照表');
-    }
-    public function CashDividendPayoutRatio()
-    {
-        return view('freebie.CashDividendPayoutRatio')->with('PageSubtitle', '股息配發率');
-    }
-    public function StockPriceVSYield()
-    {
-        return view('freebie.StockPriceVSYield')->with('PageSubtitle', '股價 VS 殖利率');
-    }
-    public function HistoricalPer()
-    {
-        return view('freebie.HistoricalPer')->with('PageSubtitle', '本益比走勢圖');
-    }
-    public function HistoricalPbr()
-    {
-        return view('freebie.HistoricalPbr')->with('PageSubtitle', '股價淨值比走勢圖');
-    }
-    public function ShortInterestIncrease()
-    {
-        return view('freebie.ShortInterestIncrease')->with('PageSubtitle', '融券增減變化');
-    }
-    public function ShortInterestVSShortSellUtilization()
-    {
-        return view('freebie.ShortInterestVSShortSellUtilization')->with('PageSubtitle', '融券餘額與融券使用率');
-    }
-    public function StatementOfFinancialPosition()
-    {
-        return view('freebie.StatementOfFinancialPosition')->with('PageSubtitle', '資產負債表');
-    }
-    public function IncomeStatement()
-    {
-        return view('freebie.IncomeStatement')->with('PageSubtitle', '損益表');
-    }
-    public function CashFlows()
-    {
-        return view('freebie.CashFlows')->with('PageSubtitle', '現金流量表');
-    }
-    public function StockNews()
-    {
-        return view('freebie.StockNews')->with('PageSubtitle', '個股新聞');
-    }
-    public function DailyStockPriceAreaChartWithDisplay()
-    {
-        return view('freebie.DailyStockPriceAreaChartWithDisplay')->with('PageSubtitle', '股價走勢');
-    }
-    public function StockPriceVSEPS()
-    {
-        return view('freebie.StockPriceVSEPS')->with('PageSubtitle', '每股盈餘VS股價');
+        $stockCode = request()->route('StockCode');
+        $InfoType = request()->route('InfoType');
+        $url = env('CronAPI').$InfoType.'/'.$stockCode;
+        $data = file_get_contents($url);
+        $data = json_decode($data, true);
+        $stock_name = $data['data']['stock_name'];
+        $stock_code = $data['data']['stock_code'];
+        return view('freebie.Report', compact('data', 'stock_name', 'stock_code', 'url'))->with('PageSubtitle', '報表');
     }
     function refLineGenerator($data) {
         $tmp_refLine = array();
@@ -156,6 +76,7 @@ class FreebieController extends Controller
         $result = array();
         $chart_data = array();
         $display = array();
+        $SideTable = array();
         /**純圖表 */
         if ($data['data']['type'] == 'chart') {
             $TmpData = $data['data']['data'];
@@ -174,6 +95,9 @@ class FreebieController extends Controller
         else if ($data['data']['type'] == 'sorting_table') {
             $chart_data = $this->TableData($data['data']);
             return $chart_data;
+        }
+        else if ($data['data']['type'] == 'table_chart') {
+            $SideTable = $data;
         }
         $refLine = $data['data']['refline'] ?? '';
         if ($refLine != '') {
@@ -217,6 +141,7 @@ class FreebieController extends Controller
         array_push($result, $seriestData);
         array_push($result, $yLabel);
         array_push($result, $display);
+        array_push($result, $SideTable);
         return $result;
         /*drawChart(IdForCanvas, title, yLabel, seriestData);
         drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable);
@@ -342,6 +267,41 @@ class FreebieController extends Controller
         }
         $compare = array($TableTitle, $TableData);
         return $compare;
+    }
+
+    function FindChild($data){
+        $tmp = array();
+        if(array_key_exists('Child', $data)){
+            $tmp = $data['Child'];
+            foreach($tmp as $key => $value2){
+                $tmp[$key] = array();
+            }
+            $tmp = $this->FindChild($tmp);
+        }
+        else{
+            foreach($data as $key => $value){
+                array_push();
+                $tmp[$key] = $key;
+            }
+        }
+        return $tmp;
+            /*else{
+                if(array_key_exists('Combo', $value)){
+                    foreach($value2['Combo'] as $key3 => $value3){
+                        //$SideTable[$key][$key2] = $value3;
+                        array_push($SideTable[$key][$key2], $value3);
+                        //$value3 = $this->DataStandardization($value3);
+                        //array_push($SideTable[$key], $value3);
+                    }
+                }
+                else{
+                    $SideTable[$key][$key2] = $value2;
+                }
+            }*/
+    }
+
+    function ReportData($data){
+        return $data;
     }
 }
 ?>

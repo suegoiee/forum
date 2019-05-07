@@ -6,10 +6,10 @@
 <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 5%; width:100%;">
     <a class="sideBtn" data-toggle="collapse" href="#sideBtn" role="button" aria-expanded="false" aria-controls="sideBtn"><i class="fas fa-bars"></i></a>
         <ul class="collapse" id="sideBtn">
-            <input class="rightbtnA rightbtn" type="button" name="Submit" value="公司基本資料"  onclick="javascript:onInfoClick();" />
-            <input class="rightbtnB rightbtn" type="button" name="Submit" value="個股新聞"  onclick="javascript:onNewsClick();" />
-            <input class="rightbtnC rightbtn" type="button" name="Submit" value="股價走勢"  onclick="javascript:onPriceClick();" />
-            <input class="rightbtnD rightbtn" type="button" name="Submit" value="每股盈餘VS股價"  onclick="javascript:onStockClick();" />
+            <li class="rightbtnA rightbtn" type="button" name="Submit" value="CompanyInfocontainer"> 公司基本資料 </li>
+            <li class="rightbtnB rightbtn" type="button" name="Submit" value="Newscontainer"> 個股新聞 </li>
+            <li class="rightbtnC rightbtn" type="button" name="Submit" value="DailyStockPriceAreaChartWithDisplayOuter"> 股價走勢 </li>
+            <li class="rightbtnD rightbtn" type="button" name="Submit" value="StockPriceVSEPSOuter"> 每股盈餘VS股價 </li>
         </ul>
     <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
@@ -19,7 +19,7 @@
     </div>
     <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 670px; width:100%; margin-top: 0;">
         <div class="container" style="background-color: #e9e9e9;">
-            <a  class="downloadSummary" onclick="convertInfo()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+            <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])
@@ -108,7 +108,7 @@
                     </table>
                 </div>
             </div>
-            <a  class="downloadSummary" onclick="convertNews()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+            <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])
@@ -122,74 +122,19 @@
                     <ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>
                 </div>
             </div>
-        </div>
-        <div>
-            <div>
-                <table class="table" style="text-align:center;"><tr id="canvasLabel"></tr></table>
-            </div>
-            <div class="container" style="margin:5% auto; background-color:#e9e9e9;">
-                <a class="downloadSummary downfree" onclick="convertPrice()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+            <div class="container" style="margin:5% auto;">
+                <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
-                <div style="background-color: #fff;" id="buttonPrice">
-                    <h1 style="padding-top: 1%; margin-bottom: 0; margin-left:15px; font-size: 30px;">股價走勢</h1>
-                    <h2 style="margin-top: 0; margin-bottom: 5px; margin-left:15px; font-size: 25px;">
-                        <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
-                    </h2>
-                    <div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default buttonLastTen ActiveChartControlButton">近十筆</button>
-                        <button type="button" class="btn btn-default buttonEntire">全部</button>
-                        <button type="button" class="btn btn-default buttonCustomize" data-toggle="collapse" data-target="#customizeRange">自訂</button>
-                        <div id="customizeRange" class="collapse">
-                            <div class="timeS">
-                                <label>從 ： </label>
-                                <div class="select">
-                                    <select class="rangeStartSelect"></select>
-                                </div>
-                            </div>
-                            <div class="timeE">
-                                <label>至 ： </label>
-                                <div class="select">
-                                    <select class="rangeEndSelect"></select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="DailyStockPriceAreaChartWithDisplay"></div>
-                </div>
+                <div class="container" id="DailyStockPriceAreaChartWithDisplayOuter"></div>
             </div>
-            <div class="container" style="margin:10% auto 5%; background-color:#e9e9e9;">
-                <a class="downloadSummary downfree" onclick="convertStock()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+            <div class="container" style="margin:5% auto;">
+                <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
-                <div style="background-color: #fff;" id="buttonStock">
-                    <h1 style="padding-top: 1%; margin-bottom: 0;margin-left: 15px; font-size: 30px;">每股盈餘VS股價</h1>
-                    <h2 style="margin-top: 0; margin-bottom: 5px;margin-left: 15px; font-size: 25px;">
-                        <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
-                    </h2>
-                    <div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">
-                        <button type="button" class="btn btn-default buttonLastTen ActiveChartControlButton">近十筆</button>
-                        <button type="button" class="btn btn-default buttonEntire">全部</button>
-                        <button type="button" class="btn btn-default buttonCustomize" data-toggle="collapse" data-target="#customizeRange">自訂</button>
-                        <div id="customizeRange" class="collapse">
-                            <div class="timeS">
-                                <label>從 ： </label>
-                                <div class="select">
-                                    <select class="rangeStartSelect"></select>
-                                </div>
-                            </div>
-                            <div class="timeE">
-                                <label>至 ： </label>
-                                <div class="select">
-                                    <select class="rangeEndSelect"></select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="StockPriceVSEPS"></div>
-                </div>
+                <div class="container" id="StockPriceVSEPSOuter"></div>
             </div>
         </div>
     </div>
@@ -200,10 +145,10 @@
             drawNews(NewsData);
             var DailyStockPriceAreaChartWithDisplay = @json($DailyStockPriceAreaChartWithDisplay);
             var StockPriceVSEPS = @json($StockPriceVSEPS);
-            drawChart("DailyStockPriceAreaChartWithDisplay", '', DailyStockPriceAreaChartWithDisplay[1], DailyStockPriceAreaChartWithDisplay[0]);
-            drawDisplay("DailyStockPriceAreaChartWithDisplay", DailyStockPriceAreaChartWithDisplay[2]);
-            drawChart("StockPriceVSEPS", '', StockPriceVSEPS[1], StockPriceVSEPS[0]);
-            drawDisplay("StockPriceVSEPS", StockPriceVSEPS[2]);
+            var canvasId = @json($url);
+            var canvasId2 = @json($url2);
+            dataFactoryC(DailyStockPriceAreaChartWithDisplay, canvasId, true);
+            dataFactoryC(StockPriceVSEPS, canvasId2, true);
         }
     </script>
 </div>
