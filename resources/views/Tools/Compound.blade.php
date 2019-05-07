@@ -37,7 +37,7 @@
 			</p>
 			<p class="resultAll">	
 				年複合成長率
-				<input type="text" class="rate" id="result" disabled></input>
+				<input type="text" class="rate" id="result" disabled/>
 			</p>
 		</fieldset>
 	</form>

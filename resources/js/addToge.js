@@ -1,6 +1,6 @@
 // 買股公式
 class togeStock extends judgeValue {
-    constructor(numberAll, msgAll, question, nameAll, moneyAll, inputTdA, inputTdB, inputTdC, printAll) {
+    constructor(numberAll, msgAll, question, nameAll, moneyAll, inputTdA, inputTdB, inputTdC, printAll, form) {
         super(numberAll, msgAll);
         this.question = question;
         this.nameAll = Array();
@@ -11,6 +11,7 @@ class togeStock extends judgeValue {
         this.printAll = printAll;
         this.addTd = this.addTd.bind(this);
         this.del = this.del.bind(this);
+        this.form = form;
     }
 
 
@@ -56,6 +57,13 @@ class togeStock extends judgeValue {
                     sumAll += valueAll;
                 }
 
+                document.getElementById('form').style.cssFloat = "left";
+                document.getElementById('form').style.width = "50%";
+                form.style.display = "block";
+                if (moneyAll.length > 10) {
+                    form.style.height = "780px";
+                    form.style.overflowY = "scroll";
+                }
                 this.addTd("label", "labell", "labell", "每個人的股份：", inputTdA);
                 this.addTd("label", "labell", "labell", "每個人的獲利：", inputTdB);
                 this.addTd("label", "labell", "labell", "每個人可得到：", inputTdC);
@@ -97,6 +105,9 @@ class togeStock extends judgeValue {
             this.del(inputTdB, 0);
             this.del(inputTdC, 0);
             this.del(printAll, 0);
+            document.getElementById('form').style.width = "100%";
+            document.getElementById('form').style.cssFloat = "none";
+            form.style.display = "none";
         }
     }
 }

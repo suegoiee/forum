@@ -12,7 +12,7 @@
                     請輸入過去n年的現金股息
                 </label>
             </p>
-            <p id="question">
+            <p id="question" style="text-align: left;">
             </p> 
             <p>
                 <button type="button" id="add">新增一年的現金股息</button>

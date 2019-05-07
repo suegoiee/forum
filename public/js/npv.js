@@ -1,6 +1,6 @@
 // npv計算公式 和 deposit計算公式
 class npvCal extends judgeValue {
-    constructor(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, npvv) {
+    constructor(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, npvv, form) {
         super(numberAll, msgAll);
         this.moneyAll = Array();
         this.questionAll = Array();
@@ -13,6 +13,7 @@ class npvCal extends judgeValue {
         this.del = this.del.bind(this);
         this.clearValue = this.clearValue.bind(this);
         this.clearVal = this.clearVal.bind(this);
+        this.form = form;
     }
 
     // 增加input
@@ -46,10 +47,13 @@ class npvCal extends judgeValue {
 
                 if (npv.value != "") {
                     this.del(inputTd, 1);
-                    this.del(npvv, 4);
+                    this.del(npvv, 3);
                     npv.value = "";
                 }
 
+                document.getElementById('form').style.cssFloat = "left";
+                document.getElementById('form').style.width = "50%";
+                form.style.display = "block";
                 this.addTd("tr", "lab", "lab", "", inputTd);
                 this.addTd("th", "year", "year", "年分", inputTd);
                 this.addTd("th", "fac", "fac", "現值因子", inputTd);
@@ -109,9 +113,12 @@ class npvCal extends judgeValue {
             // 刪除新增的子節點
             this.del(questionAll, 1);
             this.del(inputTd, 1);
-            this.del(npvv, 4);
+            this.del(npvv, 3);
 
             this.yearNPV = 1;
+            document.getElementById('form').style.width = "100%";
+            document.getElementById('form').style.cssFloat = "none";
+            form.style.display = "none";
         }
     }
 

@@ -12,16 +12,16 @@
 				<label>
 					買進/賣出成交價
 				</label>
-				<input type="text" min="1" maxlength="10" /> 
+				<input type="text" name="value" min="1" maxlength="10" /> 
 				<span>元</span>
 				<h4 id="msgA"></h4> 
 			</p>
 			<p>	
 				<label>
 					成交股數 
-					<font class="small">(註: 1張=1,000股)</font>
+					<span class="small">(註: 1張=1,000股)</span>
 				</label>
-				<input type="text" min="0" maxlength="10"/>
+				<input type="text" name="value" min="1" maxlength="10"/>
 				<span>%</span>
 				<h4 id="msgA"></h4>  
 			</p>
@@ -29,7 +29,7 @@
 				<label>
 					電子下單券商手續費打幾折
 				</label>
-				<input type="text" min="0" maxlength="10"/> 
+				<input type="text" name="value" min="1" maxlength="10"/> 
 				<span>折</span>
 				<h4 id="msgA"></h4>   
 			</p>
@@ -47,7 +47,7 @@
 	</form>
 </div>
 	<script>
-		let numberAll = document.getElementsByTagName('input');
+		let numberAll = document.getElementsByName('value');
 		let msgAll = document.getElementsByTagName('h4');
 		let moneyAll = document.getElementById('tableRes');
         window.onload=function () {

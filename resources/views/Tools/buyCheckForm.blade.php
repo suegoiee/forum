@@ -4,12 +4,12 @@
 
 @section('content')
 <div class="container" style="margin-bottom: 2%;">
-    <form class="col-sm-12">
+    <form class="col-sm-12" style="display: block;" id="form">
         <fieldset>
             <h3>股票買進檢查表</h3>
             <h5>(請勾選每一個題目)</h5>
             <br />
-            <ol style="line-height: 20px; overflow-y: scroll; height: 450px;">
+            <ol style="line-height: 20px; overflow-y: scroll; height: 550px;">
                 <li>是否了解公司產品用途，且市佔率在該產業前3名?<br/>
                     <input type="radio" class="radioAll" name="getA" value="1">是 &nbsp;
                     <input type="radio" class="radioAll" name="getA" value="0">否
@@ -75,6 +75,10 @@
                 <button type="button" id="checkAll">檢查</button>
                 <button type="button" id="clear">重新填選</button>
             </p>
+        </fieldset>
+    </form>
+    <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
+        <fieldset>
             <table id="result">
                 <label class="resultAll"></label>
                 <p></p>
@@ -86,9 +90,10 @@
         let radAll = document.querySelectorAll('.radioAll');
         let res = document.querySelector('.resultAll');
         let resAll = document.getElementById('result');
+        let form = document.getElementById("formStyle");
 
         window.onload=function () {
-        let valueAll = new checkRad(radAll, res, resAll);
+        let valueAll = new checkRad(radAll, res, resAll,form);
         valueAll.cheChecked();
         valueAll.clearAll();
         }

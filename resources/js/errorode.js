@@ -55,5 +55,4 @@ class judgeValue {
         }
         return true;
     }
-    
 }

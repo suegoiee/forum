@@ -330,7 +330,7 @@
 // forum -show
 .col-md-9 {
   overflow-y: scroll;
-  height: 700px;
+  height: 670px;
   background: #fff;
   width: 74%;
   .panel {
@@ -443,7 +443,7 @@
     width: 74% !important;
   }
 }
-@media (min-width: 768px) and (max-width: 1025px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .chat-bg {
     padding-bottom: 2%;
     padding-top: 1%;

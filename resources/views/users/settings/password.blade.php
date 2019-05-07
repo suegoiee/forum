@@ -35,7 +35,7 @@
                 @endFormGroup
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 col-md-6" style="padding-top:2%;">
+                    <div style="padding-top:2%; text-align: center;">
                         {!! Form::submit('儲存', ['class' => 'btn btn-primary save']) !!}
                     </div>
                 </div>

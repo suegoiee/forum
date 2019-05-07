@@ -203,7 +203,7 @@
 
                         {!! Form::hidden('replyable_id', $thread->id()) !!}
                         {!! Form::hidden('replyable_type', 'threads') !!}
-                        {!! Form::submit('留言', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%; margin-bottom:2%;' ]) !!}
+                        {!! Form::submit('留言', ['class' => 'btn btn-primary btn-block','id' => 'btnReply' ,'style' => 'width:auto !important; margin-top:2%; margin-bottom:2%; margin-left: auto;' ]) !!}
                     {!! Form::close() !!}
                 @endif
             @endcan

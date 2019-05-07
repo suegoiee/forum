@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form class="col-sm-12">
+    <form class="col-sm-12" style="display: block;" id="form">
         <fieldset>
             <h3>兩階段 現金流折現模型 DCF</h3>
             <h5>(企業價值=股東能從企業拿回多少現金流量的現值總和)</h5>
@@ -70,13 +70,14 @@
                 <button type="button" class="cal" id="check">計算</button>
                 <button type="button" id="clear">清除</button>
             </p>
-            <p>
-                <table id="tableResA">
-                </table>
-            </p>
-            <p>
-                <table id="tableResB"></table>
-            </p>
+        </fieldset>
+    </form>
+    <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%; overflow-y: auto; height: 545px;">
+        <fieldset>
+            <table id="tableResA">
+            </table>
+            <table id="tableResB">
+            </table>
         </fieldset>
     </form>
 </div>
@@ -85,9 +86,10 @@
         let msgAll = document.getElementsByTagName('h4');
         let resAll = document.getElementById('tableResA');
         let ress = document.getElementById('tableResB');
+        let form = document.getElementById("formStyle");
 
         window.onload=function () {
-            let valueAll = new calBuffett(numberAll, msgAll, resAll, ress);
+            let valueAll = new calBuffett(numberAll, msgAll, resAll, ress.form);
             valueAll.depoCal();
             valueAll.clearEle();
         }

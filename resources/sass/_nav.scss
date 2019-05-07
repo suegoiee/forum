@@ -123,6 +123,9 @@
     width: 100%;
     .widthNav {
       width: 100%;
+      .navbar-collapse {
+        width: 768px;
+      }
       div {
         .navbar-nav {
           padding-top: 1%;
@@ -131,7 +134,7 @@
           width: 150px !important;
         }
         .navbar-right {
-          margin-right: 0 !important;
+          margin-right: 0% !important;
           .dropdown {
             ul {
               li {

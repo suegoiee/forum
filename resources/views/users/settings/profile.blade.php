@@ -50,7 +50,7 @@
                 @endFormGroup
 
                 <div class="form-group">
-                    <div class="col-md-offset-3 ">
+                    <div style="text-align: center;">
                         {!! Form::submit('儲存', ['class' => 'btn btn-primary']) !!}
                     </div>
                 </div>

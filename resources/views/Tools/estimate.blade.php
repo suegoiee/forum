@@ -12,7 +12,7 @@
 				<label>
 					目前公司年營收＝
 				</label>
-				<input type="text" min="1" maxlength="10" /> 
+				<input type="text" name="value" min="1" maxlength="10" /> 
 				<span>億元</span>
 				<h4 id="msgA"></h4> 
 			</p>
@@ -20,7 +20,7 @@
 				<label>
 					公司所處的產業整體產值＝
 				</label>
-				<input type="text" min="0" maxlength="10"/>
+				<input type="text" name="value" min="1" maxlength="10"/>
 				<span>億元</span>
 				<h4 id="msgA"></h4>  
 			</p>
@@ -28,7 +28,7 @@
 				<label>
 					該產業的年成長率
 				</label>
-				<input type="text" min="0" maxlength="10"/> 
+				<input type="text" name="value" min="1" maxlength="10"/> 
 				<span>％</span>
 				<h4 id="msgA"></h4>   
 			</p>
@@ -36,7 +36,7 @@
 				<label>
 					請預估：<br/>5年後公司市佔率會是多少
 				</label>
-				<input type="text" min="0" maxlength="10"/> 
+				<input type="text" name="value" min="1" maxlength="10"/> 
 				<span>％</span>
 				<h4 id="msgA"></h4>   
 			</p>
@@ -44,7 +44,7 @@
 				<label>
 					請預估：<br/>10年後公司市佔率會是多少
 				</label>
-				<input type="text" min="0" maxlength="10"/> 
+				<input type="text" name="value" min="1" maxlength="10"/> 
 				<span>％</span>
 				<h4></h4>   
 			</p>
@@ -64,13 +64,13 @@
 </div>
 
 	<script type="text/javascript">
-		let numberAll = document.getElementsByTagName('input');
+		let numberAll = document.getElementsByName('value');
 		let msgAll = document.getElementsByTagName('h4');
 		let moneyAll = document.getElementById('tableRes');
 		
 		window.onload=function () {
 			let valueAll = new calFee(numberAll,msgAll,moneyAll);
-			valueAll.EstCal();
+			valueAll.estCal();
 			valueAll.clearAll();
     	}
 	</script>
