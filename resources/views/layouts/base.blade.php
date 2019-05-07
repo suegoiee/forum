@@ -11,7 +11,7 @@
     var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,
         _LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;
     //在页面未加载完毕之前显示的loading Html自定义内容
-    var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,0.8);opacity:1;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: 200px; height: 150px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: url(/images/loading.svg) no-repeat scroll;"></div></div>';
+    var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,0.2);opacity:1;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: 200px; height: 150px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: url(/images/loading.svg) no-repeat scroll;"></div></div>';
     //呈现loading效果
     document.write(_LoadingHtml);
     //监听加载状态改变
@@ -107,8 +107,8 @@
     <title> {{ config('app.name') }} - {{ isset($title) ? $title.'  ' : '' }}</title>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <script>
         window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};
@@ -129,7 +129,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div id="app">
+<div id="app" style="height: 100%;">
     @include('layouts._nav')
 
     @yield('body')
@@ -192,6 +192,68 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .catch(function (error) {
         });*/
 </script>
+
+<!-- html2canvas start -->
+    <script type="text/javascript" src="/js/html2canvas.js"></script>
+    <script type="text/javascript">
+      //开始转换
+      function convert() {
+        html2canvas(document.querySelector("#CanvasBaseMap"),{
+            canvas: document.querySelector("#myCanvas")
+            }).then(canvas => {
+        });
+      }
+      function convertInfo() {
+        html2canvas(document.querySelector("#CompanyInfocontainer"),{
+            canvas: document.querySelector("#myCanvas")
+            }).then(canvas => {
+        });
+      }
+      function convertNews() {
+        html2canvas(document.querySelector("#Newscontainer"),{
+            canvas: document.querySelector("#myCanvas")
+            }).then(canvas => {
+        });
+      }
+      function convertPrice() {
+        html2canvas(document.querySelector("#buttonPrice"),{
+            canvas: document.querySelector("#myCanvas")
+            }).then(canvas => {
+        });
+      }
+      function convertStock() {
+        html2canvas(document.querySelector("#buttonStock"),{
+            canvas: document.querySelector("#myCanvas")
+            }).then(canvas => {
+        });
+      }
+      var canvas = document.getElementById("myCanvas");
+
+        download_img = function(el) {
+        var image = canvas.toDataURL("image/jpg");
+        el.href = image;
+        };
+    </script>
+<!-- html2canvas end -->
+
+<!-- button to position -->
+
+<script>
+    function onInfoClick() {
+        window.location.hash = "#CompanyInfocontainer";
+    }
+    function onNewsClick() {
+        window.location.hash = "#Newscontainer";
+    }
+    function onPriceClick() {
+        window.location.hash = "#buttonPrice";
+    }
+    function onStockClick() {
+        window.location.hash = "#buttonStock";
+    }
+</script>
+
+<!-- button end -->
 
 <!--end of for development-->
 

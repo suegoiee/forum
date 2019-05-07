@@ -7,16 +7,19 @@
     <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar" aria-label="search">
+            <a  class="print" onclick="convert()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                @include('_partials._catchChart_modal', [
+                    'id' => 'catch',
+                ])
         </div>
-        <h1 style="text-align:center;">{{$PageSubtitle}}</h1>
-        <h2 style="text-align:center;"><b>{{$stock_code . ' - ' . $stock_name}}</b></h2>
+        
     </div>
     <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0;">
+        <h1 style="text-align:center;margin-top: 0;">{{$PageSubtitle}}</h1>
+        <h2 style="margin-top: 0;"><b>{{$stock_code . ' - ' . $stock_name}}</b></h2>
         <div>
-            <div>
-                <table class="table" style="text-align:center;"><tr id="canvasLabel"></tr></table>
-            </div>
             <div class="container">
+                <table class="table" style="text-align:center;"><tr id="canvasLabel"></tr></table>
                 <div>
                     <div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">
                         <button type="button" class="btn btn-default buttonLastTen ActiveChartControlButton">近十筆</button>
@@ -38,8 +41,8 @@
                         </div>
                     </div>
                 </div>
+                <div id="canvas"></div>
             </div>
-            <div id="canvas"></div>
         </div>
     </div>
     <script>

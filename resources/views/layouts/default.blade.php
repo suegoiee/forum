@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('body')
-    <div class="container" style="min-height: calc(100vh - 150px); padding-left: 0px; padding-right: 0px;">
+    <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 5%;">
         @include('layouts._alerts')
 
         @yield('content')

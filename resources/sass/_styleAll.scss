@@ -24,7 +24,7 @@
 form {
   @include borderAll();
   @include fontAll();
-  margin: auto auto 5%;
+  margin: auto auto;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
 
   fieldset {
@@ -233,6 +233,17 @@ form {
     }
   }
 }
+@media (min-width: 768px) and (max-width: 1024px) {
+  form {
+    fieldset {
+      p {
+        #checkAll {
+          margin-left: 40%;
+        }
+      }
+    }
+  }
+}
 
 @media (max-width: 767px) {
   form {
@@ -258,6 +269,7 @@ form {
       }
       ol {
         padding-left: 5% !important;
+        height: 240px !important;
       }
       .rate {
         font-size: 15px;

@@ -1,6 +1,9 @@
 #app {
   .navber-bd {
     background-color: #545454;
+    height: auto;
+    position: fixed;
+    width: 100%;
     .container {
       // logo style
       .navbar-header {
@@ -121,6 +124,9 @@
     .widthNav {
       width: 100%;
       div {
+        .navbar-nav {
+          padding-top: 1%;
+        }
         .navbar-brand {
           width: 150px !important;
         }

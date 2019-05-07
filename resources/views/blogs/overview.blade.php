@@ -42,7 +42,7 @@
                     <div class="panel panel-default chat-bd" style="height:auto; margin: 3% 5% 3% !important; border:none !important;">
                         <div class="panel-heading thread-info">
                                 @include('blogs.archives.info.tags')
-                            <div class="thread-info-author headLabel">
+                            <div class="thread-info-author headLabel" style="text-overflow: ellipsis; width: 100%; white-space: nowrap; overflow-x: hidden;">
                                 <a href="{{ route('archives', $archive->slug()) }}" class="thread-info-link">{{ $archive->subject() }}</a>
                             </div>
                         </div>

@@ -4,7 +4,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1 style="color: #545454; font-size: 30px; font-weight: bolder;">{{ $title }}</h1>
+    <h1 style="color: #545454; font-size: 30px; font-weight: bolder; margin-top: 0;">{{ $title }}</h1>
 
     <div class="row forum">
         <div class="col-md-3">
