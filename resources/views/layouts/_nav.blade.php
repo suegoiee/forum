@@ -46,9 +46,9 @@
                         <li class="dropdownlist">
                             <a class="menu" href="#">財務報表<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a class="menu" href="{{ route('freebie.IncomeStatement') }}">損益表</a></li>
-                                <li><a class="menu" href="{{ route('freebie.StatementOfFinancialPosition') }}">資產負債表</a></li>
-                                <li><a class="menu" href="{{ route('freebie.CashFlows') }}">現金流量表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Report', ['InfoType' => 'IncomeStatement', 'StockCode' => $StockCode]) }}">損益表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Report', ['InfoType' => 'StatementOfFinancialPosition', 'StockCode' => $StockCode]) }}">資產負債表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Report', ['InfoType' => 'CashFlows', 'StockCode' => $StockCode]) }}">現金流量表</a></li>
                             </ul>
                         </li>
                         <li class="dropdownlist">
@@ -78,7 +78,6 @@
                                 <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'HistoricalPer', 'StockCode' => $StockCode]) }}">本益比評價</a></li>
                                 <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'HistoricalPbr', 'StockCode' => $StockCode]) }}">股價淨值比評價</a></li>
                                 <!--li><a class="menu" href="">股息殖利率評價</a></li-->
-                                <li><a class="menu" href="{{ route('freebie.Report', ['InfoType' => 'IncomeStatement', 'StockCode' => $StockCode]) }}">報表測試</a></li>
                             </ul>
                         </li>
                         <!--li role="separator" class="divider"></li-->

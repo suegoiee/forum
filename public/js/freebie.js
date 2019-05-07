@@ -257,6 +257,7 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         $(this).addClass('ActiveChartControlButton');
         var tmp_canvas = $(this).attr('value');
         dataType = ClickedCanvasDataType(tmp_canvas);
+        console.log('buttonEntire', ClickedCanvasDataType(tmp_canvas), tmp_canvas);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val()
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -340,138 +341,6 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
     });
 }
 
-function dataFactory(stock_url, ClearCanvas) {
-    stockPool(stock_url);
-    var IdForCanvas = stock_url.substring(stock_url.lastIndexOf("/", stock_url.lastIndexOf("/") - 1) + 1, stock_url.lastIndexOf("/"));
-    chart_data[IdForCanvas][IdForCanvas] = [];
-    dataType = 'Data';
-    $.getJSON(stock_url, function (data) {
-        var title = data.data.stock_code + ' - ' + data.data.stock_name;
-        var refLine = [];
-        var DisPlayLabel = false;
-        var PYButton = false;
-        if (data.data.display) {
-            display = data.data.display;
-            DisPlayLabel = true;
-        }
-        if (data.data.refline) {
-            refLine = refLineGenerator(data.data.refline);
-        }
-        $("#stockTitle").empty();
-        $("#stockTitle").append(title);
-
-        /**純圖表 */
-        if (data.data.type == 'chart') {
-            var TmpData = data.data.data;
-            var outer_ch = '';
-            $.each(TmpData, function (key1, val1) {
-                chart_data[IdForCanvas][IdForCanvas].push(val1);
-            });
-            if (chart_data[IdForCanvas][IdForCanvas][0].YearData) {
-                dataType = 'YearData';
-                PYButton = true;
-            }
-            chart_data[IdForCanvas][IdForCanvas] = DataStandardization(chart_data[IdForCanvas][IdForCanvas]);
-            ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas, false);
-            seriesGenerator(chart_data[IdForCanvas][IdForCanvas], dataType, refLine, outer_ch, display, IdForCanvas, -10);
-        }
-
-        /**新聞 */
-        if (data.data.type == 'link_list') {
-            var tmp = data.data.data;
-            $.each(tmp, function (key1, val1) {
-                chart_data[IdForCanvas][IdForCanvas].push(val1);
-            });
-            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas, false);
-            drawNews(chart_data[IdForCanvas][IdForCanvas], IdForCanvas);
-        }
-
-        /**表格 */
-        if (data.data.type == 'sorting_table') {
-            var tmp0 = data.data;
-            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas, false);
-            drawTable(tmp0, IdForCanvas);
-        }
-
-        /**公司基本資料 */
-        if (data.data.type == 'table') {
-            var tmp0 = data.data;
-            ContainerGenerator(PYButton, false, DisPlayLabel, IdForCanvas, ClearCanvas, false);
-            infoTable(tmp0, IdForCanvas);
-        }
-
-        /**報表 */
-        else if (data.data.type == 'table_chart') {
-            var tmp0 = data.data.data;
-            var sideTable = '<div class="btn-group-vertical" style="width:100%">';
-            var first = true;
-            $.each(tmp0, function (key1, val1) {
-                var tmp_outer_ch = val1.ChineseAccount;
-                chart_data[IdForCanvas][IdForCanvas][key1] = [];
-                var childLayers = findchild(val1);
-                /**報表左側控制 第一層按鈕 */
-                sideTable = sideTable + '<button type="button" class="btn btn-primary OuterSideTable" data-toggle="collapse" data-target="#' + key1 + '" value="' + key1 + '">' + tmp_outer_ch + '</button>';
-                sideTable = sideTable + '<div id="' + key1 + '" class="collapse">';
-                for (var i = 0; i < childLayers; i++) {
-                    val1 = val1.Child;
-                    sideTable += '<div class="btn-group-vertical ChartTableButtonParent" value="' + key1 + '">';
-                    $.each(val1, function (key2, val2) {
-                        chart_data[IdForCanvas][IdForCanvas][key1][key2] = [];
-                        if (val2.Combo) {
-                            $.each(val2.Combo, function (key3, val3) {
-                                if (val3.YearData) {
-                                    dataType = 'YearData';
-                                }
-                                chart_data[IdForCanvas][IdForCanvas][key1][key2].push(val3);
-                            });
-                        }
-                        else {
-                            if (val2.YearData) {
-                                dataType = 'YearData';
-                            }
-                            chart_data[IdForCanvas][IdForCanvas][key1][key2].push(val2);
-                        }
-                        chart_data[IdForCanvas][IdForCanvas][key1][key2] = DataStandardization(chart_data[IdForCanvas][IdForCanvas][key1][key2]);
-                        var active = '';
-                        if (i == 0 && first == true) {
-                            first = false;
-                            active = 'ChartActive';
-                        }
-                        /**報表左側控制 第二層按鈕 */
-                        sideTable = sideTable + '<button type="button" class="btn btn-success drawTableChart ' + active + '" value="' + key2 + '">' + val2.ChineseAccount + '</button>';
-                    });
-                    sideTable += '</div>';
-                }
-                sideTable = sideTable + '</div>';
-            });
-            sideTable = sideTable + '</div>';
-            if (dataType != 'Data') {
-                var PYButton = true;
-            }
-            ContainerGenerator(PYButton, true, DisPlayLabel, IdForCanvas, ClearCanvas, true);
-
-            /**edit it with css */
-            $("#" + IdForCanvas + "table").append(sideTable);
-
-            for (var i in chart_data[IdForCanvas][IdForCanvas]) {
-                for (var j in chart_data[IdForCanvas][IdForCanvas][i]) {
-                    dataType = 'Data';
-                    if (chart_data[IdForCanvas][IdForCanvas][i][j][0]['YearData']) {
-                        dataType = 'YearData';
-                    }
-                    seriesGenerator(chart_data[IdForCanvas][IdForCanvas][i][j], dataType, refLine, outer_ch, display, IdForCanvas, -10);
-                    break;
-                }
-                break;
-            }
-        }
-        drawTableChart(refLine, outer_ch, display, IdForCanvas);
-        stockDateRange(IdForCanvas, dataType);
-        buttonEngine(refLine, outer_ch, display, IdForCanvas);
-    });
-}
-
-
 /**股票搜尋器 */
 function stockPool(stock_url) {
     $.getJSON('https://cronjob.uanalyze.com.tw/fetch/StockPool', function (data) {
@@ -490,17 +359,17 @@ function stockPool(stock_url) {
                 response(results.slice(0, 3));
                 if (results.slice(0, 1)[0]) {
                     var stockCode = results.slice(0, 1)[0];
-                    console.log(results.slice(0, 1)[0]);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
-                var tmp_stock_url = stock_url.slice(0, -4);
+                var current_url = window.location.href;
+                console.log(current_url);
+                var tmp_stock_url = current_url.slice(0, -4);
+                var redirectTo = tmp_stock_url+stockCode;
                 SetCookie("stockCode", stockCode);
-                dataFactory(tmp_stock_url + stockCode, true);
-                $("#searchBar").val('');
-                return false;
+                window.location.href = redirectTo;
             }
         });
     });
@@ -686,7 +555,7 @@ function findchild(data) {
 }
 
 /**框架產生器 */
-function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, ClearCanvas, BottomTable) {
+function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, MultiCharts, BottomTable) {
     var display_table = '';
     var RecentTenButton = '';
     var WholeDateButton = '';
@@ -726,12 +595,14 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, C
     var SideTableContainer = '<div class="sidebar" id="' + IdForCanvas + 'table"></div>';
 
     /**總成 */
-    var container = '<div class="container">' + display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + YearButton + PeriodButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div class="timeS"><label>從 ： </label>' + CostumizeDateStart + '</div><div class="timeE"><label>至 ： </label>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div></div>';
+    var container = display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + YearButton + PeriodButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div class="timeS"><label>從 ： </label>' + CostumizeDateStart + '</div><div class="timeE"><label>至 ： </label>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div>';
 
-    if (ClearCanvas) {
-        $("#CanvasBaseMap").empty();
+    if (MultiCharts) {
+        $("#"+IdForCanvas+"Outer").append(container);
     }
-    $("#CanvasBaseMap").append(container);
+    else{
+        $("#Outer").append(container);
+    }
 }
 
 /**圖表資料生產器 */
@@ -741,7 +612,6 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
     var unit = [];
     var yAxisLocate = [];
     var unitForBottomTable = [];
-    console.log('series', IdForCanvas, "\n", data);
     for (var i in data) {
         if (unit.indexOf(data[i]['UnitRef']) == -1) {
             unit.push(data[i]['UnitRef']);
@@ -755,11 +625,11 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
     xData.sort();
     for (var i in data) {
         var tmpData = data[i][dataType];
+        console.log(data, i, dataType, tmpData);
         if (sliceHead == -10) {
             tmpData = data[i][dataType].slice(-10);
         }
         else if (sliceEnd) {
-            console.log(data, i, dataType);
             tmpData = data[i][dataType].slice(sliceHead, sliceEnd);
         }
         /*$.each(tmpData, function (key2, val2) {
@@ -773,6 +643,7 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
             label: { enabled: false }
         });
     }
+    console.log('series', seriestData);
     var yLabel = yLabelGenerator(unit, refLine);
     drawChart(IdForCanvas, title, yLabel, seriestData);
     drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable);
@@ -1122,6 +993,7 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
 }
 
 function ClickedCanvasDataType(tmp_canvas){
+    console.log($("#"+tmp_canvas+"container"));
     if($("#"+tmp_canvas+"container").children("div").children(".LeftButtonGroup").children(".ActiveChartControlButton").length > 0){
         if($("#"+tmp_canvas+"container").children("div").children(".LeftButtonGroup").children(".ActiveChartControlButton").hasClass("buttonYear")){
             var dataType = 'YearData';

@@ -139,9 +139,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="{{ mix('js/app.js') }}"></script>
 <!--for development-->
-<!--link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'-->
-<!--link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css"-->
-<!--script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/js/Highcharts-7.1.1/code/highcharts.js"></script>
 <script src="/js/Highcharts-7.1.1/code/highcharts-more.js"></script>
@@ -183,63 +180,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-    
-    /*axios.get('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101')
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-        });*/
 </script>
 
 <!-- html2canvas start -->
     <script type="text/javascript" src="/js/html2canvas.js"></script>
     <script type="text/javascript">
-      //开始转换
-      function convert() {
-        html2canvas(document.querySelector("#CanvasBaseMap"),{
+    function convertById(id) {
+        html2canvas(document.querySelector("#"+id),{
             canvas: document.querySelector("#myCanvas")
             }).then(canvas => {
         });
-      }
-      function convertInfo() {
-        html2canvas(document.querySelector("#CompanyInfocontainer"),{
-            canvas: document.querySelector("#myCanvas")
-            }).then(canvas => {
-        });
-      }
-      function convertNews() {
-        html2canvas(document.querySelector("#Newscontainer"),{
-            canvas: document.querySelector("#myCanvas")
-            }).then(canvas => {
-        });
-      }
-      function convertPrice() {
-        html2canvas(document.querySelector("#buttonPrice"),{
-            canvas: document.querySelector("#myCanvas")
-            }).then(canvas => {
-        });
-      }
-      function convertStock() {
-        html2canvas(document.querySelector("#buttonStock"),{
-            canvas: document.querySelector("#myCanvas")
-            }).then(canvas => {
-        });
-      }
-      var canvas = document.getElementById("myCanvas");
+    }
 
-        download_img = function(el) {
-        var image = canvas.toDataURL("image/jpg");
-        el.href = image;
-        };
+    $(document).on("click", ".downloadSummary", function(){
+        var clickedId = $(this).next().next().attr('id');
+        console.log(clickedId);
+        convertById(clickedId);
+    });
+
+    $(document).on("click", ".print", function(){
+        convertById('CanvasBaseMap');
+    });
     </script>
 <!-- html2canvas end -->
 
 <!-- button to position -->
 
 <script>
-    function onInfoClick() {
+
+    $(document).on("click", ".rightbtn", function(){
+        var id = $(this).attr("value");
+        locationClicked(id);
+    });
+    function locationClicked(id){
+        window.location.hash = "#"+id;
+    }
+    /*function onInfoClick() {
         window.location.hash = "#CompanyInfocontainer";
     }
     function onNewsClick() {
@@ -250,7 +226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
     function onStockClick() {
         window.location.hash = "#buttonStock";
-    }
+    }*/
 </script>
 
 <!-- button end -->
