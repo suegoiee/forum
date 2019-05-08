@@ -20,19 +20,21 @@
   padding-right: $padr;
   margin-left: $marg;
 }
-
-form {
-  @include borderAll();
-  @include fontAll();
+#formStyle,
+#form {
+  @include fontAll(left, #545454, #e9e9e9, 1);
   margin: auto auto;
-  box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
   height: 75vh;
   overflow-x: hidden;
   overflow-y: auto;
+  border-style: none;
+  padding: 0 !important;
 
   fieldset {
-    border-style: none;
-    margin-top: 10px;
+    @include fontAll();
+    @include borderAll();
+    box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+    padding-top: 10px;
     h3 {
       @include fontAll(center, #393939, none, 1);
       text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form class="col-sm-12">
+    <form class="col-sm-12" id="form">
         <fieldset>
             <h3>最低退休金</h3>
             <h5>(請填入除權除息前股價、現金股利、股票股利)</h5>

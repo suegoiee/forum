@@ -52,7 +52,7 @@ class npvCal extends judgeValue {
                 }
 
                 document.getElementById('form').style.cssFloat = "left";
-                document.getElementById('form').style.width = "50%";
+                document.getElementById('form').style.width = "48%";
                 form.style.display = "block";
                 this.addTd("tr", "lab", "lab", "", inputTd);
                 this.addTd("th", "year", "year", "年分", inputTd);
