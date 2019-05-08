@@ -14,7 +14,6 @@ class togeStock extends judgeValue {
         this.form = form;
     }
 
-
     // 增加input
     addInput() {
         document.getElementById('add').onclick = () => {
@@ -60,10 +59,6 @@ class togeStock extends judgeValue {
                 document.getElementById('form').style.cssFloat = "left";
                 document.getElementById('form').style.width = "50%";
                 form.style.display = "block";
-                if (moneyAll.length > 10) {
-                    form.style.height = "750px";
-                    form.style.overflowY = "scroll";
-                }
                 this.addTd("label", "labell", "labell", "每個人的股份：", inputTdA);
                 this.addTd("label", "labell", "labell", "每個人的獲利：", inputTdB);
                 this.addTd("label", "labell", "labell", "每個人可得到：", inputTdC);

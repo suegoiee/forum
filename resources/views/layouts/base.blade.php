@@ -218,18 +218,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function locationClicked(id){
         window.location.hash = "#"+id;
     }
-    /*function onInfoClick() {
-        window.location.hash = "#CompanyInfocontainer";
-    }
-    function onNewsClick() {
-        window.location.hash = "#Newscontainer";
-    }
-    function onPriceClick() {
-        window.location.hash = "#buttonPrice";
-    }
-    function onStockClick() {
-        window.location.hash = "#buttonStock";
-    }*/
+
 </script>
 
 <!-- button end -->

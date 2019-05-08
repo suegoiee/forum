@@ -26,6 +26,9 @@ form {
   @include fontAll();
   margin: auto auto;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+  height: 75vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   fieldset {
     border-style: none;
@@ -174,7 +177,7 @@ form {
       @include fontAll(right, #545454, none, 16px);
       font-size: 18px;
       width: 200px;
-      height: 21px;
+      height: 25px;
       display: inline-block;
       margin-top: 5px;
       @include dist(auto, auto, auto);

@@ -17,7 +17,7 @@
         </div>
         <h2 style="text-align:center; margin-top: 0; margin-bottom: 1%;">{{$PageSubtitle}}</h2>
     </div>
-    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 670px; width:100%; margin-top: 0; margin-left: 0;">
+    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 65vh; width:100%; margin-top: 0; margin-left: 0;">
         <div class="container" style="background-color: #e9e9e9; padding-left: 0; padding-right: 0;">
             <a  class="downloadSummary downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                 @include('_partials._catchChart_modal', [
