@@ -183,12 +183,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 <!-- html2canvas start -->
-    <script type="text/javascript" src="/js/html2canvas.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript" src="/js/html2canvas.js"></script>
+<script type="text/javascript">
     function convertById(id) {
         html2canvas(document.querySelector("#"+id),{
             canvas: document.querySelector("#myCanvas")
-            }).then(canvas => {
+        }).then(canvas => {
         });
     }
     var canvas = document.getElementById("myCanvas");
@@ -196,16 +196,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var image = canvas.toDataURL("image/jpg");
         el.href = image;
     }
-    $(document).on("click", ".downloadSummary", function(){
+    $(document).on("click", ".downloadImg", function(){
         var clickedId = $(this).next().next().attr('id');
-        console.log(clickedId);
         convertById(clickedId);
     });
 
     $(document).on("click", ".print", function(){
         convertById('CanvasBaseMap');
     });
-    </script>
+</script>
 <!-- html2canvas end -->
 
 <!-- button to position -->

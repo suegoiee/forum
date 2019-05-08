@@ -6,10 +6,10 @@
 <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 100px; width:100%;">
     <a class="sideBtn" data-toggle="collapse" href="#sideBtn" role="button" aria-expanded="false" aria-controls="sideBtn"><i class="fas fa-bars"></i></a>
         <ul class="collapse" id="sideBtn">
-            <li class="rightbtnA rightbtn" type="button" name="Submit" value="CompanyInfocontainer"> 公司基本資料 </li>
-            <li class="rightbtnB rightbtn" type="button" name="Submit" value="Newscontainer"> 個股新聞 </li>
-            <li class="rightbtnC rightbtn" type="button" name="Submit" value="DailyStockPriceAreaChartWithDisplayOuter"> 股價走勢 </li>
-            <li class="rightbtnD rightbtn" type="button" name="Submit" value="StockPriceVSEPSOuter"> 每股盈餘VS股價 </li>
+            <li class="rightbtnA rightbtn" type="button" name="Submit" value="CompanyInfocontainer" style="cursor:pointer"> 公司基本資料 </li>
+            <li class="rightbtnB rightbtn" type="button" name="Submit" value="Newscontainer" style="cursor:pointer"> 個股新聞 </li>
+            <li class="rightbtnC rightbtn" type="button" name="Submit" value="DailyStockPriceAreaChartWithDisplayOuter" style="cursor:pointer"> 股價走勢 </li>
+            <li class="rightbtnD rightbtn" type="button" name="Submit" value="StockPriceVSEPSOuter" style="cursor:pointer"> 每股盈餘VS股價 </li>
         </ul>
     <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
@@ -19,7 +19,7 @@
     </div>
     <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 65vh; width:100%; margin-top: 0; margin-left: 0;">
         <div class="container" style="background-color: #e9e9e9; padding-left: 0; padding-right: 0;">
-            <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
+            <a  class="downloadSummary downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])
@@ -108,7 +108,7 @@
                     </table>
                 </div>
             </div>
-            <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
+            <a  class="downloadSummary downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])
@@ -123,14 +123,14 @@
                 </div>
             </div>
             <div class="container" style="margin:0 auto 100px;">
-                <a  class="downloadTable" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
+                <a  class="downloadTable downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
                 <div class="container" id="DailyStockPriceAreaChartWithDisplayOuter"></div>
             </div>
             <div class="container" style="margin:0 auto 50px;">
-                <a  class="downloadTable" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
+                <a  class="downloadTable downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
