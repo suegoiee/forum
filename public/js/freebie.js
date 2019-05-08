@@ -354,7 +354,6 @@ function stockPool() {
                 response(results.slice(0, 3));
                 if (results.slice(0, 1)[0]) {
                     var stockCode = results.slice(0, 1)[0];
-                    SetCookie("stockCode", stockCode);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
             },
