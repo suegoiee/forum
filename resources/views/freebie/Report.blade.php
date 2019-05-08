@@ -12,10 +12,10 @@
                     'id' => 'catch',
                 ])
         </div>
-        <h1 style="text-align:center; margin-top: 0; margin-bottom: 5px;">{{$PageSubtitle}}</h1>
-        <h2 style="text-align:center; margin-top: 0; margin-bottom: 5px;"><b>{{$stock_code . ' - ' . $stock_name}}</b></h2>
     </div>
     <div class="container" id="CanvasBaseMap" style="margin-left: 0;padding-left: 0;">
+        <h1 style="text-align:center; margin-top: 0; margin-bottom: 5px;">{{$PageSubtitle}}</h1>
+        <h2 style="text-align:center; margin-top: 0; margin-bottom: 5px;"><b>{{$stock_code . ' - ' . $stock_name}}</b></h2>
         <div class="container" style="padding-left: 0; padding-right: 0;">
             <div class="container" id="Outer" style="margin-left: 0;"></div>
         </div>

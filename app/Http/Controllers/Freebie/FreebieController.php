@@ -9,6 +9,7 @@ class FreebieController extends Controller
     public function stocksummary()
     {
         $stockCode = request()->route('StockCode');
+        $PageSubtitle = request()->route('InfoCh');
         $data = array();
         $CompanyInfo = file_get_contents(env('CronAPI').'CompanyInfo/'.$stockCode);
         $News = file_get_contents(env('CronAPI').'News/'.$stockCode);
@@ -21,40 +22,43 @@ class FreebieController extends Controller
         $url2 = env('CronAPI').'StockPriceVSEPS/'.$stockCode;
         //$DailyStockPriceAreaChartWithDisplay = $this->seriesGenerator($DailyStockPriceAreaChartWithDisplay, -10);
         $StockPriceVSEPS = json_decode($StockPriceVSEPS, true);
-        return view('freebie.stocksummary', compact('CompanyInfo', 'News', 'DailyStockPriceAreaChartWithDisplay', 'StockPriceVSEPS', 'url', 'url2'))->with('PageSubtitle', '個股摘要');
+        return view('freebie.stocksummary', compact('CompanyInfo', 'News', 'DailyStockPriceAreaChartWithDisplay', 'StockPriceVSEPS', 'url', 'url2', 'PageSubtitle'));
     }
     public function Chart()
     {
         $stockCode = request()->route('StockCode');
         $InfoType = request()->route('InfoType');
+        $PageSubtitle = request()->route('InfoCh');
         $url = env('CronAPI').$InfoType.'/'.$stockCode;
         $data = file_get_contents($url);
         $data = json_decode($data, true);
         $stock_name = $data['data']['stock_name'];
         $stock_code = $data['data']['stock_code'];
-        return view('freebie.Chart', compact('data', 'stock_name', 'stock_code', 'url'))->with('PageSubtitle', '圖表');
+        return view('freebie.Chart', compact('data', 'stock_name', 'stock_code', 'url', 'PageSubtitle'));
     }
     public function Table()
     {
         $stockCode = request()->route('StockCode');
         $InfoType = request()->route('InfoType');
+        $PageSubtitle = request()->route('InfoCh');
         $data = file_get_contents(env('CronAPI').$InfoType.'/'.$stockCode);
         $data = json_decode($data, true);
         $stock_name = $data['data']['stock_name'];
         $stock_code = $data['data']['stock_code'];
         $data = $this->seriesGenerator($data, null);
-        return view('freebie.Table', compact('data', 'stock_name', 'stock_code', 'url'))->with('PageSubtitle', '表格');
+        return view('freebie.Table', compact('data', 'stock_name', 'stock_code', 'url', 'PageSubtitle'));
     }
     public function Report()
     {
         $stockCode = request()->route('StockCode');
         $InfoType = request()->route('InfoType');
+        $PageSubtitle = request()->route('InfoCh');
         $url = env('CronAPI').$InfoType.'/'.$stockCode;
         $data = file_get_contents($url);
         $data = json_decode($data, true);
         $stock_name = $data['data']['stock_name'];
         $stock_code = $data['data']['stock_code'];
-        return view('freebie.Report', compact('data', 'stock_name', 'stock_code', 'url'))->with('PageSubtitle', '報表');
+        return view('freebie.Report', compact('data', 'stock_name', 'stock_code', 'url', 'PageSubtitle'));
     }
     function refLineGenerator($data) {
         $tmp_refLine = array();

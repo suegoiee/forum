@@ -636,9 +636,7 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
             label: { enabled: false }
         });
     }
-    console.log('unit', unit);
     var yLabel = yLabelGenerator(unit, refLine);
-    console.log('yLabel', yLabel);
     drawChart(IdForCanvas, title, yLabel, seriestData);
     drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable);
     drawDisplay(IdForCanvas, display);
@@ -720,11 +718,13 @@ function yLabelGenerator(formats, refline) {
         var refline = [];
     }
     for (var i in formats) {
+        var unit = formats[i];
+        console.log(unit);
         yLabel.push({
             labels: {
                 //format: '{value}' + formats[i]
                 formatter: function () {
-                    return dataFormat(this.value) + formats[i];
+                    return dataFormat(this.value);
                 }
             },
             title: {
@@ -773,7 +773,6 @@ function drawDisplay(canvas, display) {
 
 /**畫圖表 */
 function drawChart(canvas, title, yLabel, series) {
-    console.log(yLabel);
     Highcharts.chart(canvas, {
         title: {
             text: title
