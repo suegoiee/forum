@@ -510,10 +510,6 @@ class reCal extends judgeValue {
                 document.getElementById('form').style.cssFloat = "left";
                 document.getElementById('form').style.width = "50%";
                 form.style.display = "block";
-                if (resB > 30) {
-                    form.style.height = "750px";
-                    form.style.overflowY = "scroll";
-                }
                 this.addTd("th", "MM", "MM", "月利率", inputTdA);
                 this.addTd("td", "MV", "MV", resAA.toFixed(1) + "％", inputTdA);
                 this.addTd("tr", "ee", "ee", "", inputTdA);

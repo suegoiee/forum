@@ -9,7 +9,7 @@
             <h3>股票買進檢查表</h3>
             <h5>(請勾選每一個題目)</h5>
             <br />
-            <ol style="line-height: 20px; overflow-y: scroll; height: 550px;">
+            <ol style="line-height: 20px; overflow-y: scroll; height: 50vh;">
                 <li>是否了解公司產品用途，且市佔率在該產業前3名?<br/>
                     <input type="radio" class="radioAll" name="getA" value="1">是 &nbsp;
                     <input type="radio" class="radioAll" name="getA" value="0">否
