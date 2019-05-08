@@ -13,7 +13,6 @@ var chart_data = [];
 
 /**表格列表 */
 function drawTableB(TableData, TableTitle) {
-    console.log(TableTitle, TableData);
     $('#example').DataTable({
         data: TableData,
         columns: TableTitle,
@@ -38,7 +37,6 @@ function drawTableB(TableData, TableTitle) {
 
 /**畫圖表 */
 function drawChartB(title, yLabel, series) {
-    console.log(yLabel, series);
     Highcharts.chart("canvas", {
         title: {
             text: title
@@ -63,7 +61,7 @@ function drawChartB(title, yLabel, series) {
 }
 
 function dataFactoryC(data, stock_url, ClearCanvas) {
-    stockPool(stock_url);
+    stockPool();
     var IdForCanvas = stock_url.substring(stock_url.lastIndexOf("/", stock_url.lastIndexOf("/") - 1) + 1, stock_url.lastIndexOf("/"));
     chart_data[IdForCanvas] = [];
     dataType = 'Data';
@@ -167,7 +165,7 @@ function dataFactoryC(data, stock_url, ClearCanvas) {
 /**日期機制 按鈕*/
 function stockDateRangeB(IdForCanvas, dataType, data, refreshEnd, startFrom) {
     var count = 0;
-    console.log(IdForCanvas, dataType, data, refreshEnd, startFrom);
+    
     if ($(".ChartActive").val()) {
         var key1 = $(".ChartActive").val();
         var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -257,7 +255,6 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         $(this).addClass('ActiveChartControlButton');
         var tmp_canvas = $(this).attr('value');
         dataType = ClickedCanvasDataType(tmp_canvas);
-        console.log('buttonEntire', ClickedCanvasDataType(tmp_canvas), tmp_canvas);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val()
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -277,7 +274,6 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var tmp_canvas = $(this).attr('value');
-        console.log(IdForCanvas, tmp_canvas);
         dataType = ClickedCanvasDataType(tmp_canvas);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
@@ -296,7 +292,6 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var tmp_canvas = $(this).attr('value');
-        console.log(rangeStart, rangeEnd, tmp_canvas);
         dataType = ClickedCanvasDataType(tmp_canvas);
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
@@ -342,7 +337,7 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
 }
 
 /**股票搜尋器 */
-function stockPool(stock_url) {
+function stockPool() {
     $.getJSON('https://cronjob.uanalyze.com.tw/fetch/StockPool', function (data) {
         var availableTags = [];
         for (var i = 0; i < data['data'].length; i++) {
@@ -625,7 +620,6 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
     xData.sort();
     for (var i in data) {
         var tmpData = data[i][dataType];
-        console.log(data, i, dataType, tmpData);
         if (sliceHead == -10) {
             tmpData = data[i][dataType].slice(-10);
         }
@@ -643,8 +637,9 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
             label: { enabled: false }
         });
     }
-    console.log('series', seriestData);
+    console.log('unit', unit);
     var yLabel = yLabelGenerator(unit, refLine);
+    console.log('yLabel', yLabel);
     drawChart(IdForCanvas, title, yLabel, seriestData);
     drawTableChartBottomTable(IdForCanvas, seriestData, unitForBottomTable);
     drawDisplay(IdForCanvas, display);
@@ -779,6 +774,7 @@ function drawDisplay(canvas, display) {
 
 /**畫圖表 */
 function drawChart(canvas, title, yLabel, series) {
+    console.log(yLabel);
     Highcharts.chart(canvas, {
         title: {
             text: title
@@ -816,7 +812,6 @@ function drawTableChart(refLine, outer_ch, display, IdForCanvas, chart_data) {
         $(".ChartActive").removeClass("ChartActive");
         $(this).addClass('ChartActive');
         stockDateRangeB(IdForCanvas, dataType, chart_data);
-        console.log('資料', chart_data[key1][key2],'類別',  dataType,'基準線',  refLine,'outer_ch',  outer_ch, 'display', display, 'idforcanvas', IdForCanvas, 'head', rangeStart, 'end', rangeEnd);
         seriesGenerator(chart_data[key1][key2], dataType, refLine, outer_ch, display, IdForCanvas, rangeStart, rangeEnd);
     });
     $(document).on('click', ".OuterSideTable", function () {
@@ -993,7 +988,6 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
 }
 
 function ClickedCanvasDataType(tmp_canvas){
-    console.log($("#"+tmp_canvas+"container"));
     if($("#"+tmp_canvas+"container").children("div").children(".LeftButtonGroup").children(".ActiveChartControlButton").length > 0){
         if($("#"+tmp_canvas+"container").children("div").children(".LeftButtonGroup").children(".ActiveChartControlButton").hasClass("buttonYear")){
             var dataType = 'YearData';

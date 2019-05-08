@@ -37,7 +37,7 @@
                         <li class="dropdownlist">
                             <a class="menu" href="#">月營收<i class="fas fa-caret-right"></i></a>
                             <ul class="dropdown-content dropdown-menu">
-                                <li><a class="menu" href="{{ route('freebie.Table', ['InfoType' => 'MonthlyRevenue_sorting_table', 'StockCode' => $StockCode]) }}">每月營收變化表</a></li>
+                                <li><a class="menu" href="{{ route('freebie.Table', ['InfoType' => 'MonthlyRevenue_sorting_table', 'StockCode' => $StockCode]) }}" value="每月營收變化表">每月營收變化表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'MonthlyRevenueVSStockPrice', 'StockCode' => $StockCode]) }}">月營收與股價對照表</a></li>
                                 <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'MonthlyRevenueGrowthRate', 'StockCode' => $StockCode]) }}">月營收成長率</a></li>
                                 <li><a class="menu" href="{{ route('freebie.Chart', ['InfoType' => 'ShortTermRevenueVSLongTermRevenue', 'StockCode' => $StockCode]) }}">長短期營收趨勢圖</a></li>

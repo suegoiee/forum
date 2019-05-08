@@ -28,6 +28,7 @@
         window.onload=function () {
             var chartData = @json($data);
             drawTableB(chartData[1], chartData[0]);
+            stockPool();
         }
     </script>
 @endsection
