@@ -49,6 +49,7 @@ body {
     }
     #sideBtn {
       .rightbtn {
+        list-style: none;
         z-index: 601;
         position: fixed;
         right: 3%;
@@ -58,6 +59,7 @@ body {
         width: 134px;
         padding: 5px;
         border: none;
+        height: 33px;
       }
       .rightbtn:hover,
       .rightbtn:focus {
@@ -115,10 +117,19 @@ body {
           float: right;
           color: #fff;
           background-color: #ffa500;
-          padding: 5px 10px;
+          padding: 7px 10px;
           text-decoration: none;
           margin-right: 1%;
           margin-top: 1%;
+        }
+        .downloadTable {
+          float: right;
+          color: #fff;
+          background-color: #ffa500;
+          padding: 7px 10px;
+          text-decoration: none;
+          margin-top: 14px;
+          margin-left: 10px;
         }
         .downfree {
           margin-top: 3%;
@@ -538,6 +549,21 @@ body {
           .downfree {
             margin-top: 8%;
           }
+          #Outer {
+            .container {
+              margin-left: 0;
+              .table {
+                tbody {
+                  #StatementOfFinancialPositionLabel {
+                    td {
+                      display: contents;
+                      text-align: center;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -545,6 +571,9 @@ body {
   .list-group-item,
   .list-group-item:hover {
     padding: 5px !important;
+  }
+  h1 {
+    font-size: 30px !important;
   }
   h2 {
     font-size: 25px !important;
@@ -688,6 +717,11 @@ body {
           }
           .row {
             div {
+              #example_length {
+                label {
+                  padding-top: 10px;
+                }
+              }
               #example_length,
               #example_filter {
                 label {
@@ -727,9 +761,6 @@ body {
           div {
             .select {
               width: 60% !important;
-            }
-            .btn-group-vertical {
-              width: auto !important;
             }
           }
         }

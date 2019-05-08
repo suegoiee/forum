@@ -6,7 +6,7 @@
     <div class="container" style="padding-left: 0; padding-right: 0;">
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="股票代碼或名稱" id="searchBar">
-            <a  class="print" onclick="convert()" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+            <a  class="print" onclick="convert()" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])

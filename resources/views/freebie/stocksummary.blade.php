@@ -3,7 +3,7 @@
 @extends('layouts.base')
 
 @section('body')
-<div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 5%; width:100%;">
+<div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 100px; width:100%;">
     <a class="sideBtn" data-toggle="collapse" href="#sideBtn" role="button" aria-expanded="false" aria-controls="sideBtn"><i class="fas fa-bars"></i></a>
         <ul class="collapse" id="sideBtn">
             <li class="rightbtnA rightbtn" type="button" name="Submit" value="CompanyInfocontainer"> 公司基本資料 </li>
@@ -17,13 +17,13 @@
         </div>
         <h2 style="text-align:center; margin-top: 0; margin-bottom: 1%;">{{$PageSubtitle}}</h2>
     </div>
-    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 670px; width:100%; margin-top: 0;">
-        <div class="container" style="background-color: #e9e9e9;">
-            <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 670px; width:100%; margin-top: 0; margin-left: 0;">
+        <div class="container" style="background-color: #e9e9e9; padding-left: 0; padding-right: 0;">
+            <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])
-            <div class="container" id="CompanyInfocontainer" style="margin:0 auto 5%;"> 
+            <div class="container" id="CompanyInfocontainer" style="margin:0 auto 100px;"> 
                 <h1 style="margin-top: 1%; margin-bottom: 0; font-size: 30px;">公司基本資料</h1>
                 <h2 style="margin-top: 5px; margin-bottom: 0; padding-bottom: 5px; font-size: 25px;">
                     <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
@@ -108,11 +108,11 @@
                     </table>
                 </div>
             </div>
-            <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+            <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])
-            <div class="container" id="Newscontainer" style="margin:5% auto;">
+            <div class="container" id="Newscontainer" style="margin:0 auto 100px;">
                 <h1 style="margin-top: 1%; margin-bottom: 0; font-size: 30px;">個股新聞</h1>
                 <h2 style="margin-top: 0; margin-bottom: 5px; padding-top:10px; padding-bottom: 5px; font-size: 25px;">
                     <b>{{$CompanyInfo['data']['stock_code'] . ' - ' . $CompanyInfo['data']['stock_name']}}</b>
@@ -122,15 +122,15 @@
                     <ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>
                 </div>
             </div>
-            <div class="container" style="margin:5% auto;">
-                <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+            <div class="container" style="margin:0 auto 100px;">
+                <a  class="downloadTable" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
                 <div class="container" id="DailyStockPriceAreaChartWithDisplayOuter"></div>
             </div>
-            <div class="container" style="margin:5% auto;">
-                <a  class="downloadSummary" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+            <div class="container" style="margin:0 auto 50px;">
+                <a  class="downloadTable" style="cursor: pointer;" data-toggle="modal" data-target="#catch"><i class="fas fa-file-download"></i></a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])

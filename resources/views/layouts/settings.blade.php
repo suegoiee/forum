@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('body')
-    <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-top: 5%;">
+    <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-top: 100px;">
         <div class="row">
             <div class="col-lg-3 accountA">
                 <div class="panel panel-default">
