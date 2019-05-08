@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-	<form class="col-sm-12">
+	<form class="col-sm-12" id="form">
 		<fieldset>
 			<h3>年複合成長率計算機</h3>
 			<h5>(請填入年份、期初數值、期未數值)</h5>

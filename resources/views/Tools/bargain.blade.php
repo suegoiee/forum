@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-	<form class="col-sm-12">
+	<form class="col-sm-12" id="form">
 		<fieldset>
 			<h3>買賣股票損益計算機</h3>
 			<h5>(請填入成交價、成交股數、手續費折扣)</h5>

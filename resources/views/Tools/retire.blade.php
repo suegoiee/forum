@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-	<form class="col-sm-12">
+	<form class="col-sm-12" id="form">
 		<fieldset>
 			<h3>退休規劃評估</h3>
 			<h5>(請填入年份、現金、資產)</h5>

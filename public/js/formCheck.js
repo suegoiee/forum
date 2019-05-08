@@ -56,7 +56,7 @@ class checkRad {
                 }
             }
             document.getElementById('form').style.cssFloat = "left";
-            document.getElementById('form').style.width = "50%";
+            document.getElementById('form').style.width = "48%";
             form.style.display = "block";
             this.addTd("tr", "ress", "ress", "合計：" + cal, resAll);
             if (cal < 10) {
@@ -103,7 +103,7 @@ class checkRad {
                 }
             }
             document.getElementById('form').style.cssFloat = "left";
-            document.getElementById('form').style.width = "50%";
+            document.getElementById('form').style.width = "48%";
             form.style.display = "block";
             this.addTd("tr", "ress", "ress", "合計：" + cal, resAll);
             if (cal < 14) {

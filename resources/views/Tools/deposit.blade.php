@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form class="col-sm-12">
+    <form class="col-sm-12" id="form">
         <fieldset>
             <h3>定期股價值計算</h3>
             <p>

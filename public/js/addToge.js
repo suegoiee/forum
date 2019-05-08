@@ -57,7 +57,7 @@ class togeStock extends judgeValue {
                 }
 
                 document.getElementById('form').style.cssFloat = "left";
-                document.getElementById('form').style.width = "50%";
+                document.getElementById('form').style.width = "48%";
                 form.style.display = "block";
                 this.addTd("label", "labell", "labell", "每個人的股份：", inputTdA);
                 this.addTd("label", "labell", "labell", "每個人的獲利：", inputTdB);

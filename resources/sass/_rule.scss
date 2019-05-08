@@ -8,8 +8,12 @@
     margin: 5% auto;
     .modal-content {
       .ruleForm {
+        background-color: #fff;
+        overflow-y: hidden;
+        height: auto;
         margin-bottom: 0;
         padding: 0;
+        border-radius: 10px;
         .modal-header {
           .modal-title {
             text-align: center;
@@ -18,7 +22,7 @@
         .modal-body {
           overflow-y: auto;
           overflow-x: hidden;
-          height: 500px;
+          height: 55vh;
           padding: 15px;
           .rule {
             p {

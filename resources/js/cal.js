@@ -162,7 +162,7 @@ class calBuffett extends judgeValue {
                 }
 
                 document.getElementById('form').style.cssFloat = "left";
-                document.getElementById('form').style.width = "50%";
+                document.getElementById('form').style.width = "48%";
                 form.style.display = "block";
                 this.addTd("th", "yearA", "year", "未來十年", resAll);
                 this.addTd("th", "momA", "mom", "自由現金流", resAll);
@@ -369,7 +369,7 @@ class calGordon extends judgeValue {
                     this.addTd("th", "sto", "sto", "股票價值", resC);
 
                     document.getElementById('form').style.cssFloat = "left";
-                    document.getElementById('form').style.width = "50%";
+                    document.getElementById('form').style.width = "48%";
                     form.style.display = "block";
                     if (numberAll[2].value > 40) {
                         form.style.height = "750px";
@@ -508,7 +508,7 @@ class reCal extends judgeValue {
                 let resCC = resC * 100;
 
                 document.getElementById('form').style.cssFloat = "left";
-                document.getElementById('form').style.width = "50%";
+                document.getElementById('form').style.width = "48%";
                 form.style.display = "block";
                 this.addTd("th", "MM", "MM", "月利率", inputTdA);
                 this.addTd("td", "MV", "MV", resAA.toFixed(1) + "％", inputTdA);
