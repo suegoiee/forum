@@ -20,7 +20,6 @@
 }
 // forum
 .forum {
-  margin-bottom: 5%;
   // left part
   div {
     // show: title-tag
@@ -46,6 +45,7 @@
       margin: 0;
       padding: 0 !important;
       width: 100%;
+      height: auto;
       .form-group {
         margin-bottom: 0 !important;
         .form-control {
@@ -330,13 +330,14 @@
 
 // forum -show
 .col-md-9 {
+  overflow-y: auto;
+  height: 65vh;
   background: #fff;
   width: 74%;
   .panel {
     border: 2px solid #e9e9e9 !important;
     // show: thread title
     .panel-heading {
-      padding-inline-start: 5px;
       color: #545454;
       background: none !important;
       .showTag {
@@ -358,6 +359,7 @@
         color: #545454;
       }
       table {
+        width: auto !important;
         tbody {
           tr {
             td {
@@ -418,7 +420,11 @@
   }
 }
 
-@media (max-width: 1025px) {
+@media (max-width: 1024px) {
+  .col-md-9 {
+    overflow: hidden;
+    height: auto !important;
+  }
   .forum {
     div {
       .formDrop {
@@ -437,7 +443,7 @@
     width: 74% !important;
   }
 }
-@media (min-width: 768px) and (max-width: 1025px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .chat-bg {
     padding-bottom: 2%;
     padding-top: 1%;
@@ -449,9 +455,6 @@
 }
 
 @media (max-width: 767px) {
-  h1 {
-    padding-left: 15px;
-  }
   .row {
     margin-left: 0px !important;
     margin-right: 0px !important;

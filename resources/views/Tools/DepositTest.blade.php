@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container" style="margin-bottom: 2%;">
-    <form class="col-sm-12">
+    <form class="col-sm-12" style="display: block;" id="form">
         <fieldset>
             <h3>我適合存股嗎～存股性向測驗</h3>
             <h5>(出自:智富Smart)</h5>
@@ -76,6 +76,10 @@
                 <button type="button" id="checkAll">檢查</button>
                 <button type="button" id="clear">重新填選</button>
             </p>
+        </fieldset>
+    </form>
+    <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
+        <fieldset>
             <table id="result">
                 <label class="resultAll"></label>
                 <p></p>
@@ -87,9 +91,10 @@
         let radAll = document.querySelectorAll('.radioAll');
         let res = document.querySelector('.resultAll');
         let resAll = document.getElementById('result');
+        let form = document.getElementById("formStyle");
 
         window.onload=function () {
-            let valueAll = new checkRad(radAll, res, resAll);
+            let valueAll = new checkRad(radAll, res, resAll,form);
             valueAll.cheText();
             valueAll.clearAll();
         }

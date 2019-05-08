@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form class="col-sm-12">
+    <form class="col-sm-12" id="form">
         <fieldset>
             <h3>複利計算機</h3>
             <h5>(請填入本金、年報酬率、年數)</h5>

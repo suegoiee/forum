@@ -11,7 +11,7 @@
     var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,
         _LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;
     //在页面未加载完毕之前显示的loading Html自定义内容
-    var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,0.8);opacity:1;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: 200px; height: 150px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: url(/images/loading.svg) no-repeat scroll;"></div></div>';
+    var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,0.2);opacity:1;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: 200px; height: 150px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: url(/images/loading.svg) no-repeat scroll;"></div></div>';
     //呈现loading效果
     document.write(_LoadingHtml);
     //监听加载状态改变
@@ -107,8 +107,8 @@
     <title> {{ config('app.name') }} - {{ isset($title) ? $title.'  ' : '' }}</title>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/notosanstc.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 
     <script>
         window.Laravel = {!! json_encode(['csrfToken' => csrf_token()]) !!};
@@ -129,7 +129,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<div id="app">
+<div id="app" style="height: 100%;">
     @include('layouts._nav')
 
     @yield('body')
@@ -139,9 +139,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="{{ mix('js/app.js') }}"></script>
 <!--for development-->
-<!--link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'-->
-<!--link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css"-->
-<!--script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/js/Highcharts-7.1.1/code/highcharts.js"></script>
 <script src="/js/Highcharts-7.1.1/code/highcharts-more.js"></script>
@@ -183,15 +180,48 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-    
-    /*axios.get('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101')
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-        });*/
 </script>
+
+<!-- html2canvas start -->
+<script type="text/javascript" src="/js/html2canvas.js"></script>
+<script type="text/javascript">
+    function convertById(id) {
+        html2canvas(document.querySelector("#"+id),{
+            canvas: document.querySelector("#myCanvas")
+        }).then(canvas => {
+        });
+    }
+    var canvas = document.getElementById("myCanvas");
+    download_img = function(el) {
+        var image = canvas.toDataURL("image/jpg");
+        el.href = image;
+    }
+    $(document).on("click", ".downloadImg", function(){
+        var clickedId = $(this).next().next().attr('id');
+        convertById(clickedId);
+    });
+
+    $(document).on("click", ".print", function(){
+        convertById('CanvasBaseMap');
+    });
+</script>
+<!-- html2canvas end -->
+
+<!-- button to position -->
+
+<script>
+
+    $(document).on("click", ".rightbtn", function(){
+        var id = $(this).attr("value");
+        locationClicked(id);
+    });
+    function locationClicked(id){
+        window.location.hash = "#"+id;
+    }
+
+</script>
+
+<!-- button end -->
 
 <!--end of for development-->
 

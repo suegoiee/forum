@@ -1,41 +1,92 @@
-.modal-open .modal{
-    overflow-y: hidden;
-    .modal-dialog{
-        margin: 6% auto;
-        .modal-content{
-            .ruleForm{
-                margin-bottom: 0;
-                padding: 0;
-                .modal-body{
-                    overflow-y: auto;
-                    overflow-x: hidden;
-                    height: 450px;
-                    padding: 15px;
-                    .rule{
-                        p{
-                            padding: 0 0 9px;
-                            a{
-                                i{
-                                    color: #393939;
-                                    font-size: 20px;
-                                }
-                            }
-                        }
-                    }
-                }
-                .modal-footer{
-                    padding: 15px;
-                    text-align: center;
-                    .btn{
-                        color: #fff;
-                        background-color: #ffa500;
-                    }
-                    .btn:hover,
-                    .btn:focus{
-                        background-color: #ffc04d;
-                    }
-                }
-            }
+.modal-open .modal {
+  overflow: hidden;
+  .printModal {
+    width: 1200px !important;
+    margin: 1% auto !important;
+  }
+  .modal-dialog {
+    margin: 5% auto;
+    .modal-content {
+      .ruleForm {
+        background-color: #fff;
+        overflow-y: hidden;
+        height: auto;
+        margin-bottom: 0;
+        padding: 0;
+        border-radius: 10px;
+        .modal-header {
+          .modal-title {
+            text-align: center;
+          }
         }
+        .modal-body {
+          overflow-y: auto;
+          overflow-x: hidden;
+          height: 55vh;
+          padding: 15px;
+          text-align: left;
+          .rule {
+            p {
+              padding: 0 0 9px;
+              a {
+                i {
+                  color: #393939;
+                  font-size: 20px;
+                }
+              }
+            }
+          }
+        }
+        .modal-footer {
+          padding: 15px;
+          text-align: center;
+          .btn,
+          a {
+            vertical-align: middle;
+            border-radius: 4px;
+            padding: 10px 15px;
+            border: none;
+            color: #fff;
+            background-color: #ffa500;
+            text-decoration: none;
+            font-weight: bold;
+          }
+          .btn:hover,
+          .btn:focus,
+          a:hover,
+          a:focus {
+            background-color: #ffc04d;
+            text-decoration: none;
+            font-weight: bold;
+          }
+        }
+      }
     }
+  }
+}
+@media (max-width: 1024px) {
+  .modal-open .modal {
+    overflow: scroll;
+    .printModal {
+      width: 100% !important;
+      .modal-content {
+        .ruleForm {
+          .modal-body {
+            padding: 0;
+            #myCanvas {
+              width: 100% !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 767px) {
+  .modal-footer {
+    a {
+      padding: 5px 10px !important;
+      font-size: 14px;
+    }
+  }
 }

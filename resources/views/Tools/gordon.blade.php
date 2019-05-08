@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form class="col-sm-12">
+    <form class="col-sm-12" style="display: block;" id="form">
         <fieldset>
             <h3>高登模型</h3>
             <h5 style="line-height: 20px;">
@@ -56,9 +56,12 @@
                 高登模型所運算出來的股票價值：
                 <input type="text" id="resultB" class="rate" name="resultB" disabled>
             </p>
-            <p>
-            	<table id="tableRes"></table>
-            </p>
+        </fieldset>
+    </form>
+    <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
+        <fieldset>
+            <table id="tableRes">
+            </table>
         </fieldset>
     </form>
 </div>
@@ -68,9 +71,10 @@
     let resA = document.getElementById('resultA');
     let resB = document.getElementById('resultB');
     let resC = document.getElementById('tableRes');
+    let form = document.getElementById("formStyle");
 
     window.onload=function () {
-        let valueAll = new calGordon(numberAll, msgAll, resA, resB, resC);
+        let valueAll = new calGordon(numberAll, msgAll, resA, resB, resC,form);
         valueAll.gorCal();
         valueAll.clearEle();
     }

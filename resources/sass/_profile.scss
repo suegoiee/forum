@@ -71,16 +71,11 @@ div {
                   color: #fff;
                   background-color: #ffa500;
                   border: none !important;
-                  margin-left: 25%;
                 }
                 .btn:hover {
                   color: #fff;
                   background-color: #ffc04d;
                   border: none !important;
-                }
-                // change password
-                .save {
-                  margin-left: 40%;
                 }
               }
             }
@@ -92,14 +87,12 @@ div {
 }
 @media (min-width: 768px) and (max-width: 1025px) {
   .col-md-9 {
-    padding-bottom: 10%;
     width: 100%;
   }
 }
 
 @media (max-width: 767px) {
   .col-md-9 {
-    padding-bottom: 10%;
     width: 100%;
   }
   .accountA {

@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form class="col-sm-12">
+    <form class="col-sm-12" id="form">
         <fieldset>
             <h3>定期股價值計算</h3>
             <p>
@@ -12,7 +12,7 @@
                     請輸入過去n年的現金股息
                 </label>
             </p>
-            <p id="question">
+            <p id="question" style="text-align: left;">
             </p> 
             <p>
                 <button type="button" id="add">新增一年的現金股息</button>

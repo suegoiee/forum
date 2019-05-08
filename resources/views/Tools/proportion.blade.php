@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <form class="col-sm-12">
+    <form class="col-sm-12" id="form">
         <fieldset>
             <h3>本益成長比計算機</h3>
             <h5>(請填入股價、每股盈餘、預估未來淨利年成長率)</h5>

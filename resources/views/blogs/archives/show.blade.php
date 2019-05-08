@@ -45,7 +45,7 @@
                     </div>
                 </div>
         </div-->
-        <div class="col-md-9 blogContent" style="margin-top: 1%;">
+        <div class="col-md-9 blogContent" style="margin-top: 1%; width: 100% !important;">
             <div class="panel panel-default" style="border:none !important; margin: 3% 5% 3% !important;">
                 <div class="panel-heading thread-info">
                     @include('blogs.archives.info.tags')

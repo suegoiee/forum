@@ -4,9 +4,9 @@
 
 @section('content')
 <div class="container">
-	<form class="col-sm-12">
+	<form class="col-sm-12" style="display: block;" id="form">
 		<fieldset>
-			<h3>揪團買股</h3>
+			<h3 style="margin-top: 0;">揪團買股</h3>
 			<h5>(請填入姓名、金額、股票代號、買進和賣出金額)</h5>
 			<p id="question">
 			</p>
@@ -41,25 +41,19 @@
 				<button type="button" class="cal" id="calAll">計算</button>
 				<button type="button" id="clear">清除</button>
 			</p>
-
-			<p>
-				<table id="stockAll">
-				</table>
-			</p>
-			
-			<p>
-				<table id="getAll">			
-				</table>
-			</p>
-			
-			<p>
-				<table id="getMoney">		
-				</table>
-			</p>
-
-			<p id="print"></p>
 		</fieldset>
 	</form>
+	<form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
+        <fieldset>
+            <table id="stockAll">
+            </table>
+			<table id="getAll">			
+			</table>
+			<table id="getMoney">		
+			</table>
+			<p id="print"></p>
+        </fieldset>
+    </form>
 </div>
 	<script type="text/javascript">
 		let questionAll = document.getElementById("question");
@@ -70,10 +64,11 @@
 		let inputTdA = document.getElementById("stockAll");
 		let inputTdB = document.getElementById("getAll");
 		let inputTdC = document.getElementById("getMoney");
-		let printAll = document.getElementById('print');	
+		let printAll = document.getElementById('print');
+		let form = document.getElementById("formStyle");	
 
         window.onload=function () {
-			let valueAll = new togeStock(numberAll,msgAll,questionAll,nameAll,moneyAll,inputTdA,inputTdB,inputTdC,printAll);
+			let valueAll = new togeStock(numberAll,msgAll,questionAll,nameAll,moneyAll,inputTdA,inputTdB,inputTdC,printAll,form);
 			valueAll.addInput();
 			valueAll.calStock();
 			valueAll.clearEvery();

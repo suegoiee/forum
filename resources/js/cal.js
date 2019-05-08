@@ -12,7 +12,6 @@ class calFee extends judgeValue {
     feeCal() {
         document.getElementById('calMoney').onclick = () => {
             if (super.valueCheck() == true) {
-
                 if (moneyAll.length != 0) {
                     this.del(moneyAll, 0);
                 }
@@ -42,7 +41,7 @@ class calFee extends judgeValue {
         }
     }
     // estimate 市占率預估公式
-    EstCal() {
+    estCal() {
         document.getElementById('calEst').onclick = () => {
             if (super.valueCheck() == true) {
 
@@ -92,7 +91,7 @@ class calFee extends judgeValue {
 
 // buffett 巴菲特預估股價公式 和 secondDCF 兩階段 現金流折現模型
 class calBuffett extends judgeValue {
-    constructor(numberAll, msgAll, resAll, ress) {
+    constructor(numberAll, msgAll, resAll, ress, form) {
         super(numberAll, msgAll);
         this.resAll = resAll;
         this.ress = ress;
@@ -101,6 +100,7 @@ class calBuffett extends judgeValue {
         this.clearValue = this.clearValue.bind(this);
         this.clearHTMLAll = this.clearHTMLAll.bind(this);
         this.clearVal = this.clearVal.bind(this);
+        this.form = form;
     }
     // buffett 巴菲特預估股價
     bufCal() {
@@ -161,6 +161,9 @@ class calBuffett extends judgeValue {
                     this.del(ress, 0);
                 }
 
+                document.getElementById('form').style.cssFloat = "left";
+                document.getElementById('form').style.width = "48%";
+                form.style.display = "block";
                 this.addTd("th", "yearA", "year", "未來十年", resAll);
                 this.addTd("th", "momA", "mom", "自由現金流", resAll);
                 this.addTd("th", "roeA", "roe", "成長率％", resAll);
@@ -229,7 +232,7 @@ class calBuffett extends judgeValue {
                 this.addTd("tr", "resB", "resB", "", ress);
 
                 this.addTd("th", "valFF", "valFF", "每股價值", ress);
-                this.addTd("th", "valFF", "valFF", calH.toFixed(0) + "元", ress);
+                this.addTd("td", "valFF", "valFF", calH.toFixed(0) + "元", ress);
             }
         }
     }
@@ -240,6 +243,9 @@ class calBuffett extends judgeValue {
             this.clearHTMLAll(msgAll);
             this.del(resAll, 0);
             this.del(ress, 0);
+            document.getElementById('form').style.width = "100%";
+            document.getElementById('form').style.cssFloat = "none";
+            form.style.display = "none";
         }
     }
 }
@@ -324,7 +330,7 @@ class calReRate extends judgeValue {
 
 // gordon 高登模型公式
 class calGordon extends judgeValue {
-    constructor(numberAll, msgAll, resA, resB, resC) {
+    constructor(numberAll, msgAll, resA, resB, resC, form) {
         super(numberAll, msgAll);
         this.resA = resA;
         this.resB = resB;
@@ -334,6 +340,7 @@ class calGordon extends judgeValue {
         this.clearValue = this.clearValue.bind(this);
         this.clearHTMLAll = this.clearHTMLAll.bind(this);
         this.clearVal = this.clearVal.bind(this);
+        this.form = form;
     }
 
     gorCal() {
@@ -361,6 +368,13 @@ class calGordon extends judgeValue {
                     this.addTd("th", "per", "per", "成長率假設", resC);
                     this.addTd("th", "sto", "sto", "股票價值", resC);
 
+                    document.getElementById('form').style.cssFloat = "left";
+                    document.getElementById('form').style.width = "48%";
+                    form.style.display = "block";
+                    if (numberAll[2].value > 40) {
+                        form.style.height = "750px";
+                        form.style.overflowY = "scroll";
+                    }
                     for (let x = eleA - 1; - 1 < x; x--) {
                         let resD = calA * (1 + x / 100) / ((eleA - x) / 100);
                         this.addTd("tr", "res", "res", "", resC);
@@ -379,6 +393,9 @@ class calGordon extends judgeValue {
             this.clearVal(resA);
             this.clearVal(resB);
             this.del(resC, 0);
+            document.getElementById('form').style.width = "100%";
+            document.getElementById('form').style.cssFloat = "none";
+            form.style.display = "none";
         }
     }
 }
@@ -491,6 +508,7 @@ class reCal extends judgeValue {
                 let resCC = resC * 100;
 
                 document.getElementById('form').style.cssFloat = "left";
+                document.getElementById('form').style.width = "48%";
                 form.style.display = "block";
                 this.addTd("th", "MM", "MM", "月利率", inputTdA);
                 this.addTd("td", "MV", "MV", resAA.toFixed(1) + "％", inputTdA);
@@ -534,6 +552,7 @@ class reCal extends judgeValue {
             this.clearHTMLAll(msgAll);
             this.del(inputTdA, 0);
             this.del(inputTdB, 0);
+            document.getElementById('form').style.width = "100%";
             document.getElementById('form').style.cssFloat = "none";
             form.style.display = "none";
         }

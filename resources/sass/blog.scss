@@ -1,6 +1,6 @@
 .blog {
-  margin-bottom: 5%;
   margin-left: 0;
+  margin-right: 0;
   .buildText {
     width: 48%;
     margin: 1% auto 2%;
@@ -139,6 +139,7 @@
     }
   }
   .blogContent {
+    height: 76vh;
     background-color: #fff;
     .panel {
       background-color: #fff !important;
@@ -161,24 +162,24 @@
           }
         }
         .headLabel {
-          text-overflow: ellipsis;
-          width: 100%;
-          white-space: nowrap;
-          overflow-x: hidden;
-          overflow-y: hidden;
           a,
           a:hover,
           a:focus {
             color: #393939;
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-decoration: none;
           }
         }
       }
       .panel-body {
         background-color: #fff;
-        font-size: 2.2rem;
+        font-size: 2rem;
         font-weight: 300;
+        p {
+          img {
+            width: 100%;
+          }
+        }
       }
     }
     div {

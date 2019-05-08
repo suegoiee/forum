@@ -1,7 +1,7 @@
 @extends('layouts.base', ['disableAds' => $disableAds ?? true])
 
 @section('body')
-    <div class="container" style="min-height: calc(100vh - 150px);">
+    <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-top: 100px;">
         <div class="row loginForm">
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">
