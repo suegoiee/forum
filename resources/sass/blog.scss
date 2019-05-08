@@ -175,6 +175,11 @@
         background-color: #fff;
         font-size: 2rem;
         font-weight: 300;
+        p {
+          img {
+            width: 100%;
+          }
+        }
       }
     }
     div {
