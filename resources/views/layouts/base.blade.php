@@ -191,7 +191,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             }).then(canvas => {
         });
     }
-
+    var canvas = document.getElementById("myCanvas");
+    download_img = function(el) {
+        var image = canvas.toDataURL("image/jpg");
+        el.href = image;
+    }
     $(document).on("click", ".downloadSummary", function(){
         var clickedId = $(this).next().next().attr('id');
         console.log(clickedId);
