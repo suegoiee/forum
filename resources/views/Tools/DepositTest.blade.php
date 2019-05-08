@@ -10,7 +10,7 @@
             <h5>(出自:智富Smart)</h5>
             <h5>(請勾選每一個題目)</h5>
             <br />
-            <ol style="line-height: 20px; overflow-y: scroll; height: 50vh;">
+            <ol style="line-height: 20px;">
                 <li>您希望投資股票的報酬率能有多少?<br />
                     <input type="radio" class="radioAll" name="getA" value="1">A&nbsp;&nbsp;一個月賺20％<br />
                     <input type="radio" class="radioAll" name="getA" value="2">B&nbsp;&nbsp;一年賺20％<br />
