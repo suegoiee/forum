@@ -196,9 +196,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var image = canvas.toDataURL("image/jpg");
         el.href = image;
     }
-    $(document).on("click", ".downloadSummary", function(){
+    $(document).on("click", ".downloadImg", function(){
         var clickedId = $(this).next().next().attr('id');
-        console.log(clickedId);
         convertById(clickedId);
     });
 

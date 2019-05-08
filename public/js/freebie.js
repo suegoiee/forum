@@ -359,13 +359,13 @@ function stockPool(stock_url) {
                 response(results.slice(0, 3));
                 if (results.slice(0, 1)[0]) {
                     var stockCode = results.slice(0, 1)[0];
+                    SetCookie("stockCode", stockCode);
                     $("#searchBar").attr('name', stockCode['id']);
                 }
             },
             select: function (e, ui) {
                 var stockCode = ui['item']['id'];
                 var current_url = window.location.href;
-                console.log(current_url);
                 var tmp_stock_url = current_url.slice(0, -4);
                 var redirectTo = tmp_stock_url+stockCode;
                 SetCookie("stockCode", stockCode);
