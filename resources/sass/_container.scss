@@ -90,6 +90,14 @@ body {
       margin-left: 0;
       .container {
         background-color: #fff;
+        #CompanyInfocontainer,
+        #Newscontainer,
+        #dailyChart {
+          margin: 0 auto 100px;
+        }
+        #stockChart {
+          margin: 0 auto 50px;
+        }
         .downloadSummary {
           float: right;
           color: #fff;
@@ -550,6 +558,14 @@ body {
               }
             }
           }
+          #CompanyInfocontainer,
+          #Newscontainer,
+          #dailyChart {
+            margin: 0 auto 30px;
+          }
+          #stockChart {
+            margin: 0 auto 15px;
+          }
         }
       }
     }
@@ -594,9 +610,6 @@ body {
     margin-bottom: 1%;
     margin-left: 5px;
     margin-right: 5px;
-    #news {
-      margin-top: 0 !important;
-    }
     div {
       .table {
         width: auto !important;

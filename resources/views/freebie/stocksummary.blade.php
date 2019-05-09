@@ -22,7 +22,7 @@
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])
-            <div class="container" id="CompanyInfocontainer" style="margin:0 auto 100px; padding-left: 30px; padding-right: 30px;"> 
+            <div class="container" id="CompanyInfocontainer" style="padding-left: 30px; padding-right: 30px;"> 
                 <h1 style="margin-top: 15px; margin-bottom: 0;">公司基本資料</h1>
                 <h2 style="margin-top: 10px; margin-bottom: 10px;">
                     {{$CompanyInfo['data']['stock_name'] . '  ' . $CompanyInfo['data']['stock_code']}}
@@ -111,7 +111,7 @@
                 @include('_partials._catchChart_modal', [
                     'id' => 'catch',
                 ])
-            <div class="container" id="Newscontainer" style="margin:0 auto 100px; padding-left: 30px; padding-right: 30px;">
+            <div class="container" id="Newscontainer" style="padding-left: 30px; padding-right: 30px;">
                 <h1 style="margin-top: 15px; margin-bottom: 0;">個股新聞</h1>
                 <h2 style="margin-top: 10px; margin-bottom: 10px;">
                     {{$CompanyInfo['data']['stock_name'] . '  ' . $CompanyInfo['data']['stock_code']}}
@@ -120,7 +120,7 @@
                     <ul id="pagination-demo" class="pagination-sm" style="float:right"></ul>
                 </div>
             </div>
-            <div class="container" style="margin:0 auto 100px;">
+            <div class="container" id="dailyChart">
                 <a  class="downloadTable downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
@@ -132,7 +132,7 @@
                     </h2>
                 </div>
             </div>
-            <div class="container" style="margin:0 auto 50px;">
+            <div class="container" id="stockChart">
                 <a  class="downloadTable downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
