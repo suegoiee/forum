@@ -531,7 +531,15 @@ body {
           padding: 0 4px !important;
         }
       }
+      div {
+        .input-group {
+          position: fixed;
+          width: 100%;
+          top: 70px;
+        }
+      }
       #CanvasBaseMap {
+        margin-top: 100px !important;
         .container {
           .downfree {
             margin-top: 8%;
