@@ -165,7 +165,7 @@ function dataFactoryC(data, stock_url, ClearCanvas) {
 /**日期機制 按鈕*/
 function stockDateRangeB(IdForCanvas, dataType, data, refreshEnd, startFrom) {
     var count = 0;
-    
+
     if ($(".ChartActive").val()) {
         var key1 = $(".ChartActive").val();
         var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
@@ -270,7 +270,7 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         var tmp_canvas = $(this).attr('value');
         $("#customizeRange" + tmp_canvas).collapse('toggle');
     });
-    $(".rangeStartSelect"+IdForCanvas).change(function () {
+    $(".rangeStartSelect" + IdForCanvas).change(function () {
         rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var tmp_canvas = $(this).attr('value');
@@ -288,7 +288,7 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
             seriesGenerator(tmpData, dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
         }
     });
-    $(".rangeEndSelect"+IdForCanvas).change(function () {
+    $(".rangeEndSelect" + IdForCanvas).change(function () {
         rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         var tmp_canvas = $(this).attr('value');
@@ -361,7 +361,7 @@ function stockPool() {
                 var stockCode = ui['item']['id'];
                 var current_url = window.location.href;
                 var tmp_stock_url = current_url.slice(0, -4);
-                var redirectTo = tmp_stock_url+stockCode;
+                var redirectTo = tmp_stock_url + stockCode;
                 SetCookie("stockCode", stockCode);
                 window.location.href = redirectTo;
             }
@@ -589,12 +589,12 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, M
     var SideTableContainer = '<div class="sidebar" id="' + IdForCanvas + 'table"></div>';
 
     /**總成 */
-    var container = display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + YearButton + PeriodButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div class="timeS"><label>從 ： </label>' + CostumizeDateStart + '</div><div class="timeE"><label>至 ： </label>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div>';
+    var container = display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div style="display: inline-block;"><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + YearButton + PeriodButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div class="timeS"><label>從 ： </label>' + CostumizeDateStart + '</div><div class="timeE"><label>至 ： </label>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div>';
 
     if (MultiCharts) {
-        $("#"+IdForCanvas+"Outer").append(container);
+        $("#" + IdForCanvas + "Outer").append(container);
     }
-    else{
+    else {
         $("#Outer").append(container);
     }
 }
@@ -858,7 +858,7 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
         var tmp_canvas = $(this).attr('value');
         $("#customizeRange" + tmp_canvas).collapse('toggle');
     });
-    $(".rangeStartSelect"+IdForCanvas).change(function () {
+    $(".rangeStartSelect" + IdForCanvas).change(function () {
         rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         if ($(".ChartActive").val()) {
@@ -874,7 +874,7 @@ function buttonEngine(refLine, outer_ch, display, IdForCanvas) {
             seriesGenerator(tmpData, dataType, refLine, outer_ch, display, IdForCanvas, rangeStart, rangeEnd);
         }
     });
-    $(".rangeEndSelect"+IdForCanvas).change(function () {
+    $(".rangeEndSelect" + IdForCanvas).change(function () {
         rangeEnd = parseInt($(".rangeEndSelect" + IdForCanvas).find(":selected").val()) + 1;
         rangeStart = parseInt($(".rangeStartSelect" + IdForCanvas).find(":selected").val());
         if ($(".ChartActive").val()) {
@@ -985,16 +985,16 @@ function stockDateRange(IdForCanvas, dataType, refreshEnd, startFrom) {
     }
 }
 
-function ClickedCanvasDataType(tmp_canvas){
-    if($("#"+tmp_canvas+"container").children("div").children(".LeftButtonGroup").children(".ActiveChartControlButton").length > 0){
-        if($("#"+tmp_canvas+"container").children("div").children(".LeftButtonGroup").children(".ActiveChartControlButton").hasClass("buttonYear")){
+function ClickedCanvasDataType(tmp_canvas) {
+    if ($("#" + tmp_canvas + "container").children("div").children(".LeftButtonGroup").children(".ActiveChartControlButton").length > 0) {
+        if ($("#" + tmp_canvas + "container").children("div").children(".LeftButtonGroup").children(".ActiveChartControlButton").hasClass("buttonYear")) {
             var dataType = 'YearData';
         }
-        else{
+        else {
             var dataType = 'PeriodData';
         }
     }
-    else{
+    else {
         var dataType = 'Data';
     }
     return dataType;
