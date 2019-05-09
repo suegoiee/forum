@@ -15,10 +15,10 @@
         
     </div>
     <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; margin-left: 0;">
-        <h1 style="text-align:center; margin-top: 0;">{{$PageSubtitle}}</h1>
-        <h2 style="margin-top: 0;"><b>{{$stock_code . ' - ' . $stock_name}}</b></h2>
         <div class="container">
-            <div class="container" id="Outer" style="margin-left: 0;"></div>
+            <h1 style="margin-top: 15px; margin-bottom: 0; padding-left: 15px;">{{$PageSubtitle}}</h1>
+            <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 15px;">{{$stock_code . ' - ' . $stock_name}}</h2>
+            <div class="container" id="Outer" style="padding-left: 0; padding-right: 0;"></div>
         </div>
     </div>
     <script>
