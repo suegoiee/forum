@@ -85,6 +85,8 @@ body {
       }
     }
     #CanvasBaseMap {
+      overflow: auto;
+      width: 100%;
       margin-top: 0;
       margin-left: 0;
       .container {
@@ -533,15 +535,7 @@ body {
           padding: 0 4px !important;
         }
       }
-      div {
-        .input-group {
-          position: fixed;
-          width: 100%;
-          top: 70px;
-        }
-      }
       #CanvasBaseMap {
-        margin-top: 100px !important;
         .container {
           .downfree {
             margin-top: 8%;
