@@ -16,7 +16,7 @@
             </ul>
         </div>
     </div>
-    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 65vh; width:100%; margin-top: 0; margin-left: 0;">
+    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; overflow-y: scroll; height: 65vh; width:100%;">
         <div class="container" style="background-color: #e9e9e9; padding-left: 0; padding-right: 0;">
             <a class="downloadSummary downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                 @include('_partials._catchChart_modal', [
