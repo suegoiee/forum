@@ -69,14 +69,20 @@ body {
         font-weight: 200;
       }
       #sideBtn {
+        position: fixed;
+        z-index: 2;
+        text-align: left;
+        right: 15px;
+        background-color: #fff;
+        padding-left: 0;
+        top: 163px;
+        padding-top: 0;
         .rightbtn {
-          padding: 5px 10px;
-          text-decoration: none;
+          padding: 5px;
           color: #393939;
           font-size: 15px;
           font-weight: 400;
           list-style: none;
-          display: inline-block;
         }
         .rightbtn:hover,
         .rightbtn:focus {
@@ -528,14 +534,10 @@ body {
   body {
     .container {
       #sideBtn {
-        padding-left: 0;
-        text-align: left;
-        padding-top: 45px;
-        .rightbtn {
-          padding: 0 4px !important;
-        }
+        display: none;
       }
       #CanvasBaseMap {
+        height: auto !important;
         .container {
           .downfree {
             margin-top: 8%;
