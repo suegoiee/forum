@@ -138,7 +138,8 @@
     // build a thread button
     .btn_Build {
       background-color: #ffa500;
-      border: none;
+      border: 1px solid #ffa500;
+      border-radius: 5px !important;
       color: #fff;
       width: auto;
       display: inline-block;
@@ -151,7 +152,8 @@
     .btn_Build:hover,
     .btn_Build:focus {
       background-color: #ffc04d;
-      border: none;
+      border: 1px solid #ffc04d;
+      border-radius: 5px;
       text-decoration: none;
       font-weight: 500;
     }
@@ -165,15 +167,18 @@
             .modal-footer {
               padding: 5px 0;
               .btn {
-                background-color: #fff;
-                border: none;
-                color: #ffa500;
+                background-color: #ffa500;
+                border: 1px solid #ffa500;
+                border-radius: 5px;
+                color: #fff;
                 width: auto;
                 float: right;
               }
               .btn:hover,
               .btn:focus {
-                color: #ffc04d;
+                background-color: #ffc04d;
+                border: 1px solid #ffc04d;
+                border-radius: 5px;
               }
             }
           }
@@ -216,6 +221,9 @@
           white-space: nowrap;
           overflow-x: hidden;
           overflow-y: hidden;
+          h3 {
+            font-size: 20px;
+          }
         }
       }
       // thread title
