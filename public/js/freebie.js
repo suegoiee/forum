@@ -42,6 +42,9 @@ function drawChartB(title, yLabel, series) {
             text: title
         }, yAxis: yLabel,
         xAxis: {
+            crosshair: {
+                color: 'green'
+            },
             type: 'category',
             uniqueNames: true
         },
@@ -803,6 +806,9 @@ function drawChart(canvas, title, yLabel, series) {
             text: title
         }, yAxis: yLabel,
         xAxis: {
+            crosshair: {
+                color: "#CCD6EB"
+            },
             type: 'category',
             uniqueNames: true
         },
