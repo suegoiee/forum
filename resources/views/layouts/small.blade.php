@@ -6,8 +6,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <img src="./images/logo_light.svg" style="width: 80%; margin: 5% auto;">
-                        <!-- {{env('APP_URL')}} -->
+                        <img src="{{env('APP_URL')}}/images/logo_light.svg" style="width: 80%; margin: 5% auto;">
                         <div>
                             <span style="letter-spacing: 20px; font-size: 22px; text-align: center; color: #545454; margin-left: 20px;">台股 •</span>
                             <span style="letter-spacing: 20px; font-size: 22px; color: #545454; margin-left: 15px;">優分析</span>
