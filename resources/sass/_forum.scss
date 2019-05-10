@@ -18,6 +18,33 @@
 .far {
   line-height: 1.42857143 !important;
 }
+.forumPadding {
+  div {
+    div {
+      // build a thread button
+      .btn_Build {
+        background-color: #ffa500;
+        border: 1px solid #ffa500;
+        border-radius: 5px !important;
+        color: #fff;
+        width: auto;
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 0;
+        margin-bottom: 1%;
+        font-weight: 500;
+      }
+      .btn_Build:hover,
+      .btn_Build:focus {
+        background-color: #ffc04d;
+        border: 1px solid #ffc04d;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+  }
+}
 // forum
 .forum {
   // left part
@@ -35,33 +62,6 @@
             font-size: 25px;
           }
         }
-      }
-    }
-    // search form
-    form {
-      background: none;
-      box-shadow: none;
-      border: none;
-      margin: 0;
-      padding: 0 !important;
-      width: 100%;
-      height: auto;
-      .form-group {
-        margin-bottom: 0 !important;
-        .form-control {
-          border: 1px solid #e9e9e9;
-          border-radius: 15px;
-          margin-bottom: 5%;
-          width: 100%;
-          height: 40px;
-        }
-      }
-      #btnReply {
-        color: #fff;
-        background-color: #ffa500;
-      }
-      #btnReply:hover {
-        background-color: #ffc04d;
       }
     }
     // title-tag
@@ -274,6 +274,9 @@
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+            img {
+              max-width: 100%;
+            }
           }
         }
         a:hover,
@@ -486,6 +489,11 @@
       }
       .panel {
         width: 100%;
+        .panel-heading {
+          .showTitle {
+            white-space: normal !important;
+          }
+        }
         .panel-body {
           h3 {
             font-size: 15px;

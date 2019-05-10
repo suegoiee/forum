@@ -1,4 +1,4 @@
-{!! Form::open(['route' => $route, 'method' => $method ?? 'POST']) !!}
+{!! Form::open(['route' => $route, 'method' => $method ?? 'POST','class' => 'buildThread']) !!}
     @formGroup('subject')
         {!! Form::label('標題') !!}
         {!! Form::text('subject', isset($thread) ? $thread->subject() : null, ['class' => 'form-control', 'required', 'maxlength' => '60']) !!}

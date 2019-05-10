@@ -4,15 +4,19 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1 style="color: #545454; font-size: 30px; font-weight: bolder; margin-top: 0;">{{ $title }}</h1>
-
-    <div class="row forum">
+    <div class="forumTit" style="display: inline-block; background-color: #e9e9e9; position: fixed; z-index: 3; width: 1180px; top: 65px; padding-top: 15px;">
+        <h1 style="float: left; line-height: 32px; margin-top: 0;">{{ $title }}</h1>
+        {{ Form::open(['route' => 'forum', 'method' => 'GET', 'class' => 'search-article','style' => 'padding: 0; float: left;']) }}
+            <div class="form-group">
+                {{ Form::text('search', $search ?? null, ['class' => 'form-control search-article', 'placeholder' => '搜尋文章' ]) }}
+            </div>
+        {{ Form::close() }}
+        <div style="text-align:right;">
+            <a class="btn_Build" href="{{ route('threads.create') }}">發表文章</a>
+        </div>
+    </div>
+    <div class="row forum" style="margin-top: 65px;">
         <div class="col-md-3">
-            {{ Form::open(['route' => 'forum', 'method' => 'GET', 'class' => 'search-article']) }}
-                <div class="form-group">
-                    {{ Form::text('search', $search ?? null, ['class' => 'form-control search-article', 'placeholder' => '搜尋文章','style' => 'width:100%;' ]) }}
-                </div>
-            {{ Form::close() }}
 
             @include('layouts._ads._forum_sidebar')
 
@@ -29,9 +33,6 @@
                     @endforeach
                 </div>
             </div>
-        </div>
-        <div style="text-align:right;margin-top: 1%;">
-            <a class="btn_Build" href="{{ route('threads.create') }}">發表文章</a>
         </div>
         <div class="col-md-9 chat-bg">
             @include('layouts._ads._bsa-cpc')
@@ -74,6 +75,6 @@
                     <a href="{{ route('threads.create') }}" style="color: #545454;" class="alert-link">發表新的文章</a>
                 </div>
             @endif
-        </div>
+        </div> 
     </div>
 @endsection

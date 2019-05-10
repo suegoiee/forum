@@ -133,7 +133,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     @yield('body')
 
-    @include('layouts._footer')
 </div>
 
 <script src="{{ mix('js/app.js') }}"></script>

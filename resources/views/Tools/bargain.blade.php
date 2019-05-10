@@ -3,7 +3,7 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container">
+<div class="container" style=" margin-top: 30px;">
 	<form class="col-sm-12" id="form">
 		<fieldset>
 			<h3>買賣股票損益計算機</h3>

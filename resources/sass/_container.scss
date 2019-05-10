@@ -68,6 +68,20 @@ body {
         font-size: 20px;
         font-weight: 200;
       }
+      .search-article {
+        .form-group {
+          input,
+          input:focus {
+            border: 1px solid #e9e9e9;
+            border-radius: 15px;
+            width: 210px;
+            height: 35px;
+            margin-left: 30px;
+            margin-bottom: 10px;
+            color: #545454;
+          }
+        }
+      }
       #sideBtn {
         .rightbtn {
           padding: 5px 10px;
@@ -84,7 +98,6 @@ body {
       }
     }
     #CanvasBaseMap {
-      overflow: auto;
       width: 100%;
       margin-top: 0;
       margin-left: 0;
@@ -93,10 +106,10 @@ body {
         #CompanyInfocontainer,
         #Newscontainer,
         #dailyChart {
-          margin: 0 auto 100px;
+          margin: 0 auto 120px;
         }
         #stockChart {
-          margin: 0 auto 50px;
+          margin: 0 auto 220px;
         }
         .downloadSummary {
           float: right;
@@ -106,8 +119,8 @@ body {
           border-radius: 5px;
           padding: 5px 10px;
           text-decoration: none;
-          margin-top: 10px;
           margin-right: 15px;
+          margin-top: 10px;
         }
         .downloadTable {
           float: right;
@@ -543,6 +556,14 @@ body {
           .downfree {
             margin-top: 8%;
           }
+          #getInfo {
+            margin-top: 50px;
+          }
+          div {
+            .vacant {
+              display: none !important;
+            }
+          }
           #Outer {
             .container {
               margin-left: 0;
@@ -574,11 +595,6 @@ body {
   .list-group-item:hover {
     padding: 5px !important;
   }
-  .input-group {
-    .form-control {
-      margin-left: 0 !important;
-    }
-  }
   // table label
   .table {
     width: 100%;
@@ -604,6 +620,18 @@ body {
   }
   .forumPadding {
     padding-top: 20% !important;
+    .forumTit {
+      width: 100% !important;
+      form {
+        width: auto !important;
+        .form-group {
+          input {
+            margin-left: 5px !important;
+            margin-top: -8px;
+          }
+        }
+      }
+    }
   }
   .container {
     padding: 0 5px;

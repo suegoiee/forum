@@ -69,10 +69,10 @@
                 ])
             @endcan
         </div>    
-        <div class="col-md-9">
+        <div class="col-md-9" style=" margin-top: 15px;">
             <div class="panel panel-default" style="border:none !important; padding-top:2%; padding-left:0 !important;margin-top: 0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
-                    <div class="thread-info-author headLabel">
+                    <div class="thread-info-author headLabel showTitle">
                         <h3>{{ $thread->subject() }}</h3>
                     </div>
                     <div class="showTag">
@@ -215,5 +215,6 @@
                 </p>
             @endif
         </div>
+        @include('layouts._footer')
     </div>
 @endsection
