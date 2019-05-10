@@ -10,7 +10,7 @@
                     <canvas id="myCanvas"></canvas>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="cancel" data-dismiss="modal">取消</button>
                     <a id="download" download="myImage.jpg" href="" onclick="download_img(this);">下載</a>
                 </div>
             {{ Form::close() }}

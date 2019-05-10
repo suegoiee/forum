@@ -153,8 +153,8 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::guest())
-                    <li class="{{ active('login') }}"><a style="display:-webkit-box;" class="login" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>  登入</a></li>
-                    <li class="{{ active('register') }}"><a class="login" href="{{ route('register') }}"><i class="fas fa-pencil-alt"></i>  註冊</a></li>
+                    <li class="{{ active('login') }}"><a style="display:-webkit-box;" class="login" href="{{ route('login') }}">登入</a></li>
+                    <li class="{{ active('register') }}"><a class="login" href="{{ route('register') }}">註冊</a></li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle profile-image" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-label="會員清單">
@@ -167,16 +167,16 @@
                                 </span>
                             </li>
                             <li role="separator" class="divider"></li>
-                            <li class="{{ active('dashboard') }}"><a class="user" href="{{ route('dashboard') }}"> <i class="fas fa-user dropdown-icon" aria-hidden="true"></i>個人頁面</a></li>
-                            <li class="{{ active('settings.*') }}"><a class="user" href="{{ route('settings.profile') }}"> <i class="fa fa-cog dropdown-icon" aria-hidden="true"></i>設定</a></li>
+                            <li class="{{ active('dashboard') }}"><a class="user" href="{{ route('dashboard') }}">個人頁面</a></li>
+                            <li class="{{ active('settings.*') }}"><a class="user" href="{{ route('settings.profile') }}">設定</a></li>
 
                             @can(App\Policies\UserPolicy::ADMIN, App\User::class)
                                 <li role="separator" class="divider"></li>
-                                <li class="{{ active('admin*') }}"><a class="user" href="{{ route('admin') }}"><i class="fa fa-shield dropdown-icon" aria-hidden="true"></i>Admin</a></li>
+                                <li class="{{ active('admin*') }}"><a class="user" href="{{ route('admin') }}">管理者</a></li>
                             @endcan
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('logout') }}"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> 登出</a></li>
+                            <li><a href="{{ route('logout') }}">登出</a></li>
                         </ul>
                     </li>
                 @endif
