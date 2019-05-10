@@ -75,6 +75,7 @@ div {
                   border-radius: 5px;
                   border: none !important;
                   width: auto;
+                  margin: 10px auto;
                 }
                 .btn:hover {
                   color: #fff;
@@ -115,7 +116,6 @@ div {
           .form-group {
             div {
               .btn {
-                float: right;
                 width: 100%;
               }
             }
