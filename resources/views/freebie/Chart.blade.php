@@ -17,7 +17,7 @@
     <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; margin-left: 0;">
         <div class="container">
             <h1 style="margin-top: 15px; margin-bottom: 0; padding-left: 15px;">{{$PageSubtitle}}</h1>
-            <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 15px;">{{$stock_code . ' - ' . $stock_name}}</h2>
+            <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 15px;" id="stock_title">{{$stock_code . ' - ' . $stock_name}}</h2>
             <div class="container" id="Outer" style="padding-left: 0; padding-right: 0;"></div>
         </div>
     </div>
