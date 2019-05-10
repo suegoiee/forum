@@ -59,13 +59,14 @@ div {
         }
       }
       form {
+        padding: 0 15px;
         background-color: #e9e9e9;
         -webkit-box-shadow: none;
         box-shadow: none;
         border: none;
         text-align: left;
         .form-group {
-          margin-bottom: 0 !important;
+          margin-bottom: 0;
           input {
             background-color: #fff;
             border: 1px rgba(158, 158, 158, 0.8) solid !important;
@@ -82,18 +83,15 @@ div {
           }
           .form-control {
             height: 40px !important;
+            width: 100%;
+            margin-left: 0;
+            margin-bottom: 0;
           }
           label {
-            width: 105%;
-            font-size: 1.5rem;
-            line-height: 1.5;
-            max-width: 105%;
+            font-size: 14.5px;
             input {
               width: 100% !important;
               margin: 0 !important;
-            }
-            input[type="checkbox"] {
-              width: 5% !important;
             }
           }
           .loginMg {
@@ -118,6 +116,7 @@ div {
           border: 1px solid #ffa500;
           background-color: #ffa500;
           border-radius: 5px;
+          margin-top: 30px;
         }
         .btn:focus {
           background-color: #ffc04d;
@@ -152,17 +151,6 @@ div {
     .panel {
       .panel-body {
         padding: 5px !important;
-        form {
-          .form-group {
-            label {
-              width: 100%;
-              font-size: 11px;
-            }
-            a {
-              font-size: 13px;
-            }
-          }
-        }
       }
     }
   }

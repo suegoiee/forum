@@ -5,7 +5,7 @@
 
 @section('content')
 
-    <div class="row blog">
+    <div class="row blog"  style=" margin-top: 15px;">
         @can(App\Policies\ArchivePolicy::CREATE, App\Models\Archive::class)
             <div style="text-align:right;" class="buildText">
                 <a class="btnBuild" href="{{ route('archives.create') }}">撰寫專欄</a>

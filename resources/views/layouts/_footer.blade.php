@@ -1,7 +1,7 @@
 @include('layouts._ads._footer')
 @include('layouts._sponsors')
 
-<div id="footer" class="container text-center" style="font-size: 12.5px;height: 40px; width: 100%; border-top: 1px solid #545454; padding-top: 10px; color:#545454;">
+<div id="footer" class="container text-center" style="font-size: 12.5px;height: 40px; width: 100%; padding-top: 10px; color:#545454;">
     <div>
         <a class="footerWord" style="cursor: pointer;" data-toggle="modal" data-target="#rule">網站規則</a>
             @include('_partials._rule_modal', [
