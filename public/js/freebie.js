@@ -47,15 +47,22 @@ function drawChartB(title, yLabel, series) {
         },
         series: series,
         tooltip: {
-            borderWidth: 0,
             formatter: function () {
+                return this.points.reduce(function (s, point) {
+                    return s + '<br/>' + point.series.name + ': ' +
+                        point.y + 'm';
+                }, '<b>' + this.x + '</b>');
+            },
+            borderWidth: 0,
+            shared: true,
+            /*formatter: function () {
                 var tmp_unit = '';
                 if (this.series.yAxis.axisTitle) {
                     tmp_unit = this.series.yAxis.axisTitle.textStr;
                 }
                 return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
                     dataFormat(this.y) + tmp_unit;
-            }
+            }*/
         }
     });
 }
@@ -649,7 +656,10 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
             name: data[i]['ChineseAccount'],
             data: tmpData,
             yAxis: yAxisLocate[i],
-            label: { enabled: false }
+            label: { enabled: false },
+            tooltip: {
+                valueSuffix: data[i]['UnitRef']
+            }
         });
     }
     var yLabel = yLabelGenerator(unit, refLine);
@@ -735,7 +745,6 @@ function yLabelGenerator(formats, refline) {
     }
     for (var i in formats) {
         var unit = formats[i];
-        console.log(unit);
         yLabel.push({
             labels: {
                 //format: '{value}' + formats[i]
@@ -799,15 +808,14 @@ function drawChart(canvas, title, yLabel, series) {
         },
         series: series,
         tooltip: {
-            borderWidth: 0,
             formatter: function () {
-                var tmp_unit = '';
-                if (this.series.yAxis.axisTitle) {
-                    tmp_unit = this.series.yAxis.axisTitle.textStr;
-                }
-                return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
-                    dataFormat(this.y) + tmp_unit;
-            }
+                return this.points.reduce(function (s, point) {
+                    return s + '<br/>' + '<b>' + point.series.name + ': ' +
+                        point.y + point.series.yAxis.axisTitle.textStr + '</b>';
+                }, '<b>' + this.points[0].key + '</b>');
+            },
+            borderWidth: 0,
+            shared: true
         }
     });
 }
