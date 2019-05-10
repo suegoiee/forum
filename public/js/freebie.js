@@ -20,16 +20,12 @@ function drawTableB(TableData, TableTitle) {
         "pagingType": "full_numbers",
         columnDefs: [
             {
-                targets: -1,
-                className: 'dt-head-center'
-            },
-            {
-                targets: -1,
-                className: 'dt-body-right'
-            },
-            {
                 targets: 0,
                 className: "text-center"
+            },
+            {
+                targets: "_all",
+                className: 'text-right'
             }
         ],
         "oLanguage": {
