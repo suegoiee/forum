@@ -313,7 +313,7 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
-            seriesGenerator(chart_data[key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
+            seriesGenerator(chart_data[tmp_canvas][key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
         }
         else {
             seriesGenerator(chart_data[tmp_canvas], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
@@ -328,7 +328,7 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
-            seriesGenerator(chart_data[key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
+            seriesGenerator(chart_data[tmp_canvas][key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
         }
         else {
             seriesGenerator(chart_data[tmp_canvas], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
@@ -628,6 +628,22 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
         /*$.each(tmpData, function (key2, val2) {
             val2[1] = parseInt(val2[1]);
         });*/
+        /*if(data[i]['Style'] == 'area'){
+            var sort = 0;
+        }
+        else if(data[i]['Style'] == 'column'){
+            var sort = 1;
+        }
+        else if(data[i]['Style'] == 'line'){
+            var sort = 2;
+        }
+        seriestData[sort] = {
+            type: data[i]['Style'],
+            name: data[i]['ChineseAccount'],
+            data: tmpData,
+            yAxis: yAxisLocate[i],
+            label: { enabled: false }
+        }*/
         seriestData.push({
             type: data[i]['Style'],
             name: data[i]['ChineseAccount'],
