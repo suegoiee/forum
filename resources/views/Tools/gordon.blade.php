@@ -3,7 +3,7 @@
 @extends('layouts.default')
 
 @section('content')
-<div class="container">
+<div class="container" style=" margin-top: 30px;">
     <form class="col-sm-12" style="display: block;" id="form">
         <fieldset>
             <h3>高登模型</h3>
