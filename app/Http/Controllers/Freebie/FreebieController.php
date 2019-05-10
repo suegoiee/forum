@@ -222,11 +222,6 @@ class FreebieController extends Controller
         }
         return $data;
     }
-
-    function dataFormat($toFormat) {
-        $toFormat = (string)$toFormat;
-        return str_replace('/\B(?=(\d{3})+(?!\d))/g', ",", $toFormat);
-    }
     
     function yLabelGenerator($formats, $refline) {
         $yLabel = array();
@@ -255,17 +250,22 @@ class FreebieController extends Controller
         foreach ($data['data'] as $key => $value) {
             $tmp = array();
             foreach ($compare as $key2 => $value2) {
-                /*if ($value[$value2] != null || $value[$value2] != 'undefined' || $value[$value2]) {
-                    if ($value2 != 'row_title_center') {
-                        array_push($tmp, $this->dataFormat($value[$value2]));
+                if(array_key_exists($value2, $value)){
+                    if ($value[$value2]) {
+                        if ($value2 != 'row_title_center') {
+                            array_push($tmp, number_format($value[$value2]));
+                        }
+                        else {
+                            array_push($tmp, $value[$value2]);
+                        }
                     }
-                    else {*/
-                        array_push($tmp, $value[$value2]);
-                /*    }
+                    else {
+                        array_push($tmp, 0);
+                    }
                 }
-                else if(!array_key_exists($value2, $value)) {
-                    array_push($tmp, null);
-                }*/
+                else {
+                    array_push($tmp, ' ');
+                }
             }
             array_push($TableData, $tmp);
         }
@@ -289,23 +289,6 @@ class FreebieController extends Controller
             }
         }
         return $tmp;
-            /*else{
-                if(array_key_exists('Combo', $value)){
-                    foreach($value2['Combo'] as $key3 => $value3){
-                        //$SideTable[$key][$key2] = $value3;
-                        array_push($SideTable[$key][$key2], $value3);
-                        //$value3 = $this->DataStandardization($value3);
-                        //array_push($SideTable[$key], $value3);
-                    }
-                }
-                else{
-                    $SideTable[$key][$key2] = $value2;
-                }
-            }*/
-    }
-
-    function ReportData($data){
-        return $data;
     }
 }
 ?>

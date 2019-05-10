@@ -18,6 +18,16 @@ function drawTableB(TableData, TableTitle) {
         columns: TableTitle,
         "order": [[0, "desc"]],
         "pagingType": "full_numbers",
+        columnDefs: [
+            {
+                targets: 0,
+                className: "text-center"
+            },
+            {
+                targets: "_all",
+                className: 'text-right'
+            }
+        ],
         "oLanguage": {
             "sInfoThousands": ",",
             "sLengthMenu":
@@ -806,9 +816,6 @@ function drawChart(canvas, title, yLabel, series) {
             text: title
         }, yAxis: yLabel,
         xAxis: {
-            crosshair: {
-                color: "#CCD6EB"
-            },
             type: 'category',
             uniqueNames: true
         },
