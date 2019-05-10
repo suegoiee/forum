@@ -6,7 +6,7 @@
 <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 65px;">
     <div class="container" style="padding-left: 0; padding-right: 0; background-color: #e9e9e9; position: fixed; z-index: 5; width: 1180px; top: 64px; padding-top: 15px;">
         <div class="input-group mb-3">
-            <h2 style="text-align: left; margin-top: 5px; display: inline-block; float: left;">{{$PageSubtitle}}</h2>
+            <h2 style="text-align: left; margin-top: 5px; display: inline-block; float: left;" id="info_type">{{$PageSubtitle}}</h2>
             <input type="text" class="form-control" style=" margin-left: 30px;" placeholder="股票代碼或名稱" id="searchBar" aria-label="search">
             <ul id="sideBtn">
                 <li class="rightbtn" type="button" name="Submit" value="getInfo" style="cursor:pointer"> 公司基本資料 </li>
