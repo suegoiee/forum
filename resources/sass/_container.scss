@@ -71,7 +71,6 @@ body {
       #sideBtn {
         .rightbtn {
           padding: 5px 10px;
-          text-decoration: none;
           color: #393939;
           font-size: 15px;
           font-weight: 400;
@@ -85,8 +84,20 @@ body {
       }
     }
     #CanvasBaseMap {
+      overflow: auto;
+      width: 100%;
+      margin-top: 0;
+      margin-left: 0;
       .container {
         background-color: #fff;
+        #CompanyInfocontainer,
+        #Newscontainer,
+        #dailyChart {
+          margin: 0 auto 100px;
+        }
+        #stockChart {
+          margin: 0 auto 50px;
+        }
         .downloadSummary {
           float: right;
           color: #fff;
@@ -524,14 +535,10 @@ body {
   body {
     .container {
       #sideBtn {
-        padding-left: 0;
-        text-align: left;
-        padding-top: 45px;
-        .rightbtn {
-          padding: 0 4px !important;
-        }
+        display: none;
       }
       #CanvasBaseMap {
+        height: auto !important;
         .container {
           .downfree {
             margin-top: 8%;
@@ -550,6 +557,14 @@ body {
                 }
               }
             }
+          }
+          #CompanyInfocontainer,
+          #Newscontainer,
+          #dailyChart {
+            margin: 0 auto 30px;
+          }
+          #stockChart {
+            margin: 0 auto 15px;
           }
         }
       }
@@ -595,9 +610,6 @@ body {
     margin-bottom: 1%;
     margin-left: 5px;
     margin-right: 5px;
-    #news {
-      margin-top: 0 !important;
-    }
     div {
       .table {
         width: auto !important;
