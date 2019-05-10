@@ -42,20 +42,30 @@ function drawChartB(title, yLabel, series) {
             text: title
         }, yAxis: yLabel,
         xAxis: {
+            crosshair: {
+                color: 'green'
+            },
             type: 'category',
             uniqueNames: true
         },
         series: series,
         tooltip: {
-            borderWidth: 0,
             formatter: function () {
+                return this.points.reduce(function (s, point) {
+                    return s + '<br/>' + point.series.name + ': ' +
+                        point.y + 'm';
+                }, '<b>' + this.x + '</b>');
+            },
+            borderWidth: 0,
+            shared: true,
+            /*formatter: function () {
                 var tmp_unit = '';
                 if (this.series.yAxis.axisTitle) {
                     tmp_unit = this.series.yAxis.axisTitle.textStr;
                 }
                 return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
                     dataFormat(this.y) + tmp_unit;
-            }
+            }*/
         }
     });
 }
@@ -313,7 +323,7 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
-            seriesGenerator(chart_data[key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
+            seriesGenerator(chart_data[tmp_canvas][key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
         }
         else {
             seriesGenerator(chart_data[tmp_canvas], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
@@ -328,7 +338,7 @@ function buttonEngineB(refLine, outer_ch, display, IdForCanvas, chart_data) {
         if ($(".ChartActive").val()) {
             var key1 = $(".ChartActive").val();
             var key2 = $(".ChartActive").parent('.ChartTableButtonParent').attr('value');
-            seriesGenerator(chart_data[key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
+            seriesGenerator(chart_data[tmp_canvas][key2][key1], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
         }
         else {
             seriesGenerator(chart_data[tmp_canvas], dataType, refLine, outer_ch, display, tmp_canvas, rangeStart, rangeEnd);
@@ -628,12 +638,31 @@ function seriesGenerator(data, dataType, refLine, title, display, IdForCanvas, s
         /*$.each(tmpData, function (key2, val2) {
             val2[1] = parseInt(val2[1]);
         });*/
-        seriestData.push({
+        /*if(data[i]['Style'] == 'area'){
+            var sort = 0;
+        }
+        else if(data[i]['Style'] == 'column'){
+            var sort = 1;
+        }
+        else if(data[i]['Style'] == 'line'){
+            var sort = 2;
+        }
+        seriestData[sort] = {
             type: data[i]['Style'],
             name: data[i]['ChineseAccount'],
             data: tmpData,
             yAxis: yAxisLocate[i],
             label: { enabled: false }
+        }*/
+        seriestData.push({
+            type: data[i]['Style'],
+            name: data[i]['ChineseAccount'],
+            data: tmpData,
+            yAxis: yAxisLocate[i],
+            label: { enabled: false },
+            tooltip: {
+                valueSuffix: data[i]['UnitRef']
+            }
         });
     }
     var yLabel = yLabelGenerator(unit, refLine);
@@ -719,7 +748,6 @@ function yLabelGenerator(formats, refline) {
     }
     for (var i in formats) {
         var unit = formats[i];
-        console.log(unit);
         yLabel.push({
             labels: {
                 //format: '{value}' + formats[i]
@@ -778,20 +806,22 @@ function drawChart(canvas, title, yLabel, series) {
             text: title
         }, yAxis: yLabel,
         xAxis: {
+            crosshair: {
+                color: "#CCD6EB"
+            },
             type: 'category',
             uniqueNames: true
         },
         series: series,
         tooltip: {
-            borderWidth: 0,
             formatter: function () {
-                var tmp_unit = '';
-                if (this.series.yAxis.axisTitle) {
-                    tmp_unit = this.series.yAxis.axisTitle.textStr;
-                }
-                return '<b>' + this.series.name + '</b><br/>' + this.series.data[this.x]['name'] + '<br/>' +
-                    dataFormat(this.y) + tmp_unit;
-            }
+                return this.points.reduce(function (s, point) {
+                    return s + '<br/>' + '<b>' + point.series.name + ': ' +
+                        point.y + point.series.yAxis.axisTitle.textStr + '</b>';
+                }, '<b>' + this.points[0].key + '</b>');
+            },
+            borderWidth: 0,
+            shared: true
         }
     });
 }
