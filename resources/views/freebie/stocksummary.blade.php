@@ -4,30 +4,29 @@
 
 @section('body')
 <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 65px;">
-    <div class="container" style="padding-left: 0; padding-right: 0; background-color: #e9e9e9; position: fixed; z-index: 5; width: 1180px; top: 64px; padding-top: 15px;">
-        <div class="input-group mb-3">
-            <h2 style="text-align: left; margin-top: 5px; display: inline-block; float: left;" id="info_type">{{$PageSubtitle}}</h2>
+    <div class="container summaryTop" style="padding-left: 0; padding-right: 0; background-color: #e9e9e9; position: fixed; z-index: 5;">
+        <div class="input-group mb-3" style="padding-top: 20px;">
+            <h2 style="margin-top: 5px; display: inline-block; float: left;">{{$PageSubtitle}}</h2>
             <input type="text" class="form-control" style=" margin-left: 30px;" placeholder="股票代碼或名稱" id="searchBar" aria-label="search">
             <ul id="sideBtn">
-                <li class="rightbtn" type="button" name="Submit" value="getInfo" style="cursor:pointer"> 公司基本資料 </li>
-                <li class="rightbtn" type="button" name="Submit" value="getNews" style="cursor:pointer"> 個股新聞 </li>
-                <li class="rightbtn" type="button" name="Submit" value="dailyChart" style="cursor:pointer"> 股價走勢 </li>
-                <li class="rightbtn" type="button" name="Submit" value="stockChart" style="cursor:pointer"> 每股盈餘VS股價 </li>
+                <li class="rightbtn" type="button" name="Submit" style="cursor:pointer"><a href="#stockChart" class="rightbtnD"> 每股盈餘VS股價</a> </li>
+                <li class="rightbtn" type="button" name="Submit" style="cursor:pointer"><a href="#dailyChart" class="rightbtnC"> 股價走勢</a> </li>
+                <li class="rightbtn" type="button" name="Submit" style="cursor:pointer"><a href="#getNews" class="rightbtnB"> 個股新聞</a> </li>
+                <li class="rightbtn" type="button" name="Submit" style="cursor:pointer"><a href="#getInfo" class="rightbtnA"> 公司基本資料</a> </li>
             </ul>
         </div>
     </div>
-    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0;">
+    <div class="container" id="CanvasBaseMap" style="padding-left: 0; padding-right: 0; margin-top: 70px;">
         <div class="container" style="background-color: #e9e9e9; padding-left: 0; padding-right: 0;">
             <div id="getInfo">
-                <div class="vacant" style="height: 120px; display: block; background-color: #e9e9e9; width: 1170px;"></div> 
                 <a class="downloadSummary downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
                 <div class="container" id="CompanyInfocontainer" style="padding-right: 30px; padding-left: 0;">
-                    <h1 style="margin-top: 15px; margin-bottom: 0; padding-left: 30px;">公司基本資料</h1>
-                    <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 30px;" id="stock_title">
-                        {{$CompanyInfo['data']['stock_name'] . ' - ' . $CompanyInfo['data']['stock_code']}}
+                    <h1 style="margin-top: 30px; margin-bottom: 0; padding-left: 30px;">公司基本資料</h1>
+                    <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 30px;">
+                        {{$CompanyInfo['data']['stock_name'] . '  ' . $CompanyInfo['data']['stock_code']}}
                     </h2>
                     <div id="CompanyInfo" style="padding-left: 30px;">
                         <table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word;">
@@ -111,13 +110,12 @@
                 </div>
             </div>
             <div id="getNews">
-                <div class="vacant" style="height: 120px; display: block; background-color: #e9e9e9; width: 1170px;"></div> 
                 <a  class="downloadSummary downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
                 <div class="container" id="Newscontainer" style="padding-left: 30px; padding-right: 30px;">
-                    <h1 style="margin-top: 15px; margin-bottom: 0;">個股新聞</h1>
+                    <h1 style="margin-top: 30px; margin-bottom: 0;">個股新聞</h1>
                     <h2 style="margin-top: 10px; margin-bottom: 10px;">
                         {{$CompanyInfo['data']['stock_name'] . '  ' . $CompanyInfo['data']['stock_code']}}
                     <div id="News">
@@ -127,26 +125,24 @@
                 </div>
             </div>
             <div class="container" id="dailyChart" style=" padding-left: 0;">
-                <div class="vacant" style="height: 120px; display: block; background-color: #e9e9e9; width: 1170px;"></div> 
-                <a  class="downloadTable downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                <a class="downloadTable downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
                 <div class="container" id="DailyStockPriceAreaChartWithDisplayOuter">
-                    <h1 style="margin-top: 15px; margin-bottom: 0; padding-left: 15px;">股價走勢</h1>
+                    <h1 style="margin-top: 30px; margin-bottom: 0; padding-left: 15px;">股價走勢</h1>
                     <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 15px;">
                         {{$CompanyInfo['data']['stock_name'] . '  ' . $CompanyInfo['data']['stock_code']}}
                     </h2>
                 </div>
             </div>
             <div class="container" id="stockChart" style=" padding-left: 0;">
-                <div class="vacant" style="height: 120px; display: block; background-color: #e9e9e9; width: 1170px;"></div> 
-                <a  class="downloadTable downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
+                <a class="downloadTable downloadImg" style="cursor: pointer;" data-toggle="modal" data-target="#catch">下載</a>
                     @include('_partials._catchChart_modal', [
                         'id' => 'catch',
                     ])
                 <div class="container" id="StockPriceVSEPSOuter">
-                    <h1 style="margin-top: 15px; margin-bottom: 0; padding-left: 15px;">每股盈餘VS股價</h1>
+                    <h1 style="margin-top: 30px; margin-bottom: 0; padding-left: 15px;">每股盈餘VS股價</h1>
                     <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 15px;">
                         {{$CompanyInfo['data']['stock_name'] . '  ' . $CompanyInfo['data']['stock_code']}}
                     </h2>

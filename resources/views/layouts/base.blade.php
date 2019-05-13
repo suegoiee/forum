@@ -209,13 +209,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 
-    $(document).on("click", ".rightbtn", function(){
-        var id = $(this).attr("value");
-        locationClicked(id);
+    $('.rightbtnA').click(function(){
+        var height = -200 ;
+        $('html,body').animate({scrollTop:$('#getInfo').offset().top + height},800);
     });
-    function locationClicked(id){
-        window.location.hash = "#"+id;
-    }
+    $('.rightbtnB').click(function(){
+        var height = -200 ;
+        $('html,body').animate({scrollTop:$('#getNews').offset().top + height},800);
+    });
+    $('.rightbtnC').click(function(){
+        var height = -200 ;
+        $('html,body').animate({scrollTop:$('#dailyChart').offset().top + height},800);
+    });
+    $('.rightbtnD').click(function(){
+        var height = -200 ;
+        $('html,body').animate({scrollTop:$('#stockChart').offset().top + height},800);
+    });
 
 </script>
 
