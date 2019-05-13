@@ -824,7 +824,7 @@ function drawChart(canvas, title, yLabel, series) {
             formatter: function () {
                 console.log(this.points);
                 return this.points.reduce(function (s, point) {
-                    return s + '<br/>' + '<b>' + point.series.name + ': ' +
+                    return s + '<br/>' + '<span style="color:' + point.color + '">\u25CF</span>' + '<b>' + point.series.name + ': ' +
                         point.y + point.series.yAxis.axisTitle.textStr + '</b>';
                 }, '<b>' + this.points[0].key + '</b>');
             },
