@@ -766,7 +766,11 @@ function yLabelGenerator(formats, refline) {
                 }
             },
             title: {
-                text: formats[i]
+                text: formats[i],
+                rotation: 0,
+                style: {
+                    fontWeight: 'normal'
+                }
             },
             opposite: i % 2,
             plotLines: refline
@@ -822,8 +826,9 @@ function drawChart(canvas, title, yLabel, series) {
         series: series,
         tooltip: {
             formatter: function () {
+                console.log(this.points);
                 return this.points.reduce(function (s, point) {
-                    return s + '<br/>' + '<b>' + point.series.name + ': ' +
+                    return s + '<br/>' + '<span style="color:' + point.color + '">\u25CF</span>' + '<b>' + point.series.name + ': ' +
                         point.y + point.series.yAxis.axisTitle.textStr + '</b>';
                 }, '<b>' + this.points[0].key + '</b>');
             },
