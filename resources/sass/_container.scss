@@ -35,6 +35,7 @@ h4,
   @include btnStyle();
   vertical-align: middle;
   text-decoration: none;
+  font-weight: 600;
 }
 .btn:hover,
 .btn:focus {
@@ -45,6 +46,7 @@ h4,
   @include btnStyle(#545454, #e9e9e9, #e9e9e9);
   vertical-align: middle;
   text-decoration: none;
+  font-weight: 600;
 }
 .cancel:hover,
 .cancel:focus {
