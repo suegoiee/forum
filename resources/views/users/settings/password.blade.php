@@ -11,7 +11,7 @@
                         {!! Form::label('現在密碼', null, ['class' => 'col-md-3 control-label']) !!}
 
                         <div class="col-md-12">
-                            {!! Form::password('current_password', ['class' => 'form-control', 'required']) !!}
+                            {!! Form::password('current_password', ['class' => 'inputText', 'required']) !!}
                             @error('current_password')
                         </div>
                     @endFormGroup
@@ -21,7 +21,7 @@
                     {!! Form::label('password', '新的密碼', ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
-                        {!! Form::password('password', ['class' => 'form-control', 'required']) !!}
+                        {!! Form::password('password', ['class' => 'inputText', 'required']) !!}
                         @error('password')
                     </div>
                 @endFormGroup
@@ -30,7 +30,7 @@
                     {!! Form::label('password_confirmation', '再次輸入新的密碼', ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
-                        {!! Form::password('password_confirmation', ['class' => 'form-control', 'required']) !!}
+                        {!! Form::password('password_confirmation', ['class' => 'inputText', 'required']) !!}
                     </div>
                 @endFormGroup
 

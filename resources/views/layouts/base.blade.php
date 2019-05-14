@@ -209,21 +209,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script>
 
-    $('.rightbtnA').click(function(){
-        var height = -200 ;
-        $('html,body').animate({scrollTop:$('#getInfo').offset().top + height},800);
+$('.rightbtnA').click(function(){
+        if(window.screen.availHeight > 900){
+            var height = -200 ;
+            $('html,body').animate({scrollTop:$('#getInfo').offset().top + height},800);
+        }
+        else {
+            var height = -150 ;
+            $('html,body').animate({scrollTop:$('#getInfo').offset().top + height},800);
+        }
     });
     $('.rightbtnB').click(function(){
-        var height = -200 ;
-        $('html,body').animate({scrollTop:$('#getNews').offset().top + height},800);
+        if(window.screen.availHeight > 900){
+            var height = -200 ;
+            $('html,body').animate({scrollTop:$('#getNews').offset().top + height},800);
+        }
+        else {
+            var height = -150 ;
+            $('html,body').animate({scrollTop:$('#getNews').offset().top + height},800);
+        }
     });
     $('.rightbtnC').click(function(){
-        var height = -200 ;
-        $('html,body').animate({scrollTop:$('#dailyChart').offset().top + height},800);
+        if(window.screen.availHeight > 900){
+            var height = -200 ;
+            $('html,body').animate({scrollTop:$('#dailyChart').offset().top + height},800);
+        }
+        else {
+            var height = -150 ;
+            $('html,body').animate({scrollTop:$('#dailyChart').offset().top + height},800);
+        }
     });
     $('.rightbtnD').click(function(){
-        var height = -200 ;
-        $('html,body').animate({scrollTop:$('#stockChart').offset().top + height},800);
+        if(window.screen.availHeight > 900){
+            var height = -200 ;
+            $('html,body').animate({scrollTop:$('#stockChart').offset().top + height},800);
+        }
+        else {
+            var height = -150 ;
+            $('html,body').animate({scrollTop:$('#stockChart').offset().top + height},800);
+        }
     });
 
 </script>

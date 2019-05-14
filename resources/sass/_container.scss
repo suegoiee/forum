@@ -1,3 +1,10 @@
+@mixin btnStyle($color: #fff, $bgColor: #ffa500, $bdColor: #ffa500, $rad: 5px, $padTB: 5px, $padLR: 10px) {
+  color: $color;
+  background-color: $bgColor;
+  border: 1px solid $bdColor;
+  border-radius: $rad;
+  padding: $padTB $padLR;
+}
 // freebie
 html {
   height: 100%;
@@ -16,6 +23,98 @@ h4,
   font-display: optional;
   font-family: "Noto Sans TC", "Open Sans", sans-serif !important;
 }
+.form-control,
+.form-control:hover,
+.form-control:focus {
+  margin-bottom: 10px !important;
+  width: 210px !important;
+  height: 35px;
+  @include btnStyle(#545454, #fff, #e9e9e9, 15px !important);
+}
+.btn {
+  @include btnStyle();
+  vertical-align: middle;
+  text-decoration: none;
+}
+.btn:hover,
+.btn:focus {
+  @include btnStyle(#fff, #ffc04d, #ffc04d);
+  text-decoration: none;
+}
+.cancel {
+  @include btnStyle(#545454, #e9e9e9, #e9e9e9);
+  vertical-align: middle;
+  text-decoration: none;
+}
+.cancel:hover,
+.cancel:focus {
+  @include btnStyle(#fff, #545454, #545454);
+  text-decoration: none;
+}
+.table {
+  border-top: 1px solid #545454 !important;
+  border-left: 1px solid #545454 !important;
+  tr {
+    background-color: #fff !important;
+    th {
+      text-align: center;
+      vertical-align: middle !important;
+      b {
+        font-weight: 900;
+      }
+    }
+    th,
+    td {
+      font-size: 15px;
+      border-right: 1px solid #545454 !important;
+      border-bottom: 1px solid #545454 !important;
+      padding: 8px;
+    }
+  }
+}
+// pagination
+.pagination {
+  li {
+    a,
+    a:focus {
+      @include btnStyle(#393939, #e9e9e9, #545454, 0 !important, 5px, 8px);
+    }
+    a:hover {
+      @include btnStyle(#fff, #545454, #545454, 0 !important, 5px, 8px);
+    }
+  }
+  li.active {
+    a,
+    a:hover,
+    a:focus,
+    span,
+    span:hover,
+    span:focus {
+      @include btnStyle(#fff, #ffa500, #545454, 0 !important, 5px, 8px);
+    }
+  }
+  li.disabled {
+    a,
+    a:hover,
+    span,
+    span:hover {
+      @include btnStyle(#545454, #fff, #545454, 0 !important, 5px, 8px);
+    }
+  }
+}
+
+// Report bottomTable
+.bottomTableHeader,
+.bottomTableContent {
+  th,
+  td {
+    border-top: 1px solid #545454 !important;
+    border-left: 1px solid #545454 !important;
+  }
+}
+select {
+  cursor: pointer;
+}
 // couldn't find page style
 .jumbotron {
   background-color: #e9e9e9 !important;
@@ -28,6 +127,7 @@ h4,
     font-size: 20px;
   }
 }
+
 body {
   height: 100%;
   font-size: 14.5px;
@@ -42,31 +142,12 @@ body {
       .input-group {
         display: block;
         width: 100%;
-        // search stock
-        .form-control {
-          border: 1px solid #e9e9e9;
-          border-radius: 15px !important;
-          width: 210px;
-          height: 35px;
-          margin-bottom: 10px;
-        }
         // print button
         .print {
-          color: #fff;
           font-size: 15px;
-          text-decoration: none;
-          background: #ffa500;
-          padding: 5px 10px;
           font-weight: bold;
-          border: 1px solid #ffa500;
-          border-radius: 5px;
+          text-decoration: none;
           float: right;
-        }
-        .print:hover,
-        .print:focus {
-          background-color: #ffc04d;
-          border: 1px solid #ffa500;
-          border-radius: 5px;
         }
       }
       // title
@@ -78,25 +159,18 @@ body {
       }
       .search-article {
         .form-group {
-          input,
-          input:focus {
-            border: 1px solid #e9e9e9;
-            border-radius: 15px;
-            width: 210px;
-            height: 35px;
+          .form-control {
             margin-left: 30px;
-            margin-bottom: 10px;
-            color: #545454;
           }
         }
       }
+      // summary button
       #sideBtn {
         .rightbtn {
           float: right;
           list-style: none;
           a {
-            padding: 5px 10px;
-            color: #393939;
+            @include btnStyle(#393939, #e9e9e9, #e9e9e9);
             font-size: 15px;
             font-weight: 400;
             display: inline-block;
@@ -106,7 +180,7 @@ body {
         .rightbtn:hover,
         .rightbtn:focus {
           a {
-            color: #545454;
+            @include btnStyle(#545454, #e9e9e9, #e9e9e9);
             text-decoration: none;
           }
         }
@@ -124,126 +198,46 @@ body {
           margin: 0 auto 30px;
         }
         #stockChart {
-          margin: 0 auto 100px;
+          margin: 0 auto 50px;
         }
         .downloadSummary {
           float: right;
-          color: #fff;
-          background-color: #ffa500;
-          border: 1px solid #ffa500;
-          border-radius: 5px;
-          padding: 5px 10px;
           text-decoration: none;
           margin-right: 30px;
           margin-top: 30px;
         }
         .downloadTable {
           float: right;
-          color: #fff;
-          background-color: #ffa500;
-          border: 1px solid #ffa500;
-          border-radius: 5px;
-          padding: 5px 10px;
           text-decoration: none;
           margin-top: 30px;
           margin-right: 20px;
         }
-        .downloadSummary:hover,
-        .downloadTable:hover {
-          background-color: #ffc04d;
-          border: 1px solid #ffc04d;
-        }
-        .downfree {
-          margin-top: 3%;
-        }
         div {
           width: 100%;
           div {
-            // table
-            .table-bordered {
-              border-top: 1px solid #545454;
-              border-left: 1px solid #545454;
-              tbody {
-                tr {
-                  th {
-                    border: 1px solid #545454 !important;
-                    text-align: center;
-                    padding: 5px 10px;
-                  }
-                  td {
-                    text-align: right;
-                    border: 1px solid #545454;
-                  }
-                }
-              }
-            }
-            // pagination
-            .pagination {
-              li {
-                a {
-                  background-color: #e9e9e9;
-                  color: #393939;
-                  border: 1px solid #545454 !important;
-                }
-                a:hover {
-                  background-color: #545454;
-                  color: #fff;
-                }
-              }
-              .active {
-                a,
-                a:hover {
-                  background-color: #ffa500;
-                  color: #fff;
-                }
-              }
-              .disabled {
-                a,
-                a:hover {
-                  background-color: #fff;
-                  color: #545454;
-                }
-              }
-            }
-            // chart list title
-            .btn-primary {
-              text-align: left;
-              background-color: #fff;
-              border: 1px solid #ffa500;
-              border-radius: 5px;
-              color: #ffa500;
-              outline: none;
-              font-size: 14px;
-              border-radius: 0 !important;
-              margin-bottom: 10px;
-            }
-            button:hover {
-              color: #ffc04d;
-              border: 1px solid #ffc04d;
-              background-color: #fff;
-              outline: none;
-              border-radius: 5px;
-            }
-            .OuterChartActive,
-            .OuterChartActive:hover {
-              color: #fff;
-              border-radius: 5px;
-              border: 1px solid #ffc04d;
-              background-color: #ffa500;
-            }
             div {
               div {
                 // select time(year & momth)
                 .select {
-                  overflow-x: hidden;
-                  overflow-y: hidden;
                   vertical-align: middle;
                   display: inline-block;
                   position: relative;
                   border: 2px solid #e9e9e9;
+                  border-radius: 5px;
                   font-size: 14px;
-                  width: 40%;
+                  width: 150px;
                   line-height: 2;
+                  .triangle-down {
+                    width: 10px;
+                    height: 0;
+                    border-left: 5px solid transparent;
+                    border-right: 5px solid transparent;
+                    border-top: 10px solid currentColor;
+                    display: inline-block;
+                    position: absolute;
+                    top: 35%;
+                    right: 5px;
+                  }
                   select {
                     color: #545454;
                     border: none;
@@ -282,59 +276,11 @@ body {
                   // report table
                   #example {
                     width: 100% !important;
-                    background: #fff;
-                    box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-                    border-top: 1px solid #545454 !important;
-                    border-left: 1px solid #545454 !important;
+                    box-shadow: none;
                     thead {
                       tr {
                         th {
-                          text-align: center;
                           color: #ffa500;
-                          border-right: 1px solid #545454 !important;
-                          border-bottom: 1px solid #545454 !important;
-                        }
-                      }
-                    }
-                    tbody {
-                      tr {
-                        td {
-                          color: #393939;
-                          //text-align: right !important;
-                          border-right: 1px solid #545454 !important;
-                          border-bottom: 1px solid #545454 !important;
-                          padding: 5px;
-                        }
-                      }
-                    }
-                  }
-                  // report pagination
-                  #example_paginate {
-                    .pagination {
-                      li {
-                        a {
-                          background-color: #e9e9e9;
-                          color: #393939;
-                          border: 1px solid #545454 !important;
-                          padding: 5px 8px;
-                        }
-                        a:hover {
-                          background-color: #545454;
-                          color: #fff;
-                        }
-                      }
-                      .active {
-                        a,
-                        a:hover {
-                          background-color: #ffa500;
-                          color: #fff;
-                        }
-                      }
-                      .disabled {
-                        a,
-                        a:hover {
-                          background-color: #fff;
-                          color: #545454;
                         }
                       }
                     }
@@ -347,45 +293,11 @@ body {
               }
               // how many data show: select
               .form-control {
-                appearance: none;
-                -moz-appearance: none;
                 -webkit-appearance: none;
-                border: 1px solid #e9e9e9;
-                border-radius: 15px;
-                width: 210px;
                 line-height: 1;
-                color: #545454;
-                height: 35px !important;
-                padding: 5px 8px !important;
-                margin: 0 0 10px;
-                .rangeStartOption {
-                  border: 1px solid #e9e9e9;
-                  color: #545454;
-                }
               }
               .form-control::-ms-expand {
                 display: none;
-              }
-              // chart list title
-              div {
-                .drawTableChart {
-                  width: 100%;
-                  background: #fff;
-                  border: none !important;
-                  color: #ffa500;
-                  font-size: 14px;
-                  text-align: left;
-                  outline: none;
-                  border-radius: 0 !important;
-                }
-                .drawTableChart:hover {
-                  color: #ffc04d;
-                }
-                .ChartActive,
-                .ChartActive:hover {
-                  color: #545454;
-                  font-size: 15.5px;
-                }
               }
             }
           }
@@ -395,13 +307,12 @@ body {
             margin-bottom: 15px;
             #infoTable {
               tr {
+                th {
+                  font-weight: 900;
+                }
                 td {
+                  font-weight: lighter;
                   text-align: left !important;
-                  padding: 5px;
-                  b {
-                    text-align: center !important;
-                    font-weight: 900;
-                  }
                 }
               }
             }
@@ -436,33 +347,67 @@ body {
             width: auto;
             display: inline-block;
             .btn {
-              background-color: #e9e9e9;
-              color: #393939;
-              border: 1px solid #545454 !important;
-              padding: 5px 10px;
+              @include btnStyle(#393939, #e9e9e9, #545454, 0);
               margin-top: 15px;
               margin-bottom: 15%;
               outline: none;
-              border-radius: 5px !important;
             }
             .btn:active,
             .btn:hover,
             .ActiveChartControlButton {
-              background-color: #545454;
-              color: #fff;
-              border-radius: 5px !important;
+              @include btnStyle(#fff, #545454, #545454, 0);
             }
           }
           .collapse.in {
             display: inline-block;
           }
         }
-        // 財務報表
+        #StockPriceVSEPStable,
+        #MonthlyRevenueVSStockPricetable {
+          display: none;
+        }
+        // 報表左側menu
         .sidebar {
           width: 20%;
           float: left;
           overflow: auto;
           padding-top: 15px;
+          .btn-group-vertical {
+            .btn-primary {
+              text-align: left;
+              outline: none;
+              font-size: 14px;
+              margin-bottom: 10px;
+              @include btnStyle(#ffa500, #fff, #ffa500, 0, 10px, 15px);
+            }
+            .btn-primary:hover,
+            .OuterChartActive,
+            .OuterChartActive:hover {
+              outline: none;
+              @include btnStyle(#fff, #ffa500, #ffa500, 0, 10px, 15px);
+            }
+            .collapse,
+            .collapsing {
+              div {
+                .drawTableChart {
+                  @include btnStyle(#ffa500, #fff, #fff, 0, 10px, 15px);
+                  width: 100%;
+                  font-size: 14px;
+                  text-align: left;
+                  outline: none;
+                  border-radius: 0 !important;
+                }
+                .drawTableChart:hover {
+                  @include btnStyle(#ffc04d, #fff, #fff, 0, 10px, 15px);
+                }
+                .ChartActive,
+                .ChartActive:hover {
+                  @include btnStyle(#545454, #fff, #fff, 0, 10px, 15px);
+                  font-size: 15.5px;
+                }
+              }
+            }
+          }
         }
         #IncomeStatementcontainer,
         #StatementOfFinancialPositioncontainer,
@@ -482,29 +427,17 @@ body {
         }
       }
       // table label
-      .table {
+      .tableTop {
         margin-bottom: 0;
+        border: none !important;
         tbody {
           // 損益表 table
-          #IncomeStatementLabel {
-            td {
-              width: 50%;
-            }
-          }
-          // 資產負債表 table
-          #StatementOfFinancialPositionLabel {
-            td {
-              width: 25%;
-            }
-          }
           tr {
-            background-color: #fff !important;
             -webkit-box-shadow: none;
             td {
-              //text-align: left;
+              border: none !important;
+              text-align: left;
               color: #545454;
-              font-size: 15px;
-              padding: 0 10px;
               font-weight: lighter;
               b {
                 color: #545454;
@@ -517,14 +450,22 @@ body {
               }
             }
           }
+          #IncomeStatementLabel,
+          #HistoricalPerLabel {
+            td {
+              width: 50%;
+            }
+          }
+          // 資產負債表 table
+          #StatementOfFinancialPositionLabel,
+          #DailyStockPriceAreaChartWithDisplayLabel {
+            td {
+              width: 25%;
+            }
+          }
         }
       }
     }
-  }
-}
-@media (max-width: 1024px) {
-  body {
-    overflow: scroll;
   }
 }
 
@@ -534,35 +475,55 @@ body {
       top: 60px !important;
     }
   }
-  #example_wrapper {
-    .row {
-      margin-left: 0px;
-      .col-sm-12 {
-        #example {
-          width: 100%;
-        }
-      }
-    }
-  }
-  body {
-    .container {
-      #sideBtn {
-        .rightbtn {
-          right: 6%;
-        }
-      }
-      #CanvasBaseMap {
-        .container {
-          .downfree {
-            margin-top: 4%;
-          }
-        }
-      }
-    }
-  }
 }
 
 @media (max-width: 767px) {
+  #CompanyInfo {
+    .table {
+      border: none !important;
+      tr {
+        th,
+        td {
+          border: none !important;
+          padding: 10px 0;
+          display: block;
+          text-align: left;
+        }
+      }
+    }
+  }
+  // table label
+  .tableTop {
+    width: 100%;
+    margin: auto;
+    #DailyStockPriceAreaChartWithDisplayLabel,
+    #StatementOfFinancialPositionLabel,
+    #CashFlowsLabel {
+      td {
+        width: 100% !important;
+      }
+    }
+    tr {
+      td {
+        padding-left: 0 !important;
+        display: inline-block;
+        text-align: center !important;
+      }
+    }
+  }
+  .bottomName {
+    .table {
+      border-collapse: initial;
+      tr {
+        td {
+          text-align: right;
+        }
+      }
+    }
+  }
+  .buttonCustomize {
+    display: none;
+  }
   body {
     .container {
       #sideBtn {
@@ -571,29 +532,6 @@ body {
       #CanvasBaseMap {
         height: auto !important;
         .container {
-          .downfree {
-            margin-top: 8%;
-          }
-          div {
-            .vacant {
-              display: none !important;
-            }
-          }
-          #Outer {
-            .container {
-              margin-left: 0;
-              .table {
-                tbody {
-                  #StatementOfFinancialPositionLabel {
-                    td {
-                      display: contents;
-                      text-align: center;
-                    }
-                  }
-                }
-              }
-            }
-          }
           #CompanyInfocontainer,
           #Newscontainer,
           #dailyChart {
@@ -610,21 +548,6 @@ body {
   .list-group-item:hover {
     padding: 5px !important;
   }
-  // table label
-  .table {
-    width: 100%;
-    border: none !important;
-    margin: auto;
-    tbody {
-      // 損益表 table
-      #IncomeStatementLabel {
-        td {
-          padding-left: 0 !important;
-          width: 100% !important;
-        }
-      }
-    }
-  }
   #example_wrapper {
     .row {
       .col-sm-12 {
@@ -639,18 +562,6 @@ body {
       top: 60px !important;
       width: 100%;
     }
-    .forumTit {
-      width: 100% !important;
-      form {
-        width: auto !important;
-        .form-group {
-          input {
-            margin-left: 5px !important;
-            margin-top: -8px;
-          }
-        }
-      }
-    }
   }
   .container {
     padding: 0 5px;
@@ -658,27 +569,6 @@ body {
     margin-left: 5px;
     margin-right: 5px;
     div {
-      .table {
-        width: auto !important;
-        tbody {
-          #IncomeStatementLabel,
-          #DailyStockPriceAreaChartWithDisplayLabel {
-            td {
-              font-size: 14px !important;
-              width: 100%;
-              padding: 5px;
-              display: block;
-              text-align: center !important;
-              b {
-                h4 {
-                  text-align: center !important;
-                  font-size: 18px !important;
-                }
-              }
-            }
-          }
-        }
-      }
       div {
         .sidebar {
           width: 100% !important;
@@ -706,19 +596,6 @@ body {
               a:hover {
                 color: #ffc04d;
               }
-              .bottomName {
-                table {
-                  width: 100% !important;
-                  margin-bottom: 15px;
-                  tbody {
-                    tr {
-                      th {
-                        text-align: left !important;
-                      }
-                    }
-                  }
-                }
-              }
             }
             .btn-group {
               margin-left: 0 !important;
@@ -726,102 +603,25 @@ body {
           }
         }
         div {
-          font-size: 13px;
-          .LeftButtonGroup {
-            float: left;
-          }
           .btn-group {
             margin-left: 0 !important;
-            .btn {
-              padding: 5px 10px !important;
-              font-size: 1.2rem;
-              margin-top: 15px !important;
-            }
-          }
-          .timeS {
-            padding-bottom: 5%;
-            width: 100% !important;
-          }
-          .timeE {
-            width: 100% !important;
-            padding-left: 20% !important;
-          }
-          .col-sm-6 {
-            width: 100% !important;
           }
           .row {
             div {
-              #example_length {
-                label {
-                  padding-top: 10px;
-                }
-              }
-              #example_length,
-              #example_filter {
-                label {
-                  margin-top: 0 !important;
-                  .form-control {
-                    width: 160px;
-                  }
-                }
-              }
               #example {
                 thead {
                   tr {
                     th {
-                      font-weight: normal !important;
                       font-size: 1.3rem;
-                      padding: 2px 0px 0 !important;
-                      line-height: 1.1;
-                      vertical-align: top;
+                      padding: 8px 0px !important;
+                      line-height: 1.2;
+                      vertical-align: top !important;
                       width: 20% !important;
                     }
                     :after {
                       position: sticky;
                     }
                   }
-                }
-              }
-              #example_paginate {
-                .pagination {
-                  font-size: 1.2rem;
-                }
-              }
-            }
-          }
-          .btn-primary {
-            padding: 5px 10px;
-          }
-          div {
-            .select {
-              width: 60% !important;
-            }
-          }
-        }
-      }
-      .btn-group {
-        margin-left: 20% !important;
-        .btn {
-          font-size: 0.8rem;
-          padding: 5px 10px !important;
-        }
-      }
-    }
-    #CompanyInfo {
-      table {
-        tbody {
-          tr {
-            td {
-              border: none !important;
-              width: 100%;
-              padding-top: 0;
-              padding-bottom: 0px;
-              display: block;
-              text-align: center !important;
-              b {
-                h4 {
-                  text-align: center !important;
-                  font-size: 18px !important;
                 }
               }
             }

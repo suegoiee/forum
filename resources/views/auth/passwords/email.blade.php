@@ -7,7 +7,7 @@
 
     {!! Form::open(['route' => 'password.forgot.post']) !!}
         @formGroup('email')
-            {!! Form::email('email', null, ['class' => 'form-control regMg', 'required','placeholder' => '請輸入Email']) !!}
+            {!! Form::email('email', null, ['class' => 'inputText', 'required','placeholder' => '請輸入Email']) !!}
             @error('email')
         @endFormGroup
 

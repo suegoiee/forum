@@ -14,29 +14,29 @@
             @php 
                 /*
                 @formGroup('name')
-                    {!! Form::text('name', session('githubData.name'), ['class' => 'form-control regMg', 'required', 'placeholder' => 'John Doe']) !!}
+                    {!! Form::text('name', session('githubData.name'), ['class' => 'inputText', 'required', 'placeholder' => 'John Doe']) !!}
                     @error('name')
                 @endFormGroup
                 */
             @endphp
 
             @formGroup('username')
-                {!! Form::text('username', session('githubData.username'), ['class' => 'form-control regMg', 'required', 'placeholder' => '請輸入暱稱']) !!}
+                {!! Form::text('username', session('githubData.username'), ['class' => 'inputText', 'required', 'placeholder' => '請輸入暱稱']) !!}
                 @error('username')
             @endFormGroup
 
             @formGroup('email')
-                {!! Form::email('email', session('githubData.email'), ['class' => 'form-control regMg', 'required', 'placeholder' => '請輸入Email']) !!}
+                {!! Form::email('email', session('githubData.email'), ['class' => 'inputText', 'required', 'placeholder' => '請輸入Email']) !!}
                 @error('email')
             @endFormGroup
 
             @formGroup('password')
-                {!! Form::password('password', ['class' => 'form-control regMg', 'required', 'placeholder' => '請輸入密碼']) !!}
+                {!! Form::password('password', ['class' => 'inputText', 'required', 'placeholder' => '請輸入密碼']) !!}
                 @error('password')
             @endFormGroup
 
              @formGroup('password')
-                {!! Form::password('password_confirmation', ['class' => 'form-control regMg', 'required', 'placeholder' => '請再輸入一次密碼']) !!}
+                {!! Form::password('password_confirmation', ['class' => 'inputText', 'required', 'placeholder' => '請再輸入一次密碼']) !!}
                 @error('password_confirmation')
             @endFormGroup
             

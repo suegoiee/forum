@@ -12,7 +12,7 @@
             </div>
         {{ Form::close() }}
         <div style="text-align:right;">
-            <a class="btn_Build" style="margin-right: 15px;" href="{{ route('threads.create') }}">發表文章</a>
+            <a class="btn" style="margin-right: 8px;" href="{{ route('threads.create') }}">發表文章</a>
         </div>
     </div>
     <div class="row forum" style="margin-top: 65px;">
@@ -34,20 +34,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9 chat-bg">
+        <div class="col-md-9">
             @include('layouts._ads._bsa-cpc')
 
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    <div class="panel panel-default chat-bd" style="height:auto; margin-bottom: 3% !important; margin-top: 3% !important;">
-                        <div class="panel-heading thread-info">
-                            <div class="thread-info-author headLabel">
+                    <div class="panel panel-default" style="margin-top: 3% !important;">
+                        <div class="panel-heading">
+                            <div class="thread-info-author">
                                 <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
                             </div>
                             @include('forum.threads.info.tags')
                         </div>
 
-                        <div class="panel-body chat-bg">
+                        <div class="panel-body">
                             <a href="{{ route('thread', $thread->slug()) }}">
                                 <span class="badge pull-right">{{ count($thread->replies()) }}</span>
                                 <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
