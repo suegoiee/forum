@@ -7,13 +7,13 @@
 
             <div class="edde">
                 @can(App\Policies\ArchivePolicy::UPDATE, $archive)
-                    <a class="btn btnEdit"href="{{ route('archives.edit', $archive->slug()) }}">
+                    <a class="btn"href="{{ route('archives.edit', $archive->slug()) }}">
                         編輯
                     </a>
                 @endcan
     
                 @can(App\Policies\ArchivePolicy::DELETE, $archive)
-                    <a class="btn btnDelete" href="#" data-toggle="modal" data-target="#deleteArchive">
+                    <a class="btn" href="#" data-toggle="modal" data-target="#deleteArchive">
                         刪除
                     </a>
     

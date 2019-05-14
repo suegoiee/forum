@@ -4,168 +4,20 @@
   .buildText {
     width: 48%;
     margin: 1% auto 2%;
-    .btnBuild {
-      color: #fff;
-      background-color: #ffa500;
-      border: 1px solid #ffa500;
-      font-weight: 500;
-      width: auto;
-      padding: 5px 10px;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    .btnBuild:hover,
-    .btnBuild:focus {
-      text-decoration: none;
-      font-weight: 500;
-      background-color: #ffc04d;
-      border: 1px solid #ffc04d;
-    }
   }
   .edde {
     text-align: right;
     width: 74%;
-    .btnEdit,
-    .btnDelete {
-      display: inline-block;
-      width: auto;
-      background-color: #ffa500;
-      border: 1px solid #ffa500;
-      border-radius: 5px;
-      color: #fff;
-    }
-    .modal {
-      div {
-        div {
-          form {
-            margin: 0;
-            padding: 1% 0;
-            .modal-footer {
-              padding: 10px 0 0;
-              .btn {
-                background-color: #ffa500;
-                border: 1px solid #ffa500;
-                border-radius: 5px;
-                color: #fff;
-                width: auto;
-                float: right;
-              }
-              .btn:hover,
-              .btn:focus {
-                background-color: #ffc04d;
-                border: 1px solid #ffc04d;
-              }
-            }
-          }
-        }
-      }
-    }
   }
   .blogTitle {
     float: right;
-    form {
-      background-color: #e9e9e9;
-      -webkit-box-shadow: none;
-      box-shadow: none;
-      padding: 0;
-      border: none;
-      .form-group {
-        input {
-          border: 1px solid #e9e9e9;
-          border-radius: 15px;
-          height: 40px;
-        }
-      }
-    }
-    .dropdown {
-      text-align: center;
-      [aria-expanded="false"] {
-        .fa-plus-square {
-          display: inline-block;
-        }
-      }
-      [aria-expanded="false"] {
-        .fa-minus-square {
-          display: none;
-        }
-      }
-      [aria-expanded="true"] {
-        .fa-plus-square {
-          display: none;
-        }
-      }
-      [aria-expanded="true"] {
-        span {
-          color: #ffa500;
-        }
-        .fa-minus-square {
-          display: inline-block;
-          color: #ffa500;
-        }
-      }
-      .dropdown-toggle {
-        color: #393939;
-        font-size: 2rem;
-        text-decoration: none;
-        font-weight: 400;
-      }
-      .dropdown-toggle:hover,
-      .dropdown-toggle:focus {
-        color: #ffa500;
-        text-decoration: none;
-        font-weight: 400;
-      }
-      .dropdown-menu {
-        text-align: center;
-        background-color: #fff;
-        border-left: 1px solid #ffa500;
-        border-right: 1px solid #ffa500;
-        border-top: 1px solid #ffa500;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        width: auto;
-        font-size: 1.8rem;
-        font-weight: 300;
-        padding: 0;
-        .dropdown-item {
-          display: inline-block;
-          width: 100%;
-          color: #393939;
-          text-decoration: none;
-          padding: 8px 10px;
-          border-bottom: 1px solid #ffa500;
-        }
-        .dropdown-item:hover,
-        .dropdown-item:focus {
-          color: #ffa500;
-          text-decoration: none;
-        }
-      }
-    }
   }
   .blogContent {
     background-color: #fff;
     .panel {
       background-color: #fff !important;
       .panel-heading {
-        -webkit-padding-start: 0 !important;
-        .thread-info-tags {
-          a {
-            color: #393939;
-            .label-default {
-              background-color: #e9e9e9;
-              display: block;
-              color: #393939;
-              font-weight: 400;
-              float: right;
-            }
-          }
-          a:hover {
-            text-decoration: none;
-            color: #ffc04d;
-          }
-        }
-        .headLabel {
+        .thread-info-author {
           a,
           a:hover,
           a:focus {
@@ -176,7 +28,6 @@
         }
       }
       .panel-body {
-        background-color: #fff;
         font-size: 15px;
         font-weight: 300;
         p {
@@ -236,6 +87,9 @@
     }
     .blogTitle {
       float: none;
+      .form-control {
+        width: 100% !important;
+      }
       .dropdown {
         margin-bottom: 3%;
         .dropdown-menu {

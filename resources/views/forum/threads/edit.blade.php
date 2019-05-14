@@ -3,7 +3,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>{{ $title }}</h1>
+    <h1 style="font-size: 20px; color:#393939;">{{ $title }}</h1>
 
     <div class="alert"  style="background: rgba(255,255,255,0.9);border-left: 3px solid #0084ff;color: #393939;box-shadow: 2px 2px 2px 0px rgba(2%,2%,4%,0.12);">
         <i class="fas fa-info-circle" style="color: #0084ff;padding-right: 1%;"></i>

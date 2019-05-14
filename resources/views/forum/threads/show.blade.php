@@ -5,8 +5,9 @@
 @section('content')
     <div class="row forum">
         <div class="col-md-3">
-
-            <h3>@include('forum.threads.info.tags')</h3>
+            @foreach ($thread->tags() as $tag)
+                <h1>{{ $tag->name() }}</h1>
+            @endforeach
             <div class="formDrop"  style="margin-top: 6%;">
                 <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
                     所有分類 <i class="far fa-plus-square"></i><i class="far fa-minus-square"></i>
@@ -39,25 +40,25 @@
 
             @include('layouts._ads._forum_sidebar')
         </div>
-        <div style="text-align:right;">
+        <div style="text-align: right; padding: 0 15px;">
             @can(App\Policies\ThreadPolicy::UPDATE, $thread)
-                <a class="btn_Build" style="margin-top: 2%;" href="{{ route('threads.edit', $thread->slug()) }}">
+                <a class="btn mgBtn" href="{{ route('threads.edit', $thread->slug()) }}">
                     編輯
                 </a>
             @endcan
 
             @can(App\Policies\ThreadPolicy::UNSUBSCRIBE, $thread)
-                <a class="btn_Build" style="margin-top: 2%;" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
+                <a class="btn mgBtn" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
                     取消追蹤
                 </a>
             @elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
-                <a class="btn_Build" style="margin-top: 2%;" href="{{ route('threads.subscribe', $thread->slug()) }}">
+                <a class="btn mgBtn" href="{{ route('threads.subscribe', $thread->slug()) }}">
                     追蹤
                 </a>
             @endcan
 
             @can(App\Policies\ThreadPolicy::DELETE, $thread)
-                <a class=" btn_Build" style="margin-top: 2%;" href="#" data-toggle="modal" data-target="#deleteThread">
+                <a class="btn mgBtn" href="#" data-toggle="modal" data-target="#deleteThread">
                     刪除
                 </a>
 
@@ -215,6 +216,5 @@
                 </p>
             @endif
         </div>
-        @include('layouts._footer')
     </div>
 @endsection

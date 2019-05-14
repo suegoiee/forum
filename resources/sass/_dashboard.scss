@@ -1,4 +1,16 @@
 // login register
+.inputText {
+  border: 1px rgba(158, 158, 158, 0.8) solid !important;
+  border-radius: 5px;
+  font-weight: 100;
+  width: 100%;
+  color: #545454;
+  background-color: #fff;
+  padding: 5px 10px;
+  font-size: 14.5px;
+  height: 40px;
+  margin: 10px auto 0;
+}
 div {
   .panel {
     background-color: #e9e9e9 !important;
@@ -29,6 +41,7 @@ div {
         margin: 0 10px;
         padding: 0;
         width: auto;
+        cursor: pointer;
         .facebookImg {
           width: 40.5px;
         }
@@ -41,11 +54,13 @@ div {
       // google icon
       .google {
         width: 40.5px;
-        padding: 3px !important;
+        padding: 5px !important;
         height: 40.5px;
         display: inline-block;
         background-color: #fff;
         margin: 0 10px;
+        cursor: pointer;
+        border-radius: 3px;
         .googleImg {
           width: 30px;
           vertical-align: middle;
@@ -67,25 +82,11 @@ div {
         text-align: left;
         .form-group {
           margin-bottom: 0;
-          input {
-            background-color: #fff;
-            border: 1px rgba(158, 158, 158, 0.8) solid !important;
-            border-radius: 5px;
-            font-weight: 100;
-          }
-          .regMg {
-            margin: 5% 0;
-          }
-          div {
-            textarea {
-              border: 2px solid #e9e9e9;
-            }
-          }
           .form-control {
+            border: 1px rgba(158, 158, 158, 0.8) solid !important;
+            border-radius: 5px !important;
+            font-weight: 100;
             height: 40px !important;
-            width: 100%;
-            margin-left: 0;
-            margin-bottom: 0;
           }
           label {
             font-size: 14.5px;
@@ -98,7 +99,7 @@ div {
             margin: 2% 0 10%;
           }
           a {
-            font-size: 1.5rem;
+            font-size: 15px;
             color: #ffa500;
             padding: 5px;
             background-color: #e9e9e9;
@@ -116,7 +117,7 @@ div {
           border: 1px solid #ffa500;
           background-color: #ffa500;
           border-radius: 5px;
-          margin-top: 30px;
+          margin-top: 20px;
         }
         .btn:focus {
           background-color: #ffc04d;

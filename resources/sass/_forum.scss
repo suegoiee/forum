@@ -1,72 +1,30 @@
 // forum: -overview -show
 
-// forum (right part) style
-.chat-bg {
-  background: #fff;
-  border: 2px solid #e9e9e9;
-  border: none;
-  .chat-bd {
-    border: 2px solid #e9e9e9;
-  }
+@mixin tagStyle($color: #fff, $bgColor: #ffa500, $padTB: 5px, $padLR: 10px) {
+  color: $color;
+  background-color: $bgColor;
+  padding: $padTB $padLR;
+}
+
+.mgBtn {
+  margin: 12px 0 0 10px;
 }
 // alert (error success warning)
 .alert {
   margin-bottom: 15px !important;
   margin-top: 1%;
 }
-// icon
-.far {
-  line-height: 1.42857143 !important;
-}
-.forumPadding {
-  div {
-    div {
-      // build a thread button
-      .btn_Build {
-        background-color: #ffa500;
-        border: 1px solid #ffa500;
-        border-radius: 5px !important;
-        color: #fff;
-        width: auto;
-        display: inline-block;
-        padding: 5px 10px;
-        border-radius: 0;
-        margin-bottom: 1%;
-        font-weight: 500;
-      }
-      .btn_Build:hover,
-      .btn_Build:focus {
-        background-color: #ffc04d;
-        border: 1px solid #ffc04d;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: 500;
-      }
-    }
-  }
-}
 // forum
 .forum {
   // left part
   div {
-    // show: title-tag
-    h3 {
-      .thread-info-tags {
-        a,
-        a:hover {
-          text-decoration: none;
-          span {
-            background-color: #e9e9e9;
-            color: #393939;
-            padding: 0;
-            font-size: 25px;
-          }
-        }
-      }
-    }
     // title-tag
     .formDrop {
       width: 100%;
+      .fa-minus-square,
+      .fa-plus-square {
+        line-height: 1.5;
+      }
       [aria-expanded="false"] {
         .fa-plus-square {
           display: inline-block;
@@ -91,35 +49,25 @@
       }
       .dropdownTitle {
         font-size: 1.7rem;
-        color: #fff;
         font-weight: 400;
-        background-color: #ffa500;
         width: 100%;
         display: inline-block;
-        padding: 8px 10px;
+        @include tagStyle(#fff, #ffa500, 8px, 10px);
       }
       .dropdownTitle:hover,
       .dropdownTitle:focus {
-        background-color: #ffc04d;
         text-decoration: none;
       }
       .forumTitle {
-        background-color: #fff;
         border-left: 1px solid #ffa500;
         border-right: 1px solid #ffa500;
-        border-bottom: none;
-        border-top: none;
         -webkit-box-shadow: none !important;
         box-shadow: none !important;
-        margin-top: 0;
-        padding: 0;
-        border-radius: 0;
         .dropdownItem {
+          @include tagStyle(#393939, #fff, 8px, 10px);
           font-size: 1.5rem;
-          color: #393939;
           width: 100%;
           display: inline-block;
-          padding: 8px 10px;
           border-bottom: 1px solid #ffa500;
         }
         .dropdownItem:hover,
@@ -134,142 +82,73 @@
     }
   }
   // forum (right part) style
-  div {
-    // build a thread button
-    .btn_Build {
-      background-color: #ffa500;
-      border: 1px solid #ffa500;
-      border-radius: 5px !important;
-      color: #fff;
-      width: auto;
-      display: inline-block;
-      padding: 5px 10px;
-      border-radius: 0;
-      margin-bottom: 1%;
-      margin-right: 1%;
-      font-weight: 500;
-    }
-    .btn_Build:hover,
-    .btn_Build:focus {
-      background-color: #ffc04d;
-      border: 1px solid #ffc04d;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    // modal btn
-    .modal {
-      div {
-        div {
-          form {
-            margin: 0;
-            padding: 1% 0;
-            .modal-footer {
-              padding: 5px 0;
-              .btn {
-                background-color: #ffa500;
-                border: 1px solid #ffa500;
-                border-radius: 5px;
-                color: #fff;
-                width: auto;
-                float: right;
-              }
-              .btn:hover,
-              .btn:focus {
-                background-color: #ffc04d;
-                border: 1px solid #ffc04d;
-                border-radius: 5px;
-              }
-            }
-          }
-        }
-      }
-    }
+  .col-md-9 {
+    background: #fff;
+    width: 74%;
     // thread title and content
     .panel {
       background: none !important;
       padding-left: 3%;
+      border: 2px solid #e9e9e9 !important;
       // small title-tags
-      .thread-info {
+      .panel-heading {
         display: flex;
-        .thread-info-avatar,
+        background: none !important;
         .thread-info-tags {
           flex: 0 0 auto;
-        }
-        .thread-info-tags {
-          text-align: right;
-          a {
-            color: #393939;
+          a,
+          a:hover {
             .label-default {
-              background-color: #e9e9e9;
+              @include tagStyle(#393939, #e9e9e9, 3px, 6px);
               display: block;
-              color: #393939;
               font-weight: 400;
               float: right;
             }
           }
-          a:hover {
-            text-decoration: none;
-            color: #545454;
-          }
         }
+        // overview thread title
         .thread-info-author {
-          flex: 1 1 auto;
           line-height: 1.6;
           text-overflow: ellipsis;
           width: 100%;
           white-space: nowrap;
-          overflow-x: hidden;
-          overflow-y: hidden;
-          h3 {
-            font-size: 20px;
-          }
-        }
-      }
-      // thread title
-      .panel-heading {
-        -webkit-padding-start: 0 !important;
-        padding-inline-start: 0 !important;
-        background: none !important;
-        .thread-info-author {
-          .thread-info-link {
+          overflow: hidden;
+          padding-top: 1%;
+          .thread-info-link,
+          .thread-info-link:hover,
+          .thread-info-link:focus {
             color: #393939;
             font-size: 18px;
-            font-weight: bolder;
-          }
-          .thread-info-link:hover {
+            font-weight: 400;
             text-decoration: none;
           }
-          .thread-info-link:focus {
-            text-decoration: none;
+          // show thread title
+          h3 {
+            font-size: 20px;
           }
         }
       }
 
       // thread content
       .panel-body {
-        width: 100% !important;
-        margin-left: 0% !important;
         padding: 15px 0;
-        // overview: thread content
-        a {
+        a,
+        a:hover,
+        a:focus {
+          text-decoration: none;
           // replied count
           .badge {
+            @include tagStyle(#fff, #ffa500, 4px, 0);
             margin-right: 15px;
-            background: #ffa500;
-            color: #fff;
             min-width: 23px;
             min-height: 22px;
-            padding: 4px 0 0 0 !important;
             border-radius: 999em;
             font-size: 12px;
           }
-          // overview: thread content
           p {
             color: #545454;
             font-size: 15px;
-            font-weight: 300;
-            text-align: left;
+            font-weight: 100;
             height: auto;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -277,49 +156,6 @@
             img {
               max-width: 100%;
             }
-          }
-        }
-        a:hover,
-        a:focus {
-          text-decoration: none;
-          p:hover {
-            text-decoration: none;
-            text-align: left;
-            color: #545454;
-            font-size: 15px;
-            font-weight: 300;
-          }
-        }
-      }
-    }
-    // forum pagination
-    div {
-      .pagination {
-        li {
-          a {
-            background-color: #e9e9e9;
-            color: #393939;
-            border: 1px solid #545454 !important;
-          }
-          a:hover {
-            background-color: #545454;
-            color: #fff;
-          }
-        }
-        .active {
-          span,
-          span:hover {
-            background-color: #ffa500;
-            color: #fff;
-            border: 1px solid #545454 !important;
-          }
-        }
-        .disabled {
-          span,
-          span:hover {
-            background-color: #fff;
-            color: #545454;
-            border: 1px solid #545454 !important;
           }
         }
       }
@@ -341,14 +177,9 @@
 
 // forum -show
 .col-md-9 {
-  background: #fff;
-  width: 74%;
   .panel {
-    border: 2px solid #e9e9e9 !important;
     // show: thread title
     .panel-heading {
-      color: #545454;
-      background: none !important;
       .showTag {
         text-align: left;
         position: absolute;
@@ -393,8 +224,6 @@
     }
     // show: replied part content
     .headLabel {
-      text-align: left;
-      padding-top: 1%;
       p {
         font-size: 17px;
         padding: 1% 3%;
@@ -430,9 +259,26 @@
 }
 
 @media (max-width: 1024px) {
+  .forumTit {
+    width: 100% !important;
+    form {
+      width: auto !important;
+      .form-group {
+        input {
+          margin-left: 5px !important;
+          margin-top: -8px;
+        }
+      }
+    }
+    div {
+      .btn {
+        margin-right: 15px !important;
+      }
+    }
+  }
   .col-md-9 {
     overflow: hidden;
-    height: auto !important;
+    width: 100%;
   }
   .forum {
     div {
@@ -447,19 +293,21 @@
     }
   }
 }
-@media (min-width: 975px) {
-  .col-md-9 {
-    width: 74% !important;
-  }
-}
 @media (min-width: 768px) and (max-width: 1024px) {
-  .chat-bg {
-    padding-bottom: 2%;
-    padding-top: 1%;
-  }
   .loginForm {
     width: 50% !important;
     margin: auto !important;
+  }
+  .forumTit {
+    top: 60px !important;
+  }
+  .row {
+    margin-left: 0;
+    margin-right: 0;
+    .col-md-3 {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 }
 
@@ -476,9 +324,6 @@
     font-size: 14px !important;
   }
   .forum {
-    .chat-bg {
-      padding: 5%;
-    }
     .col-md-3 {
       padding-left: 0;
       padding-right: 0;
