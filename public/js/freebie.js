@@ -766,7 +766,11 @@ function yLabelGenerator(formats, refline) {
                 }
             },
             title: {
-                text: formats[i]
+                text: formats[i],
+                rotation: 0,
+                style: {
+                    fontWeight: 'normal'
+                }
             },
             opposite: i % 2,
             plotLines: refline
