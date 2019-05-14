@@ -176,7 +176,7 @@
                             @endcan
 
                             <li role="separator" class="divider"></li>
-                            <li><a href="{{ route('logout') }}">登出</a></li>
+                            <li><a class="user" href="{{ route('logout') }}">登出</a></li>
                         </ul>
                     </li>
                 @endif

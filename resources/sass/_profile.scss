@@ -92,9 +92,11 @@ div {
     }
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .accountA {
     margin: 0;
+    padding-left: 0;
+    padding-right: 0;
     .panel {
       overflow: hidden;
     }
@@ -105,6 +107,9 @@ div {
       .panel-body {
         .formSet {
           .form-group {
+            .control-label {
+              padding: 11px 15px 0 !important;
+            }
             div {
               .btn {
                 width: 100%;

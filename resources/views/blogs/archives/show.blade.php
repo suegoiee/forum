@@ -46,10 +46,10 @@
                 </div>
         </div-->
         <div class="col-md-9 blogContent" style="margin-top: 15px; width: 100% !important;">
-            <div class="panel panel-default" style="border:none !important; margin: 3% 5% 3% !important;">
-                <div class="panel-heading thread-info">
+            <div class="panel" style="border:none !important; margin: 3% 5% 3% !important;">
+                <div class="panel-heading">
                     @include('blogs.archives.info.tags')
-                    <div class="thread-info-author headLabel showTitle">
+                    <div class="thread-info-author showTitle">
                         <a href="{{ route('blogs', $archive->slug()) }}" class="thread-info-link formTitle">{{ $archive->subject() }}</a>
                     </div>
                     <div style="float:right;">
