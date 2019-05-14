@@ -73,7 +73,7 @@
         window.onload=function () {
             let valueAll = new calBuffett(numberAll, msgAll, resAll, ress);
             valueAll.bufCal();
-            valueAll.clearEle();
+            valueAll.clearBuff();
         }
     </script>
 
