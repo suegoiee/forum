@@ -12,38 +12,32 @@
 				<label>
 					預估幾年後退休
 				</label>
-				<input type="text" name="number" min="1" maxlength="10"/> 
-				<span>年</span> 
+				<input type="text" class="inputText" name="number" min="1" maxlength="10"　placeholder="年"/>
 				<h4 id="msgA"></h4>
 			</p>
 			<p>	
 				<label>
 					擁有多少可投資的現金
 				</label>
-				<input type="text" name="number" min="0" maxlength="10"/>
-				<span>元</span> 
+				<input type="text" class="inputText" name="number" min="0" maxlength="10"　placeholder="元"/>
 				<h4 id="msgA"></h4> 
 			</p>
 			<p>
 				<label>
 					需要多少資產才能安穩退休
 				</label>
-				<input type="text" name="number" min="0" maxlength="10" /> 
-				<span>元</span>  
+				<input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="元"/>
 				<h4 id="msgA"></h4>
 			</p>
 			
+			<div style="text-align: center;">
+				<button type="button" class="cancel" id="clear">清除</button>
+				<button type="button" class="btn" id="check">評估</button>
+			</div>
 			<p>
-				<button type="button" class="cal" id="check">評估</button>
-				<button type="button" id="clear">清除</button>
+				<table id="result" class="table"></table>
 			</p>
-			<p class="resultAll">
-				你的投資工具必須每年能帶來
-				<input type="text" min="0" class="rate" id="result"></input>
-				<span class="word">報酬率</span>
-			</p>
-				
-					
+						
 		</fieldset>
 	</form>
 </div>

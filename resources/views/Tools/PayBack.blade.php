@@ -12,41 +12,36 @@
                 <label class="too">
                     貸款金額
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>元</span>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="元"/>
                 <h4 id="msgA"></h4>
             </p>
             <p>
                 <label class="too">
                     貸款年數
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>年</span>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="年"/>
                 <h4 id="msgA"></h4>
             </p>
             <p>
                 <label class="too">
                     年利率
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>%</span>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
                 <h4 id="msgA"></h4>
             </p>
+            <div style="text-align: center;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="calAll">計算</button>
+            </div>
             <p>
-                <button type="button" class="cal" id="calAll">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <p>
-                <table>
-                    <tbody id="calMonA">
-                    </tbody>
+                <table id="calMonA" class="table">
                 </table>
             </p>
         </fieldset>
     </form>
     <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
         <fieldset>
-            <table id="calMonB">
+            <table id="calMonB" class="table">
             </table>
         </fieldset>
     </form>
@@ -54,14 +49,14 @@
     <script type="text/javascript">
         let numberAll = document.getElementsByName('per');
         let msgAll = document.getElementsByTagName('h4');
-        let inputTdA = document.getElementById("calMonA");
-        let inputTdB = document.getElementById("calMonB");
+        let resAll = document.getElementById("calMonA");
+        let ress = document.getElementById("calMonB");
         let form = document.getElementById("formStyle");
 
         window.onload=function () {
-            let valueAll = new reCal(numberAll, msgAll, inputTdA, inputTdB, form);
+            let valueAll = new calBuffett(numberAll, msgAll, resAll, ress, form);
             valueAll.calReturn();
-            valueAll.clearEvery();
+            valueAll.clearEle();
         }
     </script>
 @endsection

@@ -1,9 +1,7 @@
 class checkRad {
-    constructor(radAll, res, resAll, form) {
+    constructor(radAll, resAll) {
         this.radAll = Array();
-        this.res = res;
         this.resAll = resAll;
-        this.form = form;
         // 創制新的物件
         this.addTd = (cla, idd, namm, word, par) => {
             let tdd = document.createElement(cla);
@@ -46,7 +44,6 @@ class checkRad {
                 let selName = document.getElementsByName(selArr[i]);
                 if (selName[0].checked || selName[1].checked) {
                     if (selName[0].checked) {
-                        res.innerHTML = "檢測結果：";
                         cal += parseInt(selName[0].value);
                     }
                 } else {
@@ -55,14 +52,12 @@ class checkRad {
                     return false;
                 }
             }
-            document.getElementById('form').style.cssFloat = "left";
-            document.getElementById('form').style.width = "48%";
-            form.style.display = "block";
-            this.addTd("tr", "ress", "ress", "合計：" + cal, resAll);
+            this.addTd("th", "ress", "ress", "合計：" + cal, resAll);
+            this.addTd("tr", "nn", "nn", "", resAll);
             if (cal < 10) {
-                this.addTd("tr", "non", "non", "需要再等等", resAll);
+                this.addTd("td", "non", "non", "需要再等等", resAll);
             } else {
-                this.addTd("tr", "che", "che", "值得投資", resAll);
+                this.addTd("td", "che", "che", "值得投資", resAll);
             }
         }
     }
@@ -92,7 +87,6 @@ class checkRad {
                 if (selName[0].checked || selName[1].checked || selName[2].checked) {
                     selName.forEach((item, i) => {
                         if (selName[i].checked) {
-                            res.innerHTML = "檢測結果：";
                             cal += parseInt(item.value);
                         }
                     })
@@ -102,10 +96,8 @@ class checkRad {
                     return false;
                 }
             }
-            document.getElementById('form').style.cssFloat = "left";
-            document.getElementById('form').style.width = "48%";
-            form.style.display = "block";
-            this.addTd("tr", "ress", "ress", "合計：" + cal, resAll);
+            this.addTd("th", "ress", "ress", "合計：" + cal, resAll);
+            this.addTd("tr", "nn", "nn", "", resAll);
             if (cal < 14) {
                 this.addTd("th", "non", "non", "容易半途而廢", resAll);
                 document.getElementById('non').style.color = "#ef5350";
@@ -126,14 +118,10 @@ class checkRad {
 
     clearAll() {
         document.getElementById('clear').onclick = () => {
-            res.innerHTML = "";
             for (var i = 0; i < radAll.length; i++) {
                 radAll[i].checked = false;
             }
             this.del(resAll, 1);
-            document.getElementById('form').style.width = "100%";
-            document.getElementById('form').style.cssFloat = "none";
-            form.style.display = "none";
         }
     }
 }

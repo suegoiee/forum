@@ -12,8 +12,7 @@
 				<label>
 					買進/賣出成交價
 				</label>
-				<input type="text" name="value" min="1" maxlength="10" /> 
-				<span>元</span>
+				<input type="text" class="inputText" name="value" min="1" maxlength="10"  placeholder="元"/>
 				<h4 id="msgA"></h4> 
 			</p>
 			<p>	
@@ -21,37 +20,34 @@
 					成交股數 
 					<span class="small">(註: 1張=1,000股)</span>
 				</label>
-				<input type="text" name="value" min="1" maxlength="10"/>
-				<span>%</span>
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
 				<h4 id="msgA"></h4>  
 			</p>
 			<p>
 				<label>
 					電子下單券商手續費打幾折
 				</label>
-				<input type="text" name="value" min="1" maxlength="10"/> 
-				<span>折</span>
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="折"/>
 				<h4 id="msgA"></h4>   
 			</p>
 			
+			<div style="text-align: center;">
+				<button type="button" class="cancel" id="clear">清除</button>
+				<button type="button" class="btn" id="calMoney">計算</button>
+			</div>
 			<p>
-				<button type="button" class="cal" id="calMoney">計算</button>
-				<button type="button" id="clear">清除</button>
-			</p>
-			<p>
-				<table id="tableRes">
+				<table id="tableRes" class="table">
 				</table>
-			</p>
-				
+			</p>			
 		</fieldset>
 	</form>
 </div>
 	<script>
 		let numberAll = document.getElementsByName('value');
 		let msgAll = document.getElementsByTagName('h4');
-		let moneyAll = document.getElementById('tableRes');
+		let resAll = document.getElementById('tableRes');
         window.onload=function () {
-			let valueAll = new calFee(numberAll,msgAll,moneyAll);
+			let valueAll = new calReRate(numberAll, msgAll, resAll);
 			valueAll.feeCal();
 			valueAll.clearAll();
 	  	};

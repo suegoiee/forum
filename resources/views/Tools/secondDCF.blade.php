@@ -14,7 +14,7 @@
                     自由現金流量<br />
                     <span class="small">(可採用前一年數值或是長期平均數值)</span>
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" />
                 <h4 id="bigW"></h4>
             </p>
             <p>
@@ -25,14 +25,12 @@
             <p>
                 <p>
                     <label>1～5年</label>
-                    <input type="text" min="0" name="value" maxlength="10" />
-                    <span>％</span>
+                    <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
                     <h4 id="bigW"></h4>
                 </p>
                 <p>
                     <label>6～10年</label>
-                    <input type="text" min="0" name="value" maxlength="10" />
-                    <span>％</span>
+                    <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
                     <h4 id="bigW"></h4>
                 </p>
             </p>
@@ -41,8 +39,7 @@
                     折現率％<br />
                     <span class="small">(建議折現率設定超過10%以上)</span>
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>％</span>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
                 <h4 id="bigW"></h4>
             </p>
             <p>
@@ -50,35 +47,34 @@
                     永續成長率％<br />
                     <span class="small">(不能超過市場GDP水準)</span>
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>％</span>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
                 <h4 id="bigW"></h4>
             </p>
             <p>
                 <label>
                     在外流通股數
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" />
                 <h4 id="bigW"></h4>
             </p>
             <p>
                 <label>
                     淨負債
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" />
                 <h4 id="bigW"></h4>
             </p>
-            <p>
-                <button type="button" class="cal" id="check">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
+            <div style="text-align: center;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="check">計算</button>
+            </div>
         </fieldset>
     </form>
     <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%; overflow-y: auto; height: 545px;">
         <fieldset>
-            <table id="tableResA">
+            <table id="tableResA" class="table">
             </table>
-            <table id="tableResB">
+            <table id="tableResB" class="table">
             </table>
         </fieldset>
     </form>

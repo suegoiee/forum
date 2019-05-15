@@ -12,32 +12,28 @@
                 <label class="too">
                     年利率(資金成本)
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>%</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
-            <p id="question" style="text-align: left;">
+            <p id="question">
             </p>  	
-            <p>
-                <button type="button" id="add">新增一年的現金流狀況</button>
+            <div style="text-align: center;">
+                <button type="button" id="add" class="btn">新增一年的現金流狀況</button>
                 <input type="hidden" id="countA" name="countA" value="1">
-            </p>
-            <p>
-                <button type="button" class="cal" id="calAll" >計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
+            </div>
+            <p></p>
+            <div style="text-align: center;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="calAll" >計算</button>
+            </div>
         </fieldset>
     </form>
     <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
         <fieldset>
-            <table>
-                <tbody id="calMon">                 
-                </tbody>
+            <table id="calMon" class="table">
             </table>
-            <p class="resultAll" id="npvv">
-                淨現值(npv):
-                <input type="text" id="npv" class="rate" name="npv" disabled>
-            </p>
+            <table id="npv" class="table">
+            </table>
         </fieldset>
     </form>
 </div>
@@ -45,14 +41,13 @@
         let questionAll = document.getElementById("question");
         let moneyAll = document.getElementsByName('mom');
         let numberAll = document.getElementsByName('per');
-        let msgAll = document.getElementsByTagName('h4');
+        let msgAll = document.getElementsByTagName('h6');
         let inputTd = document.getElementById("calMon");
         let npv = document.getElementById('npv');
-        let npvv = document.getElementById('npvv');
         let form = document.getElementById("formStyle");
 
         window.onload=function () {
-            let valueAll = new npvCal(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, npvv, form);
+            let valueAll = new npvCal(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, form);
             valueAll.addInput();
             valueAll.calStock();
             valueAll.clearEvery();

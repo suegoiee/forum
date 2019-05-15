@@ -59,9 +59,9 @@ class togeStock extends judgeValue {
                 document.getElementById('form').style.cssFloat = "left";
                 document.getElementById('form').style.width = "48%";
                 form.style.display = "block";
-                this.addTd("label", "labell", "labell", "每個人的股份：", inputTdA);
-                this.addTd("label", "labell", "labell", "每個人的獲利：", inputTdB);
-                this.addTd("label", "labell", "labell", "每個人可得到：", inputTdC);
+                this.addTd("label", "labell", "labell", "每個人的股份", inputTdA);
+                this.addTd("label", "labell", "labell", "每個人的獲利", inputTdB);
+                this.addTd("label", "labell", "labell", "每個人可得到", inputTdC);
 
                 moneyAll.forEach((item, i) => {
 
@@ -79,8 +79,6 @@ class togeStock extends judgeValue {
                     this.addTd("td", "Mon", "Mon", nameAll[i].value + "  :  " + "$" + moneyGet.toFixed(0).replace(reg, ",") + "元", inputTdC);
 
                 });
-
-                // this.addTd("button", "doc", "doc", "列印", printAll);
             }
         }
     }
@@ -99,7 +97,6 @@ class togeStock extends judgeValue {
             this.del(inputTdA, 0);
             this.del(inputTdB, 0);
             this.del(inputTdC, 0);
-            this.del(printAll, 0);
             document.getElementById('form').style.width = "100%";
             document.getElementById('form').style.cssFloat = "none";
             form.style.display = "none";

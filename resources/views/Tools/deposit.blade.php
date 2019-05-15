@@ -12,10 +12,10 @@
                     請輸入過去n年的現金股息
                 </label>
             </p>
-            <p id="question" style="text-align: left;">
+            <p id="question">
             </p> 
             <p>
-                <button type="button" id="add">新增一年的現金股息</button>
+                <button type="button" id="add" class="btn">新增一年的現金股息</button>
                 <input type="hidden" id="countA" name="countA" value="1">
             </p>
             <p>
@@ -27,33 +27,28 @@
                 <label class="too">
                     便宜價 
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>%</span>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
                 <h4 id="msgA"></h4>
             </p>
             <p>
                 <label class="too">
                     合理價
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>%</span>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
                 <h4 id="msgA"></h4>
             </p>
             <p>
                 <label class="too">
                     昂貴價
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>%</span>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
                 <h4 id="msgA"></h4>
             </p>
-            <p>
-                <button type="button" class="cal" id="calAll">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <table>
-                <tbody id="calMon">                 
-                </tbody>
+            <div style="text-align: center;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="calAll">計算</button>
+            </div>
+            <table id="calMon" class="table">
             </table>
             
         </fieldset>

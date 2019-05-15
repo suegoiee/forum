@@ -12,32 +12,31 @@
 				<label>
 					計算幾年的年複合成長率(CAGR)
 				</label>
-				<input type="text" name="number" min="1" maxlength="10" /> 
-				<span>年</span> 
+				<input type="text" class="inputText" name="number" min="1" maxlength="10" placeholder="年"/>
 				<h4 id="msgA"></h4>
 			</p>
 			<p>	
 				<label>
 					期初數值
 				</label>
-				<input type="text" name="number" min="0" maxlength="10" />
+				<input type="text" class="inputText" name="number" min="0" maxlength="10"/>
 				<h4 id="msgA"></h4>  
 			</p>
 			<p>
 				<label>
 					期未數值
 				</label>
-				<input type="text" name="number" min="0" maxlength="10" />
+				<input type="text" class="inputText" name="number" min="0" maxlength="10" />
 				<h4 id="msgA"></h4> 
 			</p>
 			
-			<p>
-				<button type="button" class="cal" id="check">計算</button>
-				<button type="button" id="clear">清除</button>
-			</p>
-			<p class="resultAll">	
-				年複合成長率
-				<input type="text" class="rate" id="result" disabled/>
+			<div style="text-align: center;">
+				<button type="button" class="cancel" id="clear">清除</button>
+				<button type="button" class="btn" id="check">計算</button>
+			</div>
+			<p>	
+				<table id="result" class="table">
+                </table>
 			</p>
 		</fieldset>
 	</form>
@@ -50,7 +49,7 @@
 		
         window.onload=function () {
 		let valueAll = new calReRate(numberAll,msgAll,resAll);
-		valueAll.rateCal();
+		valueAll.comCal();
 		valueAll.clearAll();
 		}
 	</script>

@@ -72,29 +72,23 @@
                 </li>
                 <br />
             </ol>
+            <div style="text-align: center;">
+                <button type="button" class="cancel" id="clear">重新填選</button>
+                <button type="button" class="btn" id="checkAll">檢查</button>
+            </div>
             <p>
-                <button type="button" id="checkAll">檢查</button>
-                <button type="button" id="clear">重新填選</button>
+                <table id="result" class="table">
+                </table>
             </p>
-        </fieldset>
-    </form>
-    <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
-        <fieldset>
-            <table id="result">
-                <label class="resultAll"></label>
-                <p></p>
-            </table>
         </fieldset>
     </form>
 </div>
     <script type="text/javascript">
         let radAll = document.querySelectorAll('.radioAll');
-        let res = document.querySelector('.resultAll');
         let resAll = document.getElementById('result');
-        let form = document.getElementById("formStyle");
 
         window.onload=function () {
-            let valueAll = new checkRad(radAll, res, resAll,form);
+            let valueAll = new checkRad(radAll, resAll);
             valueAll.cheText();
             valueAll.clearAll();
         }

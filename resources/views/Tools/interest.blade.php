@@ -12,33 +12,30 @@
                 <label>
                     本金
                 </label>
-                <input type="text" min="1" name="number" maxlength="10" />
-                <span>元</span>
+                <input type="text" class="inputText" min="1" name="number" maxlength="10" placeholder="元"/>
                 <h4 id="msgA"></h4>
             </p>
             <p>
                 <label>
                     投資年報酬率
                 </label>
-                <input type="text" min="0" name="number" maxlength="10" />
-                <span>%</span>
+                <input type="text" class="inputText" min="0" name="number" maxlength="10" placeholder="％"/>
                 <h4 id="msgA"></h4>
             </p>
             <p>
                 <label>
                     投資年數
                 </label>
-                <input type="text" min="0" name="number" maxlength="10" />
-                <span>年</span>
+                <input type="text" class="inputText" min="0" name="number" maxlength="10" placeholder="年"/>
                 <h4 id="msgA"></h4>
             </p>
+            <div style="text-align: center;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="calInst">計算</button>
+            </div>
             <p>
-                <button type="button" class="cal" id="calInst">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <p class="resultAll">
-                每年複利之後本金將變成＝
-                <input type="text" min="0" class="rate" id="result" disabled/>
+                <table id="result" class="table">
+                </table>
             </p>
         </fieldset>
     </form>

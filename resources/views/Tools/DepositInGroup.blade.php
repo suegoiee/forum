@@ -17,41 +17,38 @@
 				<label class="too">
 					揪團買進哪一支股票
 				</label>
-				<input type="text" name="price" min="0" maxlength="10"/>
+				<input type="text" class="inputText" name="price" min="0" maxlength="10"/>
 				<h4 id="msgA"></h4>  
 			</p>
 			<p>
 				<label class="too">
 					請輸入：買進成本價<br/>(扣除所有費用後)
 				</label>
-				<input type="text" name="price" min="0" maxlength="10"/> 
-				<span>元</span>
+				<input type="text" class="inputText" name="price" min="0" maxlength="10" placeholder="元"/>
 				<h4 id="msgA"></h4>   
 			</p>
 			<p>
 				<label class="too">
 					請輸入：賣出總金額<br/>(扣除所有費用後)
 				</label>
-				<input type="text" name="price" min="0" maxlength="10"/> 
-				<span>元</span>
+				<input type="text" class="inputText" name="price" min="0" maxlength="10" placeholder="元"/>
 				<h4 id="msgA"></h4>   
 			</p>
 			
-			<p>
-				<button type="button" class="cal" id="calAll">計算</button>
-				<button type="button" id="clear">清除</button>
-			</p>
+			<div style="text-align: center;">
+				<button type="button" class="cancel" id="clear">清除</button>
+				<button type="button" class="btn" id="calAll">計算</button>
+			</div>
 		</fieldset>
 	</form>
 	<form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
         <fieldset>
-            <table id="stockAll">
+            <table id="stockAll" class="table">
             </table>
-			<table id="getAll">			
+			<table id="getAll" class="table">			
 			</table>
-			<table id="getMoney">		
+			<table id="getMoney" class="table">		
 			</table>
-			<p id="print"></p>
         </fieldset>
     </form>
 </div>
@@ -64,11 +61,10 @@
 		let inputTdA = document.getElementById("stockAll");
 		let inputTdB = document.getElementById("getAll");
 		let inputTdC = document.getElementById("getMoney");
-		let printAll = document.getElementById('print');
 		let form = document.getElementById("formStyle");	
 
         window.onload=function () {
-			let valueAll = new togeStock(numberAll,msgAll,questionAll,nameAll,moneyAll,inputTdA,inputTdB,inputTdC,printAll,form);
+			let valueAll = new togeStock(numberAll,msgAll,questionAll,nameAll,moneyAll,inputTdA,inputTdB,inputTdC,form);
 			valueAll.addInput();
 			valueAll.calStock();
 			valueAll.clearEvery();

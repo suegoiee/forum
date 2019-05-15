@@ -28,7 +28,7 @@
 #formStyle,
 #form {
   @include fontAll(left, #545454, #e9e9e9, 1);
-  margin: auto auto 15px;
+  margin: 15px auto 15px;
   border-style: none;
   padding: 0 !important;
 
@@ -36,7 +36,6 @@
     @include fontAll();
     @include borderAll();
     box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-    padding-top: 10px;
     h3 {
       @include fontAll(center, #393939, none, 1);
       text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.1);
@@ -47,7 +46,6 @@
     h5 {
       @include fontAll(center, #545454, none, 1);
       background-color: none !important;
-      padding-bottom: 10px;
     }
 
     // fromcheck
@@ -75,14 +73,14 @@
       }
     }
     p {
+      text-align: center;
       label {
         display: inline-block;
         vertical-align: middle;
-        width: 30%;
+        width: 25%;
         font-weight: normal;
         @include fontAll(left, #545454, none, 1.2);
-        @include dist(auto, auto, 25%);
-
+        margin-bottom: 0;
         // hint
         .small {
           font-size: 12px;
@@ -101,142 +99,33 @@
       }
 
       input {
-        @include fontAll(right, #545454, #fff, 18px);
-        @include borderAll(5px, rgba(158, 158, 158, 0.8));
-        -webkit-appearance: none;
-        padding-right: 5px;
-        width: 150px;
-        height: 25px;
-      }
-
-      input:focus {
-        outline: none;
-        @include borderAll(5px, #ffc04d);
+        text-align: right;
+        width: 180px;
+        height: 35px;
       }
     }
 
     // Input wrong
     #msgA,
     #bigW {
-      @include fontAll(right !important, #ef5350, #f9f9f9, 0);
-      @include dist(auto, 25%, auto);
+      @include fontAll(center, #ef5350, #f9f9f9, 0);
+      @include dist(35%, 0, auto);
       font-weight: 300;
-      font-size: 1.3rem;
-    }
-
-    // button
-    p {
-      button,
-      #checkAll,
-      #clear {
-        padding: 5px 10px;
-        @include borderAll(5px, #ffa500);
-        @include fontAll(center, #fff, #ffa500, 16px);
-        outline: none;
-      }
-      button:hover,
-      #checkAll:hover,
-      #clear:hover {
-        @include fontAll(center, #fff, #ffc04d, 16px);
-        @include borderAll(5px, #ffc04d !important);
-        border-style: none;
-      }
-
-      #checkAll {
-        @include dist(auto, auto, 45%);
-      }
-      .cal {
-        margin-left: 45%;
-        padding: 5px 10px;
-        @include borderAll(5px, #ffa500);
-        @include fontAll(center, #fff, #ffa500, 16px);
-        outline: none;
-      }
-
-      #add {
-        margin-left: 45%;
-        padding: 5px 10px;
-        @include borderAll(5px, #ffa500);
-        @include fontAll(center, #fff, #ffa500, 16px);
-        outline: none;
-      }
-
-      #doc {
-        margin-left: 80%;
-        padding: 5px 10px;
-        @include borderAll(5px, #ffa500);
-        @include fontAll(center, #fff, #ffa500, 16px);
-        outline: none;
-      }
-    }
-
-    // result name
-    .resultAll {
-      @include fontAll(center, #545454, none, 16px);
-      font-weight: bold;
-      width: auto;
-    }
-
-    // result
-    .rate {
-      font-size: 18px;
-      display: inline-block;
-      margin-top: 5px;
-      width: 200px;
-      @include dist(auto, auto, auto);
     }
 
     // for table
     table {
-      @include borderAll(0, #fff);
-      width: 75%;
-      margin: auto auto 15px auto;
-      border-collapse: collapse;
-
-      tr,
-      th {
-        @include fontAll(center, #545454, #fff, 16px);
-        @include borderAll(0, #545454);
-        line-height: 25px;
-
-        td {
-          @include borderAll(0, #545454);
-          @include fontAll(right, #393939, #fff, 16px);
-          padding: 3px 5px 3px 0 !important;
-        }
-      }
-
+      width: 80%;
+      margin: 30px auto;
       td {
-        @include borderAll(0, #545454);
-        @include fontAll(right, #393939, #fff, 16px);
-        padding: 3px 5px 3px 0 !important;
+        @include fontAll(right, #393939, #fff);
       }
     }
 
-    // for together
-    #question {
-      line-height: 25px;
-      text-align: center;
-    }
     // secondDCF
     #valFF {
       @include borderAll(0, #fff);
-      @include fontAll(center, #fff, black, 16px);
-    }
-    // for npv
-    #npvv {
-      #rec {
-        margin: 15px auto;
-        width: 80%;
-        @include borderAll(0, black);
-        @include fontAll(center, green, white, 25px);
-      }
-
-      #recc {
-        width: 88%;
-        @include borderAll(0, black);
-        @include fontAll(center, red, white, 25px);
-      }
+      @include fontAll(center, #fff, black);
     }
   }
 }
@@ -268,9 +157,6 @@
         font-size: 0.8rem;
       }
       p {
-        label {
-          margin-left: 8% !important;
-        }
         #money {
           margin-left: 44%;
         }
@@ -284,13 +170,6 @@
       }
       .rate {
         font-size: 15px;
-      }
-      p {
-        #checkAll,
-        .cal,
-        #add {
-          margin-left: 35% !important;
-        }
       }
     }
   }

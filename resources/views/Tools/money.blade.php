@@ -11,35 +11,32 @@
             <p>
                 <label>
                     除權除息前股價
-                    <font class="red">(必填)</font>
+                    <span class="red">(必填)</span>
                 </label>
-                <input type="text" name="number" min="1" maxlength="10" />
-                <span>元</span>
+                <input type="text" class="inputText" name="number" min="1" maxlength="10" placeholder="元"/>
                 <h4 id="msgA"></h4>
             </p>
             <p>
                 <label>
                     現金股利(選填)
                 </label>
-                <input type="text" name="number" min="0" maxlength="10" />
-                <span>元/股</span>
+                <input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="元/股"/>
                 <h4 id="msgA"></h4>
             </p>
             <p>
                 <label>
                     股票股利(選填)
                 </label>
-                <input type="text" name="number" min="0" maxlength="10" />
-                <span>元/股</span>
+                <input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="元/股"/>
                 <h4 id="msgA"></h4>
             </p>
+            <div style="text-align: center;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="calPri">計算</button>
+            </div>
             <p>
-                <button type="button" class="cal" id="calPri">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <p class="resultAll">
-                參考價試算結果
-                <input type="text" min="0" class="rate" id="result" disabled></input>
+                <table id="result" class="table">
+                </table>
             </p>
         </fieldset>
     </form>

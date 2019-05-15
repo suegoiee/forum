@@ -12,50 +12,45 @@
 				<label>
 					目前公司年營收＝
 				</label>
-				<input type="text" name="value" min="1" maxlength="10" /> 
-				<span>億元</span>
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="億元"/>
 				<h4 id="msgA"></h4> 
 			</p>
 			<p>	
 				<label>
 					公司所處的產業整體產值＝
 				</label>
-				<input type="text" name="value" min="1" maxlength="10"/>
-				<span>億元</span>
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="億元"/>
 				<h4 id="msgA"></h4>  
 			</p>
 			<p>
 				<label>
 					該產業的年成長率
 				</label>
-				<input type="text" name="value" min="1" maxlength="10"/> 
-				<span>％</span>
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
 				<h4 id="msgA"></h4>   
 			</p>
 			<p>
 				<label>
 					請預估：<br/>5年後公司市佔率會是多少
 				</label>
-				<input type="text" name="value" min="1" maxlength="10"/> 
-				<span>％</span>
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
 				<h4 id="msgA"></h4>   
 			</p>
 			<p>
 				<label>
 					請預估：<br/>10年後公司市佔率會是多少
 				</label>
-				<input type="text" name="value" min="1" maxlength="10"/> 
-				<span>％</span>
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
 				<h4></h4>   
 			</p>
 			
-			<p>
-				<button type="button" class="cal" id="calEst">計算</button>
-				<button type="button" id="clear">清除</button>
-			</p>
+			<div style="text-align: center;">
+				<button type="button" class="cancel" id="clear">清除</button>
+				<button type="button" class="btn" id="calEst">計算</button>
+			</div>
 			
 			<p>
-				<table id="tableRes">
+				<table id="tableRes" class="table">
 				</table>
 			</p>
 				
@@ -66,10 +61,10 @@
 	<script type="text/javascript">
 		let numberAll = document.getElementsByName('value');
 		let msgAll = document.getElementsByTagName('h4');
-		let moneyAll = document.getElementById('tableRes');
+		let resAll = document.getElementById('tableRes');
 		
-		window.onload=function () {
-			let valueAll = new calFee(numberAll,msgAll,moneyAll);
+		window.onload = function () {
+			let valueAll = new calReRate(numberAll, msgAll, resAll);
 			valueAll.estCal();
 			valueAll.clearAll();
     	}
