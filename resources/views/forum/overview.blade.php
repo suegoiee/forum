@@ -16,6 +16,9 @@
         </div>
     </div>
     <div class="row forum" style="margin-top: 65px;">
+    
+    @include('layouts._alerts')
+
         <div class="col-md-3">
 
             @include('layouts._ads._forum_sidebar')

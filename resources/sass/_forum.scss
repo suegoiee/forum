@@ -5,14 +5,22 @@
   background-color: $bgColor;
   padding: $padTB $padLR;
 }
-
+.reEdit {
+  background-color: #fff;
+  padding: 15px;
+}
+.help-block {
+  color: #ef5350;
+  font-size: 13px;
+  padding-left: 10px;
+  line-height: 0.5;
+}
 .mgBtn {
   margin: 12px 0 0 10px;
 }
 // alert (error success warning)
 .alert {
-  margin-bottom: 15px !important;
-  margin-top: 1%;
+  margin: 1% auto 15px !important;
 }
 // forum
 .forum {
