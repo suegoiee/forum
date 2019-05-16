@@ -3,9 +3,8 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>{{ $title }}</h1>
-
-    {!! Form::open(['route' => ['replies.update', $reply->id()], 'method' => 'PUT']) !!}
+    <h1 style="font-size: 20px;">{{ $title }}</h1>
+    {!! Form::open(['route' => ['replies.update', $reply->id()], 'method' => 'PUT', 'class' => 'reEdit']) !!}
         @formGroup('body')
             {!! Form::textarea('body', $reply->body(), ['class' => 'form-control', 'required']) !!}
             @error('body')

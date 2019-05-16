@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="row forum">
+        @include('layouts._alerts')
         <div class="col-md-3">
             @foreach ($thread->tags() as $tag)
                 <h1>{{ $tag->name() }}</h1>
