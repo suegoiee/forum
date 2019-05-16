@@ -32,27 +32,29 @@ class judgeValue {
         this.clearVal = (z) => {
             z.value = "";
         }
-    }
-
-    // 判斷輸入值
-    valueCheck() {
-        for (var i = 0; i < numberAll.length; i++) {
-            if (isNaN(numberAll[i].value)) {
-                msgAll[i].innerHTML = "只能輸入純數字";
-                numberAll[i].focus();
-                return false;
-            } else if (numberAll[i].value == "") {
-                msgAll[i].innerHTML = "不可空白";
-                numberAll[i].focus();
-                return false;
-            } else if (numberAll[i].value == 0) {
-                msgAll[i].innerHTML = "不可為零";
-                numberAll[i].focus();
-                return false;
-            } else {
-                msgAll[i].innerHTML = "";
+        // 判斷輸入值
+        this.valueCheck = (vall, msg) => {
+            for (var i = 0; i < vall.length; i++) {
+                if (isNaN(vall[i].value)) {
+                    msg[i].innerHTML = "只能輸入純數字";
+                    vall[i].focus();
+                    return false;
+                } else if (vall[i].value == "") {
+                    msg[i].innerHTML = "不可空白";
+                    vall[i].focus();
+                    return false;
+                } else if (vall[i].value == 0) {
+                    msg[i].innerHTML = "不可為零";
+                    vall[i].focus();
+                    return false;
+                } else {
+                    msg[i].innerHTML = "";
+                }
             }
+            return true;
         }
-        return true;
+    }
+    checkValue() {
+        this.valueCheck(numberAll, msgAll);
     }
 }

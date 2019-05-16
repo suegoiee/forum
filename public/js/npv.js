@@ -1,13 +1,15 @@
 // npv計算公式 和 deposit計算公式
 class npvCal extends judgeValue {
-    constructor(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, form) {
+    constructor(numberAll, msgAll, msgB, questionAll, moneyAll, inputTd, npv, form) {
         super(numberAll, msgAll);
-        this.moneyAll = Array();
+        this.msgB = Array();
         this.questionAll = Array();
+        this.moneyAll = Array();
         this.nameAll = Array();
         this.inputTd = inputTd;
         this.npv = npv;
         this.yearNPV = 1;
+        this.valueCheck = this.valueCheck.bind(this);
         this.addTd = this.addTd.bind(this);
         this.del = this.del.bind(this);
         this.clearValue = this.clearValue.bind(this);
@@ -22,33 +24,20 @@ class npvCal extends judgeValue {
 
             this.addTd("label", "nvpC", "nvpC", "第" + this.yearNPV + "年", questionAll);
             this.addTd("input", "mom", "mom", "", questionAll);
-            this.addTd("h6", "msgA", "msgA", "", questionAll);
+            this.addTd("h4", "msgB", "msgB", "", questionAll);
             this.addTd("p", "pp", "pp", "", questionAll);
             this.yearNPV++;
 
-            for (var i = 0; i < moneyAll.length; i++) {
-                let j = i + 1;
-                if (moneyAll[i].value == "") {
-                    msgAll[j].innerHTML = "不可空白";
-                    moneyAll[i].focus();
-                } else if (moneyAll[i].value == 0) {
-                    msgAll[j].innerHTML = "不可為0";
-                    moneyAll[i].focus();
-                } else if (!moneyAll[i].value.replace(/[^\-?\d.]/g, '')) {
-                    msgAll[j].innerHTML = "請輸入純數字";
-                    moneyAll[i].focus();
-                } else {
-                    msgAll[j].innerHTML = "";
-                }
-            }
+            this.valueCheck(moneyAll, msgB);
         }
     }
 
     // npv計算公式
     calStock() {
         document.getElementById('calAll').onclick = () => {
-            if (super.valueCheck() == true) {
+            if (super.checkValue() == true) {
                 this.clearHTMLAll(msgAll);
+                this.clearHTMLAll(msgB);
 
                 if (npv.value != "") {
                     this.del(inputTd, 1);
@@ -114,6 +103,7 @@ class npvCal extends judgeValue {
 
             this.clearVal(numberAll[0]);
             this.clearHTMLAll(msgAll);
+            this.clearHTMLAll(msgB);
 
             // 刪除新增的子節點
             this.del(questionAll, 1);
@@ -130,7 +120,9 @@ class npvCal extends judgeValue {
     // deposit計算公式
     calDoposit() {
         document.getElementById('calAll').onclick = () => {
-            if (super.valueCheck() == true) {
+            if (super.checkValue() == true) {
+                this.clearHTMLAll(msgAll);
+                this.clearHTMLAll(msgB);
 
                 if (inputTd.childNodes != null) {
                     this.del(inputTd, 1);
@@ -163,6 +155,7 @@ class npvCal extends judgeValue {
 
             this.clearValue(numberAll);
             this.clearHTMLAll(msgAll);
+            this.clearHTMLAll(msgB);
             // 刪除新增的子節點
             this.del(questionAll, 1);
             this.del(inputTd, 1);

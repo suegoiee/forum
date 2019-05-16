@@ -18,9 +18,6 @@ class RegisterRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users',
             'username' => 'required|max:40',//|unique:users',
             'password' => 'required|min:6|max:255|confirmed',
-            'rules' => 'accepted',
-            'terms' => 'accepted',
-            'github_id' => 'required',
         ];
     }
 

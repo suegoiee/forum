@@ -107,10 +107,11 @@
 
     // Input wrong
     #msgA,
-    #bigW {
+    #msgB {
       @include fontAll(center, #ef5350, #f9f9f9, 0);
       @include dist(35%, 0, auto);
       font-weight: 300;
+      font-size: 13px;
     }
 
     // for table

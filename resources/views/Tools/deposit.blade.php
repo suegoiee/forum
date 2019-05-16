@@ -28,21 +28,21 @@
                     便宜價 
                 </label>
                 <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label class="too">
                     合理價
                 </label>
                 <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label class="too">
                     昂貴價
                 </label>
                 <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <div style="text-align: center;">
                 <button type="button" class="cancel" id="clear">清除</button>
@@ -56,14 +56,15 @@
     </form>
 </div>
     <script type="text/javascript">
+    let numberAll = document.getElementsByName('per');
+    let msgAll = document.getElementsByTagName('h6');
+    let msgB = document.getElementsByTagName("h4");
     let questionAll = document.getElementById("question");
     let moneyAll = document.getElementsByName('mom');
-    let numberAll = document.getElementsByName('per');
-    let msgAll = document.getElementsByTagName('h4');
     let inputTd = document.getElementById("calMon");
 
     window.onload=function () {
-    let valueAll = new npvCal(numberAll, msgAll, questionAll, moneyAll, inputTd);
+    let valueAll = new npvCal(numberAll, msgAll, msgB, questionAll, moneyAll, inputTd);
     valueAll.addInput();
     valueAll.calDoposit();
     valueAll.clearEve();
