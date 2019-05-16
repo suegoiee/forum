@@ -17,16 +17,15 @@
                     <i class="far fa-comment-alt"></i>  討論區 
                     </a>
                 </li>
-                @if(isset($_COOKIE['stockCode']))
-                    @php
+                @php
+                    if(isset($_COOKIE['stockCode'])){
                         $StockCode = $_COOKIE['stockCode'];
-                    @endphp
-                @else
-                    @php
+                    }
+                    else{
                         $StockCode = '1101';
-                        $_COOKIE['stockCode'] = 1101;
-                    @endphp
-                @endif
+                        setcookie("stockCode", '1101', time()+172800, "/", env('APP_URL'), 1);
+                    }
+                @endphp
                 <li class="dropdown {{ active('freebie*') }}">
                     <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-chart-bar"></i>  股票資訊  <span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
