@@ -17,6 +17,7 @@
     .panel {
       background-color: #fff !important;
       .panel-heading {
+        padding: 0 15px;
         .thread-info-author {
           a,
           a:hover,
@@ -35,6 +36,12 @@
             width: 100%;
           }
         }
+      }
+      .fbPad {
+        padding-left: 15px;
+      }
+      .authorName {
+        padding-right: 15px;
       }
     }
     div {
@@ -76,14 +83,46 @@
           }
         }
       }
+      .thread-info-author {
+        a,
+        a:hover,
+        a:focus {
+          color: #393939;
+          font-size: 18px;
+          font-weight: bolder;
+          text-decoration: none;
+        }
+        p {
+          font-size: 17px;
+          padding: 10px 15px;
+          line-height: 1;
+          img {
+            max-width: 100%;
+            height: auto !important;
+          }
+        }
+      }
     }
   }
 }
 
 @media (max-width: 1024px) {
   .blog {
+    .blogContent,
     .edde {
+      margin-left: 0;
       width: 100%;
+      .panel {
+        .panel-heading {
+          padding: 0;
+        }
+        .fbPad {
+          padding-left: 0;
+        }
+        .authorName {
+          padding-right: 0;
+        }
+      }
     }
     .blogTitle {
       float: none;
@@ -119,7 +158,6 @@
       width: 100%;
     }
     .blogContent {
-      padding-top: 2%;
       .panel {
         .panel-heading {
           .showTitle {
@@ -134,6 +172,18 @@
         }
         .panel-body {
           font-size: 1.5rem;
+        }
+      }
+      div {
+        .thread-info-author {
+          a,
+          a:hover,
+          a:focus {
+            font-size: 16px;
+          }
+          p {
+            font-size: 14.5px;
+          }
         }
       }
     }

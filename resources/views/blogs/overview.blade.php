@@ -51,6 +51,7 @@
                         </div>
 
                         <div class="panel-body">
+                            <!-- <span class="badge pull-right">{{ count($archive->replies()) }}</span> -->
                             {!! str_limit(strip_tags($archive->body), 100) !!}
                         </div>
                     </div>

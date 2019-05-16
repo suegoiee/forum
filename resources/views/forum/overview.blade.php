@@ -52,7 +52,7 @@
 
                         <div class="panel-body">
                             <a href="{{ route('thread', $thread->slug()) }}">
-                                <span class="badge pull-right">{{ count($thread->replies()) }}</span>
+                                <span class="badge pull-right" style="margin-right: 15px;">{{ count($thread->replies()) }}</span>
                                 <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
                             </a>
                         </div>
