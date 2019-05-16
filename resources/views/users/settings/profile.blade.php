@@ -16,7 +16,7 @@
                     {!! Form::label('姓名', null, ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
-                        {!! Form::text('name', Auth::user()->name(), ['class' => 'form-control', 'required']) !!}
+                        {!! Form::text('name', Auth::user()->name(), ['class' => 'inputText', 'required']) !!}
                         @error('name')
                     </div>
                 @endFormGroup
@@ -25,7 +25,7 @@
                     {!! Form::label('Email', null, ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
-                        {!! Form::email('email', Auth::user()->emailAddress(), ['class' => 'form-control', 'required']) !!}
+                        {!! Form::email('email', Auth::user()->emailAddress(), ['class' => 'inputText', 'required']) !!}
                         @error('email')
                     </div>
                 @endFormGroup
@@ -34,7 +34,7 @@
                     {!! Form::label('暱稱 (對外公開)', null, ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
-                        {!! Form::text('username', Auth::user()->username(), ['class' => 'form-control', 'required']) !!}
+                        {!! Form::text('username', Auth::user()->username(), ['class' => 'inputText', 'required']) !!}
                         @error('username')
                     </div>
                 @endFormGroup
@@ -43,7 +43,7 @@
                     {!! Form::label('自我介紹', null, ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
-                        {!! Form::textarea('bio', Auth::user()->bio(), ['class' => 'form-control', 'rows' => 3, 'maxlength' => 160, 'style' => 'height:auto !important;']) !!}
+                        {!! Form::textarea('bio', Auth::user()->bio(), ['class' => 'inputText', 'rows' => 3, 'maxlength' => 160, 'style' => 'height:auto !important;']) !!}
                         <span class="help-block">簡介字數少於160字!</span>
                         @error('bio')
                     </div>

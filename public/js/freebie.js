@@ -150,7 +150,7 @@ function dataFactoryC(data, stock_url, ClearCanvas) {
                         active = 'ChartActive';
                     }
                     /**報表左側控制 第二層按鈕 */
-                    sideTable = sideTable + '<button type="button" class="btn btn-success drawTableChart ' + active + '" value="' + key2 + '">' + val2.ChineseAccount + '</button>';
+                    sideTable = sideTable + '<button type="button" class="drawTableChart ' + active + '" value="' + key2 + '">' + val2.ChineseAccount + '</button>';
                 });
                 sideTable += '</div>';
             }
@@ -581,7 +581,7 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, M
     var BottomTableCanvas = '';
     /**上方 */
     if (DisPlayLabel) {
-        display_table = '<div class="container"><table class="table" style="text-align:center;"><tr id="' + IdForCanvas + 'Label"></tr></table></div>';
+        display_table = '<div class="container"><table class="table tableTop"><tr id="' + IdForCanvas + 'Label"></tr></table></div>';
     }
 
     /**上排資料數量按鈕 */
@@ -589,8 +589,8 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, M
         RecentTenButton = '<button type="button" class="btn btn-default buttonLastTen ActiveChartControlButton" value="' + IdForCanvas + '">近十筆</button>';
         WholeDateButton = '<button type="button" class="btn btn-default buttonEntire" value="' + IdForCanvas + '">全部</button>';
         CostumizeDateButton = '<button type="button" class="btn btn-default buttonCustomize" value="' + IdForCanvas + '">自訂</button>';
-        CostumizeDateStart = '<div class="select"><select class=" rangeStartSelect rangeStartSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select></div>';
-        CostumizeDateEnd = '<div class="select"><select class=" rangeEndSelect rangeEndSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select></div>';
+        CostumizeDateStart = '<div class="select"><span class="triangle-down"></span><select class=" rangeStartSelect rangeStartSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select></div>';
+        CostumizeDateEnd = '<div class="select"><span class="triangle-down"></span><select class=" rangeEndSelect rangeEndSelect' + IdForCanvas + '" value="' + IdForCanvas + '"></select></div>';
     }
 
     /**季/年按鈕 */
@@ -609,7 +609,7 @@ function ContainerGenerator(PYButton, AmountButton, DisPlayLabel, IdForCanvas, M
     var SideTableContainer = '<div class="sidebar" id="' + IdForCanvas + 'table"></div>';
 
     /**總成 */
-    var container = display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div style="display: inline-block;"><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + YearButton + PeriodButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div class="timeS"><label>從 ： </label>' + CostumizeDateStart + '</div><div class="timeE"><label>至 ： </label>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div>';
+    var container = display_table + SideTableContainer + '<div class="container" id="' + IdForCanvas + 'container"><div><div class="btn-group LeftButtonGroup" style="display:inline-block;" role="group" aria-label="...">' + YearButton + PeriodButton + '</div><div class="btn-group RightButtonGroup" style="display:inline-block; position:relative; float:right;" role="group" aria-label="...">' + RecentTenButton + WholeDateButton + CostumizeDateButton + '</div><div id="customizeRange' + IdForCanvas + '" class="collapse"><div class="timeS"><label>從 ： </label>' + CostumizeDateStart + '</div><div class="timeE"><label>至 ： </label>' + CostumizeDateEnd + '</div></div></div>' + ChartContainer + BottomTableCanvas + '</div>';
 
     if (MultiCharts) {
         $("#" + IdForCanvas + "Outer").append(container);

@@ -18,9 +18,11 @@
                 <h4 id="bigW"></h4>
             </p>
             <p>
-                <label>
-                    未來10年(2個成長階段)<br />預估成長率％
+                <label style="width: 100%;">
+                    未來10年(2個成長階段)—預估成長率％
                 </label>
+            </p>
+            <p>
                 <p>
                     <label>1～5年</label>
                     <input type="text" min="0" name="value" maxlength="10" />

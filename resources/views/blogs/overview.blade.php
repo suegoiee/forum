@@ -8,7 +8,7 @@
     <div class="row blog"  style=" margin-top: 15px;">
         @can(App\Policies\ArchivePolicy::CREATE, App\Models\Archive::class)
             <div style="text-align:right;" class="buildText">
-                <a class="btnBuild" href="{{ route('archives.create') }}">撰寫專欄</a>
+                <a class="btn" href="{{ route('archives.create') }}">撰寫專欄</a>
             </div>
         @endcan
         <div class="col-md-3 blogTitle">
@@ -39,10 +39,10 @@
 
             @if (count($archives))
                 @foreach ($archives as $archive)
-                    <div class="panel panel-default chat-bd" style="height:auto; margin: 3% 5% 3% !important; border:none !important;">
-                        <div class="panel-heading thread-info">
+                    <div class="panel chat-bd" style="height:auto; margin: 3% 5% 3% !important; border:none !important;">
+                        <div class="panel-heading">
                                 @include('blogs.archives.info.tags')
-                            <div class="thread-info-author headLabel" style="text-overflow: ellipsis; width: 100%; white-space: nowrap; overflow: hidden;">
+                            <div class="thread-info-author" style="text-overflow: ellipsis; width: 100%; white-space: nowrap; overflow: hidden;">
                                 <a href="{{ route('archives', $archive->slug()) }}" class="thread-info-link">{{ $archive->subject() }}</a>
                             </div>
                         </div>
@@ -50,7 +50,7 @@
                                 {{ $archive->createdAt() }} 
                         </div>
 
-                        <div class="panel-body chat-bg">
+                        <div class="panel-body">
                             {!! str_limit(strip_tags($archive->body), 100) !!}
                         </div>
                     </div>

@@ -150,6 +150,14 @@ class calBuffett extends judgeValue {
             }
         }
     }
+    clearBuff() {
+        document.getElementById('clear').onclick = () => {
+            this.clearValue(numberAll);
+            this.clearHTMLAll(msgAll);
+            this.del(resAll, 0);
+            this.del(ress, 0);
+        }
+    }
     // secondDCF 兩階段 現金流折現模型
     depoCal() {
         document.getElementById('check').onclick = () => {
