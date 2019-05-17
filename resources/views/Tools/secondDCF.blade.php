@@ -15,24 +15,20 @@
                     <span class="small">(可採用前一年數值或是長期平均數值)</span>
                 </label>
                 <input type="text" class="inputText" min="0" name="value" maxlength="10" />
-                <h4 id="bigW"></h4>
+                <h6 id="msgA"></h6>
             </p>
-            <p>
-                <label style="width: 100%;">
+                <label class="labelA">
                     未來10年(2個成長階段)—預估成長率％
                 </label>
+            <p>
+                <label>1～5年</label>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
-                <p>
-                    <label>1～5年</label>
-                    <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
-                    <h4 id="bigW"></h4>
-                </p>
-                <p>
-                    <label>6～10年</label>
-                    <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
-                    <h4 id="bigW"></h4>
-                </p>
+                <label>6～10年</label>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
@@ -40,7 +36,7 @@
                     <span class="small">(建議折現率設定超過10%以上)</span>
                 </label>
                 <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
-                <h4 id="bigW"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
@@ -48,23 +44,23 @@
                     <span class="small">(不能超過市場GDP水準)</span>
                 </label>
                 <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
-                <h4 id="bigW"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     在外流通股數
                 </label>
                 <input type="text" class="inputText" min="0" name="value" maxlength="10" />
-                <h4 id="bigW"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     淨負債
                 </label>
                 <input type="text" class="inputText" min="0" name="value" maxlength="10" />
-                <h4 id="bigW"></h4>
+                <h6 id="msgA"></h6>
             </p>
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-bottom: 15px;">
                 <button type="button" class="cancel" id="clear">清除</button>
                 <button type="button" class="btn" id="check">計算</button>
             </div>
@@ -72,8 +68,10 @@
     </form>
     <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%; overflow-y: auto; height: 545px;">
         <fieldset>
-            <table id="tableResA" class="table">
-            </table>
+            <div style="overflow-x: auto; display: inline-block; width: 100%;">
+                <table id="tableResA" class="table">
+                </table>
+            </div>
             <table id="tableResB" class="table">
             </table>
         </fieldset>
@@ -81,7 +79,7 @@
 </div>
     <script type="text/javascript">
         let numberAll = document.getElementsByName('value');
-        let msgAll = document.getElementsByTagName('h4');
+        let msgAll = document.getElementsByTagName('h6');
         let resAll = document.getElementById('tableResA');
         let ress = document.getElementById('tableResB');
         let form = document.getElementById("formStyle");

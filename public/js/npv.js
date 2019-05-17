@@ -9,7 +9,7 @@ class npvCal extends judgeValue {
         this.inputTd = inputTd;
         this.npv = npv;
         this.yearNPV = 1;
-        this.valueCheck = this.valueCheck.bind(this);
+        this.checkValue = this.checkValue.bind(this);
         this.addTd = this.addTd.bind(this);
         this.del = this.del.bind(this);
         this.clearValue = this.clearValue.bind(this);
@@ -28,14 +28,14 @@ class npvCal extends judgeValue {
             this.addTd("p", "pp", "pp", "", questionAll);
             this.yearNPV++;
 
-            this.valueCheck(moneyAll, msgB);
+            this.checkValue(moneyAll, msgB);
         }
     }
 
     // npv計算公式
     calStock() {
         document.getElementById('calAll').onclick = () => {
-            if (super.checkValue() == true) {
+            if (super.valueCheck() == true) {
                 this.clearHTMLAll(msgAll);
                 this.clearHTMLAll(msgB);
 
@@ -85,14 +85,12 @@ class npvCal extends judgeValue {
                     valC = z[i];
                 };
 
-                this.addTd("th", "calC", "calC", "淨現值(npv)", npv);
-                this.addTd("td", "yearB", "yearB", valC.toFixed(0), npv);
+                this.addTd("th", "valFF", "valFF", "淨現值(npv)", npv);
+                this.addTd("td", "valFF", "valFF", valC.toFixed(0), npv);
                 if (valC > 0) {
                     this.addTd("td", "rec", "rec", "該專案值得投資", npv);
-                    document.getElementById('rec').style.color = "#4abf70";
                 } else {
                     this.addTd("td", "recc", "recc", "該專案不值得投資，應該將這筆資金投入在其他地方。", npv);
-                    document.getElementById('recc').style.color = "#ef5350";
                 }
             }
         }
@@ -120,7 +118,7 @@ class npvCal extends judgeValue {
     // deposit計算公式
     calDoposit() {
         document.getElementById('calAll').onclick = () => {
-            if (super.checkValue() == true) {
+            if (super.valueCheck() == true) {
                 this.clearHTMLAll(msgAll);
                 this.clearHTMLAll(msgB);
 

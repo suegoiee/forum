@@ -33,7 +33,7 @@ class judgeValue {
             z.value = "";
         }
         // 判斷輸入值
-        this.valueCheck = (vall, msg) => {
+        this.checkValue = (vall, msg) => {
             for (var i = 0; i < vall.length; i++) {
                 if (isNaN(vall[i].value)) {
                     msg[i].innerHTML = "只能輸入純數字";
@@ -54,7 +54,10 @@ class judgeValue {
             return true;
         }
     }
-    checkValue() {
-        this.valueCheck(numberAll, msgAll);
+
+    valueCheck() {
+        if (this.checkValue(numberAll, msgAll) == true) {
+            return true;
+        }
     }
 }

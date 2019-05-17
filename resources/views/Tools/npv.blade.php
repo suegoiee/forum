@@ -22,7 +22,7 @@
                 <input type="hidden" id="countA" name="countA" value="1">
             </div>
             <p></p>
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-bottom: 15px;">
                 <button type="button" class="cancel" id="clear">清除</button>
                 <button type="button" class="btn" id="calAll" >計算</button>
             </div>
@@ -30,7 +30,7 @@
     </form>
     <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
         <fieldset>
-            <table id="calMon" class="table">
+            <table id="npvv" class="table">
             </table>
             <table id="npv" class="table">
             </table>
@@ -42,12 +42,13 @@
         let moneyAll = document.getElementsByName('mom');
         let numberAll = document.getElementsByName('per');
         let msgAll = document.getElementsByTagName('h6');
-        let inputTd = document.getElementById("calMon");
+        let msgB = document.getElementsByTagName('h4');
+        let inputTd = document.getElementById("npvv");
         let npv = document.getElementById('npv');
         let form = document.getElementById("formStyle");
 
         window.onload=function () {
-            let valueAll = new npvCal(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, form);
+            let valueAll = new npvCal(numberAll, msgAll, msgB ,questionAll, moneyAll, inputTd, npv, form);
             valueAll.addInput();
             valueAll.calStock();
             valueAll.clearEvery();

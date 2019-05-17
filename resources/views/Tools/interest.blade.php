@@ -13,28 +13,28 @@
                     本金
                 </label>
                 <input type="text" class="inputText" min="1" name="number" maxlength="10" placeholder="元"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     投資年報酬率
                 </label>
                 <input type="text" class="inputText" min="0" name="number" maxlength="10" placeholder="％"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     投資年數
                 </label>
                 <input type="text" class="inputText" min="0" name="number" maxlength="10" placeholder="年"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-bottom: 15px;">
                 <button type="button" class="cancel" id="clear">清除</button>
                 <button type="button" class="btn" id="calInst">計算</button>
             </div>
             <p>
-                <table id="result" class="table">
+                <table id="calMon" class="table">
                 </table>
             </p>
         </fieldset>
@@ -42,8 +42,8 @@
 </div>
     <script type="text/javascript">
         let numberAll = document.getElementsByName('number');
-        let msgAll = document.getElementsByTagName('h4');
-        let resAll = document.getElementById('result');
+        let msgAll = document.getElementsByTagName('h6');
+        let resAll = document.getElementById('calMon');
 
         window.onload=function () {
             let valueAll = new calReRate(numberAll, msgAll, resAll);

@@ -13,7 +13,7 @@
 					買進/賣出成交價
 				</label>
 				<input type="text" class="inputText" name="value" min="1" maxlength="10"  placeholder="元"/>
-				<h4 id="msgA"></h4> 
+				<h6 id="msgA"></h6> 
 			</p>
 			<p>	
 				<label>
@@ -21,22 +21,22 @@
 					<span class="small">(註: 1張=1,000股)</span>
 				</label>
 				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
-				<h4 id="msgA"></h4>  
+				<h6 id="msgA"></h6>  
 			</p>
 			<p>
 				<label>
 					電子下單券商手續費打幾折
 				</label>
 				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="折"/>
-				<h4 id="msgA"></h4>   
+				<h6 id="msgA"></h6>   
 			</p>
 			
-			<div style="text-align: center;">
+			<div style="text-align: center; margin-bottom: 15px;">
 				<button type="button" class="cancel" id="clear">清除</button>
 				<button type="button" class="btn" id="calMoney">計算</button>
 			</div>
 			<p>
-				<table id="tableRes" class="table">
+				<table id="calMon" class="table">
 				</table>
 			</p>			
 		</fieldset>
@@ -44,8 +44,8 @@
 </div>
 	<script>
 		let numberAll = document.getElementsByName('value');
-		let msgAll = document.getElementsByTagName('h4');
-		let resAll = document.getElementById('tableRes');
+		let msgAll = document.getElementsByTagName('h6');
+		let resAll = document.getElementById('calMon');
         window.onload=function () {
 			let valueAll = new calReRate(numberAll, msgAll, resAll);
 			valueAll.feeCal();

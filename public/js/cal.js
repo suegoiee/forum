@@ -115,11 +115,13 @@ class calReRate extends judgeValue {
                 if (resAll.length != 0) {
                     this.del(resAll, 0);
                 }
+
                 let reg = /(?=(\B\d{3})+$)/g;
                 let rateA = 1 + parseFloat(numberAll[1].value) / 100;
                 let rateB = Math.pow(rateA, parseFloat(numberAll[2].value));
                 let rateRe = parseFloat(numberAll[0].value) * rateB;
-                resAll.value = rateRe.toFixed(0).replace(reg, ",") + "元";
+                this.addTd("th", "priA", "priA", "每年複利之後本金將變成", resAll);
+                this.addTd("td", "priB", "priB", rateRe.toFixed(0).replace(reg, ",") + "元", resAll);
             }
         }
     }
@@ -292,9 +294,8 @@ class calBuffett extends judgeValue {
                     cal += calB;
                 }
                 let result = (Math.pow(((parseFloat(valArr[10]) + cal) / parseFloat(valArr[0])), 1 / 10) - 1) * 100;
-                this.addTd("th", "resla", "resla", "以目前價格買進，並長期持有，<br/> 您大約可獲得多少的報酬率(包含股息收益)", ress);
-                this.addTd("tr", "resB", "resB", "", ress);
-                this.addTd("th", "resVa", "resVa", result.toFixed(2) + "％", ress);
+                this.addTd("th", "valFF", "valFF", "以目前價格買進，並長期持有，<br/> 您大約可獲得多少的報酬率(包含股息收益)", ress);
+                this.addTd("th", "valFF", "valFF", result.toFixed(2) + "％", ress);
             }
         }
     }

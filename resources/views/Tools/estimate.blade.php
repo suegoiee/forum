@@ -13,44 +13,44 @@
 					目前公司年營收＝
 				</label>
 				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="億元"/>
-				<h4 id="msgA"></h4> 
+				<h6 id="msgA"></h6> 
 			</p>
 			<p>	
 				<label>
 					公司所處的產業整體產值＝
 				</label>
 				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="億元"/>
-				<h4 id="msgA"></h4>  
+				<h6 id="msgA"></h6>  
 			</p>
 			<p>
 				<label>
 					該產業的年成長率
 				</label>
 				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
-				<h4 id="msgA"></h4>   
+				<h6 id="msgA"></h6>   
 			</p>
 			<p>
 				<label>
 					請預估：<br/>5年後公司市佔率會是多少
 				</label>
 				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
-				<h4 id="msgA"></h4>   
+				<h6 id="msgA"></h6>   
 			</p>
 			<p>
 				<label>
 					請預估：<br/>10年後公司市佔率會是多少
 				</label>
 				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
-				<h4></h4>   
+				<h6 id="msgA"></h6>   
 			</p>
 			
-			<div style="text-align: center;">
+			<div style="text-align: center; margin-bottom: 15px;">
 				<button type="button" class="cancel" id="clear">清除</button>
 				<button type="button" class="btn" id="calEst">計算</button>
 			</div>
 			
 			<p>
-				<table id="tableRes" class="table">
+				<table id="calMon" class="table">
 				</table>
 			</p>
 				
@@ -60,8 +60,8 @@
 
 	<script type="text/javascript">
 		let numberAll = document.getElementsByName('value');
-		let msgAll = document.getElementsByTagName('h4');
-		let resAll = document.getElementById('tableRes');
+		let msgAll = document.getElementsByTagName('h6');
+		let resAll = document.getElementById('calMon');
 		
 		window.onload = function () {
 			let valueAll = new calReRate(numberAll, msgAll, resAll);

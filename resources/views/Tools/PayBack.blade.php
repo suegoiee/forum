@@ -13,23 +13,23 @@
                     貸款金額
                 </label>
                 <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="元"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label class="too">
                     貸款年數
                 </label>
                 <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="年"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label class="too">
                     年利率
                 </label>
                 <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
-                <h4 id="msgA"></h4>
+                <h6 id="msgA"></h6>
             </p>
-            <div style="text-align: center;">
+            <div style="text-align: center; margin-bottom: 15px;">
                 <button type="button" class="cancel" id="clear">清除</button>
                 <button type="button" class="btn" id="calAll">計算</button>
             </div>
@@ -48,7 +48,7 @@
 </div>
     <script type="text/javascript">
         let numberAll = document.getElementsByName('per');
-        let msgAll = document.getElementsByTagName('h4');
+        let msgAll = document.getElementsByTagName('h6');
         let resAll = document.getElementById("calMonA");
         let ress = document.getElementById("calMonB");
         let form = document.getElementById("formStyle");

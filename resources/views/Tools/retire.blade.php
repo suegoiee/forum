@@ -13,29 +13,29 @@
 					預估幾年後退休
 				</label>
 				<input type="text" class="inputText" name="number" min="1" maxlength="10"　placeholder="年"/>
-				<h4 id="msgA"></h4>
+				<h6 id="msgA"></h6>
 			</p>
 			<p>	
 				<label>
 					擁有多少可投資的現金
 				</label>
 				<input type="text" class="inputText" name="number" min="0" maxlength="10"　placeholder="元"/>
-				<h4 id="msgA"></h4> 
+				<h6 id="msgA"></h6> 
 			</p>
 			<p>
 				<label>
 					需要多少資產才能安穩退休
 				</label>
 				<input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="元"/>
-				<h4 id="msgA"></h4>
+				<h6 id="msgA"></h6>
 			</p>
 			
-			<div style="text-align: center;">
+			<div style="text-align: center; margin-bottom: 15px;">
 				<button type="button" class="cancel" id="clear">清除</button>
 				<button type="button" class="btn" id="check">評估</button>
 			</div>
 			<p>
-				<table id="result" class="table"></table>
+				<table id="calMon" class="table"></table>
 			</p>
 						
 		</fieldset>
@@ -44,7 +44,7 @@
 	<script type="text/javascript">
 		let numberAll = document.getElementsByName('number');
 		let msgAll = document.getElementsByTagName('h4');
-		let resAll = document.getElementById('result');
+		let resAll = document.getElementById('calMon');
 
         window.onload=function () {
 			let valueAll = new calReRate(numberAll,msgAll,resAll);
