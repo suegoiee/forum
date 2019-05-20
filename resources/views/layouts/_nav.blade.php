@@ -18,7 +18,7 @@
                     }
                     else{
                         $StockCode = '1101';
-                        setcookie("stockCode", '1101', time()+172800, "/", env('APP_URL'), 1);
+                        setcookie("stockCode", '1101', time()+172800, env('APP_URL'), env('APP_URL'), 1);
                     }
                 @endphp
                 <li class="dropdown {{ active('freebie*') }}">

@@ -1046,7 +1046,9 @@ function SetCookie(name, value) {
     var Days = 2;
     var exp = new Date();
     exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+    //document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";domain=" + '{{ env("APP_URL") }}' + ";path=/";
+    console.log(document.cookie);
 }
 
 function getCookie(name) {
