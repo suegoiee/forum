@@ -104,6 +104,10 @@ input[type="radio"]:checked + .boxStyle {
           color: #ef5350;
         }
       }
+      .resultAll {
+        width: 100% !important;
+        padding-left: 295px;
+      }
 
       //together
       #toge {
@@ -175,6 +179,9 @@ input[type="radio"]:checked + .boxStyle {
           display: block;
           margin-left: 52%;
         }
+        .resultAll {
+          padding-left: 150px;
+        }
       }
       #msgA,
       #msgB {
@@ -218,6 +225,9 @@ input[type="radio"]:checked + .boxStyle {
         }
         label {
           width: 38%;
+        }
+        .resultAll {
+          padding-left: 0;
         }
       }
       ol {
