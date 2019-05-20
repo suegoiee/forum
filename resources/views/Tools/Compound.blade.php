@@ -12,32 +12,31 @@
 				<label>
 					計算幾年的年複合成長率(CAGR)
 				</label>
-				<input type="text" name="number" min="1" maxlength="10" /> 
-				<span>年</span> 
-				<h4 id="msgA"></h4>
+				<input type="text" class="inputText" name="number" min="1" maxlength="10" placeholder="年"/>
+				<h6 id="msgA"></h6>
 			</p>
 			<p>	
 				<label>
 					期初數值
 				</label>
-				<input type="text" name="number" min="0" maxlength="10" />
-				<h4 id="msgA"></h4>  
+				<input type="text" class="inputText" name="number" min="0" maxlength="10"/>
+				<h6 id="msgA"></h6>  
 			</p>
 			<p>
 				<label>
 					期未數值
 				</label>
-				<input type="text" name="number" min="0" maxlength="10" />
-				<h4 id="msgA"></h4> 
+				<input type="text" class="inputText" name="number" min="0" maxlength="10" />
+				<h6 id="msgA"></h6> 
 			</p>
 			
-			<p>
-				<button type="button" class="cal" id="check">計算</button>
-				<button type="button" id="clear">清除</button>
-			</p>
-			<p class="resultAll">	
-				年複合成長率
-				<input type="text" class="rate" id="result" disabled/>
+			<div style="text-align: center; margin-bottom: 15px;">
+				<button type="button" class="cancel" id="clear">清除</button>
+				<button type="button" class="btn" id="check">計算</button>
+			</div>
+			<p>	
+				<table id="calMon" class="table">
+                </table>
 			</p>
 		</fieldset>
 	</form>
@@ -45,12 +44,12 @@
 
 	<script type="text/javascript">
 		let numberAll = document.getElementsByName('number');
-		let msgAll = document.getElementsByTagName('h4');
-		let resAll = document.getElementById('result');
+		let msgAll = document.getElementsByTagName('h6');
+		let resAll = document.getElementById('calMon');
 		
         window.onload=function () {
 		let valueAll = new calReRate(numberAll,msgAll,resAll);
-		valueAll.rateCal();
+		valueAll.comCal();
 		valueAll.clearAll();
 		}
 	</script>

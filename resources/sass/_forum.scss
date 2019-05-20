@@ -5,27 +5,20 @@
   background-color: $bgColor;
   padding: $padTB $padLR;
 }
-// replied count
-.badge {
-  @include tagStyle(#fff, #ffa500, 4px, 0);
-  min-width: 23px;
-  min-height: 22px;
-  border-radius: 999em;
-  font-size: 12px;
-}
-// show: replied part time
-.timeReply {
-  text-align: right;
-}
-.reEdit {
-  background-color: #fff;
-  padding: 15px;
-}
-.help-block {
-  color: #ef5350;
-  font-size: 13px;
-  padding-left: 10px;
-  line-height: 0.5;
+
+.placardText {
+  float: left;
+  padding-left: 15px;
+  a,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    color: #393939;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 31px;
+    cursor: pointer;
+  }
 }
 .mgBtn {
   margin: 12px 0 0 10px;

@@ -12,10 +12,10 @@
                     請輸入過去n年的現金股息
                 </label>
             </p>
-            <p id="question" style="text-align: left;">
+            <p id="question">
             </p> 
             <p>
-                <button type="button" id="add">新增一年的現金股息</button>
+                <button type="button" id="add" class="btn">新增一年的現金股息</button>
                 <input type="hidden" id="countA" name="countA" value="1">
             </p>
             <p>
@@ -27,33 +27,28 @@
                 <label class="too">
                     便宜價 
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>%</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label class="too">
                     合理價
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>%</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label class="too">
                     昂貴價
                 </label>
-                <input type="text" name="per" min="0" maxlength="10" />
-                <span>%</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="per" min="0" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
-            <p>
-                <button type="button" class="cal" id="calAll">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <table>
-                <tbody id="calMon">                 
-                </tbody>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="calAll">計算</button>
+            </div>
+            <table id="calMon" class="table">
             </table>
             
         </fieldset>
@@ -61,14 +56,15 @@
     </form>
 </div>
     <script type="text/javascript">
+    let numberAll = document.getElementsByName('per');
+    let msgAll = document.getElementsByTagName('h6');
+    let msgB = document.getElementsByTagName("h4");
     let questionAll = document.getElementById("question");
     let moneyAll = document.getElementsByName('mom');
-    let numberAll = document.getElementsByName('per');
-    let msgAll = document.getElementsByTagName('h4');
     let inputTd = document.getElementById("calMon");
 
     window.onload=function () {
-    let valueAll = new npvCal(numberAll, msgAll, questionAll, moneyAll, inputTd);
+    let valueAll = new npvCal(numberAll, msgAll, msgB, questionAll, moneyAll, inputTd);
     valueAll.addInput();
     valueAll.calDoposit();
     valueAll.clearEve();

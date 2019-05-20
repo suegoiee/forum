@@ -12,46 +12,42 @@
 				<label>
 					買進/賣出成交價
 				</label>
-				<input type="text" name="value" min="1" maxlength="10" /> 
-				<span>元</span>
-				<h4 id="msgA"></h4> 
+				<input type="text" class="inputText" name="value" min="1" maxlength="10"  placeholder="元"/>
+				<h6 id="msgA"></h6> 
 			</p>
 			<p>	
 				<label>
 					成交股數 
 					<span class="small">(註: 1張=1,000股)</span>
 				</label>
-				<input type="text" name="value" min="1" maxlength="10"/>
-				<span>%</span>
-				<h4 id="msgA"></h4>  
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="％"/>
+				<h6 id="msgA"></h6>  
 			</p>
 			<p>
 				<label>
 					電子下單券商手續費打幾折
 				</label>
-				<input type="text" name="value" min="1" maxlength="10"/> 
-				<span>折</span>
-				<h4 id="msgA"></h4>   
+				<input type="text" class="inputText" name="value" min="1" maxlength="10" placeholder="折"/>
+				<h6 id="msgA"></h6>   
 			</p>
 			
+			<div style="text-align: center; margin-bottom: 15px;">
+				<button type="button" class="cancel" id="clear">清除</button>
+				<button type="button" class="btn" id="calMoney">計算</button>
+			</div>
 			<p>
-				<button type="button" class="cal" id="calMoney">計算</button>
-				<button type="button" id="clear">清除</button>
-			</p>
-			<p>
-				<table id="tableRes">
+				<table id="calMon" class="table">
 				</table>
-			</p>
-				
+			</p>			
 		</fieldset>
 	</form>
 </div>
 	<script>
 		let numberAll = document.getElementsByName('value');
-		let msgAll = document.getElementsByTagName('h4');
-		let moneyAll = document.getElementById('tableRes');
+		let msgAll = document.getElementsByTagName('h6');
+		let resAll = document.getElementById('calMon');
         window.onload=function () {
-			let valueAll = new calFee(numberAll,msgAll,moneyAll);
+			let valueAll = new calReRate(numberAll, msgAll, resAll);
 			valueAll.feeCal();
 			valueAll.clearAll();
 	  	};

@@ -12,57 +12,51 @@
                 <label>
                     每年生活費
                 </label>
-                <input type="text" name="number" min="1" maxlength="10" />
-                <span>元</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="number" min="1" maxlength="10" placeholder="元"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     通貨膨脹率
                 </label>
-                <input type="text" name="number" min="0" maxlength="10" />
-                <span>％</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     投資報酬率
                 </label>
-                <input type="text" name="number" min="0" maxlength="10" />
-                <span>％</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     退休年齡
                 </label>
-                <input type="text" name="number" min="0" maxlength="10" />
-                <span>歲</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="歲"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     預期壽命
                 </label>
-                <input type="text" name="number" min="0" maxlength="10" />
-                <span>歲</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="歲"/>
+                <h6 id="msgA"></h6>
             </p>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="calPri">計算</button>
+            </div>
             <p>
-                <button type="button" class="cal" id="calPri">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <p class="resultAll">
-                參考價試算結果
-                <input type="text" style="margin-left: 12%;" min="0" class="rate" id="result" disabled></input>
+                <table id="calMon" class="table"></table>
             </p>
         </fieldset>
     </form>
 </div>
     <script type="text/javascript">
     let numberAll = document.getElementsByName('number');
-    let msgAll = document.getElementsByTagName('h4');
-    let resAll = document.getElementById('result');
+    let msgAll = document.getElementsByTagName('h6');
+    let resAll = document.getElementById('calMon');
 
     window.onload=function () {
         let valueAll = new calReRate(numberAll, msgAll, resAll);
