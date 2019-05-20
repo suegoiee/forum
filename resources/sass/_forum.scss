@@ -5,6 +5,14 @@
   background-color: $bgColor;
   padding: $padTB $padLR;
 }
+.badge {
+  @include tagStyle(#fff, #ffa500, 4px, 0);
+  margin-right: 15px;
+  min-width: 23px;
+  min-height: 22px;
+  border-radius: 999em;
+  font-size: 12px;
+}
 .reEdit {
   background-color: #fff;
   padding: 15px;
@@ -14,6 +22,20 @@
   font-size: 13px;
   padding-left: 10px;
   line-height: 0.5;
+}
+.placardText {
+  float: left;
+  padding-left: 15px;
+  a,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    color: #393939;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 31px;
+    cursor: pointer;
+  }
 }
 .mgBtn {
   margin: 12px 0 0 10px;
@@ -145,15 +167,6 @@
         a:hover,
         a:focus {
           text-decoration: none;
-          // replied count
-          .badge {
-            @include tagStyle(#fff, #ffa500, 4px, 0);
-            margin-right: 15px;
-            min-width: 23px;
-            min-height: 22px;
-            border-radius: 999em;
-            font-size: 12px;
-          }
           p {
             color: #545454;
             font-size: 15px;
@@ -244,10 +257,6 @@
         }
       }
     }
-    // show: replied part time
-    .timeReply {
-      text-align: right;
-    }
   }
   // remind 留言
   .remind {
@@ -322,6 +331,9 @@
 }
 
 @media (max-width: 767px) {
+  .timeReply {
+    font-size: 11px;
+  }
   .row {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -351,7 +363,7 @@
         }
         .panel-body {
           h3 {
-            font-size: 15px;
+            font-size: 16px;
           }
           p {
             font-size: 13px;
@@ -374,9 +386,14 @@
           }
         }
         .authorName {
-          font-size: 12px;
+          font-size: 16px;
           .thread-info-link {
-            font-size: 15px;
+            font-size: 16px;
+          }
+        }
+        .headLabel {
+          p {
+            font-size: 14.5px;
           }
         }
       }

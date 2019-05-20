@@ -174,6 +174,37 @@ final class User extends Authenticatable
         return $this->threadsRelation()->count();
     }
 
+    
+    /**
+     * @return \App\Models\Archive[]
+     */
+    public function archives()
+    {
+        return $this->archivesRelation;
+    }
+
+    /**
+     * @return \App\Models\Archive[]
+     */
+    public function latestArchives(int $amount = 3)
+    {
+        return $this->archivesRelation()->latest()->limit($amount)->get();
+    }
+
+    public function deleteArchives()
+    {
+        // We need to explicitly iterate over the archives and delete them
+        // separately because all related models need to be deleted.
+        foreach ($this->archives() as $archive) {
+            $archive->delete();
+        }
+    }
+
+    public function archivesRelation(): HasMany
+    {
+        return $this->hasMany(Archive::class, 'author_id');
+    }
+
     /**
      * @return \App\Models\Reply[]
      */
@@ -247,33 +278,4 @@ final class User extends Authenticatable
         $this->notify(new ResetPasswordNotification($token));
     }
 
-    /**
-     * @return \App\Models\Thread[]
-     */
-    public function archives()
-    {
-        return $this->threadsRelation;
-    }
-
-    /**
-     * @return \App\Models\Thread[]
-     */
-    public function latestArchives(int $amount = 3)
-    {
-        return $this->archivesRelation()->latest()->limit($amount)->get();
-    }
-
-    public function deleteArchives()
-    {
-        // We need to explicitly iterate over the threads and delete them
-        // separately because all related models need to be deleted.
-        foreach ($this->archives() as $archive) {
-            $archive->delete();
-        }
-    }
-
-    public function archivesRelation(): HasMany
-    {
-        return $this->hasMany(Archive::class, 'author_id');
-    }
 }

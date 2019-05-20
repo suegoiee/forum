@@ -12,68 +12,64 @@
                 <label>
                     目前股價：
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>元</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="元"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     最新每股淨值：
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>元</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="元"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     前一年度ROE：
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>％</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     股息配發率：
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>％</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     股價淨值比(10年平均)：
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>倍</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="倍"/>
+                <h6 id="msgA"></h6>
             </p>
-            <p>
-                <button type="button" class="cal" id="check">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <p>
-                <table id="tableResA">
-                    <p></p>
-                </table>
-            </p>
-            <p>
-                <table id="tableResB"></table>
-            </p>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="check">計算</button>
+            </div>
+        </fieldset>
+    </form>
+    <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
+        <fieldset>
+            <div style="display: inline-block; overflow-x: auto; width: 100%; margin-bottom: 15px;">
+                <table id="tableResA" class="table"></table>
+            </div>
+                <table id="tableResB" class="table"></table>
         </fieldset>
     </form>
 </div>
 
     <script type="text/javascript">
         let numberAll = document.getElementsByName('value');
-        let msgAll = document.getElementsByTagName('h4');
+        let msgAll = document.getElementsByTagName('h6');
         let resAll = document.getElementById('tableResA');
         let ress = document.getElementById('tableResB');
+        let form = document.getElementById("formStyle");
 
         window.onload=function () {
-            let valueAll = new calBuffett(numberAll, msgAll, resAll, ress);
+            let valueAll = new calBuffett(numberAll, msgAll, resAll, ress, form);
             valueAll.bufCal();
-            valueAll.clearBuff();
+            valueAll.clearEle();
         }
     </script>
 

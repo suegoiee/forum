@@ -5,12 +5,16 @@
 
 @section('content')
     <div class="forumTit" style="display: inline-block; background-color: #e9e9e9; position: fixed; z-index: 3; width: 1180px; top: 64px; padding-top: 20px;">
-        <h1 style="float: left; line-height: 32px; margin-top: 0;">{{ $title }}</h1>
+        <h1 style="float: left; line-height: 31px; margin-top: 0;">{{ $title }}</h1>
         {{ Form::open(['route' => 'forum', 'method' => 'GET', 'class' => 'search-article','style' => 'padding: 0; float: left;']) }}
             <div class="form-group">
                 {{ Form::text('search', $search ?? null, ['class' => 'form-control search-article', 'placeholder' => '搜尋文章' ]) }}
             </div>
         {{ Form::close() }}
+        <!-- <div class="placardText">
+            <a data-toggle="modal" data-target="#placard">公告</a>
+                @include('_partials._placard_modal')
+        </div> -->
         <div style="text-align:right;">
             <a class="btn" style="margin-right: 8px;" href="{{ route('threads.create') }}">發表文章</a>
         </div>
@@ -52,7 +56,7 @@
 
                         <div class="panel-body">
                             <a href="{{ route('thread', $thread->slug()) }}">
-                                <span class="badge pull-right">{{ count($thread->replies()) }}</span>
+                                <span class="badge pull-right" style="margin-right: 15px;">{{ count($thread->replies()) }}</span>
                                 <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
                             </a>
                         </div>

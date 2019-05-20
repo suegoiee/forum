@@ -103,7 +103,7 @@ final class Archive extends Model implements ReplyAble, SubscriptionAble
     }
 
     /**
-     * @return \App\Models\Thread[]
+     * @return \App\Models\Archive[]
      */
     public static function feed(int $limit = 20): Collection
     {
@@ -111,7 +111,7 @@ final class Archive extends Model implements ReplyAble, SubscriptionAble
     }
 
     /**
-     * @return \App\Models\Thread[]
+     * @return \App\Models\Archive[]
      */
     public static function feedPaginated(int $perPage = 20): Paginator
     {
@@ -119,7 +119,7 @@ final class Archive extends Model implements ReplyAble, SubscriptionAble
     }
 
     /**
-     * @return \App\Models\Thread[]
+     * @return \App\Models\Archive[]
      */
     public static function feedByTagPaginated(Tag $tag, int $perPage = 20): Paginator
     {

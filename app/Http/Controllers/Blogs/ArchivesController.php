@@ -49,7 +49,7 @@ class ArchivesController extends Controller
     {
         $archive = $this->dispatchNow(CreateArchive::fromRequest($request));
 
-        $this->success('專欄撰寫成功');
+        $this->success('blogs.archives.created');
 
         return redirect()->route('archives', $archive->slug());
     }
@@ -67,7 +67,7 @@ class ArchivesController extends Controller
 
         $archive = $this->dispatchNow(UpdateArchive::fromRequest($archive, $request));
 
-        $this->success('專欄更新成功');
+        $this->success('blogs.archives.updated');
 
         return redirect()->route('archives', $archive->slug());
     }
@@ -78,8 +78,9 @@ class ArchivesController extends Controller
 
         $this->dispatchNow(new DeleteArchive($archive));
 
-        $this->success('專欄刪除成功');
+        $this->success('blogs.archives.deleted');
 
         return redirect()->route('blogs');
     }
 }
+
