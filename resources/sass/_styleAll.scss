@@ -20,6 +20,20 @@
   padding-right: $padr;
   margin-left: $marg;
 }
+input[type="radio"] {
+  display: none;
+}
+.boxStyle {
+  cursor: pointer;
+  color: #545454;
+  font-weight: 500;
+  padding-top: 15px;
+  margin-bottom: 0;
+}
+input[type="radio"]:checked + .boxStyle {
+  color: #ffa500;
+}
+
 #calMon {
   width: 50%;
 }
@@ -70,14 +84,6 @@
     #non {
       @include fontAll(center, #ef5350, #fff, 20px);
       font-size: 18px;
-    }
-
-    ol {
-      li {
-        .radioAll {
-          margin-right: 3px;
-        }
-      }
     }
     p {
       text-align: center;
@@ -215,7 +221,7 @@
         }
       }
       ol {
-        padding-left: 5% !important;
+        padding-left: 15px !important;
       }
       .rate {
         font-size: 15px;

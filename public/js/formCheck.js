@@ -99,20 +99,20 @@ class checkRad {
             }
             this.addTd("th", "ress", "ress", "合計：" + cal, resAll);
             this.addTd("tr", "nn", "nn", "", resAll);
-            if (cal < 14) {
+            if (cal < 15) {
                 this.addTd("th", "non", "non", "容易半途而廢", resAll);
                 document.getElementById('non').style.color = "#ef5350";
                 this.addTd("tr", "nn", "nn", "", resAll);
                 this.addTd("td", "nnnn", "nnnn", "您的投資個性傾向積極，希望一進場就能賺到好幾支漲停板，也有承受高度風險的準備，短線進出才能滿足您追求股價飆升的快感；目前存股對您而言，賺錢速度太慢，很容易半途放棄；建議可調整投資心態後再來考慮存股。", resAll);
-            } else if (cal > 26) {
+            } else if (cal > 25) {
                 this.addTd("th", "che", "che", "適合長期存股", resAll);
                 document.getElementById('che').style.color = "#4abf70";
                 this.addTd("tr", "nn", "nn", "", resAll);
-                this.addTd("td", "nnnn", "nnnn", "您的投資個性介於保守與積極之間，不願意承擔過高的風險，一年賺10％～20％是您最希望得到的報酬率，採取波段操作較能滿足您的個性；若要採用長期存股策略，您需要增加更多耐心，降低預期年報酬率，拉長期望獲利的時間。", resAll);
+                this.addTd("td", "nnnn", "nnnn", "您的投資個性偏向保守，卻又不甘於只賺銀行定存利率，願意用時間換取穩定的報酬，存股絕對是最適合您的投資策略；先花時間做功課，找到值得長期投資的股票，並定期檢視績效，假以時日將能享受到甜美戰果。", resAll);
             } else {
                 this.addTd("th", "nnn", "nnn", "需要更多耐心", resAll);
                 this.addTd("tr", "nn", "nn", "", resAll);
-                this.addTd("td", "nnnn", "nnnn", "您的投資個性偏向保守，卻又不甘於只賺銀行定存利率，願意用時間換取穩定的報酬，存股絕對是最適合您的投資策略；先花時間做功課，找到值得長期投資的股票，並定期檢視績效，假以時日將能享受到甜美戰果。", resAll);
+                this.addTd("td", "nnnn", "nnnn", "您的投資個性介於保守與積極之間，不願意承擔過高的風險，一年賺10％～20％是您最希望得到的報酬率，採取波段操作較能滿足您的個性；若要採用長期存股策略，您需要增加更多耐心，降低預期年報酬率，拉長期望獲利的時間。", resAll);
             }
         }
     }

@@ -6,6 +6,20 @@
   padding: $padTB $padLR;
 }
 
+.placardText {
+  float: left;
+  padding-left: 15px;
+  a,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    color: #393939;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 31px;
+    cursor: pointer;
+  }
+}
 .mgBtn {
   margin: 12px 0 0 10px;
 }
