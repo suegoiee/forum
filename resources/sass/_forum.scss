@@ -24,8 +24,10 @@
   line-height: 0.5;
 }
 .placardText {
-  float: left;
-  padding-left: 15px;
+  position: fixed;
+  z-index: 1050;
+  top: 85px;
+  left: 35%;
   a,
   a:hover,
   a:focus {
@@ -46,6 +48,7 @@
 }
 // forum
 .forum {
+  margin-top: 65px;
   // left part
   div {
     // title-tag
@@ -285,7 +288,6 @@
       .form-group {
         input {
           margin-left: 5px !important;
-          margin-top: -8px;
         }
       }
     }
@@ -313,6 +315,10 @@
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+  .placardText {
+    top: 81px;
+    left: 280px;
+  }
   .loginForm {
     width: 50% !important;
     margin: auto !important;
@@ -331,6 +337,10 @@
 }
 
 @media (max-width: 767px) {
+  .placardText {
+    top: 110px;
+    left: 20px;
+  }
   .timeReply {
     font-size: 11px;
   }
