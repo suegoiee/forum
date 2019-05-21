@@ -11,15 +11,15 @@
                 {{ Form::text('search', $search ?? null, ['class' => 'form-control search-article', 'placeholder' => '搜尋文章' ]) }}
             </div>
         {{ Form::close() }}
-        <!-- <div class="placardText">
-            <a data-toggle="modal" data-target="#placard">公告</a>
-                @include('_partials._placard_modal')
-        </div> -->
         <div style="text-align:right;">
             <a class="btn" style="margin-right: 8px;" href="{{ route('threads.create') }}">發表文章</a>
         </div>
     </div>
-    <div class="row forum" style="margin-top: 65px;">
+    <!-- <div class="placardText">
+        <a class="" data-toggle="modal" data-target="#placard"><i class="fas fa-bell"></i></a>
+            @include('_partials._placard_modal')
+    </div> -->
+    <div class="row forum">
     
     @include('layouts._alerts')
 

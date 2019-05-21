@@ -28,7 +28,7 @@ h4,
 .form-control:focus {
   margin-bottom: 10px !important;
   width: 200px !important;
-  height: 32px;
+  height: 35px;
   @include btnStyle(#545454, #fff, #e9e9e9, 15px !important);
 }
 .btn {
@@ -298,6 +298,7 @@ body {
               .form-control {
                 -webkit-appearance: none;
                 line-height: 1;
+                vertical-align: initial;
               }
               .form-control::-ms-expand {
                 display: none;
@@ -481,6 +482,11 @@ body {
 }
 
 @media (max-width: 767px) {
+  .form-control,
+  .form-control:hover,
+  .form-control:focus {
+    width: 150px !important;
+  }
   #CompanyInfo {
     .table {
       border: none !important;

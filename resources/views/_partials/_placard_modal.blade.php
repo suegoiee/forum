@@ -6,7 +6,6 @@
                         <h4 class="modal-title">公告</h4>
                     </div>
                     <div class="modal-body">
-                        小工具大改版~~~~
                     </div>
                     <div class="modal-footer" style="border: none;">
                         <button type="button" class="btn" data-dismiss="modal">我知道了</button>
