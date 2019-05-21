@@ -4,7 +4,7 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="forumTit" style="display: inline-block; background-color: #e9e9e9; position: fixed; z-index: 3; width: 1180px; top: 64px; padding-top: 20px;">
+    <div class="forumTit" style="display: inline-block; background-color: #e9e9e9; position: fixed; z-index: 3; width: 1180px; top: 63px; padding-top: 20px;">
         <h1 style="float: left; line-height: 31px; margin-top: 0;">{{ $title }}</h1>
         {{ Form::open(['route' => 'forum', 'method' => 'GET', 'class' => 'search-article','style' => 'padding: 0; float: left;']) }}
             <div class="form-group">
