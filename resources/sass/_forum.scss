@@ -5,6 +5,14 @@
   background-color: $bgColor;
   padding: $padTB $padLR;
 }
+.badge {
+  @include tagStyle(#fff, #ffa500, 4px, 0);
+  margin-right: 15px;
+  min-width: 23px;
+  min-height: 22px;
+  border-radius: 999em;
+  font-size: 12px;
+}
 .reEdit {
   background-color: #fff;
   padding: 15px;
@@ -15,12 +23,34 @@
   padding-left: 10px;
   line-height: 0.5;
 }
+.placardText {
+  position: fixed;
+  z-index: 1050;
+  top: 85px;
+  left: 35%;
+  a,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    color: #393939;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 31px;
+    cursor: pointer;
+  }
+}
 .mgBtn {
   margin: 12px 0 0 10px;
 }
 // alert (error success warning)
 .alert {
   margin: 1% auto 15px !important;
+}
+.forumTit {
+  top: 65px;
+}
+.forumTop {
+  margin-top: 65px;
 }
 // forum
 .forum {
@@ -145,15 +175,6 @@
         a:hover,
         a:focus {
           text-decoration: none;
-          // replied count
-          .badge {
-            @include tagStyle(#fff, #ffa500, 4px, 0);
-            margin-right: 15px;
-            min-width: 23px;
-            min-height: 22px;
-            border-radius: 999em;
-            font-size: 12px;
-          }
           p {
             color: #545454;
             font-size: 15px;
@@ -244,10 +265,6 @@
         }
       }
     }
-    // show: replied part time
-    .timeReply {
-      text-align: right;
-    }
   }
   // remind 留言
   .remind {
@@ -276,7 +293,6 @@
       .form-group {
         input {
           margin-left: 5px !important;
-          margin-top: -8px;
         }
       }
     }
@@ -304,6 +320,10 @@
   }
 }
 @media (min-width: 768px) and (max-width: 1024px) {
+  .placardText {
+    top: 81px;
+    left: 280px;
+  }
   .loginForm {
     width: 50% !important;
     margin: auto !important;
@@ -322,6 +342,16 @@
 }
 
 @media (max-width: 767px) {
+  .forumTit {
+    top: 58px;
+  }
+  .placardText {
+    top: 110px;
+    left: 20px;
+  }
+  .timeReply {
+    font-size: 11px;
+  }
   .row {
     margin-left: 0px !important;
     margin-right: 0px !important;
@@ -351,7 +381,7 @@
         }
         .panel-body {
           h3 {
-            font-size: 15px;
+            font-size: 16px;
           }
           p {
             font-size: 13px;
@@ -374,9 +404,14 @@
           }
         }
         .authorName {
-          font-size: 12px;
+          font-size: 16px;
           .thread-info-link {
-            font-size: 15px;
+            font-size: 16px;
+          }
+        }
+        .headLabel {
+          p {
+            font-size: 14.5px;
           }
         }
       }

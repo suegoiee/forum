@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\User;
 use App\Models\Thread;
+use App\Models\Archive;
 use App\Models\ReplyAble;
 use App\Rules\HttpImageRule;
 
@@ -14,7 +15,7 @@ class CreateReplyRequest extends Request
         return [
             'body' => ['required', new HttpImageRule],
             'replyable_id' => 'required',
-            'replyable_type' => 'required|in:'.Thread::TABLE,
+            'replyable_type' => 'required|in:'.Thread::TABLE.','.Archive::TABLE,
         ];
     }
 
@@ -28,6 +29,8 @@ class CreateReplyRequest extends Request
         switch ($type) {
             case Thread::TABLE:
                 return Thread::find($id);
+            case Archive::TABLE:
+                return Archive::find($id);
         }
 
         abort(404);

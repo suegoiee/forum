@@ -140,7 +140,7 @@
                                 </span>
                             @endif
                         </div>
-                        @can(App\Policies\ThreadPolicy::UPDATE, $thread)
+                        <!-- @can(App\Policies\ThreadPolicy::UPDATE, $thread)
                             <div class="pull-right" style="font-size: 20px">
                                 @if ($thread->isSolutionReply($reply))
                                     <a href="#" data-toggle="modal" data-target="#unmarkSolution">
@@ -166,7 +166,7 @@
                                     ])
                                 @endif
                             </div>
-                        @endcan
+                        @endcan -->
 
                     </div>
                 </div>

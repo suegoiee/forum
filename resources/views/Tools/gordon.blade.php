@@ -16,65 +16,56 @@
                 <label>
                     近一期每股盈餘(EPS)
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>元</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="元"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     近一期股息配發率
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>％</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     你希望這支股票最少要能提供<br/>多少年報酬才會想投資：
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>％</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     公司長期成長率：
                 </label>
-                <input type="text" min="0" name="value" maxlength="10" />
-                <span>％</span>
-                <h4 id="bigW"></h4>
+                <input type="text" class="inputText" min="0" name="value" maxlength="10" placeholder="％"/>
+                <h6 id="msgA"></h6>
             </p>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="check">計算</button>
+            </div>
             <p>
-                <button type="button" class="cal" id="check">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <p class="resultAll">
-                最近一期股息：
-                <input type="text" id="resultA" class="rate" name="resultA" disabled>
-            </p>
-            <p class="resultAll">
-                高登模型所運算出來的股票價值：
-                <input type="text" id="resultB" class="rate" name="resultB" disabled>
+                <table id="tableResA" class="table">
+                </table>
             </p>
         </fieldset>
     </form>
     <form id="formStyle" style="display:none; float:right; width: 50%; margin-bottom: 1%;">
         <fieldset>
-            <table id="tableRes">
+            <table id="tableResB" class="table">
             </table>
         </fieldset>
     </form>
 </div>
     <script type="text/javascript">
     let numberAll = document.getElementsByName('value');
-    let msgAll = document.getElementsByTagName('h4');
-    let resA = document.getElementById('resultA');
-    let resB = document.getElementById('resultB');
-    let resC = document.getElementById('tableRes');
+    let msgAll = document.getElementsByTagName('h6');
+    let resAll = document.getElementById('tableResA');
+    let ress = document.getElementById('tableResB');
     let form = document.getElementById("formStyle");
 
     window.onload=function () {
-        let valueAll = new calGordon(numberAll, msgAll, resA, resB, resC,form);
+        let valueAll = new calBuffett(numberAll, msgAll, resAll, ress, form);
         valueAll.gorCal();
         valueAll.clearEle();
     }

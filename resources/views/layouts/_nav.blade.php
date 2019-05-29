@@ -12,11 +12,6 @@
 
         <div class="collapse navbar-collapse" id="main-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="{{ active(['forum*', 'threads*', 'thread','forum.tag']) }}">
-                    <a class="nav-font" href="{{ route('forum') }}">
-                    <i class="far fa-comment-alt"></i>  討論區 
-                    </a>
-                </li>
                 @php
                     if(isset($_COOKIE['stockCode'])){
                         $StockCode = $_COOKIE['stockCode'];
@@ -81,7 +76,18 @@
                     </ul>
                 </li>
 
-                
+                <li class=" {{ active(['blogs','archives']) }}">
+                    <a class="nav-font" href="{{ route('blogs') }}">
+                        <i class="fas fa-pencil-alt"></i> 優分析專欄 
+                    </a>
+                </li>
+
+                <li class="{{ active(['forum*', 'threads*', 'thread','forum.tag']) }}">
+                    <a class="nav-font" href="{{ route('forum') }}">
+                    <i class="far fa-comment-alt"></i>  討論區 
+                    </a>
+                </li>
+
                 <li class="dropdown {{ active('Tools*') }}">
                     <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-calculator"></i>  小工具  <span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">
@@ -139,11 +145,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class=" {{ active('blogs') }}">
-                    <a class="nav-font" href="{{ route('blogs') }}">
-                        <i class="fas fa-pencil-alt"></i> 優分析專欄 
-                    </a>
-                </li>
+                
                 <li><a href="https://pro.uanalyze.com.tw" class="nav-font pro" target="_blank" rel="noreferrer">
                         <img src="{{env('APP_URL')}}/images/logo_colour_white.svg" style="width:25px;">
                         <div style="display: inline-block;">優分析pro</div>

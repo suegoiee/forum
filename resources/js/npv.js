@@ -1,18 +1,20 @@
 // npv計算公式 和 deposit計算公式
 class npvCal extends judgeValue {
-    constructor(numberAll, msgAll, questionAll, moneyAll, inputTd, npv, npvv, form) {
+    constructor(numberAll, msgAll, msgB, questionAll, moneyAll, inputTd, npv, form) {
         super(numberAll, msgAll);
-        this.moneyAll = Array();
+        this.msgB = Array();
         this.questionAll = Array();
+        this.moneyAll = Array();
         this.nameAll = Array();
         this.inputTd = inputTd;
         this.npv = npv;
         this.yearNPV = 1;
-        this.npvv = npvv;
+        this.checkValue = this.checkValue.bind(this);
         this.addTd = this.addTd.bind(this);
         this.del = this.del.bind(this);
         this.clearValue = this.clearValue.bind(this);
         this.clearVal = this.clearVal.bind(this);
+        this.clearHTMLAll = this.clearHTMLAll.bind(this);
         this.form = form;
     }
 
@@ -22,21 +24,11 @@ class npvCal extends judgeValue {
 
             this.addTd("label", "nvpC", "nvpC", "第" + this.yearNPV + "年", questionAll);
             this.addTd("input", "mom", "mom", "", questionAll);
-            this.addTd("span", "dol", "dol", "元", questionAll);
+            this.addTd("h4", "msgB", "msgB", "", questionAll);
+            this.addTd("p", "pp", "pp", "", questionAll);
             this.yearNPV++;
 
-            for (var i = 0; i < moneyAll.length; i++) {
-                if (moneyAll[i].value == "") {
-                    moneyAll[i].value = "不可空白";
-                    moneyAll[i].focus();
-                } else if (moneyAll[i].value == 0) {
-                    moneyAll[i].value = "不可為0";
-                    moneyAll[i].focus();
-                } else if (!moneyAll[i].value.replace(/[^\-?\d.]/g, '')) {
-                    moneyAll[i].value = "請輸入純數字";
-                    moneyAll[i].focus();
-                }
-            }
+            this.checkValue(moneyAll, msgB);
         }
     }
 
@@ -44,20 +36,20 @@ class npvCal extends judgeValue {
     calStock() {
         document.getElementById('calAll').onclick = () => {
             if (super.valueCheck() == true) {
+                this.clearHTMLAll(msgAll);
+                this.clearHTMLAll(msgB);
 
                 if (npv.value != "") {
                     this.del(inputTd, 1);
-                    this.del(npvv, 3);
-                    npv.value = "";
+                    this.del(npv, 0);
                 }
 
                 document.getElementById('form').style.cssFloat = "left";
                 document.getElementById('form').style.width = "48%";
                 form.style.display = "block";
-                this.addTd("tr", "lab", "lab", "", inputTd);
                 this.addTd("th", "year", "year", "年分", inputTd);
                 this.addTd("th", "fac", "fac", "現值因子", inputTd);
-                this.addTd("th", "mom", "mom", "每年現金流折算成現值", inputTd);
+                this.addTd("th", "momm", "momm", "每年現金流折算成現值", inputTd);
                 this.addTd("th", "cal", "cal", "每年累計現值", inputTd);
 
 
@@ -92,13 +84,13 @@ class npvCal extends judgeValue {
                     y = x[i];
                     valC = z[i];
                 };
-                npv.value = valC.toFixed(0);
+
+                this.addTd("th", "valFF", "valFF", "淨現值(npv)", npv);
+                this.addTd("td", "valFF", "valFF", valC.toFixed(0), npv);
                 if (valC > 0) {
-                    npv.style.color = "#4abf70";
-                    this.addTd("p", "rec", "rec", "該專案值得投資", npvv);
+                    this.addTd("td", "rec", "rec", "該專案值得投資", npv);
                 } else {
-                    npv.style.color = "#ef5350";
-                    this.addTd("p", "recc", "recc", "該專案不值得投資，應該將這筆資金投入在其他地方。", npvv);
+                    this.addTd("td", "recc", "recc", "該專案不值得投資，應該將這筆資金投入在其他地方。", npv);
                 }
             }
         }
@@ -108,12 +100,13 @@ class npvCal extends judgeValue {
         document.getElementById('clear').onclick = () => {
 
             this.clearVal(numberAll[0]);
-            this.clearVal(npv);
+            this.clearHTMLAll(msgAll);
+            this.clearHTMLAll(msgB);
 
             // 刪除新增的子節點
             this.del(questionAll, 1);
             this.del(inputTd, 1);
-            this.del(npvv, 3);
+            this.del(npv, 0);
 
             this.yearNPV = 1;
             document.getElementById('form').style.width = "100%";
@@ -126,6 +119,8 @@ class npvCal extends judgeValue {
     calDoposit() {
         document.getElementById('calAll').onclick = () => {
             if (super.valueCheck() == true) {
+                this.clearHTMLAll(msgAll);
+                this.clearHTMLAll(msgB);
 
                 if (inputTd.childNodes != null) {
                     this.del(inputTd, 1);
@@ -157,6 +152,8 @@ class npvCal extends judgeValue {
         document.getElementById('clear').onclick = () => {
 
             this.clearValue(numberAll);
+            this.clearHTMLAll(msgAll);
+            this.clearHTMLAll(msgB);
             // 刪除新增的子節點
             this.del(questionAll, 1);
             this.del(inputTd, 1);

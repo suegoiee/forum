@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reply;
 use App\Models\Thread;
+use App\Models\Archive;
 use App\Jobs\CreateReply;
 use App\Jobs\DeleteReply;
 use App\Jobs\UpdateReply;
@@ -66,8 +67,11 @@ class ReplyController extends Controller
     {
         if ($replyAble instanceof Thread) {
             return redirect()->route('thread', $replyAble->slug());
-        }
+        } else if ($replyAble instanceof Archive) {
+            return redirect()->route('archives', $replyAble->slug());
+        } 
 
         abort(500, 'Redirect not implemented for given replyable.');
     }
+    
 }

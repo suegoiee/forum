@@ -12,40 +12,29 @@
                 <label>
                     股價
                 </label>
-                <input type="text" name="number" min="1" maxlength="10" />
-                <span>元</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="number" min="1" maxlength="10" placeholder="元" />
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     每股盈餘
                 </label>
-                <input type="text" name="number" min="0" maxlength="10" />
-                <span>元/股</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="元/股" />
+                <h6 id="msgA"></h6>
             </p>
             <p>
                 <label>
                     預估未來淨利年成長率
                 </label>
-                <input type="text" name="number" min="0" maxlength="10" />
-                <span>%</span>
-                <h4 id="msgA"></h4>
+                <input type="text" class="inputText" name="number" min="0" maxlength="10" placeholder="％" />
+                <h6 id="msgA"></h6>
             </p>
+            <div style="text-align: center; margin-bottom: 15px;">
+                <button type="button" class="cancel" id="clear">清除</button>
+                <button type="button" class="btn" id="calPropor">計算</button>
+            </div>
             <p>
-                <button type="button" class="cal" id="calPropor">計算</button>
-                <button type="button" id="clear">清除</button>
-            </p>
-            <p class="resultAll">
-                本益比 <br />
-                <input type="text" min="0" class="rate" id="proportion" disabled></input>
-            </p>
-            <p class="resultAll">
-                本益成長比 <br />
-                <input type="text" min="0" class="rate" id="growproportion" disabled></input>
-            </p>
-            <p>
-                <table id="tableRes">
+                <table id="calMon" class="table">
                 </table>
             </p>
         </fieldset>
@@ -53,13 +42,11 @@
 </div>
     <script type="text/javascript">
         let numberAll = document.getElementsByName('number');
-        let msgAll = document.getElementsByTagName('h4');
-        let judgeAll = document.getElementById('tableRes');
-        let pro = document.getElementById('proportion');
-        let growPro = document.getElementById('growproportion');
+        let msgAll = document.getElementsByTagName('h6');
+        let resAll = document.getElementById('calMon');
 
         window.onload=function () {
-            let valueAll = new calProportion(numberAll, msgAll, judgeAll, pro, growPro);
+            let valueAll = new calReRate(numberAll, msgAll, resAll);
             valueAll.proporCal();
             valueAll.clearAll();
         }

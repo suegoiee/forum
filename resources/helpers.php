@@ -28,6 +28,8 @@ if (! function_exists('route_to_reply_able')) {
     {
         if ($replyAble instanceof App\Models\Thread) {
             return route('thread', $replyAble->slug());
+        } else if ($replyAble instanceof App\Models\Archive) {
+            return route('archives', $replyAble->slug());
         }
     }
 }
