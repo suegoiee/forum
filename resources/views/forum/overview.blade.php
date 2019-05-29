@@ -19,7 +19,7 @@
         <a class="" data-toggle="modal" data-target="#placard"><i class="fas fa-bell"></i></a>
             @include('_partials._placard_modal')
     </div> -->
-    <div class="row forum">
+    <div class="row forum forumTop">
     
     @include('layouts._alerts')
 
@@ -39,6 +39,7 @@
                         </a>
                     @endforeach
                 </div>
+                
             </div>
         </div>
         <div class="col-md-9">
