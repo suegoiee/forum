@@ -25,8 +25,8 @@
                     ])
                 <div class="container" id="CompanyInfocontainer" style="padding-right: 30px; padding-left: 0;">
                     <h1 style="margin-top: 30px; margin-bottom: 0; padding-left: 30px;">公司基本資料</h1>
-                    <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 30px;">
-                        {{$CompanyInfo['data']['stock_name'] . '  ' . $CompanyInfo['data']['stock_code']}}
+                    <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 30px;" id="stock_title">
+                        {{$CompanyInfo['data']['stock_name'] . ' - ' . $CompanyInfo['data']['stock_code']}}
                     </h2>
                     <div id="CompanyInfo" style="padding-left: 30px;">
                         <table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word; border-collapse: initial;">
