@@ -6,7 +6,7 @@
 <div class="container forumPadding" style="min-height: calc(100% - 70px); padding-left: 0px; padding-right: 0px; padding-top: 65px;">
     <div class="container summaryTop" style="padding-left: 0; padding-right: 0; background-color: #e9e9e9; position: fixed; z-index: 5;">
         <div class="input-group mb-3" style="padding-top: 20px;">
-            <h2 style="margin-top: 5px; display: inline-block; float: left;">{{$PageSubtitle}}</h2>
+            <h1 style="margin-top: 5px; display: inline-block; float: left;" id="info_type" value="{{$PageSubtitle}}">{{$PageSubtitle}}</h1>
             <input type="text" class="form-control" style=" margin-left: 30px;" placeholder="股票代碼或名稱" id="searchBar" aria-label="search">
             <ul id="sideBtn">
                 <li class="rightbtn" type="button" name="Submit" style="cursor:pointer"><a href="#stockChart" class="rightbtnD"> 每股盈餘VS股價</a> </li>
@@ -25,8 +25,8 @@
                     ])
                 <div class="container" id="CompanyInfocontainer" style="padding-right: 30px; padding-left: 0;">
                     <h1 style="margin-top: 30px; margin-bottom: 0; padding-left: 30px;">公司基本資料</h1>
-                    <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 30px;">
-                        {{$CompanyInfo['data']['stock_name'] . '  ' . $CompanyInfo['data']['stock_code']}}
+                    <h2 style="margin-top: 10px; margin-bottom: 10px; padding-left: 30px;" id="stock_title">
+                        {{$CompanyInfo['data']['stock_name'] . ' - ' . $CompanyInfo['data']['stock_code']}}
                     </h2>
                     <div id="CompanyInfo" style="padding-left: 30px;">
                         <table class="table table-bordered" style="width:100%; table-layout: fixed; word-wrap: break-word; border-collapse: initial;">
