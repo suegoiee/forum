@@ -11,7 +11,7 @@
     var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,
         _LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;
     //在页面未加载完毕之前显示的loading Html自定义内容
-    var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,0.2);opacity:1;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: 200px; height: 150px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: url(/images/loading.svg) no-repeat scroll;"></div></div>';
+    var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,0.2);opacity:1;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: 200px; height: 180px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: url(/images/logo_light.svg) no-repeat scroll; background-size: 70%;"></div></div>';
     //呈现loading效果
     document.write(_LoadingHtml);
     //监听加载状态改变
