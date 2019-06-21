@@ -12,8 +12,11 @@
         _LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;
     //在页面未加载完毕之前显示的loading Html自定义内容
     var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,0.8);opacity:1;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: 200px; height: 150px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: url(/images/loading.svg) no-repeat scroll;"></div></div>';
+    
+    /*會造成head 格式錯誤請修正寫法
+    
     //呈现loading效果
-    //document.write(_LoadingHtml);/*會造成head 格式錯誤請修正寫法*/
+    document.write(_LoadingHtml);
     //监听加载状态改变
     document.onreadystatechange = completeLoading;
     //加载状态为complete时移除loading效果
@@ -23,6 +26,7 @@
             loadingMask.parentNode.removeChild(loadingMask);
         }
     }
+    */
     </script>
     <!-- end loading -->
 
