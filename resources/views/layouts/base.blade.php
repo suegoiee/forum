@@ -39,7 +39,12 @@
     <meta name="url" content="https://forum.uanalyze.com.tw/forum">
     <meta name="Description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
     <!-- google plus -->
-    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+    <link id="favicon16" rel="icon" href="/images/favicon/favicon_16.png" type="image/png" size="16x16">
+    <link id="favicon24" rel="icon" href="/images/favicon/favicon_24.png" type="image/png" size="24x24">
+    <link id="favicon32" rel="shortcut icon" href="/images/favicon/favicon_32.png" type="image/png" size="32x32">
+    <link id="favicon48" rel="icon" href="/images/favicon/favicon_48.png" type="image/png" size="48x48">
+    <link id="favicon64" rel="icon" href="/images/favicon/favicon_64.png" type="image/png" size="64x64">
+    <link id="favicon256" rel="icon" href="/images/favicon/favicon_256.png" type="image/png" size="256x256">
     <link rel="author" href="{{ isset($thread) ? route('profile', $thread->author()->username()) : '' }}">
     <link rel="publisher" href="{{ isset($thread) ? route('profile', $thread->author()->username()) : '' }}">
     <!-- google -->
