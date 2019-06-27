@@ -133,7 +133,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/navBar.js"></script>
 <script src="/js/freebie.js"></script>
 <script type="text/javascript" src="/js/html2canvas.js"></script>
-<script type="text/javascript" src="/js/idToCanvas.js"></script>
 <script>
     $(document).ready(function() {
         if($("textarea[name='body']").length){
