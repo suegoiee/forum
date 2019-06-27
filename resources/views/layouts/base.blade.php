@@ -132,6 +132,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/npv.js"></script>
 <script src="/js/navBar.js"></script>
 <script src="/js/freebie.js"></script>
+<script type="text/javascript" src="/js/html2canvas.js"></script>
+<script type="text/javascript" src="/js/idToCanvas.js"></script>
 <script>
     $(document).ready(function() {
         if($("textarea[name='body']").length){
@@ -159,30 +161,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-</script>
-
-<!-- html2canvas start -->
-<script type="text/javascript" src="/js/html2canvas.js"></script>
-<script type="text/javascript">
-    function convertById(id) {
-        html2canvas(document.querySelector("#"+id),{
-            canvas: document.querySelector("#myCanvas")
-        }).then(canvas => {
-        });
-    }
-    var canvas = document.getElementById("myCanvas");
-    download_img = function(el) {
-        var image = canvas.toDataURL("image/jpg");
-        el.href = image;
-    }
-    $(document).on("click", ".downloadImg", function(){
-        var clickedId = $(this).next().next().attr('id');
-        convertById(clickedId);
-    });
-
-    $(document).on("click", ".print", function(){
-        convertById('CanvasBaseMap');
-    });
     
 
     /*axios.get('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101')
@@ -192,56 +170,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         .catch(function (error) {
         });*/
 </script>
-<!-- html2canvas end -->
-
-<!-- button to position -->
-
-<script>
-
-$('.rightbtnA').click(function(){
-        if(window.screen.availHeight > 900){
-            var height = -200 ;
-            $('html,body').animate({scrollTop:$('#getInfo').offset().top + height},800);
-        }
-        else {
-            var height = -150 ;
-            $('html,body').animate({scrollTop:$('#getInfo').offset().top + height},800);
-        }
-    });
-    $('.rightbtnB').click(function(){
-        if(window.screen.availHeight > 900){
-            var height = -200 ;
-            $('html,body').animate({scrollTop:$('#getNews').offset().top + height},800);
-        }
-        else {
-            var height = -150 ;
-            $('html,body').animate({scrollTop:$('#getNews').offset().top + height},800);
-        }
-    });
-    $('.rightbtnC').click(function(){
-        if(window.screen.availHeight > 900){
-            var height = -200 ;
-            $('html,body').animate({scrollTop:$('#dailyChart').offset().top + height},800);
-        }
-        else {
-            var height = -150 ;
-            $('html,body').animate({scrollTop:$('#dailyChart').offset().top + height},800);
-        }
-    });
-    $('.rightbtnD').click(function(){
-        if(window.screen.availHeight > 900){
-            var height = -200 ;
-            $('html,body').animate({scrollTop:$('#stockChart').offset().top + height},800);
-        }
-        else {
-            var height = -150 ;
-            $('html,body').animate({scrollTop:$('#stockChart').offset().top + height},800);
-        }
-    });
-
-</script>
-
-<!-- button end -->
 
 <!--end of for development-->
 
