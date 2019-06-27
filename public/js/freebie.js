@@ -1118,3 +1118,65 @@ Highcharts.setOptions({
         }
     }
 });
+
+// <!-- html2canvas start -->
+var canvas = document.getElementById("myCanvas");
+download_img = function (el) {
+    var image = canvas.toDataURL("image/jpg");
+    el.href = image;
+}
+$(document).on("click", ".downloadImg", function () {
+    var clickedId = $(this).next().next().attr('id');
+    convertById(clickedId);
+});
+
+$(document).on("click", ".print", function () {
+    convertById('CanvasBaseMap');
+});
+// <!-- html2canvas end -->
+
+
+// <!-- button to position -->
+
+$('.rightbtnA').click(function () {
+    if (window.screen.availHeight > 900) {
+        var height = -200;
+        $('html,body').animate({ scrollTop: $('#getInfo').offset().top + height }, 800);
+    }
+    else {
+        var height = -150;
+        $('html,body').animate({ scrollTop: $('#getInfo').offset().top + height }, 800);
+    }
+});
+$('.rightbtnB').click(function () {
+    if (window.screen.availHeight > 900) {
+        var height = -200;
+        $('html,body').animate({ scrollTop: $('#getNews').offset().top + height }, 800);
+    }
+    else {
+        var height = -150;
+        $('html,body').animate({ scrollTop: $('#getNews').offset().top + height }, 800);
+    }
+});
+$('.rightbtnC').click(function () {
+    if (window.screen.availHeight > 900) {
+        var height = -200;
+        $('html,body').animate({ scrollTop: $('#dailyChart').offset().top + height }, 800);
+    }
+    else {
+        var height = -150;
+        $('html,body').animate({ scrollTop: $('#dailyChart').offset().top + height }, 800);
+    }
+});
+$('.rightbtnD').click(function () {
+    if (window.screen.availHeight > 900) {
+        var height = -200;
+        $('html,body').animate({ scrollTop: $('#stockChart').offset().top + height }, 800);
+    }
+    else {
+        var height = -150;
+        $('html,body').animate({ scrollTop: $('#stockChart').offset().top + height }, 800);
+    }
+});
+
+// <!-- button end -->
