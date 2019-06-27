@@ -1120,6 +1120,13 @@ Highcharts.setOptions({
 });
 
 // <!-- html2canvas start -->
+function convertById(id) {
+    html2canvas(document.querySelector("#" + id), {
+        canvas: document.querySelector("#myCanvas"),
+        scale: 2,
+    }).then(canvas => {
+    });
+}
 var canvas = document.getElementById("myCanvas");
 download_img = function (el) {
     var image = canvas.toDataURL("image/jpg");
