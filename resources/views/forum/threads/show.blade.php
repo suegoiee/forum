@@ -7,6 +7,9 @@
         @include('layouts._alerts')
         <div class="col-md-3">
             @foreach ($thread->tags() as $tag)
+                @php
+                    $category = $tag;
+                @endphp
                 <h1>{{ $tag->name() }}</h1>
             @endforeach
             <div class="formDrop"  style="margin-top: 6%;">
@@ -42,21 +45,23 @@
             @include('layouts._ads._forum_sidebar')
         </div>
         <div style="text-align: right; padding: 0 15px;">
-            @can(App\Policies\ThreadPolicy::UPDATE, $thread)
-                <a class="btn mgBtn" href="{{ route('threads.edit', $thread->slug()) }}">
-                    編輯
-                </a>
-            @endcan
+            @if($thread->banThread() != 1)
+                @can(App\Policies\ThreadPolicy::UPDATE, $thread)
+                    <a class="btn mgBtn" href="{{ route('threads.edit', $thread->slug()) }}">
+                        編輯
+                    </a>
+                @endcan
 
-            @can(App\Policies\ThreadPolicy::UNSUBSCRIBE, $thread)
-                <a class="btn mgBtn" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
-                    取消追蹤
-                </a>
-            @elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
-                <a class="btn mgBtn" href="{{ route('threads.subscribe', $thread->slug()) }}">
-                    追蹤
-                </a>
-            @endcan
+                @can(App\Policies\ThreadPolicy::UNSUBSCRIBE, $thread)
+                    <a class="btn mgBtn" href="{{ route('threads.unsubscribe', $thread->slug()) }}">
+                        取消追蹤
+                    </a>
+                @elsecan(App\Policies\ThreadPolicy::SUBSCRIBE, $thread)
+                    <a class="btn mgBtn" href="{{ route('threads.subscribe', $thread->slug()) }}">
+                        追蹤
+                    </a>
+                @endcan
+            @endif
 
             @can(App\Policies\ThreadPolicy::DELETE, $thread)
                 <a class="btn mgBtn" href="#" data-toggle="modal" data-target="#deleteThread">
@@ -70,12 +75,36 @@
                     'body' => '<p>確定要刪除文章及留言嗎?</p>',
                 ])
             @endcan
+            
+            @if($thread->banThread() != 1)
+                @can(App\Policies\UserPolicy::ADMIN, App\User::class)
+                    <a class="btn mgBtn" href="#" data-toggle="modal" data-target="#BanThread">
+                        隱藏
+                    </a>
+                @elsecan(App\Policies\UserPolicy::MASTER, [App\User::class, $category->id])
+                    <a class="btn mgBtn" href="#" data-toggle="modal" data-target="#BanThread">
+                        隱藏
+                    </a>
+                @endcan
+
+                @include('_partials._ban_modal', [
+                    'id' => 'BanThread',
+                    'route' => ['threads.ban', $thread->slug()],
+                    'title' => '隱藏文章',
+                    'body' => '<p>確定要隱藏文章嗎?</p>',
+                    'ban_id' => $thread->id(),
+                ])
+            @endif
         </div>    
         <div class="col-md-9" style=" margin-top: 15px;">
             <div class="panel" style="border:none !important; padding-top:2%; padding-left:0 !important;margin-top: 0 !important;">
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
                     <div class="thread-info-author showTitle">
-                        <h3>{{ $thread->subject() }}</h3>
+                        @if($thread->banThread() == 1)
+                            <h3>違規文章</h3>
+                        @else
+                            <h3>{{ $thread->subject() }}</h3>
+                        @endif
                     </div>
                     <div class="showTag">
                         @include('forum.threads.info.tags')
@@ -87,7 +116,11 @@
                 </div>
 
                 <div class="panel-body forum-content">
-                    {!! $thread->body() !!}
+                    @if($thread->banThread() == 1)
+                        <p>此文章因違反論壇規章，已被隱藏。</p>
+                    @else
+                        {!! $thread->body() !!}
+                    @endif
                 </div>
 
                 <div class="thread-info-author authorName" style="text-align: right; display: inline-block; width: 100%;">
@@ -113,19 +146,38 @@
                     </div>    
                     <div class="thread-info-author headLabel">
 
-                    {!! $reply->body !!}
-                        
+                    @if($reply->banReply() != 1)
+                        {!! $reply->body !!}
+                    @else
+                        <p>此留言違反論壇規章，已被隱藏</p>
+                    @endif
+
                     </div>
-                    @can(App\Policies\ReplyPolicy::UPDATE, $reply)
-                            <div class="thread-info-tags" style="float:right">
+                        <div class="thread-info-tags" style="float:right">
+                            @if($reply->banReply() != 1)
+                                @can(App\Policies\ReplyPolicy::UPDATE, $reply)
                                 <a class="btn-xs" style="line-height: 0.5;" href="{{ route('replies.edit', $reply->id()) }}">
                                     <img src="/images/icon/edit.svg" style="width:16px;">
                                 </a>
+                                @endcan
+                            @endif
+                                @can(App\Policies\ReplyPolicy::UPDATE, $reply)
                                 <a class="btn-xs" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#deleteReply{{ $reply->id() }}">
                                     <img src="/images/icon/recycling-bin.svg" style="width:16px;">
                                 </a>
-                            </div>
-                    @endcan
+                                @endcan
+                            @if($reply->banReply() != 1)
+                                @can(App\Policies\UserPolicy::ADMIN, App\User::class)
+                                <a class="btn-xs" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#banReply{{ $reply->id() }}">
+                                    隱藏
+                                </a>
+                                @elsecan(App\Policies\UserPolicy::MASTER, [App\User::class, $category->id])
+                                <a class="btn-xs" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#banReply{{ $reply->id() }}">
+                                    隱藏
+                                </a>
+                                @endcan
+                            @endif
+                    </div>
 
                     <div class="forum-content">
                         @include('forum.threads.info.avatar', ['user' => $reply->author()])
@@ -176,6 +228,14 @@
                     'route' => ['replies.delete', $reply->id()],
                     'title' => '刪除留言',
                     'body' => '<p>確定要刪除留言？</p>',
+                ])
+
+                @include('_partials._ban_modal', [
+                    'id' => "banReply{$reply->id()}",
+                    'route' => ['replies.ban', $reply->id()],
+                    'title' => '隱藏留言',
+                    'body' => '<p>確定要隱藏留言？</p>',
+                    'ban_id' => $reply->id(),
                 ])
             @endforeach
 

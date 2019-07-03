@@ -3,12 +3,14 @@
 namespace App\Policies;
 
 use App\User;
+use App\Models\Tag;
 
 class UserPolicy
 {
     const ADMIN = 'admin';
     const BAN = 'ban';
     const DELETE = 'delete';
+    const MASTER = 'master';
 
     /**
      * Determine if the current logged in user can see the admin section.
@@ -16,6 +18,11 @@ class UserPolicy
     public function admin(User $user): bool
     {
         return $user->isAdmin();
+    }
+
+    public function master(User $user, int $tag)
+    {
+        return $user->isMasteredBy($tag);
     }
 
     /**
@@ -33,5 +40,10 @@ class UserPolicy
     public function delete(User $user, User $subject): bool
     {
         return $user->isAdmin() && ! $subject->isAdmin();
+    }
+
+    public function isAuthoredBy(User $user): bool
+    {
+        return $this->author()->matches($user);
     }
 }

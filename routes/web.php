@@ -58,6 +58,7 @@ Route::prefix('forum')->namespace('Forum')->group(function () {
     Route::get('/', 'ThreadsController@overview')->name('forum');
     Route::get('create-thread', 'ThreadsController@create')->name('threads.create');
     Route::post('create-thread', 'ThreadsController@store')->name('threads.store');
+    Route::post('ban-thread', 'ThreadsController@banThreads')->name('threads.ban');
 
     Route::get('{thread}', 'ThreadsController@show')->name('thread');
     Route::get('{thread}/edit', 'ThreadsController@edit')->name('threads.edit');
@@ -76,6 +77,7 @@ Route::post('replies', 'ReplyController@store')->name('replies.store');
 Route::get('replies/{reply}/edit', 'ReplyController@edit')->name('replies.edit');
 Route::put('replies/{reply}', 'ReplyController@update')->name('replies.update');
 Route::delete('replies/{reply}', 'ReplyController@delete')->name('replies.delete');
+Route::post('ban-replies', 'ReplyController@banReplies')->name('replies.ban');
 
 // Subscriptions
 Route::get('subscriptions/{subscription}/unsubscribe', 'SubscriptionController@unsubscribe')
@@ -83,7 +85,11 @@ Route::get('subscriptions/{subscription}/unsubscribe', 'SubscriptionController@u
 
 // Admin
 Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
+    //Route::get('/', 'AdminController@index');
     Route::get('/', 'AdminController@index');
+    Route::get('category', 'AdminController@category')->name('.category');
+    Route::post('permission', 'AdminController@update')->name('.users.master');
+    Route::post('delete', 'AdminController@delete')->name('.users.master.delete');
     Route::get('users/{username}', 'UsersController@show')->name('.users.show');
     Route::put('users/{username}/ban', 'UsersController@ban')->name('.users.ban');
     Route::put('users/{username}/unban', 'UsersController@unban')->name('.users.unban');

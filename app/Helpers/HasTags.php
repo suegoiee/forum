@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait HasTags
 {
@@ -32,5 +33,10 @@ trait HasTags
     public function tagsRelation(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable')->withTimestamps();
+    }
+
+    public function categoriesRelation(): BelongsTo
+    {
+        return $this->BelongsTo(Tag::class, 'category_id');
     }
 }

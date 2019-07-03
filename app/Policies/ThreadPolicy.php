@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\User;
 use App\Models\Thread;
+use App\Models\Permission;
 
 class ThreadPolicy
 {
@@ -11,6 +12,12 @@ class ThreadPolicy
     const DELETE = 'delete';
     const SUBSCRIBE = 'subscribe';
     const UNSUBSCRIBE = 'unsubscribe';
+    const BAN = 'ban';
+
+    public function ban(Permission $permission): bool
+    {
+        return $permission->isMaster();
+    }
 
     public function update(User $user, Thread $thread): bool
     {

@@ -6,6 +6,7 @@ use DB;
 use App\Helpers\HasSlug;
 use App\Helpers\HasTags;
 use App\Helpers\HasAuthor;
+use App\Helpers\HasPermissions;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
 use App\Helpers\ReceivesReplies;
@@ -35,6 +36,7 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
         'body',
         'slug',
         'subject',
+        'ban',
     ];
 
     public function id(): int
@@ -50,6 +52,11 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
     public function body(): string
     {
         return $this->body;
+    }
+
+    public function banThread()
+    {
+        return $this->ban;
     }
 
     public function excerpt(int $limit = 100): string

@@ -5,10 +5,16 @@ namespace App;
 use App\Models\Reply;
 use App\Models\Thread;
 use App\Models\Archive;
+use App\Models\Permission;
+use App\Models\Tag;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
+use App\Helpers\HasPermissions;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BeLongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\ResetPassword as ResetPasswordNotification;
 
@@ -17,8 +23,8 @@ final class User extends Authenticatable
     use HasTimestamps, ModelHelpers, Notifiable;
 
     const DEFAULT = 1;
-    const MODERATOR = 2;
-    const ADMIN = 3;
+    const MODERATOR = 5;
+    const ADMIN = 10;
 
     /**
      * {@inheritdoc}
@@ -148,6 +154,24 @@ final class User extends Authenticatable
     }
 
     /**
+     * @return \App\Models\Permission[]
+     */
+    public function master()
+    {
+        return $this->permissionRelation;
+    }
+
+    public function isMasteredBy(int $tag)
+    {
+        foreach ($this->master() as $master) {
+            if($master['category_id'] === $tag){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * @return \App\Models\Thread[]
      */
     public function latestThreads(int $amount = 3)
@@ -167,6 +191,11 @@ final class User extends Authenticatable
     public function threadsRelation(): HasMany
     {
         return $this->hasMany(Thread::class, 'author_id');
+    }
+
+    public function permissionRelation(): hasMany
+    {
+        return $this->hasMany(Permission::class, 'user_id');
     }
 
     public function countThreads(): int

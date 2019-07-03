@@ -152,6 +152,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/npv.js"></script>
 <script src="/js/navBar.js"></script>
 <script src="/js/freebie.js"></script>
+<script src="/js/NewComponent.js"></script>
 <script>
     $(document).ready(function() {
         if($("textarea[name='body']").length){
