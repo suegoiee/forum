@@ -2,29 +2,6 @@
 <html lang="{{ App::getLocale() }}">
 <head>
 
-    <!-- loading -->
-    <script>
-    //获取浏览器页面可见高度和宽度
-    var _PageHeight = document.documentElement.clientHeight,
-        _PageWidth = document.documentElement.clientWidth;
-    //计算loading框距离顶部和左部的距离（loading框的宽度为215px，高度为61px）
-    var _LoadingTop = _PageHeight > 61 ? (_PageHeight - 61) / 2 : 0,
-        _LoadingLeft = _PageWidth > 215 ? (_PageWidth - 215) / 2 : 0;
-    //在页面未加载完毕之前显示的loading Html自定义内容
-    var _LoadingHtml = '<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:' + _PageHeight + 'px;top:0;background: rgba(0,0,0,0.2);opacity:1;filter:alpha(opacity=80);z-index:10000;"><div style="position: absolute; cursor1: wait; left: ' + _LoadingLeft + 'px; top:' + _LoadingTop + 'px; width: 200px; height: 150px; line-height: 57px; padding-left: 50px; padding-right: 5px; background: url(/images/loading.svg) no-repeat scroll;"></div></div>';
-    //呈现loading效果
-    document.write(_LoadingHtml);
-    //监听加载状态改变
-    document.onreadystatechange = completeLoading;
-    function completeLoading() {
-        if (document.readyState == "interactive") {
-            var loadingMask = document.getElementById('loadingDiv');
-            loadingMask.parentNode.removeChild(loadingMask);
-        }
-    }
-    </script>
-    <!-- end loading -->
-
     <!-- meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,7 +16,6 @@
     <meta name="url" content="https://forum.uanalyze.com.tw/forum">
     <meta name="Description" content="{{ isset($description) ? strip_tags($description):'投資新手都來這裡發問，投資高手都在這裡分享；股票價值計算機＋完整股市數據，讓你輕鬆學以致用' }}">
     <!-- google plus -->
-    <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
     <link rel="author" href="{{ isset($thread) ? route('profile', $thread->author()->username()) : '' }}">
     <link rel="publisher" href="{{ isset($thread) ? route('profile', $thread->author()->username()) : '' }}">
     <!-- google -->
@@ -133,10 +109,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     @yield('body')
 
+    @include('layouts._footer')
 </div>
 
 <script src="{{ mix('js/app.js') }}"></script>
 <!--for development-->
+<!--link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'-->
+<!--link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css"-->
+<!--script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
 <script src="/js/Highcharts-7.1.1/code/highcharts.js"></script>
 <script src="/js/Highcharts-7.1.1/code/highcharts-more.js"></script>
@@ -153,6 +133,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/navBar.js"></script>
 <script src="/js/freebie.js"></script>
 <script src="/js/NewComponent.js"></script>
+<script type="text/javascript" src="/js/html2canvas.js"></script>
 <script>
     $(document).ready(function() {
         if($("textarea[name='body']").length){
@@ -179,81 +160,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+
+
+    /*axios.get('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101')
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+        });*/
 </script>
-
-<!-- html2canvas start -->
-<script type="text/javascript" src="/js/html2canvas.js"></script>
-<script type="text/javascript">
-    function convertById(id) {
-        html2canvas(document.querySelector("#"+id),{
-            canvas: document.querySelector("#myCanvas")
-        }).then(canvas => {
-        });
-    }
-    var canvas = document.getElementById("myCanvas");
-    download_img = function(el) {
-        var image = canvas.toDataURL("image/jpg");
-        el.href = image;
-    }
-    $(document).on("click", ".downloadImg", function(){
-        var clickedId = $(this).next().next().attr('id');
-        convertById(clickedId);
-    });
-
-    $(document).on("click", ".print", function(){
-        convertById('CanvasBaseMap');
-    });
-</script>
-<!-- html2canvas end -->
-
-<!-- button to position -->
-
-<script>
-
-$('.rightbtnA').click(function(){
-        if(window.screen.availHeight > 900){
-            var height = -200 ;
-            $('html,body').animate({scrollTop:$('#getInfo').offset().top + height},800);
-        }
-        else {
-            var height = -150 ;
-            $('html,body').animate({scrollTop:$('#getInfo').offset().top + height},800);
-        }
-    });
-    $('.rightbtnB').click(function(){
-        if(window.screen.availHeight > 900){
-            var height = -200 ;
-            $('html,body').animate({scrollTop:$('#getNews').offset().top + height},800);
-        }
-        else {
-            var height = -150 ;
-            $('html,body').animate({scrollTop:$('#getNews').offset().top + height},800);
-        }
-    });
-    $('.rightbtnC').click(function(){
-        if(window.screen.availHeight > 900){
-            var height = -200 ;
-            $('html,body').animate({scrollTop:$('#dailyChart').offset().top + height},800);
-        }
-        else {
-            var height = -150 ;
-            $('html,body').animate({scrollTop:$('#dailyChart').offset().top + height},800);
-        }
-    });
-    $('.rightbtnD').click(function(){
-        if(window.screen.availHeight > 900){
-            var height = -200 ;
-            $('html,body').animate({scrollTop:$('#stockChart').offset().top + height},800);
-        }
-        else {
-            var height = -150 ;
-            $('html,body').animate({scrollTop:$('#stockChart').offset().top + height},800);
-        }
-    });
-
-</script>
-
-<!-- button end -->
 
 <!--end of for development-->
 

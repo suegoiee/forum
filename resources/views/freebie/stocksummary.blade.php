@@ -164,6 +164,5 @@
             dataFactoryC(StockPriceVSEPS, canvasId2, true);
         }
     </script>
-    @include('layouts._footer')
 </div>
 @endsection
