@@ -24,5 +24,4 @@
             </div>
         </div>
     </div>
-    @include('layouts._footer')
 @endsection
