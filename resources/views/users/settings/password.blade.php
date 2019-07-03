@@ -8,7 +8,7 @@
             {{ Form::open(['route' => 'settings.password.update', 'method' => 'PUT', 'class' => 'form-horizontal formSet']) }}
                 @if (Auth::user()->hasPassword())
                     @formGroup('current_password')
-                        {!! Form::label('現在密碼', null, ['class' => 'col-md-3 control-label']) !!}
+                        {!! Form::label('現在密碼', null, ['class' => 'control-label']) !!}
 
                         <div class="col-md-12">
                             {!! Form::password('current_password', ['class' => 'inputText', 'required']) !!}
@@ -18,7 +18,7 @@
                 @endif
 
                 @formGroup('password')
-                    {!! Form::label('password', '新的密碼', ['class' => 'col-md-3 control-label']) !!}
+                    {!! Form::label('password', '新的密碼', ['class' => 'control-label']) !!}
 
                     <div class="col-md-12">
                         {!! Form::password('password', ['class' => 'inputText', 'required']) !!}
@@ -27,7 +27,7 @@
                 @endFormGroup
 
                 @formGroup('password_confirmation')
-                    {!! Form::label('password_confirmation', '再次輸入新的密碼', ['class' => 'col-md-3 control-label']) !!}
+                    {!! Form::label('password_confirmation', '再次輸入新的密碼', ['class' => 'control-label']) !!}
 
                     <div class="col-md-12">
                         {!! Form::password('password_confirmation', ['class' => 'inputText', 'required']) !!}
