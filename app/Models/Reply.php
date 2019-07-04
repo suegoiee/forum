@@ -34,6 +34,11 @@ final class Reply extends Model
         return $this->body;
     }
 
+    public function banReply()
+    {
+        return $this->ban;
+    }
+
     public function excerpt(int $limit = 100): string
     {
         return str_limit(strip_tags(md_to_html($this->body())), $limit);

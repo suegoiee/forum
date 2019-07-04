@@ -8,9 +8,6 @@
                 email: "{{ Auth::user()->emailAddress() }}",
                 created_at: {{ Auth::user()->createdAt()->timestamp }},
 
-                @if ($githubUsername = Auth::user()->githubUsername())
-                    github: "{{ $githubUsername }}",
-                @endif
             @endif
 
             app_id: "{{ $appId }}"

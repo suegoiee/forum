@@ -19,6 +19,6 @@
         <a class="footerWord" href="tel:+886-2-2747-3447" aria-label="uanalyze telephone"><i class="fas fa-phone"></i></a>
     </div>
     <div>
-        優分析 UAnalyze 商拓財經有限公司 © 2018
+        優分析 UAnalyze 商拓財經有限公司 © @php echo date("Y"); @endphp
     </div>    
 </div>

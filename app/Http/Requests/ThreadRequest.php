@@ -14,7 +14,7 @@ class ThreadRequest extends Request
             'subject' => ['required', 'max:60', new DoesNotContainUrlRule],
             'body' => ['required', new HttpImageRule],
             'tags' => 'array',
-            'tags.*' => 'exists:tags,id',
+            'tags.*' => 'exists:categories,id',
         ];
     }
 

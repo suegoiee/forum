@@ -6,6 +6,7 @@ use DB;
 use App\Helpers\HasSlug;
 use App\Helpers\HasTags;
 use App\Helpers\HasAuthor;
+use App\Helpers\HasPermissions;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
 use App\Helpers\ReceivesReplies;
@@ -35,6 +36,7 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
         'body',
         'slug',
         'subject',
+        'ban',
     ];
 
     public function id(): int
@@ -50,6 +52,11 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
     public function body(): string
     {
         return $this->body;
+    }
+
+    public function banThread()
+    {
+        return $this->ban;
     }
 
     public function excerpt(int $limit = 100): string
@@ -124,11 +131,11 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
     public static function feedByTagPaginated(Tag $tag, int $perPage = 20): Paginator
     {
         return static::feedQuery()
-            ->join('taggables', function ($join) use ($tag) {
-                $join->on('threads.id', 'taggables.taggable_id')
-                    ->where('taggable_type', static::TABLE);
+            ->join('category_threads', function ($join) use ($tag) {
+                $join->on('threads.id', 'category_threads.category_thread_id')
+                    ->where('category_thread_type', static::TABLE);
             })
-            ->where('taggables.tag_id', $tag->id())
+            ->where('category_threads.tag_id', $tag->id())
             ->paginate($perPage);
     }
 

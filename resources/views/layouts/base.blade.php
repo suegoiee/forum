@@ -132,6 +132,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/npv.js"></script>
 <script src="/js/navBar.js"></script>
 <script src="/js/freebie.js"></script>
+<script src="/js/NewComponent.js"></script>
 <script type="text/javascript" src="/js/html2canvas.js"></script>
 <script>
     $(document).ready(function() {
@@ -160,7 +161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-    
+
 
     /*axios.get('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101')
         .then(function (response) {

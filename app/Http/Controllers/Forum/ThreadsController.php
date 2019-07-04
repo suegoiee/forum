@@ -5,16 +5,20 @@ namespace App\Http\Controllers\Forum;
 use App\Models\Tag;
 use App\Models\Reply;
 use App\Models\Thread;
+use App\Models\Permission;
 use App\Jobs\CreateThread;
 use App\Jobs\DeleteThread;
 use App\Jobs\UpdateThread;
+use App\Jobs\BanThread;
 use Illuminate\Http\Request;
 use App\Policies\ThreadPolicy;
+use App\Policies\UserPolicy;
 use App\Queries\SearchThreads;
 use App\Jobs\MarkThreadSolution;
 use App\Jobs\UnmarkThreadSolution;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ThreadRequest;
+use App\Http\Requests\BanThreadRequest;
 use App\Jobs\SubscribeToSubscriptionAble;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Jobs\UnsubscribeFromSubscriptionAble;
@@ -40,7 +44,8 @@ class ThreadsController extends Controller
         $author = $thread->author()->username();
         $title = $thread->subject();
         $description = $thread->body() ;
-        return view('forum.threads.show', compact('thread','description','title','author'));
+        $masters = Permission::with(['permissionRelation', 'categoriesRelation'])->get();
+        return view('forum.threads.show', compact('thread','description','title','author', 'masters'));
     }
 
     public function create()
@@ -84,6 +89,18 @@ class ThreadsController extends Controller
         $this->success('forum.threads.deleted');
 
         return redirect()->route('forum');
+    }
+
+    public function banThreads(Thread $thread, BanThreadRequest $request)
+    {
+        //$this->authorize(UserPolicy::ADMIN, App\User::class);
+
+        $this->dispatchNow(BanThread::fromRequest($thread, $request));
+
+        $this->success("已隱藏此文章");
+        
+        return back();
+        //return redirect()->route('thread', $thread->slug());
     }
 
     public function markSolution(Thread $thread, Reply $reply)

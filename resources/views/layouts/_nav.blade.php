@@ -169,11 +169,12 @@
                             <li role="separator" class="divider"></li>
                             <li class="{{ active('dashboard') }}"><a class="user" href="{{ route('dashboard') }}">個人頁面</a></li>
                             <li class="{{ active('settings.*') }}"><a class="user" href="{{ route('settings.profile') }}">設定</a></li>
-
-                            @can(App\Policies\UserPolicy::ADMIN, App\User::class)
+                            
+                            @if (Auth::user()->can(App\Policies\UserPolicy::ADMIN, App\User::class))
                                 <li role="separator" class="divider"></li>
-                                <li class="{{ active('admin*') }}"><a class="user" href="{{ route('admin') }}">管理者</a></li>
-                            @endcan
+                                <li class="{{ active('admin*') }}"><a class="user" href="{{ route('admin') }}">管理使用者</a></li>
+                                <!--li class="{{ active('category*') }}"><a class="user" href="{{ route('admin.category') }}">管理文章類別</a></li-->
+                            @endif
 
                             <li role="separator" class="divider"></li>
                             <li><a class="user" href="{{ route('logout') }}">登出</a></li>

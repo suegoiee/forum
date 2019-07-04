@@ -13,7 +13,7 @@ final class Tag extends Model
     /**
      * {@inheritdoc}
      */
-    protected $table = 'tags';
+    protected $table = 'categories';
 
     /**
      * {@inheritdoc}

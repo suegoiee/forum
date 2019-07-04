@@ -8,9 +8,11 @@ use App\Models\Archive;
 use App\Jobs\CreateReply;
 use App\Jobs\DeleteReply;
 use App\Jobs\UpdateReply;
+use App\Jobs\BanReply;
 use App\Models\ReplyAble;
 use App\Policies\ReplyPolicy;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Requests\BanReplyRequest;
 use App\Http\Requests\CreateReplyRequest;
 use App\Http\Requests\UpdateReplyRequest;
 use Illuminate\Auth\Middleware\Authenticate;
@@ -32,6 +34,17 @@ class ReplyController extends Controller
         $this->success('replies.created');
 
         return $this->redirectToReplyAble($reply->replyAble());
+    }
+
+    public function banReplies(Reply $reply, BanReplyRequest $request)
+    {
+        //$this->authorize(UserPolicy::ADMIN, App\User::class);
+
+        $this->dispatchNow(BanReply::fromRequest($reply, $request));
+
+        $this->success("已隱藏此留言");
+
+        return back();
     }
 
     public function edit(Reply $reply)
