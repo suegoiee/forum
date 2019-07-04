@@ -19,9 +19,9 @@
         $(".form-control").empty();
     });
 
-    function stockPool(data, id, postName) {
+    function searchPool(data, id, postName) {
         var availableTags = [];
-        if(id == 'searchBar'){
+        if(id == 'masterBar'){
             for (var i = 0; i < data.length; i++) {
                 availableTags.push({
                     'id': data[i]['id'],
@@ -46,7 +46,6 @@
                 response(results.slice(0, 5));
             },
             select: function (e, ui) {
-                console.log($(this).parent().attr("value"));
                 $("#"+$(this).parent().attr("value")).val(ui['item']['id']);
             }
         });
