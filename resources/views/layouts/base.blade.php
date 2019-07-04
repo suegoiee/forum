@@ -160,15 +160,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.5";
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-
-
-    /*axios.get('https://cronjob.uanalyze.com.tw/fetch/CompanyInfo/1101')
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-        });*/
 </script>
 
 <!--end of for development-->

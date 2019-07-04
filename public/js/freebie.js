@@ -826,7 +826,6 @@ function drawChart(canvas, title, yLabel, series) {
         series: series,
         tooltip: {
             formatter: function () {
-                console.log(this.points);
                 return this.points.reduce(function (s, point) {
                     return s + '<br/>' + '<span style="color:' + point.color + '">\u25CF</span>' + '<b>' + point.series.name + ': ' +
                         point.y + point.series.yAxis.axisTitle.textStr + '</b>';
@@ -1048,7 +1047,6 @@ function SetCookie(name, value) {
     exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
     document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
     //document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";domain=" + '{{ env("APP_URL") }}' + ";path=/";
-    console.log(document.cookie);
 }
 
 function getCookie(name) {
