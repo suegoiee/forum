@@ -87,6 +87,7 @@ Route::get('subscriptions/{subscription}/unsubscribe', 'SubscriptionController@u
 Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
     //Route::get('/', 'AdminController@index');
     Route::get('/', 'AdminController@index');
+    Route::get('/justifyAuthorId', 'AdminController@changeAuthorIdToUaVersion')->name('.justifyAuthorId');
     Route::get('category', 'AdminController@category')->name('.category');
     Route::post('permission', 'AdminController@update')->name('.users.master');
     Route::post('delete', 'AdminController@delete')->name('.users.master.delete');

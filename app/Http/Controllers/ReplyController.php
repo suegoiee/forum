@@ -44,7 +44,7 @@ class ReplyController extends Controller
 
         $this->success("已隱藏此留言");
 
-        return redirect()->route('home');
+        return back();
     }
 
     public function edit(Reply $reply)

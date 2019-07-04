@@ -32,7 +32,7 @@ trait HasTags
 
     public function tagsRelation(): MorphToMany
     {
-        return $this->morphToMany(Tag::class, 'taggable')->withTimestamps();
+        return $this->morphToMany(Tag::class, 'category_thread')->withTimestamps();
     }
 
     public function categoriesRelation(): BelongsTo

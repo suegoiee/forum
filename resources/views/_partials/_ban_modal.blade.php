@@ -8,9 +8,6 @@
                 </div>
                 <div class="modal-body" style="height: auto;">
                     {!! $body !!}
-                    @php
-                    print_r($route);
-                    @endphp
                 </div>
                 <div class="modal-footer">
                     <button type="cancel" class="cancel" data-dismiss="modal">取消</button>

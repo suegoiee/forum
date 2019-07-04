@@ -109,9 +109,11 @@
                     <div class="showTag">
                         @include('forum.threads.info.tags')
                     </div>
+                    @if($thread->banThread() != 1)
                     <div style="position: absolute; display: contents;" class="fb-share-button" >
                         <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                     </div>
+                    @endif
                     
                 </div>
 
@@ -125,9 +127,11 @@
 
                 <div class="thread-info-author authorName" style="text-align: right; display: inline-block; width: 100%;">
 
+                @if($thread->banThread() != 1)
                 <div style="float: left;" class="fb-share-button" >
                     <a href="#" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;" class="fb-share-button" data-layout="button">分享</a>
                 </div>
+                @endif
                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
                     <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="display: inline-block; padding-right:5px;">{{ $thread->author()->username() }}</a>
                     在 {{ $thread->createdAt()->diffForHumans() }} 發文

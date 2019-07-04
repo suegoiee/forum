@@ -131,11 +131,11 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
     public static function feedByTagPaginated(Tag $tag, int $perPage = 20): Paginator
     {
         return static::feedQuery()
-            ->join('taggables', function ($join) use ($tag) {
-                $join->on('threads.id', 'taggables.taggable_id')
-                    ->where('taggable_type', static::TABLE);
+            ->join('category_threads', function ($join) use ($tag) {
+                $join->on('threads.id', 'category_threads.category_thread_id')
+                    ->where('category_thread_type', static::TABLE);
             })
-            ->where('taggables.tag_id', $tag->id())
+            ->where('category_threads.tag_id', $tag->id())
             ->paginate($perPage);
     }
 

@@ -98,8 +98,9 @@ class ThreadsController extends Controller
         $this->dispatchNow(BanThread::fromRequest($thread, $request));
 
         $this->success("已隱藏此文章");
-
-        return redirect()->route('home');
+        
+        return back();
+        //return redirect()->route('thread', $thread->slug());
     }
 
     public function markSolution(Thread $thread, Reply $reply)

@@ -83,8 +83,8 @@
             TableTitle.push({ title: '文章分類' });
             TableTitle.push({ title: '權限' });
             TableTitle.push({ title: '動作' });
+            console.log(masters);
             for (var i in masters) {
-                console.log(masters[i]['permission_relation']);
                 var tmp = [];
                 var removeButton = '<a class="btn-xs delete_permission" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#delete'+masters[i]['id']+'" value="'+masters[i]['permission_relation']['id']+'"><img src="/images/icon/recycling-bin.svg" style="width:16px;"></a>';
                 tmp.push(masters[i]['permission_relation']['name']);
