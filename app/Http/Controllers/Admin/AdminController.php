@@ -7,6 +7,7 @@ use App\User;
 use App\Models\Tag;
 use App\Models\Reply;
 use App\Models\Thread;
+use App\Models\Archive;
 use App\Models\Permission;
 use App\Models\CategoryProduct;
 use App\Jobs\UpdatePermission;
@@ -90,8 +91,9 @@ class AdminController extends Controller
         print_r($array2);
         for($i = 0; $i < count($array1); $i++){
             echo '</br>' . $array1[$i] . ' to ' . $array2[$i] . '</br>';
-            Thread::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
-            Reply::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
+            /*Thread::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
+            Reply::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);*/
+            Archive::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
         }
         //echo $ua_authors = USER::select('id')->wherein('email', $homstead_authors)->get();
         //print_r( $ua_authors );
