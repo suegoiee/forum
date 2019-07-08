@@ -83,7 +83,6 @@
             TableTitle.push({ title: '文章分類' });
             TableTitle.push({ title: '權限' });
             TableTitle.push({ title: '動作' });
-            console.log(masters);
             for (var i in masters) {
                 var tmp = [];
                 var removeButton = '<a class="btn-xs delete_permission" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#delete'+masters[i]['id']+'" value="'+masters[i]['permission_relation']['id']+'"><img src="/images/icon/recycling-bin.svg" style="width:16px;"></a>';
@@ -122,8 +121,8 @@
                 }
             });
 
-            stockPool(users, 'searchBar', 'user_id');
-            stockPool(tags, 'categoryBar', 'category_id');
+            searchPool(users, 'masterBar', 'user_id');
+            searchPool(tags, 'categoryBar', 'category_id');
             $(document).on('click', "#new_component", function(){
                 var new_component = parseInt($("#number_of_new_component").val());
                 if($("#master_table tr:last").attr("value")){
@@ -135,8 +134,8 @@
                 for(var i = largest; i < largest + new_component; i++){
                     $("#master_table").append('<tr id="master_row'+i+'" value="'+i+'"><td><div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;"><div class="input-group mb-3" value="user_id'+i+'"><input type="text" class="form-control searchBar" placeholder="請輸入信箱或是名稱" aria-label="search" required="required"><input type="text" id="user_id'+i+'" name="user_id[]" aria-label="search" style="display:none"></div></div></td><td><div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;"><div class="input-group mb-3" value="category_id'+i+'"><input type="text" class="form-control categoryBar" placeholder="請輸入分類名稱" aria-label="search" required="required"><input type="text" id="category_id'+i+'" name="category_id[]" aria-label="search" style="display:none"></div></div></td><td><div class="form-group"><i class="fas fa-times cancel_new_participant" value="'+i+'" style="cursor:pointer;"></i></div></td></tr>');
                 }
-                stockPool(users, 'searchBar', 'user_id');
-                stockPool(tags, 'categoryBar', 'category_id');
+                searchPool(users, 'masterBar', 'user_id');
+                searchPool(tags, 'categoryBar', 'category_id');
             });
         }
     </script>

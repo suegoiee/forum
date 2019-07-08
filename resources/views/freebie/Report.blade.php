@@ -25,7 +25,6 @@
             var stockCode = {{Request::route('StockCode')}};
             var chartData = @json($data);
             var canvasId = @json($url);
-            //console.log(chartData);
             dataFactoryC(chartData, canvasId, false);
         }
     </script>
