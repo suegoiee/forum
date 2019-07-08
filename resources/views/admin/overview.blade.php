@@ -3,11 +3,11 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="container" id="CanvasBaseMap">
+    <div class="container" id="CanvasBaseMap" style="padding-top: 65px;">
         <div class="container">
-            <div class="container">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#home">管理員列表</a></li>
+            <div class="container" style="padding-top: 30px;">
+                <ul class="ad-nav" style="display: flex;">
+                    <li class="active"><a style="margin: 0 15px;" data-toggle="tab" href="#home">管理員列表</a></li>
                     <li><a data-toggle="tab" href="#menu1">新增管理員</a></li>
                 </ul>
                 <div class="tab-content">
@@ -21,18 +21,18 @@
                                 'delete_id' => $master->id(),
                             ])
                         @endforeach
-                        <table id="example" class="table table-striped"></table>
+                        <table id="example" class="table table-striped" style="text-align:center;"></table>
                     </div>
                     <div id="menu1" class="tab-pane fade">
                         <div class="text-right mg-auto">
                             <span style="vertical-align: middle;">新增</span>
-                            <input class="text-right" style="vertical-align: middle;" type="number" min="1" id="number_of_new_component" required="required"/>
+                            <input class="text-right" style="vertical-align: middle; olor: #545454; outline: none; border: 2px solid #e9e9e9; border-radius: 5px;" type="number" min="1" id="number_of_new_component" required="required"/>
                             <span style="vertical-align: middle;">&nbsp;位管理員</span>
                             <button class="btn new_component" id="new_component">新增</button>
                         </div>
                         <form action="admin/permission" method="post" id="permission_table">
                             @csrf
-                            <table class="table table-striped" id="master_table">
+                            <table class="table table-striped" id="master_table" style="text-align:center;">
                                 <tbody>
                                     <tr>
                                         <td>使用者</td>
@@ -43,7 +43,7 @@
                                         <td>
                                             <div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;">
                                                 <div class="input-group mb-3" value="user_id0">
-                                                    <input type="text" class="form-control searchBar" placeholder="請輸入信箱或是名稱"  aria-label="search" required="required">
+                                                    <input type="text" class="form-control searchBar" style="float: initial;" placeholder="請輸入信箱或是名稱"  aria-label="search" required="required">
                                                     <input type="text" id="user_id0" name="user_id[]" aria-label="search" style="display:none" required="required">
                                                 </div>
                                             </div>
@@ -51,20 +51,20 @@
                                         <td>
                                             <div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;">
                                                 <div class="input-group mb-3" value="category_id0">
-                                                    <input type="text" class="form-control categoryBar" placeholder="請輸入分類名稱" aria-label="search" required="required">
+                                                    <input type="text" class="form-control categoryBar" style="float: initial;" placeholder="請輸入分類名稱" aria-label="search" required="required">
                                                     <input type="text" id="category_id0" name="category_id[]" aria-label="search" style="display:none" required="required">
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="form-group">
+                                            <div class="form-group" style="padding-left: 0; padding-right: 0; margin-top: 20px;">
                                                 <i class="fas fa-times cancel_new_participant" value="new_participant0" style="cursor:pointer;"></i>
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn" id="permission_table_submit" type="submit" form="permission_table">確定</button>
+                            <button class="btn" id="permission_table_submit" type="submit" style="margin: 15px 0; float: right;" form="permission_table">確定</button>
                         </form>
                     </div>
                 </div>
