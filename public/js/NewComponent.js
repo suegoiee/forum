@@ -38,12 +38,20 @@
                 });
             }
         }
+        else if(id == 'productBar'){
+            for (var i = 0; i < data.length; i++) {
+                availableTags.push({
+                    'id': data[i]['id'],
+                    'value': data[i]['name'],
+                });
+            }
+        }
         $("."+id).autocomplete({
             autoFocus: true,
             delay: 0,
             source: function (request, response) {
                 var results = $.ui.autocomplete.filter(availableTags, request.term);
-                response(results.slice(0, 5));
+                response(results);
             },
             select: function (e, ui) {
                 $("#"+$(this).parent().attr("value")).val(ui['item']['id']);

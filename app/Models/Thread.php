@@ -6,6 +6,7 @@ use DB;
 use App\Helpers\HasSlug;
 use App\Helpers\HasTags;
 use App\Helpers\HasAuthor;
+use App\Helpers\HasProduct;
 use App\Helpers\HasPermissions;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;

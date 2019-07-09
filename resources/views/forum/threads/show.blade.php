@@ -101,7 +101,7 @@
                 <div class="panel-heading thread-info" style="border-bottom: 2px dashed #e9e9e9;">
                     <div class="thread-info-author showTitle">
                         @if($thread->banThread() == 1)
-                            <h3>違規文章</h3>
+                            <h3>{{trans('forum.threads.banned.title')}}</h3>
                         @else
                             <h3>{{ $thread->subject() }}</h3>
                         @endif
@@ -119,7 +119,7 @@
 
                 <div class="panel-body forum-content">
                     @if($thread->banThread() == 1)
-                        <p>此文章因違反論壇規章，已被隱藏。</p>
+                        <p>{{trans('forum.threads.banned.body')}}</p>
                     @else
                         {!! $thread->body() !!}
                     @endif
@@ -153,7 +153,7 @@
                     @if($reply->banReply() != 1)
                         {!! $reply->body !!}
                     @else
-                        <p>此留言違反論壇規章，已被隱藏</p>
+                        <p>{{trans('replies.banned')}}</p>
                     @endif
 
                     </div>

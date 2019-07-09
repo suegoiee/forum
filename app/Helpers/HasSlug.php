@@ -21,7 +21,8 @@ trait HasSlug
 
     private function generateUniqueSlug(string $value): string
     {
-        $slug = $originalSlug = str_slug($value);
+        //$slug = $originalSlug = str_slug($value);--laravel slug
+        $slug = $originalSlug = $this->parseurl($value);
         $counter = 0;
 
         while ($this->slugExists($slug, $this->exists ? $this->id() : null)) {
@@ -42,4 +43,12 @@ trait HasSlug
 
         return $query->count();
     }
+
+    private function parseurl(string $slug)
+    {
+        $replace = array(":", "/", "@", "?", "%", "#", ".", "&", "=", "~", '\\', '{', '}', '(', ')', ';', '"', '!', '^', '*', '+');
+        $url = str_replace($replace, '-', $slug);
+        return $url;
+    }
+        
 }

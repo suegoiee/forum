@@ -56,7 +56,6 @@ final class RegisterUser
             $request->name(),
             $request->emailAddress(),
             $request->username(),
-            $request->githubId(),
             $request->githubUsername(),
             $request->password()
         );
@@ -71,8 +70,6 @@ final class RegisterUser
             'name' => $this->name,
             'email' => $this->email,
             'username' => strtolower($this->username),
-            'github_id' => $this->githubId,
-            'github_username' => $this->githubUsername,
             'confirmation_code' => str_random(60),
             //'password'=>$hasher->make($this->password),
             'password'=>bcrypt($this->password),

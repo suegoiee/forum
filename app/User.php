@@ -6,10 +6,12 @@ use App\Models\Reply;
 use App\Models\Thread;
 use App\Models\Archive;
 use App\Models\Permission;
+use App\Models\ProductUser;
 use App\Models\Tag;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
 use App\Helpers\HasPermissions;
+use App\Helpers\HasProduct;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -20,7 +22,7 @@ use App\Notifications\ResetPassword as ResetPasswordNotification;
 
 final class User extends Authenticatable
 {
-    use HasTimestamps, ModelHelpers, Notifiable;
+    use HasTimestamps, ModelHelpers, Notifiable, HasProduct;
 
     const DEFAULT = 1;
     const MODERATOR = 5;
@@ -42,8 +44,6 @@ final class User extends Authenticatable
         'ip',
         'confirmed',
         'confirmation_code',
-        'github_id',
-        'github_username',
         'type',
         'remember_token',
         'bio',

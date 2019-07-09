@@ -22,7 +22,7 @@
         <!-- <div class="col-md-4">
             <div class="panel panel-default panel-counter">
                 <div class="panel-heading" style="color:#545454 !important;">解決</div>
-                <div class="panel-body" style="color:#ffa500; font-size:2.2rem; width:100% !important; margin-left: 0;">{{ Auth::user()->countSolutions() }}</div>
+                <div class="panel-body" style="color:#ffa500; font-size:2.2rem; width:100% !important; margin-left: 0;">{{ Auth::user() }}</div>
             </div>
         </div> -->
     </div>

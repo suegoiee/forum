@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\User;
 use App\Models\Thread;
 use App\Models\Permission;
+use App\Models\CategoryProduct;
 
 class ThreadPolicy
 {
@@ -12,12 +13,7 @@ class ThreadPolicy
     const DELETE = 'delete';
     const SUBSCRIBE = 'subscribe';
     const UNSUBSCRIBE = 'unsubscribe';
-    const BAN = 'ban';
-
-    public function ban(Permission $permission): bool
-    {
-        return $permission->isMaster();
-    }
+    const ISVIP = 'isvip';
 
     public function update(User $user, Thread $thread): bool
     {
@@ -37,5 +33,25 @@ class ThreadPolicy
     public function unsubscribe(User $user, Thread $thread): bool
     {
         return $thread->hasSubscriber($user) && $thread->isAuthoredBy($user);
+    }
+
+    public function isvip(User $user, Thread $thread, object $products): bool
+    {
+        $purchased = $user->Products();
+        $vip = false;
+        if(empty($products[0])){
+            $vip = true;
+        }
+        else{
+            foreach ($purchased as $purchase) {
+                foreach($products as $product){
+                    if(($purchase['productRelation']['id'] === $product['product_id'] && strtotime($purchase['deadline']) > time()) || $purchase['deadline'] == null){
+                        $vip = true;
+                        break 2;
+                    }
+                }
+            }
+        }
+        return $vip || $user->isAdmin();
     }
 }
