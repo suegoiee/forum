@@ -172,8 +172,8 @@
                             
                             @if (Auth::user()->can(App\Policies\UserPolicy::ADMIN, App\User::class))
                                 <li role="separator" class="divider"></li>
-                                <li class="{{ active('admin*') }}"><a class="user" href="{{ route('admin') }}">管理使用者</a></li>
-                                <!--li class="{{ active('category*') }}"><a class="user" href="{{ route('admin.category') }}">管理文章類別</a></li-->
+                                <li class="{{ active('admin') }}"><a class="user" href="{{ route('admin') }}">管理使用者</a></li>
+                                <li class="{{ active('admin.category') }}"><a class="user" href="{{ route('admin.category') }}">管理文章類別</a></li>
                             @endif
 
                             <li role="separator" class="divider"></li>

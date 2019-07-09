@@ -46,39 +46,75 @@
             @include('layouts._ads._bsa-cpc')
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    <div class="panel panel-default" style="margin-top: 3% !important;">
-                        <div class="panel-heading">
-                            <div class="thread-info-author">
-                                @if($thread->banThread())
-                                <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">違規文章</a>
-                                @else
-                                    <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
-                                @endif
+                    @if(Gate::check(App\Policies\ThreadPolicy::ISVIP, [$thread, App\Models\CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) || Gate::check(App\Policies\UserPolicy::MASTER, [App\User::class, $thread->tags()[0]->id]))
+                        <div class="panel panel-default" style="margin-top: 3% !important;">
+                            <div class="panel-heading">
+                                <div class="thread-info-author">
+                                    @if($thread->banThread())
+                                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{trans('forum.threads.banned.title')}}</a>
+                                    @else
+                                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
+                                    @endif
+                                </div>
+                                @include('forum.threads.info.tags')
                             </div>
-                            @include('forum.threads.info.tags')
-                        </div>
 
-                        <div class="panel-body">
-                            <a href="{{ route('thread', $thread->slug()) }}">
-                                <span class="badge pull-right" style="margin-right: 15px;">{{ count($thread->replies()) }}</span>
-                                @if($thread->banThread())
-                                    <p class="thread-entrance">此文章因違反論壇規章，已被隱藏</p>
+                            <div class="panel-body">
+                                <a href="{{ route('thread', $thread->slug()) }}">
+                                    <span class="badge pull-right" style="margin-right: 15px;">{{ count($thread->replies()) }}</span>
+                                    @if($thread->banThread())
+                                        <p class="thread-entrance">{{trans('forum.threads.banned.body')}}</p>
+                                    @else
+                                        <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
+                                    @endif
+                                </a>
+                            </div>
+                            
+                            <div class="thread-info-author authorName" style="text-align: right; display: block;">
+                                @if (count($thread->replies()))
+                                    @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
                                 @else
-                                    <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
+                                    @include('forum.threads.info.avatar', ['user' => $thread->author()])
                                 @endif
-                            </a>
+                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
+                                    {{ $thread->createdAt()->diffForHumans() }} 發文
+                            </div>
                         </div>
-                        
-                        <div class="thread-info-author authorName" style="text-align: right; display: block;">
-                            @if (count($thread->replies()))
-                                @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
-                            @else
-                                @include('forum.threads.info.avatar', ['user' => $thread->author()])
-                            @endif
-                                <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
-                                {{ $thread->createdAt()->diffForHumans() }} 發文
+                    @elseif(empty(App\Models\CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()[0]))
+                        <div class="panel panel-default" style="margin-top: 3% !important;">
+                            <div class="panel-heading">
+                                <div class="thread-info-author">
+                                    @if($thread->banThread())
+                                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{trans('forum.threads.banned.title')}}</a>
+                                    @else
+                                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
+                                    @endif
+                                </div>
+                                @include('forum.threads.info.tags')
+                            </div>
+
+                            <div class="panel-body">
+                                <a href="{{ route('thread', $thread->slug()) }}">
+                                    <span class="badge pull-right" style="margin-right: 15px;">{{ count($thread->replies()) }}</span>
+                                    @if($thread->banThread())
+                                        <p class="thread-entrance">{{trans('forum.threads.banned.body')}}</p>
+                                    @else
+                                        <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
+                                    @endif
+                                </a>
+                            </div>
+                            
+                            <div class="thread-info-author authorName" style="text-align: right; display: block;">
+                                @if (count($thread->replies()))
+                                    @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
+                                @else
+                                    @include('forum.threads.info.avatar', ['user' => $thread->author()])
+                                @endif
+                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
+                                    {{ $thread->createdAt()->diffForHumans() }} 發文
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
 
                 <div class="text-center">

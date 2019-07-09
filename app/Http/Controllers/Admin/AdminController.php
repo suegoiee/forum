@@ -8,15 +8,22 @@ use App\Models\Tag;
 use App\Models\Reply;
 use App\Models\Thread;
 use App\Models\Archive;
+use App\Models\Product;
 use App\Models\Permission;
 use App\Models\CategoryProduct;
 use App\Jobs\UpdatePermission;
+use App\Jobs\CreateCategory;
 use App\Jobs\DeletePermission;
+use App\Jobs\DeleteCategoryProduct;
+use App\Jobs\CreateCategoryProduct;
 use App\Queries\SearchUsers;
 use App\Http\Controllers\Controller;
 use App\Http\Middleware\VerifyAdmins;
 use App\Http\Requests\DeletePermissionRequest;
 use App\Http\Requests\PermissionRequest;
+use App\Http\Requests\CreateCategoryRequest;
+use App\Http\Requests\CreateCategoryProductRequest;
+use App\Http\Requests\DeleteCategoryProductRequest;
 use App\Policies\PermissionPolicy;
 use Illuminate\Auth\Middleware\Authenticate;
 
@@ -42,11 +49,34 @@ class AdminController extends Controller
     {
         $users = User::all();
         $masters = Permission::with(['permissionRelation', 'categoriesRelation'])->get();
+        $test = Tag::with(['categoryProductRelation'])->get();
+        $products = Product::all();
         $tags = Tag::all();
-        $categoryproduct = CategoryProduct::with(['productRelation', 'categoriesRelation'])->get();
-        return view('admin.category', compact('masters', 'search', 'tags', 'users', 'categoryproduct'));
+        $categoryproducts = CategoryProduct::with(['categoriesRelation', 'productRelation'])->get();
+        return view('admin.category', compact('masters', 'tags', 'users', 'categoryproducts', 'products', 'test'));
     }
     
+    public function newCategory(CreateCategoryRequest $request){
+
+        $category = $this->dispatchNow(CreateCategory::fromRequest($request));
+
+        return back();
+    }
+    
+    public function newCategoryProduct(CreateCategoryProductRequest $request){
+
+        $cp = $this->dispatchNow(CreateCategoryProduct::fromRequest($request));
+        
+        return back();
+    }
+    
+    public function deleteCategoryProduct(CategoryProduct $category, DeleteCategoryProductRequest $request){
+
+        $cp = $this->dispatchNow(DeleteCategoryProduct::fromRequest($category, $request));
+        
+        return back();
+    }
+
     public function update(PermissionRequest $request)
     {
         $permission = $this->dispatchNow(UpdatePermission::fromRequest($request));
@@ -95,29 +125,5 @@ class AdminController extends Controller
             Reply::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);*/
             Archive::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
         }
-        //echo $ua_authors = USER::select('id')->wherein('email', $homstead_authors)->get();
-        //print_r( $ua_authors );
-        //print_r($articles);
-        /*foreach($forum_authors as $key => $forum_author){
-            print_r($forum_author);
-            echo "</br>";
-            echo "</br>";
-            echo "</br>";
-        }*/
-        /*foreach ($articles as $key => $article) {
-            //print_r($forum_user);
-            echo $article->author_id;
-            echo $forum_authors = DB::connection('mysql_3')->table('users')->where('id', '=', $article->author_id)->get();
-            foreach ($forum_users as $key2 => $forum_user){
-                if($forum_user->id == $article->author_id){
-                    echo $forum_user->email;
-                }
-            }
-            echo "</br>";
-            echo "</br>";*/
-            /*echo $article->title.'<br>';
-            array_push($archives, ['author_id'=>0, 'subject'=>$article->title,'slug'=>$article->generateUniqueSlug(), 'body'=>$article->content,'solution_reply_id'=>0, 'created_at'=>$article->created_at ,'updated_at'=>$article->updated_at]);*/
-        //}
-        //DB::connection('mysql_3')->table('archives')->insert($archives);
     }
 }

@@ -39,7 +39,7 @@
                                         <td>文章分類</td>
                                         <td>刪除</td>
                                     </tr>
-                                    <tr value="0">
+                                    <tr value="0" id="master_row0">
                                         <td>
                                             <div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;">
                                                 <div class="input-group mb-3" value="user_id0">
@@ -58,7 +58,7 @@
                                         </td>
                                         <td>
                                             <div class="form-group">
-                                                <i class="fas fa-times cancel_new_participant" value="new_participant0" style="cursor:pointer;"></i>
+                                                <i class="fas fa-times cancel_new_participant" value="0" style="cursor:pointer;"></i>
                                             </div>
                                         </td>
                                     </tr>

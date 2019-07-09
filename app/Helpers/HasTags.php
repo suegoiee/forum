@@ -3,6 +3,8 @@
 namespace App\Helpers;
 
 use App\Models\Tag;
+use App\Models\Product;
+use App\Models\CategoryProduct;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -33,6 +35,11 @@ trait HasTags
     public function tagsRelation(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'category_thread')->withTimestamps();
+    }
+
+    public function productRelation(): BelongsTo
+    {
+        return $this->BelongsTo(Product::class, 'product_id');
     }
 
     public function categoriesRelation(): BelongsTo

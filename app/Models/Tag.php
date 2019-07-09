@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\Helpers\HasSlug;
+use App\Helpers\HasProduct;
 use App\Helpers\ModelHelpers;
 use Illuminate\Database\Eloquent\Model;
 
 final class Tag extends Model
 {
-    use HasSlug, ModelHelpers;
+    use HasSlug, ModelHelpers, HasProduct;
 
     /**
      * {@inheritdoc}
@@ -18,12 +19,20 @@ final class Tag extends Model
     /**
      * {@inheritdoc}
      */
-    public $timestamps = false;
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
 
     public function id(): int
     {
         return $this->id;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public $timestamps = false;
 
     public function name(): string
     {
