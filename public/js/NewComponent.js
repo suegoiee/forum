@@ -45,6 +45,7 @@
                     'value': data[i]['name'],
                 });
             }
+            console.log(availableTags);
         }
         $("."+id).autocomplete({
             autoFocus: true,
