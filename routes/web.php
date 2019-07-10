@@ -92,6 +92,7 @@ Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
     Route::post('category', 'AdminController@newCategory')->name('.category.create');
     Route::post('newCategoryProduct', 'AdminController@newCategoryProduct')->name('.newCategoryProduct.create');
     Route::post('deleteCategoryProduct', 'AdminController@deleteCategoryProduct')->name('.deleteCategoryProduct.delete');
+    Route::delete('deleteCategory/{tag}', 'AdminController@deleteCategory')->name('.Category.delete');
     Route::post('permission', 'AdminController@update')->name('.users.master');
     Route::post('delete', 'AdminController@delete')->name('.users.master.delete');
     Route::get('users/{username}', 'UsersController@show')->name('.users.show');

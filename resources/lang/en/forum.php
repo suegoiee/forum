@@ -8,4 +8,6 @@ return [
     'threads.banned.title' => '違規文章',
     'threads.banned.body' => '此文章因違反論壇規章，已被隱藏。',
 
+    'categories.created' => '新增文章類別成功!',
+    'categories.deleted' => '文章類別刪除成功!',
 ];

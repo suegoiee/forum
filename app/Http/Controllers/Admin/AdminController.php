@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\Permission;
 use App\Models\CategoryProduct;
 use App\Jobs\UpdatePermission;
+use App\Jobs\DeleteCategory;
 use App\Jobs\CreateCategory;
 use App\Jobs\DeletePermission;
 use App\Jobs\DeleteCategoryProduct;
@@ -25,6 +26,7 @@ use App\Http\Requests\CreateCategoryRequest;
 use App\Http\Requests\CreateCategoryProductRequest;
 use App\Http\Requests\DeleteCategoryProductRequest;
 use App\Policies\PermissionPolicy;
+use App\Policies\UserPolicy;
 use Illuminate\Auth\Middleware\Authenticate;
 
 class AdminController extends Controller
@@ -49,11 +51,10 @@ class AdminController extends Controller
     {
         $users = User::all();
         $masters = Permission::with(['permissionRelation', 'categoriesRelation'])->get();
-        $test = Tag::with(['categoryProductRelation'])->get();
+        $tags = Tag::with(['categoryProductRelation'])->get();
         $products = Product::all();
-        $tags = Tag::all();
         $categoryproducts = CategoryProduct::with(['categoriesRelation', 'productRelation'])->get();
-        return view('admin.category', compact('masters', 'tags', 'users', 'categoryproducts', 'products', 'test'));
+        return view('admin.category', compact('masters', 'tags', 'users', 'categoryproducts', 'products'));
     }
     
     public function newCategory(CreateCategoryRequest $request){
@@ -89,6 +90,15 @@ class AdminController extends Controller
         $this->dispatchNow(DeletePermission::fromRequest($permission, $request));
         //print_r($permission);
         return redirect()->route('admin');
+    }
+
+    public function deleteCategory(Tag $tag)
+    {
+        $this->dispatchNow(new DeleteCategory($tag));
+
+        $this->success('forum.categories.deleted');
+
+        return redirect()->back();
     }
 
     public function permission()
