@@ -1,9 +1,9 @@
 @mixin btnStyle($color: #fff, $bgColor: #ffa500, $bdColor: #ffa500, $rad: 5px, $padTB: 5px, $padLR: 10px) {
   color: $color;
-  background-color: $bgColor;
+  background-color: $bgColor !important;
   border: 1px solid $bdColor;
   border-radius: $rad;
-  padding: $padTB $padLR;
+  padding: $padTB $padLR !important;
 }
 // freebie
 html {
