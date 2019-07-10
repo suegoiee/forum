@@ -15,15 +15,17 @@ use App\Helpers\ProvidesSubscriptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Pagination\Paginator;
 use App\Exceptions\CouldNotMarkReplyAsSolution;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Thread extends Model implements ReplyAble, SubscriptionAble
 {
-    use HasAuthor, HasSlug, HasTimestamps, ModelHelpers, ProvidesSubscriptions, ReceivesReplies, HasTags;
+    use HasAuthor, HasSlug, HasTimestamps, ModelHelpers, ProvidesSubscriptions, ReceivesReplies, HasTags, SoftDeletes;
 
     const TABLE = 'threads';
+    protected $dates = ['deleted_at'];
 
     /**
      * {@inheritdoc}

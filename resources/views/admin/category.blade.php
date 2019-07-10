@@ -14,6 +14,14 @@
                 </ul>
                 <div class="tab-content">
                     <div id="categories" class="tab-pane fade in active">
+                        @foreach($tags as $tag)
+                            @include('_partials._delete_modal', [
+                                'id' => 'delete'.$tag->id,
+                                'route' => ['admin.Category.delete', $tag->slug()],
+                                'title' => '移除文章類別'.$tag->name,
+                                'body' => '<p>確定要刪除'.$tag->slug().'嗎?</p>'
+                            ])
+                        @endforeach
                         <table id="example" class="table table-striped categories_table"></table>
                     </div>
                     <div id="category_product" class="tab-pane fade">
@@ -118,9 +126,8 @@
         window.onload=function () {
             var masters = @json($masters);
             var users = @json($users);
-            var tags = @json($tags);
             var products = @json($products);
-            var test = @json($test);
+            var tags = @json($tags);
             var categoryproducts = @json($categoryproducts);
             var CPTitle = [];
             var CPData = [];
@@ -130,21 +137,23 @@
             CPTitle.push({ title: '商品名稱' });
             CPTitle.push({ title: '動作' });
             for (var i in categoryproducts) {
-                var tmp = [];
-                var removeButton = '<a class="btn-xs delete_permission" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#delete'+categoryproducts[i]['id']+'" value=""><img src="/images/icon/recycling-bin.svg" style="width:16px;"></a>';
-                tmp.push(categoryproducts[i]['categories_relation']['name']);
-                tmp.push(categoryproducts[i]['product_relation']['name']);
-                tmp.push(removeButton);
-                CPData.push(tmp);
+                if(categoryproducts[i]['categories_relation'] != null){
+                    var tmp = [];
+                    var removeButton = '<a class="btn-xs delete_permission" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#delete'+categoryproducts[i]['id']+'" value=""><img src="/images/icon/recycling-bin.svg" style="width:16px;"></a>';
+                    tmp.push(categoryproducts[i]['categories_relation']['name']);
+                    tmp.push(categoryproducts[i]['product_relation']['name']);
+                    tmp.push(removeButton);
+                    CPData.push(tmp);
+                }
             }
             CategoryTitle.push({ title: '文章類別' });
             CategoryTitle.push({ title: '類別屬性' });
             CategoryTitle.push({ title: '動作' });
-            for (var i in test) {
+            for (var i in tags) {
                 var tmp = [];
-                var removeButton = '<a class="btn-xs delete_permission" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#delete'+test[i]['id']+'" value=""><img src="/images/icon/recycling-bin.svg" style="width:16px;"></a>';
-                tmp.push(test[i]['name']);
-                if(test[i]['category_product_relation'].length == 0){
+                var removeButton = '<a class="btn-xs delete_permission" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#delete'+tags[i]['id']+'" value=""><img src="/images/icon/recycling-bin.svg" style="width:16px;"></a>';
+                tmp.push(tags[i]['name']);
+                if(tags[i]['category_product_relation'].length == 0){
                     tmp.push('一般');
                 }
                 else{
@@ -155,7 +164,7 @@
             }
             forum_datatable('category_product_table', CPData, CPTitle);
             forum_datatable('categories_table', CategoryData, CategoryTitle);
-            searchPool(test, 'categoryBar', 'category_id');
+            searchPool(tags, 'categoryBar', 'category_id');
             searchPool(products, 'productBar', 'product_id');
             $(document).on('click', ".new_component", function(){
                 var name = $(this).attr("value");
@@ -177,7 +186,7 @@
                     }
                 }
                 searchPool(products, 'productBar', 'product_id');
-                searchPool(test, 'categoryBar', 'category_id');
+                searchPool(tags, 'categoryBar', 'category_id');
             });
         }
     </script>

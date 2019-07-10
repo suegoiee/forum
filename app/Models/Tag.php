@@ -6,11 +6,14 @@ use App\Helpers\HasSlug;
 use App\Helpers\HasProduct;
 use App\Helpers\ModelHelpers;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 final class Tag extends Model
 {
-    use HasSlug, ModelHelpers, HasProduct;
+    use HasSlug, ModelHelpers, HasProduct, SoftDeletes;
 
+    protected $dates = ['deleted_at'];
+    
     /**
      * {@inheritdoc}
      */
