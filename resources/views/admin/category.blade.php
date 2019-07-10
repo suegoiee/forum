@@ -3,26 +3,17 @@
 @extends('layouts.default')
 
 @section('content')
-    <div class="container" id="CanvasBaseMap">
+    <div class="container" id="CanvasBaseMap" style="padding-top: 65px;">
         <div class="container">
-            <div class="container">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#categories">文章類別列表</a></li>
-                    <li><a data-toggle="tab" href="#category_product">文章鏈結列表</a></li>
-                    <li><a data-toggle="tab" href="#create_category">新增文章類別</a></li>
-                    <li><a data-toggle="tab" href="#create_CP">新增鏈結</a></li>
+            <div class="container" style="padding-top: 30px;">
+                <ul class="ad-nav" style="display: flex;">
+                    <li class="active"><a style="margin: 0 15px;" data-toggle="tab" href="#categories">文章類別列表</a></li>
+                    <li><a style="margin: 0 15px;" data-toggle="tab" href="#category_product">文章鏈結列表</a></li>
+                    <li><a style="margin: 0 15px;" data-toggle="tab" href="#create_category">新增文章類別</a></li>
+                    <li><a style="margin: 0 15px;" data-toggle="tab" href="#create_CP">新增鏈結</a></li>
                 </ul>
                 <div class="tab-content">
                     <div id="categories" class="tab-pane fade in active">
-                        @foreach($categoryproducts as $categoryproduct)
-                            @include('_partials._delete_categoryproduct_modal', [
-                                'id' => 'delete'.$categoryproduct->id,
-                                'route' => ['admin.deleteCategoryProduct.delete', $categoryproduct->id()],
-                                'title' => '移除產品/文章鏈結'.$categoryproduct->id,
-                                'body' => '<p>確定要刪除</p>',
-                                'delete_id' => $categoryproduct->id(),
-                            ])
-                        @endforeach
                         <table id="example" class="table table-striped categories_table"></table>
                     </div>
                     <div id="category_product" class="tab-pane fade">
@@ -130,7 +121,6 @@
             var tags = @json($tags);
             var products = @json($products);
             var test = @json($test);
-            console.log(test);
             var categoryproducts = @json($categoryproducts);
             var CPTitle = [];
             var CPData = [];
@@ -188,10 +178,6 @@
                 }
                 searchPool(products, 'productBar', 'product_id');
                 searchPool(test, 'categoryBar', 'category_id');
-            });
-            $(document).on('click', ".cancel_new_participant", function(){
-                var new_participant_id = $(this).attr("value");
-                $("#"+new_participant_id).remove();
             });
         }
     </script>

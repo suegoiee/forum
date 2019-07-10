@@ -21,29 +21,31 @@
                                 'delete_id' => $master->id(),
                             ])
                         @endforeach
-                        <table id="example" class="table table-striped" style="text-align:center;"></table>
+                        <table id="example" class="table table-striped master_list_table" style="text-align:center;"></table>
                     </div>
                     <div id="menu1" class="tab-pane fade">
                         <div class="text-right mg-auto">
                             <span style="vertical-align: middle;">新增</span>
-                            <input class="text-right" style="vertical-align: middle; olor: #545454; outline: none; border: 2px solid #e9e9e9; border-radius: 5px;" type="number" min="1" id="number_of_new_component" required="required"/>
+                            <input class="text-right" style="vertical-align: middle; olor: #545454; outline: none; border: 2px solid #e9e9e9; border-radius: 5px;" type="number" min="1" id="number_of_new_master" required="required"/>
                             <span style="vertical-align: middle;">&nbsp;位管理員</span>
-                            <button class="btn new_component" id="new_component">新增</button>
+                            <button class="btn new_component" id="new_component" value="master">新增</button>
                         </div>
-                        <form action="admin/permission" method="post" id="permission_table">
+                        <form action="admin/permission" method="post" id="master_table">
                             @csrf
-                            <table class="table table-striped" id="master_table" style="text-align:center;">
-                                <tbody>
+                            <table class="table table-striped" style="text-align:center;">
+                                <thead>
                                     <tr>
                                         <td>使用者</td>
                                         <td>文章分類</td>
                                         <td>刪除</td>
                                     </tr>
+                                </thead>
+                                <tbody id="master_body">
                                     <tr value="0" id="master_row0">
                                         <td>
                                             <div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;">
                                                 <div class="input-group mb-3" value="user_id0">
-                                                    <input type="text" class="form-control searchBar" style="float: initial;" placeholder="請輸入信箱或是名稱"  aria-label="search" required="required">
+                                                    <input type="text" class="form-control masterBar" style="float: initial;" placeholder="請輸入信箱或是名稱"  aria-label="search" required="required">
                                                     <input type="text" id="user_id0" name="user_id[]" aria-label="search" style="display:none" required="required">
                                                 </div>
                                             </div>
@@ -58,13 +60,13 @@
                                         </td>
                                         <td>
                                             <div class="form-group" style="padding-left: 0; padding-right: 0; margin-top: 20px;">
-                                                <i class="fas fa-times cancel_new_participant" value="0" style="cursor:pointer;"></i>
+                                                <i class="fas fa-times cancel_new_participant" value="master_row0" style="cursor:pointer;"></i>
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                            <button class="btn" id="permission_table_submit" type="submit" style="margin: 15px 0; float: right;" form="permission_table">確定</button>
+                            <button class="btn" id="permission_table_submit" type="submit" style="margin: 15px 0; float: right;" form="master_table">確定</button>
                         </form>
                     </div>
                 </div>
@@ -93,46 +95,20 @@
                 tmp.push(removeButton);
                 TableData.push(tmp);
             }
-
-            $('#example').DataTable({
-                data: TableData,
-                columns: TableTitle,
-                "order": [[3, "desc"]],
-                "pagingType": "full_numbers",
-                "oLanguage": {
-                    "sInfoThousands": ",",
-                    "sLengthMenu":
-                        '顯示 _MENU_ 筆',
-                    "sSearch":
-                        '搜尋',
-                    "sZeroRecords": 
-                        "沒有符合條件的結果",
-                    "sInfoFiltered":
-                        "",
-                    "sInfoEmpty":
-                        "",
-                    "oPaginate": {
-                        "sPrevious": "<",
-                        "sFirst": "|<",
-                        "sNext": ">",
-                        "sLast": ">|"
-                    },
-                    "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
-                }
-            });
-
+            forum_datatable('master_list_table', TableData, TableTitle);
             searchPool(users, 'masterBar', 'user_id');
             searchPool(tags, 'categoryBar', 'category_id');
-            $(document).on('click', "#new_component", function(){
-                var new_component = parseInt($("#number_of_new_component").val());
-                if($("#master_table tr:last").attr("value")){
+            $(document).on('click', ".new_component", function(){
+                var name = $(this).attr("value");
+                var new_component = parseInt($("#number_of_new_"+name).val());
+                if($("#"+name+"_table tr:last").attr("value")){
                     var largest = parseInt($("#master_table tr:last").attr("value"))+1;
                 }
                 else{
                     var largest = 0;
                 }
                 for(var i = largest; i < largest + new_component; i++){
-                    $("#master_table").append('<tr id="master_row'+i+'" value="'+i+'"><td><div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;"><div class="input-group mb-3" value="user_id'+i+'"><input type="text" class="form-control searchBar" placeholder="請輸入信箱或是名稱" aria-label="search" required="required"><input type="text" id="user_id'+i+'" name="user_id[]" aria-label="search" style="display:none"></div></div></td><td><div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;"><div class="input-group mb-3" value="category_id'+i+'"><input type="text" class="form-control categoryBar" placeholder="請輸入分類名稱" aria-label="search" required="required"><input type="text" id="category_id'+i+'" name="category_id[]" aria-label="search" style="display:none"></div></div></td><td><div class="form-group"><i class="fas fa-times cancel_new_participant" value="'+i+'" style="cursor:pointer;"></i></div></td></tr>');
+                    $("#"+name+"_body").append('<tr id="'+name+'_row'+i+'" value="'+i+'"><td><div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;"><div class="input-group mb-3" value="user_id'+i+'"><input type="text" class="form-control '+name+'Bar" placeholder="請輸入信箱或是名稱" aria-label="search" required="required"><input type="text" id="user_id'+i+'" name="user_id[]" aria-label="search" style="display:none"></div></div></td><td><div class="container" style="padding-left: 0; padding-right: 0; margin-top: 15px;"><div class="input-group mb-3" value="category_id'+i+'"><input type="text" class="form-control categoryBar" placeholder="請輸入分類名稱" aria-label="search" required="required"><input type="text" id="category_id'+i+'" name="category_id[]" aria-label="search" style="display:none"></div></div></td><td><div class="form-group"><i class="fas fa-times cancel_new_participant" value="'+name+'_row'+i+'" style="cursor:pointer;"></i></div></td></tr>');
                 }
                 searchPool(users, 'masterBar', 'user_id');
                 searchPool(tags, 'categoryBar', 'category_id');
