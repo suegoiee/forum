@@ -1,3 +1,40 @@
+// admin
+.ad-nav {
+  list-style: none;
+  padding-left: 0;
+  li {
+    a {
+      text-decoration: none;
+      background-color: #fff;
+      border: 1px #ffa500 solid;
+      border-radius: 5px;
+      padding: 5px 10px !important;
+      color: #393939;
+    }
+  }
+  li:hover {
+    a {
+      color: #ffc04d;
+      background-color: #fff;
+    }
+  }
+  .active {
+    a {
+      background-color: #ffa500;
+      border: 1px #ffa500 solid;
+      border-radius: 5px;
+      padding: 5px 10px !important;
+      color: #fff;
+    }
+  }
+  .active:hover,
+  .active:focus {
+    a {
+      background-color: #ffa500;
+      color: #fff;
+    }
+  }
+}
 // profile -dashboard
 .profile-latest-items {
   div {
