@@ -52,20 +52,22 @@ class ThreadsController extends Controller
         $product_id = array();
         $user_products = \Auth::user()->Products();
         $tags = Tag::with('categoryProductRelation')->get();
-        foreach($user_products as $user_product){
-            if(strtotime($user_product['deadline']) > time() || $user_product['deadline'] == null){
-                array_push($product_id, $user_product['product_id']);
-            }
-        }
-        foreach($tags as $key => $tag){
-            $count = 0;
-            foreach($tag['categoryProductRelation'] as $key2 => $category){
-                if( in_array($category['product_id'], $product_id ) ){
-                    break;
+        if(!\Auth::user()->isAdmin()){
+            foreach($user_products as $user_product){
+                if(strtotime($user_product['deadline']) > time() || $user_product['deadline'] == null){
+                    array_push($product_id, $user_product['product_id']);
                 }
-                $count++;
-                if( !in_array($category['product_id'], $product_id) && count($tag['categoryProductRelation']) == $count ){
-                    unset($tags[$key]);
+            }
+            foreach($tags as $key => $tag){
+                $count = 0;
+                foreach($tag['categoryProductRelation'] as $key2 => $category){
+                    if( in_array($category['product_id'], $product_id ) ){
+                        break;
+                    }
+                    $count++;
+                    if( !in_array($category['product_id'], $product_id) && count($tag['categoryProductRelation']) == $count && !\Auth::user()->isMasteredBy($tag['id'])){
+                        unset($tags[$key]);
+                    }
                 }
             }
         }
