@@ -2,16 +2,16 @@
 
 namespace App\Jobs;
 
-use App\Models\Tag;
+use App\Models\Category;
 
 final class DeleteCategory
 {
     /**
-     * @var \App\Models\Tag
+     * @var \App\Models\Category
      */
     private $category;
 
-    public function __construct(Tag $category)
+    public function __construct(Category $category)
     {
         $this->category = $category;
     }

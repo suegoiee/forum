@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\User;
-use App\Models\Tag;
+use App\Models\Category;
 
 class UserPolicy
 {

@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\CategoryProduct;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 trait HasTags
 {
     /**
-     * @return \App\Models\Tag[]
+     * @return \App\Models\Category[]
      */
     public function tags()
     {
@@ -19,12 +19,13 @@ trait HasTags
     }
 
     /**
-     * @param \App\Models\Tag[]|int[] $tags
+     * @param \App\Models\Category[]|int[] $tags
      */
     public function syncTags(array $tags)
     {
         $this->save();
-        $this->tagsRelation()->sync($tags);
+        $this->tagsRelation()->attach($tags, ['category_type' => 'Categories']);
+        //$this->tagsRelation()->sync($tags);
     }
 
     public function removeTags()
@@ -34,7 +35,7 @@ trait HasTags
 
     public function tagsRelation(): MorphToMany
     {
-        return $this->morphToMany(Tag::class, 'category_thread')->withTimestamps();
+        return $this->morphToMany(Category::class, 'category_thread')->withTimestamps();
     }
 
     public function productRelation(): BelongsTo
@@ -44,6 +45,6 @@ trait HasTags
 
     public function categoriesRelation(): BelongsTo
     {
-        return $this->BelongsTo(Tag::class, 'category_id');
+        return $this->BelongsTo(Category::class, 'category_id');
     }
 }

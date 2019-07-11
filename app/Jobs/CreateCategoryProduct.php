@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\User;
 use Ramsey\Uuid\Uuid;
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\CategoryProduct;
 use App\Http\Requests\CreateCategoryProductRequest;

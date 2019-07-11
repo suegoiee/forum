@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Thread;
 use Tests\BrowserKitTestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -44,7 +44,7 @@ class ForumTest extends BrowserKitTestCase
     /** @test */
     public function the_thread_subject_cannot_be_an_url()
     {
-        $tag = factory(Tag::class)->create(['name' => 'Test Tag']);
+        $tag = factory(Category::class)->create(['name' => 'Test Category']);
 
         $this->login();
 
@@ -61,7 +61,7 @@ class ForumTest extends BrowserKitTestCase
     /** @test */
     public function users_can_create_a_thread()
     {
-        $tag = factory(Tag::class)->create(['name' => 'Test Tag']);
+        $tag = factory(Category::class)->create(['name' => 'Test Category']);
 
         $this->login();
 
@@ -73,7 +73,7 @@ class ForumTest extends BrowserKitTestCase
             ])
             ->seePageIs('/forum/how-to-work-with-eloquent')
             ->see('How to work with Eloquent?')
-            ->see('Test Tag')
+            ->see('Test Category')
             ->see('發表文章成功!');
     }
 
@@ -81,7 +81,7 @@ class ForumTest extends BrowserKitTestCase
     public function users_can_edit_a_thread()
     {
         $user = $this->createUser();
-        $tag = factory(Tag::class)->create(['name' => 'Test Tag']);
+        $tag = factory(Category::class)->create(['name' => 'Test Category']);
         factory(Thread::class)->create([
             'author_id' => $user->id(),
             'slug' => 'my-first-thread',
@@ -97,7 +97,7 @@ class ForumTest extends BrowserKitTestCase
             ])
             ->seePageIs('/forum/how-to-work-with-eloquent')
             ->see('How to work with Eloquent?')
-            ->see('Test Tag')
+            ->see('Test Category')
             ->see('Thread successfully updated!');
     }
 
@@ -126,7 +126,7 @@ class ForumTest extends BrowserKitTestCase
     /** @test */
     public function users_cannot_create_a_thread_with_a_subject_that_is_too_long()
     {
-        $tag = factory(Tag::class)->create(['name' => 'Test Tag']);
+        $tag = factory(Category::class)->create(['name' => 'Test Category']);
 
         $this->login();
 
@@ -145,7 +145,7 @@ class ForumTest extends BrowserKitTestCase
     public function users_cannot_edit_a_thread_with_a_subject_that_is_too_long()
     {
         $user = $this->createUser();
-        $tag = factory(Tag::class)->create(['name' => 'Test Tag']);
+        $tag = factory(Category::class)->create(['name' => 'Test Category']);
         factory(Thread::class)->create([
             'author_id' => $user->id(),
             'slug' => 'my-first-thread',

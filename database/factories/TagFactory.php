@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Tag;
+use App\Models\Category;
 
-$factory->define(Tag::class, function (Faker\Generator $faker) {
+$factory->define(Category::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->text(15),
         'slug' => $faker->slug,

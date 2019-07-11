@@ -3,7 +3,7 @@
 namespace App\Helpers;
 
 use App\Models\CategoryProduct;
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductUser;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -31,7 +31,7 @@ trait HasProduct
     }
 
     /**
-     * @return \App\Models\Tag[]
+     * @return \App\Models\Category[]
      */
     public function Category()
     {
@@ -39,11 +39,11 @@ trait HasProduct
     }
 
     /**
-     * @return \App\Models\Tag[]
+     * @return \App\Models\Category[]
      */
     public function categoryRelation(): BelongsTo
     {
-        return $this->BelongsTo(Tag::class, 'id');
+        return $this->BelongsTo(Category::class, 'id');
     }
 
     public function categoryProductRelation(): hasMany

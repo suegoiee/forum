@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Blogs;
 
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Reply;
 use App\Models\Archive;
 use App\Jobs\CreateArchive;
@@ -42,7 +42,7 @@ class ArchivesController extends Controller
 
     public function create()
     {
-        return view('blogs.archives.create', ['tags' => Tag::all()]);
+        return view('blogs.archives.create', ['tags' => Category::all()]);
     }
 
     public function store(ArchiveRequest $request)
@@ -58,7 +58,7 @@ class ArchivesController extends Controller
     {
         $this->authorize(ArchivePolicy::UPDATE, $archive);
 
-        return view('blogs.archives.edit', ['archive' => $archive, 'tags' => Tag::all()]);
+        return view('blogs.archives.edit', ['archive' => $archive, 'tags' => Category::all()]);
     }
 
     public function update(ArchiveRequest $request, Archive $archive)

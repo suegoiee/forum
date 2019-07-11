@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use App\User;
 use App\Models\Permission;
-use App\Models\Tag;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 trait HasPermissions
@@ -37,7 +37,7 @@ trait HasPermissions
     }
 
     /**
-     * @return \App\Models\Tag[]
+     * @return \App\Models\Category[]
      */
     public function Category()
     {
@@ -45,11 +45,11 @@ trait HasPermissions
     }
 
     /**
-     * @return \App\Models\Tag[]
+     * @return \App\Models\Category[]
      */
     public function categoryRelation(): BelongsTo
     {
-        return $this->BelongsTo(Tag::class, 'id');
+        return $this->BelongsTo(Category::class, 'id');
     }
 
     public function isMaster(Permission $permission): bool

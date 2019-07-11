@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Forum;
 
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Reply;
 use App\Models\Thread;
 use App\Models\Permission;
@@ -51,7 +51,7 @@ class ThreadsController extends Controller
     {
         $product_id = array();
         $user_products = \Auth::user()->Products();
-        $tags = Tag::with('categoryProductRelation')->get();
+        $tags = Category::with('categoryProductRelation')->get();
         if(!\Auth::user()->isAdmin()){
             foreach($user_products as $user_product){
                 if(strtotime($user_product['deadline']) > time() || $user_product['deadline'] == null){
@@ -87,7 +87,7 @@ class ThreadsController extends Controller
     {
         $this->authorize(ThreadPolicy::UPDATE, $thread);
 
-        return view('forum.threads.edit', ['thread' => $thread, 'tags' => Tag::all()]);
+        return view('forum.threads.edit', ['thread' => $thread, 'tags' => Category::all()]);
     }
 
     public function update(ThreadRequest $request, Thread $thread)

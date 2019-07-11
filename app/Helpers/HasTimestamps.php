@@ -8,11 +8,11 @@ trait HasTimestamps
 {
     public function createdAt(): Carbon
     {
-        return $this->created_at;
+        return Carbon::parse($this->created_at);
     }
 
     public function updatedAt(): Carbon
     {
-        return $this->updated_at;
+        Carbon::parse($this->updated_at);
     }
 }
