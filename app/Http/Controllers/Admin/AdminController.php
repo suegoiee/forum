@@ -136,4 +136,9 @@ class AdminController extends Controller
             Archive::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
         }
     }
+
+    public function addCategoeyTypeToCategoryThread()
+    {
+        DB::update('update category_threads set category_type = "categories"');
+    }
 }

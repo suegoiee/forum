@@ -88,6 +88,7 @@ Route::prefix('admin')->name('admin')->namespace('Admin')->group(function () {
     //Route::get('/', 'AdminController@index');
     Route::get('/', 'AdminController@index');
     Route::get('/justifyAuthorId', 'AdminController@changeAuthorIdToUaVersion')->name('.justifyAuthorId');
+    Route::get('/addCategoeyTypeToCategoryThread', 'AdminController@addCategoeyTypeToCategoryThread')->name('.addCategoeyTypeToCategoryThread');
     Route::get('category', 'AdminController@category')->name('.category');
     Route::post('category', 'AdminController@newCategory')->name('.category.create');
     Route::post('newCategoryProduct', 'AdminController@newCategoryProduct')->name('.newCategoryProduct.create');
