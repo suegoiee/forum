@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\User;
 use Ramsey\Uuid\Uuid;
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Subscription;
 use App\Http\Requests\CreateCategoryRequest;
 
@@ -16,7 +16,7 @@ final class CreateCategory
     private $name;
 
     /**
-     * @var \App\Models\Tag
+     * @var \App\Models\Category
      */
     private $category;
 
@@ -32,11 +32,11 @@ final class CreateCategory
         );
     }
 
-    public function handle(): Tag
+    public function handle(): Category
     {
         $names = $this->name;
         for($i = 0; $i < count($names); $i++){
-            $category[$i] = Tag::firstOrCreate([
+            $category[$i] = Category::firstOrCreate([
                 'name' => $names[$i],
                 'slug' => $names[$i],
             ]);

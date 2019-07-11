@@ -13,7 +13,7 @@ Route::bind('subscription', function (string $uuid) {
 });
 Route::pattern('subscription', $uuid);
 Route::bind('tag', function (string $slug) {
-    return App\Models\Tag::findBySlug($slug);
+    return App\Models\Category::findBySlug($slug);
 });
 Route::bind('thread', function (string $slug) {
     return App\Models\Thread::findBySlug($slug);

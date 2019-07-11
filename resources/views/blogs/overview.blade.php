@@ -26,7 +26,7 @@
                     <a class="dropdown-item" href="{{ route('blogs') }}" >
                         全部
                     <a>
-                @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
+                @foreach (App\Models\Category::orderBy('id')->get() as $tag)
                         <a href="{{ route('blogs.tag', $tag->slug()) }}"
                         class="dropdown-item {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }}">
                             {{ $tag->name() }} 

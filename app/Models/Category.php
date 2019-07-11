@@ -4,20 +4,22 @@ namespace App\Models;
 
 use App\Helpers\HasSlug;
 use App\Helpers\HasProduct;
+use App\Helpers\HasThread;
 use App\Helpers\ModelHelpers;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-final class Tag extends Model
+final class Category extends Model
 {
-    use HasSlug, ModelHelpers, HasProduct, SoftDeletes;
+    const TABLE = 'categories';
+    use HasSlug, ModelHelpers, HasProduct, SoftDeletes, HasThread;
 
     protected $dates = ['deleted_at'];
-    
+
     /**
      * {@inheritdoc}
      */
-    protected $table = 'categories';
+    protected $table = self::TABLE;
 
     /**
      * {@inheritdoc}
@@ -40,5 +42,12 @@ final class Tag extends Model
     public function name(): string
     {
         return $this->name;
+    }
+
+    public function delete()
+    {
+        $this->deleteCategory();
+
+        parent::delete();
     }
 }

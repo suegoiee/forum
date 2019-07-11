@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Product;
-use App\Models\Tag;
+use App\Models\Category;
 
 class CreateCategoryRequest extends Request
 {

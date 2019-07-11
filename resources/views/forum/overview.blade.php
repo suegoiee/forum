@@ -33,7 +33,7 @@
                 </a>
                 <div class="dropdownMenu forumTitle collapse" aria-expanded="false" id="titleTable">
                     <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
-                    @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
+                    @foreach (App\Models\Category::orderBy('id')->get() as $tag)
                         <a href="{{ route('forum.tag', $tag->slug()) }}" class="dropdownItem {{ isset($activeTag) && $tag->matches($activeTag) ? ' active' : '' }} ">
                                 {{ $tag->name() }}
                         </a>
@@ -46,7 +46,6 @@
             @include('layouts._ads._bsa-cpc')
             @if (count($threads))
                 @foreach ($threads as $thread)
-                    @if(Gate::check(App\Policies\ThreadPolicy::ISVIP, [$thread, App\Models\CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) || Gate::check(App\Policies\UserPolicy::MASTER, [App\User::class, $thread->tags()[0]->id]))
                         <div class="panel panel-default" style="margin-top: 3% !important;">
                             <div class="panel-heading">
                                 <div class="thread-info-author">
@@ -80,41 +79,6 @@
                                     {{ $thread->createdAt()->diffForHumans() }} 發文
                             </div>
                         </div>
-                    @elseif(empty(App\Models\CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()[0]))
-                        <div class="panel panel-default" style="margin-top: 3% !important;">
-                            <div class="panel-heading">
-                                <div class="thread-info-author">
-                                    @if($thread->banThread())
-                                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{trans('forum.threads.banned.title')}}</a>
-                                    @else
-                                        <a href="{{ route('thread', $thread->slug()) }}" class="thread-info-link thread-entrance">{{ $thread->subject() }}</a>
-                                    @endif
-                                </div>
-                                @include('forum.threads.info.tags')
-                            </div>
-
-                            <div class="panel-body">
-                                <a href="{{ route('thread', $thread->slug()) }}">
-                                    <span class="badge pull-right" style="margin-right: 15px;">{{ count($thread->replies()) }}</span>
-                                    @if($thread->banThread())
-                                        <p class="thread-entrance">{{trans('forum.threads.banned.body')}}</p>
-                                    @else
-                                        <p class="thread-entrance">{!! str_limit(strip_tags($thread->body), 100) !!}</p>
-                                    @endif
-                                </a>
-                            </div>
-                            
-                            <div class="thread-info-author authorName" style="text-align: right; display: block;">
-                                @if (count($thread->replies()))
-                                    @include('forum.threads.info.avatar', ['user' => $thread->replies()->last()->author()])
-                                @else
-                                    @include('forum.threads.info.avatar', ['user' => $thread->author()])
-                                @endif
-                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
-                                    {{ $thread->createdAt()->diffForHumans() }} 發文
-                            </div>
-                        </div>
-                    @endif
                 @endforeach
 
                 <div class="text-center">

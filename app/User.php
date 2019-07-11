@@ -7,7 +7,7 @@ use App\Models\Thread;
 use App\Models\Archive;
 use App\Models\Permission;
 use App\Models\ProductUser;
-use App\Models\Tag;
+use App\Models\Category;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
 use App\Helpers\HasPermissions;

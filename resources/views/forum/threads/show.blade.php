@@ -18,7 +18,7 @@
                 </a>
                 <div class="dropdownMenu forumTitle collapse" id="titleTable">
                     <a class="dropdownItem {{ active('forum*', ! isset($activeTag) || $activeTag === null) }}" href="{{ route('forum') }}">全部<a>
-                @foreach (App\Models\Tag::orderBy('id')->get() as $tag)
+                @foreach (App\Models\Category::orderBy('id')->get() as $tag)
                     @if(count($thread->tags()) == 0)
                         <a href="{{ route('forum.tag', $tag->slug()) }}" class="dropdownItem">
                             {{ $tag->name() }}

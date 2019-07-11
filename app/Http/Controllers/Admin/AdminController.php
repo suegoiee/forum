@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use DB;
 use App\User;
-use App\Models\Tag;
+use App\Models\Category;
 use App\Models\Reply;
 use App\Models\Thread;
 use App\Models\Archive;
@@ -42,7 +42,7 @@ class AdminController extends Controller
         //$users = $search ? SearchUsers::get($search) : User::findAllPaginated();
         $users = User::all();
         $masters = Permission::with(['permissionRelation', 'categoriesRelation'])->get();
-        $tags = Tag::all();
+        $tags = Category::all();
         //$test = User::all();
         return view('admin.overview', compact('masters', 'search', 'tags', 'users'));
     }
@@ -51,7 +51,7 @@ class AdminController extends Controller
     {
         $users = User::all();
         $masters = Permission::with(['permissionRelation', 'categoriesRelation'])->get();
-        $tags = Tag::with(['categoryProductRelation'])->get();
+        $tags = Category::with(['categoryProductRelation'])->get();
         $products = Product::all();
         $categoryproducts = CategoryProduct::with(['categoriesRelation', 'productRelation'])->get();
         return view('admin.category', compact('masters', 'tags', 'users', 'categoryproducts', 'products'));
@@ -92,9 +92,9 @@ class AdminController extends Controller
         return redirect()->route('admin');
     }
 
-    public function deleteCategory(Tag $tag)
+    public function deleteCategory(Category $Category)
     {
-        $this->dispatchNow(new DeleteCategory($tag));
+        $this->dispatchNow(new DeleteCategory($Category));
 
         $this->success('forum.categories.deleted');
 

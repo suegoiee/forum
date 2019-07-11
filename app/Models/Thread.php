@@ -7,9 +7,9 @@ use App\Helpers\HasSlug;
 use App\Helpers\HasTags;
 use App\Helpers\HasAuthor;
 use App\Helpers\HasProduct;
-use App\Helpers\HasPermissions;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
+use App\Helpers\HasPermissions;
 use App\Helpers\ReceivesReplies;
 use App\Helpers\ProvidesSubscriptions;
 use Illuminate\Database\Eloquent\Model;
@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Pagination\Paginator;
 use App\Exceptions\CouldNotMarkReplyAsSolution;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Thread extends Model implements ReplyAble, SubscriptionAble
@@ -26,6 +27,7 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
 
     const TABLE = 'threads';
     protected $dates = ['deleted_at'];
+    public $timestamps = false;
 
     /**
      * {@inheritdoc}
@@ -138,7 +140,7 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
                 $join->on('threads.id', 'category_threads.category_thread_id')
                     ->where('category_thread_type', static::TABLE);
             })
-            ->where('category_threads.tag_id', $tag->id())
+            ->where('category_threads.category_id', $tag->id())
             ->paginate($perPage);
     }
 
