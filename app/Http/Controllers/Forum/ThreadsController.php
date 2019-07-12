@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers\Forum;
 
+use App\User;
 use App\Models\Category;
 use App\Models\Reply;
 use App\Models\Thread;
 use App\Models\Permission;
+use App\Models\CategoryProduct;
 use App\Jobs\CreateThread;
 use App\Jobs\DeleteThread;
 use App\Jobs\UpdateThread;
 use App\Jobs\BanThread;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use App\Policies\ThreadPolicy;
 use App\Policies\UserPolicy;
 use App\Queries\SearchThreads;
@@ -33,9 +36,50 @@ class ThreadsController extends Controller
 
     public function overview()
     {
+        $tags = Category::with('categoryProductRelation')->orderBy('id')->get();
         $search = request('search');
         $threads = $search ? SearchThreads::get($search) : Thread::feedPaginated();
-        return view('forum.overview', compact('threads', 'search'));
+        foreach($threads as $key => $thread){
+            if(empty(CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()[0])){}
+            else if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
+                if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
+                    unset($threads[$key]);
+                }
+            }
+        }
+        if(\Auth::user() && !\Auth::user()->isAdmin()){
+            $product_id = array();
+            $user_products = \Auth::user()->Products();
+            foreach($user_products as $user_product){
+                if(strtotime($user_product['deadline']) > time() || $user_product['deadline'] == null){
+                    array_push($product_id, $user_product['product_id']);
+                }
+            }
+            foreach($tags as $key => $tag){
+                $count = 0;
+                foreach($tag['categoryProductRelation'] as $key2 => $category){
+                    if( in_array($category['product_id'], $product_id ) ){
+                        break;
+                    }
+                    $count++;
+                    if( !in_array($category['product_id'], $product_id) && count($tag['categoryProductRelation']) == $count && !\Auth::user()->isMasteredBy($tag['id'])){
+                        $tags[$key]['hide'] = 1;
+                        //unset($tags[$key]);
+                    }
+                }
+            }
+        }
+        else{
+            foreach($tags as $key => $tag){
+                foreach($tag['categoryProductRelation'] as $key2 => $category){
+                    if( $category ){
+                        $tags[$key]['hide'] = 1;
+                        //unset($tags[$key]);
+                    }
+                }
+            }
+        }
+        return view('forum.overview', compact('threads', 'search', 'tags'));
     }
 
     public function show(Thread $thread)
