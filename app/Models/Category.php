@@ -47,8 +47,6 @@ final class Category extends Model
 
     public function delete()
     {
-        dd($this->repliesRelation);
-
         $this->deleteCategory();
 
         parent::delete();
