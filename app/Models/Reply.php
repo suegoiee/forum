@@ -6,11 +6,12 @@ use App\Helpers\HasAuthor;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 final class Reply extends Model
 {
-    use HasAuthor, HasTimestamps, ModelHelpers;
+    use HasAuthor, HasTimestamps, ModelHelpers, SoftDeletes;
 
     /**
      * {@inheritdoc}

@@ -26,7 +26,11 @@ trait HasThread
 
     public function deleteCategory()
     {
+        $threads = $this->threadsRelation;
         $this->masterRelation()->delete();
+        foreach($threads as $thread){
+            $thread->repliesRelation()->delete();
+        }
         $this->threadsRelation()->delete();
     }
 
@@ -40,9 +44,9 @@ trait HasThread
         return $this->hasMany(Permission::class, 'category_id');
     }
 
-    public function repliesRelation(): MorphMany
+    public function repliesRelation(): HasMany
     {
-        return $this->MorphMany(Reply::class, 'threads', 'replyable_type', 'replyable_id');
+        return $this->HasMany(Thread::class, 'replies');
     }
     
 }
