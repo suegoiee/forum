@@ -6,6 +6,7 @@ use App\Helpers\HasSlug;
 use App\Helpers\HasProduct;
 use App\Helpers\HasThread;
 use App\Helpers\ModelHelpers;
+use App\Helpers\ReceivesReplies;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -46,6 +47,8 @@ final class Category extends Model
 
     public function delete()
     {
+        dd($this->repliesRelation);
+
         $this->deleteCategory();
 
         parent::delete();

@@ -39,5 +39,10 @@ trait HasThread
     {
         return $this->hasMany(Permission::class, 'category_id');
     }
+
+    public function repliesRelation(): MorphMany
+    {
+        return $this->MorphMany(Reply::class, 'threads', 'replyable_type', 'replyable_id');
+    }
     
 }
