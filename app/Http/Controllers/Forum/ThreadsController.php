@@ -39,42 +39,45 @@ class ThreadsController extends Controller
         $tags = Category::with('categoryProductRelation')->orderBy('id')->get();
         $search = request('search');
         $threads = $search ? SearchThreads::get($search) : Thread::feedPaginated();
-        foreach($threads as $key => $thread){
-            if(empty(CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()[0])){}
-            else if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
-                if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
-                    unset($threads[$key]);
-                }
-            }
-        }
-        if(\Auth::user() && !\Auth::user()->isAdmin()){
-            $product_id = array();
-            $user_products = \Auth::user()->Products();
-            foreach($user_products as $user_product){
-                if(strtotime($user_product['deadline']) > time() || $user_product['deadline'] == null){
-                    array_push($product_id, $user_product['product_id']);
-                }
-            }
-            foreach($tags as $key => $tag){
-                $count = 0;
-                foreach($tag['categoryProductRelation'] as $key2 => $category){
-                    if( in_array($category['product_id'], $product_id ) ){
-                        break;
-                    }
-                    $count++;
-                    if( !in_array($category['product_id'], $product_id) && count($tag['categoryProductRelation']) == $count && !\Auth::user()->isMasteredBy($tag['id'])){
-                        $tags[$key]['hide'] = 1;
-                        //unset($tags[$key]);
-                    }
-                }
-            }
-        }
+        if(\Auth::user() && \Auth::user()->isAdmin()){}
         else{
-            foreach($tags as $key => $tag){
-                foreach($tag['categoryProductRelation'] as $key2 => $category){
-                    if( $category ){
-                        $tags[$key]['hide'] = 1;
-                        //unset($tags[$key]);
+            foreach($threads as $key => $thread){
+                if(empty(CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()[0])){}
+                else if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
+                    if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
+                        unset($threads[$key]);
+                    }
+                }
+            }
+            if(\Auth::user() && !\Auth::user()->isAdmin()){
+                $product_id = array();
+                $user_products = \Auth::user()->Products();
+                foreach($user_products as $user_product){
+                    if(strtotime($user_product['deadline']) > time() || $user_product['deadline'] == null){
+                        array_push($product_id, $user_product['product_id']);
+                    }
+                }
+                foreach($tags as $key => $tag){
+                    $count = 0;
+                    foreach($tag['categoryProductRelation'] as $key2 => $category){
+                        if( in_array($category['product_id'], $product_id ) ){
+                            break;
+                        }
+                        $count++;
+                        if( !in_array($category['product_id'], $product_id) && count($tag['categoryProductRelation']) == $count && !\Auth::user()->isMasteredBy($tag['id'])){
+                            $tags[$key]['hide'] = 1;
+                            //unset($tags[$key]);
+                        }
+                    }
+                }
+            }
+            else{
+                foreach($tags as $key => $tag){
+                    foreach($tag['categoryProductRelation'] as $key2 => $category){
+                        if( $category ){
+                            $tags[$key]['hide'] = 1;
+                            //unset($tags[$key]);
+                        }
                     }
                 }
             }
@@ -84,6 +87,16 @@ class ThreadsController extends Controller
 
     public function show(Thread $thread)
     {
+        if(!\Auth::user()){
+            $this->error("請先登入");
+            return redirect()->route("home");
+        }
+        if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
+            if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
+                $this->error("您沒有購買相關產品或是產品時效已過期");
+                return redirect()->route("home");
+            }
+        }
         $author = $thread->author()->username();
         $title = $thread->subject();
         $description = $thread->body() ;
