@@ -27,9 +27,9 @@
                     <div id="category_product" class="tab-pane fade">
                         @foreach($categoryproducts as $categoryproduct)
                             @include('_partials._delete_categoryproduct_modal', [
-                                'id' => 'delete'.$categoryproduct->id,
+                                'id' => 'deleteCP'.$categoryproduct->id,
                                 'route' => ['admin.deleteCategoryProduct.delete', $categoryproduct->id()],
-                                'title' => '移除產品/文章鏈結'.$categoryproduct->id,
+                                'title' => '移除產品/文章鏈結',
                                 'body' => '<p>確定要刪除</p>',
                                 'delete_id' => $categoryproduct->id(),
                             ])
@@ -139,7 +139,7 @@
             for (var i in categoryproducts) {
                 if(categoryproducts[i]['categories_relation'] != null){
                     var tmp = [];
-                    var removeButton = '<a class="btn-xs delete_permission" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#delete'+categoryproducts[i]['id']+'" value=""><img src="/images/icon/recycling-bin.svg" style="width:16px;"></a>';
+                    var removeButton = '<a class="btn-xs delete_permission" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#deleteCP'+categoryproducts[i]['id']+'" value=""><img src="/images/icon/recycling-bin.svg" style="width:16px;"></a>';
                     tmp.push(categoryproducts[i]['categories_relation']['name']);
                     tmp.push(categoryproducts[i]['product_relation']['name']);
                     tmp.push(removeButton);

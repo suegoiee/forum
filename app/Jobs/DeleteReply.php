@@ -18,6 +18,6 @@ final class DeleteReply
 
     public function handle()
     {
-        $this->reply->delete();
+        $this->reply->forceDelete();
     }
 }
