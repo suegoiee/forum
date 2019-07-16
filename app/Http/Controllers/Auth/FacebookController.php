@@ -31,8 +31,6 @@ class FacebookController extends Controller
     }
     public function login(Request $request)
     {
-        $user = $this->create($request->all());
-        dd($user);
         $this->validateLogin($request);
         $user = User::where('is_socialite',1)->where('email', $request->input('email'))->first();
         if( $user ){
@@ -60,8 +58,6 @@ class FacebookController extends Controller
     }
     protected function create(array $data)
     {
-        $users = $this->dispatchNow(RegisterUser::fromRequest(app(RegisterRequest::class)));
-        dd($users);
         $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -70,6 +66,7 @@ class FacebookController extends Controller
             'is_socialite' => 1,
             'confirmed'=>1,
         ]);
+        dd($user);
         return $user;
     }
     protected function registered(Request $request,$user)
