@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\User;
+use App\Models\Profile;
 use App\Exceptions\CannotCreateUser;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -89,6 +90,12 @@ final class RegisterGoogleUser
             'remember_token' => '',
         ]);
         $user->save();
+        $profile = new Profile([
+            'user_id' => $user->id,
+            'name' => $user->name,
+            'nickname' => $user->name,
+        ]);
+        $profile->save();
 
         return $user;
     }

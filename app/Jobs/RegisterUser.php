@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\User;
+use App\Models\Profile;
 use App\Exceptions\CannotCreateUser;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -40,13 +41,11 @@ final class RegisterUser
      */
     private $password;
 
-    public function __construct(string $name, string $email, string $username, string $githubId, string $githubUsername, string $password)
+    public function __construct(string $name, string $email, string $username, string $password)
     {
         $this->name = $username;
         $this->email = $email;
         $this->username = $username;
-        $this->githubId = $githubId;
-        $this->githubUsername = $githubUsername;
         $this->password = $password;
     }
 
@@ -56,7 +55,6 @@ final class RegisterUser
             $request->name(),
             $request->emailAddress(),
             $request->username(),
-            $request->githubUsername(),
             $request->password()
         );
     }
@@ -70,14 +68,18 @@ final class RegisterUser
             'name' => $this->name,
             'email' => $this->email,
             'username' => strtolower($this->username),
-            'confirmation_code' => str_random(60),
             //'password'=>$hasher->make($this->password),
             'password'=>bcrypt($this->password),
             'type' => User::DEFAULT,
             'remember_token' => '',
         ]);
         $user->save();
-
+        $profile = new Profile([
+            'user_id' => $user->id,
+            'name' => $user->name,
+            'nickname' => $user->name,
+        ]);
+        $profile->save();
         return $user;
     }
 
