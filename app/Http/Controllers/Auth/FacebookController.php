@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use Hash;
 use App\User;
-use App\Http\Controllers\Controller;
-use App\Http\Middleware\RedirectIfAuthenticated;
-use App\Http\Requests\RegisterRequest;
-use App\Jobs\RegisterUAUserConfirmed;
+use App\Jobs\RegisterUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use App\Jobs\RegisterUAUserConfirmed;
+use App\Http\Requests\RegisterRequest;
 use Illuminate\Validation\ValidationException;
+use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class FacebookController extends Controller
@@ -30,7 +31,8 @@ class FacebookController extends Controller
     }
     public function login(Request $request)
     {
-        dd($request);
+        $user = $this->create($request->all());
+        dd($user);
         $this->validateLogin($request);
         $user = User::where('is_socialite',1)->where('email', $request->input('email'))->first();
         if( $user ){
@@ -58,7 +60,8 @@ class FacebookController extends Controller
     }
     protected function create(array $data)
     {
-        //$user = $this->dispatchNow(RegisterUser::fromRequest(app(RegisterRequest::class)));
+        $users = $this->dispatchNow(RegisterUser::fromRequest(app(RegisterRequest::class)));
+        dd($users);
         $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
