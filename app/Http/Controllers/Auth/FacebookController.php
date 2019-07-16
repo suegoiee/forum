@@ -62,11 +62,16 @@ class FacebookController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'name'=> $data['username'],
-            'username'=> $data['email'],
+            'username'=> $data['username'],
             'is_socialite' => 1,
             'confirmed'=>1,
         ]);
-        dd($user);
+        $profile = new Profile([
+            'user_id' => $user->id,
+            'name' => $user->name,
+            'nickname' => $user->name,
+        ]);
+        $profile->save();
         return $user;
     }
     protected function registered(Request $request,$user)
