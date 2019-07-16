@@ -30,7 +30,7 @@
                                 'id' => 'deleteCP'.$categoryproduct->id,
                                 'route' => ['admin.deleteCategoryProduct.delete', $categoryproduct->id()],
                                 'title' => '移除產品/文章鏈結',
-                                'body' => '<p>確定要刪除</p>',
+                                'body' => '<p>確定要刪除'.$categoryproduct->product_relation.'</p>',
                                 'delete_id' => $categoryproduct->id(),
                             ])
                         @endforeach

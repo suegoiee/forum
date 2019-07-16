@@ -52,6 +52,6 @@ class ThreadPolicy
                 }
             }
         }
-        return $vip || $user->isAdmin();
+        return $vip;
     }
 }

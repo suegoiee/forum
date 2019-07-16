@@ -127,8 +127,6 @@ class AdminController extends Controller
             $tmp_id =  USER::select('id')->where('email', '=', $tmp)->get()[0]->id;
             array_push($array2, $tmp_id);
         }
-        print_r($array1);
-        print_r($array2);
         for($i = 0; $i < count($array1); $i++){
             echo '</br>' . $array1[$i] . ' to ' . $array2[$i] . '</br>';
             /*Thread::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
