@@ -114,7 +114,7 @@ class AdminController extends Controller
     public function migrateData()
     {
         $homestead_threads = DB::connection('mysql_3')->table('threads')->get();
-        $homestead_articles = DB::connection('mysql_3')->table('articles')->get();
+        $homestead_articles = DB::connection('mysql_3')->table('archives')->get();
         $homestead_categories = DB::connection('mysql_3')->table('tags')->get();
         $homestead_categorie_threads = DB::connection('mysql_3')->table('taggables')->get();
         $homestead_replies = DB::connection('mysql_3')->table('replies')->get();
