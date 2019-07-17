@@ -27,6 +27,7 @@ use App\Http\Requests\CreateCategoryProductRequest;
 use App\Http\Requests\DeleteCategoryProductRequest;
 use App\Policies\PermissionPolicy;
 use App\Policies\UserPolicy;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Auth\Middleware\Authenticate;
 
 class AdminController extends Controller
@@ -173,6 +174,7 @@ class AdminController extends Controller
             DB::statement("SET SQL_SAFE_UPDATES = 1;");
         }
         foreach($homestead_replies as $homestead_reply){
+            Schema::disableForeignKeyConstraints();
             DB::statement("SET SQL_SAFE_UPDATES = 0;");
             DB::table('replies')->insert(
                 [
@@ -186,6 +188,7 @@ class AdminController extends Controller
                 ]
             );
             DB::statement("SET SQL_SAFE_UPDATES = 1;");
+            Schema::enableForeignKeyConstraints();
         }
         foreach($homestead_subscriptions as $homestead_subscription){
             DB::statement("SET SQL_SAFE_UPDATES = 0;");
