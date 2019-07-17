@@ -212,13 +212,19 @@ class AdminController extends Controller
     public function changeAuthorIdToUaVersion()
         {
         set_time_limit(0);
+        $homestead_thread_authors = Thread::select('threads')->distinct()->get();
         $homestead_authors = Archive::select('author_id')->distinct()->get();
         $homestead_user_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $homestead_authors)->distinct()->get();
         $array1 = array();
         $array2 = array();
+        $array3 = array();
         foreach ($homestead_authors as $key => $value) {
             $tmp = $value->author_id;
             array_push($array1, $tmp);
+        }
+        foreach ($homestead_thread_authors as $key => $value) {
+            $tmp = $value->author_id;
+            array_push($array3, $tmp);
         }
         foreach ($homestead_user_email as $key => $value) {
             $tmp = $value->email;
@@ -226,9 +232,11 @@ class AdminController extends Controller
             array_push($array2, $tmp_id);
         }
         for($i = 0; $i < count($array1); $i++){
-            Thread::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
             Reply::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
             Archive::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
+        }
+        for($i = 0; $i < count($array3); $i++){
+            Thread::where('author_id', '=', $array3[$i])->update(['author_id' => $array2[$i]]);
         }
     }
 
