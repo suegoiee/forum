@@ -122,7 +122,7 @@ class AdminController extends Controller
         $homestead_subscriptions = DB::connection('mysql_3')->table('subscriptions')->get();
         DB::statement("SET SQL_SAFE_UPDATES = 0;");
         foreach($homestead_threads as $homestead_thread){
-            Thread::firstOrNew(
+            Thread::firstOrCreate(
                 [
                     'id' => $homestead_thread->id, 
                     'author_id' => $homestead_thread->author_id,
@@ -136,7 +136,7 @@ class AdminController extends Controller
             );
         }
         foreach($homestead_articles as $homestead_article){
-            Archive::firstOrNew(
+            Archive::firstOrCreate(
                 [
                     'id' => $homestead_article->id, 
                     'author_id' => $homestead_article->author_id,
@@ -150,7 +150,7 @@ class AdminController extends Controller
             );
         }
         foreach($homestead_categories as $homestead_category){
-            Category::firstOrNew(
+            Category::firstOrCreate(
                 [
                     'id' => $homestead_category->id, 
                     'name' => $homestead_category->name,
