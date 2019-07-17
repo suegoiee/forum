@@ -173,6 +173,7 @@ class AdminController extends Controller
             DB::statement("SET SQL_SAFE_UPDATES = 1;");
         }
         foreach($homestead_replies as $homestead_reply){
+            DB::statement("SET SQL_SAFE_UPDATES = 0;");
             DB::table('replies')->insert(
                 [
                     'id' => $homestead_reply->id, 
@@ -184,8 +185,10 @@ class AdminController extends Controller
                     'replyable_type' => $homestead_reply->replyable_type
                 ]
             );
+            DB::statement("SET SQL_SAFE_UPDATES = 1;");
         }
         foreach($homestead_subscriptions as $homestead_subscription){
+            DB::statement("SET SQL_SAFE_UPDATES = 0;");
             DB::table('subscriptions')->insert(
                 [
                     'uuid' => $homestead_subscription->uuid, 
@@ -196,6 +199,7 @@ class AdminController extends Controller
                     'updated_at' => $homestead_subscription->updated_at
                 ]
             );
+            DB::statement("SET SQL_SAFE_UPDATES = 1;");
         }
         DB::statement("SET SQL_SAFE_UPDATES = 1;");
     }
