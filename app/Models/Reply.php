@@ -22,7 +22,15 @@ final class Reply extends Model
      * {@inheritdoc}
      */
     protected $fillable = [
+        'id',
         'body',
+        'author_id',
+        'replyable_id',
+        'replyable_type',
+        'created_at',
+        'updated_at',
+        'ban',
+        'deleted_at'
     ];
 
     public function id(): int

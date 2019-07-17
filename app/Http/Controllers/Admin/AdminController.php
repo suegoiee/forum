@@ -160,7 +160,6 @@ class AdminController extends Controller
             );
         }
         foreach($homestead_categorie_threads as $homestead_categorie_thread){
-            DB::statement("SET SQL_SAFE_UPDATES = 0;");
             DB::table('category_threads')->insert(
                 [
                     'id' => $homestead_categorie_thread->id, 
@@ -172,10 +171,8 @@ class AdminController extends Controller
                     'category_type' => 'categories'
                 ]
             );
-            DB::statement("SET SQL_SAFE_UPDATES = 1;");
         }
         foreach($homestead_replies as $homestead_reply){
-            DB::statement("SET SQL_SAFE_UPDATES = 0;");
             DB::table('replies')->insert(
                 [
                     'id' => $homestead_reply->id, 
@@ -187,11 +184,8 @@ class AdminController extends Controller
                     'replyable_type' => $homestead_reply->replyable_type
                 ]
             );
-            DB::statement("SET SQL_SAFE_UPDATES = 1;");
         }
         foreach($homestead_subscriptions as $homestead_subscription){
-            Schema::disableForeignKeyConstraints();
-            DB::statement("SET SQL_SAFE_UPDATES = 0;");
             DB::table('subscriptions')->insert(
                 [
                     'uuid' => $homestead_subscription->uuid, 
@@ -202,8 +196,6 @@ class AdminController extends Controller
                     'updated_at' => $homestead_subscription->updated_at
                 ]
             );
-            DB::statement("SET SQL_SAFE_UPDATES = 1;");
-            Schema::enableForeignKeyConstraints();
         }
         DB::statement("SET SQL_SAFE_UPDATES = 1;");
         Schema::enableForeignKeyConstraints();
@@ -212,31 +204,53 @@ class AdminController extends Controller
     public function changeAuthorIdToUaVersion()
         {
         set_time_limit(0);
-        $homestead_thread_authors = Thread::select('author_id')->distinct()->get();
-        $homestead_authors = Archive::select('author_id')->distinct()->get();
-        $homestead_user_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $homestead_authors)->distinct()->get();
-        $array1 = array();
-        $array2 = array();
-        $array3 = array();
-        foreach ($homestead_authors as $key => $value) {
+        $ua_thread_authors = Thread::select('author_id')->distinct()->get();
+        $ua_archive_authors = Archive::select('author_id')->distinct()->get();
+        $ua_replies_authors = Reply::select('author_id')->distinct()->get();
+        $homestead_thread_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $ua_thread_authors)->get();
+        $homestead_archive_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $ua_archive_authors)->get();
+        $homestead_replies_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $ua_replies_authors)->get();
+        $arrayid1 = array();
+        $arrayid2 = array();
+        $arrayid3 = array();
+        $arrayau1 = array();
+        $arrayau2 = array();
+        $arrayau3 = array();
+        foreach ($ua_thread_authors as $key => $value) {
             $tmp = $value->author_id;
-            array_push($array1, $tmp);
+            array_push($arrayid1, $tmp);
         }
-        foreach ($homestead_thread_authors as $key => $value) {
+        foreach ($ua_archive_authors as $key => $value) {
             $tmp = $value->author_id;
-            array_push($array3, $tmp);
+            array_push($arrayid2, $tmp);
         }
-        foreach ($homestead_user_email as $key => $value) {
+        foreach ($ua_replies_authors as $key => $value) {
+            $tmp = $value->author_id;
+            array_push($arrayid3, $tmp);
+        }
+        foreach ($homestead_thread_email as $key => $value) {
             $tmp = $value->email;
             $tmp_id =  USER::select('id')->where('email', '=', $tmp)->get()[0]->id;
-            array_push($array2, $tmp_id);
+            array_push($arrayau1, $tmp_id);
         }
-        for($i = 0; $i < count($array1); $i++){
-            Reply::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
-            Archive::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
+        foreach ($homestead_archive_email as $key => $value) {
+            $tmp = $value->email;
+            $tmp_id =  USER::select('id')->where('email', '=', $tmp)->get()[0]->id;
+            array_push($arrayau2, $tmp_id);
         }
-        for($i = 0; $i < count($array3); $i++){
-            Thread::where('author_id', '=', $array3[$i])->update(['author_id' => $array2[$i]]);
+        foreach ($homestead_replies_email as $key => $value) {
+            $tmp = $value->email;
+            $tmp_id =  USER::select('id')->where('email', '=', $tmp)->get()[0]->id;
+            array_push($arrayau3, $tmp_id);
+        }
+        for($i = 0; $i < count($arrayid1); $i++){
+            Thread::where('author_id', '=', $arrayid1[$i])->update(['author_id' => $arrayau1[$i]]);
+        }
+        for($i = 0; $i < count($arrayid2); $i++){
+            Archive::where('author_id', '=', $arrayid2[$i])->update(['author_id' => $arrayau2[$i]]);
+        }
+        for($i = 0; $i < count($arrayid3); $i++){
+            Reply::where('author_id', '=', $arrayid3[$i])->update(['author_id' => $arrayau3[$i]]);
         }
     }
 
