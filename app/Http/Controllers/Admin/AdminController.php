@@ -149,7 +149,7 @@ class AdminController extends Controller
             );
         }
         foreach($homestead_categories as $homestead_category){
-            CategoryProduct::firstOrNew(
+            DB::table('categories')->insert(
                 [
                     'id' => $homestead_category->id, 
                     'name' => $homestead_category->name,
