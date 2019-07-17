@@ -127,7 +127,7 @@ class AdminController extends Controller
                     'subject' => $homestead_thread->subject,
                     'body' => $homestead_thread->body,
                     'slug' => $homestead_thread->slug,
-                    'solution_reply_id' => $homestead_thread->solution_reply_id,
+                    'solution_reply_id' => 0,
                     'created_at' => $homestead_thread->created_at,
                     'updated_at' => $homestead_thread->updated_at
                 ]
