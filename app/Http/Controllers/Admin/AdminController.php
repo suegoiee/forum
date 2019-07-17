@@ -149,6 +149,7 @@ class AdminController extends Controller
             );
         }
         foreach($homestead_categories as $homestead_category){
+            DB::statement("SET SQL_SAFE_UPDATES = 0;");
             Category::firstOrNew(
                 [
                     'id' => $homestead_category->id, 
@@ -156,6 +157,7 @@ class AdminController extends Controller
                     'slug' => $homestead_category->slug
                 ]
             );
+            DB::statement("SET SQL_SAFE_UPDATES = 1;");
         }
         foreach($homestead_categorie_threads as $homestead_categorie_thread){
             DB::table('category_threads')->insert(
