@@ -121,6 +121,7 @@ class AdminController extends Controller
         $homestead_replies = DB::connection('mysql_3')->table('replies')->get();
         $homestead_subscriptions = DB::connection('mysql_3')->table('subscriptions')->get();
         DB::statement("SET SQL_SAFE_UPDATES = 0;");
+        Schema::disableForeignKeyConstraints();
         foreach($homestead_threads as $homestead_thread){
             Thread::firstOrCreate(
                 [
@@ -174,7 +175,6 @@ class AdminController extends Controller
             DB::statement("SET SQL_SAFE_UPDATES = 1;");
         }
         foreach($homestead_replies as $homestead_reply){
-            Schema::disableForeignKeyConstraints();
             DB::statement("SET SQL_SAFE_UPDATES = 0;");
             DB::table('replies')->insert(
                 [
@@ -188,7 +188,6 @@ class AdminController extends Controller
                 ]
             );
             DB::statement("SET SQL_SAFE_UPDATES = 1;");
-            Schema::enableForeignKeyConstraints();
         }
         foreach($homestead_subscriptions as $homestead_subscription){
             Schema::disableForeignKeyConstraints();
@@ -207,6 +206,7 @@ class AdminController extends Controller
             Schema::enableForeignKeyConstraints();
         }
         DB::statement("SET SQL_SAFE_UPDATES = 1;");
+        Schema::enableForeignKeyConstraints();
     }
 
     public function changeAuthorIdToUaVersion()
