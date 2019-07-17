@@ -119,7 +119,80 @@ class AdminController extends Controller
         $homestead_categorie_threads = DB::connection('mysql_3')->table('taggables')->get();
         $homestead_replies = DB::connection('mysql_3')->table('replies')->get();
         $homestead_subscriptions = DB::connection('mysql_3')->table('subscriptions')->get();
-        dd($homestead_threads);
+        foreach($homestead_threads as $homestead_thread){
+            DB::table('threads')->insert(
+                [
+                    'id' => $homestead_thread->id, 
+                    'author_id' => $homestead_thread->author_id,
+                    'subject' => $homestead_thread->subject,
+                    'body' => $homestead_thread->body,
+                    'slug' => $homestead_thread->slug,
+                    'solution_reply_id' => $homestead_thread->solution_reply_id,
+                    'created_at' => $homestead_thread->created_at,
+                    'updated_at' => $homestead_thread->updated_at
+                ]
+            );
+        }
+        foreach($homestead_articles as $homestead_article){
+            DB::table('archives')->insert(
+                [
+                    'id' => $homestead_article->id, 
+                    'author_id' => $homestead_article->author_id,
+                    'subject' => $homestead_article->subject,
+                    'body' => $homestead_article->body,
+                    'slug' => $homestead_article->slug,
+                    'solution_reply_id' => $homestead_article->solution_reply_id,
+                    'created_at' => $homestead_article->created_at,
+                    'updated_at' => $homestead_article->updated_at
+                ]
+            );
+        }
+        foreach($homestead_categories as $homestead_category){
+            DB::table('categories')->insert(
+                [
+                    'id' => $homestead_category->id, 
+                    'name' => $homestead_category->name,
+                    'slug' => $homestead_category->slug
+                ]
+            );
+        }
+        foreach($homestead_categorie_threads as $homestead_categorie_thread){
+            DB::table('category_threads')->insert(
+                [
+                    'id' => $homestead_categorie_thread->id, 
+                    'categorie_thread_id' => $homestead_categorie_thread->taggalbe_id,
+                    'categorie_thread_type' => $homestead_categorie_thread->taggalbe_type,
+                    'created_at' => $homestead_categorie_thread->deleted_at,
+                    'updated_at' => $homestead_categorie_thread->deleted_at,
+                    'category_type' => 'categories'
+                ]
+            );
+        }
+        foreach($homestead_replies as $homestead_reply){
+            DB::table('replies')->insert(
+                [
+                    'id' => $homestead_reply->id, 
+                    'body' => $homestead_reply->body,
+                    'author_id' => $homestead_reply->author_id,
+                    'replyable_id' => $homestead_reply->replyable_id,
+                    'created_at' => $homestead_reply->created_at,
+                    'updated_at' => $homestead_reply->updated_at,
+                    'replyable_type' => $homestead_reply->replyable_type
+                ]
+            );
+        }
+        foreach($homestead_subscriptions as $homestead_subscription){
+            DB::table('subscriptions')->insert(
+                [
+                    'uuid' => $homestead_subscription->id, 
+                    'user_id' => $homestead_subscription->body,
+                    'subscriptionable_id' => $homestead_subscription->author_id,
+                    'subscriptionable_type' => $homestead_subscription->replyable_id,
+                    'created_at' => $homestead_subscription->created_at,
+                    'updated_at' => $homestead_subscription->updated_at
+                ]
+            );
+        }
     }
 
         public function changeAuthorIdToUaVersion()
