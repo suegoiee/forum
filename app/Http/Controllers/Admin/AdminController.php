@@ -209,7 +209,7 @@ class AdminController extends Controller
         DB::statement("SET SQL_SAFE_UPDATES = 1;");
     }
 
-        public function changeAuthorIdToUaVersion()
+    public function changeAuthorIdToUaVersion()
         {
         set_time_limit(0);
         $homestead_authors = Archive::select('author_id')->distinct()->get();
