@@ -191,6 +191,7 @@ class AdminController extends Controller
             Schema::enableForeignKeyConstraints();
         }
         foreach($homestead_subscriptions as $homestead_subscription){
+            Schema::disableForeignKeyConstraints();
             DB::statement("SET SQL_SAFE_UPDATES = 0;");
             DB::table('subscriptions')->insert(
                 [
@@ -203,6 +204,7 @@ class AdminController extends Controller
                 ]
             );
             DB::statement("SET SQL_SAFE_UPDATES = 1;");
+            Schema::enableForeignKeyConstraints();
         }
         DB::statement("SET SQL_SAFE_UPDATES = 1;");
     }
