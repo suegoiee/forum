@@ -166,6 +166,7 @@ class AdminController extends Controller
                     'category_thread_type' => $homestead_categorie_thread->taggable_type,
                     'created_at' => $homestead_categorie_thread->created_at,
                     'updated_at' => $homestead_categorie_thread->updated_at,
+                    'category_id' => $homestead_categorie_thread->tag_id,
                     'category_type' => 'categories'
                 ]
             );
