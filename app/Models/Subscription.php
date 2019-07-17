@@ -12,6 +12,14 @@ final class Subscription extends Model
 {
     use HasUuid;
 
+    protected $fillable = [
+        'uuid',
+        'user_id',
+        'subscriptionable_id',
+        'subscriptionable_type',
+        'created_at',
+        'updated_at'
+    ];
     /**
      * {@inheritdoc}
      */
