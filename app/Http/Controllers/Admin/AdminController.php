@@ -149,7 +149,7 @@ class AdminController extends Controller
             );
         }
         foreach($homestead_categories as $homestead_category){
-            DB::table('categories')->insert(
+            Category::firstOrNew(
                 [
                     'id' => $homestead_category->id, 
                     'name' => $homestead_category->name,
@@ -161,10 +161,10 @@ class AdminController extends Controller
             DB::table('category_threads')->insert(
                 [
                     'id' => $homestead_categorie_thread->id, 
-                    'categorie_thread_id' => $homestead_categorie_thread->taggalbe_id,
-                    'categorie_thread_type' => $homestead_categorie_thread->taggalbe_type,
-                    'created_at' => $homestead_categorie_thread->deleted_at,
-                    'updated_at' => $homestead_categorie_thread->deleted_at,
+                    'categorie_thread_id' => $homestead_categorie_thread->taggable_id,
+                    'categorie_thread_type' => $homestead_categorie_thread->taggable_type,
+                    'created_at' => $homestead_categorie_thread->created_at,
+                    'updated_at' => $homestead_categorie_thread->updated_at,
                     'category_type' => 'categories'
                 ]
             );
@@ -185,10 +185,10 @@ class AdminController extends Controller
         foreach($homestead_subscriptions as $homestead_subscription){
             DB::table('subscriptions')->insert(
                 [
-                    'uuid' => $homestead_subscription->id, 
-                    'user_id' => $homestead_subscription->body,
-                    'subscriptionable_id' => $homestead_subscription->author_id,
-                    'subscriptionable_type' => $homestead_subscription->replyable_id,
+                    'uuid' => $homestead_subscription->uuid, 
+                    'user_id' => $homestead_subscription->user_id,
+                    'subscriptionable_id' => $homestead_subscription->subscriptionable_id,
+                    'subscriptionable_type' => $homestead_subscription->subscriptionable_type,
                     'created_at' => $homestead_subscription->created_at,
                     'updated_at' => $homestead_subscription->updated_at
                 ]
