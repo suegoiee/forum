@@ -119,8 +119,9 @@ class AdminController extends Controller
         $homestead_categorie_threads = DB::connection('mysql_3')->table('taggables')->get();
         $homestead_replies = DB::connection('mysql_3')->table('replies')->get();
         $homestead_subscriptions = DB::connection('mysql_3')->table('subscriptions')->get();
+        DB::statement("SET SQL_SAFE_UPDATES = 0;");
         foreach($homestead_threads as $homestead_thread){
-            DB::table('threads')->insert(
+            Thread::firstOrNew(
                 [
                     'id' => $homestead_thread->id, 
                     'author_id' => $homestead_thread->author_id,
@@ -134,7 +135,7 @@ class AdminController extends Controller
             );
         }
         foreach($homestead_articles as $homestead_article){
-            DB::table('archives')->insert(
+            Archive::firstOrNew(
                 [
                     'id' => $homestead_article->id, 
                     'author_id' => $homestead_article->author_id,
@@ -148,7 +149,7 @@ class AdminController extends Controller
             );
         }
         foreach($homestead_categories as $homestead_category){
-            DB::table('categories')->insert(
+            CategoryProduct::firstOrNew(
                 [
                     'id' => $homestead_category->id, 
                     'name' => $homestead_category->name,
@@ -193,6 +194,7 @@ class AdminController extends Controller
                 ]
             );
         }
+        DB::statement("SET SQL_SAFE_UPDATES = 1;");
     }
 
         public function changeAuthorIdToUaVersion()
