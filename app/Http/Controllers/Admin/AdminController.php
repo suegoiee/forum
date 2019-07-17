@@ -140,7 +140,7 @@ class AdminController extends Controller
             Archive::firstOrCreate(
                 [
                     'id' => $homestead_article->id, 
-                    'author_id' => $homestead_article->author_id,
+                    'author_id' => 5232,
                     'subject' => $homestead_article->subject,
                     'body' => $homestead_article->body,
                     'slug' => $homestead_article->slug,
