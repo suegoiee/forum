@@ -226,9 +226,8 @@ class AdminController extends Controller
             array_push($array2, $tmp_id);
         }
         for($i = 0; $i < count($array1); $i++){
-            echo '</br>' . $array1[$i] . ' to ' . $array2[$i] . '</br>';
-            /*Thread::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
-            Reply::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);*/
+            Thread::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
+            Reply::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
             Archive::where('author_id', '=', $array1[$i])->update(['author_id' => $array2[$i]]);
         }
     }
