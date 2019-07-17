@@ -161,8 +161,8 @@ class AdminController extends Controller
             DB::table('category_threads')->insert(
                 [
                     'id' => $homestead_categorie_thread->id, 
-                    'categorie_thread_id' => $homestead_categorie_thread->taggable_id,
-                    'categorie_thread_type' => $homestead_categorie_thread->taggable_type,
+                    'category_thread_id' => $homestead_categorie_thread->taggable_id,
+                    'category_thread_type' => $homestead_categorie_thread->taggable_type,
                     'created_at' => $homestead_categorie_thread->created_at,
                     'updated_at' => $homestead_categorie_thread->updated_at,
                     'category_type' => 'categories'
