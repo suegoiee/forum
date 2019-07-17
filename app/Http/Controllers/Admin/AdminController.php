@@ -212,7 +212,7 @@ class AdminController extends Controller
     public function changeAuthorIdToUaVersion()
         {
         set_time_limit(0);
-        $homestead_thread_authors = Thread::select('threads')->distinct()->get();
+        $homestead_thread_authors = Thread::select('author_id')->distinct()->get();
         $homestead_authors = Archive::select('author_id')->distinct()->get();
         $homestead_user_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $homestead_authors)->distinct()->get();
         $array1 = array();
