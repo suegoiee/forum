@@ -173,11 +173,11 @@
                             @if($reply->banReply() != 1)
                                 @can(App\Policies\UserPolicy::ADMIN, App\User::class)
                                 <a class="btn-xs" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#banReply{{ $reply->id() }}">
-                                    隱藏
+                                    <img src="/images/icon/signal.svg" style="width:16px;" copyright="123">
                                 </a>
                                 @elsecan(App\Policies\UserPolicy::MASTER, [App\User::class, $category->id])
                                 <a class="btn-xs" style="line-height: 0.5;" href="#" data-toggle="modal" data-target="#banReply{{ $reply->id() }}">
-                                    隱藏
+                                    <img src="/images/icon/signal.svg" style="width:16px;" copyright="123">
                                 </a>
                                 @endcan
                             @endif

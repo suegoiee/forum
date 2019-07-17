@@ -111,8 +111,19 @@ class AdminController extends Controller
         return view('admin.overview', compact('users', 'search', 'test'));
     }
 
-    public function changeAuthorIdToUaVersion()
+    public function migrateData()
     {
+        $homestead_threads = DB::connection('mysql_3')->table('threads')->get();
+        $homestead_articles = DB::connection('mysql_3')->table('articles')->get();
+        $homestead_categories = DB::connection('mysql_3')->table('tags')->get();
+        $homestead_categorie_threads = DB::connection('mysql_3')->table('taggables')->get();
+        $homestead_replies = DB::connection('mysql_3')->table('replies')->get();
+        $homestead_subscriptions = DB::connection('mysql_3')->table('subscriptions')->get();
+        dd($homestead_threads);
+    }
+
+        public function changeAuthorIdToUaVersion()
+        {
         set_time_limit(0);
         $homestead_authors = Archive::select('author_id')->distinct()->get();
         $homestead_user_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $homestead_authors)->distinct()->get();
