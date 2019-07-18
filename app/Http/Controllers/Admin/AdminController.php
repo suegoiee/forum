@@ -121,6 +121,7 @@ class AdminController extends Controller
         $homestead_replies = DB::connection('mysql_3')->table('replies')->get();
         $homestead_subscriptions = DB::connection('mysql_3')->table('subscriptions')->get();
         DB::statement("SET SQL_SAFE_UPDATES = 0;");
+        DB::raw('UPDATE ua_pro.users AS x , homestead.users AS y SET x.name = y.name, x.username = y.username, x.confirmed = y.confirmed WHERE x.email = y.email');
         Schema::disableForeignKeyConstraints();
         foreach($homestead_threads as $homestead_thread){
             Thread::firstOrCreate(
