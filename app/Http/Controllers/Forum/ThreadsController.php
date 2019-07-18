@@ -73,7 +73,7 @@ class ThreadsController extends Controller
 
     public function show(Thread $thread)
     {
-        if(!\Auth::user()){
+        if(\Auth::user()){
             if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
                 if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
                     $this->error("您沒有購買相關產品或是產品時效已過期");
