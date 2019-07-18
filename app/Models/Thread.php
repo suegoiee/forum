@@ -38,11 +38,14 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
      * {@inheritdoc}
      */
     protected $fillable = [
+        'id',
         'author_id',
         'body',
         'slug',
         'subject',
         'ban',
+        'updated_at',
+        'created_at',
     ];
 
     public function id(): int
