@@ -41,7 +41,6 @@ class ThreadsController extends Controller
         $threads = $search ? SearchThreads::get($search) : Thread::feedPaginated();
         if(\Auth::user()){
             foreach($threads as $key => $thread){
-                dd($thread, $thread->tags());
                 if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
                     if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
                         unset($threads[$key]);
