@@ -26,6 +26,7 @@ final class Category extends Model
      * {@inheritdoc}
      */
     protected $fillable = [
+        'id',
         'name',
         'slug',
     ];
