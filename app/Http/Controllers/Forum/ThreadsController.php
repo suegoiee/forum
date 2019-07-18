@@ -81,6 +81,13 @@ class ThreadsController extends Controller
                 }
             }
         }
+        else{
+            $test = CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get();
+            if($test){
+                $this->error("請先登入");
+                return redirect()->route("home");
+            }
+        }
         $author = $thread->author()->username();
         $title = $thread->subject();
         $description = $thread->body() ;
