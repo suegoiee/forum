@@ -19,7 +19,7 @@
                                 'id' => 'delete'.$tag->id,
                                 'route' => ['admin.Category.delete', $tag->slug()],
                                 'title' => '移除文章類別'.$tag->name,
-                                'body' => '<p>確定要刪除'.$tag->slug().'嗎?</p>'
+                                'body' => '<p>確定要刪除'.$tag->name.'嗎?</p>'
                             ])
                         @endforeach
                         <table id="example" class="table table-striped categories_table"></table>
