@@ -39,7 +39,7 @@ class ThreadsController extends Controller
         $tags = Category::with('categoryProductRelation')->orderBy('id')->get();
         $search = request('search');
         $threads = $search ? SearchThreads::get($search) : Thread::feedPaginated();
-        /*if(\Auth::user()){
+        if(\Auth::user()){
             foreach($threads as $key => $thread){
                 if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
                     if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
@@ -67,7 +67,7 @@ class ThreadsController extends Controller
                     unset($threads[$key]);
                 }
             }
-        }*/
+        }
         return view('forum.overview', compact('threads', 'search', 'tags'));
     }
 
