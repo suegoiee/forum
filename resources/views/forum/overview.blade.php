@@ -85,7 +85,7 @@
                                 @else
                                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
                                 @endif
-                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
+                                    <a href="{{ route('profile', $thread->author()->emailAddress()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
                                     {{ $thread->createdAt()->diffForHumans() }} 發文
                             </div>
                         </div>
@@ -121,7 +121,7 @@
                                 @else
                                     @include('forum.threads.info.avatar', ['user' => $thread->author()])
                                 @endif
-                                    <a href="{{ route('profile', $thread->author()->username()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
+                                    <a href="{{ route('profile', $thread->author()->emailAddress()) }}" class="thread-info-link" style="padding-right:3px;">{{ $thread->author()->username() }}</a> 在
                                     {{ $thread->createdAt()->diffForHumans() }} 發文
                             </div>
                         </div>
