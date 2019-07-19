@@ -44,6 +44,7 @@ final class User extends Authenticatable
         'ip',
         'confirmed',
         'confirmation_code',
+        'mail_verified_at',
         'type',
         'remember_token',
         'bio',
