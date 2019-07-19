@@ -44,7 +44,7 @@ Route::namespace('Auth')->group(function () {
 
 // Users
 Route::get('dashboard', 'DashboardController@show')->name('dashboard');
-Route::get('user/{username}', 'ProfileController@show')->name('profile');
+Route::get('user/{email_address}', 'ProfileController@show')->name('profile');
 Route::get('avatar/{username}', 'ProfileController@avatar')->name('avatar');
 
 // Settings
