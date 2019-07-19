@@ -27,7 +27,7 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
 
     const TABLE = 'threads';
     protected $dates = ['deleted_at'];
-    public $timestamps = false;
+    //public $timestamps = false;
 
     /**
      * {@inheritdoc}
