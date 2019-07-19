@@ -68,6 +68,11 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
         return $this->ban;
     }
 
+    public function topThread()
+    {
+        return $this->top;
+    }
+
     public function excerpt(int $limit = 100): string
     {
         return str_limit(strip_tags(md_to_html($this->body())), $limit);
@@ -157,6 +162,7 @@ final class Thread extends Model implements ReplyAble, SubscriptionAble
             $join->on('threads.id', 'replies.replyable_id')
                     ->where('replies.replyable_type', static::TABLE);
         })
+            ->orderBy('top', 'DESC')
             ->orderBy('latest_creation', 'DESC')
             ->groupBy('threads.id')
             ->select('threads.*', DB::raw('
