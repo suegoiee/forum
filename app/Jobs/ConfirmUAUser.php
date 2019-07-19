@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\User;
+use Carbon\Carbon;
 use App\Exceptions\CannotCreateUser;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -20,9 +21,13 @@ final class ConfirmUAUser
         $this->user = $user;
     }
 
-    public function handle(Hasher $hasher)
+    public function handle(Hasher $hasher): User
     {
-        $data = [
+        $this->user->update(['mail_verified_at' => \Carbon\Carbon::now()]);
+
+        return $this->user;
+
+        /*$data = [
             'email' => $this->user->email
         ];
         if(env("UA_CONFIRM_USER_API_URL")!=''){
@@ -34,6 +39,6 @@ final class ConfirmUAUser
                 ],
                 'form_params' => $data,
             ]);
-        }
+        }*/
     }
 }

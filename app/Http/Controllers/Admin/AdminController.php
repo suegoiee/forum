@@ -122,8 +122,9 @@ class AdminController extends Controller
         $homestead_replies = DB::connection('mysql_3')->table('replies')->get();
         $homestead_subscriptions = DB::connection('mysql_3')->table('subscriptions')->get();
         DB::statement("SET SQL_SAFE_UPDATES = 0;");
-        DB::raw('UPDATE ua_pro.users AS x , homestead.users AS y SET x.name = y.name, x.username = y.username, x.confirmed = y.confirmed WHERE x.email = y.email');
-        Schema::disableForeignKeyConstraints();
+        //DB::statement('UPDATE ua_pro.users AS x , ua_forum.users AS y SET x.name = y.name, x.username = y.username, x.confirmed = y.confirmed WHERE x.email = y.email');
+        DB::statement('UPDATE ua_pro.users AS x , ua_forum.users AS y SET x.confirmation_code = y.confirmation_code WHERE x.email = y.email');
+        /*Schema::disableForeignKeyConstraints();
         foreach($homestead_threads as $homestead_thread){
             Thread::firstOrCreate(
                 [
@@ -198,9 +199,9 @@ class AdminController extends Controller
                     'updated_at' => $homestead_subscription->updated_at
                 ]
             );
-        }
+        }*/
         DB::statement("SET SQL_SAFE_UPDATES = 1;");
-        Schema::enableForeignKeyConstraints();
+        //Schema::enableForeignKeyConstraints();
     }
 
     public function changeAuthorIdToUaVersion()

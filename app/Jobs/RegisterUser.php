@@ -69,6 +69,7 @@ final class RegisterUser
             'email' => $this->email,
             'username' => strtolower($this->username),
             //'password'=>$hasher->make($this->password),
+            'confirmation_code' => str_random(60),
             'password'=>bcrypt($this->password),
             'type' => User::DEFAULT,
             'remember_token' => '',
