@@ -22,7 +22,7 @@ class UserPolicy
 
     public function master(User $user, int $tag)
     {
-        return $user->isMasteredBy($tag);
+        return $user->isMasteredBy($tag) || $user->isAdmin();
     }
 
     /**

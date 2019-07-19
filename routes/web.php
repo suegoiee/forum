@@ -59,6 +59,7 @@ Route::prefix('forum')->namespace('Forum')->group(function () {
     Route::get('create-thread', 'ThreadsController@create')->name('threads.create');
     Route::post('create-thread', 'ThreadsController@store')->name('threads.store');
     Route::post('ban-thread', 'ThreadsController@banThreads')->name('threads.ban');
+    Route::post('top-thread', 'ThreadsController@topThreads')->name('threads.top');
 
     Route::get('{thread}', 'ThreadsController@show')->name('thread');
     Route::get('{thread}/edit', 'ThreadsController@edit')->name('threads.edit');

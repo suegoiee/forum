@@ -12,6 +12,7 @@ use App\Jobs\CreateThread;
 use App\Jobs\DeleteThread;
 use App\Jobs\UpdateThread;
 use App\Jobs\BanThread;
+use App\Jobs\TopThread;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\Policies\ThreadPolicy;
@@ -22,6 +23,7 @@ use App\Jobs\UnmarkThreadSolution;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ThreadRequest;
 use App\Http\Requests\BanThreadRequest;
+use App\Http\Requests\TopThreadRequest;
 use App\Jobs\SubscribeToSubscriptionAble;
 use Illuminate\Auth\Middleware\Authenticate;
 use App\Jobs\UnsubscribeFromSubscriptionAble;
@@ -79,6 +81,13 @@ class ThreadsController extends Controller
                     $this->error("您沒有購買相關產品或是產品時效已過期");
                     return redirect()->route("home");
                 }
+            }
+        }
+        else{
+            $test = CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get();
+            if($test){
+                $this->error("請先登入");
+                return redirect()->route("home");
             }
         }
         $author = $thread->author()->username();
@@ -155,14 +164,20 @@ class ThreadsController extends Controller
 
     public function banThreads(Thread $thread, BanThreadRequest $request)
     {
-        //$this->authorize(UserPolicy::ADMIN, App\User::class);
-
         $this->dispatchNow(BanThread::fromRequest($thread, $request));
 
         $this->success("已隱藏此文章");
         
         return back();
-        //return redirect()->route('thread', $thread->slug());
+    }
+
+    public function topThreads(Thread $thread, TopThreadRequest $request)
+    {
+        $this->dispatchNow(TopThread::fromRequest($thread, $request));
+
+        $this->success("已置頂此文章");
+        
+        return back();
     }
 
     public function markSolution(Thread $thread, Reply $reply)

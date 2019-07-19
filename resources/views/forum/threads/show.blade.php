@@ -77,13 +77,12 @@
             @endcan
             
             @if($thread->banThread() != 1)
-                @can(App\Policies\UserPolicy::ADMIN, App\User::class)
+                @can(App\Policies\UserPolicy::MASTER, [App\User::class, $category->id])
                     <a class="btn mgBtn" href="#" data-toggle="modal" data-target="#BanThread">
                         隱藏
                     </a>
-                @elsecan(App\Policies\UserPolicy::MASTER, [App\User::class, $category->id])
-                    <a class="btn mgBtn" href="#" data-toggle="modal" data-target="#BanThread">
-                        隱藏
+                    <a class="btn mgBtn" href="#" data-toggle="modal" data-target="#TopThread">
+                        置頂
                     </a>
                 @endcan
 
@@ -91,9 +90,18 @@
                     'id' => 'BanThread',
                     'route' => ['threads.ban', $thread->slug()],
                     'title' => '隱藏文章',
-                    'body' => '<p>確定要隱藏文章嗎?</p>',
+                    'body' => '<p>確定要隱藏 { '.$thread->subject().' } 嗎?</p>',
                     'ban_id' => $thread->id(),
                 ])
+
+                @include('_partials._ban_modal', [
+                    'id' => 'TopThread',
+                    'route' => ['threads.top', $thread->slug()],
+                    'title' => '置頂文章',
+                    'body' => '<p>確定要置頂 { '.$thread->subject().' } 嗎?</p>',
+                    'ban_id' => $thread->id(),
+                ])
+
             @endif
         </div>    
         <div class="col-md-9" style=" margin-top: 15px;">

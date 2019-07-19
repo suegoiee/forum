@@ -10,6 +10,7 @@ use App\Models\Thread;
 use App\Models\Archive;
 use App\Models\Product;
 use App\Models\Permission;
+use App\Models\Subscription;
 use App\Models\CategoryProduct;
 use App\Jobs\UpdatePermission;
 use App\Jobs\DeleteCategory;
@@ -208,15 +209,19 @@ class AdminController extends Controller
         $ua_thread_authors = Thread::select('author_id')->distinct()->get();
         $ua_archive_authors = Archive::select('author_id')->distinct()->get();
         $ua_replies_authors = Reply::select('author_id')->distinct()->get();
+        $ua_subscription_authors = Subscription::select('user_id')->distinct()->get();
         $homestead_thread_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $ua_thread_authors)->get();
         $homestead_archive_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $ua_archive_authors)->get();
         $homestead_replies_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $ua_replies_authors)->get();
+        $homestead_subscription_email = DB::connection('mysql_3')->table('users')->select('email')->wherein('id', $ua_subscription_authors)->get();
         $arrayid1 = array();
         $arrayid2 = array();
         $arrayid3 = array();
+        $arrayid4 = array();
         $arrayau1 = array();
         $arrayau2 = array();
         $arrayau3 = array();
+        $arrayau4 = array();
         foreach ($ua_thread_authors as $key => $value) {
             $tmp = $value->author_id;
             array_push($arrayid1, $tmp);
@@ -228,6 +233,10 @@ class AdminController extends Controller
         foreach ($ua_replies_authors as $key => $value) {
             $tmp = $value->author_id;
             array_push($arrayid3, $tmp);
+        }
+        foreach ($ua_subscription_authors as $key => $value) {
+            $tmp = $value->user_id;
+            array_push($arrayid4, $tmp);
         }
         foreach ($homestead_thread_email as $key => $value) {
             $tmp = $value->email;
@@ -244,6 +253,11 @@ class AdminController extends Controller
             $tmp_id =  USER::select('id')->where('email', '=', $tmp)->get()[0]->id;
             array_push($arrayau3, $tmp_id);
         }
+        foreach ($homestead_subscription_email as $key => $value) {
+            $tmp = $value->email;
+            $tmp_id =  USER::select('id')->where('email', '=', $tmp)->get()[0]->id;
+            array_push($arrayau4, $tmp_id);
+        }
         for($i = 0; $i < count($arrayid1); $i++){
             Thread::where('author_id', '=', $arrayid1[$i])->update(['author_id' => $arrayau1[$i]]);
         }
@@ -252,6 +266,9 @@ class AdminController extends Controller
         }
         for($i = 0; $i < count($arrayid3); $i++){
             Reply::where('author_id', '=', $arrayid3[$i])->update(['author_id' => $arrayau3[$i]]);
+        }
+        for($i = 0; $i < count($arrayid4); $i++){
+            Subscription::where('user_id', '=', $arrayid4[$i])->update(['user_id' => $arrayau4[$i]]);
         }
     }
 
