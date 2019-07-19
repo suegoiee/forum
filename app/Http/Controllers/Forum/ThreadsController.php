@@ -85,7 +85,7 @@ class ThreadsController extends Controller
         }
         else{
             $test = CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get();
-            if($test){
+            if(!$test->isEmpty()){
                 $this->error("請先登入");
                 return redirect()->route("home");
             }
