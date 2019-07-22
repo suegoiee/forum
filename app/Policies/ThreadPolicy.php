@@ -48,6 +48,7 @@ class ThreadPolicy
                     if(($purchase['productRelation']['id'] === $product['product_id'] && strtotime($purchase['deadline']) > time()) || $purchase['deadline'] == null){
                         $vip = true;
                         break 2;
+                        dd('有買東西', $user, $thread, $products);
                     }
                 }
             }
