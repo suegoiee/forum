@@ -54,10 +54,10 @@ class ThreadsController extends Controller
                         }
                     }
                 }
-                if(Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
-                    dd('管理員');
-                    if(Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
-                        dd('有買東西');
+                if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
+                    dd('不是管理員');
+                    if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
+                        dd('沒有買東西');
                     }
                 }
             }
