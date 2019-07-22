@@ -22,7 +22,6 @@ class UserPolicy
 
     public function master(User $user, int $tag)
     {
-        dd('管理員', $user);
         return $user->isMasteredBy($tag) || $user->isAdmin();
     }
 

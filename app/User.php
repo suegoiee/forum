@@ -166,6 +166,7 @@ final class User extends Authenticatable
     {
         foreach ($this->master() as $master) {
             if($master['category_id'] === $tag){
+                dd($this->master(), $tag);
                 return true;
             }
         }
