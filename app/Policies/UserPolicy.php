@@ -22,6 +22,12 @@ class UserPolicy
 
     public function master(User $user, int $tag)
     {
+        if($user->isMasteredBy($tag)){
+            dd('管理員');
+        }
+        else if($user->isAdmin()){
+            dd('最高管理員');
+        }
         return $user->isMasteredBy($tag) || $user->isAdmin();
     }
 
