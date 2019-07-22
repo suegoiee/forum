@@ -59,6 +59,9 @@ class ThreadsController extends Controller
                     if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
                         dd('沒有買東西');
                     }
+                    else if(Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()])){
+                        dd('有買東西');
+                    }
                 }
             }
         }
