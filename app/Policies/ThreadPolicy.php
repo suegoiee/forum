@@ -45,7 +45,7 @@ class ThreadPolicy
         else{
             foreach ($purchased as $purchase) {
                 foreach($products as $product){
-                    if(($purchase['productRelation']['id'] === $product['product_id'] && strtotime($purchase['deadline']) > time()) || $purchase['deadline'] == null){
+                    if(($purchase['productRelation']['id'] === $product['product_id'] && strtotime($purchase['deadline']) > time()) || ($purchase['productRelation']['id'] === $product['product_id'] && $purchase['deadline'] == null)){
                         dd('有付費', $user, $purchased, $thread, $products);
                         $vip = true;
                         break 2;
