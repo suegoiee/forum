@@ -8,7 +8,7 @@ use App\Models\CategoryProduct;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-trait HasTags
+trait HasCategories
 {
     /**
      * @return \App\Models\Category[]

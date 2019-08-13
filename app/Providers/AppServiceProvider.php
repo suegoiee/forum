@@ -3,13 +3,16 @@
 namespace App\Providers;
 
 use Horizon;
+use Carbon\Carbon;
+use App\Models\Expert;
 use App\Models\Thread;
-use App\Models\Category;
 use App\Models\Archive;
+use App\Models\Category;
+use App\Models\OnlineCourse;
+use App\Models\PhysicalCourse;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\Schema;
-use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,7 +30,10 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             Thread::TABLE => Thread::class,
             Category::TABLE => Category::class,
-            Archive::TABLE => Archive::class
+            Archive::TABLE => Archive::class,
+            OnlineCourse::TABLE => OnlineCourse::class,
+            PhysicalCourse::TABLE => PhysicalCourse::class,
+            Expert::TABLE => Expert::class,
         ]);
     }
 

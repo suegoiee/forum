@@ -53,6 +53,23 @@ Route::put('settings', 'Settings\ProfileController@update')->name('settings.prof
 Route::get('settings/password', 'Settings\PasswordController@edit')->name('settings.password');
 Route::put('settings/password', 'Settings\PasswordController@update')->name('settings.password.update');
 
+// Experts
+Route::prefix('experts')->name('experts')->namespace('Experts')->group(function () {
+    Route::get('/', 'ExpertController@overview');
+    Route::get('/{expert_id}', 'ExpertController@show')->name('.profile');
+});
+
+// Courses
+Route::prefix('courses')->name('courses')->namespace('Courses')->group(function () {
+    Route::get('/', 'CourseController@overview');
+    Route::get('/online', 'CourseController@Online')->name('.online');
+    Route::get('/online/{online_courses_id}', 'CourseController@showOnline')->name('.online.show');
+    Route::get('/online/{online_courses_id}/signIn', 'CourseController@onlineSignIn')->name('.online.signIn');
+    Route::get('/pysical', 'CourseController@Pysical')->name('.pysical');
+    Route::get('/pysical/{pysical_courses_id}', 'CourseController@showPysical')->name('.pysical.show');
+    Route::get('/pysical/{pysical_courses_id}/signIn', 'CourseController@physicalSignIn')->name('.pysical.signIn');
+});
+
 // Forum
 Route::prefix('forum')->namespace('Forum')->group(function () {
     Route::get('/', 'ThreadsController@overview')->name('forum');
@@ -70,7 +87,7 @@ Route::prefix('forum')->namespace('Forum')->group(function () {
     Route::get('{thread}/subscribe', 'ThreadsController@subscribe')->name('threads.subscribe');
     Route::get('{thread}/unsubscribe', 'ThreadsController@unsubscribe')->name('threads.unsubscribe');
 
-    Route::get('tags/{tag}', 'TagsController@show')->name('forum.tag');
+    Route::get('tags/{tag}', 'CategoriesController@show')->name('forum.tag');
 });
 
 // Replies
@@ -146,5 +163,5 @@ Route::prefix('blogs')->namespace('Blogs')->group(function () {
     Route::put('{archive}', 'ArchivesController@update')->name('archives.update');
     Route::delete('{archive}', 'ArchivesController@delete')->name('archives.delete');
 
-    Route::get('tags/{tag}', 'TagsController@show')->name('blogs.tag');
+    Route::get('tags/{tag}', 'CategoriesController@show')->name('blogs.tag');
 });

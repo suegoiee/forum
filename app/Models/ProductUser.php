@@ -7,14 +7,14 @@ use App\Helpers\HasProduct;
 use App\Helpers\HasPermissions;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
-use App\Helpers\HasTags;
+use App\Helpers\HasCategories;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BeLongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 final class ProductUser extends Model
 {
-    use HasAuthor, HasTags, HasTimestamps, ModelHelpers, HasPermissions;
+    use HasAuthor, HasCategories, HasTimestamps, ModelHelpers, HasPermissions;
 
     const TABLE = 'product_user';
     /**

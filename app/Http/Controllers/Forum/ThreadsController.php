@@ -54,20 +54,6 @@ class ThreadsController extends Controller
                         }
                     }
                 }
-                /*if(!Gate::check(UserPolicy::MASTER, [User::class, $thread->tags()[0]->id])){
-                    if(!Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()]) ){
-                        $test = CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get();
-                        if(!empty($test[0])){
-                            dd('沒有買東西', $thread->tags()[0]->id, CategoryProduct::all(), $test);
-                        }
-                    }
-                    else if(Gate::check(ThreadPolicy::ISVIP, [$thread, CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get()])){
-                        $test = CategoryProduct::where('category_id', '=', $thread->tags()[0]->id)->get();
-                        if(!empty($test[0])){
-                            dd('有買東西', $thread->tags()[0]->id, CategoryProduct::all(), $test);
-                        }
-                    }
-                }*/
             }
         }
         else{

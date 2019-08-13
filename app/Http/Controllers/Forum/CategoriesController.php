@@ -10,7 +10,7 @@ use App\Policies\ThreadPolicy;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Gate;
 
-class TagsController extends Controller
+class CategoriesController extends Controller
 {
     public function show(Category $tag)
     {
