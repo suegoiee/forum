@@ -6,7 +6,7 @@ use App\Models\Category;
 use App\Models\Archive;
 use App\Http\Controllers\Controller;
 
-class TagsController extends Controller
+class CategoriesController extends Controller
 {
     public function show(Category $tag)
     {

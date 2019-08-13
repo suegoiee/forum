@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Reply;
 use App\Models\Thread;
+use App\Models\Expert;
 use App\Models\Archive;
 use App\Models\Permission;
 use App\Models\ProductUser;
@@ -14,6 +15,7 @@ use App\Helpers\HasPermissions;
 use App\Helpers\HasProduct;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BeLongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
@@ -233,6 +235,11 @@ final class User extends Authenticatable
     public function archivesRelation(): HasMany
     {
         return $this->hasMany(Archive::class, 'author_id');
+    }
+
+    public function expertRelation(): HasOne
+    {
+        return $this->hasOne(Expert::class, 'user_id');
     }
 
     /**

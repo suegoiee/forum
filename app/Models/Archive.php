@@ -4,7 +4,7 @@ namespace App\Models;
 
 use DB;
 use App\Helpers\HasSlug;
-use App\Helpers\HasTags;
+use App\Helpers\HasCategories;
 use App\Helpers\HasAuthor;
 use App\Helpers\ModelHelpers;
 use App\Helpers\HasTimestamps;
@@ -19,7 +19,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Archive extends Model implements ReplyAble, SubscriptionAble
 {
-    use HasAuthor, HasSlug, HasTimestamps, ModelHelpers, ProvidesSubscriptions, ReceivesReplies, HasTags;
+    use HasAuthor, HasSlug, HasTimestamps, ModelHelpers, ProvidesSubscriptions, ReceivesReplies, HasCategories;
 
     const TABLE = 'archives';
 

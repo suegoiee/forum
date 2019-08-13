@@ -24,3 +24,12 @@ Route::bind('archive', function (string $slug) {
 Route::bind('username', function (string $username) {
     return App\User::findByUsername($username);
 });
+Route::bind('expert_id', function (string $expert_id) {
+    return App\Models\Expert::findByExpertId($expert_id);
+});
+Route::bind('online_courses_id', function (string $course) {
+    return App\Models\OnlineCourse::findByCourseId($course);
+});
+Route::bind('pysical_courses_id', function (string $course) {
+    return App\Models\PhysicalCourse::findByCourseId($course);
+});

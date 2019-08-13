@@ -88,6 +88,18 @@
                     </a>
                 </li>
 
+                <li class=" {{ active(['experts*']) }}">
+                    <a class="nav-font" href="{{ route('experts') }}">
+                        <i class="fas fa-chalkboard-teacher"></i> 達人專區 
+                    </a>
+                </li>
+
+                <li class=" {{ active(['courses*']) }}">
+                    <a class="nav-font" href="{{ route('courses') }}">
+                        <i class="fas fa-school"></i> 課程專區 
+                    </a>
+                </li>
+
                 <li class="dropdown {{ active('Tools*') }}">
                     <a href="#" class="dropdown-toggle nav-font down" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-calculator"></i>  小工具  <span class="triangle-down"></span></a>
                     <ul class="dropdown-menu">

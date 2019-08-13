@@ -4,7 +4,7 @@ namespace App\Models;
 
 use DB;
 use App\Helpers\HasSlug;
-use App\Helpers\HasTags;
+use App\Helpers\HasCategories;
 use App\Helpers\HasAuthor;
 use App\Helpers\HasProduct;
 use App\Helpers\ModelHelpers;
@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 final class Thread extends Model implements ReplyAble, SubscriptionAble
 {
-    use HasAuthor, HasSlug, HasTimestamps, ModelHelpers, ProvidesSubscriptions, ReceivesReplies, HasTags, SoftDeletes;
+    use HasAuthor, HasSlug, HasTimestamps, ModelHelpers, ProvidesSubscriptions, ReceivesReplies, HasCategories, SoftDeletes;
 
     const TABLE = 'threads';
     protected $dates = ['deleted_at'];
