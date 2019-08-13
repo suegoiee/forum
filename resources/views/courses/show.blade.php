@@ -27,11 +27,11 @@
                 @foreach($course->expertRelation as $expert)
                     <div class="card container" style="width:100%; position:relative; float:top; margin:4%;">
                         <a href="{{route('experts.profile', $expert->id)}}">
-                            <img class="card-img-top" src="{{$expert->avatar}}" alt="Card image" style="width:30%; position:relative; float:left;">
+                            {!!$expert->avatar!!}
                         </a>
                         <div class="card-body" style="width:60%; position:relative; float:left;">
                             <h4 class="card-title">{{$expert->expert_name}}</h4>
-                            <p class="card-text">{{$expert->short_intro}}</p>
+                            <p class="card-text">{!!$expert->introduction!!}</p>
                         </div>
                     </div>
                 @endforeach
@@ -41,11 +41,11 @@
                 @foreach($associated as $associate)
                     <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
                         <a href="{{route('courses.online.show', $associate->id)}}">
-                            <img class="card-img-top" src="{{$associate->image}}" alt="Card image" style="width:100%">
+                            {!!$associate->image!!}
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">{{$associate->name}}</h4>
-                            <p class="card-text">{{$associate->introduction}}</p>
+                            <p class="card-text">{!!$associate->introduction!!}</p>
                         </div>
                     </div>
                 @endforeach
