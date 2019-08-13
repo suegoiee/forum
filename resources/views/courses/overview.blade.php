@@ -15,7 +15,7 @@
                     @else
                         <a href="{{route('courses.online.show', $popularCourse->id)}}">
                     @endif
-                        <img class="card-img-top" src="{{$popularCourse->image}}" alt="Card image" style="width:100%">
+                        {!!$popularCourse->image!!}
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$popularCourse->name}}</h4>
@@ -31,7 +31,7 @@
             @foreach($physicalCourses as $physicalCourse)
                 <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
                     <a href="{{route('courses.pysical.show', $physicalCourse->id)}}">
-                        <img class="card-img-top" src="{{$physicalCourse->image}}" alt="Card image" style="width:100%">
+                        {!!$physicalCourse->image!!}
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$physicalCourse->name}}</h4>

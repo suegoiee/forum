@@ -9,11 +9,11 @@
             @foreach($onlineCourses as $onlineCourse)
                 <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
                     <a href="{{route('courses.online.show', $onlineCourse->id)}}">
-                        <img class="card-img-top" src="{{$onlineCourse->image}}" alt="Card image" style="width:100%">
+                        {!!$onlineCourse->image!!}
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$onlineCourse->name}}</h4>
-                        <p class="card-text">{{$onlineCourse->introduction}}</p>
+                        {!!$onlineCourse->introduction!!}
                     </div>
                 </div>
             @endforeach
