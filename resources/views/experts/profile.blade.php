@@ -12,6 +12,7 @@
                 <p class="card-text">適合投資期: {!!$expert->investment_period!!}</p>
                 <p class="card-text">著作: {!!$expert->book!!}</p>
                 <p class="card-text">資歷: {!!$expert->experience!!}</p>
+                <p class="card-text">專訪: {!!$expert->interview!!}</p>
             </div>
             <div class="card-body" style="width:100%; position:relative; float:left;">
                 @include('experts._latest_content')
