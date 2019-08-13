@@ -8,7 +8,7 @@
             <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
                 <div class="card-img-top">
                     <a href="{{route('experts.profile', $expert->id)}}">
-                        {!!$expert->image!!}
+                        {!!$expert->avatar!!}
                     </a>
                 </div>
                 <div class="card-body">
