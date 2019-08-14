@@ -14,8 +14,8 @@ class CourseController extends Controller
 {
     public function overview()
     {
-        $physicalCourses = PhysicalCourse::with(['expertRelation', 'tagRelation'])->get();
-        $onlineCourses = OnlineCourse::with(['expertRelation', 'tagRelation'])->get();
+        $physicalCourses = PhysicalCourse::with(['expertRelation', 'tagRelation'])->where('status', 1)->get();
+        $onlineCourses = OnlineCourse::with(['expertRelation', 'tagRelation'])->where('status', 1)->get();
         $popularCourses = array();
         foreach($physicalCourses as $physicalCourse){
             if(!empty($physicalCourse->tagRelation[0])){
@@ -80,7 +80,7 @@ class CourseController extends Controller
 
     public function Pysical(PhysicalCourse $course)
     {
-        $physicalCourses = PhysicalCourse::with(['expertRelation', 'tagRelation'])->get();
+        $physicalCourses = PhysicalCourse::with(['expertRelation', 'tagRelation'])->where('status', 1)->get();
         return view('courses.physical', compact('physicalCourses'));
     }
 
@@ -91,6 +91,7 @@ class CourseController extends Controller
 
     public function Online(OnlineCourse $course)
     {
+        $onlineCourses = OnlineCourse::with(['expertRelation', 'tagRelation'])->where('status', 1)->get();
         return view('courses.online', compact('onlineCourses'));
     }
 
