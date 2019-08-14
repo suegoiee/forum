@@ -10,17 +10,19 @@
             <h3>熱門課程</h3>
             @foreach($popularCourses as $popularCourse)
                 <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
-                    @if($popularCourse->location)
-                        <a href="{{route('courses.pysical.show', $popularCourse->id)}}">
-                    @else
-                        <a href="{{route('courses.online.show', $popularCourse->id)}}">
-                    @endif
-                        {!!$popularCourse->image!!}
-                    </a>
-                    <div class="card-body">
-                        <h4 class="card-title">{{$popularCourse->name}}</h4>
-                        <p class="card-text">{!!$popularCourse->introduction!!}</p>
+                    <div style="width:100%">
+                        @if($popularCourse->location)
+                            <a href="{{route('courses.pysical.show', $popularCourse->id)}}">
+                        @else
+                            <a href="{{route('courses.online.show', $popularCourse->id)}}">
+                        @endif
+                            <img class="card-img-top" src="{{$popularCourse->image}}" alt="Card image cap">
+                        </a>
                     </div>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">{{$popularCourse->name}}</h4>
+                    <p class="card-text">{!!$popularCourse->introduction!!}</p>
                 </div>
             @endforeach
         </div>
@@ -31,7 +33,7 @@
             @foreach($physicalCourses as $physicalCourse)
                 <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
                     <a href="{{route('courses.pysical.show', $physicalCourse->id)}}">
-                        {!!$physicalCourse->image!!}
+                        <img class="card-img-top" src="{{$physicalCourse->image}}" alt="Card image cap">
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$physicalCourse->name}}</h4>
@@ -47,7 +49,7 @@
             @foreach($onlineCourses as $onlineCourse)
                 <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
                     <a href="{{route('courses.online.show', $onlineCourse->id)}}">
-                    {!!$onlineCourse->image!!}
+                        <img class="card-img-top" src="{{$onlineCourse->image}}" alt="Card image cap">
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$onlineCourse->name}}</h4>

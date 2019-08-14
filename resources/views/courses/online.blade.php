@@ -13,7 +13,7 @@
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$onlineCourse->name}}</h4>
-                        {!!$onlineCourse->introduction!!}
+                        <img class="card-img-top" src="{{$onlineCourse->image}}" alt="Card image cap">
                     </div>
                 </div>
             @endforeach
