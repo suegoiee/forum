@@ -9,11 +9,10 @@
             @foreach($onlineCourses as $onlineCourse)
                 <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
                     <a href="{{route('courses.online.show', $onlineCourse->id)}}">
-                        {!!$onlineCourse->image!!}
+                        <img class="card-img-top" src="{{env('API_URL').'storage/'.$onlineCourse->image}}" alt="Card image cap">
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$onlineCourse->name}}</h4>
-                        <img class="card-img-top" src="{{$onlineCourse->image}}" alt="Card image cap">
                     </div>
                 </div>
             @endforeach
