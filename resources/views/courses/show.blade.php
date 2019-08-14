@@ -5,7 +5,7 @@
 @section('content')
     <div class="container" id="CanvasBaseMap" style="padding-top: 65px;">
         <div class="card" style="width: 100%; margin: 4%">
-            <img src="{{$course->image}}" style="width:100%">
+            <img src="{{env('API_URL').'storage/'.$course->image}}" style="width:100%">
             <div style="text-align:right;">
                 @if($course->location)
                     <a class="btn" style="margin-right: 8px;" href="{{route('courses.pysical.signIn', $course->id)}}">報名</a>
@@ -41,7 +41,7 @@
                 @foreach($associated as $associate)
                     <div class="card" style="width:25%; position:relative; float:left; margin:4%;">
                         <a href="{{route('courses.online.show', $associate->id)}}">
-                            <img class="card-img-top" src="{{$associate->image}}" alt="Card image cap">
+                            <img class="card-img-top" src="{{env('API_URL').'storage/'.$associate->image}}" alt="Card image cap">
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">{{$associate->name}}</h4>
