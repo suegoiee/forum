@@ -27,7 +27,7 @@
                 @foreach($course->expertRelation as $expert)
                     <div class="card container" style="width:100%; position:relative; float:top; margin:4%;">
                         <a href="{{route('experts.profile', $expert->id)}}">
-                            {!!$expert->avatar!!}
+                            <img src="{{env('API_URL').'storage/'.$expert->avatar}}">
                         </a>
                         <div class="card-body" style="width:60%; position:relative; float:left;">
                             <h4 class="card-title">{{$expert->expert_name}}</h4>

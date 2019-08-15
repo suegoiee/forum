@@ -5,7 +5,7 @@
 @section('content')
     <div class="container" id="CanvasBaseMap" style="padding-top: 65px;">
         <div class="card" style="width: 100%; margin: 4%">
-                <img src="{{env('API_URL').'storage/'.$expert->avatar}}">
+            <img src="{{env('API_URL').'storage/'.$expert->avatar}}">
             <div class="card-body" style="width:60%; position:relative; float:left;">
                 <h4 class="card-title">{{$expert->expert_name}}</h4>
                 <p class="card-text">{!!$expert->introduction!!}</p>
