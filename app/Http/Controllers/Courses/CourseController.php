@@ -9,9 +9,16 @@ use App\Models\PhysicalCourse;
 use App\Models\OnlineCourse;
 use App\Models\expertable;
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Middleware\Authenticate;
+use App\Http\Middleware\RedirectIfUnconfirmed;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware([Authenticate::class, RedirectIfUnconfirmed::class], ['only' => ['physicalSignIn', 'onlineSignIn']]);
+    }
+
     public function overview()
     {
         $physicalCourses = PhysicalCourse::with(['expertRelation', 'tagRelation'])->where('status', 1)->get();
