@@ -16,18 +16,19 @@
             <div class="card-body" style="width:100%; position:relative; float:top;">
                 <h4 class="card-title">{{$course->name}}</h4>
                 {!!$course->introduction!!}
-                <p class="card-text">上課日期: {{$course->date}}</p>
+                <p class="card-text">上課日期: {{$course->date}} ~ {{$course->end_date}}</p>
                 @if($course->location)
                     <p class="card-text">上課地點: {{$course->location}}</p>
                 @endif
                 <p class="card-text">名額上限: {{$course->quota}}</p>
                 <p class="card-text">主辦單位: {!!$course->host!!}</p>
+                <p class="card-text">適合對象: {!!$course->Suitable!!}</p>
             </div>
             <div class="card-body" style="width:100%; position:relative; float:top;">
                 @foreach($course->expertRelation as $expert)
-                    <div class="card container" style="width:100%; position:relative; float:top; margin:4%;">
-                        <a href="{{route('experts.profile', $expert->id)}}">
-                            <img src="{{env('API_URL').'storage/'.$expert->avatar}}">
+                    <div class="card container" style="width:100%; position:relative; float:top; margin-top:15px;">
+                        <a href="{{route('experts.profile', $expert->id)}}" style="width:40%; position:relative; float:left;">
+                            <img class="card-img-top" src="{{env('API_URL').'storage/'.$expert->avatar}}">
                         </a>
                         <div class="card-body" style="width:60%; position:relative; float:left;">
                             <h4 class="card-title">{{$expert->expert_name}}</h4>

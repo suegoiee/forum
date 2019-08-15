@@ -7,21 +7,22 @@
         <div class="col-md-9 ">
             <h1>個人資訊</h1>
             {!! Form::open(['route' => 'forum', 'method' => $method ?? 'POST','class' => 'buildThread']) !!}
+                <a id="bring_in" class="btn" style = "width: auto !important; display:inline-block;  margin-top:0;">帶入基本資料</a>
                 @formGroup('subject')
                     {!! Form::label('真實姓名') !!}
-                    {!! Form::text('name', null, ['class' => 'inputText', 'required']) !!}
+                    {!! Form::text('name', null, ['class' => 'inputText', 'required', 'id' => 'realName']) !!}
                 @endFormGroup
                 @formGroup('subject')
                     {!! Form::label('性別') !!}
-                    {!! Form::select('sex', array('1' => '男', '2' => '女'), '1') !!}
+                    {!! Form::select('sex', array('1' => '男', '2' => '女'), '1', ['id' => 'gender']) !!}
                 @endFormGroup
                 @formGroup('subject')
                     {!! Form::label('聯絡信箱') !!}
-                    {!! Form::email('email', null, ['class' => 'inputText', 'required']) !!}
+                    {!! Form::email('email', null, ['class' => 'inputText', 'required', 'id' => 'email']) !!}
                 @endFormGroup
                 @formGroup('subject')
                     {!! Form::label('連絡電話') !!}
-                    {!! Form::number('phone', null, ['class' => 'inputText', 'required']) !!}
+                    {!! Form::number('phone', null, ['class' => 'inputText', 'required', 'id' => 'tel']) !!}
                     <span class="help-block">請輸入完整電話 (例:0987654321)</span>
                 @endFormGroup
                 @formGroup('subject')
@@ -38,7 +39,7 @@
                 @endFormGroup
                 @formGroup('body')
                     {!! Form::label('備註') !!}
-                    {!! Form::text('comment', null, ['class' => 'inputText', 'required']) !!}
+                    {!! Form::text('comment', null, ['class' => 'inputText']) !!}
                 @endFormGroup
 
                 {!! Form::submit(isset($thread) ? '前往付費網頁' : '前往付費網頁', ['class' => 'btn','style' => 'width: auto !important;float:right; display:inline-block;' ]) !!}
@@ -54,4 +55,15 @@
             </div>
         </div>
     </div>
+    <script>
+        window.onload=function () {
+            var user = {!! auth()->user() !!};
+            $(document).on('click', "#bring_in", function () {
+                $("#realName").val(user.name);
+                $("#gender").val();
+                $("#email").val(user.email);
+                $("#tel").val();
+            });
+        }
+    </script>
 @endsection
