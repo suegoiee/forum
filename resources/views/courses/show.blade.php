@@ -45,7 +45,7 @@
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">{{$associate->name}}</h4>
-                            <p class="card-text">{!!$associate->introduction!!}</p>
+                            <p class="card-text">{!! str_limit(strip_tags($associate->introduction), 100) !!}</p>
                         </div>
                     </div>
                 @endforeach

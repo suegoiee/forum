@@ -19,10 +19,10 @@
                             <img class="card-img-top" src="{{env('API_URL').'storage/'.$popularCourse->image}}" alt="Card image cap">
                         </a>
                     </div>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">{{$popularCourse->name}}</h4>
-                    <p class="card-text">{!!$popularCourse->introduction!!}</p>
+                    <div class="card-body">
+                        <h4 class="card-title">{{$popularCourse->name}}</h4>
+                        <p class="card-text">{!! str_limit(strip_tags($popularCourse->introduction), 100) !!}</p>
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -37,7 +37,7 @@
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$physicalCourse->name}}</h4>
-                        <p class="card-text">{!!$physicalCourse->introduction!!}</p>
+                        <p class="card-text">{!! str_limit(strip_tags($physicalCourse->introduction), 100) !!}</p>
                     </div>
                 </div>
             @endforeach
@@ -53,7 +53,7 @@
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$onlineCourse->name}}</h4>
-                        <p class="card-text">{!!$onlineCourse->introduction!!}</p>
+                        <p class="card-text">{!! str_limit(strip_tags($onlineCourse->introduction), 100) !!}</p>
                     </div>
                 </div>
             @endforeach

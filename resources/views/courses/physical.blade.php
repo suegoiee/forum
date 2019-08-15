@@ -13,7 +13,7 @@
                     </a>
                     <div class="card-body">
                         <h4 class="card-title">{{$physicalCourse->name}}</h4>
-                        {!!$physicalCourse->introduction!!}
+                        <p class="card-text">{!! str_limit(strip_tags($physicalCourse->introduction), 100) !!}</p>
                     </div>
                 </div>
             @endforeach
