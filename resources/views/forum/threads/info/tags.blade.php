@@ -4,6 +4,7 @@
             <a href="{{ route('forum.tag', $tag->slug()) }}">
                 <span class="label label-default">{{ $tag->name() }}</span>
             </a>
+            @break
         @endforeach
     </div>
 @endif
