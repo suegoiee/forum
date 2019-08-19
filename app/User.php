@@ -6,6 +6,7 @@ use App\Models\Reply;
 use App\Models\Thread;
 use App\Models\Expert;
 use App\Models\Archive;
+use App\Models\Profile;
 use App\Models\Permission;
 use App\Models\ProductUser;
 use App\Models\Category;
@@ -131,6 +132,16 @@ final class User extends Authenticatable
         return (int) $this->type;
     }
 
+    public function phone(): string
+    {
+        return (string) $this->phone;
+    }
+
+    public function address(): string
+    {
+        return (string) $this->address;
+    }
+
     public function isModerator(): bool
     {
         return $this->type() === self::MODERATOR;
@@ -240,6 +251,11 @@ final class User extends Authenticatable
     public function expertRelation(): HasOne
     {
         return $this->hasOne(Expert::class, 'user_id');
+    }
+
+    public function profileRelation(): HasOne
+    {
+        return $this->hasOne(Profile::class, 'user_id');
     }
 
     /**

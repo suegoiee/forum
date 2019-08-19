@@ -21,6 +21,9 @@ final class Profile extends Model
         'user_id',
         'name',
         'nickname',
+        'sex',
+        'address',
+        'phone',
     ];
 
     public function user_id(): int

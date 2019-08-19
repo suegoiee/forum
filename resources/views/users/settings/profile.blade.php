@@ -13,7 +13,7 @@
                 </div>
 
                 @formGroup('name')
-                    {!! Form::label('姓名', null, ['class' => 'col-md-3 control-label']) !!}
+                    {!! Form::label('真實姓名', null, ['class' => 'col-md-3 control-label']) !!}
 
                     <div class="col-md-12">
                         {!! Form::text('name', Auth::user()->name(), ['class' => 'inputText', 'required']) !!}
@@ -27,6 +27,32 @@
                     <div class="col-md-12">
                         {!! Form::email('email', Auth::user()->emailAddress(), ['class' => 'inputText', 'required']) !!}
                         @error('email')
+                    </div>
+                @endFormGroup
+
+                @formGroup('address')
+                    {!! Form::label('地址', null, ['class' => 'col-md-3 control-label']) !!}
+
+                    <div class="col-md-12">
+                        @if(isset(Auth::user()->profileRelation))
+                            {!! Form::text('address', Auth::user()->profileRelation->address, ['class' => 'inputText']) !!}
+                        @else
+                            {!! Form::text('address', '', ['class' => 'inputText']) !!}
+                        @endif
+                        @error('address')
+                    </div>
+                @endFormGroup
+
+                @formGroup('phone')
+                    {!! Form::label('電話', null, ['class' => 'col-md-3 control-label']) !!}
+
+                    <div class="col-md-12">
+                        @if(isset(Auth::user()->profileRelation))
+                            {!! Form::text('phone', Auth::user()->profileRelation->phone, ['class' => 'inputText']) !!}
+                        @else
+                            {!! Form::text('phone', '', ['class' => 'inputText']) !!}
+                        @endif
+                        @error('phone')
                     </div>
                 @endFormGroup
 

@@ -58,11 +58,12 @@
     <script>
         window.onload=function () {
             var user = {!! auth()->user() !!};
+            var profile = @json(auth()->user()->profileRelation);
             $(document).on('click', "#bring_in", function () {
                 $("#realName").val(user.name);
-                $("#gender").val();
+                $("#gender").val(profile.sex);
                 $("#email").val(user.email);
-                $("#tel").val();
+                $("#tel").val(profile.phone);
             });
         }
     </script>

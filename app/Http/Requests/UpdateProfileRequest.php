@@ -12,6 +12,8 @@ class UpdateProfileRequest extends Request
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users,email,'.Auth::id(),
             'username' => 'required|max:255'.Auth::id(),
+            'address',
+            'phone',
             'bio' => 'max:160',
         ];
     }
@@ -19,6 +21,16 @@ class UpdateProfileRequest extends Request
     public function bio(): string
     {
         return (string) $this->get('bio', '');
+    }
+
+    public function address(): string
+    {
+        return (string) $this->get('address');
+    }
+
+    public function phone(): string
+    {
+        return (string) $this->get('phone');
     }
 
     public function name(): string
