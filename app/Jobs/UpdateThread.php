@@ -38,7 +38,10 @@ final class UpdateThread
         $this->thread->update($this->attributes);
 
         if (array_has($this->attributes, 'tags')) {
-            $this->thread->syncTags($this->attributes['tags']);
+            if($this->thread->tagsRelation[0]['id'] != $this->attributes['tags'][0]){
+                $this->thread->removeTags();
+                $this->thread->syncTags($this->attributes['tags']);
+            }
         }
 
         $this->thread->save();
