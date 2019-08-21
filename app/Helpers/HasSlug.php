@@ -16,7 +16,13 @@ trait HasSlug
 
     public static function findBySlug(string $slug): self
     {
-        return static::where('slug', $slug)->firstOrFail();
+        $replace = array(":", "/", "?", "#", "&", "=", "%", "{", "}");
+        $replace_url = array();
+        for($i = 0; $i < count($replace); $i++){
+            array_push($replace_url, urlencode($replace[$i]));
+        }
+        $url = str_replace($replace, $replace_url, $slug);
+        return static::where('slug', $url)->firstOrFail();
     }
 
     private function generateUniqueSlug(string $value): string
@@ -46,8 +52,12 @@ trait HasSlug
 
     private function parseurl(string $slug)
     {
-        $replace = array(":", "/", "@", "?", "%", "#", ".", "&", "=", "~", '\\', '{', '}', '(', ')', ';', '"', '!', '^', '*', '+');
-        $url = str_replace($replace, '-', $slug);
+        $replace = array(":", "/", "?", "#", "&", "=", "%", "{", "}");
+        $replace_url = array();
+        for($i = 0; $i < count($replace); $i++){
+            array_push($replace_url, urlencode($replace[$i]));
+        }
+        $url = str_replace($replace, $replace_url, $slug);
         return $url;
     }
         

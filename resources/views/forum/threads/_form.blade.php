@@ -1,8 +1,8 @@
 {!! Form::open(['route' => $route, 'method' => $method ?? 'POST','class' => 'buildThread']) !!}
     @formGroup('subject')
         {!! Form::label('標題') !!}
-        {!! Form::text('subject', isset($thread) ? $thread->subject() : null, ['class' => 'inputText', 'required', 'maxlength' => '60']) !!}
-        <span class="help-block">字數不可超過60字!</span>
+        {!! Form::text('subject', isset($thread) ? $thread->subject() : null, ['class' => 'inputText', 'required', 'maxlength' => '60', 'id' => 'thread_title', 'onpaste' => 'return false']) !!}
+        <span class="help-block" id="invalid_title_text">字數不可超過60字!</span>
         @error('subject')
     @endFormGroup
 

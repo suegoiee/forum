@@ -53,7 +53,7 @@ final class CreateArchive
         $archive = new Archive([
             'subject' => $this->subject,
             'body' => $this->body,
-            'slug' => urlencode($this->subject),
+            'slug' => $this->subject,
         ]);
         $archive->authoredBy($this->author);
         $archive->syncTags($this->tags);

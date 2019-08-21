@@ -28,7 +28,7 @@ final class UpdateThread
         return new static($thread, [
             'subject' => $request->subject(),
             'body' => $request->body(),
-            'slug' => urlencode($request->subject()),
+            'slug' => $request->subject(),
             'tags' => $request->tags(),
         ]);
     }
