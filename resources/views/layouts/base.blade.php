@@ -133,7 +133,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script src="/js/navBar.js"></script>
 <script src="/js/freebie.js"></script>
 <script src="/js/NewComponent.js"></script>
-<script src="/js/forum/validInput.js"></script>
+<!--script src="/js/forum/validInput.js"></script-->
 <script type="text/javascript" src="/js/html2canvas.js"></script>
 <script>
     $(document).ready(function() {
