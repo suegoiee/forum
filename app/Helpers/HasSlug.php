@@ -52,10 +52,13 @@ trait HasSlug
 
     private function parseurl(string $slug)
     {
-        $replace = array(":", "/", "?", "#", "&", "=", "%", "{", "}");
+        $replace = array(":", "?", "#", "&", "=", "%", "{", "}");
         $replace_url = array();
         for($i = 0; $i < count($replace); $i++){
             array_push($replace_url, urlencode($replace[$i]));
+        }
+        if (strpos($slug, '/') == true) {
+            $slug = str_replace('/', '-', $slug);
         }
         $url = str_replace($replace, $replace_url, $slug);
         return $url;
