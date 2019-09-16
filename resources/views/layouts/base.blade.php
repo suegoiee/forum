@@ -116,25 +116,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!--for development-->
 <!--link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'-->
 <!--link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css"-->
-<!--script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script-->
 <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-<script src="/js/Highcharts-7.1.1/code/highcharts.js"></script>
-<script src="/js/Highcharts-7.1.1/code/highcharts-more.js"></script>
-<script src="/js/Highcharts-7.1.1/code/modules/series-label.js"></script>
-<script src="/js/Highcharts-7.1.1/code/modules/exporting.js"></script>
-<script src="/js/Highcharts-7.1.1/code/modules/export-data.js"></script>
-<script src="/js/dropdownTitle.js"></script>
-<script src="/js/ckfinder/ckfinder.js"></script>
-<script src="/js/errorode.js"></script>
-<script src="/js/addToge.js"></script>
-<script src="/js/cal.js"></script>
-<script src="/js/formCheck.js"></script>
-<script src="/js/npv.js"></script>
-<script src="/js/navBar.js"></script>
-<script src="/js/freebie.js"></script>
-<script src="/js/NewComponent.js"></script>
-<!--script src="/js/forum/validInput.js"></script-->
-<script type="text/javascript" src="/js/html2canvas.js"></script>
+<script src="{{ asset('/js/Highcharts-7.1.1/code/highcharts.js') }}"></script>
+<script src="{{ asset('/js/Highcharts-7.1.1/code/highcharts-more.js') }}"></script>
+<script src="{{ asset('/js/Highcharts-7.1.1/code/modules/series-label.js') }}"></script>
+<script src="{{ asset('/js/Highcharts-7.1.1/code/modules/exporting.js') }}"></script>
+<script src="{{ asset('/js/Highcharts-7.1.1/code/modules/export-data.js') }}"></script>
+<script src="{{ asset('/js/dropdownTitle.js') }}"></script>
+<script src="{{ asset('/js/ckfinder/ckfinder.js') }}"></script>
+<script src="{{ asset('/js/errorode.js') }}"></script>
+<script src="{{ asset('/js/addToge.js') }}"></script>
+<script src="{{ asset('/js/cal.js') }}"></script>
+<script src="{{ asset('/js/formCheck.js') }}"></script>
+<script src="{{ asset('/js/npv.js') }}"></script>
+<script src="{{ asset('/js/navBar.js') }}"></script>
+<script src="{{ asset('/js/freebie.js') }}"></script>
+<script src="{{ asset('/js/NewComponent.js') }}"></script>
+<!--script src="{{ asset('/js/forum/validInput.js') }}"></script-->
+<script type="text/javascript" src="{{ asset('/js/html2canvas.js') }}"></script>
 <script>
     $(document).ready(function() {
         if($("textarea[name='body']").length){
