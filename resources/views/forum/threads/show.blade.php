@@ -11,6 +11,7 @@
                     $category = $tag;
                 @endphp
                 <h1>{{ $tag->name() }}</h1>
+                @break
             @endforeach
             <div class="formDrop"  style="margin-top: 6%;">
                 <a class="dropdownTitle" role="button" data-target="#titleTable" data-toggle="collapse" aria-expanded="false">
