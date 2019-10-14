@@ -292,6 +292,7 @@ class FreebieController extends Controller
     }
 
     function number_format_unchanged_precision($number, $dec_point='.', $thousands_sep=','){
+        $number = (float) $number;
         if($dec_point==$thousands_sep){
             trigger_error('2 parameters for ' . __METHOD__ . '() have the same value, that is "' . $dec_point . '" for $dec_point and $thousands_sep', E_USER_WARNING);
             // It corresponds "PHP Warning:  Wrong parameter count for number_format()", which occurs when you use $dec_point without $thousands_sep to number_format().
