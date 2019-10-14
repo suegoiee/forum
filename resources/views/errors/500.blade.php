@@ -1,4 +1,4 @@
-@title('Something went wrong')
+@title('發生錯誤')
 
 @extends('layouts.base', ['disableAds' => true])
 
@@ -6,8 +6,7 @@
     <div class="jumbotron text-center">
         <h1>{{ $title }}</h1>
         <p>
-            We've been notified and will try to fix the problem as soon as possible.<br>
-            Please <a href="https://github.com/laravelio/portal/issues/new">open a Github issue</a> if the problem persists.
+            請繼續瀏覽其他 <a href="{{env('APP_URL')}}">優分析論壇</a> 的內容，我們會盡速處理。
         </p>
     </div>
 @endsection
