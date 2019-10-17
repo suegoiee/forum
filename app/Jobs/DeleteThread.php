@@ -18,6 +18,6 @@ final class DeleteThread
 
     public function handle()
     {
-        $this->thread->forceDelete();
+        $this->thread->delete();
     }
 }
