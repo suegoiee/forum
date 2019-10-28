@@ -12,45 +12,80 @@ var rangeEnd = '';
 var chart_data = [];
 
 /**表格列表 */
-function drawTableB(TableData, TableTitle) {
-    $('#example').DataTable({
-        data: TableData,
-        columns: TableTitle,
-        "order": [[0, "desc"]],
-        "pagingType": "full_numbers",
-        columnDefs: [
-            {
-                targets: 0,
-                className: "text-center"
-            },
-            {
-                targets: "_all",
-                className: 'text-right'
-            },
-            { 
-                targets: 1,
-                width: "130px"
-            },
-            { 
-                targets: 2,
-                width: "170px"
+function drawTableB(TableData, TableTitle, ipo) {
+    if(ipo){
+        $('#example').DataTable({
+            data: TableData,
+            columns: TableTitle,
+            "order": [[0, "desc"]],
+            "pagingType": "full_numbers",
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: "text-center"
+                },
+                { 
+                    targets: 1,
+                    className: "text-center",
+                    width: "13%"
+                },
+                { 
+                    targets: 2,
+                    width: "16%"
+                },
+                {
+                    targets: "_all",
+                    className: 'text-right'
+                }
+            ],
+            "oLanguage": {
+                "sInfoThousands": ",",
+                "sLengthMenu":
+                    '顯示 _MENU_ 筆',
+                "sSearch":
+                    '搜尋',
+                "oPaginate": {
+                    "sPrevious": "<",
+                    "sFirst": "|<",
+                    "sNext": ">",
+                    "sLast": ">|"
+                },
+                "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
             }
-        ],
-        "oLanguage": {
-            "sInfoThousands": ",",
-            "sLengthMenu":
-                '顯示 _MENU_ 筆',
-            "sSearch":
-                '搜尋',
-            "oPaginate": {
-                "sPrevious": "<",
-                "sFirst": "|<",
-                "sNext": ">",
-                "sLast": ">|"
-            },
-            "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
-        }
-    });
+        });
+    }
+    else{
+        $('#example').DataTable({
+            data: TableData,
+            columns: TableTitle,
+            "order": [[0, "desc"]],
+            "pagingType": "full_numbers",
+            columnDefs: [
+                {
+                    targets: 0,
+                    className: "text-center"
+                },
+                {
+                    targets: "_all",
+                    className: 'text-right'
+                }
+            ],
+            "oLanguage": {
+                "sInfoThousands": ",",
+                "sLengthMenu":
+                    '顯示 _MENU_ 筆',
+                "sSearch":
+                    '搜尋',
+                "oPaginate": {
+                    "sPrevious": "<",
+                    "sFirst": "|<",
+                    "sNext": ">",
+                    "sLast": ">|"
+                },
+                "sInfo": "共 _TOTAL_ 筆資料 (_START_ 至 _END_)"
+            }
+        });
+    }
 }
 
 /**畫圖表 */

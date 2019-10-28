@@ -27,7 +27,14 @@
     <script>
         window.onload=function () {
             var chartData = @json($data);
-            drawTableB(chartData[1], chartData[0]);
+            var stock_name = @json($stock_name);
+            var ipo = 1;
+            if(stock_name == '抽籤日程表'){
+                drawTableB(chartData[1], chartData[0], ipo);
+            }
+            else{
+                drawTableB(chartData[1], chartData[0]);
+            }
             stockPool();
         }
     </script>

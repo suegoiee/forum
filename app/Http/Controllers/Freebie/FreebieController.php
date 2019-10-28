@@ -271,6 +271,9 @@ class FreebieController extends Controller
                 if(array_key_exists($value2, $value)){
                     if ($value[$value2]) {
                         if ($value2 != 'row_title_center' && gettype($value[$value2]) == 'integer') {
+                            if($value2 == 'InvestmentSharesPerApplication' || $value2 == 'ActualIPOSharesTotal'){
+                                $value[$value2] = $value[$value2]/1000;
+                            }
                             array_push($tmp, $this->number_format_unchanged_precision($value[$value2]));
                         }
                         else {
