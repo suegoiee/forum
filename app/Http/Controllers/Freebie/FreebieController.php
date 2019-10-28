@@ -54,7 +54,7 @@ class FreebieController extends Controller
         $PageSubtitle = request()->route('InfoCh');
         $data = file_get_contents(env('CronAPI').$InfoType);
         $data = json_decode($data, true);
-        $stock_name = '公開申購';
+        $stock_name = '抽籤日程表';
         $stock_code = '';
         $data = $this->seriesGenerator($data, null);
         return view('freebie.Table', compact('data', 'stock_name', 'stock_code', 'PageSubtitle'));
