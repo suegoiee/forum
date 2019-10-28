@@ -31,6 +31,7 @@ function drawTableB(TableData, TableTitle, ipo) {
                 },
                 { 
                     targets: 2,
+                    className: "text-center",
                     width: "16%"
                 },
                 {
