@@ -26,6 +26,14 @@ function drawTableB(TableData, TableTitle) {
             {
                 targets: "_all",
                 className: 'text-right'
+            },
+            { 
+                targets: 1,
+                width: "130px"
+            },
+            { 
+                targets: 2,
+                width: "170px"
             }
         ],
         "oLanguage": {
