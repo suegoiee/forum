@@ -129,6 +129,7 @@ Route::prefix('freebie')->name('freebie')->namespace('Freebie')->group(function 
     Route::get('{InfoType}/Chart/{InfoCh}/{StockCode}', 'FreebieController@Chart')->name('.Chart');
     Route::get('{InfoType}/Table/{InfoCh}/{StockCode}', 'FreebieController@Table')->name('.Table');
     Route::get('{InfoType}/Report/{InfoCh}/{StockCode}', 'FreebieController@Report')->name('.Report');
+    Route::get('{InfoType}/IPOSchedule/{InfoCh}', 'FreebieController@IPOSchedule')->name('.IPOSchedule');
 });
 
 // Tools

@@ -48,6 +48,17 @@ class FreebieController extends Controller
         $data = $this->seriesGenerator($data, null);
         return view('freebie.Table', compact('data', 'stock_name', 'stock_code', 'url', 'PageSubtitle'));
     }
+    public function IPOSchedule()
+    {
+        $InfoType = request()->route('InfoType');
+        $PageSubtitle = request()->route('InfoCh');
+        $data = file_get_contents(env('CronAPI').$InfoType);
+        $data = json_decode($data, true);
+        $stock_name = '公開申購';
+        $stock_code = '';
+        $data = $this->seriesGenerator($data, null);
+        return view('freebie.Table', compact('data', 'stock_name', 'stock_code', 'PageSubtitle'));
+    }
     public function Report()
     {
         $stockCode = request()->route('StockCode');
@@ -241,10 +252,17 @@ class FreebieController extends Controller
         $TableData = array();
         $TableTitle = array();
         $compare = array();
+        
         foreach ($data['column_title'] as $key => $value) {
-            foreach($value as $key2 => $value2) {
-                array_push($compare, $key2);
-                array_push($TableTitle, (object)array('title'=>$value2, 'sTitle'=>$value2));
+            if(gettype($value) == 'string'){
+                array_push($compare, $key);
+                array_push($TableTitle, (object)array('title'=>$value, 'sTitle'=>$value));
+            }
+            else{
+                foreach($value as $key2 => $value2) {
+                    array_push($compare, $key2);
+                    array_push($TableTitle, (object)array('title'=>$value2, 'sTitle'=>$value2));
+                }
             }
         }
         foreach ($data['data'] as $key => $value) {
@@ -252,7 +270,7 @@ class FreebieController extends Controller
             foreach ($compare as $key2 => $value2) {
                 if(array_key_exists($value2, $value)){
                     if ($value[$value2]) {
-                        if ($value2 != 'row_title_center') {
+                        if ($value2 != 'row_title_center' && gettype($value[$value2]) == 'integer') {
                             array_push($tmp, $this->number_format_unchanged_precision($value[$value2]));
                         }
                         else {

@@ -72,6 +72,7 @@
                                 <!--li><a class="menu" href="">股息殖利率評價</a></li-->
                             </ul>
                         </li>
+                        <li><a class="menu" href="{{ route('freebie.IPOSchedule', ['InfoType' => 'IPOSchedule', 'InfoCh' => '公開申購']) }}">公開申購</a></li>
                         <!--li role="separator" class="divider"></li-->
                     </ul>
                 </li>
