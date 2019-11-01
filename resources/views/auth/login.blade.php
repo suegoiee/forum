@@ -4,9 +4,9 @@
 
 @section('small-content')
 <div style="width:auto;">        
-    <div class="btn-block facebook" id="facebook_login_btn"><img class="facebookImg" src="https://pro.uanalyze.com.tw/assets/img/Facebook/f-Logo_Assets/F_Logo_Online_09_2018/Color/SVG/flogo_RGB_HEX-1024.svg"></div>
+    <div class="btn-block facebook" id="facebook_login_btn"><img class="facebookImg" src="{{ asset('images/flogo_RGB_HEX-1024.39f3afcf.svg') }}"></div>
     ‧
-    <div class="btn-block google" onclick="javascript:location.href='{{env('APP_URL')}}/google/auth'"> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1024px-Google_%22G%22_Logo.svg.png" class="googleImg"></div>
+    <div class="btn-block google" onclick="javascript:location.href='{{env('APP_URL')}}/google/auth'"> <img src="{{ asset('images/Google__G__Logo.686f8efa.svg') }}" class="googleImg"></div>
 </div>
     {!! Form::open(['route' => 'login.post']) !!}
         @formGroup('email')
