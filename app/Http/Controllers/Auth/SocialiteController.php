@@ -63,7 +63,7 @@ class SocialiteController extends Controller
 
     private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
     {
-        $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 1, 2));
+        $this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 2, 1));
         $user = User::findByEmailAddress($socialiteUser->getEmail());
         $this->registered($user);
         Auth::login($user);
