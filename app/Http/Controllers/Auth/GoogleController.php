@@ -6,58 +6,46 @@ use Hash;
 use Storage;
 use App\User;
 use App\Models\Socialite;
-use Shouwda\Facebook\Facebook;
+use Shouwda\Google\Google;
 use App\Traits\OauthToken;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Validator;
 
-class FacebookController extends Controller
+class GoogleController extends Controller
 {
 	use OauthToken;
-    protected $facebook;
+    protected $google;
     public function __construct()
     {
-        $this->facebook = new Facebook();
+        $this->google = new Google();
     }
-    public function email_exist(Request $request)
-    {
-        $emailvalidator = Validator::make($request->all(), [
-            'email' => 'required|string|email|max:255']);
-        if($emailvalidator->fails()){
-            return $this->validateErrorResponse($emailvalidator->errors()->all()); 
-        }
-        $user = User::where('email',$request->input('email'))->first();
-        if($user){
-            return $this->successResponse(['message'=>['The E-mail is exists.'], 'email_exists'=>1]);
-        }
-        return $this->successResponse(['message'=>['The E-mail is not exists.'], 'email_exists'=>0]);
-    }   
     public function login(Request $request)
     {
+        dd($request);
         $log = ['time'=>date('Y-m-d H:i:s'), 'email'=>$request->input('email',''), 'password'=>$request->input('password',''), 'encoding_password'=>bcrypt($request->input('password','')), 'nickname'=>$request->input('nickname','')];
         Storage::append('login.log', json_encode($log));
     	return $this->loginHandler($request);
-    } 
+    }
     public function mobileLogin(Request $request)
     {
         return $this->loginHandler($request, true);
     }
-    protected function loginHandler($request, $mobile=false)
-    {
+    protected function loginHandler($request, $mobile=false){
+        $id_token = $request->input('id_token');
         $access_token = $request->input('access_token');
-        $fb_user = $this->facebook->getUser($access_token);
-        if(!$fb_user){
-            return $this->validateErrorResponse([trans('auth.facebook_error')]);
+        $google_user = $this->google->getUser($id_token, $access_token);
+        if(!$google_user){
+            return $this->validateErrorResponse([trans('auth.google_error')]);
         }
-        $socialite = Socialite::where('provider', 'facebook')->where('provider_id', $fb_user['id'])->first();
+        $socialite = Socialite::where('provider', 'google')->where('provider_id', $google_user['id'])->first();
 
         $socialite_data = [
-            'provider'=>'facebook',
-            'provider_id'=>$fb_user['id'],
-            'name'=>$fb_user['name'],
-            'email'=>$fb_user['email'],
+            'provider'=>'google',
+            'provider_id'=>$google_user['id'],
+            'name'=>$google_user['name'],
+            'email'=>$google_user['email'],
             'access_token'=>$access_token,
         ];
 
@@ -83,6 +71,7 @@ class FacebookController extends Controller
             $user->touch();
             return $this->logined($request, $user, $mobile);
         }else{
+            
             $user = User::where('email',$socialite_data['email'])->first();
             if(!$user){
                 $user = $this->create($request->all());
@@ -96,6 +85,7 @@ class FacebookController extends Controller
             return $this->logined($request, $user, $mobile);
         }
     }
+
     protected function create(array $data)
     {
         return User::create([
@@ -105,7 +95,7 @@ class FacebookController extends Controller
             'confirmed'=>1,
             'bio'=>'',
             'password' => bcrypt($data['provider_id']),
-            'is_socialite' => 1,
+            'is_socialite' => 2,
             'confirmation_code'=>'',
             'phone' => isset($data['phone']) ? $data['phone']:NULL,
             'mail_verified_at'=>date('Y-m-d H:i:s'),
@@ -131,9 +121,9 @@ class FacebookController extends Controller
         ];
         return $this->successResponse($token);
     }
-    protected function logined(Request $request, $user, $mobile)
+    protected function logined(Request $request,$user, $mobile)
     {
-        $client = $mobile ? $this->getMobilePersonalAccessClient() : $this->getPersonalAccessClient();
+        $client = $mobile ? $this->getMobilePasswordGrantClient() : $this->getPasswordGrantClient();
         $user_token = $user->createToken($client->name);
         $token = [
             'token_type'=>'Bearer',
@@ -145,7 +135,9 @@ class FacebookController extends Controller
             'set_password'=> $user->is_socialite !=0 && $user->version == 1 ? 0 : $user->set_password
         ];
         $this->updateProfile($request,$user);
-        return $this->successResponse($token);
+        Auth::login($user);
+        return redirect()->route('forum');
+        //return $this->successResponse($token);
     }
 
     protected function createProfile(Request $request,$user){
@@ -162,6 +154,7 @@ class FacebookController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'id_token' => 'required|string',
             'access_token' => 'required|string',
         ]);
     }

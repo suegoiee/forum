@@ -15,8 +15,8 @@ Route::namespace('Auth')->group(function () {
     Route::get('logout', 'LoginController@logout')->name('logout');
 
 
-    Route::post('facebook/login', 'FacebookController@login')->name('facebook.login.post');
-    Route::post('google/login', 'GoogleController@login')->name('google.login.post');
+    Route::post('facebook/login', 'Auth\FacebookController@login')->name('facebook.login.post');
+    Route::post('google/login', 'Auth\GoogleController@login')->name('google.login.post');
 
     // Registration
     Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
@@ -39,7 +39,7 @@ Route::namespace('Auth')->group(function () {
 
     //Google Login
     Route::get('/google/auth', 'SocialiteController@redirectToProvider');
-    Route::get('/google/auth/callback', 'SocialiteController@handleProviderCallback');
+    Route::get('/google/auth/callback', 'Auth\GoogleController@login');
 });
 
 // Users
