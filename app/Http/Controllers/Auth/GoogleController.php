@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Two\User as SocialiteUser;
 
 class GoogleController extends Controller
 {
@@ -23,6 +24,7 @@ class GoogleController extends Controller
     }
     public function login(Request $request)
     {
+        dd($socialiteUser = $this->getSocialiteUser());
         $log = ['time'=>date('Y-m-d H:i:s'), 'email'=>$request->input('email',''), 'password'=>$request->input('password',''), 'encoding_password'=>bcrypt($request->input('password','')), 'nickname'=>$request->input('nickname','')];
         Storage::append('login.log', json_encode($log));
     	return $this->loginHandler($request);
@@ -34,7 +36,6 @@ class GoogleController extends Controller
     protected function loginHandler($request, $mobile=false){
         $id_token = $request->input('id_token');
         $access_token = $request->input('access_token');
-        dd($id_token, $access_token, $request);
         $google_user = $this->google->getUser($id_token, $access_token);
         if(!$google_user){
             return $this->validateErrorResponse([trans('auth.google_error')]);
