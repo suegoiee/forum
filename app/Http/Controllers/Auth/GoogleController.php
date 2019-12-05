@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use Hash;
 use Storage;
+use Socialite;
 use App\User;
-use App\Models\Socialite;
+use App\Models\SocialiteDB;
 use Shouwda\Google\Google;
 use App\Traits\OauthToken;
 use Illuminate\Http\Request;

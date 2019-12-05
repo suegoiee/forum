@@ -3,8 +3,15 @@
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
-class Socialite extends Model
+class SocialiteDB extends Model
 {
+    const TABLE = 'socialite';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected $table = self::TABLE;
+
     protected $fillable = [
         'email' ,'name','provider_id', 'provider','access_token'
     ];
