@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Socialite\Two\InvalidStateException;
 use Laravel\Socialite\Two\User as SocialiteUser;
 
 class GoogleController extends Controller
@@ -25,6 +26,12 @@ class GoogleController extends Controller
     }
     public function login(Request $request)
     {
+        try {
+            $socialiteUser = $this->getSocialiteUser();
+        } catch (InvalidStateException $exception) {
+            $this->error('errors.github_invalid_state');
+            return redirect()->route('login');
+        }
         dd($socialiteUser = $this->getSocialiteUser());
         $log = ['time'=>date('Y-m-d H:i:s'), 'email'=>$request->input('email',''), 'password'=>$request->input('password',''), 'encoding_password'=>bcrypt($request->input('password','')), 'nickname'=>$request->input('nickname','')];
         Storage::append('login.log', json_encode($log));
