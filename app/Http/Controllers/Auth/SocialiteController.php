@@ -32,6 +32,7 @@ class SocialiteController extends Controller
      */
     public function handleProviderCallback()
     {
+        dd($this->getSocialiteUser());
         try {
             $socialiteUser = $this->getSocialiteUser();
         } catch (InvalidStateException $exception) {
