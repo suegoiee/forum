@@ -34,6 +34,7 @@ class GoogleController extends Controller
     protected function loginHandler($request, $mobile=false){
         $id_token = $request->input('id_token');
         $access_token = $request->input('access_token');
+        dd($id_token, $access_token, $request);
         $google_user = $this->google->getUser($id_token, $access_token);
         if(!$google_user){
             return $this->validateErrorResponse([trans('auth.google_error')]);
