@@ -160,4 +160,9 @@ class GoogleController extends Controller
             'access_token' => 'required|string',
         ]);
     }
+
+    private function getSocialiteUser(): SocialiteUser
+    {
+        return Socialite::driver('google')->user();
+    }
 }
