@@ -32,15 +32,16 @@ class SocialiteController extends Controller
      */
     public function handleProviderCallback()
     {
-        dd($this->getSocialiteUser());
         try {
             $socialiteUser = $this->getSocialiteUser();
         } catch (InvalidStateException $exception) {
+            dd($exception);
             $this->error('errors.github_invalid_state');
             return redirect()->route('login');
         }
 
         try {
+            dd($socialiteUser);
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
             return $this->userNotFound($socialiteUser);
