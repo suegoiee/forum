@@ -39,7 +39,7 @@ Route::namespace('Auth')->group(function () {
 
     //Google Login
     Route::get('/google/auth', 'SocialiteController@redirectToProvider');
-    Route::get('/google/auth/callback', 'Auth\GoogleController@login');
+    Route::get('/google/auth/callback', 'GoogleController@login');
 });
 
 // Users
