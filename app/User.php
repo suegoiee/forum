@@ -51,7 +51,8 @@ final class User extends Authenticatable
         'type',
         'remember_token',
         'bio',
-        'is_socialite'
+        'is_socialite',
+        'set_password'
     ];
 
     /**
