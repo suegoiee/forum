@@ -41,7 +41,6 @@ class SocialiteController extends Controller
         }
 
         try {
-            dd($socialiteUser);
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
             return $this->userNotFound($socialiteUser);
@@ -76,53 +75,49 @@ class SocialiteController extends Controller
             'email'=>$socialiteUser['email'],
         ];
 
-
-
-
-        $log = ['time'=>date('Y-m-d H:i:s'), 'email'=>$request->input('email',''), 'password'=>$request->input('password',''), 'encoding_password'=>bcrypt($request->input('password','')), 'nickname'=>$request->input('nickname','')];
-
-        $request->request->add(['email'=>$socialite_data['email'],
-            'provider_id'=>$socialite_data['provider_id'],
-            'nickname'=>$socialite_data['name']]);
-
-
-
-
         if($socialite){
             $user = $socialite->user;
             $socialite->update([
                 'email'=>$socialite_data['email'],
-                'name'=>$socialite_data['name'],
-                'access_token'=>$socialite_data['access_token']
+                'name'=>$socialite_data['name']
             ]);
             if(!$user->mail_verified_at){
                 User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
             }
             $user->touch();
-            return $this->logined($request, $user, $mobile);
+            Auth::login($user);
+            $this->success('歡迎來到優分析');
+            return redirect()->route('forum');
+            //return $this->logined($request, $user, $mobile);
         }else{
             
             $user = User::where('email',$socialite_data['email'])->first();
             if(!$user){
                 $user = $this->create($request->all());
                 $user->socialite()->create($socialite_data);
-                return $this->registered($request, $user, $mobile);
+                Auth::login($user);
+                $this->success('歡迎來到優分析');
+                return redirect()->route('forum');
+                //return $this->registered($request, $user);
             }
             if(!$user->mail_verified_at){
                 User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
             }
             $user->socialite()->create($socialite_data);
-            return $this->logined($request, $user, $mobile);
+            Auth::login($user);
+            $this->success('歡迎來到優分析');
+            return redirect()->route('forum');
+            //return $this->logined($request, $user, $mobile);
         }
 
-        $user = User::findByEmailAddress($socialiteUser->getEmail());
+        /*$user = User::findByEmailAddress($socialiteUser->getEmail());
         $this->registered($user);
         Auth::login($user);
         $this->success('歡迎來到優分析');
-        return redirect()->route('forum');
+        return redirect()->route('forum');*/
     }
 
-    protected function registered(Request $request, $user, $mobile)
+    /*protected function registered(Request $request, $user)
     {
         $this->createProfile($request, $user);
         $adminToken = $this->clientCredentialsGrantToken($request);
@@ -139,8 +134,8 @@ class SocialiteController extends Controller
             'set_password'=> $user->set_password
         ];
         return $this->successResponse($token);
-    }
-    protected function logined(Request $request,$user, $mobile)
+    }*/
+    /*protected function logined(Request $request,$user, $mobile)
     {
         $client = $mobile ? $this->getMobilePasswordGrantClient() : $this->getPasswordGrantClient();
         $user_token = $user->createToken($client->name);
@@ -167,5 +162,5 @@ class SocialiteController extends Controller
     	$profile = $request->only(['nickname','name','sex','address','birthday']);
         $user->profile()->update($profile);
         return $profile;
-    }
+    }*/
 }
