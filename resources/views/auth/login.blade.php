@@ -4,7 +4,8 @@
 
 @section('small-content')
 <div style="width:auto;">        
-    <div class="btn-block facebook" id="facebook_login_btn"><img class="facebookImg" src="{{ asset('images/flogo_RGB_HEX-1024.39f3afcf.svg') }}"></div>
+    <!--div class="btn-block facebook" id="facebook_login_btn"><img class="facebookImg" src="{{ asset('images/flogo_RGB_HEX-1024.39f3afcf.svg') }}"></div-->
+    <div class="btn-block facebook" onclick="javascript:location.href='{{env('APP_URL')}}/facebook/auth'"><img class="facebookImg" src="{{ asset('images/flogo_RGB_HEX-1024.39f3afcf.svg') }}"></div>
     ‧
     <div class="btn-block google" onclick="javascript:location.href='{{env('APP_URL')}}/google/auth'"> <img src="{{ asset('images/Google__G__Logo.686f8efa.svg') }}" class="googleImg"></div>
 </div>
