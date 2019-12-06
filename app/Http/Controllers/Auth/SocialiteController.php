@@ -98,7 +98,7 @@ class SocialiteController extends Controller
             'email'=>$socialiteUser['email'],
             'is_socialite'=>2,
             'version'=>2,
-            'mail_verified_at'=>$socialiteUser['email'],
+            'mail_verified_at'=>date("Y-m-d H:i:s"),
             'subscription'=>1,
             'name'=>$socialiteUser['name'],
             'username'=>$socialiteUser['name'],
