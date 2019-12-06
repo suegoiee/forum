@@ -60,7 +60,7 @@ return [
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'), //add your app-id here
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'), //add your secret-id here
-        'redirect' => ''
+        'redirect' => env('FACEBOOK_URL'),
     ],
 
     'bsa' => [
