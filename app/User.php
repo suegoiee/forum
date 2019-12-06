@@ -58,6 +58,10 @@ final class User extends Authenticatable
      * {@inheritdoc}
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    public function socialite(){
+        return $this->hasOne('App\Models\SocialiteDB');
+    }
 
     public function id(): int
     {
