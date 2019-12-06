@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SocialiteDB extends Model
 {
-    const TABLE = 'socialite';
+    const TABLE = 'socialites';
 
     /**
      * {@inheritdoc}
