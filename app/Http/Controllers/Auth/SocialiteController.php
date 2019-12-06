@@ -58,8 +58,8 @@ class SocialiteController extends Controller
 
     private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
     {
-        dd($user, $socialiteUser);
         Auth::login($user);
+        dd(Auth::user());
         return redirect()->route('forum');
     }
 
