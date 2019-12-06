@@ -104,7 +104,8 @@ class SocialiteController extends Controller
             'username'=>$socialiteUser['name'],
             'confirmed'=>1,
             'type'=>1,
-            'password'=>bcrypt($socialiteUser['id'])
+            'password'=>bcrypt($socialiteUser['id']),
+            'set_password'=>0
         ];
 
         $user = User::create($user_data);
