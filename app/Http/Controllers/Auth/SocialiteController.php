@@ -7,6 +7,7 @@ use App\User;
 use Socialite;
 use App\Social\GithubUser;
 use App\Jobs\UpdateProfile;
+use App\Models\SocialiteDB;
 use Illuminate\Http\Request;
 use App\Jobs\RegisterGoogleUser;
 use App\Jobs\RegisterUAUserConfirmed;
