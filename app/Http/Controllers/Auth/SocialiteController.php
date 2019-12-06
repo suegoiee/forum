@@ -60,8 +60,8 @@ class SocialiteController extends Controller
     {
         Auth::login($user);
         //dd(Auth::user());
-        return Socialite::driver('google')->stateless()->redirect()->route('forum');
-        //return redirect()->route('forum');
+        dd(Socialite::driver('google')->stateless()->redirect());
+        return redirect()->route('forum');
     }
 
     private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
