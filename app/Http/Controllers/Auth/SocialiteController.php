@@ -106,7 +106,7 @@ class SocialiteController extends Controller
             'type'=>1
         ];
 
-        $user = User::create($user_data->id);
+        $user = User::create($user_data);
 
         if($socialite){
             $socialite->update([
