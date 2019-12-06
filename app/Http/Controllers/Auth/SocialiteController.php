@@ -35,6 +35,7 @@ class SocialiteController extends Controller
         try {
             //$socialiteUser = $this->getSocialiteUser();
             $socialiteUser = Socialite::driver('google')->user();
+            dd($socialiteUser);
         } catch (InvalidStateException $exception) {
             dd($exception);
             $this->error('errors.github_invalid_state');
