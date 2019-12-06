@@ -11,8 +11,7 @@ Route::get('bin/{paste?}', 'HomeController@pastebin');
 Route::namespace('Auth')->group(function () {
     // Sessions
     Route::get('login', 'LoginController@showLoginForm')->name('login');
-    //Route::post('login', 'LoginController@login')->name('login.post');
-    Route::post('login', ['as' => 'login.post', 'uses' => 'LoginController@login']);
+    Route::post('login', 'LoginController@login')->name('login.post');
     Route::get('logout', 'LoginController@logout')->name('logout');
 
 
