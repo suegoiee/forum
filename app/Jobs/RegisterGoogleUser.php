@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\User;
 use App\Models\Profile;
+use App\Models\SocialiteDB;
 use App\Exceptions\CannotCreateUser;
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
