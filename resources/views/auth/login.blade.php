@@ -33,12 +33,6 @@
         </a-->
 
     {!! Form::close() !!}
-    {!! Form::open(['route' => 'facebook.login.post','id'=>'facebook_form']) !!}
-        @csrf
-        <input type="hidden" name="email">
-        <input type="hidden" name="password">
-        <input type="hidden" name="username">
-    {!! Form::close() !!}
 @endsection
 @section('js_tail')
     <script src="/js/facebook.js"></script>
