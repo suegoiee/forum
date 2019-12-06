@@ -57,6 +57,11 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'), // Your Google Client Secret
         'redirect' => env('GOOGLE_URL'),
     ],
+    'facebook' => [
+        'client_id' => env('FACEBOOK_CLIENT_ID'), //add your app-id here
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'), //add your secret-id here
+        'redirect' => ''
+    ],
 
     'bsa' => [
         'cpc_code' => env('BSA_CPC_CODE'),
