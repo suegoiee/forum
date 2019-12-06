@@ -2,167 +2,122 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Hash;
-use Storage;
+use Auth;
 use App\User;
-use App\Models\Socialite;
-use Shouwda\Facebook\Facebook;
-use App\Traits\OauthToken;
+use Socialite;
+use App\Social\GithubUser;
+use App\Jobs\UpdateProfile;
+use App\Models\SocialiteDB;
 use Illuminate\Http\Request;
+use App\Jobs\RegisterGoogleUser;
+use App\Jobs\RegisterUAUserConfirmed;
 use App\Http\Controllers\Controller;
-use App\Events\UserRegistered;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Laravel\Socialite\Two\InvalidStateException;
+use Laravel\Socialite\Two\User as SocialiteUser;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class FacebookController extends Controller
+class SocialiteController extends Controller
 {
-	use OauthToken;
-    protected $facebook;
-    public function __construct()
+    use RegistersUsers;
+    /**
+     * Redirect the user to the GitHub authentication page.
+     */
+    public function redirectToProvider()
     {
-        $this->facebook = new Facebook();
+        return Socialite::driver('facebook')->stateless()->redirect();
     }
-    public function email_exist(Request $request)
+
+    /**
+     * Obtain the user information from GitHub.
+     */
+    public function handleProviderCallback(Request $request)
     {
-        $emailvalidator = Validator::make($request->all(), [
-            'email' => 'required|string|email|max:255']);
-        if($emailvalidator->fails()){
-            return $this->validateErrorResponse($emailvalidator->errors()->all()); 
+        try {
+            $socialiteUser = Socialite::driver('facebook')->stateless()->user();
+        } catch (InvalidStateException $exception) {
+            $this->error('errors.github_invalid_state');
+            return redirect()->route('login');
         }
-        $user = User::where('email',$request->input('email'))->first();
-        if($user){
-            return $this->successResponse(['message'=>['The E-mail is exists.'], 'email_exists'=>1]);
+
+        try {
+            $user = User::findByEmailAddress($socialiteUser->getEmail());
+        } catch (ModelNotFoundException $exception) {
+            return $this->userNotFound($socialiteUser);
         }
-        return $this->successResponse(['message'=>['The E-mail is not exists.'], 'email_exists'=>0]);
-    }   
-    public function login(Request $request)
-    {
-        $log = ['time'=>date('Y-m-d H:i:s'), 'email'=>$request->input('email',''), 'password'=>$request->input('password',''), 'encoding_password'=>bcrypt($request->input('password','')), 'nickname'=>$request->input('nickname','')];
-        Storage::append('login.log', json_encode($log));
-    	return $this->loginHandler($request);
-    } 
-    public function mobileLogin(Request $request)
-    {
-        return $this->loginHandler($request, true);
+
+        return $this->userFound($user, $socialiteUser);
     }
-    protected function loginHandler($request, $mobile=false)
+
+    private function getSocialiteUser(): SocialiteUser
     {
-        $access_token = $request->input('access_token');
-        $fb_user = $this->facebook->getUser($access_token);
-        if(!$fb_user){
-            return $this->validateErrorResponse([trans('auth.facebook_error')]);
-        }
-        $socialite = Socialite::where('provider', 'facebook')->where('provider_id', $fb_user['id'])->first();
+        return Socialite::driver('facebook')->user();
+    }
+
+    private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
+    {
+        $socialite = SocialiteDB::where('provider', 'facebook')->where('provider_id', $socialiteUser['id'])->first();
 
         $socialite_data = [
             'provider'=>'facebook',
-            'provider_id'=>$fb_user['id'],
-            'name'=>$fb_user['name'],
-            'email'=>$fb_user['email'],
-            'access_token'=>$access_token,
+            'provider_id'=>$socialiteUser['id'],
+            'name'=>$socialiteUser['name'],
+            'email'=>$socialiteUser['email'],
         ];
-
-        $request->request->add(['email'=>$socialite_data['email'],
-            'provider_id'=>$socialite_data['provider_id'],
-            'nickname'=>$socialite_data['name']]);
-
-        $validator = $this->validator($request->all());
-        if ($validator->fails()) {
-            return $this->validateErrorResponse($validator->errors()->all());
-        }
-
+        $user = User::where('email',$socialite_data['email'])->first();
         if($socialite){
-            $user = $socialite->user;
             $socialite->update([
                 'email'=>$socialite_data['email'],
-                'name'=>$socialite_data['name'],
-                'access_token'=>$socialite_data['access_token']
+                'name'=>$socialite_data['name']
             ]);
-            if(!$user->mail_verified_at){
-                User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
-            }
-            $user->touch();
-            return $this->logined($request, $user, $mobile);
         }else{
-            $user = User::where('email',$socialite_data['email'])->first();
-            if(!$user){
-                $user = $this->create($request->all());
-                $user->socialite()->create($socialite_data);
-                return $this->registered($request, $user, $mobile);
-            }
-            if(!$user->mail_verified_at){
-                User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
-            }
             $user->socialite()->create($socialite_data);
-            return $this->logined($request, $user, $mobile);
         }
+        if(!$user->mail_verified_at){
+            User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
+            $user->touch();
+        }
+        Auth::login($user, true);
+        $this->success('歡迎來到優分析');
+        return redirect()->route('forum');
     }
-    protected function create(array $data)
+
+    private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
     {
-        return User::create([
-            'email' => $data['email'],
-            'name' => $data['nickname'],
-            'username'=>$data['email'],
+        $socialite = SocialiteDB::where('provider', 'facebook')->where('provider_id', $socialiteUser['id'])->first();
+
+        $socialite_data = [
+            'provider'=>'facebook',
+            'provider_id'=>$socialiteUser['id'],
+            'name'=>$socialiteUser['name'],
+            'email'=>$socialiteUser['email'],
+        ];
+
+        $user_data = [
+            'email'=>$socialiteUser['email'],
+            'is_socialite'=>1,
+            'version'=>2,
+            'mail_verified_at'=>$socialiteUser['email'],
+            'subscription'=>1,
+            'name'=>$socialiteUser['name'],
+            'username'=>$socialiteUser['name'],
             'confirmed'=>1,
-            'bio'=>'',
-            'password' => bcrypt($data['provider_id']),
-            'is_socialite' => 1,
-            'confirmation_code'=>'',
-            'phone' => isset($data['phone']) ? $data['phone']:NULL,
-            'mail_verified_at'=>date('Y-m-d H:i:s'),
-            'set_password' => 0,
-        ]);
-    }
-
-    protected function registered(Request $request, $user, $mobile)
-    {
-        $this->createProfile($request, $user);
-        $adminToken = $this->clientCredentialsGrantToken($request);
-        event(new UserRegistered($user, $adminToken, $request->input('password'), false));
-        $client = $mobile ? $this->getMobilePasswordGrantClient() : $this->getPasswordGrantClient();
-        $user_token = $user->createToken($client->name);
-        $token = [
-            'token_type'=>'Bearer',
-            'expires_in'=>$user_token->token->expires_at->toDateTimeString(),
-            'access_token'=>$user_token->accessToken,
-            'refresh_token'=>'',
-            'verified'=>$user->mail_verified_at ? 1 : 0,
-            'is_socialite'=>$user->is_socialite,
-            'set_password'=> $user->set_password
+            'type'=>1
         ];
-        return $this->successResponse($token);
-    }
-    protected function logined(Request $request, $user, $mobile)
-    {
-        $client = $mobile ? $this->getMobilePersonalAccessClient() : $this->getPersonalAccessClient();
-        $user_token = $user->createToken($client->name);
-        $token = [
-            'token_type'=>'Bearer',
-            'expires_in'=>$user_token->token->expires_at->toDateTimeString(),
-            'access_token'=>$user_token->accessToken,
-            'refresh_token'=>'',
-            'verified'=>$user->mail_verified_at ? 1 : 0,
-            'is_socialite'=>$user->is_socialite,
-            'set_password'=> $user->is_socialite !=0 && $user->version == 1 ? 0 : $user->set_password
-        ];
-        $this->updateProfile($request,$user);
-        return $this->successResponse($token);
-    }
 
-    protected function createProfile(Request $request,$user){
-        $store_data = $request->only(['nickname','name','sex','address','birthday']);
-        $profile = $user->profile()->create($store_data);
-        return $profile;
-    }
-    protected function updateProfile(Request $request,$user){
-    	$profile = $request->only(['nickname','name','sex','address','birthday']);
-        $user->profile()->update($profile);
-        return $profile;
-    }
+        $user = User::create($user_data);
 
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'access_token' => 'required|string',
-        ]);
+        if($socialite){
+            $socialite->update([
+                'email'=>$socialite_data['email'],
+                'name'=>$socialite_data['name']
+            ]);
+        }else{
+            $user->socialite()->create($socialite_data);
+        }
+        Auth::login($user, true);
+        $this->success('歡迎來到優分析');
+        return redirect()->route('forum');
     }
 }
