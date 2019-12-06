@@ -59,16 +59,6 @@ class SocialiteController extends Controller
 
     private function userFound(User $user, SocialiteUser $socialiteUser): RedirectResponse
     {
-        //Auth::login($user);
-        Auth::login($user, true);
-        //dd(Auth::user());
-        return redirect()->route('forum');
-    }
-
-    private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
-    {
-        /*$this->dispatchNow(new RegisterGoogleUser($socialiteUser->getName(), $socialiteUser->getEmail(), $socialiteUser->getName(), '', '', $socialiteUser->getId(), 2, 1));*/
-        
         $socialite = SocialiteDB::where('provider', 'google')->where('provider_id', $socialiteUser['id'])->first();
 
         $socialite_data = [
@@ -88,26 +78,51 @@ class SocialiteController extends Controller
                 User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
             }
             $user->touch();
-            Auth::login($user);
+            Auth::login($user, true);
+            $this->success('歡迎來到優分析');
+            return redirect()->route('forum');
+            //return $this->logined($request, $user, $mobile);
+        }else{
+            $user = User::where('email',$socialite_data['email'])->first();
+            User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
+            $user->socialite()->create($socialite_data);
+            Auth::login($user, true);
+            $this->success('歡迎來到優分析');
+            return redirect()->route('forum');
+        }
+    }
+
+    private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
+    {
+        $socialite = SocialiteDB::where('provider', 'google')->where('provider_id', $socialiteUser['id'])->first();
+
+        $socialite_data = [
+            'provider'=>'google',
+            'provider_id'=>$socialiteUser['id'],
+            'name'=>$socialiteUser['name'],
+            'email'=>$socialiteUser['email'],
+        ];
+
+        if($socialite){
+            $user = $socialite->user;
+            $socialite->update([
+                'email'=>$socialite_data['email'],
+                'name'=>$socialite_data['name']
+            ]);
+            if(!$user->mail_verified_at){
+                User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
+            }
+            $user->touch();
+            Auth::login($user, true);
             $this->success('歡迎來到優分析');
             return redirect()->route('forum');
             //return $this->logined($request, $user, $mobile);
         }else{
             
             $user = User::where('email',$socialite_data['email'])->first();
-            if(!$user){
-                $user = $this->create($request->all());
-                $user->socialite()->create($socialite_data);
-                Auth::login($user);
-                $this->success('歡迎來到優分析');
-                return redirect()->route('forum');
-                //return $this->registered($request, $user);
-            }
-            if(!$user->mail_verified_at){
-                User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
-            }
+            $user = $this->create($request->all());
             $user->socialite()->create($socialite_data);
-            Auth::login($user);
+            Auth::login($user, true);
             $this->success('歡迎來到優分析');
             return redirect()->route('forum');
             //return $this->logined($request, $user, $mobile);
