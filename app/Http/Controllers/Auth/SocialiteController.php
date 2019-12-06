@@ -7,6 +7,7 @@ use App\User;
 use Socialite;
 use App\Social\GithubUser;
 use App\Jobs\UpdateProfile;
+use Illuminate\Http\Request;
 use App\Jobs\RegisterGoogleUser;
 use App\Jobs\RegisterUAUserConfirmed;
 use App\Http\Controllers\Controller;
@@ -30,11 +31,12 @@ class SocialiteController extends Controller
     /**
      * Obtain the user information from GitHub.
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(Request $request)
     {
         try {
             //$socialiteUser = Socialite::driver('google')->user();
-            Socialite::driver('google')->stateless()->redirect();
+            $state = $request->get('state');
+            $request->session()->put('state',$state);
             $socialiteUser = Socialite::driver('google')->stateless()->user();
         } catch (InvalidStateException $exception) {
             $this->error('errors.github_invalid_state');
