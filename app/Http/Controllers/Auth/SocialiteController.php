@@ -34,7 +34,7 @@ class SocialiteController extends Controller
     {
         try {
             //$socialiteUser = Socialite::driver('google')->user();
-            $socialiteUser = Socialite::driver('google')->user();
+            $socialiteUser = Socialite::driver('google')->stateless()->user();
         } catch (InvalidStateException $exception) {
             $this->error('errors.github_invalid_state');
             return redirect()->route('login');
@@ -60,7 +60,8 @@ class SocialiteController extends Controller
     {
         Auth::login($user);
         //dd(Auth::user());
-        return redirect()->route('forum');
+        return Socialite::driver('google')->stateless()->redirect()->route('forum');
+        //return redirect()->route('forum');
     }
 
     private function userNotFound(SocialiteUser $socialiteUser): RedirectResponse
