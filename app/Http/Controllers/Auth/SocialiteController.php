@@ -7,7 +7,6 @@ use App\User;
 use Socialite;
 use App\Social\GithubUser;
 use App\Jobs\UpdateProfile;
-use Illuminate\Http\Request;
 use App\Jobs\RegisterGoogleUser;
 use App\Jobs\RegisterUAUserConfirmed;
 use App\Http\Controllers\Controller;
@@ -31,9 +30,8 @@ class SocialiteController extends Controller
     /**
      * Obtain the user information from GitHub.
      */
-    public function handleProviderCallback(Request $request)
+    public function handleProviderCallback()
     {
-        dd($request);
         try {
             //$socialiteUser = Socialite::driver('google')->user();
             $socialiteUser = Socialite::driver('google')->stateless()->user();
@@ -43,6 +41,7 @@ class SocialiteController extends Controller
         }
 
         try {
+            dd($socialiteUser);
             $user = User::findByEmailAddress($socialiteUser->getEmail());
         } catch (ModelNotFoundException $exception) {
             return $this->userNotFound($socialiteUser);
@@ -75,8 +74,19 @@ class SocialiteController extends Controller
             'provider_id'=>$socialiteUser['id'],
             'name'=>$socialiteUser['name'],
             'email'=>$socialiteUser['email'],
-            'access_token'=>$access_token,
         ];
+
+
+
+
+        $log = ['time'=>date('Y-m-d H:i:s'), 'email'=>$request->input('email',''), 'password'=>$request->input('password',''), 'encoding_password'=>bcrypt($request->input('password','')), 'nickname'=>$request->input('nickname','')];
+
+        $request->request->add(['email'=>$socialite_data['email'],
+            'provider_id'=>$socialite_data['provider_id'],
+            'nickname'=>$socialite_data['name']]);
+
+
+
 
         if($socialite){
             $user = $socialite->user;
@@ -150,6 +160,12 @@ class SocialiteController extends Controller
     protected function createProfile(Request $request,$user){
         $store_data = $request->only(['nickname','name','sex','address','birthday']);
         $profile = $user->profile()->create($store_data);
+        return $profile;
+    }
+    
+    protected function updateProfile(Request $request,$user){
+    	$profile = $request->only(['nickname','name','sex','address','birthday']);
+        $user->profile()->update($profile);
         return $profile;
     }
 }
