@@ -87,6 +87,7 @@ class SocialiteController extends Controller
             $user = User::where('email',$socialite_data['email'])->first();
             User::where('id',$user->id)->update(['mail_verified_at'=>date('Y-m-d H:i:s'),'confirmed'=>1]);
             $user->socialite()->create($socialite_data);
+            dd($user, $user->socialite());
             Auth::login($user, true);
             $this->success('歡迎來到優分析');
             return redirect()->route('forum');
