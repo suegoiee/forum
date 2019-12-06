@@ -25,7 +25,7 @@ class SocialiteController extends Controller
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->stateless()->redirect();
     }
 
     /**
@@ -35,8 +35,6 @@ class SocialiteController extends Controller
     {
         try {
             //$socialiteUser = Socialite::driver('google')->user();
-            $state = $request->get('state');
-            $request->session()->put('state',$state);
             $socialiteUser = Socialite::driver('google')->stateless()->user();
         } catch (InvalidStateException $exception) {
             $this->error('errors.github_invalid_state');
