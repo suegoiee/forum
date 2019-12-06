@@ -18,7 +18,7 @@ use Laravel\Socialite\Two\InvalidStateException;
 use Laravel\Socialite\Two\User as SocialiteUser;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class SocialiteController extends Controller
+class FacebookController extends Controller
 {
     use RegistersUsers;
     /**
