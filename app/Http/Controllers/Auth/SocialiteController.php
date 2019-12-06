@@ -33,10 +33,9 @@ class SocialiteController extends Controller
     public function handleProviderCallback()
     {
         try {
-            //$socialiteUser = $this->getSocialiteUser();
-            $socialiteUser = Socialite::driver('google')->stateless()->user();
+            $socialiteUser = $this->getSocialiteUser();
+            //$socialiteUser = Socialite::driver('google')->stateless()->user();
         } catch (InvalidStateException $exception) {
-            dd($exception);
             $this->error('errors.github_invalid_state');
             return redirect()->route('login');
         }
