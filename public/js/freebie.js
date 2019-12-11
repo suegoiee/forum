@@ -871,8 +871,14 @@ function drawChart(canvas, title, yLabel, series) {
         tooltip: {
             formatter: function () {
                 return this.points.reduce(function (s, point) {
+                    if(typeof(point.series.yAxis.axisTitle) !== "undefined" && point.series.yAxis.axisTitle !== null){
+                        var yTitle = point.series.yAxis.axisTitle.textStr;
+                    }
+                    else{
+                        var yTitle = '';
+                    }
                     return s + '<br/>' + '<span style="color:' + point.color + '">\u25CF</span>' + '<b>' + point.series.name + ': ' +
-                        point.y + point.series.yAxis.axisTitle.textStr + '</b>';
+                        point.y + yTitle + '</b>';
                 }, '<b>' + this.points[0].key + '</b>');
             },
             borderWidth: 0,
