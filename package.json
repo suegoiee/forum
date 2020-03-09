@@ -20,7 +20,7 @@
     "highcharts": "^7.1.1",
     "html2canvas": "^1.0.0-rc.1",
     "jquery": "^3.1.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.13",
     "markdown": "^0.5.0",
     "prismjs": "^1.16.0",
     "selectize": "^0.12.4",
