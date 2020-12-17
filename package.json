@@ -15,7 +15,7 @@
     "bootswatch": "^3.4.1",
     "ckeditor": "^4.11.3",
     "cross-env": "^5.2.0",
-    "datatables.net": "^1.10.19",
+    "datatables.net": "^1.10.22",
     "datatables.net-dt": "^1.10.19",
     "highcharts": "^7.1.1",
     "html2canvas": "^1.0.0-rc.1",
