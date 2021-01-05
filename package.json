@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap-markdown": "^2.10.0",
     "bootstrap-sass": "^3.4.1",
     "bootswatch": "^3.4.1",
